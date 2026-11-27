@@ -131,7 +131,7 @@ jobs:
         with:
           name: release
       # Signed SLSA build provenance for every artifact: gh attestation verify <file> --repo crossly-dev/crossly-python
-      - uses: actions/attest-build-provenance@v2
+      - uses: actions/attest-build-provenance@v4
         with:
           subject-path: 'dist/*'
       - name: publish to PyPI (trusted publishing)
