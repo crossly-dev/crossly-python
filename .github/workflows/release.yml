@@ -127,7 +127,7 @@ jobs:
       id-token: write
       attestations: write
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: release
       # Signed SLSA build provenance for every artifact: gh attestation verify <file> --repo crossly-dev/crossly-python
