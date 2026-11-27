@@ -2,6 +2,18 @@
 
 Every release is generated from the public Crossly OpenAPI specs; each entry lists what changed in them.
 
+## 0.2.1 (2026-11-27)
+
+Generated from the Crossly API specs: seller `551c14338`, buyer `d64567faf`.
+
+### seller
+
+No API changes (regenerated).
+
+### buyer
+
+No API changes (regenerated).
+
 ## 0.2.0 (2026-11-27)
 
 Generated from the Crossly API specs: seller `551c14338`, buyer `d64567faf`.

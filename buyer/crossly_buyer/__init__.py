@@ -10,7 +10,7 @@
 """
 
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 # import ApiClient
 from crossly_buyer.api_client import ApiClient
