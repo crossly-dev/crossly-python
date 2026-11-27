@@ -62,7 +62,7 @@ jobs:
         with:
           node-version: '20'
       # Generator runtime. Zulu, because Temurin has no Java 8 for Apple silicon.
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v6
         with:
           distribution: zulu
           java-version: '8'
