@@ -1,0 +1,146 @@
+# Regenerate from the public Crossly OpenAPI specs and release, with signed build provenance.
+#
+# Daily, on dispatch, or on a crossly-spec-updated repository_dispatch: if the specs changed since the last
+# release, generate, build, test, write the CHANGELOG entry and version (codegen/ci/next-version.mjs), commit
+# and tag with this repository's own GITHUB_TOKEN, then publish. Publishing uses OIDC trusted publishing where the
+# registry supports it, so no registry token is stored here.
+#
+# Managed by tools/sdk-repo/seed.mjs in the Crossly monorepo: edits here are overwritten on the next seed.
+name: release
+
+on:
+  schedule:
+    - cron: '23 7 * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Regenerate and release even when the specs are unchanged
+        type: boolean
+        default: false
+  repository_dispatch:
+    types: [crossly-spec-updated]
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      changed: ${{ steps.specs.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - id: specs
+        env:
+          FORCE: ${{ inputs.force && 'true' || 'false' }}
+        run: node codegen/ci/fetch-specs.mjs
+
+  regen:
+    needs: detect
+    if: needs.detect.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: write
+    outputs:
+      tag: ${{ steps.version.outputs.tag }}
+    env:
+      CROSSLY_SPEC_DIR: codegen/specs
+      # Every compile check so far was made against 5.4.0 output (it runs on Java 8).
+      OPENAPI_GENERATOR_VERSION: '5.4.0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      # Generator runtime. Zulu, because Temurin has no Java 8 for Apple silicon.
+      - uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: '8'
+      - uses: actions/cache@v4
+        with:
+          path: codegen/.tools
+          key: openapi-generator-${{ env.OPENAPI_GENERATOR_VERSION }}
+      - name: fetch specs
+        env:
+          FORCE: 'true'
+        run: node codegen/ci/fetch-specs.mjs
+      - name: version and changelog
+        id: version
+        run: node codegen/ci/next-version.mjs
+      - name: generate
+        env:
+          CROSSLY_SDK_VERSION: ${{ steps.version.outputs.version }}
+        run: node codegen/scripts/generate-sdks.mjs --lang python
+      - name: assemble and scan
+        run: node codegen/ci/assemble.mjs
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: build seller
+        run: bash codegen/ci/check.sh python seller
+      - name: build buyer
+        run: bash codegen/ci/check.sh python buyer
+      - name: webhook conformance vectors
+        working-directory: codegen/integrations/webhooks/python
+        run: python check_vectors.py
+      - name: package
+        run: |
+          python -m pip install -q build
+          python -m build seller --outdir dist
+          python -m build buyer --outdir dist
+      - name: commit and tag
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A seller buyer webhooks CHANGELOG.md codegen/state.json codegen/index
+          git commit -q -m "$TAG: regenerate from the Crossly API" -m "$(head -c 4000 codegen/release-notes.md)"
+          git tag -a "$TAG" -m "$TAG"
+          git push origin HEAD:main
+          git push origin "$TAG"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release
+          path: |
+            dist/
+            codegen/release-notes.md
+          retention-days: 30
+
+  publish:
+    needs: regen
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: release
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: release
+      # Signed SLSA build provenance for every artifact: gh attestation verify <file> --repo crossly-dev/crossly-python
+      - uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: 'dist/*'
+      - name: publish to PyPI (trusted publishing)
+        if: vars.PUBLISH_PYPI == 'true'
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+      - name: GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.regen.outputs.tag }}
+        run: gh release create "$TAG" dist/* --repo "$GITHUB_REPOSITORY" --title "$TAG" --notes-file codegen/release-notes.md --verify-tag

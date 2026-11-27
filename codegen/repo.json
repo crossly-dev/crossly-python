@@ -1,0 +1,13 @@
+{
+  "lang": "python",
+  "vendorWebhooks": [
+    {
+      "from": "crossly_webhooks.py",
+      "to": "seller/crossly/webhooks.py"
+    },
+    {
+      "from": "crossly_webhooks.py",
+      "to": "buyer/crossly_buyer/webhooks.py"
+    }
+  ]
+}
