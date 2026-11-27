@@ -76,6 +76,7 @@ class GetCbxSubjectBalanceBySubjectIdResponseData(ModelNormal):
         """
         return {
             'granted_base_units': (str,),  # noqa: E501
+            'funding_restricted_base_units': (str,),  # noqa: E501
             'earned_base_units': (str,),  # noqa: E501
             'staked_base_units': (str,),  # noqa: E501
             'earned_available_base_units': (str,),  # noqa: E501
@@ -90,6 +91,7 @@ class GetCbxSubjectBalanceBySubjectIdResponseData(ModelNormal):
 
     attribute_map = {
         'granted_base_units': 'grantedBaseUnits',  # noqa: E501
+        'funding_restricted_base_units': 'fundingRestrictedBaseUnits',  # noqa: E501
         'earned_base_units': 'earnedBaseUnits',  # noqa: E501
         'staked_base_units': 'stakedBaseUnits',  # noqa: E501
         'earned_available_base_units': 'earnedAvailableBaseUnits',  # noqa: E501
@@ -104,11 +106,12 @@ class GetCbxSubjectBalanceBySubjectIdResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, granted_base_units, earned_base_units, staked_base_units, earned_available_base_units, connected_available_base_units, total_spendable_base_units, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, granted_base_units, funding_restricted_base_units, earned_base_units, staked_base_units, earned_available_base_units, connected_available_base_units, total_spendable_base_units, *args, **kwargs):  # noqa: E501
         """GetCbxSubjectBalanceBySubjectIdResponseData - a model defined in OpenAPI
 
         Args:
             granted_base_units (str):
+            funding_restricted_base_units (str):
             earned_base_units (str):
             staked_base_units (str):
             earned_available_base_units (str):
@@ -174,6 +177,7 @@ class GetCbxSubjectBalanceBySubjectIdResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.granted_base_units = granted_base_units
+        self.funding_restricted_base_units = funding_restricted_base_units
         self.earned_base_units = earned_base_units
         self.staked_base_units = staked_base_units
         self.earned_available_base_units = earned_available_base_units
@@ -199,11 +203,12 @@ class GetCbxSubjectBalanceBySubjectIdResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, granted_base_units, earned_base_units, staked_base_units, earned_available_base_units, connected_available_base_units, total_spendable_base_units, *args, **kwargs):  # noqa: E501
+    def __init__(self, granted_base_units, funding_restricted_base_units, earned_base_units, staked_base_units, earned_available_base_units, connected_available_base_units, total_spendable_base_units, *args, **kwargs):  # noqa: E501
         """GetCbxSubjectBalanceBySubjectIdResponseData - a model defined in OpenAPI
 
         Args:
             granted_base_units (str):
+            funding_restricted_base_units (str):
             earned_base_units (str):
             staked_base_units (str):
             earned_available_base_units (str):
@@ -267,6 +272,7 @@ class GetCbxSubjectBalanceBySubjectIdResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.granted_base_units = granted_base_units
+        self.funding_restricted_base_units = funding_restricted_base_units
         self.earned_base_units = earned_base_units
         self.staked_base_units = staked_base_units
         self.earned_available_base_units = earned_available_base_units

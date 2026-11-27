@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.common.get_pat_scope_response_scopes import GetPatScopeResponseScopes
-    globals()['GetPatScopeResponseScopes'] = GetPatScopeResponseScopes
+    from crossly.model.app.list_apps_item_capabilities import ListAppsItemCapabilities
+    globals()['ListAppsItemCapabilities'] = ListAppsItemCapabilities
 
 
 class GetPatScopeResponse(ModelNormal):
@@ -80,7 +80,7 @@ class GetPatScopeResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'scopes': ([GetPatScopeResponseScopes],),  # noqa: E501
+            'scopes': ([ListAppsItemCapabilities],),  # noqa: E501
         }
 
     @cached_property
@@ -103,7 +103,7 @@ class GetPatScopeResponse(ModelNormal):
         """GetPatScopeResponse - a model defined in OpenAPI
 
         Args:
-            scopes ([GetPatScopeResponseScopes]):
+            scopes ([ListAppsItemCapabilities]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -188,7 +188,7 @@ class GetPatScopeResponse(ModelNormal):
         """GetPatScopeResponse - a model defined in OpenAPI
 
         Args:
-            scopes ([GetPatScopeResponseScopes]):
+            scopes ([ListAppsItemCapabilities]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

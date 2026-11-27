@@ -57,9 +57,9 @@ class GetWorldGameResponseDataRewards(ModelNormal):
     allowed_values = {
         ('grant',): {
             'ITEM': "item",
+            'COSM': "cosm",
             'DECOR': "decor",
             'CBX': "cbx",
-            'COSM': "cosm",
             'PIN': "pin",
             'EMOTE': "emote",
         },

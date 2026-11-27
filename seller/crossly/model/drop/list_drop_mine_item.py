@@ -66,11 +66,11 @@ class ListDropMineItem(ModelNormal):
 
     allowed_values = {
         ('status',): {
-            'SCHEDULED': "scheduled",
             'CANCELLED': "cancelled",
+            'SCHEDULED': "scheduled",
             'CLOSED': "closed",
-            'RELEASED': "released",
             'LINE_OPEN': "line_open",
+            'RELEASED': "released",
         },
         ('eligibility',): {
             'VERIFIED': "verified",

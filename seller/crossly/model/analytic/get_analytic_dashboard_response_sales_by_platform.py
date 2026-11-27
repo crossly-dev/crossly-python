@@ -76,7 +76,7 @@ class GetAnalyticDashboardResponseSalesByPlatform(ModelNormal):
         """
         return {
             'platform': (str,),  # noqa: E501
-            'count': (str,),  # noqa: E501
+            'count': (float,),  # noqa: E501
             'revenue': (float,),  # noqa: E501
         }
 
@@ -103,7 +103,7 @@ class GetAnalyticDashboardResponseSalesByPlatform(ModelNormal):
 
         Args:
             platform (str):
-            count (str):
+            count (float):
             revenue (float):
 
         Keyword Args:
@@ -192,7 +192,7 @@ class GetAnalyticDashboardResponseSalesByPlatform(ModelNormal):
 
         Args:
             platform (str):
-            count (str):
+            count (float):
             revenue (float):
 
         Keyword Args:

@@ -57,8 +57,8 @@ class CreateVaultMarketPartnerApplyResponsePartner(ModelNormal):
     allowed_values = {
         ('status',): {
             'APPLIED': "applied",
-            'APPROVED': "approved",
             'REJECTED': "rejected",
+            'APPROVED': "approved",
             'SUSPENDED': "suspended",
         },
     }
@@ -88,12 +88,16 @@ class CreateVaultMarketPartnerApplyResponsePartner(ModelNormal):
             'share_bps': (float,),  # noqa: E501
             'cap_cents': (float,),  # noqa: E501
             'applied_at': (str,),  # noqa: E501
+            'services': ([str],),  # noqa: E501
+            'listed': (bool,),  # noqa: E501
             'address': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'website': (str, none_type,),  # noqa: E501
             'note': (str, none_type,),  # noqa: E501
             'code': (str, none_type,),  # noqa: E501
             'decided_at': (str, none_type,),  # noqa: E501
             'decision_note': (str, none_type,),  # noqa: E501
+            'postal_code': (str, none_type,),  # noqa: E501
+            'hours': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -109,12 +113,16 @@ class CreateVaultMarketPartnerApplyResponsePartner(ModelNormal):
         'share_bps': 'shareBps',  # noqa: E501
         'cap_cents': 'capCents',  # noqa: E501
         'applied_at': 'appliedAt',  # noqa: E501
+        'services': 'services',  # noqa: E501
+        'listed': 'listed',  # noqa: E501
         'address': 'address',  # noqa: E501
         'website': 'website',  # noqa: E501
         'note': 'note',  # noqa: E501
         'code': 'code',  # noqa: E501
         'decided_at': 'decidedAt',  # noqa: E501
         'decision_note': 'decisionNote',  # noqa: E501
+        'postal_code': 'postalCode',  # noqa: E501
+        'hours': 'hours',  # noqa: E501
     }
 
     read_only_vars = {
@@ -124,7 +132,7 @@ class CreateVaultMarketPartnerApplyResponsePartner(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, user_id, status, shop_name, share_bps, cap_cents, applied_at, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, user_id, status, shop_name, share_bps, cap_cents, applied_at, services, listed, *args, **kwargs):  # noqa: E501
         """CreateVaultMarketPartnerApplyResponsePartner - a model defined in OpenAPI
 
         Args:
@@ -135,6 +143,8 @@ class CreateVaultMarketPartnerApplyResponsePartner(ModelNormal):
             share_bps (float):
             cap_cents (float):
             applied_at (str):
+            services ([str]):
+            listed (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -173,6 +183,8 @@ class CreateVaultMarketPartnerApplyResponsePartner(ModelNormal):
             code (str, none_type): [optional]  # noqa: E501
             decided_at (str, none_type): [optional]  # noqa: E501
             decision_note (str, none_type): [optional]  # noqa: E501
+            postal_code (str, none_type): [optional]  # noqa: E501
+            hours ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -207,6 +219,8 @@ class CreateVaultMarketPartnerApplyResponsePartner(ModelNormal):
         self.share_bps = share_bps
         self.cap_cents = cap_cents
         self.applied_at = applied_at
+        self.services = services
+        self.listed = listed
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -227,7 +241,7 @@ class CreateVaultMarketPartnerApplyResponsePartner(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, user_id, status, shop_name, share_bps, cap_cents, applied_at, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, user_id, status, shop_name, share_bps, cap_cents, applied_at, services, listed, *args, **kwargs):  # noqa: E501
         """CreateVaultMarketPartnerApplyResponsePartner - a model defined in OpenAPI
 
         Args:
@@ -238,6 +252,8 @@ class CreateVaultMarketPartnerApplyResponsePartner(ModelNormal):
             share_bps (float):
             cap_cents (float):
             applied_at (str):
+            services ([str]):
+            listed (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -276,6 +292,8 @@ class CreateVaultMarketPartnerApplyResponsePartner(ModelNormal):
             code (str, none_type): [optional]  # noqa: E501
             decided_at (str, none_type): [optional]  # noqa: E501
             decision_note (str, none_type): [optional]  # noqa: E501
+            postal_code (str, none_type): [optional]  # noqa: E501
+            hours ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -308,6 +326,8 @@ class CreateVaultMarketPartnerApplyResponsePartner(ModelNormal):
         self.share_bps = share_bps
         self.cap_cents = cap_cents
         self.applied_at = applied_at
+        self.services = services
+        self.listed = listed
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

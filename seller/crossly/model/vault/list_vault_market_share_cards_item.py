@@ -35,12 +35,14 @@ def lazy_import():
     from crossly.model.vault.list_vault_market_share_cards_item_level import ListVaultMarketShareCardsItemLevel
     from crossly.model.vault.list_vault_market_share_cards_item_links import ListVaultMarketShareCardsItemLinks
     from crossly.model.vault.list_vault_market_share_cards_item_mark import ListVaultMarketShareCardsItemMark
+    from crossly.model.vault.list_vault_market_share_cards_item_owner import ListVaultMarketShareCardsItemOwner
     from crossly.model.vault.list_vault_market_share_cards_item_portfolio import ListVaultMarketShareCardsItemPortfolio
     globals()['ListVaultMarketShareCardsItemAmounts'] = ListVaultMarketShareCardsItemAmounts
     globals()['ListVaultMarketShareCardsItemChange'] = ListVaultMarketShareCardsItemChange
     globals()['ListVaultMarketShareCardsItemLevel'] = ListVaultMarketShareCardsItemLevel
     globals()['ListVaultMarketShareCardsItemLinks'] = ListVaultMarketShareCardsItemLinks
     globals()['ListVaultMarketShareCardsItemMark'] = ListVaultMarketShareCardsItemMark
+    globals()['ListVaultMarketShareCardsItemOwner'] = ListVaultMarketShareCardsItemOwner
     globals()['ListVaultMarketShareCardsItemPortfolio'] = ListVaultMarketShareCardsItemPortfolio
 
 
@@ -72,8 +74,8 @@ class ListVaultMarketShareCardsItem(ModelNormal):
         ('kind',): {
             'POSITION': "position",
             'UNIT': "unit",
-            'INDEX': "index",
             'PORTFOLIO': "portfolio",
+            'INDEX': "index",
         },
     }
 
@@ -101,6 +103,7 @@ class ListVaultMarketShareCardsItem(ModelNormal):
             'verified': (bool,),  # noqa: E501
             'created_at': (str,),  # noqa: E501
             'show_amounts': (bool,),  # noqa: E501
+            'owner': (ListVaultMarketShareCardsItemOwner,),  # noqa: E501
             'title': (str,),  # noqa: E501
             'change': (ListVaultMarketShareCardsItemChange,),  # noqa: E501
             'links': (ListVaultMarketShareCardsItemLinks,),  # noqa: E501
@@ -125,6 +128,7 @@ class ListVaultMarketShareCardsItem(ModelNormal):
         'verified': 'verified',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'show_amounts': 'showAmounts',  # noqa: E501
+        'owner': 'owner',  # noqa: E501
         'title': 'title',  # noqa: E501
         'change': 'change',  # noqa: E501
         'links': 'links',  # noqa: E501
@@ -145,7 +149,7 @@ class ListVaultMarketShareCardsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, kind, verified, created_at, show_amounts, title, change, links, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, kind, verified, created_at, show_amounts, owner, title, change, links, *args, **kwargs):  # noqa: E501
         """ListVaultMarketShareCardsItem - a model defined in OpenAPI
 
         Args:
@@ -154,6 +158,7 @@ class ListVaultMarketShareCardsItem(ModelNormal):
             verified (bool):
             created_at (str):
             show_amounts (bool):
+            owner (ListVaultMarketShareCardsItemOwner):
             title (str):
             change (ListVaultMarketShareCardsItemChange):
             links (ListVaultMarketShareCardsItemLinks):
@@ -229,6 +234,7 @@ class ListVaultMarketShareCardsItem(ModelNormal):
         self.verified = verified
         self.created_at = created_at
         self.show_amounts = show_amounts
+        self.owner = owner
         self.title = title
         self.change = change
         self.links = links
@@ -252,7 +258,7 @@ class ListVaultMarketShareCardsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, kind, verified, created_at, show_amounts, title, change, links, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, kind, verified, created_at, show_amounts, owner, title, change, links, *args, **kwargs):  # noqa: E501
         """ListVaultMarketShareCardsItem - a model defined in OpenAPI
 
         Args:
@@ -261,6 +267,7 @@ class ListVaultMarketShareCardsItem(ModelNormal):
             verified (bool):
             created_at (str):
             show_amounts (bool):
+            owner (ListVaultMarketShareCardsItemOwner):
             title (str):
             change (ListVaultMarketShareCardsItemChange):
             links (ListVaultMarketShareCardsItemLinks):
@@ -334,6 +341,7 @@ class ListVaultMarketShareCardsItem(ModelNormal):
         self.verified = verified
         self.created_at = created_at
         self.show_amounts = show_amounts
+        self.owner = owner
         self.title = title
         self.change = change
         self.links = links

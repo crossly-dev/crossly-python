@@ -77,6 +77,7 @@ class CreateListingResponseSkipped(ModelNormal):
         return {
             'platform': (str,),  # noqa: E501
             'reason': (str,),  # noqa: E501
+            'code': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -87,6 +88,7 @@ class CreateListingResponseSkipped(ModelNormal):
     attribute_map = {
         'platform': 'platform',  # noqa: E501
         'reason': 'reason',  # noqa: E501
+        'code': 'code',  # noqa: E501
     }
 
     read_only_vars = {
@@ -134,6 +136,7 @@ class CreateListingResponseSkipped(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            code (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -221,6 +224,7 @@ class CreateListingResponseSkipped(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            code (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

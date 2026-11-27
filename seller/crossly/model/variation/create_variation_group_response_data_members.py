@@ -80,6 +80,7 @@ class CreateVariationGroupResponseDataMembers(ModelNormal):
             'status': (str,),  # noqa: E501
             'quantity_available': (float,),  # noqa: E501
             'axis_value': (str, none_type,),  # noqa: E501
+            'options': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'title': (str, none_type,),  # noqa: E501
             'price': (str, none_type,),  # noqa: E501
             'images': ([str], none_type,),  # noqa: E501
@@ -97,6 +98,7 @@ class CreateVariationGroupResponseDataMembers(ModelNormal):
         'status': 'status',  # noqa: E501
         'quantity_available': 'quantityAvailable',  # noqa: E501
         'axis_value': 'axisValue',  # noqa: E501
+        'options': 'options',  # noqa: E501
         'title': 'title',  # noqa: E501
         'price': 'price',  # noqa: E501
         'images': 'images',  # noqa: E501
@@ -151,6 +153,7 @@ class CreateVariationGroupResponseDataMembers(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             axis_value (str, none_type): [optional]  # noqa: E501
+            options ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The member's value on every axis of a multi-axis group; null on a single-axis member.. [optional]  # noqa: E501
             title (str, none_type): [optional]  # noqa: E501
             price (str, none_type): [optional]  # noqa: E501
             images ([str], none_type): [optional]  # noqa: E501
@@ -247,6 +250,7 @@ class CreateVariationGroupResponseDataMembers(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             axis_value (str, none_type): [optional]  # noqa: E501
+            options ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The member's value on every axis of a multi-axis group; null on a single-axis member.. [optional]  # noqa: E501
             title (str, none_type): [optional]  # noqa: E501
             price (str, none_type): [optional]  # noqa: E501
             images ([str], none_type): [optional]  # noqa: E501

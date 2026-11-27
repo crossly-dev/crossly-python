@@ -144,7 +144,7 @@ class GetHomeResponseVaultWallUnits(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             label (str, none_type): The variant / grade line (\"Size 10 - PSA 10\"), or null.. [optional]  # noqa: E501
             image_url (str, none_type): [optional]  # noqa: E501
-            book_key (str, none_type): The book key, for a click through to its market (/shop/vault/markets/<bookKey>).. [optional]  # noqa: E501
+            book_key (str, none_type): The book key, for a click through to its market (/trading/<bookKey>).. [optional]  # noqa: E501
             mark_cents (float, none_type): One unit's mark, cents -- only when the viewer may see values (else absent).. [optional]  # noqa: E501
         """
 
@@ -235,7 +235,7 @@ class GetHomeResponseVaultWallUnits(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             label (str, none_type): The variant / grade line (\"Size 10 - PSA 10\"), or null.. [optional]  # noqa: E501
             image_url (str, none_type): [optional]  # noqa: E501
-            book_key (str, none_type): The book key, for a click through to its market (/shop/vault/markets/<bookKey>).. [optional]  # noqa: E501
+            book_key (str, none_type): The book key, for a click through to its market (/trading/<bookKey>).. [optional]  # noqa: E501
             mark_cents (float, none_type): One unit's mark, cents -- only when the viewer may see values (else absent).. [optional]  # noqa: E501
         """
 

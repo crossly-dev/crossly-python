@@ -77,11 +77,11 @@ class ListBuyerSubscriptionsItem(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'status': (str,),  # noqa: E501
-            'next_run_at': (str,),  # noqa: E501
             'interval_days': (float,),  # noqa: E501
             'discount_bps': (float,),  # noqa: E501
-            'title': (str, none_type,),  # noqa: E501
+            'next_run_at': (str,),  # noqa: E501
             'slug': (str, none_type,),  # noqa: E501
+            'title': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -92,11 +92,11 @@ class ListBuyerSubscriptionsItem(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'status': 'status',  # noqa: E501
-        'next_run_at': 'nextRunAt',  # noqa: E501
         'interval_days': 'intervalDays',  # noqa: E501
         'discount_bps': 'discountBps',  # noqa: E501
-        'title': 'title',  # noqa: E501
+        'next_run_at': 'nextRunAt',  # noqa: E501
         'slug': 'slug',  # noqa: E501
+        'title': 'title',  # noqa: E501
     }
 
     read_only_vars = {
@@ -106,15 +106,15 @@ class ListBuyerSubscriptionsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, status, next_run_at, interval_days, discount_bps, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, status, interval_days, discount_bps, next_run_at, *args, **kwargs):  # noqa: E501
         """ListBuyerSubscriptionsItem - a model defined in OpenAPI
 
         Args:
             id (str):
             status (str):
-            next_run_at (str):
             interval_days (float):
             discount_bps (float):
+            next_run_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -147,8 +147,8 @@ class ListBuyerSubscriptionsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            title (str, none_type): [optional]  # noqa: E501
             slug (str, none_type): [optional]  # noqa: E501
+            title (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -178,9 +178,9 @@ class ListBuyerSubscriptionsItem(ModelNormal):
 
         self.id = id
         self.status = status
-        self.next_run_at = next_run_at
         self.interval_days = interval_days
         self.discount_bps = discount_bps
+        self.next_run_at = next_run_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -201,15 +201,15 @@ class ListBuyerSubscriptionsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, status, next_run_at, interval_days, discount_bps, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, status, interval_days, discount_bps, next_run_at, *args, **kwargs):  # noqa: E501
         """ListBuyerSubscriptionsItem - a model defined in OpenAPI
 
         Args:
             id (str):
             status (str):
-            next_run_at (str):
             interval_days (float):
             discount_bps (float):
+            next_run_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -242,8 +242,8 @@ class ListBuyerSubscriptionsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            title (str, none_type): [optional]  # noqa: E501
             slug (str, none_type): [optional]  # noqa: E501
+            title (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -271,9 +271,9 @@ class ListBuyerSubscriptionsItem(ModelNormal):
 
         self.id = id
         self.status = status
-        self.next_run_at = next_run_at
         self.interval_days = interval_days
         self.discount_bps = discount_bps
+        self.next_run_at = next_run_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

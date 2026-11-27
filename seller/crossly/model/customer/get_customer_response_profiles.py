@@ -62,8 +62,8 @@ class GetCustomerResponseProfiles(ModelNormal):
         },
         ('fetch_status',): {
             'ERROR': "error",
-            'UNSUPPORTED': "unsupported",
             'OK': "ok",
+            'UNSUPPORTED': "unsupported",
             'NOT_FOUND': "not_found",
         },
     }

@@ -57,8 +57,8 @@ class GetBuyerListingCertResponseData(ModelNormal):
     allowed_values = {
         ('status',): {
             'VERIFIED': "verified",
-            'NOT_FOUND': "not_found",
             'MISMATCH': "mismatch",
+            'NOT_FOUND': "not_found",
             'UNCHECKED': "unchecked",
         },
     }

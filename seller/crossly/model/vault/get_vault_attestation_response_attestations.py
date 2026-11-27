@@ -56,11 +56,11 @@ class GetVaultAttestationResponseAttestations(ModelNormal):
 
     allowed_values = {
         ('kind',): {
+            'OTHER': "other",
             'PHYSICAL_COUNT': "physical_count",
             'INSURANCE_CERTIFICATE': "insurance_certificate",
             'SOC1_TYPE2': "soc1_type2",
             'SOC2': "soc2",
-            'OTHER': "other",
         },
     }
 

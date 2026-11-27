@@ -56,9 +56,9 @@ class GetVaultMarketVaultSuggestionItemResponseSuggestionMarket(ModelNormal):
 
     allowed_values = {
         ('tier',): {
+            'C': "C",
             'A': "A",
             'B': "B",
-            'C': "C",
             'D': "D",
         },
     }

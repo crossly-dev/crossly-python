@@ -64,7 +64,13 @@ class CreateOrderPullPlatformLabelResponse(ModelNormal):
     validations = {
     }
 
-    additional_properties_type = None
+    @cached_property
+    def additional_properties_type():
+        """
+        This must be a method because a model may have properties that are
+        of type self, this must run after the class is loaded
+        """
+        return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
     _nullable = False
 
@@ -79,10 +85,12 @@ class CreateOrderPullPlatformLabelResponse(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'provenance': (str,),  # noqa: E501
             'url': (str,),  # noqa: E501
             'persisted': (bool,),  # noqa: E501
             'expires_in_seconds': (float,),  # noqa: E501
-            'provenance': (str,),  # noqa: E501
+            'shipping_label_url': (str,),  # noqa: E501
+            'tracking_number': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -91,10 +99,12 @@ class CreateOrderPullPlatformLabelResponse(ModelNormal):
 
 
     attribute_map = {
+        'provenance': 'provenance',  # noqa: E501
         'url': 'url',  # noqa: E501
         'persisted': 'persisted',  # noqa: E501
         'expires_in_seconds': 'expiresInSeconds',  # noqa: E501
-        'provenance': 'provenance',  # noqa: E501
+        'shipping_label_url': 'shippingLabelUrl',  # noqa: E501
+        'tracking_number': 'trackingNumber',  # noqa: E501
     }
 
     read_only_vars = {
@@ -104,13 +114,10 @@ class CreateOrderPullPlatformLabelResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, url, persisted, expires_in_seconds, provenance, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, provenance, *args, **kwargs):  # noqa: E501
         """CreateOrderPullPlatformLabelResponse - a model defined in OpenAPI
 
         Args:
-            url (str):
-            persisted (bool):
-            expires_in_seconds (float):
             provenance (str):
 
         Keyword Args:
@@ -144,6 +151,11 @@ class CreateOrderPullPlatformLabelResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            url (str): [optional]  # noqa: E501
+            persisted (bool): [optional]  # noqa: E501
+            expires_in_seconds (float): [optional]  # noqa: E501
+            shipping_label_url (str): [optional]  # noqa: E501
+            tracking_number (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -171,9 +183,6 @@ class CreateOrderPullPlatformLabelResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.url = url
-        self.persisted = persisted
-        self.expires_in_seconds = expires_in_seconds
         self.provenance = provenance
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -195,13 +204,10 @@ class CreateOrderPullPlatformLabelResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, url, persisted, expires_in_seconds, provenance, *args, **kwargs):  # noqa: E501
+    def __init__(self, provenance, *args, **kwargs):  # noqa: E501
         """CreateOrderPullPlatformLabelResponse - a model defined in OpenAPI
 
         Args:
-            url (str):
-            persisted (bool):
-            expires_in_seconds (float):
             provenance (str):
 
         Keyword Args:
@@ -235,6 +241,11 @@ class CreateOrderPullPlatformLabelResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            url (str): [optional]  # noqa: E501
+            persisted (bool): [optional]  # noqa: E501
+            expires_in_seconds (float): [optional]  # noqa: E501
+            shipping_label_url (str): [optional]  # noqa: E501
+            tracking_number (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -260,9 +271,6 @@ class CreateOrderPullPlatformLabelResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.url = url
-        self.persisted = persisted
-        self.expires_in_seconds = expires_in_seconds
         self.provenance = provenance
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

@@ -76,8 +76,8 @@ class GetBuyerCollectionOfferResponseDataOffer(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'expires_at': (str,),  # noqa: E501
             'cents': (float,),  # noqa: E501
+            'expires_at': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -87,8 +87,8 @@ class GetBuyerCollectionOfferResponseDataOffer(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'expires_at': 'expiresAt',  # noqa: E501
         'cents': 'cents',  # noqa: E501
+        'expires_at': 'expiresAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -98,13 +98,13 @@ class GetBuyerCollectionOfferResponseDataOffer(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, expires_at, cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, cents, expires_at, *args, **kwargs):  # noqa: E501
         """GetBuyerCollectionOfferResponseDataOffer - a model defined in OpenAPI
 
         Args:
             id (str):
-            expires_at (str):
             cents (float):
+            expires_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -165,8 +165,8 @@ class GetBuyerCollectionOfferResponseDataOffer(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.expires_at = expires_at
         self.cents = cents
+        self.expires_at = expires_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -187,13 +187,13 @@ class GetBuyerCollectionOfferResponseDataOffer(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, expires_at, cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, cents, expires_at, *args, **kwargs):  # noqa: E501
         """GetBuyerCollectionOfferResponseDataOffer - a model defined in OpenAPI
 
         Args:
             id (str):
-            expires_at (str):
             cents (float):
+            expires_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -252,8 +252,8 @@ class GetBuyerCollectionOfferResponseDataOffer(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.expires_at = expires_at
         self.cents = cents
+        self.expires_at = expires_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

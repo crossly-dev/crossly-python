@@ -80,13 +80,13 @@ class CreateNftMarketListingResponseListing(ModelNormal):
             'updated_at': (datetime,),  # noqa: E501
             'status': (str,),  # noqa: E501
             'price_cents': (float,),  # noqa: E501
-            'merchant_id': (str,),  # noqa: E501
             'cosmetic_id': (str,),  # noqa: E501
+            'merchant_id': (str,),  # noqa: E501
             'ownership_id': (str,),  # noqa: E501
             'seller_subject_id': (str,),  # noqa: E501
             'sold_at': (datetime, none_type,),  # noqa: E501
-            'seller_user_id': (str, none_type,),  # noqa: E501
             'buyer_user_id': (str, none_type,),  # noqa: E501
+            'seller_user_id': (str, none_type,),  # noqa: E501
             'tx_sig': (str, none_type,),  # noqa: E501
         }
 
@@ -101,13 +101,13 @@ class CreateNftMarketListingResponseListing(ModelNormal):
         'updated_at': 'updatedAt',  # noqa: E501
         'status': 'status',  # noqa: E501
         'price_cents': 'priceCents',  # noqa: E501
-        'merchant_id': 'merchantId',  # noqa: E501
         'cosmetic_id': 'cosmeticId',  # noqa: E501
+        'merchant_id': 'merchantId',  # noqa: E501
         'ownership_id': 'ownershipId',  # noqa: E501
         'seller_subject_id': 'sellerSubjectId',  # noqa: E501
         'sold_at': 'soldAt',  # noqa: E501
-        'seller_user_id': 'sellerUserId',  # noqa: E501
         'buyer_user_id': 'buyerUserId',  # noqa: E501
+        'seller_user_id': 'sellerUserId',  # noqa: E501
         'tx_sig': 'txSig',  # noqa: E501
     }
 
@@ -118,7 +118,7 @@ class CreateNftMarketListingResponseListing(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, updated_at, status, price_cents, merchant_id, cosmetic_id, ownership_id, seller_subject_id, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, updated_at, status, price_cents, cosmetic_id, merchant_id, ownership_id, seller_subject_id, *args, **kwargs):  # noqa: E501
         """CreateNftMarketListingResponseListing - a model defined in OpenAPI
 
         Args:
@@ -127,8 +127,8 @@ class CreateNftMarketListingResponseListing(ModelNormal):
             updated_at (datetime):
             status (str):
             price_cents (float):
-            merchant_id (str):
             cosmetic_id (str):
+            merchant_id (str):
             ownership_id (str):
             seller_subject_id (str):
 
@@ -164,8 +164,8 @@ class CreateNftMarketListingResponseListing(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             sold_at (datetime, none_type): [optional]  # noqa: E501
-            seller_user_id (str, none_type): [optional]  # noqa: E501
             buyer_user_id (str, none_type): [optional]  # noqa: E501
+            seller_user_id (str, none_type): [optional]  # noqa: E501
             tx_sig (str, none_type): [optional]  # noqa: E501
         """
 
@@ -199,8 +199,8 @@ class CreateNftMarketListingResponseListing(ModelNormal):
         self.updated_at = updated_at
         self.status = status
         self.price_cents = price_cents
-        self.merchant_id = merchant_id
         self.cosmetic_id = cosmetic_id
+        self.merchant_id = merchant_id
         self.ownership_id = ownership_id
         self.seller_subject_id = seller_subject_id
         for var_name, var_value in kwargs.items():
@@ -223,7 +223,7 @@ class CreateNftMarketListingResponseListing(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, updated_at, status, price_cents, merchant_id, cosmetic_id, ownership_id, seller_subject_id, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, updated_at, status, price_cents, cosmetic_id, merchant_id, ownership_id, seller_subject_id, *args, **kwargs):  # noqa: E501
         """CreateNftMarketListingResponseListing - a model defined in OpenAPI
 
         Args:
@@ -232,8 +232,8 @@ class CreateNftMarketListingResponseListing(ModelNormal):
             updated_at (datetime):
             status (str):
             price_cents (float):
-            merchant_id (str):
             cosmetic_id (str):
+            merchant_id (str):
             ownership_id (str):
             seller_subject_id (str):
 
@@ -269,8 +269,8 @@ class CreateNftMarketListingResponseListing(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             sold_at (datetime, none_type): [optional]  # noqa: E501
-            seller_user_id (str, none_type): [optional]  # noqa: E501
             buyer_user_id (str, none_type): [optional]  # noqa: E501
+            seller_user_id (str, none_type): [optional]  # noqa: E501
             tx_sig (str, none_type): [optional]  # noqa: E501
         """
 
@@ -302,8 +302,8 @@ class CreateNftMarketListingResponseListing(ModelNormal):
         self.updated_at = updated_at
         self.status = status
         self.price_cents = price_cents
-        self.merchant_id = merchant_id
         self.cosmetic_id = cosmetic_id
+        self.merchant_id = merchant_id
         self.ownership_id = ownership_id
         self.seller_subject_id = seller_subject_id
         for var_name, var_value in kwargs.items():

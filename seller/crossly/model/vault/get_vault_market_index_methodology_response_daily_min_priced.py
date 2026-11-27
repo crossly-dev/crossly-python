@@ -78,9 +78,9 @@ class GetVaultMarketIndexMethodologyResponseDailyMinPriced(ModelNormal):
             'custom': (float,),  # noqa: E501
             'brand': (float,),  # noqa: E501
             'category': (float,),  # noqa: E501
+            'segment': (float,),  # noqa: E501
             'curated': (float,),  # noqa: E501
             'composite': (float,),  # noqa: E501
-            'segment': (float,),  # noqa: E501
         }
 
     @cached_property
@@ -92,9 +92,9 @@ class GetVaultMarketIndexMethodologyResponseDailyMinPriced(ModelNormal):
         'custom': 'custom',  # noqa: E501
         'brand': 'brand',  # noqa: E501
         'category': 'category',  # noqa: E501
+        'segment': 'segment',  # noqa: E501
         'curated': 'curated',  # noqa: E501
         'composite': 'composite',  # noqa: E501
-        'segment': 'segment',  # noqa: E501
     }
 
     read_only_vars = {
@@ -104,16 +104,16 @@ class GetVaultMarketIndexMethodologyResponseDailyMinPriced(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, custom, brand, category, curated, composite, segment, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, custom, brand, category, segment, curated, composite, *args, **kwargs):  # noqa: E501
         """GetVaultMarketIndexMethodologyResponseDailyMinPriced - a model defined in OpenAPI
 
         Args:
             custom (float):
             brand (float):
             category (float):
+            segment (float):
             curated (float):
             composite (float):
-            segment (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -176,9 +176,9 @@ class GetVaultMarketIndexMethodologyResponseDailyMinPriced(ModelNormal):
         self.custom = custom
         self.brand = brand
         self.category = category
+        self.segment = segment
         self.curated = curated
         self.composite = composite
-        self.segment = segment
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -199,16 +199,16 @@ class GetVaultMarketIndexMethodologyResponseDailyMinPriced(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, custom, brand, category, curated, composite, segment, *args, **kwargs):  # noqa: E501
+    def __init__(self, custom, brand, category, segment, curated, composite, *args, **kwargs):  # noqa: E501
         """GetVaultMarketIndexMethodologyResponseDailyMinPriced - a model defined in OpenAPI
 
         Args:
             custom (float):
             brand (float):
             category (float):
+            segment (float):
             curated (float):
             composite (float):
-            segment (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -269,9 +269,9 @@ class GetVaultMarketIndexMethodologyResponseDailyMinPriced(ModelNormal):
         self.custom = custom
         self.brand = brand
         self.category = category
+        self.segment = segment
         self.curated = curated
         self.composite = composite
-        self.segment = segment
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -75,8 +75,8 @@ class GetBuyerFitVocabularyResponseDataKinds(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'label': (str,),  # noqa: E501
             'key': (str,),  # noqa: E501
+            'label': (str,),  # noqa: E501
             'measures': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}],),  # noqa: E501
         }
 
@@ -86,8 +86,8 @@ class GetBuyerFitVocabularyResponseDataKinds(ModelNormal):
 
 
     attribute_map = {
-        'label': 'label',  # noqa: E501
         'key': 'key',  # noqa: E501
+        'label': 'label',  # noqa: E501
         'measures': 'measures',  # noqa: E501
     }
 
@@ -98,12 +98,12 @@ class GetBuyerFitVocabularyResponseDataKinds(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, label, key, measures, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, key, label, measures, *args, **kwargs):  # noqa: E501
         """GetBuyerFitVocabularyResponseDataKinds - a model defined in OpenAPI
 
         Args:
-            label (str):
             key (str):
+            label (str):
             measures ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]):
 
         Keyword Args:
@@ -164,8 +164,8 @@ class GetBuyerFitVocabularyResponseDataKinds(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.label = label
         self.key = key
+        self.label = label
         self.measures = measures
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -187,12 +187,12 @@ class GetBuyerFitVocabularyResponseDataKinds(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, label, key, measures, *args, **kwargs):  # noqa: E501
+    def __init__(self, key, label, measures, *args, **kwargs):  # noqa: E501
         """GetBuyerFitVocabularyResponseDataKinds - a model defined in OpenAPI
 
         Args:
-            label (str):
             key (str):
+            label (str):
             measures ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]):
 
         Keyword Args:
@@ -251,8 +251,8 @@ class GetBuyerFitVocabularyResponseDataKinds(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.label = label
         self.key = key
+        self.label = label
         self.measures = measures
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

@@ -76,15 +76,15 @@ class GetBuyerBreakResponseDataSpots(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'label': (str,),  # noqa: E501
             'position': (float,),  # noqa: E501
+            'label': (str,),  # noqa: E501
             'taken': (bool,),  # noqa: E501
             'mine': (bool,),  # noqa: E501
             'held_by_me': (bool,),  # noqa: E501
             'held_by_other': (bool,),  # noqa: E501
             'held_until': (str, none_type,),  # noqa: E501
-            'hits': (str, none_type,),  # noqa: E501
             'buyer': (str, none_type,),  # noqa: E501
+            'hits': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -94,15 +94,15 @@ class GetBuyerBreakResponseDataSpots(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'label': 'label',  # noqa: E501
         'position': 'position',  # noqa: E501
+        'label': 'label',  # noqa: E501
         'taken': 'taken',  # noqa: E501
         'mine': 'mine',  # noqa: E501
         'held_by_me': 'heldByMe',  # noqa: E501
         'held_by_other': 'heldByOther',  # noqa: E501
         'held_until': 'heldUntil',  # noqa: E501
-        'hits': 'hits',  # noqa: E501
         'buyer': 'buyer',  # noqa: E501
+        'hits': 'hits',  # noqa: E501
     }
 
     read_only_vars = {
@@ -112,13 +112,13 @@ class GetBuyerBreakResponseDataSpots(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, label, position, taken, mine, held_by_me, held_by_other, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, position, label, taken, mine, held_by_me, held_by_other, *args, **kwargs):  # noqa: E501
         """GetBuyerBreakResponseDataSpots - a model defined in OpenAPI
 
         Args:
             id (str):
-            label (str):
             position (float):
+            label (str):
             taken (bool):
             mine (bool):
             held_by_me (bool):
@@ -156,8 +156,8 @@ class GetBuyerBreakResponseDataSpots(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             held_until (str, none_type): [optional]  # noqa: E501
-            hits (str, none_type): [optional]  # noqa: E501
             buyer (str, none_type): [optional]  # noqa: E501
+            hits (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -186,8 +186,8 @@ class GetBuyerBreakResponseDataSpots(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.label = label
         self.position = position
+        self.label = label
         self.taken = taken
         self.mine = mine
         self.held_by_me = held_by_me
@@ -212,13 +212,13 @@ class GetBuyerBreakResponseDataSpots(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, label, position, taken, mine, held_by_me, held_by_other, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, position, label, taken, mine, held_by_me, held_by_other, *args, **kwargs):  # noqa: E501
         """GetBuyerBreakResponseDataSpots - a model defined in OpenAPI
 
         Args:
             id (str):
-            label (str):
             position (float):
+            label (str):
             taken (bool):
             mine (bool):
             held_by_me (bool):
@@ -256,8 +256,8 @@ class GetBuyerBreakResponseDataSpots(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             held_until (str, none_type): [optional]  # noqa: E501
-            hits (str, none_type): [optional]  # noqa: E501
             buyer (str, none_type): [optional]  # noqa: E501
+            hits (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -284,8 +284,8 @@ class GetBuyerBreakResponseDataSpots(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.label = label
         self.position = position
+        self.label = label
         self.taken = taken
         self.mine = mine
         self.held_by_me = held_by_me

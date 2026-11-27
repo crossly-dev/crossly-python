@@ -79,8 +79,8 @@ class ListNetworkPoolLogItem(ModelNormal):
             'platform': (str,),  # noqa: E501
             'action_type': (str,),  # noqa: E501
             'target_user_id': (str,),  # noqa: E501
-            'performed_at': (datetime,),  # noqa: E501
             'engager_user_id': (str,),  # noqa: E501
+            'performed_at': (datetime,),  # noqa: E501
             'rule_id': (str, none_type,),  # noqa: E501
             'target_listing_id': (str, none_type,),  # noqa: E501
             'target_platform_listing_id': (str, none_type,),  # noqa: E501
@@ -96,8 +96,8 @@ class ListNetworkPoolLogItem(ModelNormal):
         'platform': 'platform',  # noqa: E501
         'action_type': 'actionType',  # noqa: E501
         'target_user_id': 'targetUserId',  # noqa: E501
-        'performed_at': 'performedAt',  # noqa: E501
         'engager_user_id': 'engagerUserId',  # noqa: E501
+        'performed_at': 'performedAt',  # noqa: E501
         'rule_id': 'ruleId',  # noqa: E501
         'target_listing_id': 'targetListingId',  # noqa: E501
         'target_platform_listing_id': 'targetPlatformListingId',  # noqa: E501
@@ -110,7 +110,7 @@ class ListNetworkPoolLogItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, platform, action_type, target_user_id, performed_at, engager_user_id, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, platform, action_type, target_user_id, engager_user_id, performed_at, *args, **kwargs):  # noqa: E501
         """ListNetworkPoolLogItem - a model defined in OpenAPI
 
         Args:
@@ -118,8 +118,8 @@ class ListNetworkPoolLogItem(ModelNormal):
             platform (str):
             action_type (str):
             target_user_id (str):
-            performed_at (datetime):
             engager_user_id (str):
+            performed_at (datetime):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -186,8 +186,8 @@ class ListNetworkPoolLogItem(ModelNormal):
         self.platform = platform
         self.action_type = action_type
         self.target_user_id = target_user_id
-        self.performed_at = performed_at
         self.engager_user_id = engager_user_id
+        self.performed_at = performed_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -208,7 +208,7 @@ class ListNetworkPoolLogItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, platform, action_type, target_user_id, performed_at, engager_user_id, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, platform, action_type, target_user_id, engager_user_id, performed_at, *args, **kwargs):  # noqa: E501
         """ListNetworkPoolLogItem - a model defined in OpenAPI
 
         Args:
@@ -216,8 +216,8 @@ class ListNetworkPoolLogItem(ModelNormal):
             platform (str):
             action_type (str):
             target_user_id (str):
-            performed_at (datetime):
             engager_user_id (str):
+            performed_at (datetime):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -282,8 +282,8 @@ class ListNetworkPoolLogItem(ModelNormal):
         self.platform = platform
         self.action_type = action_type
         self.target_user_id = target_user_id
-        self.performed_at = performed_at
         self.engager_user_id = engager_user_id
+        self.performed_at = performed_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

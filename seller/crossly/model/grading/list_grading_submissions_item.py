@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.grading.list_grading_submissions_item_grading import ListGradingSubmissionsItemGrading
-    globals()['ListGradingSubmissionsItemGrading'] = ListGradingSubmissionsItemGrading
+    from crossly.model.bulk.create_bulk_batch_item_response_grading import CreateBulkBatchItemResponseGrading
+    globals()['CreateBulkBatchItemResponseGrading'] = CreateBulkBatchItemResponseGrading
 
 
 class ListGradingSubmissionsItem(ModelNormal):
@@ -60,21 +60,22 @@ class ListGradingSubmissionsItem(ModelNormal):
 
     allowed_values = {
         ('mode',): {
-            'RUN': "run",
             'DIRECT': "direct",
+            'ORDER': "order",
+            'RUN': "run",
         },
         ('status',): {
-            'GRADED': "graded",
-            'RETURNED': "returned",
-            'RELEASED': "released",
             'REFUNDED': "refunded",
-            'RESERVED': "reserved",
             'RECEIVED': "received",
+            'RELEASED': "released",
+            'RESERVED': "reserved",
             'CHARGED': "charged",
             'SHIPPED_TO_HUB': "shipped_to_hub",
             'PRESCREEN_FAILED': "prescreen_failed",
             'AT_GRADER': "at_grader",
+            'GRADED': "graded",
             'RETURNING': "returning",
+            'RETURNED': "returned",
             'VAULTED': "vaulted",
         },
     }
@@ -113,6 +114,7 @@ class ListGradingSubmissionsItem(ModelNormal):
             'cert_verified': (bool,),  # noqa: E501
             'created_at': (str,),  # noqa: E501
             'updated_at': (str,),  # noqa: E501
+            'order_id': (str, none_type,),  # noqa: E501
             'run_id': (str, none_type,),  # noqa: E501
             'run_cutoff_at': (str, none_type,),  # noqa: E501
             'run_status': (str, none_type,),  # noqa: E501
@@ -122,7 +124,7 @@ class ListGradingSubmissionsItem(ModelNormal):
             'inbound_tracking': (str, none_type,),  # noqa: E501
             'return_tracking': (str, none_type,),  # noqa: E501
             'prescreen_note': (str, none_type,),  # noqa: E501
-            'grading': (ListGradingSubmissionsItemGrading,),  # noqa: E501
+            'grading': (CreateBulkBatchItemResponseGrading,),  # noqa: E501
         }
 
     @cached_property
@@ -146,6 +148,7 @@ class ListGradingSubmissionsItem(ModelNormal):
         'cert_verified': 'certVerified',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
+        'order_id': 'orderId',  # noqa: E501
         'run_id': 'runId',  # noqa: E501
         'run_cutoff_at': 'runCutoffAt',  # noqa: E501
         'run_status': 'runStatus',  # noqa: E501
@@ -216,6 +219,7 @@ class ListGradingSubmissionsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            order_id (str, none_type): The grading order (submission through Crossly) this card is in.. [optional]  # noqa: E501
             run_id (str, none_type): [optional]  # noqa: E501
             run_cutoff_at (str, none_type): [optional]  # noqa: E501
             run_status (str, none_type): [optional]  # noqa: E501
@@ -225,7 +229,7 @@ class ListGradingSubmissionsItem(ModelNormal):
             inbound_tracking (str, none_type): [optional]  # noqa: E501
             return_tracking (str, none_type): [optional]  # noqa: E501
             prescreen_note (str, none_type): [optional]  # noqa: E501
-            grading (ListGradingSubmissionsItemGrading): [optional]  # noqa: E501
+            grading (CreateBulkBatchItemResponseGrading): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -339,6 +343,7 @@ class ListGradingSubmissionsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            order_id (str, none_type): The grading order (submission through Crossly) this card is in.. [optional]  # noqa: E501
             run_id (str, none_type): [optional]  # noqa: E501
             run_cutoff_at (str, none_type): [optional]  # noqa: E501
             run_status (str, none_type): [optional]  # noqa: E501
@@ -348,7 +353,7 @@ class ListGradingSubmissionsItem(ModelNormal):
             inbound_tracking (str, none_type): [optional]  # noqa: E501
             return_tracking (str, none_type): [optional]  # noqa: E501
             prescreen_note (str, none_type): [optional]  # noqa: E501
-            grading (ListGradingSubmissionsItemGrading): [optional]  # noqa: E501
+            grading (CreateBulkBatchItemResponseGrading): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

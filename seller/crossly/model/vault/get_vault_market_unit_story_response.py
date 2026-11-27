@@ -36,14 +36,14 @@ def lazy_import():
     from crossly.model.vault.get_vault_market_unit_story_response_holder import GetVaultMarketUnitStoryResponseHolder
     from crossly.model.vault.get_vault_market_unit_story_response_stats import GetVaultMarketUnitStoryResponseStats
     from crossly.model.vault.get_vault_market_unit_story_response_unit import GetVaultMarketUnitStoryResponseUnit
-    from crossly.model.vault.list_vault_market_feed_item_mark import ListVaultMarketFeedItemMark
+    from crossly.model.vault.list_vault_market_opening_item_mark import ListVaultMarketOpeningItemMark
     globals()['GetVaultMarketUnitStoryResponseBadgesItem'] = GetVaultMarketUnitStoryResponseBadgesItem
     globals()['GetVaultMarketUnitStoryResponseChain'] = GetVaultMarketUnitStoryResponseChain
     globals()['GetVaultMarketUnitStoryResponseEvents'] = GetVaultMarketUnitStoryResponseEvents
     globals()['GetVaultMarketUnitStoryResponseHolder'] = GetVaultMarketUnitStoryResponseHolder
     globals()['GetVaultMarketUnitStoryResponseStats'] = GetVaultMarketUnitStoryResponseStats
     globals()['GetVaultMarketUnitStoryResponseUnit'] = GetVaultMarketUnitStoryResponseUnit
-    globals()['ListVaultMarketFeedItemMark'] = ListVaultMarketFeedItemMark
+    globals()['ListVaultMarketOpeningItemMark'] = ListVaultMarketOpeningItemMark
 
 
 class GetVaultMarketUnitStoryResponse(ModelNormal):
@@ -72,8 +72,8 @@ class GetVaultMarketUnitStoryResponse(ModelNormal):
 
     allowed_values = {
         ('viewer',): {
-            'HOLDER': "holder",
             'PUBLIC': "public",
+            'HOLDER': "holder",
         },
     }
 
@@ -98,7 +98,7 @@ class GetVaultMarketUnitStoryResponse(ModelNormal):
         return {
             'unit': (GetVaultMarketUnitStoryResponseUnit,),  # noqa: E501
             'holder': (GetVaultMarketUnitStoryResponseHolder,),  # noqa: E501
-            'mark': (ListVaultMarketFeedItemMark,),  # noqa: E501
+            'mark': (ListVaultMarketOpeningItemMark,),  # noqa: E501
             'viewer': (str,),  # noqa: E501
             'shareable': (bool,),  # noqa: E501
             'share_url': (str,),  # noqa: E501
@@ -141,7 +141,7 @@ class GetVaultMarketUnitStoryResponse(ModelNormal):
         Args:
             unit (GetVaultMarketUnitStoryResponseUnit):
             holder (GetVaultMarketUnitStoryResponseHolder):
-            mark (ListVaultMarketFeedItemMark):
+            mark (ListVaultMarketOpeningItemMark):
             viewer (str): 'holder' sees everything about their unit; 'public' is the share page.
             shareable (bool): Anyone with the link can read it (the holder's public vault profile is on).
             share_url (str):
@@ -244,7 +244,7 @@ class GetVaultMarketUnitStoryResponse(ModelNormal):
         Args:
             unit (GetVaultMarketUnitStoryResponseUnit):
             holder (GetVaultMarketUnitStoryResponseHolder):
-            mark (ListVaultMarketFeedItemMark):
+            mark (ListVaultMarketOpeningItemMark):
             viewer (str): 'holder' sees everything about their unit; 'public' is the share page.
             shareable (bool): Anyone with the link can read it (the holder's public vault profile is on).
             share_url (str):

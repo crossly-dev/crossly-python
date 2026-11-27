@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.vault.get_vault_attestation_response_latest_physical_count import GetVaultAttestationResponseLatestPhysicalCount
-    globals()['GetVaultAttestationResponseLatestPhysicalCount'] = GetVaultAttestationResponseLatestPhysicalCount
+    from crossly.model.vault.get_vault_attestation_response_latest_other import GetVaultAttestationResponseLatestOther
+    globals()['GetVaultAttestationResponseLatestOther'] = GetVaultAttestationResponseLatestOther
 
 
 class GetVaultAttestationResponseLatest(ModelNormal):
@@ -80,11 +80,11 @@ class GetVaultAttestationResponseLatest(ModelNormal):
         """
         lazy_import()
         return {
-            'physical_count': (GetVaultAttestationResponseLatestPhysicalCount,),  # noqa: E501
-            'insurance_certificate': (GetVaultAttestationResponseLatestPhysicalCount,),  # noqa: E501
-            'soc1_type2': (GetVaultAttestationResponseLatestPhysicalCount,),  # noqa: E501
-            'soc2': (GetVaultAttestationResponseLatestPhysicalCount,),  # noqa: E501
-            'other': (GetVaultAttestationResponseLatestPhysicalCount,),  # noqa: E501
+            'other': (GetVaultAttestationResponseLatestOther,),  # noqa: E501
+            'physical_count': (GetVaultAttestationResponseLatestOther,),  # noqa: E501
+            'insurance_certificate': (GetVaultAttestationResponseLatestOther,),  # noqa: E501
+            'soc1_type2': (GetVaultAttestationResponseLatestOther,),  # noqa: E501
+            'soc2': (GetVaultAttestationResponseLatestOther,),  # noqa: E501
         }
 
     @cached_property
@@ -93,11 +93,11 @@ class GetVaultAttestationResponseLatest(ModelNormal):
 
 
     attribute_map = {
+        'other': 'other',  # noqa: E501
         'physical_count': 'physical_count',  # noqa: E501
         'insurance_certificate': 'insurance_certificate',  # noqa: E501
         'soc1_type2': 'soc1_type2',  # noqa: E501
         'soc2': 'soc2',  # noqa: E501
-        'other': 'other',  # noqa: E501
     }
 
     read_only_vars = {
@@ -141,11 +141,11 @@ class GetVaultAttestationResponseLatest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            physical_count (GetVaultAttestationResponseLatestPhysicalCount): [optional]  # noqa: E501
-            insurance_certificate (GetVaultAttestationResponseLatestPhysicalCount): [optional]  # noqa: E501
-            soc1_type2 (GetVaultAttestationResponseLatestPhysicalCount): [optional]  # noqa: E501
-            soc2 (GetVaultAttestationResponseLatestPhysicalCount): [optional]  # noqa: E501
-            other (GetVaultAttestationResponseLatestPhysicalCount): [optional]  # noqa: E501
+            other (GetVaultAttestationResponseLatestOther): [optional]  # noqa: E501
+            physical_count (GetVaultAttestationResponseLatestOther): [optional]  # noqa: E501
+            insurance_certificate (GetVaultAttestationResponseLatestOther): [optional]  # noqa: E501
+            soc1_type2 (GetVaultAttestationResponseLatestOther): [optional]  # noqa: E501
+            soc2 (GetVaultAttestationResponseLatestOther): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -227,11 +227,11 @@ class GetVaultAttestationResponseLatest(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            physical_count (GetVaultAttestationResponseLatestPhysicalCount): [optional]  # noqa: E501
-            insurance_certificate (GetVaultAttestationResponseLatestPhysicalCount): [optional]  # noqa: E501
-            soc1_type2 (GetVaultAttestationResponseLatestPhysicalCount): [optional]  # noqa: E501
-            soc2 (GetVaultAttestationResponseLatestPhysicalCount): [optional]  # noqa: E501
-            other (GetVaultAttestationResponseLatestPhysicalCount): [optional]  # noqa: E501
+            other (GetVaultAttestationResponseLatestOther): [optional]  # noqa: E501
+            physical_count (GetVaultAttestationResponseLatestOther): [optional]  # noqa: E501
+            insurance_certificate (GetVaultAttestationResponseLatestOther): [optional]  # noqa: E501
+            soc1_type2 (GetVaultAttestationResponseLatestOther): [optional]  # noqa: E501
+            soc2 (GetVaultAttestationResponseLatestOther): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

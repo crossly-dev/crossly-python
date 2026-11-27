@@ -79,8 +79,10 @@ class CreateWorkflowChainToggleResponseChain(ModelNormal):
             'user_id': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'trigger_id': (str,),  # noqa: E501
+            'trigger_config': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'is_active': (bool,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
+            'workflow_id': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -93,8 +95,10 @@ class CreateWorkflowChainToggleResponseChain(ModelNormal):
         'user_id': 'userId',  # noqa: E501
         'name': 'name',  # noqa: E501
         'trigger_id': 'triggerId',  # noqa: E501
+        'trigger_config': 'triggerConfig',  # noqa: E501
         'is_active': 'isActive',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
+        'workflow_id': 'workflowId',  # noqa: E501
     }
 
     read_only_vars = {
@@ -104,7 +108,7 @@ class CreateWorkflowChainToggleResponseChain(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, user_id, name, trigger_id, is_active, created_at, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, user_id, name, trigger_id, trigger_config, is_active, created_at, workflow_id, *args, **kwargs):  # noqa: E501
         """CreateWorkflowChainToggleResponseChain - a model defined in OpenAPI
 
         Args:
@@ -112,8 +116,10 @@ class CreateWorkflowChainToggleResponseChain(ModelNormal):
             user_id (str):
             name (str):
             trigger_id (str):
+            trigger_config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
             is_active (bool):
             created_at (datetime):
+            workflow_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -177,8 +183,10 @@ class CreateWorkflowChainToggleResponseChain(ModelNormal):
         self.user_id = user_id
         self.name = name
         self.trigger_id = trigger_id
+        self.trigger_config = trigger_config
         self.is_active = is_active
         self.created_at = created_at
+        self.workflow_id = workflow_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -199,7 +207,7 @@ class CreateWorkflowChainToggleResponseChain(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, user_id, name, trigger_id, is_active, created_at, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, user_id, name, trigger_id, trigger_config, is_active, created_at, workflow_id, *args, **kwargs):  # noqa: E501
         """CreateWorkflowChainToggleResponseChain - a model defined in OpenAPI
 
         Args:
@@ -207,8 +215,10 @@ class CreateWorkflowChainToggleResponseChain(ModelNormal):
             user_id (str):
             name (str):
             trigger_id (str):
+            trigger_config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
             is_active (bool):
             created_at (datetime):
+            workflow_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -270,8 +280,10 @@ class CreateWorkflowChainToggleResponseChain(ModelNormal):
         self.user_id = user_id
         self.name = name
         self.trigger_id = trigger_id
+        self.trigger_config = trigger_config
         self.is_active = is_active
         self.created_at = created_at
+        self.workflow_id = workflow_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

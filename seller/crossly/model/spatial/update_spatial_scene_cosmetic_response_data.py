@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.spatial.update_spatial_scene_cosmetic_response_data_props import UpdateSpatialSceneCosmeticResponseDataProps
-    globals()['UpdateSpatialSceneCosmeticResponseDataProps'] = UpdateSpatialSceneCosmeticResponseDataProps
+    from crossly.model.showroom.get_showroom_response_data_room_props import GetShowroomResponseDataRoomProps
+    globals()['GetShowroomResponseDataRoomProps'] = GetShowroomResponseDataRoomProps
 
 
 class UpdateSpatialSceneCosmeticResponseData(ModelNormal):
@@ -97,8 +97,8 @@ class UpdateSpatialSceneCosmeticResponseData(ModelNormal):
             'None': None,
             'FULL': "full",
             'NONE': "none",
-            'AWNING': "awning",
             'FASCIA': "fascia",
+            'AWNING': "awning",
             'NEON_FASCIA': "neon_fascia",
             'GILDED_FASCIA': "gilded_fascia",
             'SCALLOPED_AWNING': "scalloped_awning",
@@ -172,7 +172,7 @@ class UpdateSpatialSceneCosmeticResponseData(ModelNormal):
             'floor': (str, none_type,),  # noqa: E501
             'cove_colour': (str, none_type,),  # noqa: E501
             'cove_intensity': (float, none_type,),  # noqa: E501
-            'props': ([UpdateSpatialSceneCosmeticResponseDataProps], none_type,),  # noqa: E501
+            'props': ([GetShowroomResponseDataRoomProps], none_type,),  # noqa: E501
             'shopfront': (str, none_type,),  # noqa: E501
             'shopfront_colour': (str, none_type,),  # noqa: E501
             'facade': (str, none_type,),  # noqa: E501
@@ -249,7 +249,7 @@ class UpdateSpatialSceneCosmeticResponseData(ModelNormal):
             floor (str, none_type): [optional]  # noqa: E501
             cove_colour (str, none_type): The cove strip's colour. The single most character-defining knob.. [optional]  # noqa: E501
             cove_intensity (float, none_type): Cove brightness multiplier, clamped. A room you cannot look at is not a room somebody gets to sell from.. [optional]  # noqa: E501
-            props ([UpdateSpatialSceneCosmeticResponseDataProps], none_type): Decorative props. Never containers — see CosmeticProp.. [optional]  # noqa: E501
+            props ([GetShowroomResponseDataRoomProps], none_type): Decorative props. Never containers — see CosmeticProp.. [optional]  # noqa: E501
             shopfront (str, none_type): How this room's door presents itself in the hall. See SHOPFRONT_STYLES.  Undefined means \"never chosen\", which the renderer reads as SHOPFRONT_DEFAULT — NOT as `none`. The two are different answers and the distinction is the whole reason this is optional rather than defaulted here: a validator that filled in `fascia` would make \"I explicitly want a bare opening\" unrepresentable.. [optional]  # noqa: E501
             shopfront_colour (str, none_type): The awning's canvas colour, as hex.  Separate from `coveColour` on purpose. The cove is the light INSIDE a room and the awning is fabric seen from outside it; a seller who wants a warm room and a green awning should get both, and forcing one hex to serve two materials is how you end up with a shop lit like its own signage.  The mesh is authored a neutral mid-tone precisely so this can multiply over it without muddying.. [optional]  # noqa: E501
             facade (str, none_type): Which BUILDING this shop stands in, on the street. See FACADE_STYLES.  Undefined means \"never chosen\", which the renderer reads as FACADE_DEFAULT. Optional rather than defaulted here for the same reason `shopfront` is: the validator's job is to say what was asked for, and the renderer's job is to decide what an unanswered question looks like.  Still no coordinate, still no size: a facade names a mesh the street places, and the street decides where. Size comes from the stake ladder in `blockForRank`, never from here — see the plot rule in StreetPlots.. [optional]  # noqa: E501
@@ -343,7 +343,7 @@ class UpdateSpatialSceneCosmeticResponseData(ModelNormal):
             floor (str, none_type): [optional]  # noqa: E501
             cove_colour (str, none_type): The cove strip's colour. The single most character-defining knob.. [optional]  # noqa: E501
             cove_intensity (float, none_type): Cove brightness multiplier, clamped. A room you cannot look at is not a room somebody gets to sell from.. [optional]  # noqa: E501
-            props ([UpdateSpatialSceneCosmeticResponseDataProps], none_type): Decorative props. Never containers — see CosmeticProp.. [optional]  # noqa: E501
+            props ([GetShowroomResponseDataRoomProps], none_type): Decorative props. Never containers — see CosmeticProp.. [optional]  # noqa: E501
             shopfront (str, none_type): How this room's door presents itself in the hall. See SHOPFRONT_STYLES.  Undefined means \"never chosen\", which the renderer reads as SHOPFRONT_DEFAULT — NOT as `none`. The two are different answers and the distinction is the whole reason this is optional rather than defaulted here: a validator that filled in `fascia` would make \"I explicitly want a bare opening\" unrepresentable.. [optional]  # noqa: E501
             shopfront_colour (str, none_type): The awning's canvas colour, as hex.  Separate from `coveColour` on purpose. The cove is the light INSIDE a room and the awning is fabric seen from outside it; a seller who wants a warm room and a green awning should get both, and forcing one hex to serve two materials is how you end up with a shop lit like its own signage.  The mesh is authored a neutral mid-tone precisely so this can multiply over it without muddying.. [optional]  # noqa: E501
             facade (str, none_type): Which BUILDING this shop stands in, on the street. See FACADE_STYLES.  Undefined means \"never chosen\", which the renderer reads as FACADE_DEFAULT. Optional rather than defaulted here for the same reason `shopfront` is: the validator's job is to say what was asked for, and the renderer's job is to decide what an unanswered question looks like.  Still no coordinate, still no size: a facade names a mesh the street places, and the street decides where. Size comes from the stake ladder in `blockForRank`, never from here — see the plot rule in StreetPlots.. [optional]  # noqa: E501

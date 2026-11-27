@@ -60,11 +60,11 @@ class ListWorldSpacesItem(ModelNormal):
 
     allowed_values = {
         ('venue',): {
+            'STAGE': "stage",
             'GALLERY': "gallery",
             'CARD_CLUB': "card_club",
             'SNEAKER_MEET': "sneaker_meet",
             'VINTAGE_MARKET': "vintage_market",
-            'STAGE': "stage",
             'CLUBHOUSE': "clubhouse",
         },
     }

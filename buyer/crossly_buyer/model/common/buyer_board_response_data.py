@@ -81,12 +81,12 @@ class BuyerBoardResponseData(ModelNormal):
         lazy_import()
         return {
             'id': (str,),  # noqa: E501
-            'updated_at': (str,),  # noqa: E501
-            'is_public': (bool,),  # noqa: E501
             'title': (str,),  # noqa: E501
-            'items': ([BuyerBoardResponseDataItems],),  # noqa: E501
-            'mine': (bool,),  # noqa: E501
+            'is_public': (bool,),  # noqa: E501
             'owner_name': (str,),  # noqa: E501
+            'mine': (bool,),  # noqa: E501
+            'items': ([BuyerBoardResponseDataItems],),  # noqa: E501
+            'updated_at': (str,),  # noqa: E501
             'description': (str, none_type,),  # noqa: E501
             'share_token': (str, none_type,),  # noqa: E501
             'cover_url': (str, none_type,),  # noqa: E501
@@ -99,12 +99,12 @@ class BuyerBoardResponseData(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'updated_at': 'updatedAt',  # noqa: E501
-        'is_public': 'isPublic',  # noqa: E501
         'title': 'title',  # noqa: E501
-        'items': 'items',  # noqa: E501
-        'mine': 'mine',  # noqa: E501
+        'is_public': 'isPublic',  # noqa: E501
         'owner_name': 'ownerName',  # noqa: E501
+        'mine': 'mine',  # noqa: E501
+        'items': 'items',  # noqa: E501
+        'updated_at': 'updatedAt',  # noqa: E501
         'description': 'description',  # noqa: E501
         'share_token': 'shareToken',  # noqa: E501
         'cover_url': 'coverUrl',  # noqa: E501
@@ -117,17 +117,17 @@ class BuyerBoardResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, updated_at, is_public, title, items, mine, owner_name, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, title, is_public, owner_name, mine, items, updated_at, *args, **kwargs):  # noqa: E501
         """BuyerBoardResponseData - a model defined in OpenAPI
 
         Args:
             id (str):
-            updated_at (str):
-            is_public (bool):
             title (str):
-            items ([BuyerBoardResponseDataItems]):
-            mine (bool):
+            is_public (bool):
             owner_name (str):
+            mine (bool):
+            items ([BuyerBoardResponseDataItems]):
+            updated_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -191,12 +191,12 @@ class BuyerBoardResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.updated_at = updated_at
-        self.is_public = is_public
         self.title = title
-        self.items = items
-        self.mine = mine
+        self.is_public = is_public
         self.owner_name = owner_name
+        self.mine = mine
+        self.items = items
+        self.updated_at = updated_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -217,17 +217,17 @@ class BuyerBoardResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, updated_at, is_public, title, items, mine, owner_name, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, title, is_public, owner_name, mine, items, updated_at, *args, **kwargs):  # noqa: E501
         """BuyerBoardResponseData - a model defined in OpenAPI
 
         Args:
             id (str):
-            updated_at (str):
-            is_public (bool):
             title (str):
-            items ([BuyerBoardResponseDataItems]):
-            mine (bool):
+            is_public (bool):
             owner_name (str):
+            mine (bool):
+            items ([BuyerBoardResponseDataItems]):
+            updated_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -289,12 +289,12 @@ class BuyerBoardResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.updated_at = updated_at
-        self.is_public = is_public
         self.title = title
-        self.items = items
-        self.mine = mine
+        self.is_public = is_public
         self.owner_name = owner_name
+        self.mine = mine
+        self.items = items
+        self.updated_at = updated_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

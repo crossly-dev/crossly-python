@@ -62,17 +62,17 @@ class ListVaultMarketDealerPoolsItemLadder(ModelNormal):
         ('bid_limit',): {
             'None': None,
             'FLOOR': "floor",
+            'CEILING': "ceiling",
             'NO_UNITS': "no_units",
             'NO_CASH': "no_cash",
-            'CEILING': "ceiling",
             'CURVE_END': "curve_end",
         },
         ('ask_limit',): {
             'None': None,
             'FLOOR': "floor",
+            'CEILING': "ceiling",
             'NO_UNITS': "no_units",
             'NO_CASH': "no_cash",
-            'CEILING': "ceiling",
             'CURVE_END': "curve_end",
         },
     }

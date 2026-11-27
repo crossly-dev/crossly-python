@@ -80,16 +80,16 @@ class CreateSpatialSceneNodeResponseData(ModelNormal):
         """
         lazy_import()
         return {
+            'transform': (CreateSpatialSceneNodeResponseDataTransform,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (datetime,),  # noqa: E501
-            'transform': (CreateSpatialSceneNodeResponseDataTransform,),  # noqa: E501
             'sort': (float,),  # noqa: E501
             'scene_id': (str,),  # noqa: E501
             'unit_key': (str,),  # noqa: E501
             'label': (str, none_type,),  # noqa: E501
-            'segment': (str, none_type,),  # noqa: E501
             'parent_id': (str, none_type,),  # noqa: E501
+            'segment': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -98,16 +98,16 @@ class CreateSpatialSceneNodeResponseData(ModelNormal):
 
 
     attribute_map = {
+        'transform': 'transform',  # noqa: E501
         'id': 'id',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
-        'transform': 'transform',  # noqa: E501
         'sort': 'sort',  # noqa: E501
         'scene_id': 'sceneId',  # noqa: E501
         'unit_key': 'unitKey',  # noqa: E501
         'label': 'label',  # noqa: E501
-        'segment': 'segment',  # noqa: E501
         'parent_id': 'parentId',  # noqa: E501
+        'segment': 'segment',  # noqa: E501
     }
 
     read_only_vars = {
@@ -117,14 +117,14 @@ class CreateSpatialSceneNodeResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, updated_at, transform, sort, scene_id, unit_key, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, transform, id, created_at, updated_at, sort, scene_id, unit_key, *args, **kwargs):  # noqa: E501
         """CreateSpatialSceneNodeResponseData - a model defined in OpenAPI
 
         Args:
+            transform (CreateSpatialSceneNodeResponseDataTransform):
             id (str):
             created_at (datetime):
             updated_at (datetime):
-            transform (CreateSpatialSceneNodeResponseDataTransform):
             sort (float):
             scene_id (str):
             unit_key (str):
@@ -161,8 +161,8 @@ class CreateSpatialSceneNodeResponseData(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             label (str, none_type): [optional]  # noqa: E501
-            segment (str, none_type): [optional]  # noqa: E501
             parent_id (str, none_type): [optional]  # noqa: E501
+            segment (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -190,10 +190,10 @@ class CreateSpatialSceneNodeResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.transform = transform
         self.id = id
         self.created_at = created_at
         self.updated_at = updated_at
-        self.transform = transform
         self.sort = sort
         self.scene_id = scene_id
         self.unit_key = unit_key
@@ -217,14 +217,14 @@ class CreateSpatialSceneNodeResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, updated_at, transform, sort, scene_id, unit_key, *args, **kwargs):  # noqa: E501
+    def __init__(self, transform, id, created_at, updated_at, sort, scene_id, unit_key, *args, **kwargs):  # noqa: E501
         """CreateSpatialSceneNodeResponseData - a model defined in OpenAPI
 
         Args:
+            transform (CreateSpatialSceneNodeResponseDataTransform):
             id (str):
             created_at (datetime):
             updated_at (datetime):
-            transform (CreateSpatialSceneNodeResponseDataTransform):
             sort (float):
             scene_id (str):
             unit_key (str):
@@ -261,8 +261,8 @@ class CreateSpatialSceneNodeResponseData(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             label (str, none_type): [optional]  # noqa: E501
-            segment (str, none_type): [optional]  # noqa: E501
             parent_id (str, none_type): [optional]  # noqa: E501
+            segment (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -288,10 +288,10 @@ class CreateSpatialSceneNodeResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.transform = transform
         self.id = id
         self.created_at = created_at
         self.updated_at = updated_at
-        self.transform = transform
         self.sort = sort
         self.scene_id = scene_id
         self.unit_key = unit_key

@@ -77,8 +77,8 @@ class CreateWorldGamePackageResponseDataVersion(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'semver': (str,),  # noqa: E501
-            'design_version': (float,),  # noqa: E501
             'state': (str,),  # noqa: E501
+            'design_version': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -89,8 +89,8 @@ class CreateWorldGamePackageResponseDataVersion(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'semver': 'semver',  # noqa: E501
-        'design_version': 'designVersion',  # noqa: E501
         'state': 'state',  # noqa: E501
+        'design_version': 'designVersion',  # noqa: E501
     }
 
     read_only_vars = {
@@ -100,13 +100,12 @@ class CreateWorldGamePackageResponseDataVersion(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, semver, design_version, state, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, semver, state, *args, **kwargs):  # noqa: E501
         """CreateWorldGamePackageResponseDataVersion - a model defined in OpenAPI
 
         Args:
             id (str):
             semver (str):
-            design_version (float):
             state (str):
 
         Keyword Args:
@@ -140,6 +139,7 @@ class CreateWorldGamePackageResponseDataVersion(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            design_version (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -169,7 +169,6 @@ class CreateWorldGamePackageResponseDataVersion(ModelNormal):
 
         self.id = id
         self.semver = semver
-        self.design_version = design_version
         self.state = state
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -191,13 +190,12 @@ class CreateWorldGamePackageResponseDataVersion(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, semver, design_version, state, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, semver, state, *args, **kwargs):  # noqa: E501
         """CreateWorldGamePackageResponseDataVersion - a model defined in OpenAPI
 
         Args:
             id (str):
             semver (str):
-            design_version (float):
             state (str):
 
         Keyword Args:
@@ -231,6 +229,7 @@ class CreateWorldGamePackageResponseDataVersion(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            design_version (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -258,7 +257,6 @@ class CreateWorldGamePackageResponseDataVersion(ModelNormal):
 
         self.id = id
         self.semver = semver
-        self.design_version = design_version
         self.state = state
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

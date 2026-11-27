@@ -83,10 +83,10 @@ class ListBuyerListingSellerReviewsItem(ModelNormal):
         lazy_import()
         return {
             'id': (str,),  # noqa: E501
-            'created_at': (str,),  # noqa: E501
-            'item': (ListBuyerListingSellerReviewsItemItem,),  # noqa: E501
             'rating': (float,),  # noqa: E501
             'media': ([ListBuyerListingSellerReviewsItemMedia],),  # noqa: E501
+            'item': (ListBuyerListingSellerReviewsItemItem,),  # noqa: E501
+            'created_at': (str,),  # noqa: E501
             'body': (str, none_type,),  # noqa: E501
             'seller_reply': (str, none_type,),  # noqa: E501
             'reviewer': (str, none_type,),  # noqa: E501
@@ -99,10 +99,10 @@ class ListBuyerListingSellerReviewsItem(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
-        'item': 'item',  # noqa: E501
         'rating': 'rating',  # noqa: E501
         'media': 'media',  # noqa: E501
+        'item': 'item',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
         'body': 'body',  # noqa: E501
         'seller_reply': 'sellerReply',  # noqa: E501
         'reviewer': 'reviewer',  # noqa: E501
@@ -115,15 +115,15 @@ class ListBuyerListingSellerReviewsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, item, rating, media, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, rating, media, item, created_at, *args, **kwargs):  # noqa: E501
         """ListBuyerListingSellerReviewsItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
-            item (ListBuyerListingSellerReviewsItemItem):
             rating (float):
             media ([ListBuyerListingSellerReviewsItemMedia]):
+            item (ListBuyerListingSellerReviewsItemItem):
+            created_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -187,10 +187,10 @@ class ListBuyerListingSellerReviewsItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
-        self.item = item
         self.rating = rating
         self.media = media
+        self.item = item
+        self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -211,15 +211,15 @@ class ListBuyerListingSellerReviewsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, item, rating, media, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, rating, media, item, created_at, *args, **kwargs):  # noqa: E501
         """ListBuyerListingSellerReviewsItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
-            item (ListBuyerListingSellerReviewsItemItem):
             rating (float):
             media ([ListBuyerListingSellerReviewsItemMedia]):
+            item (ListBuyerListingSellerReviewsItemItem):
+            created_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -281,10 +281,10 @@ class ListBuyerListingSellerReviewsItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
-        self.item = item
         self.rating = rating
         self.media = media
+        self.item = item
+        self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

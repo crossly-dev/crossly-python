@@ -61,9 +61,9 @@ class ListListingAiDetectionsItem(ModelNormal):
             'CLEAR': "clear",
         },
         ('status',): {
-            'FLAGGED': "flagged",
             'REVIEW': "review",
             'CLEAR': "clear",
+            'FLAGGED': "flagged",
             'DISPUTED': "disputed",
             'CLEARED': "cleared",
         },

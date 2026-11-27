@@ -80,10 +80,17 @@ class GetVaultMarketAccountResponseGates(ModelNormal):
         """
         lazy_import()
         return {
+            'shares': (ListVaultMarketGradeToVaultItemGatesGradingRuns,),  # noqa: E501
             'custody': (ListVaultMarketGradeToVaultItemGatesGradingRuns,),  # noqa: E501
             'lending': (ListVaultMarketGradeToVaultItemGatesGradingRuns,),  # noqa: E501
             'leverage': (ListVaultMarketGradeToVaultItemGatesGradingRuns,),  # noqa: E501
             'staking': (ListVaultMarketGradeToVaultItemGatesGradingRuns,),  # noqa: E501
+            'shares_partner': (ListVaultMarketGradeToVaultItemGatesGradingRuns,),  # noqa: E501
+            'shares_self': (ListVaultMarketGradeToVaultItemGatesGradingRuns,),  # noqa: E501
+            'options_routing': (ListVaultMarketGradeToVaultItemGatesGradingRuns,),  # noqa: E501
+            'options_venue': (ListVaultMarketGradeToVaultItemGatesGradingRuns,),  # noqa: E501
+            'prediction_partner': (ListVaultMarketGradeToVaultItemGatesGradingRuns,),  # noqa: E501
+            'prediction_self': (ListVaultMarketGradeToVaultItemGatesGradingRuns,),  # noqa: E501
         }
 
     @cached_property
@@ -92,10 +99,17 @@ class GetVaultMarketAccountResponseGates(ModelNormal):
 
 
     attribute_map = {
+        'shares': 'shares',  # noqa: E501
         'custody': 'custody',  # noqa: E501
         'lending': 'lending',  # noqa: E501
         'leverage': 'leverage',  # noqa: E501
         'staking': 'staking',  # noqa: E501
+        'shares_partner': 'shares_partner',  # noqa: E501
+        'shares_self': 'shares_self',  # noqa: E501
+        'options_routing': 'options_routing',  # noqa: E501
+        'options_venue': 'options_venue',  # noqa: E501
+        'prediction_partner': 'prediction_partner',  # noqa: E501
+        'prediction_self': 'prediction_self',  # noqa: E501
     }
 
     read_only_vars = {
@@ -105,14 +119,21 @@ class GetVaultMarketAccountResponseGates(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, custody, lending, leverage, staking, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, shares, custody, lending, leverage, staking, shares_partner, shares_self, options_routing, options_venue, prediction_partner, prediction_self, *args, **kwargs):  # noqa: E501
         """GetVaultMarketAccountResponseGates - a model defined in OpenAPI
 
         Args:
+            shares (ListVaultMarketGradeToVaultItemGatesGradingRuns):
             custody (ListVaultMarketGradeToVaultItemGatesGradingRuns):
             lending (ListVaultMarketGradeToVaultItemGatesGradingRuns):
             leverage (ListVaultMarketGradeToVaultItemGatesGradingRuns):
             staking (ListVaultMarketGradeToVaultItemGatesGradingRuns):
+            shares_partner (ListVaultMarketGradeToVaultItemGatesGradingRuns):
+            shares_self (ListVaultMarketGradeToVaultItemGatesGradingRuns):
+            options_routing (ListVaultMarketGradeToVaultItemGatesGradingRuns):
+            options_venue (ListVaultMarketGradeToVaultItemGatesGradingRuns):
+            prediction_partner (ListVaultMarketGradeToVaultItemGatesGradingRuns):
+            prediction_self (ListVaultMarketGradeToVaultItemGatesGradingRuns):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -172,10 +193,17 @@ class GetVaultMarketAccountResponseGates(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.shares = shares
         self.custody = custody
         self.lending = lending
         self.leverage = leverage
         self.staking = staking
+        self.shares_partner = shares_partner
+        self.shares_self = shares_self
+        self.options_routing = options_routing
+        self.options_venue = options_venue
+        self.prediction_partner = prediction_partner
+        self.prediction_self = prediction_self
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -196,14 +224,21 @@ class GetVaultMarketAccountResponseGates(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, custody, lending, leverage, staking, *args, **kwargs):  # noqa: E501
+    def __init__(self, shares, custody, lending, leverage, staking, shares_partner, shares_self, options_routing, options_venue, prediction_partner, prediction_self, *args, **kwargs):  # noqa: E501
         """GetVaultMarketAccountResponseGates - a model defined in OpenAPI
 
         Args:
+            shares (ListVaultMarketGradeToVaultItemGatesGradingRuns):
             custody (ListVaultMarketGradeToVaultItemGatesGradingRuns):
             lending (ListVaultMarketGradeToVaultItemGatesGradingRuns):
             leverage (ListVaultMarketGradeToVaultItemGatesGradingRuns):
             staking (ListVaultMarketGradeToVaultItemGatesGradingRuns):
+            shares_partner (ListVaultMarketGradeToVaultItemGatesGradingRuns):
+            shares_self (ListVaultMarketGradeToVaultItemGatesGradingRuns):
+            options_routing (ListVaultMarketGradeToVaultItemGatesGradingRuns):
+            options_venue (ListVaultMarketGradeToVaultItemGatesGradingRuns):
+            prediction_partner (ListVaultMarketGradeToVaultItemGatesGradingRuns):
+            prediction_self (ListVaultMarketGradeToVaultItemGatesGradingRuns):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -261,10 +296,17 @@ class GetVaultMarketAccountResponseGates(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.shares = shares
         self.custody = custody
         self.lending = lending
         self.leverage = leverage
         self.staking = staking
+        self.shares_partner = shares_partner
+        self.shares_self = shares_self
+        self.options_routing = options_routing
+        self.options_venue = options_venue
+        self.prediction_partner = prediction_partner
+        self.prediction_self = prediction_self
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -67,8 +67,8 @@ class GetVaultMarketSetGoalResponse(ModelNormal):
     allowed_values = {
         ('status',): {
             'ACTIVE': "active",
-            'COMPLETE': "complete",
             'ARCHIVED': "archived",
+            'COMPLETE': "complete",
         },
     }
 
@@ -94,23 +94,23 @@ class GetVaultMarketSetGoalResponse(ModelNormal):
             'id': (str,),  # noqa: E501
             'created_at': (str,),  # noqa: E501
             'status': (str,),  # noqa: E501
-            'title': (str,),  # noqa: E501
             'category': (str,),  # noqa: E501
+            'title': (str,),  # noqa: E501
             'options': (GetVaultMarketSetGoalResponseOptions,),  # noqa: E501
-            'progress': (str,),  # noqa: E501
-            'brand_slug': (str,),  # noqa: E501
-            'model_slug': (str,),  # noqa: E501
             'target': (GetVaultMarketSetGoalResponseTarget,),  # noqa: E501
-            'held': (float,),  # noqa: E501
-            'complete': (bool,),  # noqa: E501
-            'href': (str,),  # noqa: E501
             'total': (float,),  # noqa: E501
-            'set_found': (bool,),  # noqa: E501
+            'href': (str,),  # noqa: E501
+            'brand_slug': (str,),  # noqa: E501
+            'progress': (str,),  # noqa: E501
             'missing': (float,),  # noqa: E501
+            'held': (float,),  # noqa: E501
+            'model_slug': (str,),  # noqa: E501
+            'pieces': ([GetVaultMarketSetGoalResponsePieces],),  # noqa: E501
+            'complete': (bool,),  # noqa: E501
+            'set_found': (bool,),  # noqa: E501
             'priced': (float,),  # noqa: E501
             'missing_mark_cents': (float,),  # noqa: E501
             'too_big': (bool,),  # noqa: E501
-            'pieces': ([GetVaultMarketSetGoalResponsePieces],),  # noqa: E501
             'card_set_href': (str,),  # noqa: E501
             'completed_at': (str, none_type,),  # noqa: E501
             'basket': (GetVaultMarketSetGoalResponseBasket,),  # noqa: E501
@@ -125,23 +125,23 @@ class GetVaultMarketSetGoalResponse(ModelNormal):
         'id': 'id',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'status': 'status',  # noqa: E501
-        'title': 'title',  # noqa: E501
         'category': 'category',  # noqa: E501
+        'title': 'title',  # noqa: E501
         'options': 'options',  # noqa: E501
-        'progress': 'progress',  # noqa: E501
-        'brand_slug': 'brandSlug',  # noqa: E501
-        'model_slug': 'modelSlug',  # noqa: E501
         'target': 'target',  # noqa: E501
-        'held': 'held',  # noqa: E501
-        'complete': 'complete',  # noqa: E501
-        'href': 'href',  # noqa: E501
         'total': 'total',  # noqa: E501
-        'set_found': 'setFound',  # noqa: E501
+        'href': 'href',  # noqa: E501
+        'brand_slug': 'brandSlug',  # noqa: E501
+        'progress': 'progress',  # noqa: E501
         'missing': 'missing',  # noqa: E501
+        'held': 'held',  # noqa: E501
+        'model_slug': 'modelSlug',  # noqa: E501
+        'pieces': 'pieces',  # noqa: E501
+        'complete': 'complete',  # noqa: E501
+        'set_found': 'setFound',  # noqa: E501
         'priced': 'priced',  # noqa: E501
         'missing_mark_cents': 'missingMarkCents',  # noqa: E501
         'too_big': 'tooBig',  # noqa: E501
-        'pieces': 'pieces',  # noqa: E501
         'card_set_href': 'cardSetHref',  # noqa: E501
         'completed_at': 'completedAt',  # noqa: E501
         'basket': 'basket',  # noqa: E501
@@ -154,30 +154,30 @@ class GetVaultMarketSetGoalResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, status, title, category, options, progress, brand_slug, model_slug, target, held, complete, href, total, set_found, missing, priced, missing_mark_cents, too_big, pieces, card_set_href, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, status, category, title, options, target, total, href, brand_slug, progress, missing, held, model_slug, pieces, complete, set_found, priced, missing_mark_cents, too_big, card_set_href, *args, **kwargs):  # noqa: E501
         """GetVaultMarketSetGoalResponse - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (str):
             status (str):
-            title (str):
             category (str):
+            title (str):
             options (GetVaultMarketSetGoalResponseOptions):
-            progress (str):
-            brand_slug (str):
-            model_slug (str):
             target (GetVaultMarketSetGoalResponseTarget):
-            held (float):
-            complete (bool):
-            href (str):
             total (float):
-            set_found (bool):
+            href (str):
+            brand_slug (str):
+            progress (str):
             missing (float):
+            held (float):
+            model_slug (str):
+            pieces ([GetVaultMarketSetGoalResponsePieces]):
+            complete (bool):
+            set_found (bool):
             priced (float):
             missing_mark_cents (float):
             too_big (bool):
-            pieces ([GetVaultMarketSetGoalResponsePieces]):
             card_set_href (str):
 
         Keyword Args:
@@ -243,23 +243,23 @@ class GetVaultMarketSetGoalResponse(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.status = status
-        self.title = title
         self.category = category
+        self.title = title
         self.options = options
-        self.progress = progress
-        self.brand_slug = brand_slug
-        self.model_slug = model_slug
         self.target = target
-        self.held = held
-        self.complete = complete
-        self.href = href
         self.total = total
-        self.set_found = set_found
+        self.href = href
+        self.brand_slug = brand_slug
+        self.progress = progress
         self.missing = missing
+        self.held = held
+        self.model_slug = model_slug
+        self.pieces = pieces
+        self.complete = complete
+        self.set_found = set_found
         self.priced = priced
         self.missing_mark_cents = missing_mark_cents
         self.too_big = too_big
-        self.pieces = pieces
         self.card_set_href = card_set_href
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -281,30 +281,30 @@ class GetVaultMarketSetGoalResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, status, title, category, options, progress, brand_slug, model_slug, target, held, complete, href, total, set_found, missing, priced, missing_mark_cents, too_big, pieces, card_set_href, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, status, category, title, options, target, total, href, brand_slug, progress, missing, held, model_slug, pieces, complete, set_found, priced, missing_mark_cents, too_big, card_set_href, *args, **kwargs):  # noqa: E501
         """GetVaultMarketSetGoalResponse - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (str):
             status (str):
-            title (str):
             category (str):
+            title (str):
             options (GetVaultMarketSetGoalResponseOptions):
-            progress (str):
-            brand_slug (str):
-            model_slug (str):
             target (GetVaultMarketSetGoalResponseTarget):
-            held (float):
-            complete (bool):
-            href (str):
             total (float):
-            set_found (bool):
+            href (str):
+            brand_slug (str):
+            progress (str):
             missing (float):
+            held (float):
+            model_slug (str):
+            pieces ([GetVaultMarketSetGoalResponsePieces]):
+            complete (bool):
+            set_found (bool):
             priced (float):
             missing_mark_cents (float):
             too_big (bool):
-            pieces ([GetVaultMarketSetGoalResponsePieces]):
             card_set_href (str):
 
         Keyword Args:
@@ -368,23 +368,23 @@ class GetVaultMarketSetGoalResponse(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.status = status
-        self.title = title
         self.category = category
+        self.title = title
         self.options = options
-        self.progress = progress
-        self.brand_slug = brand_slug
-        self.model_slug = model_slug
         self.target = target
-        self.held = held
-        self.complete = complete
-        self.href = href
         self.total = total
-        self.set_found = set_found
+        self.href = href
+        self.brand_slug = brand_slug
+        self.progress = progress
         self.missing = missing
+        self.held = held
+        self.model_slug = model_slug
+        self.pieces = pieces
+        self.complete = complete
+        self.set_found = set_found
         self.priced = priced
         self.missing_mark_cents = missing_mark_cents
         self.too_big = too_big
-        self.pieces = pieces
         self.card_set_href = card_set_href
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

@@ -56,9 +56,9 @@ class CreateWorldDecorRetractResponseDataInventorySpaces(ModelNormal):
 
     allowed_values = {
         ('kind',): {
-            'SHOP': "shop",
             'HOME': "home",
             'STREET': "street",
+            'SHOP': "shop",
             'STALL': "stall",
         },
     }

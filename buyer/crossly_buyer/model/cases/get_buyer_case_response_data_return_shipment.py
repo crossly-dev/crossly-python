@@ -76,13 +76,13 @@ class GetBuyerCaseResponseDataReturnShipment(ModelNormal):
         """
         return {
             'tracking_code': (str,),  # noqa: E501
-            'updated_at': (str, none_type,),  # noqa: E501
-            'status': (str, none_type,),  # noqa: E501
             'carrier': (str, none_type,),  # noqa: E501
-            'delivered_at': (str, none_type,),  # noqa: E501
-            'label_url': (str, none_type,),  # noqa: E501
             'tracking_url': (str, none_type,),  # noqa: E501
+            'label_url': (str, none_type,),  # noqa: E501
+            'status': (str, none_type,),  # noqa: E501
             'status_detail': (str, none_type,),  # noqa: E501
+            'updated_at': (str, none_type,),  # noqa: E501
+            'delivered_at': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -92,13 +92,13 @@ class GetBuyerCaseResponseDataReturnShipment(ModelNormal):
 
     attribute_map = {
         'tracking_code': 'trackingCode',  # noqa: E501
-        'updated_at': 'updatedAt',  # noqa: E501
-        'status': 'status',  # noqa: E501
         'carrier': 'carrier',  # noqa: E501
-        'delivered_at': 'deliveredAt',  # noqa: E501
-        'label_url': 'labelUrl',  # noqa: E501
         'tracking_url': 'trackingUrl',  # noqa: E501
+        'label_url': 'labelUrl',  # noqa: E501
+        'status': 'status',  # noqa: E501
         'status_detail': 'statusDetail',  # noqa: E501
+        'updated_at': 'updatedAt',  # noqa: E501
+        'delivered_at': 'deliveredAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -145,13 +145,13 @@ class GetBuyerCaseResponseDataReturnShipment(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            updated_at (str, none_type): [optional]  # noqa: E501
-            status (str, none_type): [optional]  # noqa: E501
             carrier (str, none_type): [optional]  # noqa: E501
-            delivered_at (str, none_type): [optional]  # noqa: E501
-            label_url (str, none_type): [optional]  # noqa: E501
             tracking_url (str, none_type): [optional]  # noqa: E501
+            label_url (str, none_type): [optional]  # noqa: E501
+            status (str, none_type): [optional]  # noqa: E501
             status_detail (str, none_type): [optional]  # noqa: E501
+            updated_at (str, none_type): [optional]  # noqa: E501
+            delivered_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -237,13 +237,13 @@ class GetBuyerCaseResponseDataReturnShipment(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            updated_at (str, none_type): [optional]  # noqa: E501
-            status (str, none_type): [optional]  # noqa: E501
             carrier (str, none_type): [optional]  # noqa: E501
-            delivered_at (str, none_type): [optional]  # noqa: E501
-            label_url (str, none_type): [optional]  # noqa: E501
             tracking_url (str, none_type): [optional]  # noqa: E501
+            label_url (str, none_type): [optional]  # noqa: E501
+            status (str, none_type): [optional]  # noqa: E501
             status_detail (str, none_type): [optional]  # noqa: E501
+            updated_at (str, none_type): [optional]  # noqa: E501
+            delivered_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

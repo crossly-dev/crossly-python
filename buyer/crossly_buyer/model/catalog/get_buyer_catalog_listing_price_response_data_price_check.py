@@ -56,9 +56,9 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck(ModelNormal):
 
     allowed_values = {
         ('verdict',): {
-            'HIGH': "high",
-            'FAIR': "fair",
             'GOOD': "good",
+            'FAIR': "fair",
+            'HIGH': "high",
             'GREAT': "great",
         },
     }
@@ -82,11 +82,11 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck(ModelNormal):
         """
         return {
             'verdict': (str,),  # noqa: E501
-            'sales': (float,),  # noqa: E501
             'median_cents': (float,),  # noqa: E501
-            'days': (float,),  # noqa: E501
             'low_cents': (float,),  # noqa: E501
             'high_cents': (float,),  # noqa: E501
+            'sales': (float,),  # noqa: E501
+            'days': (float,),  # noqa: E501
             'last_sold_at': (str,),  # noqa: E501
         }
 
@@ -97,11 +97,11 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck(ModelNormal):
 
     attribute_map = {
         'verdict': 'verdict',  # noqa: E501
-        'sales': 'sales',  # noqa: E501
         'median_cents': 'medianCents',  # noqa: E501
-        'days': 'days',  # noqa: E501
         'low_cents': 'lowCents',  # noqa: E501
         'high_cents': 'highCents',  # noqa: E501
+        'sales': 'sales',  # noqa: E501
+        'days': 'days',  # noqa: E501
         'last_sold_at': 'lastSoldAt',  # noqa: E501
     }
 
@@ -112,16 +112,16 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, verdict, sales, median_cents, days, low_cents, high_cents, last_sold_at, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, verdict, median_cents, low_cents, high_cents, sales, days, last_sold_at, *args, **kwargs):  # noqa: E501
         """GetBuyerCatalogListingPriceResponseDataPriceCheck - a model defined in OpenAPI
 
         Args:
             verdict (str):
-            sales (float):
             median_cents (float):
-            days (float):
             low_cents (float):
             high_cents (float):
+            sales (float):
+            days (float):
             last_sold_at (str):
 
         Keyword Args:
@@ -183,11 +183,11 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.verdict = verdict
-        self.sales = sales
         self.median_cents = median_cents
-        self.days = days
         self.low_cents = low_cents
         self.high_cents = high_cents
+        self.sales = sales
+        self.days = days
         self.last_sold_at = last_sold_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -209,16 +209,16 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, verdict, sales, median_cents, days, low_cents, high_cents, last_sold_at, *args, **kwargs):  # noqa: E501
+    def __init__(self, verdict, median_cents, low_cents, high_cents, sales, days, last_sold_at, *args, **kwargs):  # noqa: E501
         """GetBuyerCatalogListingPriceResponseDataPriceCheck - a model defined in OpenAPI
 
         Args:
             verdict (str):
-            sales (float):
             median_cents (float):
-            days (float):
             low_cents (float):
             high_cents (float):
+            sales (float):
+            days (float):
             last_sold_at (str):
 
         Keyword Args:
@@ -278,11 +278,11 @@ class GetBuyerCatalogListingPriceResponseDataPriceCheck(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.verdict = verdict
-        self.sales = sales
         self.median_cents = median_cents
-        self.days = days
         self.low_cents = low_cents
         self.high_cents = high_cents
+        self.sales = sales
+        self.days = days
         self.last_sold_at = last_sold_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

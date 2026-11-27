@@ -57,9 +57,9 @@ class CreateInboxReplyResponse(ModelNormal):
     allowed_values = {
         ('delivery_status',): {
             'None': None,
-            'FAILED': "failed",
-            'SENT': "sent",
             'SENDING': "sending",
+            'SENT': "sent",
+            'FAILED': "failed",
         },
     }
 

@@ -150,7 +150,7 @@ class CreateEmbedKeyRequest(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             allowed_origins ([str]): Origins permitted to use this key, e.g. [\"https://shop.example.com\"]. LEAVE EMPTY to allow any origin — necessary when embedding on a platform whose domain you do not control, and the reason this is not locked by default.. [optional]  # noqa: E501
-            environment (str): [optional] if omitted the server will use the default value of "live"  # noqa: E501
+            environment (str): Omit for this server's own: live on crossly.net, test on sandbox.crossly.net. The other one is refused.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -237,7 +237,7 @@ class CreateEmbedKeyRequest(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             allowed_origins ([str]): Origins permitted to use this key, e.g. [\"https://shop.example.com\"]. LEAVE EMPTY to allow any origin — necessary when embedding on a platform whose domain you do not control, and the reason this is not locked by default.. [optional]  # noqa: E501
-            environment (str): [optional] if omitted the server will use the default value of "live"  # noqa: E501
+            environment (str): Omit for this server's own: live on crossly.net, test on sandbox.crossly.net. The other one is refused.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

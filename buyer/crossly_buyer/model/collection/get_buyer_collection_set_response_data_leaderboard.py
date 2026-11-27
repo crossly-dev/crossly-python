@@ -75,8 +75,8 @@ class GetBuyerCollectionSetResponseDataLeaderboard(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'name': (str,),  # noqa: E501
             'rank': (float,),  # noqa: E501
+            'name': (str,),  # noqa: E501
             'owned': (float,),  # noqa: E501
         }
 
@@ -86,8 +86,8 @@ class GetBuyerCollectionSetResponseDataLeaderboard(ModelNormal):
 
 
     attribute_map = {
-        'name': 'name',  # noqa: E501
         'rank': 'rank',  # noqa: E501
+        'name': 'name',  # noqa: E501
         'owned': 'owned',  # noqa: E501
     }
 
@@ -98,12 +98,12 @@ class GetBuyerCollectionSetResponseDataLeaderboard(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, name, rank, owned, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, rank, name, owned, *args, **kwargs):  # noqa: E501
         """GetBuyerCollectionSetResponseDataLeaderboard - a model defined in OpenAPI
 
         Args:
-            name (str):
             rank (float):
+            name (str):
             owned (float):
 
         Keyword Args:
@@ -164,8 +164,8 @@ class GetBuyerCollectionSetResponseDataLeaderboard(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.name = name
         self.rank = rank
+        self.name = name
         self.owned = owned
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -187,12 +187,12 @@ class GetBuyerCollectionSetResponseDataLeaderboard(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, name, rank, owned, *args, **kwargs):  # noqa: E501
+    def __init__(self, rank, name, owned, *args, **kwargs):  # noqa: E501
         """GetBuyerCollectionSetResponseDataLeaderboard - a model defined in OpenAPI
 
         Args:
-            name (str):
             rank (float):
+            name (str):
             owned (float):
 
         Keyword Args:
@@ -251,8 +251,8 @@ class GetBuyerCollectionSetResponseDataLeaderboard(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.name = name
         self.rank = rank
+        self.name = name
         self.owned = owned
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

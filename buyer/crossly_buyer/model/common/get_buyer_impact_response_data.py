@@ -75,10 +75,10 @@ class GetBuyerImpactResponseData(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'co2_kg': (float,),  # noqa: E501
-            'water_l': (float,),  # noqa: E501
             'items_bought': (float,),  # noqa: E501
             'items_with_figures': (float,),  # noqa: E501
+            'co2_kg': (float,),  # noqa: E501
+            'water_l': (float,),  # noqa: E501
         }
 
     @cached_property
@@ -87,10 +87,10 @@ class GetBuyerImpactResponseData(ModelNormal):
 
 
     attribute_map = {
-        'co2_kg': 'co2Kg',  # noqa: E501
-        'water_l': 'waterL',  # noqa: E501
         'items_bought': 'itemsBought',  # noqa: E501
         'items_with_figures': 'itemsWithFigures',  # noqa: E501
+        'co2_kg': 'co2Kg',  # noqa: E501
+        'water_l': 'waterL',  # noqa: E501
     }
 
     read_only_vars = {
@@ -100,14 +100,14 @@ class GetBuyerImpactResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, co2_kg, water_l, items_bought, items_with_figures, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, items_bought, items_with_figures, co2_kg, water_l, *args, **kwargs):  # noqa: E501
         """GetBuyerImpactResponseData - a model defined in OpenAPI
 
         Args:
-            co2_kg (float):
-            water_l (float):
             items_bought (float):
             items_with_figures (float):
+            co2_kg (float):
+            water_l (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -167,10 +167,10 @@ class GetBuyerImpactResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.co2_kg = co2_kg
-        self.water_l = water_l
         self.items_bought = items_bought
         self.items_with_figures = items_with_figures
+        self.co2_kg = co2_kg
+        self.water_l = water_l
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -191,14 +191,14 @@ class GetBuyerImpactResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, co2_kg, water_l, items_bought, items_with_figures, *args, **kwargs):  # noqa: E501
+    def __init__(self, items_bought, items_with_figures, co2_kg, water_l, *args, **kwargs):  # noqa: E501
         """GetBuyerImpactResponseData - a model defined in OpenAPI
 
         Args:
-            co2_kg (float):
-            water_l (float):
             items_bought (float):
             items_with_figures (float):
+            co2_kg (float):
+            water_l (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -256,10 +256,10 @@ class GetBuyerImpactResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.co2_kg = co2_kg
-        self.water_l = water_l
         self.items_bought = items_bought
         self.items_with_figures = items_with_figures
+        self.co2_kg = co2_kg
+        self.water_l = water_l
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

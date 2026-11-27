@@ -57,9 +57,9 @@ class GetVaultMarketMarketResponseHistory(ModelNormal):
     allowed_values = {
         ('quality',): {
             'NONE': "none",
+            'C': "C",
             'A': "A",
             'B': "B",
-            'C': "C",
         },
     }
 

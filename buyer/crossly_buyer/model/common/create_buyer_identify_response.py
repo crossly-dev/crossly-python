@@ -74,8 +74,8 @@ class CreateBuyerIdentifyResponse(ModelNormal):
 
     allowed_values = {
         ('tier',): {
-            'IDENTIFIER': "identifier",
             'NONE': "none",
+            'IDENTIFIER': "identifier",
             'VISUAL': "visual",
             'VISION': "vision",
         },

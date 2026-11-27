@@ -30,19 +30,19 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from crossly.model.world.get_world_experience_place_collab_op_response_data_frames_by import GetWorldExperiencePlaceCollabOpResponseDataFramesBy
     from crossly.model.world.list_world_place_trade_tables_item_cash import ListWorldPlaceTradeTablesItemCash
     from crossly.model.world.list_world_place_trade_tables_item_line import ListWorldPlaceTradeTablesItemLine
     from crossly.model.world.list_world_place_trade_tables_item_mat import ListWorldPlaceTradeTablesItemMat
     from crossly.model.world.list_world_place_trade_tables_item_shook import ListWorldPlaceTradeTablesItemShook
     from crossly.model.world.list_world_place_trade_tables_item_totals import ListWorldPlaceTradeTablesItemTotals
-    from crossly.model.world.list_world_place_trade_tables_item_visitor import ListWorldPlaceTradeTablesItemVisitor
     from crossly.model.common.user_id_name import UserIdName
+    globals()['GetWorldExperiencePlaceCollabOpResponseDataFramesBy'] = GetWorldExperiencePlaceCollabOpResponseDataFramesBy
     globals()['ListWorldPlaceTradeTablesItemCash'] = ListWorldPlaceTradeTablesItemCash
     globals()['ListWorldPlaceTradeTablesItemLine'] = ListWorldPlaceTradeTablesItemLine
     globals()['ListWorldPlaceTradeTablesItemMat'] = ListWorldPlaceTradeTablesItemMat
     globals()['ListWorldPlaceTradeTablesItemShook'] = ListWorldPlaceTradeTablesItemShook
     globals()['ListWorldPlaceTradeTablesItemTotals'] = ListWorldPlaceTradeTablesItemTotals
-    globals()['ListWorldPlaceTradeTablesItemVisitor'] = ListWorldPlaceTradeTablesItemVisitor
     globals()['UserIdName'] = UserIdName
 
 
@@ -73,8 +73,8 @@ class ListWorldPlaceTradeTablesItem(ModelNormal):
     allowed_values = {
         ('status',): {
             'OPEN': "open",
-            'DONE': "done",
             'CLOSED': "closed",
+            'DONE': "done",
         },
         ('you',): {
             'None': None,
@@ -113,7 +113,7 @@ class ListWorldPlaceTradeTablesItem(ModelNormal):
             'shook': (ListWorldPlaceTradeTablesItemShook,),  # noqa: E501
             'status': (str,),  # noqa: E501
             'version': (float,),  # noqa: E501
-            'visitor': (ListWorldPlaceTradeTablesItemVisitor,),  # noqa: E501
+            'visitor': (GetWorldExperiencePlaceCollabOpResponseDataFramesBy,),  # noqa: E501
             'you': (str, none_type,),  # noqa: E501
             'trade_id': (str, none_type,),  # noqa: E501
         }
@@ -194,7 +194,7 @@ class ListWorldPlaceTradeTablesItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            visitor (ListWorldPlaceTradeTablesItemVisitor): [optional]  # noqa: E501
+            visitor (GetWorldExperiencePlaceCollabOpResponseDataFramesBy): [optional]  # noqa: E501
             you (str, none_type): [optional]  # noqa: E501
             trade_id (str, none_type): [optional]  # noqa: E501
         """
@@ -302,7 +302,7 @@ class ListWorldPlaceTradeTablesItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            visitor (ListWorldPlaceTradeTablesItemVisitor): [optional]  # noqa: E501
+            visitor (GetWorldExperiencePlaceCollabOpResponseDataFramesBy): [optional]  # noqa: E501
             you (str, none_type): [optional]  # noqa: E501
             trade_id (str, none_type): [optional]  # noqa: E501
         """

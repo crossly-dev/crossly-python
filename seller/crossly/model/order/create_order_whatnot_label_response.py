@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.order.create_order_whatnot_label_response_shipment import CreateOrderWhatnotLabelResponseShipment
-    globals()['CreateOrderWhatnotLabelResponseShipment'] = CreateOrderWhatnotLabelResponseShipment
+    from crossly.model.order.get_order_whatnot_shipment_response_shipment import GetOrderWhatnotShipmentResponseShipment
+    globals()['GetOrderWhatnotShipmentResponseShipment'] = GetOrderWhatnotShipmentResponseShipment
 
 
 class CreateOrderWhatnotLabelResponse(ModelNormal):
@@ -64,7 +64,14 @@ class CreateOrderWhatnotLabelResponse(ModelNormal):
     validations = {
     }
 
-    additional_properties_type = None
+    @cached_property
+    def additional_properties_type():
+        """
+        This must be a method because a model may have properties that are
+        of type self, this must run after the class is loaded
+        """
+        lazy_import()
+        return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
     _nullable = False
 
@@ -80,8 +87,19 @@ class CreateOrderWhatnotLabelResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'shipment': (CreateOrderWhatnotLabelResponseShipment,),  # noqa: E501
+            'shipment': (GetOrderWhatnotShipmentResponseShipment,),  # noqa: E501
             'recorded': (bool,),  # noqa: E501
+            'ok': (bool,),  # noqa: E501
+            'download_url': (str, none_type,),  # noqa: E501
+            'email_only': (bool,),  # noqa: E501
+            'label_url': (str,),  # noqa: E501
+            'tracking_number': (str, none_type,),  # noqa: E501
+            'carrier': (str, none_type,),  # noqa: E501
+            'service': (str, none_type,),  # noqa: E501
+            'document_kind': (str, none_type,),  # noqa: E501
+            'web_url': (str, none_type,),  # noqa: E501
+            'pending': (bool,),  # noqa: E501
+            'message': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -92,6 +110,17 @@ class CreateOrderWhatnotLabelResponse(ModelNormal):
     attribute_map = {
         'shipment': 'shipment',  # noqa: E501
         'recorded': 'recorded',  # noqa: E501
+        'ok': 'ok',  # noqa: E501
+        'download_url': 'downloadUrl',  # noqa: E501
+        'email_only': 'emailOnly',  # noqa: E501
+        'label_url': 'labelUrl',  # noqa: E501
+        'tracking_number': 'trackingNumber',  # noqa: E501
+        'carrier': 'carrier',  # noqa: E501
+        'service': 'service',  # noqa: E501
+        'document_kind': 'documentKind',  # noqa: E501
+        'web_url': 'webUrl',  # noqa: E501
+        'pending': 'pending',  # noqa: E501
+        'message': 'message',  # noqa: E501
     }
 
     read_only_vars = {
@@ -101,12 +130,8 @@ class CreateOrderWhatnotLabelResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, shipment, recorded, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
         """CreateOrderWhatnotLabelResponse - a model defined in OpenAPI
-
-        Args:
-            shipment (CreateOrderWhatnotLabelResponseShipment):
-            recorded (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -139,6 +164,19 @@ class CreateOrderWhatnotLabelResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            shipment (GetOrderWhatnotShipmentResponseShipment): [optional]  # noqa: E501
+            recorded (bool): [optional]  # noqa: E501
+            ok (bool): [optional]  # noqa: E501
+            download_url (str, none_type): Absent for an additional label, which Poshmark delivers only by email.. [optional]  # noqa: E501
+            email_only (bool): True when the label exists only in the seller's inbox.. [optional]  # noqa: E501
+            label_url (str): [optional]  # noqa: E501
+            tracking_number (str, none_type): [optional]  # noqa: E501
+            carrier (str, none_type): [optional]  # noqa: E501
+            service (str, none_type): [optional]  # noqa: E501
+            document_kind (str, none_type): [optional]  # noqa: E501
+            web_url (str, none_type): [optional]  # noqa: E501
+            pending (bool): [optional]  # noqa: E501
+            message (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -166,8 +204,6 @@ class CreateOrderWhatnotLabelResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.shipment = shipment
-        self.recorded = recorded
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -188,12 +224,8 @@ class CreateOrderWhatnotLabelResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, shipment, recorded, *args, **kwargs):  # noqa: E501
+    def __init__(self, *args, **kwargs):  # noqa: E501
         """CreateOrderWhatnotLabelResponse - a model defined in OpenAPI
-
-        Args:
-            shipment (CreateOrderWhatnotLabelResponseShipment):
-            recorded (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -226,6 +258,19 @@ class CreateOrderWhatnotLabelResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            shipment (GetOrderWhatnotShipmentResponseShipment): [optional]  # noqa: E501
+            recorded (bool): [optional]  # noqa: E501
+            ok (bool): [optional]  # noqa: E501
+            download_url (str, none_type): Absent for an additional label, which Poshmark delivers only by email.. [optional]  # noqa: E501
+            email_only (bool): True when the label exists only in the seller's inbox.. [optional]  # noqa: E501
+            label_url (str): [optional]  # noqa: E501
+            tracking_number (str, none_type): [optional]  # noqa: E501
+            carrier (str, none_type): [optional]  # noqa: E501
+            service (str, none_type): [optional]  # noqa: E501
+            document_kind (str, none_type): [optional]  # noqa: E501
+            web_url (str, none_type): [optional]  # noqa: E501
+            pending (bool): [optional]  # noqa: E501
+            message (str): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -251,8 +296,6 @@ class CreateOrderWhatnotLabelResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.shipment = shipment
-        self.recorded = recorded
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

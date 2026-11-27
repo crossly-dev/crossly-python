@@ -85,12 +85,12 @@ class ListRepriceEventsItem(ModelNormal):
             'platform': (str, none_type,),  # noqa: E501
             'listing_id': (str, none_type,),  # noqa: E501
             'platform_listing_id': (str, none_type,),  # noqa: E501
-            'decided_at': (datetime, none_type,),  # noqa: E501
             'rule_id': (str, none_type,),  # noqa: E501
-            'floor_cents': (float, none_type,),  # noqa: E501
             'old_price_cents': (float, none_type,),  # noqa: E501
             'new_price_cents': (float, none_type,),  # noqa: E501
+            'floor_cents': (float, none_type,),  # noqa: E501
             'approval': (str, none_type,),  # noqa: E501
+            'decided_at': (datetime, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -109,12 +109,12 @@ class ListRepriceEventsItem(ModelNormal):
         'platform': 'platform',  # noqa: E501
         'listing_id': 'listingId',  # noqa: E501
         'platform_listing_id': 'platformListingId',  # noqa: E501
-        'decided_at': 'decidedAt',  # noqa: E501
         'rule_id': 'ruleId',  # noqa: E501
-        'floor_cents': 'floorCents',  # noqa: E501
         'old_price_cents': 'oldPriceCents',  # noqa: E501
         'new_price_cents': 'newPriceCents',  # noqa: E501
+        'floor_cents': 'floorCents',  # noqa: E501
         'approval': 'approval',  # noqa: E501
+        'decided_at': 'decidedAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -170,12 +170,12 @@ class ListRepriceEventsItem(ModelNormal):
             platform (str, none_type): [optional]  # noqa: E501
             listing_id (str, none_type): [optional]  # noqa: E501
             platform_listing_id (str, none_type): [optional]  # noqa: E501
-            decided_at (datetime, none_type): [optional]  # noqa: E501
             rule_id (str, none_type): [optional]  # noqa: E501
-            floor_cents (float, none_type): [optional]  # noqa: E501
             old_price_cents (float, none_type): [optional]  # noqa: E501
             new_price_cents (float, none_type): [optional]  # noqa: E501
+            floor_cents (float, none_type): [optional]  # noqa: E501
             approval (str, none_type): [optional]  # noqa: E501
+            decided_at (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -276,12 +276,12 @@ class ListRepriceEventsItem(ModelNormal):
             platform (str, none_type): [optional]  # noqa: E501
             listing_id (str, none_type): [optional]  # noqa: E501
             platform_listing_id (str, none_type): [optional]  # noqa: E501
-            decided_at (datetime, none_type): [optional]  # noqa: E501
             rule_id (str, none_type): [optional]  # noqa: E501
-            floor_cents (float, none_type): [optional]  # noqa: E501
             old_price_cents (float, none_type): [optional]  # noqa: E501
             new_price_cents (float, none_type): [optional]  # noqa: E501
+            floor_cents (float, none_type): [optional]  # noqa: E501
             approval (str, none_type): [optional]  # noqa: E501
+            decided_at (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

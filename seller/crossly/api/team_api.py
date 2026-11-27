@@ -317,7 +317,7 @@ class TeamApi(object):
         self,
         **kwargs
     ):
-        """Accept a pending team invitation by raw token.  # noqa: E501
+        """Accept a team invitation by the raw token from its link.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -389,7 +389,7 @@ class TeamApi(object):
         self,
         **kwargs
     ):
-        """Mint a team invitation; returns the one-time accept URL.  # noqa: E501
+        """Issue a team invitation; returns the one-time accept URL (nothing is emailed).  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True

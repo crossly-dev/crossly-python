@@ -79,8 +79,8 @@ class CreateBuyerCatalogListingVideoRequestResponseData(ModelNormal):
             'created_at': (datetime,),  # noqa: E501
             'status': (str,),  # noqa: E501
             'platform_listing_id': (str,),  # noqa: E501
-            'seller_user_id': (str,),  # noqa: E501
             'buyer_user_id': (str,),  # noqa: E501
+            'seller_user_id': (str,),  # noqa: E501
             'video_url': (str, none_type,),  # noqa: E501
             'note': (str, none_type,),  # noqa: E501
             'answered_at': (datetime, none_type,),  # noqa: E501
@@ -97,8 +97,8 @@ class CreateBuyerCatalogListingVideoRequestResponseData(ModelNormal):
         'created_at': 'createdAt',  # noqa: E501
         'status': 'status',  # noqa: E501
         'platform_listing_id': 'platformListingId',  # noqa: E501
-        'seller_user_id': 'sellerUserId',  # noqa: E501
         'buyer_user_id': 'buyerUserId',  # noqa: E501
+        'seller_user_id': 'sellerUserId',  # noqa: E501
         'video_url': 'videoUrl',  # noqa: E501
         'note': 'note',  # noqa: E501
         'answered_at': 'answeredAt',  # noqa: E501
@@ -112,7 +112,7 @@ class CreateBuyerCatalogListingVideoRequestResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, status, platform_listing_id, seller_user_id, buyer_user_id, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, status, platform_listing_id, buyer_user_id, seller_user_id, *args, **kwargs):  # noqa: E501
         """CreateBuyerCatalogListingVideoRequestResponseData - a model defined in OpenAPI
 
         Args:
@@ -120,8 +120,8 @@ class CreateBuyerCatalogListingVideoRequestResponseData(ModelNormal):
             created_at (datetime):
             status (str):
             platform_listing_id (str):
-            seller_user_id (str):
             buyer_user_id (str):
+            seller_user_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -189,8 +189,8 @@ class CreateBuyerCatalogListingVideoRequestResponseData(ModelNormal):
         self.created_at = created_at
         self.status = status
         self.platform_listing_id = platform_listing_id
-        self.seller_user_id = seller_user_id
         self.buyer_user_id = buyer_user_id
+        self.seller_user_id = seller_user_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -211,7 +211,7 @@ class CreateBuyerCatalogListingVideoRequestResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, status, platform_listing_id, seller_user_id, buyer_user_id, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, status, platform_listing_id, buyer_user_id, seller_user_id, *args, **kwargs):  # noqa: E501
         """CreateBuyerCatalogListingVideoRequestResponseData - a model defined in OpenAPI
 
         Args:
@@ -219,8 +219,8 @@ class CreateBuyerCatalogListingVideoRequestResponseData(ModelNormal):
             created_at (datetime):
             status (str):
             platform_listing_id (str):
-            seller_user_id (str):
             buyer_user_id (str):
+            seller_user_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -286,8 +286,8 @@ class CreateBuyerCatalogListingVideoRequestResponseData(ModelNormal):
         self.created_at = created_at
         self.status = status
         self.platform_listing_id = platform_listing_id
-        self.seller_user_id = seller_user_id
         self.buyer_user_id = buyer_user_id
+        self.seller_user_id = seller_user_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -78,6 +78,7 @@ class CreateAccountRequestDeletionResponse(ModelNormal):
             'id': (str,),  # noqa: E501
             'scheduled_for': (datetime,),  # noqa: E501
             'grace_days': (float,),  # noqa: E501
+            'subscriptions_ending': (float,),  # noqa: E501
         }
 
     @cached_property
@@ -89,6 +90,7 @@ class CreateAccountRequestDeletionResponse(ModelNormal):
         'id': 'id',  # noqa: E501
         'scheduled_for': 'scheduledFor',  # noqa: E501
         'grace_days': 'graceDays',  # noqa: E501
+        'subscriptions_ending': 'subscriptionsEnding',  # noqa: E501
     }
 
     read_only_vars = {
@@ -98,13 +100,14 @@ class CreateAccountRequestDeletionResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, scheduled_for, grace_days, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, scheduled_for, grace_days, subscriptions_ending, *args, **kwargs):  # noqa: E501
         """CreateAccountRequestDeletionResponse - a model defined in OpenAPI
 
         Args:
             id (str):
             scheduled_for (datetime):
             grace_days (float):
+            subscriptions_ending (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -167,6 +170,7 @@ class CreateAccountRequestDeletionResponse(ModelNormal):
         self.id = id
         self.scheduled_for = scheduled_for
         self.grace_days = grace_days
+        self.subscriptions_ending = subscriptions_ending
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -187,13 +191,14 @@ class CreateAccountRequestDeletionResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, scheduled_for, grace_days, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, scheduled_for, grace_days, subscriptions_ending, *args, **kwargs):  # noqa: E501
         """CreateAccountRequestDeletionResponse - a model defined in OpenAPI
 
         Args:
             id (str):
             scheduled_for (datetime):
             grace_days (float):
+            subscriptions_ending (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -254,6 +259,7 @@ class CreateAccountRequestDeletionResponse(ModelNormal):
         self.id = id
         self.scheduled_for = scheduled_for
         self.grace_days = grace_days
+        self.subscriptions_ending = subscriptions_ending
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -76,10 +76,10 @@ class CreateBuyerOfferResponseDataOffer(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'status': (str,),  # noqa: E501
             'platform_listing_id': (str,),  # noqa: E501
             'buyer_user_id': (str,),  # noqa: E501
             'amount_cents': (float,),  # noqa: E501
+            'status': (str,),  # noqa: E501
             'message': (str, none_type,),  # noqa: E501
         }
 
@@ -90,10 +90,10 @@ class CreateBuyerOfferResponseDataOffer(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'status': 'status',  # noqa: E501
         'platform_listing_id': 'platformListingId',  # noqa: E501
         'buyer_user_id': 'buyerUserId',  # noqa: E501
         'amount_cents': 'amountCents',  # noqa: E501
+        'status': 'status',  # noqa: E501
         'message': 'message',  # noqa: E501
     }
 
@@ -104,15 +104,15 @@ class CreateBuyerOfferResponseDataOffer(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, status, platform_listing_id, buyer_user_id, amount_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, platform_listing_id, buyer_user_id, amount_cents, status, *args, **kwargs):  # noqa: E501
         """CreateBuyerOfferResponseDataOffer - a model defined in OpenAPI
 
         Args:
             id (str):
-            status (str):
             platform_listing_id (str):
             buyer_user_id (str):
             amount_cents (float):
+            status (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -174,10 +174,10 @@ class CreateBuyerOfferResponseDataOffer(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.status = status
         self.platform_listing_id = platform_listing_id
         self.buyer_user_id = buyer_user_id
         self.amount_cents = amount_cents
+        self.status = status
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -198,15 +198,15 @@ class CreateBuyerOfferResponseDataOffer(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, status, platform_listing_id, buyer_user_id, amount_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, platform_listing_id, buyer_user_id, amount_cents, status, *args, **kwargs):  # noqa: E501
         """CreateBuyerOfferResponseDataOffer - a model defined in OpenAPI
 
         Args:
             id (str):
-            status (str):
             platform_listing_id (str):
             buyer_user_id (str):
             amount_cents (float):
+            status (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -266,10 +266,10 @@ class CreateBuyerOfferResponseDataOffer(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.status = status
         self.platform_listing_id = platform_listing_id
         self.buyer_user_id = buyer_user_id
         self.amount_cents = amount_cents
+        self.status = status
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

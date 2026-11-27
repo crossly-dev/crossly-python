@@ -30,9 +30,9 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.taxonomy.get_taxonomy_category_aspect_response_aspects import GetTaxonomyCategoryAspectResponseAspects
+    from crossly.model.taxonomy.get_taxonomy_required_field_response_inline_aspects import GetTaxonomyRequiredFieldResponseInlineAspects
     from crossly.model.taxonomy.get_taxonomy_required_field_response_required_fields import GetTaxonomyRequiredFieldResponseRequiredFields
-    globals()['GetTaxonomyCategoryAspectResponseAspects'] = GetTaxonomyCategoryAspectResponseAspects
+    globals()['GetTaxonomyRequiredFieldResponseInlineAspects'] = GetTaxonomyRequiredFieldResponseInlineAspects
     globals()['GetTaxonomyRequiredFieldResponseRequiredFields'] = GetTaxonomyRequiredFieldResponseRequiredFields
 
 
@@ -98,7 +98,7 @@ class GetTaxonomyRequiredFieldResponse(ModelNormal):
         return {
             'platform': (str,),  # noqa: E501
             'required_fields': ([GetTaxonomyRequiredFieldResponseRequiredFields],),  # noqa: E501
-            'inline_aspects': ([GetTaxonomyCategoryAspectResponseAspects],),  # noqa: E501
+            'inline_aspects': ([GetTaxonomyRequiredFieldResponseInlineAspects],),  # noqa: E501
         }
 
     @cached_property
@@ -125,7 +125,7 @@ class GetTaxonomyRequiredFieldResponse(ModelNormal):
         Args:
             platform (str):
             required_fields ([GetTaxonomyRequiredFieldResponseRequiredFields]):
-            inline_aspects ([GetTaxonomyCategoryAspectResponseAspects]):
+            inline_aspects ([GetTaxonomyRequiredFieldResponseInlineAspects]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -214,7 +214,7 @@ class GetTaxonomyRequiredFieldResponse(ModelNormal):
         Args:
             platform (str):
             required_fields ([GetTaxonomyRequiredFieldResponseRequiredFields]):
-            inline_aspects ([GetTaxonomyCategoryAspectResponseAspects]):
+            inline_aspects ([GetTaxonomyRequiredFieldResponseInlineAspects]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

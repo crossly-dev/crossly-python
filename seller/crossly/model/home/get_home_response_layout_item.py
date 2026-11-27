@@ -86,6 +86,7 @@ class GetHomeResponseLayoutItem(ModelNormal):
             'object': (str, none_type,),  # noqa: E501
             'market': (str, none_type,),  # noqa: E501
             'visitors': (bool, none_type,),  # noqa: E501
+            'trade_post_id': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -105,6 +106,7 @@ class GetHomeResponseLayoutItem(ModelNormal):
         'object': 'object',  # noqa: E501
         'market': 'market',  # noqa: E501
         'visitors': 'visitors',  # noqa: E501
+        'trade_post_id': 'tradePostId',  # noqa: E501
     }
 
     read_only_vars = {
@@ -159,8 +161,9 @@ class GetHomeResponseLayoutItem(ModelNormal):
             space (str, none_type): A `portal` ref: the Space slug a click takes the visitor to.. [optional]  # noqa: E501
             found (str, none_type): A purchase found in the world (Wave 8.6, provenance.ts): \"Found at Amber's stall, Night Market, Oct 2026\".. [optional]  # noqa: E501
             object (str, none_type): The thing ITSELF as a 3D object in a case or on a shelf (shared listing-space.ts): never a flat photo. Not for NFTs.. [optional]  # noqa: E501
-            market (str, none_type): A `vault` ref: the unit's market (a book key), so a click opens /shop/vault/markets/<market>.. [optional]  # noqa: E501
+            market (str, none_type): A `vault` ref: the unit's market (a book key), so a click opens /trading/<market>.. [optional]  # noqa: E501
             visitors (bool, none_type): A `vault` ref, to its OWNER only: visitors may see it (vm_home_display.visitors).. [optional]  # noqa: E501
+            trade_post_id (str, none_type): The owner's open Trade Block post for this same product (trade-posts.ts): \"Offer a trade\" opens it.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -254,8 +257,9 @@ class GetHomeResponseLayoutItem(ModelNormal):
             space (str, none_type): A `portal` ref: the Space slug a click takes the visitor to.. [optional]  # noqa: E501
             found (str, none_type): A purchase found in the world (Wave 8.6, provenance.ts): \"Found at Amber's stall, Night Market, Oct 2026\".. [optional]  # noqa: E501
             object (str, none_type): The thing ITSELF as a 3D object in a case or on a shelf (shared listing-space.ts): never a flat photo. Not for NFTs.. [optional]  # noqa: E501
-            market (str, none_type): A `vault` ref: the unit's market (a book key), so a click opens /shop/vault/markets/<market>.. [optional]  # noqa: E501
+            market (str, none_type): A `vault` ref: the unit's market (a book key), so a click opens /trading/<market>.. [optional]  # noqa: E501
             visitors (bool, none_type): A `vault` ref, to its OWNER only: visitors may see it (vm_home_display.visitors).. [optional]  # noqa: E501
+            trade_post_id (str, none_type): The owner's open Trade Block post for this same product (trade-posts.ts): \"Offer a trade\" opens it.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

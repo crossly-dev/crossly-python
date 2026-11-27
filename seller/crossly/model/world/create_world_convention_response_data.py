@@ -56,16 +56,16 @@ class CreateWorldConventionResponseData(ModelNormal):
 
     allowed_values = {
         ('status',): {
-            'LIVE': "live",
             'DRAFT': "draft",
-            'OPEN': "open",
+            'LIVE': "live",
             'CANCELLED': "cancelled",
+            'OPEN': "open",
             'ENDED': "ended",
         },
         ('entry_model',): {
             'FREE': "free",
-            'INVITE': "invite",
             'FEE': "fee",
+            'INVITE': "invite",
             'REVENUE_SHARE': "revenue_share",
         },
     }
@@ -94,14 +94,25 @@ class CreateWorldConventionResponseData(ModelNormal):
             'status': (str,),  # noqa: E501
             'title': (str,),  # noqa: E501
             'ends_at': (datetime,),  # noqa: E501
-            'host_user_id': (str,),  # noqa: E501
             'starts_at': (datetime,),  # noqa: E501
+            'timezone': (str,),  # noqa: E501
+            'theme': (str,),  # noqa: E501
             'scene_id': (str,),  # noqa: E501
+            'host_user_id': (str,),  # noqa: E501
             'entry_model': (str,),  # noqa: E501
             'table_count': (float,),  # noqa: E501
+            'opens_hour': (float,),  # noqa: E501
+            'closes_hour': (float,),  # noqa: E501
+            'floor_plan_version': (float,),  # noqa: E501
+            'booking_mode': (str,),  # noqa: E501
+            'walk_ins': (float,),  # noqa: E501
+            'description': (str, none_type,),  # noqa: E501
+            'storefront_id': (str, none_type,),  # noqa: E501
             'category_slug': (str, none_type,),  # noqa: E501
+            'seller_event_id': (str, none_type,),  # noqa: E501
             'entry_fee_cents': (float, none_type,),  # noqa: E501
             'revenue_share_bps': (float, none_type,),  # noqa: E501
+            'venue_booking_id': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -116,14 +127,25 @@ class CreateWorldConventionResponseData(ModelNormal):
         'status': 'status',  # noqa: E501
         'title': 'title',  # noqa: E501
         'ends_at': 'endsAt',  # noqa: E501
-        'host_user_id': 'hostUserId',  # noqa: E501
         'starts_at': 'startsAt',  # noqa: E501
+        'timezone': 'timezone',  # noqa: E501
+        'theme': 'theme',  # noqa: E501
         'scene_id': 'sceneId',  # noqa: E501
+        'host_user_id': 'hostUserId',  # noqa: E501
         'entry_model': 'entryModel',  # noqa: E501
         'table_count': 'tableCount',  # noqa: E501
+        'opens_hour': 'opensHour',  # noqa: E501
+        'closes_hour': 'closesHour',  # noqa: E501
+        'floor_plan_version': 'floorPlanVersion',  # noqa: E501
+        'booking_mode': 'bookingMode',  # noqa: E501
+        'walk_ins': 'walkIns',  # noqa: E501
+        'description': 'description',  # noqa: E501
+        'storefront_id': 'storefrontId',  # noqa: E501
         'category_slug': 'categorySlug',  # noqa: E501
+        'seller_event_id': 'sellerEventId',  # noqa: E501
         'entry_fee_cents': 'entryFeeCents',  # noqa: E501
         'revenue_share_bps': 'revenueShareBps',  # noqa: E501
+        'venue_booking_id': 'venueBookingId',  # noqa: E501
     }
 
     read_only_vars = {
@@ -133,7 +155,7 @@ class CreateWorldConventionResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, updated_at, status, title, ends_at, host_user_id, starts_at, scene_id, entry_model, table_count, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, updated_at, status, title, ends_at, starts_at, timezone, theme, scene_id, host_user_id, entry_model, table_count, opens_hour, closes_hour, floor_plan_version, booking_mode, walk_ins, *args, **kwargs):  # noqa: E501
         """CreateWorldConventionResponseData - a model defined in OpenAPI
 
         Args:
@@ -143,11 +165,18 @@ class CreateWorldConventionResponseData(ModelNormal):
             status (str):
             title (str):
             ends_at (datetime):
-            host_user_id (str):
             starts_at (datetime):
+            timezone (str):
+            theme (str):
             scene_id (str):
+            host_user_id (str):
             entry_model (str):
             table_count (float):
+            opens_hour (float):
+            closes_hour (float):
+            floor_plan_version (float):
+            booking_mode (str):
+            walk_ins (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -180,9 +209,13 @@ class CreateWorldConventionResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            description (str, none_type): [optional]  # noqa: E501
+            storefront_id (str, none_type): [optional]  # noqa: E501
             category_slug (str, none_type): [optional]  # noqa: E501
+            seller_event_id (str, none_type): [optional]  # noqa: E501
             entry_fee_cents (float, none_type): [optional]  # noqa: E501
             revenue_share_bps (float, none_type): [optional]  # noqa: E501
+            venue_booking_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -216,11 +249,18 @@ class CreateWorldConventionResponseData(ModelNormal):
         self.status = status
         self.title = title
         self.ends_at = ends_at
-        self.host_user_id = host_user_id
         self.starts_at = starts_at
+        self.timezone = timezone
+        self.theme = theme
         self.scene_id = scene_id
+        self.host_user_id = host_user_id
         self.entry_model = entry_model
         self.table_count = table_count
+        self.opens_hour = opens_hour
+        self.closes_hour = closes_hour
+        self.floor_plan_version = floor_plan_version
+        self.booking_mode = booking_mode
+        self.walk_ins = walk_ins
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -241,7 +281,7 @@ class CreateWorldConventionResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, updated_at, status, title, ends_at, host_user_id, starts_at, scene_id, entry_model, table_count, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, updated_at, status, title, ends_at, starts_at, timezone, theme, scene_id, host_user_id, entry_model, table_count, opens_hour, closes_hour, floor_plan_version, booking_mode, walk_ins, *args, **kwargs):  # noqa: E501
         """CreateWorldConventionResponseData - a model defined in OpenAPI
 
         Args:
@@ -251,11 +291,18 @@ class CreateWorldConventionResponseData(ModelNormal):
             status (str):
             title (str):
             ends_at (datetime):
-            host_user_id (str):
             starts_at (datetime):
+            timezone (str):
+            theme (str):
             scene_id (str):
+            host_user_id (str):
             entry_model (str):
             table_count (float):
+            opens_hour (float):
+            closes_hour (float):
+            floor_plan_version (float):
+            booking_mode (str):
+            walk_ins (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -288,9 +335,13 @@ class CreateWorldConventionResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            description (str, none_type): [optional]  # noqa: E501
+            storefront_id (str, none_type): [optional]  # noqa: E501
             category_slug (str, none_type): [optional]  # noqa: E501
+            seller_event_id (str, none_type): [optional]  # noqa: E501
             entry_fee_cents (float, none_type): [optional]  # noqa: E501
             revenue_share_bps (float, none_type): [optional]  # noqa: E501
+            venue_booking_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -322,11 +373,18 @@ class CreateWorldConventionResponseData(ModelNormal):
         self.status = status
         self.title = title
         self.ends_at = ends_at
-        self.host_user_id = host_user_id
         self.starts_at = starts_at
+        self.timezone = timezone
+        self.theme = theme
         self.scene_id = scene_id
+        self.host_user_id = host_user_id
         self.entry_model = entry_model
         self.table_count = table_count
+        self.opens_hour = opens_hour
+        self.closes_hour = closes_hour
+        self.floor_plan_version = floor_plan_version
+        self.booking_mode = booking_mode
+        self.walk_ins = walk_ins
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

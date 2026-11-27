@@ -57,9 +57,9 @@ class CreateOrderImportResponseResults(ModelNormal):
     allowed_values = {
         ('reason',): {
             'None': None,
-            'UNSUPPORTED_PLATFORM': "unsupported_platform",
             'NOT_CONNECTED': "not_connected",
             'UNKNOWN_PLATFORM': "unknown_platform",
+            'UNSUPPORTED_PLATFORM': "unsupported_platform",
         },
     }
 

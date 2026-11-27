@@ -56,8 +56,8 @@ class GetVaultMarketRiskReportResponsePartnerDcmPositions(ModelNormal):
 
     allowed_values = {
         ('side',): {
-            'LONG': "long",
             'SHORT': "short",
+            'LONG': "long",
         },
     }
 

@@ -58,9 +58,9 @@ class CreateSpatialStreetOwnedUpkeepResponseData(ModelNormal):
         ('upkeep',): {
             'None': None,
             'ACTIVE': "active",
-            'FORECLOSED': "foreclosed",
             'GRACE': "grace",
             'DELINQUENT': "delinquent",
+            'FORECLOSED': "foreclosed",
         },
     }
 

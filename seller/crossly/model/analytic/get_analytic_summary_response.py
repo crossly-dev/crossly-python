@@ -75,10 +75,15 @@ class GetAnalyticSummaryResponse(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'days': (float,),  # noqa: E501
             'sales': (float,),  # noqa: E501
             'revenue': (float,),  # noqa: E501
             'fees': (float,),  # noqa: E501
-            'days': (float,),  # noqa: E501
+            'pending_details_count': (float,),  # noqa: E501
+            'units_sold': (float,),  # noqa: E501
+            'net_sales_cents': (float,),  # noqa: E501
+            'fees_cents': (float,),  # noqa: E501
+            'net_profit_cents': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -87,10 +92,15 @@ class GetAnalyticSummaryResponse(ModelNormal):
 
 
     attribute_map = {
+        'days': 'days',  # noqa: E501
         'sales': 'sales',  # noqa: E501
         'revenue': 'revenue',  # noqa: E501
         'fees': 'fees',  # noqa: E501
-        'days': 'days',  # noqa: E501
+        'pending_details_count': 'pendingDetailsCount',  # noqa: E501
+        'units_sold': 'unitsSold',  # noqa: E501
+        'net_sales_cents': 'netSalesCents',  # noqa: E501
+        'fees_cents': 'feesCents',  # noqa: E501
+        'net_profit_cents': 'netProfitCents',  # noqa: E501
     }
 
     read_only_vars = {
@@ -100,14 +110,18 @@ class GetAnalyticSummaryResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, sales, revenue, fees, days, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, days, sales, revenue, fees, pending_details_count, units_sold, net_sales_cents, fees_cents, *args, **kwargs):  # noqa: E501
         """GetAnalyticSummaryResponse - a model defined in OpenAPI
 
         Args:
+            days (float):
             sales (float):
             revenue (float):
             fees (float):
-            days (float):
+            pending_details_count (float):
+            units_sold (float):
+            net_sales_cents (float):
+            fees_cents (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -140,6 +154,7 @@ class GetAnalyticSummaryResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            net_profit_cents (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -167,10 +182,14 @@ class GetAnalyticSummaryResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.days = days
         self.sales = sales
         self.revenue = revenue
         self.fees = fees
-        self.days = days
+        self.pending_details_count = pending_details_count
+        self.units_sold = units_sold
+        self.net_sales_cents = net_sales_cents
+        self.fees_cents = fees_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -191,14 +210,18 @@ class GetAnalyticSummaryResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, sales, revenue, fees, days, *args, **kwargs):  # noqa: E501
+    def __init__(self, days, sales, revenue, fees, pending_details_count, units_sold, net_sales_cents, fees_cents, *args, **kwargs):  # noqa: E501
         """GetAnalyticSummaryResponse - a model defined in OpenAPI
 
         Args:
+            days (float):
             sales (float):
             revenue (float):
             fees (float):
-            days (float):
+            pending_details_count (float):
+            units_sold (float):
+            net_sales_cents (float):
+            fees_cents (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -231,6 +254,7 @@ class GetAnalyticSummaryResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            net_profit_cents (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -256,10 +280,14 @@ class GetAnalyticSummaryResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.days = days
         self.sales = sales
         self.revenue = revenue
         self.fees = fees
-        self.days = days
+        self.pending_details_count = pending_details_count
+        self.units_sold = units_sold
+        self.net_sales_cents = net_sales_cents
+        self.fees_cents = fees_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

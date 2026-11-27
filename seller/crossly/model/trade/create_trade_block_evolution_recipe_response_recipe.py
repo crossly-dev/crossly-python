@@ -80,13 +80,13 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe(ModelNormal):
             'active': (bool,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (datetime,),  # noqa: E501
+            'version': (float,),  # noqa: E501
             'merchant_id': (str,),  # noqa: E501
             'creator_subject_id': (str,),  # noqa: E501
-            'input_a_variant_id': (str,),  # noqa: E501
             'output_cosmetic_id': (str,),  # noqa: E501
-            'version': (float,),  # noqa: E501
-            'note': (str, none_type,),  # noqa: E501
+            'input_a_variant_id': (str,),  # noqa: E501
             'reviewed_at': (datetime, none_type,),  # noqa: E501
+            'note': (str, none_type,),  # noqa: E501
             'input_a_condition': (str, none_type,),  # noqa: E501
             'input_a_grade_key': (str, none_type,),  # noqa: E501
             'input_b_variant_id': (str, none_type,),  # noqa: E501
@@ -106,13 +106,13 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe(ModelNormal):
         'active': 'active',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
+        'version': 'version',  # noqa: E501
         'merchant_id': 'merchantId',  # noqa: E501
         'creator_subject_id': 'creatorSubjectId',  # noqa: E501
-        'input_a_variant_id': 'inputAVariantId',  # noqa: E501
         'output_cosmetic_id': 'outputCosmeticId',  # noqa: E501
-        'version': 'version',  # noqa: E501
-        'note': 'note',  # noqa: E501
+        'input_a_variant_id': 'inputAVariantId',  # noqa: E501
         'reviewed_at': 'reviewedAt',  # noqa: E501
+        'note': 'note',  # noqa: E501
         'input_a_condition': 'inputACondition',  # noqa: E501
         'input_a_grade_key': 'inputAGradeKey',  # noqa: E501
         'input_b_variant_id': 'inputBVariantId',  # noqa: E501
@@ -128,7 +128,7 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, active, created_at, updated_at, merchant_id, creator_subject_id, input_a_variant_id, output_cosmetic_id, version, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, name, active, created_at, updated_at, version, merchant_id, creator_subject_id, output_cosmetic_id, input_a_variant_id, *args, **kwargs):  # noqa: E501
         """CreateTradeBlockEvolutionRecipeResponseRecipe - a model defined in OpenAPI
 
         Args:
@@ -137,11 +137,11 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe(ModelNormal):
             active (bool):
             created_at (datetime):
             updated_at (datetime):
+            version (float):
             merchant_id (str):
             creator_subject_id (str):
-            input_a_variant_id (str):
             output_cosmetic_id (str):
-            version (float):
+            input_a_variant_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -174,8 +174,8 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            note (str, none_type): [optional]  # noqa: E501
             reviewed_at (datetime, none_type): [optional]  # noqa: E501
+            note (str, none_type): [optional]  # noqa: E501
             input_a_condition (str, none_type): [optional]  # noqa: E501
             input_a_grade_key (str, none_type): [optional]  # noqa: E501
             input_b_variant_id (str, none_type): [optional]  # noqa: E501
@@ -214,11 +214,11 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe(ModelNormal):
         self.active = active
         self.created_at = created_at
         self.updated_at = updated_at
+        self.version = version
         self.merchant_id = merchant_id
         self.creator_subject_id = creator_subject_id
-        self.input_a_variant_id = input_a_variant_id
         self.output_cosmetic_id = output_cosmetic_id
-        self.version = version
+        self.input_a_variant_id = input_a_variant_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -239,7 +239,7 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, active, created_at, updated_at, merchant_id, creator_subject_id, input_a_variant_id, output_cosmetic_id, version, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, name, active, created_at, updated_at, version, merchant_id, creator_subject_id, output_cosmetic_id, input_a_variant_id, *args, **kwargs):  # noqa: E501
         """CreateTradeBlockEvolutionRecipeResponseRecipe - a model defined in OpenAPI
 
         Args:
@@ -248,11 +248,11 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe(ModelNormal):
             active (bool):
             created_at (datetime):
             updated_at (datetime):
+            version (float):
             merchant_id (str):
             creator_subject_id (str):
-            input_a_variant_id (str):
             output_cosmetic_id (str):
-            version (float):
+            input_a_variant_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -285,8 +285,8 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            note (str, none_type): [optional]  # noqa: E501
             reviewed_at (datetime, none_type): [optional]  # noqa: E501
+            note (str, none_type): [optional]  # noqa: E501
             input_a_condition (str, none_type): [optional]  # noqa: E501
             input_a_grade_key (str, none_type): [optional]  # noqa: E501
             input_b_variant_id (str, none_type): [optional]  # noqa: E501
@@ -323,11 +323,11 @@ class CreateTradeBlockEvolutionRecipeResponseRecipe(ModelNormal):
         self.active = active
         self.created_at = created_at
         self.updated_at = updated_at
+        self.version = version
         self.merchant_id = merchant_id
         self.creator_subject_id = creator_subject_id
-        self.input_a_variant_id = input_a_variant_id
         self.output_cosmetic_id = output_cosmetic_id
-        self.version = version
+        self.input_a_variant_id = input_a_variant_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

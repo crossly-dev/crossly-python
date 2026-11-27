@@ -34,10 +34,12 @@ def lazy_import():
     from crossly.model.vault.get_vault_market_tod_response_beneficiaries import GetVaultMarketTodResponseBeneficiaries
     from crossly.model.vault.get_vault_market_tod_response_claims import GetVaultMarketTodResponseClaims
     from crossly.model.vault.get_vault_market_tod_response_units import GetVaultMarketTodResponseUnits
+    from crossly.model.vault.get_vault_market_tod_response_vault_shares import GetVaultMarketTodResponseVaultShares
     globals()['GetVaultMarketTodMyClaimResponseGate'] = GetVaultMarketTodMyClaimResponseGate
     globals()['GetVaultMarketTodResponseBeneficiaries'] = GetVaultMarketTodResponseBeneficiaries
     globals()['GetVaultMarketTodResponseClaims'] = GetVaultMarketTodResponseClaims
     globals()['GetVaultMarketTodResponseUnits'] = GetVaultMarketTodResponseUnits
+    globals()['GetVaultMarketTodResponseVaultShares'] = GetVaultMarketTodResponseVaultShares
 
 
 class GetVaultMarketTodResponse(ModelNormal):
@@ -95,6 +97,7 @@ class GetVaultMarketTodResponse(ModelNormal):
             'claims': ([GetVaultMarketTodResponseClaims],),  # noqa: E501
             'accepted_at': (str, none_type,),  # noqa: E501
             'shares_problem': (str, none_type,),  # noqa: E501
+            'vault_shares': (GetVaultMarketTodResponseVaultShares,),  # noqa: E501
         }
 
     @cached_property
@@ -112,6 +115,7 @@ class GetVaultMarketTodResponse(ModelNormal):
         'claims': 'claims',  # noqa: E501
         'accepted_at': 'acceptedAt',  # noqa: E501
         'shares_problem': 'sharesProblem',  # noqa: E501
+        'vault_shares': 'vaultShares',  # noqa: E501
     }
 
     read_only_vars = {
@@ -166,6 +170,7 @@ class GetVaultMarketTodResponse(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             accepted_at (str, none_type): [optional]  # noqa: E501
             shares_problem (str, none_type): [optional]  # noqa: E501
+            vault_shares (GetVaultMarketTodResponseVaultShares): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -265,6 +270,7 @@ class GetVaultMarketTodResponse(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             accepted_at (str, none_type): [optional]  # noqa: E501
             shares_problem (str, none_type): [optional]  # noqa: E501
+            vault_shares (GetVaultMarketTodResponseVaultShares): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

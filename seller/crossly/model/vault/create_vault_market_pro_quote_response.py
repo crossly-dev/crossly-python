@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.vault.create_vault_market_pro_quote_response_bid import CreateVaultMarketProQuoteResponseBid
-    globals()['CreateVaultMarketProQuoteResponseBid'] = CreateVaultMarketProQuoteResponseBid
+    from crossly.model.common.order_id_error import OrderIdError
+    globals()['OrderIdError'] = OrderIdError
 
 
 class CreateVaultMarketProQuoteResponse(ModelNormal):
@@ -81,8 +81,8 @@ class CreateVaultMarketProQuoteResponse(ModelNormal):
         lazy_import()
         return {
             'book_key': (str,),  # noqa: E501
-            'bid': (CreateVaultMarketProQuoteResponseBid,),  # noqa: E501
-            'ask': (CreateVaultMarketProQuoteResponseBid,),  # noqa: E501
+            'bid': (OrderIdError,),  # noqa: E501
+            'ask': (OrderIdError,),  # noqa: E501
         }
 
     @cached_property
@@ -108,8 +108,8 @@ class CreateVaultMarketProQuoteResponse(ModelNormal):
 
         Args:
             book_key (str):
-            bid (CreateVaultMarketProQuoteResponseBid):
-            ask (CreateVaultMarketProQuoteResponseBid):
+            bid (OrderIdError):
+            ask (OrderIdError):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -197,8 +197,8 @@ class CreateVaultMarketProQuoteResponse(ModelNormal):
 
         Args:
             book_key (str):
-            bid (CreateVaultMarketProQuoteResponseBid):
-            ask (CreateVaultMarketProQuoteResponseBid):
+            bid (OrderIdError):
+            ask (OrderIdError):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

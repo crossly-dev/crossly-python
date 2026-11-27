@@ -75,10 +75,10 @@ class CreateBuyerAuctionBidResponseData(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'ends_at': (str,),  # noqa: E501
-            'current_bid_cents': (float,),  # noqa: E501
             'ok': (bool,),  # noqa: E501
             'leading': (bool,),  # noqa: E501
+            'current_bid_cents': (float,),  # noqa: E501
+            'ends_at': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -87,10 +87,10 @@ class CreateBuyerAuctionBidResponseData(ModelNormal):
 
 
     attribute_map = {
-        'ends_at': 'endsAt',  # noqa: E501
-        'current_bid_cents': 'currentBidCents',  # noqa: E501
         'ok': 'ok',  # noqa: E501
         'leading': 'leading',  # noqa: E501
+        'current_bid_cents': 'currentBidCents',  # noqa: E501
+        'ends_at': 'endsAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -100,14 +100,14 @@ class CreateBuyerAuctionBidResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, ends_at, current_bid_cents, ok, leading, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, ok, leading, current_bid_cents, ends_at, *args, **kwargs):  # noqa: E501
         """CreateBuyerAuctionBidResponseData - a model defined in OpenAPI
 
         Args:
-            ends_at (str): Possibly extended by anti-sniping.
-            current_bid_cents (float): The price now, in cents, after proxy bidding resolved.
             ok (bool):
             leading (bool): false = a standing proxy bid outbid you straight away.
+            current_bid_cents (float): The price now, in cents, after proxy bidding resolved.
+            ends_at (str): Possibly extended by anti-sniping.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -167,10 +167,10 @@ class CreateBuyerAuctionBidResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.ends_at = ends_at
-        self.current_bid_cents = current_bid_cents
         self.ok = ok
         self.leading = leading
+        self.current_bid_cents = current_bid_cents
+        self.ends_at = ends_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -191,14 +191,14 @@ class CreateBuyerAuctionBidResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, ends_at, current_bid_cents, ok, leading, *args, **kwargs):  # noqa: E501
+    def __init__(self, ok, leading, current_bid_cents, ends_at, *args, **kwargs):  # noqa: E501
         """CreateBuyerAuctionBidResponseData - a model defined in OpenAPI
 
         Args:
-            ends_at (str): Possibly extended by anti-sniping.
-            current_bid_cents (float): The price now, in cents, after proxy bidding resolved.
             ok (bool):
             leading (bool): false = a standing proxy bid outbid you straight away.
+            current_bid_cents (float): The price now, in cents, after proxy bidding resolved.
+            ends_at (str): Possibly extended by anti-sniping.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -256,10 +256,10 @@ class CreateBuyerAuctionBidResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.ends_at = ends_at
-        self.current_bid_cents = current_bid_cents
         self.ok = ok
         self.leading = leading
+        self.current_bid_cents = current_bid_cents
+        self.ends_at = ends_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

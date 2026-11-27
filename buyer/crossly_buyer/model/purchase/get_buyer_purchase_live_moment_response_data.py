@@ -75,12 +75,12 @@ class GetBuyerPurchaseLiveMomentResponseData(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'status': (str,),  # noqa: E501
-            'title': (str,),  # noqa: E501
-            'sold_at': (str,),  # noqa: E501
-            'seller_user_id': (str,),  # noqa: E501
             'stream_id': (str,),  # noqa: E501
+            'title': (str,),  # noqa: E501
+            'seller_user_id': (str,),  # noqa: E501
+            'status': (str,),  # noqa: E501
             'offset_seconds': (float,),  # noqa: E501
+            'sold_at': (str,),  # noqa: E501
             'replay_url': (str, none_type,),  # noqa: E501
         }
 
@@ -90,12 +90,12 @@ class GetBuyerPurchaseLiveMomentResponseData(ModelNormal):
 
 
     attribute_map = {
-        'status': 'status',  # noqa: E501
-        'title': 'title',  # noqa: E501
-        'sold_at': 'soldAt',  # noqa: E501
-        'seller_user_id': 'sellerUserId',  # noqa: E501
         'stream_id': 'streamId',  # noqa: E501
+        'title': 'title',  # noqa: E501
+        'seller_user_id': 'sellerUserId',  # noqa: E501
+        'status': 'status',  # noqa: E501
         'offset_seconds': 'offsetSeconds',  # noqa: E501
+        'sold_at': 'soldAt',  # noqa: E501
         'replay_url': 'replayUrl',  # noqa: E501
     }
 
@@ -106,16 +106,16 @@ class GetBuyerPurchaseLiveMomentResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, status, title, sold_at, seller_user_id, stream_id, offset_seconds, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, stream_id, title, seller_user_id, status, offset_seconds, sold_at, *args, **kwargs):  # noqa: E501
         """GetBuyerPurchaseLiveMomentResponseData - a model defined in OpenAPI
 
         Args:
-            status (str):
-            title (str):
-            sold_at (str):
-            seller_user_id (str):
             stream_id (str):
+            title (str):
+            seller_user_id (str):
+            status (str):
             offset_seconds (float):
+            sold_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -176,12 +176,12 @@ class GetBuyerPurchaseLiveMomentResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.status = status
-        self.title = title
-        self.sold_at = sold_at
-        self.seller_user_id = seller_user_id
         self.stream_id = stream_id
+        self.title = title
+        self.seller_user_id = seller_user_id
+        self.status = status
         self.offset_seconds = offset_seconds
+        self.sold_at = sold_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -202,16 +202,16 @@ class GetBuyerPurchaseLiveMomentResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, status, title, sold_at, seller_user_id, stream_id, offset_seconds, *args, **kwargs):  # noqa: E501
+    def __init__(self, stream_id, title, seller_user_id, status, offset_seconds, sold_at, *args, **kwargs):  # noqa: E501
         """GetBuyerPurchaseLiveMomentResponseData - a model defined in OpenAPI
 
         Args:
-            status (str):
-            title (str):
-            sold_at (str):
-            seller_user_id (str):
             stream_id (str):
+            title (str):
+            seller_user_id (str):
+            status (str):
             offset_seconds (float):
+            sold_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -270,12 +270,12 @@ class GetBuyerPurchaseLiveMomentResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.status = status
-        self.title = title
-        self.sold_at = sold_at
-        self.seller_user_id = seller_user_id
         self.stream_id = stream_id
+        self.title = title
+        self.seller_user_id = seller_user_id
+        self.status = status
         self.offset_seconds = offset_seconds
+        self.sold_at = sold_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

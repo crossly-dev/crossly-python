@@ -80,9 +80,9 @@ class ListCompWatchlistsItem(ModelNormal):
             'created_at': (datetime,),  # noqa: E501
             'user_id': (str,),  # noqa: E501
             'brand': (str, none_type,),  # noqa: E501
+            'platform': (str, none_type,),  # noqa: E501
             'condition': (str, none_type,),  # noqa: E501
             'category_main': (str, none_type,),  # noqa: E501
-            'platform': (str, none_type,),  # noqa: E501
             'min_price': (str, none_type,),  # noqa: E501
             'max_price': (str, none_type,),  # noqa: E501
             'last_matched_at': (datetime, none_type,),  # noqa: E501
@@ -100,9 +100,9 @@ class ListCompWatchlistsItem(ModelNormal):
         'created_at': 'createdAt',  # noqa: E501
         'user_id': 'userId',  # noqa: E501
         'brand': 'brand',  # noqa: E501
+        'platform': 'platform',  # noqa: E501
         'condition': 'condition',  # noqa: E501
         'category_main': 'categoryMain',  # noqa: E501
-        'platform': 'platform',  # noqa: E501
         'min_price': 'minPrice',  # noqa: E501
         'max_price': 'maxPrice',  # noqa: E501
         'last_matched_at': 'lastMatchedAt',  # noqa: E501
@@ -157,9 +157,9 @@ class ListCompWatchlistsItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             brand (str, none_type): [optional]  # noqa: E501
+            platform (str, none_type): [optional]  # noqa: E501
             condition (str, none_type): [optional]  # noqa: E501
             category_main (str, none_type): [optional]  # noqa: E501
-            platform (str, none_type): [optional]  # noqa: E501
             min_price (str, none_type): [optional]  # noqa: E501
             max_price (str, none_type): [optional]  # noqa: E501
             last_matched_at (datetime, none_type): [optional]  # noqa: E501
@@ -256,9 +256,9 @@ class ListCompWatchlistsItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             brand (str, none_type): [optional]  # noqa: E501
+            platform (str, none_type): [optional]  # noqa: E501
             condition (str, none_type): [optional]  # noqa: E501
             category_main (str, none_type): [optional]  # noqa: E501
-            platform (str, none_type): [optional]  # noqa: E501
             min_price (str, none_type): [optional]  # noqa: E501
             max_price (str, none_type): [optional]  # noqa: E501
             last_matched_at (datetime, none_type): [optional]  # noqa: E501

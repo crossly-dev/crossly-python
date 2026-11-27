@@ -77,9 +77,7 @@ class GetAnalyticDashboardResponseRecentSales(ModelNormal):
         return {
             'sale_id': (str,),  # noqa: E501
             'platform': (str,),  # noqa: E501
-            'detected_by': (str,),  # noqa: E501
-            'detected_at': (datetime,),  # noqa: E501
-            'item_image': (str,),  # noqa: E501
+            'details_pending': (bool,),  # noqa: E501
             'platform_order_id': (str, none_type,),  # noqa: E501
             'sale_price': (float, none_type,),  # noqa: E501
             'platform_fee': (float, none_type,),  # noqa: E501
@@ -87,6 +85,7 @@ class GetAnalyticDashboardResponseRecentSales(ModelNormal):
             'cost_of_goods': (float, none_type,),  # noqa: E501
             'net_profit': (float, none_type,),  # noqa: E501
             'item_title': (str, none_type,),  # noqa: E501
+            'item_image': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -97,9 +96,7 @@ class GetAnalyticDashboardResponseRecentSales(ModelNormal):
     attribute_map = {
         'sale_id': 'saleId',  # noqa: E501
         'platform': 'platform',  # noqa: E501
-        'detected_by': 'detectedBy',  # noqa: E501
-        'detected_at': 'detectedAt',  # noqa: E501
-        'item_image': 'itemImage',  # noqa: E501
+        'details_pending': 'detailsPending',  # noqa: E501
         'platform_order_id': 'platformOrderId',  # noqa: E501
         'sale_price': 'salePrice',  # noqa: E501
         'platform_fee': 'platformFee',  # noqa: E501
@@ -107,6 +104,7 @@ class GetAnalyticDashboardResponseRecentSales(ModelNormal):
         'cost_of_goods': 'costOfGoods',  # noqa: E501
         'net_profit': 'netProfit',  # noqa: E501
         'item_title': 'itemTitle',  # noqa: E501
+        'item_image': 'itemImage',  # noqa: E501
     }
 
     read_only_vars = {
@@ -116,15 +114,13 @@ class GetAnalyticDashboardResponseRecentSales(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, sale_id, platform, detected_by, detected_at, item_image, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, sale_id, platform, details_pending, *args, **kwargs):  # noqa: E501
         """GetAnalyticDashboardResponseRecentSales - a model defined in OpenAPI
 
         Args:
             sale_id (str):
             platform (str):
-            detected_by (str):
-            detected_at (datetime):
-            item_image (str):
+            details_pending (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -164,6 +160,7 @@ class GetAnalyticDashboardResponseRecentSales(ModelNormal):
             cost_of_goods (float, none_type): [optional]  # noqa: E501
             net_profit (float, none_type): [optional]  # noqa: E501
             item_title (str, none_type): [optional]  # noqa: E501
+            item_image (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -193,9 +190,7 @@ class GetAnalyticDashboardResponseRecentSales(ModelNormal):
 
         self.sale_id = sale_id
         self.platform = platform
-        self.detected_by = detected_by
-        self.detected_at = detected_at
-        self.item_image = item_image
+        self.details_pending = details_pending
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -216,15 +211,13 @@ class GetAnalyticDashboardResponseRecentSales(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, sale_id, platform, detected_by, detected_at, item_image, *args, **kwargs):  # noqa: E501
+    def __init__(self, sale_id, platform, details_pending, *args, **kwargs):  # noqa: E501
         """GetAnalyticDashboardResponseRecentSales - a model defined in OpenAPI
 
         Args:
             sale_id (str):
             platform (str):
-            detected_by (str):
-            detected_at (datetime):
-            item_image (str):
+            details_pending (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -264,6 +257,7 @@ class GetAnalyticDashboardResponseRecentSales(ModelNormal):
             cost_of_goods (float, none_type): [optional]  # noqa: E501
             net_profit (float, none_type): [optional]  # noqa: E501
             item_title (str, none_type): [optional]  # noqa: E501
+            item_image (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -291,9 +285,7 @@ class GetAnalyticDashboardResponseRecentSales(ModelNormal):
 
         self.sale_id = sale_id
         self.platform = platform
-        self.detected_by = detected_by
-        self.detected_at = detected_at
-        self.item_image = item_image
+        self.details_pending = details_pending
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -37,7 +37,7 @@ from crossly.model.production.get_production_line_response import GetProductionL
 from crossly.model.production.get_production_po_reconcile_response import GetProductionPoReconcileResponse
 from crossly.model.production.get_production_po_response import GetProductionPoResponse
 from crossly.model.production.get_production_run_response import GetProductionRunResponse
-from crossly.model.common.get_shop_listing_provenance_response import GetShopListingProvenanceResponse
+from crossly.model.shop.get_shop_listing_provenance_response import GetShopListingProvenanceResponse
 from crossly.model.production.update_production_po_response import UpdateProductionPoResponse
 
 

@@ -61,11 +61,11 @@ class GetVaultMarketTodMyClaimResponseClaims(ModelNormal):
     allowed_values = {
         ('status',): {
             'DRAFT': "draft",
+            'SUBMITTED': "submitted",
             'REJECTED': "rejected",
             'WITHDRAWN': "withdrawn",
             'RELEASED': "released",
             'WAITING': "waiting",
-            'SUBMITTED': "submitted",
             'NEEDS_INFO': "needs_info",
             'PARTLY_RELEASED': "partly_released",
             'OBJECTED': "objected",

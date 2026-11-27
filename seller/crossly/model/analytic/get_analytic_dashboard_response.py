@@ -32,20 +32,24 @@ from crossly.exceptions import ApiAttributeError
 def lazy_import():
     from crossly.model.analytic.get_analytic_dashboard_response_avg_sale_price_by_platform import GetAnalyticDashboardResponseAvgSalePriceByPlatform
     from crossly.model.analytic.get_analytic_dashboard_response_cancel_rate import GetAnalyticDashboardResponseCancelRate
+    from crossly.model.analytic.get_analytic_dashboard_response_period import GetAnalyticDashboardResponsePeriod
     from crossly.model.analytic.get_analytic_dashboard_response_recent_sales import GetAnalyticDashboardResponseRecentSales
     from crossly.model.analytic.get_analytic_dashboard_response_revenue import GetAnalyticDashboardResponseRevenue
     from crossly.model.analytic.get_analytic_dashboard_response_revenue_by_day import GetAnalyticDashboardResponseRevenueByDay
     from crossly.model.analytic.get_analytic_dashboard_response_sales_by_platform import GetAnalyticDashboardResponseSalesByPlatform
     from crossly.model.analytic.get_analytic_dashboard_response_sell_through import GetAnalyticDashboardResponseSellThrough
+    from crossly.model.analytic.get_analytic_dashboard_response_sell_through_cohort import GetAnalyticDashboardResponseSellThroughCohort
     from crossly.model.analytic.get_analytic_dashboard_response_top5_items_by_revenue import GetAnalyticDashboardResponseTop5ItemsByRevenue
     from crossly.model.analytic.get_analytic_dashboard_response_top_categories import GetAnalyticDashboardResponseTopCategories
     globals()['GetAnalyticDashboardResponseAvgSalePriceByPlatform'] = GetAnalyticDashboardResponseAvgSalePriceByPlatform
     globals()['GetAnalyticDashboardResponseCancelRate'] = GetAnalyticDashboardResponseCancelRate
+    globals()['GetAnalyticDashboardResponsePeriod'] = GetAnalyticDashboardResponsePeriod
     globals()['GetAnalyticDashboardResponseRecentSales'] = GetAnalyticDashboardResponseRecentSales
     globals()['GetAnalyticDashboardResponseRevenue'] = GetAnalyticDashboardResponseRevenue
     globals()['GetAnalyticDashboardResponseRevenueByDay'] = GetAnalyticDashboardResponseRevenueByDay
     globals()['GetAnalyticDashboardResponseSalesByPlatform'] = GetAnalyticDashboardResponseSalesByPlatform
     globals()['GetAnalyticDashboardResponseSellThrough'] = GetAnalyticDashboardResponseSellThrough
+    globals()['GetAnalyticDashboardResponseSellThroughCohort'] = GetAnalyticDashboardResponseSellThroughCohort
     globals()['GetAnalyticDashboardResponseTop5ItemsByRevenue'] = GetAnalyticDashboardResponseTop5ItemsByRevenue
     globals()['GetAnalyticDashboardResponseTopCategories'] = GetAnalyticDashboardResponseTopCategories
 
@@ -99,6 +103,7 @@ class GetAnalyticDashboardResponse(ModelNormal):
             'revenue': (GetAnalyticDashboardResponseRevenue,),  # noqa: E501
             'profit': (GetAnalyticDashboardResponseRevenue,),  # noqa: E501
             'sold_items_count': (GetAnalyticDashboardResponseRevenue,),  # noqa: E501
+            'pending_details_count': (float,),  # noqa: E501
             'cancelled_count': (GetAnalyticDashboardResponseRevenue,),  # noqa: E501
             'cancel_rate': (GetAnalyticDashboardResponseCancelRate,),  # noqa: E501
             'refunded_amount': (GetAnalyticDashboardResponseRevenue,),  # noqa: E501
@@ -106,6 +111,7 @@ class GetAnalyticDashboardResponse(ModelNormal):
             'listed_items_count': (GetAnalyticDashboardResponseRevenue,),  # noqa: E501
             'avg_sale_price': (GetAnalyticDashboardResponseRevenue,),  # noqa: E501
             'sell_through': (GetAnalyticDashboardResponseSellThrough,),  # noqa: E501
+            'sell_through_cohort': (GetAnalyticDashboardResponseSellThroughCohort,),  # noqa: E501
             'sales_by_platform': ([GetAnalyticDashboardResponseSalesByPlatform],),  # noqa: E501
             'avg_sale_price_by_platform': ([GetAnalyticDashboardResponseAvgSalePriceByPlatform],),  # noqa: E501
             'revenue_by_day': ([GetAnalyticDashboardResponseRevenueByDay],),  # noqa: E501
@@ -115,8 +121,10 @@ class GetAnalyticDashboardResponse(ModelNormal):
             'top5_items_by_revenue': ([GetAnalyticDashboardResponseTop5ItemsByRevenue],),  # noqa: E501
             'recent_sales': ([GetAnalyticDashboardResponseRecentSales],),  # noqa: E501
             'available_labels': ([str],),  # noqa: E501
+            'period': (GetAnalyticDashboardResponsePeriod,),  # noqa: E501
             'sell_through_rate': (float, none_type,),  # noqa: E501
             'avg_days_to_sell': (float, none_type,),  # noqa: E501
+            'median_days_to_sell': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -128,6 +136,7 @@ class GetAnalyticDashboardResponse(ModelNormal):
         'revenue': 'revenue',  # noqa: E501
         'profit': 'profit',  # noqa: E501
         'sold_items_count': 'soldItemsCount',  # noqa: E501
+        'pending_details_count': 'pendingDetailsCount',  # noqa: E501
         'cancelled_count': 'cancelledCount',  # noqa: E501
         'cancel_rate': 'cancelRate',  # noqa: E501
         'refunded_amount': 'refundedAmount',  # noqa: E501
@@ -135,6 +144,7 @@ class GetAnalyticDashboardResponse(ModelNormal):
         'listed_items_count': 'listedItemsCount',  # noqa: E501
         'avg_sale_price': 'avgSalePrice',  # noqa: E501
         'sell_through': 'sellThrough',  # noqa: E501
+        'sell_through_cohort': 'sellThroughCohort',  # noqa: E501
         'sales_by_platform': 'salesByPlatform',  # noqa: E501
         'avg_sale_price_by_platform': 'avgSalePriceByPlatform',  # noqa: E501
         'revenue_by_day': 'revenueByDay',  # noqa: E501
@@ -144,8 +154,10 @@ class GetAnalyticDashboardResponse(ModelNormal):
         'top5_items_by_revenue': 'top5ItemsByRevenue',  # noqa: E501
         'recent_sales': 'recentSales',  # noqa: E501
         'available_labels': 'availableLabels',  # noqa: E501
+        'period': 'period',  # noqa: E501
         'sell_through_rate': 'sellThroughRate',  # noqa: E501
         'avg_days_to_sell': 'avgDaysToSell',  # noqa: E501
+        'median_days_to_sell': 'medianDaysToSell',  # noqa: E501
     }
 
     read_only_vars = {
@@ -155,13 +167,14 @@ class GetAnalyticDashboardResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, revenue, profit, sold_items_count, cancelled_count, cancel_rate, refunded_amount, refunded_count, listed_items_count, avg_sale_price, sell_through, sales_by_platform, avg_sale_price_by_platform, revenue_by_day, top_categories, top_subcategories, top_brands, top5_items_by_revenue, recent_sales, available_labels, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, revenue, profit, sold_items_count, pending_details_count, cancelled_count, cancel_rate, refunded_amount, refunded_count, listed_items_count, avg_sale_price, sell_through, sell_through_cohort, sales_by_platform, avg_sale_price_by_platform, revenue_by_day, top_categories, top_subcategories, top_brands, top5_items_by_revenue, recent_sales, available_labels, period, *args, **kwargs):  # noqa: E501
         """GetAnalyticDashboardResponse - a model defined in OpenAPI
 
         Args:
             revenue (GetAnalyticDashboardResponseRevenue):
             profit (GetAnalyticDashboardResponseRevenue):
             sold_items_count (GetAnalyticDashboardResponseRevenue):
+            pending_details_count (float): \"N sales pending details\": in the period, not in revenue/profit/avg.
             cancelled_count (GetAnalyticDashboardResponseRevenue):
             cancel_rate (GetAnalyticDashboardResponseCancelRate):
             refunded_amount (GetAnalyticDashboardResponseRevenue):
@@ -169,6 +182,7 @@ class GetAnalyticDashboardResponse(ModelNormal):
             listed_items_count (GetAnalyticDashboardResponseRevenue):
             avg_sale_price (GetAnalyticDashboardResponseRevenue):
             sell_through (GetAnalyticDashboardResponseSellThrough):
+            sell_through_cohort (GetAnalyticDashboardResponseSellThroughCohort):
             sales_by_platform ([GetAnalyticDashboardResponseSalesByPlatform]):
             avg_sale_price_by_platform ([GetAnalyticDashboardResponseAvgSalePriceByPlatform]):
             revenue_by_day ([GetAnalyticDashboardResponseRevenueByDay]):
@@ -178,6 +192,7 @@ class GetAnalyticDashboardResponse(ModelNormal):
             top5_items_by_revenue ([GetAnalyticDashboardResponseTop5ItemsByRevenue]):
             recent_sales ([GetAnalyticDashboardResponseRecentSales]):
             available_labels ([str]):
+            period (GetAnalyticDashboardResponsePeriod):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -210,8 +225,9 @@ class GetAnalyticDashboardResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            sell_through_rate (float, none_type): [optional]  # noqa: E501
+            sell_through_rate (float, none_type): 0–100 (legacy unit). The full cohort is `sellThroughCohort`.. [optional]  # noqa: E501
             avg_days_to_sell (float, none_type): [optional]  # noqa: E501
+            median_days_to_sell (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -242,6 +258,7 @@ class GetAnalyticDashboardResponse(ModelNormal):
         self.revenue = revenue
         self.profit = profit
         self.sold_items_count = sold_items_count
+        self.pending_details_count = pending_details_count
         self.cancelled_count = cancelled_count
         self.cancel_rate = cancel_rate
         self.refunded_amount = refunded_amount
@@ -249,6 +266,7 @@ class GetAnalyticDashboardResponse(ModelNormal):
         self.listed_items_count = listed_items_count
         self.avg_sale_price = avg_sale_price
         self.sell_through = sell_through
+        self.sell_through_cohort = sell_through_cohort
         self.sales_by_platform = sales_by_platform
         self.avg_sale_price_by_platform = avg_sale_price_by_platform
         self.revenue_by_day = revenue_by_day
@@ -258,6 +276,7 @@ class GetAnalyticDashboardResponse(ModelNormal):
         self.top5_items_by_revenue = top5_items_by_revenue
         self.recent_sales = recent_sales
         self.available_labels = available_labels
+        self.period = period
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -278,13 +297,14 @@ class GetAnalyticDashboardResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, revenue, profit, sold_items_count, cancelled_count, cancel_rate, refunded_amount, refunded_count, listed_items_count, avg_sale_price, sell_through, sales_by_platform, avg_sale_price_by_platform, revenue_by_day, top_categories, top_subcategories, top_brands, top5_items_by_revenue, recent_sales, available_labels, *args, **kwargs):  # noqa: E501
+    def __init__(self, revenue, profit, sold_items_count, pending_details_count, cancelled_count, cancel_rate, refunded_amount, refunded_count, listed_items_count, avg_sale_price, sell_through, sell_through_cohort, sales_by_platform, avg_sale_price_by_platform, revenue_by_day, top_categories, top_subcategories, top_brands, top5_items_by_revenue, recent_sales, available_labels, period, *args, **kwargs):  # noqa: E501
         """GetAnalyticDashboardResponse - a model defined in OpenAPI
 
         Args:
             revenue (GetAnalyticDashboardResponseRevenue):
             profit (GetAnalyticDashboardResponseRevenue):
             sold_items_count (GetAnalyticDashboardResponseRevenue):
+            pending_details_count (float): \"N sales pending details\": in the period, not in revenue/profit/avg.
             cancelled_count (GetAnalyticDashboardResponseRevenue):
             cancel_rate (GetAnalyticDashboardResponseCancelRate):
             refunded_amount (GetAnalyticDashboardResponseRevenue):
@@ -292,6 +312,7 @@ class GetAnalyticDashboardResponse(ModelNormal):
             listed_items_count (GetAnalyticDashboardResponseRevenue):
             avg_sale_price (GetAnalyticDashboardResponseRevenue):
             sell_through (GetAnalyticDashboardResponseSellThrough):
+            sell_through_cohort (GetAnalyticDashboardResponseSellThroughCohort):
             sales_by_platform ([GetAnalyticDashboardResponseSalesByPlatform]):
             avg_sale_price_by_platform ([GetAnalyticDashboardResponseAvgSalePriceByPlatform]):
             revenue_by_day ([GetAnalyticDashboardResponseRevenueByDay]):
@@ -301,6 +322,7 @@ class GetAnalyticDashboardResponse(ModelNormal):
             top5_items_by_revenue ([GetAnalyticDashboardResponseTop5ItemsByRevenue]):
             recent_sales ([GetAnalyticDashboardResponseRecentSales]):
             available_labels ([str]):
+            period (GetAnalyticDashboardResponsePeriod):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -333,8 +355,9 @@ class GetAnalyticDashboardResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            sell_through_rate (float, none_type): [optional]  # noqa: E501
+            sell_through_rate (float, none_type): 0–100 (legacy unit). The full cohort is `sellThroughCohort`.. [optional]  # noqa: E501
             avg_days_to_sell (float, none_type): [optional]  # noqa: E501
+            median_days_to_sell (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -363,6 +386,7 @@ class GetAnalyticDashboardResponse(ModelNormal):
         self.revenue = revenue
         self.profit = profit
         self.sold_items_count = sold_items_count
+        self.pending_details_count = pending_details_count
         self.cancelled_count = cancelled_count
         self.cancel_rate = cancel_rate
         self.refunded_amount = refunded_amount
@@ -370,6 +394,7 @@ class GetAnalyticDashboardResponse(ModelNormal):
         self.listed_items_count = listed_items_count
         self.avg_sale_price = avg_sale_price
         self.sell_through = sell_through
+        self.sell_through_cohort = sell_through_cohort
         self.sales_by_platform = sales_by_platform
         self.avg_sale_price_by_platform = avg_sale_price_by_platform
         self.revenue_by_day = revenue_by_day
@@ -379,6 +404,7 @@ class GetAnalyticDashboardResponse(ModelNormal):
         self.top5_items_by_revenue = top5_items_by_revenue
         self.recent_sales = recent_sales
         self.available_labels = available_labels
+        self.period = period
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

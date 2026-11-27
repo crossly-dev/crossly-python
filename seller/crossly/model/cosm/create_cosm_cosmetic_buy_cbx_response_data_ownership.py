@@ -77,15 +77,15 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'acquired_at': (datetime,),  # noqa: E501
-            'merchant_id': (str,),  # noqa: E501
             'cosmetic_id': (str,),  # noqa: E501
+            'merchant_id': (str,),  # noqa: E501
             'subject_id': (str,),  # noqa: E501
             'acquired_via': (str,),  # noqa: E501
             'bound': (bool,),  # noqa: E501
             'retired_at': (datetime, none_type,),  # noqa: E501
+            'paid_cents': (float, none_type,),  # noqa: E501
             'ledger_id': (str, none_type,),  # noqa: E501
             'edition_number': (float, none_type,),  # noqa: E501
-            'paid_cents': (float, none_type,),  # noqa: E501
             'payment_ref': (str, none_type,),  # noqa: E501
             'retired_reason': (str, none_type,),  # noqa: E501
             'request_ref': (str, none_type,),  # noqa: E501
@@ -99,15 +99,15 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'acquired_at': 'acquiredAt',  # noqa: E501
-        'merchant_id': 'merchantId',  # noqa: E501
         'cosmetic_id': 'cosmeticId',  # noqa: E501
+        'merchant_id': 'merchantId',  # noqa: E501
         'subject_id': 'subjectId',  # noqa: E501
         'acquired_via': 'acquiredVia',  # noqa: E501
         'bound': 'bound',  # noqa: E501
         'retired_at': 'retiredAt',  # noqa: E501
+        'paid_cents': 'paidCents',  # noqa: E501
         'ledger_id': 'ledgerId',  # noqa: E501
         'edition_number': 'editionNumber',  # noqa: E501
-        'paid_cents': 'paidCents',  # noqa: E501
         'payment_ref': 'paymentRef',  # noqa: E501
         'retired_reason': 'retiredReason',  # noqa: E501
         'request_ref': 'requestRef',  # noqa: E501
@@ -120,14 +120,14 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, acquired_at, merchant_id, cosmetic_id, subject_id, acquired_via, bound, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, acquired_at, cosmetic_id, merchant_id, subject_id, acquired_via, bound, *args, **kwargs):  # noqa: E501
         """CreateCosmCosmeticBuyCbxResponseDataOwnership - a model defined in OpenAPI
 
         Args:
             id (str):
             acquired_at (datetime):
-            merchant_id (str):
             cosmetic_id (str):
+            merchant_id (str):
             subject_id (str):
             acquired_via (str):
             bound (bool):
@@ -164,9 +164,9 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             retired_at (datetime, none_type): [optional]  # noqa: E501
+            paid_cents (float, none_type): [optional]  # noqa: E501
             ledger_id (str, none_type): [optional]  # noqa: E501
             edition_number (float, none_type): [optional]  # noqa: E501
-            paid_cents (float, none_type): [optional]  # noqa: E501
             payment_ref (str, none_type): [optional]  # noqa: E501
             retired_reason (str, none_type): [optional]  # noqa: E501
             request_ref (str, none_type): [optional]  # noqa: E501
@@ -199,8 +199,8 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership(ModelNormal):
 
         self.id = id
         self.acquired_at = acquired_at
-        self.merchant_id = merchant_id
         self.cosmetic_id = cosmetic_id
+        self.merchant_id = merchant_id
         self.subject_id = subject_id
         self.acquired_via = acquired_via
         self.bound = bound
@@ -224,14 +224,14 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, acquired_at, merchant_id, cosmetic_id, subject_id, acquired_via, bound, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, acquired_at, cosmetic_id, merchant_id, subject_id, acquired_via, bound, *args, **kwargs):  # noqa: E501
         """CreateCosmCosmeticBuyCbxResponseDataOwnership - a model defined in OpenAPI
 
         Args:
             id (str):
             acquired_at (datetime):
-            merchant_id (str):
             cosmetic_id (str):
+            merchant_id (str):
             subject_id (str):
             acquired_via (str):
             bound (bool):
@@ -268,9 +268,9 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             retired_at (datetime, none_type): [optional]  # noqa: E501
+            paid_cents (float, none_type): [optional]  # noqa: E501
             ledger_id (str, none_type): [optional]  # noqa: E501
             edition_number (float, none_type): [optional]  # noqa: E501
-            paid_cents (float, none_type): [optional]  # noqa: E501
             payment_ref (str, none_type): [optional]  # noqa: E501
             retired_reason (str, none_type): [optional]  # noqa: E501
             request_ref (str, none_type): [optional]  # noqa: E501
@@ -301,8 +301,8 @@ class CreateCosmCosmeticBuyCbxResponseDataOwnership(ModelNormal):
 
         self.id = id
         self.acquired_at = acquired_at
-        self.merchant_id = merchant_id
         self.cosmetic_id = cosmetic_id
+        self.merchant_id = merchant_id
         self.subject_id = subject_id
         self.acquired_via = acquired_via
         self.bound = bound

@@ -85,21 +85,21 @@ class GetBuyerBreakResponseData(ModelNormal):
         lazy_import()
         return {
             'id': (str,),  # noqa: E501
-            'created_at': (str,),  # noqa: E501
-            'status': (str,),  # noqa: E501
             'title': (str,),  # noqa: E501
-            'seller': (GetBuyerBreakResponseDataSeller,),  # noqa: E501
-            'price_cents': (float,),  # noqa: E501
             'format': (str,),  # noqa: E501
-            'seed_commit': (str,),  # noqa: E501
+            'status': (str,),  # noqa: E501
+            'price_cents': (float,),  # noqa: E501
+            'seller': (GetBuyerBreakResponseDataSeller,),  # noqa: E501
             'spots': ([GetBuyerBreakResponseDataSpots],),  # noqa: E501
             'spots_left': (float,),  # noqa: E501
-            'assigned_at': (str, none_type,),  # noqa: E501
+            'seed_commit': (str,),  # noqa: E501
+            'created_at': (str,),  # noqa: E501
+            'product': (str, none_type,),  # noqa: E501
             'slug': (str, none_type,),  # noqa: E501
             'stream_id': (str, none_type,),  # noqa: E501
             'seed': (str, none_type,),  # noqa: E501
-            'product': (str, none_type,),  # noqa: E501
             'draw': ([GetBuyerBreakResponseDataDraw], none_type,),  # noqa: E501
+            'assigned_at': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -109,21 +109,21 @@ class GetBuyerBreakResponseData(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
-        'status': 'status',  # noqa: E501
         'title': 'title',  # noqa: E501
-        'seller': 'seller',  # noqa: E501
-        'price_cents': 'priceCents',  # noqa: E501
         'format': 'format',  # noqa: E501
-        'seed_commit': 'seedCommit',  # noqa: E501
+        'status': 'status',  # noqa: E501
+        'price_cents': 'priceCents',  # noqa: E501
+        'seller': 'seller',  # noqa: E501
         'spots': 'spots',  # noqa: E501
         'spots_left': 'spotsLeft',  # noqa: E501
-        'assigned_at': 'assignedAt',  # noqa: E501
+        'seed_commit': 'seedCommit',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
+        'product': 'product',  # noqa: E501
         'slug': 'slug',  # noqa: E501
         'stream_id': 'streamId',  # noqa: E501
         'seed': 'seed',  # noqa: E501
-        'product': 'product',  # noqa: E501
         'draw': 'draw',  # noqa: E501
+        'assigned_at': 'assignedAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -133,20 +133,20 @@ class GetBuyerBreakResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, status, title, seller, price_cents, format, seed_commit, spots, spots_left, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, title, format, status, price_cents, seller, spots, spots_left, seed_commit, created_at, *args, **kwargs):  # noqa: E501
         """GetBuyerBreakResponseData - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
-            status (str):
             title (str):
-            seller (GetBuyerBreakResponseDataSeller):
-            price_cents (float):
             format (str):
-            seed_commit (str):
+            status (str):
+            price_cents (float):
+            seller (GetBuyerBreakResponseDataSeller):
             spots ([GetBuyerBreakResponseDataSpots]):
             spots_left (float):
+            seed_commit (str):
+            created_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -179,12 +179,12 @@ class GetBuyerBreakResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            assigned_at (str, none_type): [optional]  # noqa: E501
+            product (str, none_type): [optional]  # noqa: E501
             slug (str, none_type): [optional]  # noqa: E501
             stream_id (str, none_type): [optional]  # noqa: E501
             seed (str, none_type): [optional]  # noqa: E501
-            product (str, none_type): [optional]  # noqa: E501
             draw ([GetBuyerBreakResponseDataDraw], none_type): [optional]  # noqa: E501
+            assigned_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -213,15 +213,15 @@ class GetBuyerBreakResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
-        self.status = status
         self.title = title
-        self.seller = seller
-        self.price_cents = price_cents
         self.format = format
-        self.seed_commit = seed_commit
+        self.status = status
+        self.price_cents = price_cents
+        self.seller = seller
         self.spots = spots
         self.spots_left = spots_left
+        self.seed_commit = seed_commit
+        self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -242,20 +242,20 @@ class GetBuyerBreakResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, status, title, seller, price_cents, format, seed_commit, spots, spots_left, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, title, format, status, price_cents, seller, spots, spots_left, seed_commit, created_at, *args, **kwargs):  # noqa: E501
         """GetBuyerBreakResponseData - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
-            status (str):
             title (str):
-            seller (GetBuyerBreakResponseDataSeller):
-            price_cents (float):
             format (str):
-            seed_commit (str):
+            status (str):
+            price_cents (float):
+            seller (GetBuyerBreakResponseDataSeller):
             spots ([GetBuyerBreakResponseDataSpots]):
             spots_left (float):
+            seed_commit (str):
+            created_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -288,12 +288,12 @@ class GetBuyerBreakResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            assigned_at (str, none_type): [optional]  # noqa: E501
+            product (str, none_type): [optional]  # noqa: E501
             slug (str, none_type): [optional]  # noqa: E501
             stream_id (str, none_type): [optional]  # noqa: E501
             seed (str, none_type): [optional]  # noqa: E501
-            product (str, none_type): [optional]  # noqa: E501
             draw ([GetBuyerBreakResponseDataDraw], none_type): [optional]  # noqa: E501
+            assigned_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -320,15 +320,15 @@ class GetBuyerBreakResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
-        self.status = status
         self.title = title
-        self.seller = seller
-        self.price_cents = price_cents
         self.format = format
-        self.seed_commit = seed_commit
+        self.status = status
+        self.price_cents = price_cents
+        self.seller = seller
         self.spots = spots
         self.spots_left = spots_left
+        self.seed_commit = seed_commit
+        self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

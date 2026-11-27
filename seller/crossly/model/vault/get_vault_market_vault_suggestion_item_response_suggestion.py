@@ -30,10 +30,12 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from crossly.model.vault.get_vault_market_vault_suggestion_item_response_suggestion_fractionalize import GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize
     from crossly.model.vault.get_vault_market_vault_suggestion_item_response_suggestion_instant_exit import GetVaultMarketVaultSuggestionItemResponseSuggestionInstantExit
     from crossly.model.vault.get_vault_market_vault_suggestion_item_response_suggestion_market import GetVaultMarketVaultSuggestionItemResponseSuggestionMarket
     from crossly.model.vault.get_vault_market_vault_suggestion_item_response_suggestion_parts import GetVaultMarketVaultSuggestionItemResponseSuggestionParts
     from crossly.model.vault.get_vault_market_vault_suggestion_item_response_suggestion_vault_fee import GetVaultMarketVaultSuggestionItemResponseSuggestionVaultFee
+    globals()['GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize'] = GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize
     globals()['GetVaultMarketVaultSuggestionItemResponseSuggestionInstantExit'] = GetVaultMarketVaultSuggestionItemResponseSuggestionInstantExit
     globals()['GetVaultMarketVaultSuggestionItemResponseSuggestionMarket'] = GetVaultMarketVaultSuggestionItemResponseSuggestionMarket
     globals()['GetVaultMarketVaultSuggestionItemResponseSuggestionParts'] = GetVaultMarketVaultSuggestionItemResponseSuggestionParts
@@ -116,6 +118,7 @@ class GetVaultMarketVaultSuggestionItemResponseSuggestion(ModelNormal):
             'exit_vs_list_bps': (float, none_type,),  # noqa: E501
             'exit_basis': (str, none_type,),  # noqa: E501
             'days_listed': (float, none_type,),  # noqa: E501
+            'fractionalize': (GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize,),  # noqa: E501
         }
 
     @cached_property
@@ -144,6 +147,7 @@ class GetVaultMarketVaultSuggestionItemResponseSuggestion(ModelNormal):
         'exit_vs_list_bps': 'exitVsListBps',  # noqa: E501
         'exit_basis': 'exitBasis',  # noqa: E501
         'days_listed': 'daysListed',  # noqa: E501
+        'fractionalize': 'fractionalize',  # noqa: E501
     }
 
     read_only_vars = {
@@ -209,6 +213,7 @@ class GetVaultMarketVaultSuggestionItemResponseSuggestion(ModelNormal):
             exit_vs_list_bps (float, none_type): [optional]  # noqa: E501
             exit_basis (str, none_type): [optional]  # noqa: E501
             days_listed (float, none_type): [optional]  # noqa: E501
+            fractionalize (GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -325,6 +330,7 @@ class GetVaultMarketVaultSuggestionItemResponseSuggestion(ModelNormal):
             exit_vs_list_bps (float, none_type): [optional]  # noqa: E501
             exit_basis (str, none_type): [optional]  # noqa: E501
             days_listed (float, none_type): [optional]  # noqa: E501
+            fractionalize (GetVaultMarketVaultSuggestionItemResponseSuggestionFractionalize): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

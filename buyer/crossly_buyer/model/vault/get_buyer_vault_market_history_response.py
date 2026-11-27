@@ -32,8 +32,10 @@ from crossly_buyer.exceptions import ApiAttributeError
 def lazy_import():
     from crossly_buyer.model.vault.get_buyer_vault_market_history_response_now import GetBuyerVaultMarketHistoryResponseNow
     from crossly_buyer.model.vault.get_buyer_vault_market_history_response_series import GetBuyerVaultMarketHistoryResponseSeries
+    from crossly_buyer.model.vault.get_buyer_vault_market_history_response_today import GetBuyerVaultMarketHistoryResponseToday
     globals()['GetBuyerVaultMarketHistoryResponseNow'] = GetBuyerVaultMarketHistoryResponseNow
     globals()['GetBuyerVaultMarketHistoryResponseSeries'] = GetBuyerVaultMarketHistoryResponseSeries
+    globals()['GetBuyerVaultMarketHistoryResponseToday'] = GetBuyerVaultMarketHistoryResponseToday
 
 
 class GetBuyerVaultMarketHistoryResponse(ModelNormal):
@@ -84,6 +86,7 @@ class GetBuyerVaultMarketHistoryResponse(ModelNormal):
         return {
             'series': ([GetBuyerVaultMarketHistoryResponseSeries],),  # noqa: E501
             'now': (GetBuyerVaultMarketHistoryResponseNow,),  # noqa: E501
+            'today': (GetBuyerVaultMarketHistoryResponseToday,),  # noqa: E501
         }
 
     @cached_property
@@ -94,6 +97,7 @@ class GetBuyerVaultMarketHistoryResponse(ModelNormal):
     attribute_map = {
         'series': 'series',  # noqa: E501
         'now': 'now',  # noqa: E501
+        'today': 'today',  # noqa: E501
     }
 
     read_only_vars = {
@@ -103,12 +107,13 @@ class GetBuyerVaultMarketHistoryResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, series, now, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, series, now, today, *args, **kwargs):  # noqa: E501
         """GetBuyerVaultMarketHistoryResponse - a model defined in OpenAPI
 
         Args:
             series ([GetBuyerVaultMarketHistoryResponseSeries]):
             now (GetBuyerVaultMarketHistoryResponseNow):
+            today (GetBuyerVaultMarketHistoryResponseToday):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -170,6 +175,7 @@ class GetBuyerVaultMarketHistoryResponse(ModelNormal):
 
         self.series = series
         self.now = now
+        self.today = today
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -190,12 +196,13 @@ class GetBuyerVaultMarketHistoryResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, series, now, *args, **kwargs):  # noqa: E501
+    def __init__(self, series, now, today, *args, **kwargs):  # noqa: E501
         """GetBuyerVaultMarketHistoryResponse - a model defined in OpenAPI
 
         Args:
             series ([GetBuyerVaultMarketHistoryResponseSeries]):
             now (GetBuyerVaultMarketHistoryResponseNow):
+            today (GetBuyerVaultMarketHistoryResponseToday):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -255,6 +262,7 @@ class GetBuyerVaultMarketHistoryResponse(ModelNormal):
 
         self.series = series
         self.now = now
+        self.today = today
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

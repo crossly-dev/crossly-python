@@ -80,6 +80,7 @@ class GetAnalyticBookkeepingResponseMonthlyPL(ModelNormal):
             'cogs': (float,),  # noqa: E501
             'platform_fees': (float,),  # noqa: E501
             'shipping_costs': (float,),  # noqa: E501
+            'other_expenses': (float,),  # noqa: E501
             'net_profit': (float,),  # noqa: E501
         }
 
@@ -94,6 +95,7 @@ class GetAnalyticBookkeepingResponseMonthlyPL(ModelNormal):
         'cogs': 'cogs',  # noqa: E501
         'platform_fees': 'platformFees',  # noqa: E501
         'shipping_costs': 'shippingCosts',  # noqa: E501
+        'other_expenses': 'otherExpenses',  # noqa: E501
         'net_profit': 'netProfit',  # noqa: E501
     }
 
@@ -104,7 +106,7 @@ class GetAnalyticBookkeepingResponseMonthlyPL(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, month, revenue, cogs, platform_fees, shipping_costs, net_profit, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, month, revenue, cogs, platform_fees, shipping_costs, other_expenses, net_profit, *args, **kwargs):  # noqa: E501
         """GetAnalyticBookkeepingResponseMonthlyPL - a model defined in OpenAPI
 
         Args:
@@ -113,6 +115,7 @@ class GetAnalyticBookkeepingResponseMonthlyPL(ModelNormal):
             cogs (float):
             platform_fees (float):
             shipping_costs (float):
+            other_expenses (float): Mileage and manual expenses.
             net_profit (float):
 
         Keyword Args:
@@ -178,6 +181,7 @@ class GetAnalyticBookkeepingResponseMonthlyPL(ModelNormal):
         self.cogs = cogs
         self.platform_fees = platform_fees
         self.shipping_costs = shipping_costs
+        self.other_expenses = other_expenses
         self.net_profit = net_profit
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -199,7 +203,7 @@ class GetAnalyticBookkeepingResponseMonthlyPL(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, month, revenue, cogs, platform_fees, shipping_costs, net_profit, *args, **kwargs):  # noqa: E501
+    def __init__(self, month, revenue, cogs, platform_fees, shipping_costs, other_expenses, net_profit, *args, **kwargs):  # noqa: E501
         """GetAnalyticBookkeepingResponseMonthlyPL - a model defined in OpenAPI
 
         Args:
@@ -208,6 +212,7 @@ class GetAnalyticBookkeepingResponseMonthlyPL(ModelNormal):
             cogs (float):
             platform_fees (float):
             shipping_costs (float):
+            other_expenses (float): Mileage and manual expenses.
             net_profit (float):
 
         Keyword Args:
@@ -271,6 +276,7 @@ class GetAnalyticBookkeepingResponseMonthlyPL(ModelNormal):
         self.cogs = cogs
         self.platform_fees = platform_fees
         self.shipping_costs = shipping_costs
+        self.other_expenses = other_expenses
         self.net_profit = net_profit
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

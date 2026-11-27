@@ -61,12 +61,12 @@ class ListVaultMarketSupplyDepositsItem(ModelNormal):
     allowed_values = {
         ('status',): {
             'STORED': "stored",
-            'LISTED': "listed",
-            'INBOUND': "inbound",
             'CANCELLED': "cancelled",
+            'LISTED': "listed",
+            'SHIPPED': "shipped",
+            'INBOUND': "inbound",
             'SOLD_ON_BOOK': "sold_on_book",
             'CHANNEL_SOLD': "channel_sold",
-            'SHIPPED': "shipped",
         },
     }
 
@@ -97,6 +97,7 @@ class ListVaultMarketSupplyDepositsItem(ModelNormal):
             'lend_enabled': (bool,),  # noqa: E501
             'lend_when_idle': (bool,),  # noqa: E501
             'created_at': (str,),  # noqa: E501
+            'storefront_id': (str, none_type,),  # noqa: E501
             'inventory_item_id': (str, none_type,),  # noqa: E501
             'batch_id': (str, none_type,),  # noqa: E501
             'partner_id': (str, none_type,),  # noqa: E501
@@ -126,6 +127,7 @@ class ListVaultMarketSupplyDepositsItem(ModelNormal):
         'lend_enabled': 'lendEnabled',  # noqa: E501
         'lend_when_idle': 'lendWhenIdle',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
+        'storefront_id': 'storefrontId',  # noqa: E501
         'inventory_item_id': 'inventoryItemId',  # noqa: E501
         'batch_id': 'batchId',  # noqa: E501
         'partner_id': 'partnerId',  # noqa: E501
@@ -192,6 +194,7 @@ class ListVaultMarketSupplyDepositsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            storefront_id (str, none_type): [optional]  # noqa: E501
             inventory_item_id (str, none_type): [optional]  # noqa: E501
             batch_id (str, none_type): [optional]  # noqa: E501
             partner_id (str, none_type): [optional]  # noqa: E501
@@ -304,6 +307,7 @@ class ListVaultMarketSupplyDepositsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            storefront_id (str, none_type): [optional]  # noqa: E501
             inventory_item_id (str, none_type): [optional]  # noqa: E501
             batch_id (str, none_type): [optional]  # noqa: E501
             partner_id (str, none_type): [optional]  # noqa: E501

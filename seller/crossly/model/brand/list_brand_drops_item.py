@@ -78,27 +78,47 @@ class ListBrandDropsItem(ModelNormal):
             'id': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
+            'updated_at': (datetime,),  # noqa: E501
             'status': (str,),  # noqa: E501
-            'seller_user_id': (str,),  # noqa: E501
             'published': (bool,),  # noqa: E501
+            'format': (str,),  # noqa: E501
+            'config': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'seller_user_id': (str,),  # noqa: E501
             'drop_at': (datetime,),  # noqa: E501
             'buyer_api_enabled': (bool,),  # noqa: E501
+            'placements': ([str],),  # noqa: E501
+            'audience': (str,),  # noqa: E501
+            'drop_kind': (str,),  # noqa: E501
             'listing_count': (float,),  # noqa: E501
             'description': (str, none_type,),  # noqa: E501
+            'released_at': (datetime, none_type,),  # noqa: E501
+            'storefront_id': (str, none_type,),  # noqa: E501
             'ends_at': (datetime, none_type,),  # noqa: E501
+            'event_id': (str, none_type,),  # noqa: E501
             'cover_image_url': (str, none_type,),  # noqa: E501
-            'published_at': (datetime, none_type,),  # noqa: E501
-            'reviewed_at': (datetime, none_type,),  # noqa: E501
-            'review_note': (str, none_type,),  # noqa: E501
-            'supplier_name': (str, none_type,),  # noqa: E501
-            'partner_id': (str, none_type,),  # noqa: E501
             'platform_listing_ids': ([str], none_type,),  # noqa: E501
+            'partner_id': (str, none_type,),  # noqa: E501
             'wholesale_unit_cost_cents': (float, none_type,),  # noqa: E501
             'units_purchased': (float, none_type,),  # noqa: E501
+            'supplier_name': (str, none_type,),  # noqa: E501
             'po_reference': (str, none_type,),  # noqa: E501
             'retail_unit_price_cents': (float, none_type,),  # noqa: E501
             'per_customer_limit': (float, none_type,),  # noqa: E501
             'preview_from': (datetime, none_type,),  # noqa: E501
+            'published_at': (datetime, none_type,),  # noqa: E501
+            'review_note': (str, none_type,),  # noqa: E501
+            'reviewed_at': (datetime, none_type,),  # noqa: E501
+            'announce_at': (datetime, none_type,),  # noqa: E501
+            'countdown_at': (datetime, none_type,),  # noqa: E501
+            'paused_at': (datetime, none_type,),  # noqa: E501
+            'live_stream_id': (str, none_type,),  # noqa: E501
+            'spatial_drop_id': (str, none_type,),  # noqa: E501
+            'timezone': (str, none_type,),  # noqa: E501
+            'featured_status': (str, none_type,),  # noqa: E501
+            'audience_catalog_id': (str, none_type,),  # noqa: E501
+            'deposit_bps': (float, none_type,),  # noqa: E501
+            'ship_by': (str, none_type,),  # noqa: E501
+            'balance_net_days': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -110,27 +130,47 @@ class ListBrandDropsItem(ModelNormal):
         'id': 'id',  # noqa: E501
         'name': 'name',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
+        'updated_at': 'updatedAt',  # noqa: E501
         'status': 'status',  # noqa: E501
-        'seller_user_id': 'sellerUserId',  # noqa: E501
         'published': 'published',  # noqa: E501
+        'format': 'format',  # noqa: E501
+        'config': 'config',  # noqa: E501
+        'seller_user_id': 'sellerUserId',  # noqa: E501
         'drop_at': 'dropAt',  # noqa: E501
         'buyer_api_enabled': 'buyerApiEnabled',  # noqa: E501
+        'placements': 'placements',  # noqa: E501
+        'audience': 'audience',  # noqa: E501
+        'drop_kind': 'dropKind',  # noqa: E501
         'listing_count': 'listingCount',  # noqa: E501
         'description': 'description',  # noqa: E501
+        'released_at': 'releasedAt',  # noqa: E501
+        'storefront_id': 'storefrontId',  # noqa: E501
         'ends_at': 'endsAt',  # noqa: E501
+        'event_id': 'eventId',  # noqa: E501
         'cover_image_url': 'coverImageUrl',  # noqa: E501
-        'published_at': 'publishedAt',  # noqa: E501
-        'reviewed_at': 'reviewedAt',  # noqa: E501
-        'review_note': 'reviewNote',  # noqa: E501
-        'supplier_name': 'supplierName',  # noqa: E501
-        'partner_id': 'partnerId',  # noqa: E501
         'platform_listing_ids': 'platformListingIds',  # noqa: E501
+        'partner_id': 'partnerId',  # noqa: E501
         'wholesale_unit_cost_cents': 'wholesaleUnitCostCents',  # noqa: E501
         'units_purchased': 'unitsPurchased',  # noqa: E501
+        'supplier_name': 'supplierName',  # noqa: E501
         'po_reference': 'poReference',  # noqa: E501
         'retail_unit_price_cents': 'retailUnitPriceCents',  # noqa: E501
         'per_customer_limit': 'perCustomerLimit',  # noqa: E501
         'preview_from': 'previewFrom',  # noqa: E501
+        'published_at': 'publishedAt',  # noqa: E501
+        'review_note': 'reviewNote',  # noqa: E501
+        'reviewed_at': 'reviewedAt',  # noqa: E501
+        'announce_at': 'announceAt',  # noqa: E501
+        'countdown_at': 'countdownAt',  # noqa: E501
+        'paused_at': 'pausedAt',  # noqa: E501
+        'live_stream_id': 'liveStreamId',  # noqa: E501
+        'spatial_drop_id': 'spatialDropId',  # noqa: E501
+        'timezone': 'timezone',  # noqa: E501
+        'featured_status': 'featuredStatus',  # noqa: E501
+        'audience_catalog_id': 'audienceCatalogId',  # noqa: E501
+        'deposit_bps': 'depositBps',  # noqa: E501
+        'ship_by': 'shipBy',  # noqa: E501
+        'balance_net_days': 'balanceNetDays',  # noqa: E501
     }
 
     read_only_vars = {
@@ -140,18 +180,24 @@ class ListBrandDropsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, created_at, status, seller_user_id, published, drop_at, buyer_api_enabled, listing_count, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, name, created_at, updated_at, status, published, format, config, seller_user_id, drop_at, buyer_api_enabled, placements, audience, drop_kind, listing_count, *args, **kwargs):  # noqa: E501
         """ListBrandDropsItem - a model defined in OpenAPI
 
         Args:
             id (str):
             name (str):
             created_at (datetime):
+            updated_at (datetime):
             status (str):
-            seller_user_id (str):
             published (bool):
+            format (str):
+            config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
+            seller_user_id (str):
             drop_at (datetime):
             buyer_api_enabled (bool):
+            placements ([str]):
+            audience (str):
+            drop_kind (str):
             listing_count (float):
 
         Keyword Args:
@@ -186,20 +232,34 @@ class ListBrandDropsItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             description (str, none_type): [optional]  # noqa: E501
+            released_at (datetime, none_type): [optional]  # noqa: E501
+            storefront_id (str, none_type): [optional]  # noqa: E501
             ends_at (datetime, none_type): [optional]  # noqa: E501
+            event_id (str, none_type): [optional]  # noqa: E501
             cover_image_url (str, none_type): [optional]  # noqa: E501
-            published_at (datetime, none_type): [optional]  # noqa: E501
-            reviewed_at (datetime, none_type): [optional]  # noqa: E501
-            review_note (str, none_type): [optional]  # noqa: E501
-            supplier_name (str, none_type): [optional]  # noqa: E501
-            partner_id (str, none_type): [optional]  # noqa: E501
             platform_listing_ids ([str], none_type): [optional]  # noqa: E501
+            partner_id (str, none_type): [optional]  # noqa: E501
             wholesale_unit_cost_cents (float, none_type): [optional]  # noqa: E501
             units_purchased (float, none_type): [optional]  # noqa: E501
+            supplier_name (str, none_type): [optional]  # noqa: E501
             po_reference (str, none_type): [optional]  # noqa: E501
             retail_unit_price_cents (float, none_type): [optional]  # noqa: E501
             per_customer_limit (float, none_type): [optional]  # noqa: E501
             preview_from (datetime, none_type): [optional]  # noqa: E501
+            published_at (datetime, none_type): [optional]  # noqa: E501
+            review_note (str, none_type): [optional]  # noqa: E501
+            reviewed_at (datetime, none_type): [optional]  # noqa: E501
+            announce_at (datetime, none_type): [optional]  # noqa: E501
+            countdown_at (datetime, none_type): [optional]  # noqa: E501
+            paused_at (datetime, none_type): [optional]  # noqa: E501
+            live_stream_id (str, none_type): [optional]  # noqa: E501
+            spatial_drop_id (str, none_type): [optional]  # noqa: E501
+            timezone (str, none_type): [optional]  # noqa: E501
+            featured_status (str, none_type): [optional]  # noqa: E501
+            audience_catalog_id (str, none_type): [optional]  # noqa: E501
+            deposit_bps (float, none_type): [optional]  # noqa: E501
+            ship_by (str, none_type): [optional]  # noqa: E501
+            balance_net_days (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -230,11 +290,17 @@ class ListBrandDropsItem(ModelNormal):
         self.id = id
         self.name = name
         self.created_at = created_at
+        self.updated_at = updated_at
         self.status = status
-        self.seller_user_id = seller_user_id
         self.published = published
+        self.format = format
+        self.config = config
+        self.seller_user_id = seller_user_id
         self.drop_at = drop_at
         self.buyer_api_enabled = buyer_api_enabled
+        self.placements = placements
+        self.audience = audience
+        self.drop_kind = drop_kind
         self.listing_count = listing_count
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -256,18 +322,24 @@ class ListBrandDropsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, created_at, status, seller_user_id, published, drop_at, buyer_api_enabled, listing_count, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, name, created_at, updated_at, status, published, format, config, seller_user_id, drop_at, buyer_api_enabled, placements, audience, drop_kind, listing_count, *args, **kwargs):  # noqa: E501
         """ListBrandDropsItem - a model defined in OpenAPI
 
         Args:
             id (str):
             name (str):
             created_at (datetime):
+            updated_at (datetime):
             status (str):
-            seller_user_id (str):
             published (bool):
+            format (str):
+            config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
+            seller_user_id (str):
             drop_at (datetime):
             buyer_api_enabled (bool):
+            placements ([str]):
+            audience (str):
+            drop_kind (str):
             listing_count (float):
 
         Keyword Args:
@@ -302,20 +374,34 @@ class ListBrandDropsItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             description (str, none_type): [optional]  # noqa: E501
+            released_at (datetime, none_type): [optional]  # noqa: E501
+            storefront_id (str, none_type): [optional]  # noqa: E501
             ends_at (datetime, none_type): [optional]  # noqa: E501
+            event_id (str, none_type): [optional]  # noqa: E501
             cover_image_url (str, none_type): [optional]  # noqa: E501
-            published_at (datetime, none_type): [optional]  # noqa: E501
-            reviewed_at (datetime, none_type): [optional]  # noqa: E501
-            review_note (str, none_type): [optional]  # noqa: E501
-            supplier_name (str, none_type): [optional]  # noqa: E501
-            partner_id (str, none_type): [optional]  # noqa: E501
             platform_listing_ids ([str], none_type): [optional]  # noqa: E501
+            partner_id (str, none_type): [optional]  # noqa: E501
             wholesale_unit_cost_cents (float, none_type): [optional]  # noqa: E501
             units_purchased (float, none_type): [optional]  # noqa: E501
+            supplier_name (str, none_type): [optional]  # noqa: E501
             po_reference (str, none_type): [optional]  # noqa: E501
             retail_unit_price_cents (float, none_type): [optional]  # noqa: E501
             per_customer_limit (float, none_type): [optional]  # noqa: E501
             preview_from (datetime, none_type): [optional]  # noqa: E501
+            published_at (datetime, none_type): [optional]  # noqa: E501
+            review_note (str, none_type): [optional]  # noqa: E501
+            reviewed_at (datetime, none_type): [optional]  # noqa: E501
+            announce_at (datetime, none_type): [optional]  # noqa: E501
+            countdown_at (datetime, none_type): [optional]  # noqa: E501
+            paused_at (datetime, none_type): [optional]  # noqa: E501
+            live_stream_id (str, none_type): [optional]  # noqa: E501
+            spatial_drop_id (str, none_type): [optional]  # noqa: E501
+            timezone (str, none_type): [optional]  # noqa: E501
+            featured_status (str, none_type): [optional]  # noqa: E501
+            audience_catalog_id (str, none_type): [optional]  # noqa: E501
+            deposit_bps (float, none_type): [optional]  # noqa: E501
+            ship_by (str, none_type): [optional]  # noqa: E501
+            balance_net_days (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -344,11 +430,17 @@ class ListBrandDropsItem(ModelNormal):
         self.id = id
         self.name = name
         self.created_at = created_at
+        self.updated_at = updated_at
         self.status = status
-        self.seller_user_id = seller_user_id
         self.published = published
+        self.format = format
+        self.config = config
+        self.seller_user_id = seller_user_id
         self.drop_at = drop_at
         self.buyer_api_enabled = buyer_api_enabled
+        self.placements = placements
+        self.audience = audience
+        self.drop_kind = drop_kind
         self.listing_count = listing_count
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

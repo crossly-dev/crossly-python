@@ -84,9 +84,9 @@ class CreateWorldSpaceEventResponseData(ModelNormal):
             'space_id': (str,),  # noqa: E501
             'club_only': (bool,),  # noqa: E501
             'cancelled_at': (datetime, none_type,),  # noqa: E501
-            'reminded_at': (datetime, none_type,),  # noqa: E501
             'created_by': (str, none_type,),  # noqa: E501
             'about': (str, none_type,),  # noqa: E501
+            'reminded_at': (datetime, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -104,9 +104,9 @@ class CreateWorldSpaceEventResponseData(ModelNormal):
         'space_id': 'spaceId',  # noqa: E501
         'club_only': 'clubOnly',  # noqa: E501
         'cancelled_at': 'cancelledAt',  # noqa: E501
-        'reminded_at': 'remindedAt',  # noqa: E501
         'created_by': 'createdBy',  # noqa: E501
         'about': 'about',  # noqa: E501
+        'reminded_at': 'remindedAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -161,9 +161,9 @@ class CreateWorldSpaceEventResponseData(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             cancelled_at (datetime, none_type): [optional]  # noqa: E501
-            reminded_at (datetime, none_type): [optional]  # noqa: E501
             created_by (str, none_type): [optional]  # noqa: E501
             about (str, none_type): [optional]  # noqa: E501
+            reminded_at (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -264,9 +264,9 @@ class CreateWorldSpaceEventResponseData(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             cancelled_at (datetime, none_type): [optional]  # noqa: E501
-            reminded_at (datetime, none_type): [optional]  # noqa: E501
             created_by (str, none_type): [optional]  # noqa: E501
             about (str, none_type): [optional]  # noqa: E501
+            reminded_at (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

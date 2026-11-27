@@ -75,9 +75,9 @@ class ListBuyerTogetherItem(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'code': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'ends_at': (str,),  # noqa: E501
-            'code': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -86,9 +86,9 @@ class ListBuyerTogetherItem(ModelNormal):
 
 
     attribute_map = {
+        'code': 'code',  # noqa: E501
         'name': 'name',  # noqa: E501
         'ends_at': 'endsAt',  # noqa: E501
-        'code': 'code',  # noqa: E501
     }
 
     read_only_vars = {
@@ -98,13 +98,13 @@ class ListBuyerTogetherItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, name, ends_at, code, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, code, name, ends_at, *args, **kwargs):  # noqa: E501
         """ListBuyerTogetherItem - a model defined in OpenAPI
 
         Args:
+            code (str):
             name (str):
             ends_at (str):
-            code (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -164,9 +164,9 @@ class ListBuyerTogetherItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.code = code
         self.name = name
         self.ends_at = ends_at
-        self.code = code
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -187,13 +187,13 @@ class ListBuyerTogetherItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, name, ends_at, code, *args, **kwargs):  # noqa: E501
+    def __init__(self, code, name, ends_at, *args, **kwargs):  # noqa: E501
         """ListBuyerTogetherItem - a model defined in OpenAPI
 
         Args:
+            code (str):
             name (str):
             ends_at (str):
-            code (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -251,9 +251,9 @@ class ListBuyerTogetherItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.code = code
         self.name = name
         self.ends_at = ends_at
-        self.code = code
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

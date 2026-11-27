@@ -63,8 +63,8 @@ class ListVaultMarketSetGoalsItem(ModelNormal):
     allowed_values = {
         ('status',): {
             'ACTIVE': "active",
-            'COMPLETE': "complete",
             'ARCHIVED': "archived",
+            'COMPLETE': "complete",
         },
     }
 
@@ -90,16 +90,16 @@ class ListVaultMarketSetGoalsItem(ModelNormal):
             'id': (str,),  # noqa: E501
             'created_at': (str,),  # noqa: E501
             'status': (str,),  # noqa: E501
-            'title': (str,),  # noqa: E501
             'category': (str,),  # noqa: E501
-            'progress': (str,),  # noqa: E501
-            'brand_slug': (str,),  # noqa: E501
-            'model_slug': (str,),  # noqa: E501
+            'title': (str,),  # noqa: E501
             'target': (GetVaultMarketSetGoalResponseTarget,),  # noqa: E501
-            'held': (float,),  # noqa: E501
-            'complete': (bool,),  # noqa: E501
-            'href': (str,),  # noqa: E501
             'total': (float,),  # noqa: E501
+            'href': (str,),  # noqa: E501
+            'brand_slug': (str,),  # noqa: E501
+            'progress': (str,),  # noqa: E501
+            'held': (float,),  # noqa: E501
+            'model_slug': (str,),  # noqa: E501
+            'complete': (bool,),  # noqa: E501
             'set_found': (bool,),  # noqa: E501
             'card_set_href': (str,),  # noqa: E501
             'completed_at': (str, none_type,),  # noqa: E501
@@ -115,16 +115,16 @@ class ListVaultMarketSetGoalsItem(ModelNormal):
         'id': 'id',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'status': 'status',  # noqa: E501
-        'title': 'title',  # noqa: E501
         'category': 'category',  # noqa: E501
-        'progress': 'progress',  # noqa: E501
-        'brand_slug': 'brandSlug',  # noqa: E501
-        'model_slug': 'modelSlug',  # noqa: E501
+        'title': 'title',  # noqa: E501
         'target': 'target',  # noqa: E501
-        'held': 'held',  # noqa: E501
-        'complete': 'complete',  # noqa: E501
-        'href': 'href',  # noqa: E501
         'total': 'total',  # noqa: E501
+        'href': 'href',  # noqa: E501
+        'brand_slug': 'brandSlug',  # noqa: E501
+        'progress': 'progress',  # noqa: E501
+        'held': 'held',  # noqa: E501
+        'model_slug': 'modelSlug',  # noqa: E501
+        'complete': 'complete',  # noqa: E501
         'set_found': 'setFound',  # noqa: E501
         'card_set_href': 'cardSetHref',  # noqa: E501
         'completed_at': 'completedAt',  # noqa: E501
@@ -138,23 +138,23 @@ class ListVaultMarketSetGoalsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, status, title, category, progress, brand_slug, model_slug, target, held, complete, href, total, set_found, card_set_href, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, status, category, title, target, total, href, brand_slug, progress, held, model_slug, complete, set_found, card_set_href, *args, **kwargs):  # noqa: E501
         """ListVaultMarketSetGoalsItem - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (str):
             status (str):
-            title (str):
             category (str):
-            progress (str):
-            brand_slug (str):
-            model_slug (str):
+            title (str):
             target (GetVaultMarketSetGoalResponseTarget):
-            held (float):
-            complete (bool):
-            href (str):
             total (float):
+            href (str):
+            brand_slug (str):
+            progress (str):
+            held (float):
+            model_slug (str):
+            complete (bool):
             set_found (bool):
             card_set_href (str):
 
@@ -221,16 +221,16 @@ class ListVaultMarketSetGoalsItem(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.status = status
-        self.title = title
         self.category = category
-        self.progress = progress
-        self.brand_slug = brand_slug
-        self.model_slug = model_slug
+        self.title = title
         self.target = target
-        self.held = held
-        self.complete = complete
-        self.href = href
         self.total = total
+        self.href = href
+        self.brand_slug = brand_slug
+        self.progress = progress
+        self.held = held
+        self.model_slug = model_slug
+        self.complete = complete
         self.set_found = set_found
         self.card_set_href = card_set_href
         for var_name, var_value in kwargs.items():
@@ -253,23 +253,23 @@ class ListVaultMarketSetGoalsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, status, title, category, progress, brand_slug, model_slug, target, held, complete, href, total, set_found, card_set_href, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, status, category, title, target, total, href, brand_slug, progress, held, model_slug, complete, set_found, card_set_href, *args, **kwargs):  # noqa: E501
         """ListVaultMarketSetGoalsItem - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (str):
             status (str):
-            title (str):
             category (str):
-            progress (str):
-            brand_slug (str):
-            model_slug (str):
+            title (str):
             target (GetVaultMarketSetGoalResponseTarget):
-            held (float):
-            complete (bool):
-            href (str):
             total (float):
+            href (str):
+            brand_slug (str):
+            progress (str):
+            held (float):
+            model_slug (str):
+            complete (bool):
             set_found (bool):
             card_set_href (str):
 
@@ -334,16 +334,16 @@ class ListVaultMarketSetGoalsItem(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.status = status
-        self.title = title
         self.category = category
-        self.progress = progress
-        self.brand_slug = brand_slug
-        self.model_slug = model_slug
+        self.title = title
         self.target = target
-        self.held = held
-        self.complete = complete
-        self.href = href
         self.total = total
+        self.href = href
+        self.brand_slug = brand_slug
+        self.progress = progress
+        self.held = held
+        self.model_slug = model_slug
+        self.complete = complete
         self.set_found = set_found
         self.card_set_href = card_set_href
         for var_name, var_value in kwargs.items():

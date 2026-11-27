@@ -81,9 +81,9 @@ class CreateVaultMarketValuationStatementResponseTotalsByQuality(ModelNormal):
         lazy_import()
         return {
             '_none': (UnitsCents,),  # noqa: E501
+            'c': (UnitsCents,),  # noqa: E501
             'a': (UnitsCents,),  # noqa: E501
             'b': (UnitsCents,),  # noqa: E501
-            'c': (UnitsCents,),  # noqa: E501
         }
 
     @cached_property
@@ -93,9 +93,9 @@ class CreateVaultMarketValuationStatementResponseTotalsByQuality(ModelNormal):
 
     attribute_map = {
         '_none': 'none',  # noqa: E501
+        'c': 'C',  # noqa: E501
         'a': 'A',  # noqa: E501
         'b': 'B',  # noqa: E501
-        'c': 'C',  # noqa: E501
     }
 
     read_only_vars = {
@@ -105,14 +105,14 @@ class CreateVaultMarketValuationStatementResponseTotalsByQuality(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, _none, a, b, c, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, _none, c, a, b, *args, **kwargs):  # noqa: E501
         """CreateVaultMarketValuationStatementResponseTotalsByQuality - a model defined in OpenAPI
 
         Args:
             _none (UnitsCents):
+            c (UnitsCents):
             a (UnitsCents):
             b (UnitsCents):
-            c (UnitsCents):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -173,9 +173,9 @@ class CreateVaultMarketValuationStatementResponseTotalsByQuality(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self._none = _none
+        self.c = c
         self.a = a
         self.b = b
-        self.c = c
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -196,14 +196,14 @@ class CreateVaultMarketValuationStatementResponseTotalsByQuality(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, _none, a, b, c, *args, **kwargs):  # noqa: E501
+    def __init__(self, _none, c, a, b, *args, **kwargs):  # noqa: E501
         """CreateVaultMarketValuationStatementResponseTotalsByQuality - a model defined in OpenAPI
 
         Args:
             _none (UnitsCents):
+            c (UnitsCents):
             a (UnitsCents):
             b (UnitsCents):
-            c (UnitsCents):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -262,9 +262,9 @@ class CreateVaultMarketValuationStatementResponseTotalsByQuality(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self._none = _none
+        self.c = c
         self.a = a
         self.b = b
-        self.c = c
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

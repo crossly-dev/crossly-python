@@ -56,9 +56,9 @@ class ListWeb3ActivityItem(ModelNormal):
 
     allowed_values = {
         ('event',): {
-            'LISTING': "listing",
-            'OFFER': "offer",
             'SALE': "sale",
+            'OFFER': "offer",
+            'LISTING': "listing",
             'CANCEL': "cancel",
         },
     }

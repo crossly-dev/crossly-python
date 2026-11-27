@@ -56,8 +56,8 @@ class GetVaultMarketAdlResponseRecentEvents(ModelNormal):
 
     allowed_values = {
         ('bankrupt_side',): {
-            'LONG': "long",
             'SHORT': "short",
+            'LONG': "long",
         },
     }
 

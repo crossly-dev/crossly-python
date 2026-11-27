@@ -23,9 +23,14 @@ from crossly.model_utils import (  # noqa: F401
 )
 from crossly.model.common.create_mileage_response import CreateMileageResponse
 from crossly.model.common.error import Error
+from crossly.model.book.get_book_tax_profile_response import GetBookTaxProfileResponse
 from crossly.model.common.get_mileage_summary_response import GetMileageSummaryResponse
-from crossly.model.common.get_tax_schedule_c_response import GetTaxScheduleCResponse
+from crossly.model.order.get_order_sales_tax_response import GetOrderSalesTaxResponse
+from crossly.model.tax.get_tax_sales_tax_response import GetTaxSalesTaxResponse
+from crossly.model.tax.get_tax_schedule_c_response import GetTaxScheduleCResponse
 from crossly.model.common.list_mileage_response import ListMileageResponse
+from crossly.model.tax.list_tax_crossly_collects_response import ListTaxCrosslyCollectsResponse
+from crossly.model.tax.list_tax_sales_tax_not_collected_response import ListTaxSalesTaxNotCollectedResponse
 from crossly.model.common.ok_response import OkResponse
 
 
@@ -135,14 +140,14 @@ class TaxApi(object):
             },
             api_client=api_client
         )
-        self.get_mileage_summary_endpoint = _Endpoint(
+        self.get_book_tax_profile_endpoint = _Endpoint(
             settings={
-                'response_type': (GetMileageSummaryResponse,),
+                'response_type': (GetBookTaxProfileResponse,),
                 'auth': [
                     'PersonalAccessToken'
                 ],
-                'endpoint_path': '/v1/mileage/summary',
-                'operation_id': 'get_mileage_summary',
+                'endpoint_path': '/v1/books/tax-profile',
+                'operation_id': 'get_book_tax_profile',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -167,6 +172,160 @@ class TaxApi(object):
                 'attribute_map': {
                 },
                 'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_mileage_summary_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetMileageSummaryResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/mileage/summary',
+                'operation_id': 'get_mileage_summary',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'year',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'year':
+                        (int,),
+                },
+                'attribute_map': {
+                    'year': 'year',
+                },
+                'location_map': {
+                    'year': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_order_sales_tax_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetOrderSalesTaxResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/orders/{id}/sales-tax',
+                'operation_id': 'get_order_sales_tax',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_tax_sales_tax_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetTaxSalesTaxResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/tax/sales-tax',
+                'operation_id': 'get_tax_sales_tax',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    '_from',
+                    'to',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    '_from':
+                        (str,),
+                    'to':
+                        (str,),
+                },
+                'attribute_map': {
+                    '_from': 'from',
+                    'to': 'to',
+                },
+                'location_map': {
+                    '_from': 'query',
+                    'to': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -232,6 +391,204 @@ class TaxApi(object):
                 'endpoint_path': '/v1/mileage',
                 'operation_id': 'list_mileage',
                 'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'year',
+                    '_from',
+                    'to',
+                    'page',
+                    'limit',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'page',
+                    'limit',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('page',): {
+
+                        'inclusive_minimum': 1,
+                    },
+                    ('limit',): {
+
+                        'inclusive_minimum': 1,
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'year':
+                        (int,),
+                    '_from':
+                        (str,),
+                    'to':
+                        (str,),
+                    'page':
+                        (int,),
+                    'limit':
+                        (int,),
+                },
+                'attribute_map': {
+                    'year': 'year',
+                    '_from': 'from',
+                    'to': 'to',
+                    'page': 'page',
+                    'limit': 'limit',
+                },
+                'location_map': {
+                    'year': 'query',
+                    '_from': 'query',
+                    'to': 'query',
+                    'page': 'query',
+                    'limit': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.list_tax_crossly_collects_endpoint = _Endpoint(
+            settings={
+                'response_type': (ListTaxCrosslyCollectsResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/tax/crossly-collects',
+                'operation_id': 'list_tax_crossly_collects',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.list_tax_sales_tax_not_collected_endpoint = _Endpoint(
+            settings={
+                'response_type': (ListTaxSalesTaxNotCollectedResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/tax/sales-tax/not-collected',
+                'operation_id': 'list_tax_sales_tax_not_collected',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    '_from',
+                    'to',
+                    'page',
+                    'limit',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'page',
+                    'limit',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('page',): {
+
+                        'inclusive_minimum': 1,
+                    },
+                    ('limit',): {
+
+                        'inclusive_maximum': 500,
+                        'inclusive_minimum': 1,
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    '_from':
+                        (str,),
+                    'to':
+                        (str,),
+                    'page':
+                        (int,),
+                    'limit':
+                        (int,),
+                },
+                'attribute_map': {
+                    '_from': 'from',
+                    'to': 'to',
+                    'page': 'page',
+                    'limit': 'limit',
+                },
+                'location_map': {
+                    '_from': 'query',
+                    'to': 'query',
+                    'page': 'query',
+                    'limit': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.update_book_tax_profile_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetBookTaxProfileResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/books/tax-profile',
+                'operation_id': 'update_book_tax_profile',
+                'http_method': 'PUT',
                 'servers': None,
             },
             params_map={
@@ -468,11 +825,83 @@ class TaxApi(object):
             id
         return self.delete_mileage_endpoint.call_with_http_info(**kwargs)
 
+    def get_book_tax_profile(
+        self,
+        **kwargs
+    ):
+        """Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_book_tax_profile(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetBookTaxProfileResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.get_book_tax_profile_endpoint.call_with_http_info(**kwargs)
+
     def get_mileage_summary(
         self,
         **kwargs
     ):
-        """Annual mileage totals + IRS deduction.  # noqa: E501
+        """Annual mileage totals + IRS deduction. Each trip is priced at the IRS rate on its own date (2026 has two rates, listed in `rates`); `ratePerMile` is the January rate.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -482,6 +911,7 @@ class TaxApi(object):
 
 
         Keyword Args:
+            year (int): Calendar tax year. Default the current year.. [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -540,11 +970,162 @@ class TaxApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.get_mileage_summary_endpoint.call_with_http_info(**kwargs)
 
+    def get_order_sales_tax(
+        self,
+        id,
+        **kwargs
+    ):
+        """Who collected sales tax on one Crossly marketplace order, where, and the seller notice.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_order_sales_tax(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetOrderSalesTaxResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.get_order_sales_tax_endpoint.call_with_http_info(**kwargs)
+
+    def get_tax_sales_tax(
+        self,
+        **kwargs
+    ):
+        """Crossly marketplace sales Crossly did not collect sales tax on, by jurisdiction.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_tax_sales_tax(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _from (str): YYYY-MM-DD, inclusive. Default 1 January this year.. [optional]
+            to (str): YYYY-MM-DD, inclusive. Default now.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetTaxSalesTaxResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.get_tax_sales_tax_endpoint.call_with_http_info(**kwargs)
+
     def get_tax_schedule_c(
         self,
         **kwargs
     ):
-        """Schedule C JSON for a tax year.  # noqa: E501
+        """Schedule C JSON for a tax year (default the current year), from the same P&L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&L by period.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -616,7 +1197,7 @@ class TaxApi(object):
         self,
         **kwargs
     ):
-        """List mileage entries.  # noqa: E501
+        """List mileage entries, newest trip first, paged (limit up to 500). Narrow by year and/or an inclusive from/to date range.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -626,6 +1207,11 @@ class TaxApi(object):
 
 
         Keyword Args:
+            year (int): Only trips dated in this calendar year.. [optional]
+            _from (str): YYYY-MM-DD, inclusive. Only trips on or after this date. Combines with year.. [optional]
+            to (str): YYYY-MM-DD, inclusive. Only trips on or before this date; from <= to.. [optional]
+            page (int): 1-indexed page. Default 1.. [optional]
+            limit (int): Rows per page, default 100, clamped to 500.. [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -683,6 +1269,226 @@ class TaxApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.list_mileage_endpoint.call_with_http_info(**kwargs)
+
+    def list_tax_crossly_collects(
+        self,
+        **kwargs
+    ):
+        """Where Crossly collects sales tax today (its active Stripe Tax registrations).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_tax_crossly_collects(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ListTaxCrosslyCollectsResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.list_tax_crossly_collects_endpoint.call_with_http_info(**kwargs)
+
+    def list_tax_sales_tax_not_collected(
+        self,
+        **kwargs
+    ):
+        """The individual Crossly sales Crossly did not collect sales tax on, newest first.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_tax_sales_tax_not_collected(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _from (str): [optional]
+            to (str): [optional]
+            page (int): [optional]
+            limit (int): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ListTaxSalesTaxNotCollectedResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.list_tax_sales_tax_not_collected_endpoint.call_with_http_info(**kwargs)
+
+    def update_book_tax_profile(
+        self,
+        **kwargs
+    ):
+        """Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_book_tax_profile(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetBookTaxProfileResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.update_book_tax_profile_endpoint.call_with_http_info(**kwargs)
 
     def update_mileage(
         self,

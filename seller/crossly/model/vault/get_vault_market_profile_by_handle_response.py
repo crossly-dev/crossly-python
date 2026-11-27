@@ -31,9 +31,9 @@ from crossly.exceptions import ApiAttributeError
 
 def lazy_import():
     from crossly.model.vault.get_vault_market_profile_by_handle_response_one_of_holdings import GetVaultMarketProfileByHandleResponseOneOfHoldings
-    from crossly.model.vault.list_vault_market_feed_item import ListVaultMarketFeedItem
+    from crossly.model.vault.get_vault_market_profile_by_handle_response_one_of_recent_buys import GetVaultMarketProfileByHandleResponseOneOfRecentBuys
     globals()['GetVaultMarketProfileByHandleResponseOneOfHoldings'] = GetVaultMarketProfileByHandleResponseOneOfHoldings
-    globals()['ListVaultMarketFeedItem'] = ListVaultMarketFeedItem
+    globals()['GetVaultMarketProfileByHandleResponseOneOfRecentBuys'] = GetVaultMarketProfileByHandleResponseOneOfRecentBuys
 
 
 class GetVaultMarketProfileByHandleResponse(ModelNormal):
@@ -96,7 +96,7 @@ class GetVaultMarketProfileByHandleResponse(ModelNormal):
             'followers': (float,),  # noqa: E501
             'following': (bool,),  # noqa: E501
             'is_me': (bool,),  # noqa: E501
-            'recent_buys': ([ListVaultMarketFeedItem],),  # noqa: E501
+            'recent_buys': ([GetVaultMarketProfileByHandleResponseOneOfRecentBuys],),  # noqa: E501
             'display_name': (str,),  # noqa: E501
             'profile_url': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
             'public_since': (str, none_type,),  # noqa: E501
@@ -141,7 +141,7 @@ class GetVaultMarketProfileByHandleResponse(ModelNormal):
             followers (float):
             following (bool):
             is_me (bool):
-            recent_buys ([ListVaultMarketFeedItem]):
+            recent_buys ([GetVaultMarketProfileByHandleResponseOneOfRecentBuys]):
             display_name (str):
             profile_url (bool, date, datetime, dict, float, int, list, str, none_type):
 
@@ -246,7 +246,7 @@ class GetVaultMarketProfileByHandleResponse(ModelNormal):
             followers (float):
             following (bool):
             is_me (bool):
-            recent_buys ([ListVaultMarketFeedItem]):
+            recent_buys ([GetVaultMarketProfileByHandleResponseOneOfRecentBuys]):
             display_name (str):
             profile_url (bool, date, datetime, dict, float, int, list, str, none_type):
 

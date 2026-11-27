@@ -22,10 +22,13 @@ from crossly.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from crossly.model.policy.create_policy_return_received_response import CreatePolicyReturnReceivedResponse
+from crossly.model.returns.create_return_accept_response import CreateReturnAcceptResponse
+from crossly.model.returns.create_return_decline_request import CreateReturnDeclineRequest
 from crossly.model.common.error import Error
+from crossly.model.returns.get_return_response import GetReturnResponse
 from crossly.model.policy.list_policy_returns_response import ListPolicyReturnsResponse
-from crossly.model.common.list_returns_item import ListReturnsItem
-from crossly.model.common.list_returns_response import ListReturnsResponse
+from crossly.model.returns.list_returns_item import ListReturnsItem
+from crossly.model.returns.list_returns_response import ListReturnsResponse
 
 
 class ReturnsApi(object):
@@ -92,7 +95,7 @@ class ReturnsApi(object):
         )
         self.create_return_endpoint = _Endpoint(
             settings={
-                'response_type': (ListReturnsItem,),
+                'response_type': (GetReturnResponse,),
                 'auth': [
                     'PersonalAccessToken'
                 ],
@@ -134,9 +137,118 @@ class ReturnsApi(object):
             },
             api_client=api_client
         )
-        self.get_return_endpoint = _Endpoint(
+        self.create_return_accept_endpoint = _Endpoint(
+            settings={
+                'response_type': (CreateReturnAcceptResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/returns/{id}/accept',
+                'operation_id': 'create_return_accept',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.create_return_decline_endpoint = _Endpoint(
             settings={
                 'response_type': (ListReturnsItem,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/returns/{id}/decline',
+                'operation_id': 'create_return_decline',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'create_return_decline_request',
+                ],
+                'required': [
+                    'id',
+                    'create_return_decline_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'create_return_decline_request':
+                        (CreateReturnDeclineRequest,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'create_return_decline_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.get_return_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetReturnResponse,),
                 'auth': [
                     'PersonalAccessToken'
                 ],
@@ -275,7 +387,7 @@ class ReturnsApi(object):
         )
         self.update_return_endpoint = _Endpoint(
             settings={
-                'response_type': (ListReturnsItem,),
+                'response_type': (GetReturnResponse,),
                 'auth': [
                     'PersonalAccessToken'
                 ],
@@ -444,7 +556,7 @@ class ReturnsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            ListReturnsItem
+            GetReturnResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -473,6 +585,164 @@ class ReturnsApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.create_return_endpoint.call_with_http_info(**kwargs)
+
+    def create_return_accept(
+        self,
+        id,
+        **kwargs
+    ):
+        """Accept a Crossly-marketplace return request: a prepaid return label to your return address (the buyer has 14 days to ship), a return record linked to it, and optionally a refund now (refund: { amount? } in dollars; needs orders:refund). Without one, the rest is refunded when the return is delivered. Safe to repeat. Crossposted orders: not_supported_on_platform.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_return_accept(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CreateReturnAcceptResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.create_return_accept_endpoint.call_with_http_info(**kwargs)
+
+    def create_return_decline(
+        self,
+        id,
+        create_return_decline_request,
+        **kwargs
+    ):
+        """Decline a Crossly-marketplace return request with a reason (required, 8-2000 chars), posted to the buyer as your response. It does not close the request: the buyer can reply or ask Crossly to decide. Not after the label is issued.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_return_decline(id, create_return_decline_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str):
+            create_return_decline_request (CreateReturnDeclineRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ListReturnsItem
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        kwargs['create_return_decline_request'] = \
+            create_return_decline_request
+        return self.create_return_decline_endpoint.call_with_http_info(**kwargs)
 
     def get_return(
         self,
@@ -519,7 +789,7 @@ class ReturnsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            ListReturnsItem
+            GetReturnResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -627,7 +897,7 @@ class ReturnsApi(object):
         self,
         **kwargs
     ):
-        """List returns (physical-return workflow). status=open|closed|<exact>.  # noqa: E501
+        """List returns. Default: your return records (the physical-return workflow), status=open|closed|<exact>. source=request: the OPEN return requests buyers made on the Crossly marketplace, newest first; accept or decline each with POST /v1/returns/{id}/accept | decline.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -740,7 +1010,7 @@ class ReturnsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            ListReturnsItem
+            GetReturnResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """

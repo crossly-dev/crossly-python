@@ -30,20 +30,20 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.inventory.get_inventory_sell_through_response_data_window import GetInventorySellThroughResponseDataWindow
     from crossly.model.vault.get_vault_market_report_response_grade_premiums import GetVaultMarketReportResponseGradePremiums
     from crossly.model.vault.get_vault_market_report_response_indexes import GetVaultMarketReportResponseIndexes
     from crossly.model.vault.get_vault_market_report_response_most_lent import GetVaultMarketReportResponseMostLent
     from crossly.model.vault.get_vault_market_report_response_printable import GetVaultMarketReportResponsePrintable
     from crossly.model.vault.get_vault_market_report_response_risers import GetVaultMarketReportResponseRisers
     from crossly.model.vault.get_vault_market_report_response_totals import GetVaultMarketReportResponseTotals
-    globals()['GetInventorySellThroughResponseDataWindow'] = GetInventorySellThroughResponseDataWindow
+    from crossly.model.common.start_end import StartEnd
     globals()['GetVaultMarketReportResponseGradePremiums'] = GetVaultMarketReportResponseGradePremiums
     globals()['GetVaultMarketReportResponseIndexes'] = GetVaultMarketReportResponseIndexes
     globals()['GetVaultMarketReportResponseMostLent'] = GetVaultMarketReportResponseMostLent
     globals()['GetVaultMarketReportResponsePrintable'] = GetVaultMarketReportResponsePrintable
     globals()['GetVaultMarketReportResponseRisers'] = GetVaultMarketReportResponseRisers
     globals()['GetVaultMarketReportResponseTotals'] = GetVaultMarketReportResponseTotals
+    globals()['StartEnd'] = StartEnd
 
 
 class GetVaultMarketReportResponse(ModelNormal):
@@ -94,7 +94,7 @@ class GetVaultMarketReportResponse(ModelNormal):
         return {
             'quarter': (str,),  # noqa: E501
             'label': (str,),  # noqa: E501
-            'range': (GetInventorySellThroughResponseDataWindow,),  # noqa: E501
+            'range': (StartEnd,),  # noqa: E501
             'in_progress': (bool,),  # noqa: E501
             'generated_at': (str,),  # noqa: E501
             'totals': (GetVaultMarketReportResponseTotals,),  # noqa: E501
@@ -143,7 +143,7 @@ class GetVaultMarketReportResponse(ModelNormal):
         Args:
             quarter (str):
             label (str):
-            range (GetInventorySellThroughResponseDataWindow):
+            range (StartEnd):
             in_progress (bool):
             generated_at (str):
             totals (GetVaultMarketReportResponseTotals):
@@ -254,7 +254,7 @@ class GetVaultMarketReportResponse(ModelNormal):
         Args:
             quarter (str):
             label (str):
-            range (GetInventorySellThroughResponseDataWindow):
+            range (StartEnd):
             in_progress (bool):
             generated_at (str):
             totals (GetVaultMarketReportResponseTotals):

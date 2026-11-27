@@ -70,15 +70,15 @@ class GetVaultMarketP2pLoanResponse(ModelNormal):
         },
         ('status',): {
             'ACTIVE': "active",
-            'FUNDING': "funding",
             'CANCELLED': "cancelled",
+            'FUNDING': "funding",
             'AUCTION': "auction",
+            'REPAID': "repaid",
+            'FORECLOSED': "foreclosed",
             'REPAYING': "repaying",
             'REFINANCING': "refinancing",
             'REFI_PENDING': "refi_pending",
-            'REPAID': "repaid",
             'REFINANCED': "refinanced",
-            'FORECLOSED': "foreclosed",
         },
     }
 

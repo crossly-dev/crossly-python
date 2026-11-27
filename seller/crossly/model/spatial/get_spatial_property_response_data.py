@@ -30,10 +30,10 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.spatial.create_spatial_property_deed_lease_response_data import CreateSpatialPropertyDeedLeaseResponseData
     from crossly.model.spatial.get_spatial_property_response_data_deeds import GetSpatialPropertyResponseDataDeeds
-    globals()['CreateSpatialPropertyDeedLeaseResponseData'] = CreateSpatialPropertyDeedLeaseResponseData
+    from crossly.model.spatial.get_spatial_property_response_data_tenancies import GetSpatialPropertyResponseDataTenancies
     globals()['GetSpatialPropertyResponseDataDeeds'] = GetSpatialPropertyResponseDataDeeds
+    globals()['GetSpatialPropertyResponseDataTenancies'] = GetSpatialPropertyResponseDataTenancies
 
 
 class GetSpatialPropertyResponseData(ModelNormal):
@@ -84,7 +84,7 @@ class GetSpatialPropertyResponseData(ModelNormal):
         return {
             'enabled': (bool,),  # noqa: E501
             'deeds': ([GetSpatialPropertyResponseDataDeeds],),  # noqa: E501
-            'tenancies': ([CreateSpatialPropertyDeedLeaseResponseData],),  # noqa: E501
+            'tenancies': ([GetSpatialPropertyResponseDataTenancies],),  # noqa: E501
         }
 
     @cached_property
@@ -111,7 +111,7 @@ class GetSpatialPropertyResponseData(ModelNormal):
         Args:
             enabled (bool):
             deeds ([GetSpatialPropertyResponseDataDeeds]):
-            tenancies ([CreateSpatialPropertyDeedLeaseResponseData]):
+            tenancies ([GetSpatialPropertyResponseDataTenancies]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -200,7 +200,7 @@ class GetSpatialPropertyResponseData(ModelNormal):
         Args:
             enabled (bool):
             deeds ([GetSpatialPropertyResponseDataDeeds]):
-            tenancies ([CreateSpatialPropertyDeedLeaseResponseData]):
+            tenancies ([GetSpatialPropertyResponseDataTenancies]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

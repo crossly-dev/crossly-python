@@ -56,10 +56,10 @@ class GetWeb3CollectionInsightResponseTransfers(ModelNormal):
 
     allowed_values = {
         ('kind',): {
-            'TRANSFER': "transfer",
-            'LISTING': "listing",
             'SALE': "sale",
+            'LISTING': "listing",
             'MINT': "mint",
+            'TRANSFER': "transfer",
             'BURN': "burn",
         },
     }

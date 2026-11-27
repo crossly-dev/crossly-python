@@ -60,8 +60,8 @@ class GetVaultMarketPositionResponseLegs(ModelNormal):
             'BID': "bid",
         },
         ('status',): {
-            'FILLED': "filled",
             'CANCELLED': "cancelled",
+            'FILLED': "filled",
             'WORKING': "working",
             'BUSTED': "busted",
         },

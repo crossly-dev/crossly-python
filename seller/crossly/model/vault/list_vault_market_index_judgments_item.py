@@ -57,8 +57,8 @@ class ListVaultMarketIndexJudgmentsItem(ModelNormal):
     allowed_values = {
         ('action',): {
             'METHOD': "method",
-            'HALT': "halt",
             'RESUME': "resume",
+            'HALT': "halt",
             'EXCLUDE_KEY': "exclude_key",
             'VOID_TRADE': "void_trade",
             'RESTATE': "restate",

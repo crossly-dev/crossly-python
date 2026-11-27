@@ -81,12 +81,12 @@ class CreateBuyerCartQuoteResponseData(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'currency': (str,),  # noqa: E501
             'kind': (str,),  # noqa: E501
-            'tax_cents': (float,),  # noqa: E501
-            'shipping_cents': (float,),  # noqa: E501
-            'total_cents': (float,),  # noqa: E501
             'items_total_cents': (float,),  # noqa: E501
+            'shipping_cents': (float,),  # noqa: E501
+            'tax_cents': (float,),  # noqa: E501
+            'total_cents': (float,),  # noqa: E501
+            'currency': (str,),  # noqa: E501
             'pickup_cart_item_ids': ([str],),  # noqa: E501
             'tax_complete': (bool,),  # noqa: E501
             'duties_cents': (float, none_type,),  # noqa: E501
@@ -103,12 +103,12 @@ class CreateBuyerCartQuoteResponseData(ModelNormal):
 
 
     attribute_map = {
-        'currency': 'currency',  # noqa: E501
         'kind': 'kind',  # noqa: E501
-        'tax_cents': 'taxCents',  # noqa: E501
-        'shipping_cents': 'shippingCents',  # noqa: E501
-        'total_cents': 'totalCents',  # noqa: E501
         'items_total_cents': 'itemsTotalCents',  # noqa: E501
+        'shipping_cents': 'shippingCents',  # noqa: E501
+        'tax_cents': 'taxCents',  # noqa: E501
+        'total_cents': 'totalCents',  # noqa: E501
+        'currency': 'currency',  # noqa: E501
         'pickup_cart_item_ids': 'pickupCartItemIds',  # noqa: E501
         'tax_complete': 'taxComplete',  # noqa: E501
         'duties_cents': 'dutiesCents',  # noqa: E501
@@ -126,16 +126,16 @@ class CreateBuyerCartQuoteResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, currency, kind, tax_cents, shipping_cents, total_cents, items_total_cents, pickup_cart_item_ids, tax_complete, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, kind, items_total_cents, shipping_cents, tax_cents, total_cents, currency, pickup_cart_item_ids, tax_complete, *args, **kwargs):  # noqa: E501
         """CreateBuyerCartQuoteResponseData - a model defined in OpenAPI
 
         Args:
-            currency (str):
             kind (str):
-            tax_cents (float):
-            shipping_cents (float):
-            total_cents (float):
             items_total_cents (float):
+            shipping_cents (float):
+            tax_cents (float):
+            total_cents (float):
+            currency (str):
             pickup_cart_item_ids ([str]): Lines being collected in person, so a summary can name what ships free.
             tax_complete (bool): False means there is no saved delivery address, so `taxCents` is a floor rather than a final figure — not that tax is zero.
 
@@ -203,12 +203,12 @@ class CreateBuyerCartQuoteResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.currency = currency
         self.kind = kind
-        self.tax_cents = tax_cents
-        self.shipping_cents = shipping_cents
-        self.total_cents = total_cents
         self.items_total_cents = items_total_cents
+        self.shipping_cents = shipping_cents
+        self.tax_cents = tax_cents
+        self.total_cents = total_cents
+        self.currency = currency
         self.pickup_cart_item_ids = pickup_cart_item_ids
         self.tax_complete = tax_complete
         for var_name, var_value in kwargs.items():
@@ -231,16 +231,16 @@ class CreateBuyerCartQuoteResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, currency, kind, tax_cents, shipping_cents, total_cents, items_total_cents, pickup_cart_item_ids, tax_complete, *args, **kwargs):  # noqa: E501
+    def __init__(self, kind, items_total_cents, shipping_cents, tax_cents, total_cents, currency, pickup_cart_item_ids, tax_complete, *args, **kwargs):  # noqa: E501
         """CreateBuyerCartQuoteResponseData - a model defined in OpenAPI
 
         Args:
-            currency (str):
             kind (str):
-            tax_cents (float):
-            shipping_cents (float):
-            total_cents (float):
             items_total_cents (float):
+            shipping_cents (float):
+            tax_cents (float):
+            total_cents (float):
+            currency (str):
             pickup_cart_item_ids ([str]): Lines being collected in person, so a summary can name what ships free.
             tax_complete (bool): False means there is no saved delivery address, so `taxCents` is a floor rather than a final figure — not that tax is zero.
 
@@ -306,12 +306,12 @@ class CreateBuyerCartQuoteResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.currency = currency
         self.kind = kind
-        self.tax_cents = tax_cents
-        self.shipping_cents = shipping_cents
-        self.total_cents = total_cents
         self.items_total_cents = items_total_cents
+        self.shipping_cents = shipping_cents
+        self.tax_cents = tax_cents
+        self.total_cents = total_cents
+        self.currency = currency
         self.pickup_cart_item_ids = pickup_cart_item_ids
         self.tax_complete = tax_complete
         for var_name, var_value in kwargs.items():

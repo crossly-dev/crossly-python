@@ -56,14 +56,14 @@ class ListWorldContestsItem(ModelNormal):
 
     allowed_values = {
         ('status',): {
-            'OPEN': "open",
             'CANCELLED': "cancelled",
+            'OPEN': "open",
             'SETTLED': "settled",
         },
         ('entry_mode',): {
             'FREE': "free",
-            'SPONSORED': "sponsored",
             'PAID': "paid",
+            'SPONSORED': "sponsored",
         },
         ('score_order',): {
             'ASC': "asc",
@@ -92,9 +92,9 @@ class ListWorldContestsItem(ModelNormal):
             'id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'status': (str,),  # noqa: E501
+            'owner_user_id': (str,),  # noqa: E501
             'ends_at': (datetime,),  # noqa: E501
             'starts_at': (datetime,),  # noqa: E501
-            'owner_user_id': (str,),  # noqa: E501
             'game_place': (str,),  # noqa: E501
             'game_object': (str,),  # noqa: E501
             'entry_mode': (str,),  # noqa: E501
@@ -112,9 +112,9 @@ class ListWorldContestsItem(ModelNormal):
         'id': 'id',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'status': 'status',  # noqa: E501
+        'owner_user_id': 'ownerUserId',  # noqa: E501
         'ends_at': 'endsAt',  # noqa: E501
         'starts_at': 'startsAt',  # noqa: E501
-        'owner_user_id': 'ownerUserId',  # noqa: E501
         'game_place': 'gamePlace',  # noqa: E501
         'game_object': 'gameObject',  # noqa: E501
         'entry_mode': 'entryMode',  # noqa: E501
@@ -130,16 +130,16 @@ class ListWorldContestsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, status, ends_at, starts_at, owner_user_id, game_place, game_object, entry_mode, score_order, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, status, owner_user_id, ends_at, starts_at, game_place, game_object, entry_mode, score_order, *args, **kwargs):  # noqa: E501
         """ListWorldContestsItem - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (datetime):
             status (str):
+            owner_user_id (str):
             ends_at (datetime):
             starts_at (datetime):
-            owner_user_id (str):
             game_place (str):
             game_object (str):
             entry_mode (str):
@@ -208,9 +208,9 @@ class ListWorldContestsItem(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.status = status
+        self.owner_user_id = owner_user_id
         self.ends_at = ends_at
         self.starts_at = starts_at
-        self.owner_user_id = owner_user_id
         self.game_place = game_place
         self.game_object = game_object
         self.entry_mode = entry_mode
@@ -235,16 +235,16 @@ class ListWorldContestsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, status, ends_at, starts_at, owner_user_id, game_place, game_object, entry_mode, score_order, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, status, owner_user_id, ends_at, starts_at, game_place, game_object, entry_mode, score_order, *args, **kwargs):  # noqa: E501
         """ListWorldContestsItem - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (datetime):
             status (str):
+            owner_user_id (str):
             ends_at (datetime):
             starts_at (datetime):
-            owner_user_id (str):
             game_place (str):
             game_object (str):
             entry_mode (str):
@@ -311,9 +311,9 @@ class ListWorldContestsItem(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.status = status
+        self.owner_user_id = owner_user_id
         self.ends_at = ends_at
         self.starts_at = starts_at
-        self.owner_user_id = owner_user_id
         self.game_place = game_place
         self.game_object = game_object
         self.entry_mode = entry_mode

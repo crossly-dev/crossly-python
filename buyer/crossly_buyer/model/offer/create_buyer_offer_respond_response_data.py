@@ -76,8 +76,8 @@ class CreateBuyerOfferRespondResponseData(ModelNormal):
         """
         return {
             'status': (str,),  # noqa: E501
-            'offer_id': (str, none_type,),  # noqa: E501
             'redeemable': (bool, none_type,),  # noqa: E501
+            'offer_id': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -87,8 +87,8 @@ class CreateBuyerOfferRespondResponseData(ModelNormal):
 
     attribute_map = {
         'status': 'status',  # noqa: E501
-        'offer_id': 'offerId',  # noqa: E501
         'redeemable': 'redeemable',  # noqa: E501
+        'offer_id': 'offerId',  # noqa: E501
     }
 
     read_only_vars = {
@@ -135,8 +135,8 @@ class CreateBuyerOfferRespondResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            offer_id (str, none_type): Countered: the id of YOUR new offer, now waiting on the seller.. [optional]  # noqa: E501
             redeemable (bool, none_type): Accepted: you can now pay for it (48 hours).. [optional]  # noqa: E501
+            offer_id (str, none_type): Countered: the id of YOUR new offer, now waiting on the seller.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -222,8 +222,8 @@ class CreateBuyerOfferRespondResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            offer_id (str, none_type): Countered: the id of YOUR new offer, now waiting on the seller.. [optional]  # noqa: E501
             redeemable (bool, none_type): Accepted: you can now pay for it (48 hours).. [optional]  # noqa: E501
+            offer_id (str, none_type): Countered: the id of YOUR new offer, now waiting on the seller.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

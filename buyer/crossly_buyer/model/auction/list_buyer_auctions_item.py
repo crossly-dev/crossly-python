@@ -77,13 +77,13 @@ class ListBuyerAuctionsItem(ModelNormal):
         return {
             'title': (str,),  # noqa: E501
             'bid_count': (float,),  # noqa: E501
-            'paid': (bool,),  # noqa: E501
             'leading': (bool,),  # noqa: E501
-            'status': (str, none_type,),  # noqa: E501
-            'ends_at': (str, none_type,),  # noqa: E501
+            'paid': (bool,),  # noqa: E501
             'slug': (str, none_type,),  # noqa: E501
-            'current_cents': (float, none_type,),  # noqa: E501
             'thumbnail': (str, none_type,),  # noqa: E501
+            'ends_at': (str, none_type,),  # noqa: E501
+            'status': (str, none_type,),  # noqa: E501
+            'current_cents': (float, none_type,),  # noqa: E501
             'my_max_cents': (float, none_type,),  # noqa: E501
             'winning_cents': (float, none_type,),  # noqa: E501
         }
@@ -96,13 +96,13 @@ class ListBuyerAuctionsItem(ModelNormal):
     attribute_map = {
         'title': 'title',  # noqa: E501
         'bid_count': 'bidCount',  # noqa: E501
-        'paid': 'paid',  # noqa: E501
         'leading': 'leading',  # noqa: E501
-        'status': 'status',  # noqa: E501
-        'ends_at': 'endsAt',  # noqa: E501
+        'paid': 'paid',  # noqa: E501
         'slug': 'slug',  # noqa: E501
-        'current_cents': 'currentCents',  # noqa: E501
         'thumbnail': 'thumbnail',  # noqa: E501
+        'ends_at': 'endsAt',  # noqa: E501
+        'status': 'status',  # noqa: E501
+        'current_cents': 'currentCents',  # noqa: E501
         'my_max_cents': 'myMaxCents',  # noqa: E501
         'winning_cents': 'winningCents',  # noqa: E501
     }
@@ -114,14 +114,14 @@ class ListBuyerAuctionsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, title, bid_count, paid, leading, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, title, bid_count, leading, paid, *args, **kwargs):  # noqa: E501
         """ListBuyerAuctionsItem - a model defined in OpenAPI
 
         Args:
             title (str):
             bid_count (float):
-            paid (bool):
             leading (bool):
+            paid (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -154,11 +154,11 @@ class ListBuyerAuctionsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            status (str, none_type): [optional]  # noqa: E501
-            ends_at (str, none_type): [optional]  # noqa: E501
             slug (str, none_type): [optional]  # noqa: E501
-            current_cents (float, none_type): Current high bid, in cents.. [optional]  # noqa: E501
             thumbnail (str, none_type): [optional]  # noqa: E501
+            ends_at (str, none_type): [optional]  # noqa: E501
+            status (str, none_type): [optional]  # noqa: E501
+            current_cents (float, none_type): Current high bid, in cents.. [optional]  # noqa: E501
             my_max_cents (float, none_type): Your highest maximum (proxy) bid, in cents.. [optional]  # noqa: E501
             winning_cents (float, none_type): Hammer price once the auction closed, in cents.. [optional]  # noqa: E501
         """
@@ -190,8 +190,8 @@ class ListBuyerAuctionsItem(ModelNormal):
 
         self.title = title
         self.bid_count = bid_count
-        self.paid = paid
         self.leading = leading
+        self.paid = paid
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -212,14 +212,14 @@ class ListBuyerAuctionsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, title, bid_count, paid, leading, *args, **kwargs):  # noqa: E501
+    def __init__(self, title, bid_count, leading, paid, *args, **kwargs):  # noqa: E501
         """ListBuyerAuctionsItem - a model defined in OpenAPI
 
         Args:
             title (str):
             bid_count (float):
-            paid (bool):
             leading (bool):
+            paid (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -252,11 +252,11 @@ class ListBuyerAuctionsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            status (str, none_type): [optional]  # noqa: E501
-            ends_at (str, none_type): [optional]  # noqa: E501
             slug (str, none_type): [optional]  # noqa: E501
-            current_cents (float, none_type): Current high bid, in cents.. [optional]  # noqa: E501
             thumbnail (str, none_type): [optional]  # noqa: E501
+            ends_at (str, none_type): [optional]  # noqa: E501
+            status (str, none_type): [optional]  # noqa: E501
+            current_cents (float, none_type): Current high bid, in cents.. [optional]  # noqa: E501
             my_max_cents (float, none_type): Your highest maximum (proxy) bid, in cents.. [optional]  # noqa: E501
             winning_cents (float, none_type): Hammer price once the auction closed, in cents.. [optional]  # noqa: E501
         """
@@ -286,8 +286,8 @@ class ListBuyerAuctionsItem(ModelNormal):
 
         self.title = title
         self.bid_count = bid_count
-        self.paid = paid
         self.leading = leading
+        self.paid = paid
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

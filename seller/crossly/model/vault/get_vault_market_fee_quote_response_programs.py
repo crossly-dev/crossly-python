@@ -57,8 +57,8 @@ class GetVaultMarketFeeQuoteResponsePrograms(ModelNormal):
     allowed_values = {
         ('member_tier',): {
             'None': None,
-            'CLASSIC': "classic",
             'PRO': "pro",
+            'CLASSIC': "classic",
         },
     }
 

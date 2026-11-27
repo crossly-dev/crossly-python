@@ -56,11 +56,18 @@ class GetInventoryAgingResponseDataBuckets(ModelNormal):
 
     allowed_values = {
         ('bucket',): {
+            'UNLISTED': "unlisted",
+            '90+': "90+",
             '0-7': "0-7",
             '7-30': "7-30",
             '30-90': "30-90",
-            '90+': "90+",
+        },
+        ('key',): {
             'UNLISTED': "unlisted",
+            'LT7': "lt7",
+            'D7_30': "d7_30",
+            'D30_90': "d30_90",
+            'GT90': "gt90",
         },
     }
 
@@ -85,9 +92,16 @@ class GetInventoryAgingResponseDataBuckets(ModelNormal):
             'bucket': (str,),  # noqa: E501
             'item_count': (float,),  # noqa: E501
             'unit_count': (float,),  # noqa: E501
-            'cost_cents': (float,),  # noqa: E501
             'retail_cents': (float,),  # noqa: E501
             'recommendation': (str,),  # noqa: E501
+            'key': (str,),  # noqa: E501
+            'items': (float,),  # noqa: E501
+            'units': (float,),  # noqa: E501
+            'cost_cents': (float,),  # noqa: E501
+            'cost_known_items': (float,),  # noqa: E501
+            'cost_unknown_items': (float,),  # noqa: E501
+            'listed_value_cents': (float,),  # noqa: E501
+            'market_value_cents': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -99,9 +113,16 @@ class GetInventoryAgingResponseDataBuckets(ModelNormal):
         'bucket': 'bucket',  # noqa: E501
         'item_count': 'itemCount',  # noqa: E501
         'unit_count': 'unitCount',  # noqa: E501
-        'cost_cents': 'costCents',  # noqa: E501
         'retail_cents': 'retailCents',  # noqa: E501
         'recommendation': 'recommendation',  # noqa: E501
+        'key': 'key',  # noqa: E501
+        'items': 'items',  # noqa: E501
+        'units': 'units',  # noqa: E501
+        'cost_cents': 'costCents',  # noqa: E501
+        'cost_known_items': 'costKnownItems',  # noqa: E501
+        'cost_unknown_items': 'costUnknownItems',  # noqa: E501
+        'listed_value_cents': 'listedValueCents',  # noqa: E501
+        'market_value_cents': 'marketValueCents',  # noqa: E501
     }
 
     read_only_vars = {
@@ -111,16 +132,22 @@ class GetInventoryAgingResponseDataBuckets(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, bucket, item_count, unit_count, cost_cents, retail_cents, recommendation, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, bucket, item_count, unit_count, retail_cents, recommendation, key, items, units, cost_cents, cost_known_items, cost_unknown_items, listed_value_cents, *args, **kwargs):  # noqa: E501
         """GetInventoryAgingResponseDataBuckets - a model defined in OpenAPI
 
         Args:
             bucket (str):
             item_count (float):
             unit_count (float):
-            cost_cents (float): What the seller PAID for the stock in this bucket — the number that makes 90+ feel urgent. Retail value flatters it; cost is the money actually stuck on the shelf.
-            retail_cents (float): What it would bring in at current prices, for the opportunity figure.
-            recommendation (str): One line the seller can act on.
+            retail_cents (float): Old name for listedValueCents.
+            recommendation (str):
+            key (str):
+            items (float):
+            units (float):
+            cost_cents (float): Σ unit cost × units over the items whose cost is known.
+            cost_known_items (float):
+            cost_unknown_items (float):
+            listed_value_cents (float): Σ ask × units; items with no ask add nothing.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -153,6 +180,7 @@ class GetInventoryAgingResponseDataBuckets(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            market_value_cents (float, none_type): Σ market × units over the marked items; null when none in the bucket are marked.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -183,9 +211,15 @@ class GetInventoryAgingResponseDataBuckets(ModelNormal):
         self.bucket = bucket
         self.item_count = item_count
         self.unit_count = unit_count
-        self.cost_cents = cost_cents
         self.retail_cents = retail_cents
         self.recommendation = recommendation
+        self.key = key
+        self.items = items
+        self.units = units
+        self.cost_cents = cost_cents
+        self.cost_known_items = cost_known_items
+        self.cost_unknown_items = cost_unknown_items
+        self.listed_value_cents = listed_value_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -206,16 +240,22 @@ class GetInventoryAgingResponseDataBuckets(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, bucket, item_count, unit_count, cost_cents, retail_cents, recommendation, *args, **kwargs):  # noqa: E501
+    def __init__(self, bucket, item_count, unit_count, retail_cents, recommendation, key, items, units, cost_cents, cost_known_items, cost_unknown_items, listed_value_cents, *args, **kwargs):  # noqa: E501
         """GetInventoryAgingResponseDataBuckets - a model defined in OpenAPI
 
         Args:
             bucket (str):
             item_count (float):
             unit_count (float):
-            cost_cents (float): What the seller PAID for the stock in this bucket — the number that makes 90+ feel urgent. Retail value flatters it; cost is the money actually stuck on the shelf.
-            retail_cents (float): What it would bring in at current prices, for the opportunity figure.
-            recommendation (str): One line the seller can act on.
+            retail_cents (float): Old name for listedValueCents.
+            recommendation (str):
+            key (str):
+            items (float):
+            units (float):
+            cost_cents (float): Σ unit cost × units over the items whose cost is known.
+            cost_known_items (float):
+            cost_unknown_items (float):
+            listed_value_cents (float): Σ ask × units; items with no ask add nothing.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -248,6 +288,7 @@ class GetInventoryAgingResponseDataBuckets(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            market_value_cents (float, none_type): Σ market × units over the marked items; null when none in the bucket are marked.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -276,9 +317,15 @@ class GetInventoryAgingResponseDataBuckets(ModelNormal):
         self.bucket = bucket
         self.item_count = item_count
         self.unit_count = unit_count
-        self.cost_cents = cost_cents
         self.retail_cents = retail_cents
         self.recommendation = recommendation
+        self.key = key
+        self.items = items
+        self.units = units
+        self.cost_cents = cost_cents
+        self.cost_known_items = cost_known_items
+        self.cost_unknown_items = cost_unknown_items
+        self.listed_value_cents = listed_value_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

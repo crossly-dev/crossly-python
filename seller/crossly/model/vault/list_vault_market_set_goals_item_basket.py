@@ -56,10 +56,10 @@ class ListVaultMarketSetGoalsItemBasket(ModelNormal):
 
     allowed_values = {
         ('status',): {
+            'COMPLETED': "completed",
             'CANCELLED': "cancelled",
             'ENDED': "ended",
             'WORKING': "working",
-            'COMPLETED': "completed",
         },
     }
 

@@ -62,10 +62,10 @@ class GetVaultMarketSetGoalResponseBasket(ModelNormal):
 
     allowed_values = {
         ('status',): {
+            'COMPLETED': "completed",
             'CANCELLED': "cancelled",
             'ENDED': "ended",
             'WORKING': "working",
-            'COMPLETED': "completed",
         },
         ('funding',): {
             'CARD': "card",

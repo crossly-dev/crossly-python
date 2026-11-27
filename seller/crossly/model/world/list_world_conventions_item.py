@@ -83,10 +83,14 @@ class ListWorldConventionsItem(ModelNormal):
             'entry_model': (str,),  # noqa: E501
             'table_count': (float,),  # noqa: E501
             'exhibitor_count': (float,),  # noqa: E501
+            'tiered': (bool,),  # noqa: E501
+            'doors_open_at': (datetime,),  # noqa: E501
             'category_slug': (str, none_type,),  # noqa: E501
             'entry_fee_cents': (float, none_type,),  # noqa: E501
             'revenue_share_bps': (float, none_type,),  # noqa: E501
             'public_slug': (str, none_type,),  # noqa: E501
+            'your_doors_open_at': (str, none_type,),  # noqa: E501
+            'doors_open': (bool, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -103,10 +107,14 @@ class ListWorldConventionsItem(ModelNormal):
         'entry_model': 'entryModel',  # noqa: E501
         'table_count': 'tableCount',  # noqa: E501
         'exhibitor_count': 'exhibitorCount',  # noqa: E501
+        'tiered': 'tiered',  # noqa: E501
+        'doors_open_at': 'doorsOpenAt',  # noqa: E501
         'category_slug': 'categorySlug',  # noqa: E501
         'entry_fee_cents': 'entryFeeCents',  # noqa: E501
         'revenue_share_bps': 'revenueShareBps',  # noqa: E501
         'public_slug': 'publicSlug',  # noqa: E501
+        'your_doors_open_at': 'yourDoorsOpenAt',  # noqa: E501
+        'doors_open': 'doorsOpen',  # noqa: E501
     }
 
     read_only_vars = {
@@ -116,7 +124,7 @@ class ListWorldConventionsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, title, starts_at, ends_at, status, entry_model, table_count, exhibitor_count, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, title, starts_at, ends_at, status, entry_model, table_count, exhibitor_count, tiered, doors_open_at, *args, **kwargs):  # noqa: E501
         """ListWorldConventionsItem - a model defined in OpenAPI
 
         Args:
@@ -128,6 +136,8 @@ class ListWorldConventionsItem(ModelNormal):
             entry_model (str):
             table_count (float):
             exhibitor_count (float): How many stands are taken. A count, never a roster — see the docblock.
+            tiered (bool): A full-page convention (a rented hall, booth tiers; spec WD4): sellers book a tier on its booth page.
+            doors_open_at (datetime): When the doors open for visitors: the start (or when the host takes it live, if sooner).
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -164,6 +174,8 @@ class ListWorldConventionsItem(ModelNormal):
             entry_fee_cents (float, none_type): [optional]  # noqa: E501
             revenue_share_bps (float, none_type): [optional]  # noqa: E501
             public_slug (str, none_type): The room it is held in, so a card can link straight into it.. [optional]  # noqa: E501
+            your_doors_open_at (str, none_type): For a signed-in viewer (doors.ts): when THEIR doors open (earlier with live_early_entry), and whether they are.. [optional]  # noqa: E501
+            doors_open (bool, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -199,6 +211,8 @@ class ListWorldConventionsItem(ModelNormal):
         self.entry_model = entry_model
         self.table_count = table_count
         self.exhibitor_count = exhibitor_count
+        self.tiered = tiered
+        self.doors_open_at = doors_open_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -219,7 +233,7 @@ class ListWorldConventionsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, title, starts_at, ends_at, status, entry_model, table_count, exhibitor_count, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, title, starts_at, ends_at, status, entry_model, table_count, exhibitor_count, tiered, doors_open_at, *args, **kwargs):  # noqa: E501
         """ListWorldConventionsItem - a model defined in OpenAPI
 
         Args:
@@ -231,6 +245,8 @@ class ListWorldConventionsItem(ModelNormal):
             entry_model (str):
             table_count (float):
             exhibitor_count (float): How many stands are taken. A count, never a roster — see the docblock.
+            tiered (bool): A full-page convention (a rented hall, booth tiers; spec WD4): sellers book a tier on its booth page.
+            doors_open_at (datetime): When the doors open for visitors: the start (or when the host takes it live, if sooner).
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -267,6 +283,8 @@ class ListWorldConventionsItem(ModelNormal):
             entry_fee_cents (float, none_type): [optional]  # noqa: E501
             revenue_share_bps (float, none_type): [optional]  # noqa: E501
             public_slug (str, none_type): The room it is held in, so a card can link straight into it.. [optional]  # noqa: E501
+            your_doors_open_at (str, none_type): For a signed-in viewer (doors.ts): when THEIR doors open (earlier with live_early_entry), and whether they are.. [optional]  # noqa: E501
+            doors_open (bool, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -300,6 +318,8 @@ class ListWorldConventionsItem(ModelNormal):
         self.entry_model = entry_model
         self.table_count = table_count
         self.exhibitor_count = exhibitor_count
+        self.tiered = tiered
+        self.doors_open_at = doors_open_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

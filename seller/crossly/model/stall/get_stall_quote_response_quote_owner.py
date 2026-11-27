@@ -57,8 +57,8 @@ class GetStallQuoteResponseQuoteOwner(ModelNormal):
     allowed_values = {
         ('kind',): {
             'PLATFORM': "platform",
-            'STREET': "street",
             'PLOT': "plot",
+            'STREET': "street",
         },
     }
 

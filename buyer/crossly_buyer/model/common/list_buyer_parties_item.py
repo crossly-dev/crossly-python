@@ -76,11 +76,11 @@ class ListBuyerPartiesItem(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'status': (str,),  # noqa: E501
-            'ends_at': (str,),  # noqa: E501
             'slug': (str,),  # noqa: E501
-            'starts_at': (str,),  # noqa: E501
             'theme': (str,),  # noqa: E501
+            'starts_at': (str,),  # noqa: E501
+            'ends_at': (str,),  # noqa: E501
+            'status': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -90,11 +90,11 @@ class ListBuyerPartiesItem(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'status': 'status',  # noqa: E501
-        'ends_at': 'endsAt',  # noqa: E501
         'slug': 'slug',  # noqa: E501
-        'starts_at': 'startsAt',  # noqa: E501
         'theme': 'theme',  # noqa: E501
+        'starts_at': 'startsAt',  # noqa: E501
+        'ends_at': 'endsAt',  # noqa: E501
+        'status': 'status',  # noqa: E501
     }
 
     read_only_vars = {
@@ -104,16 +104,16 @@ class ListBuyerPartiesItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, status, ends_at, slug, starts_at, theme, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, slug, theme, starts_at, ends_at, status, *args, **kwargs):  # noqa: E501
         """ListBuyerPartiesItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            status (str):
-            ends_at (str):
             slug (str):
-            starts_at (str):
             theme (str):
+            starts_at (str):
+            ends_at (str):
+            status (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -174,11 +174,11 @@ class ListBuyerPartiesItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.status = status
-        self.ends_at = ends_at
         self.slug = slug
-        self.starts_at = starts_at
         self.theme = theme
+        self.starts_at = starts_at
+        self.ends_at = ends_at
+        self.status = status
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -199,16 +199,16 @@ class ListBuyerPartiesItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, status, ends_at, slug, starts_at, theme, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, slug, theme, starts_at, ends_at, status, *args, **kwargs):  # noqa: E501
         """ListBuyerPartiesItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            status (str):
-            ends_at (str):
             slug (str):
-            starts_at (str):
             theme (str):
+            starts_at (str):
+            ends_at (str):
+            status (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -267,11 +267,11 @@ class ListBuyerPartiesItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.status = status
-        self.ends_at = ends_at
         self.slug = slug
-        self.starts_at = starts_at
         self.theme = theme
+        self.starts_at = starts_at
+        self.ends_at = ends_at
+        self.status = status
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

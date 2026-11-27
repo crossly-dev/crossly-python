@@ -57,9 +57,9 @@ class ListSpatialDeedListingsItem(ModelNormal):
     allowed_values = {
         ('status',): {
             'ACTIVE': "active",
-            'FORECLOSED': "foreclosed",
             'GRACE': "grace",
             'DELINQUENT': "delinquent",
+            'FORECLOSED': "foreclosed",
         },
     }
 

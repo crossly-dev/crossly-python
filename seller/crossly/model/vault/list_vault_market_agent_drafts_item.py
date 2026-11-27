@@ -64,16 +64,16 @@ class ListVaultMarketAgentDraftsItem(ModelNormal):
             'SELL': "sell",
         },
         ('funding',): {
+            'VAULT': "vault",
             'CARD': "card",
             'CUSTODIAN': "custodian",
-            'VAULT': "vault",
         },
         ('status',): {
             'CANCELLED': "cancelled",
             'EXPIRED': "expired",
+            'DRAFTED': "drafted",
             'REJECTED': "rejected",
             'PLACING': "placing",
-            'DRAFTED': "drafted",
             'PLACED': "placed",
         },
     }

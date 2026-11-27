@@ -75,8 +75,8 @@ class CreateBuyerOrderCancelResponseData(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'refunded': (bool,),  # noqa: E501
             'ok': (bool,),  # noqa: E501
+            'refunded': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -85,8 +85,8 @@ class CreateBuyerOrderCancelResponseData(ModelNormal):
 
 
     attribute_map = {
-        'refunded': 'refunded',  # noqa: E501
         'ok': 'ok',  # noqa: E501
+        'refunded': 'refunded',  # noqa: E501
     }
 
     read_only_vars = {
@@ -96,12 +96,12 @@ class CreateBuyerOrderCancelResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, refunded, ok, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, ok, refunded, *args, **kwargs):  # noqa: E501
         """CreateBuyerOrderCancelResponseData - a model defined in OpenAPI
 
         Args:
-            refunded (bool): false only for an order paid entirely with credit, which has no card charge to refund.
             ok (bool):
+            refunded (bool): false only for an order paid entirely with credit, which has no card charge to refund.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -161,8 +161,8 @@ class CreateBuyerOrderCancelResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.refunded = refunded
         self.ok = ok
+        self.refunded = refunded
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -183,12 +183,12 @@ class CreateBuyerOrderCancelResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, refunded, ok, *args, **kwargs):  # noqa: E501
+    def __init__(self, ok, refunded, *args, **kwargs):  # noqa: E501
         """CreateBuyerOrderCancelResponseData - a model defined in OpenAPI
 
         Args:
-            refunded (bool): false only for an order paid entirely with credit, which has no card charge to refund.
             ok (bool):
+            refunded (bool): false only for an order paid entirely with credit, which has no card charge to refund.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -246,8 +246,8 @@ class CreateBuyerOrderCancelResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.refunded = refunded
         self.ok = ok
+        self.refunded = refunded
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -84,7 +84,7 @@ class CreateTeamInviteResponse(ModelNormal):
             'role': (str,),  # noqa: E501
             'scopes': ([str],),  # noqa: E501
             'expires_at': (str,),  # noqa: E501
-            'accept_url': (str,),  # noqa: E501
+            'accept_url': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -108,7 +108,7 @@ class CreateTeamInviteResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, invitee_email, role, scopes, expires_at, accept_url, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, invitee_email, role, scopes, expires_at, *args, **kwargs):  # noqa: E501
         """CreateTeamInviteResponse - a model defined in OpenAPI
 
         Args:
@@ -117,7 +117,6 @@ class CreateTeamInviteResponse(ModelNormal):
             role (str):
             scopes ([str]):
             expires_at (str):
-            accept_url (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -150,6 +149,7 @@ class CreateTeamInviteResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            accept_url (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -182,7 +182,6 @@ class CreateTeamInviteResponse(ModelNormal):
         self.role = role
         self.scopes = scopes
         self.expires_at = expires_at
-        self.accept_url = accept_url
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -203,7 +202,7 @@ class CreateTeamInviteResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, invitee_email, role, scopes, expires_at, accept_url, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, invitee_email, role, scopes, expires_at, *args, **kwargs):  # noqa: E501
         """CreateTeamInviteResponse - a model defined in OpenAPI
 
         Args:
@@ -212,7 +211,6 @@ class CreateTeamInviteResponse(ModelNormal):
             role (str):
             scopes ([str]):
             expires_at (str):
-            accept_url (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -245,6 +243,7 @@ class CreateTeamInviteResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            accept_url (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -275,7 +274,6 @@ class CreateTeamInviteResponse(ModelNormal):
         self.role = role
         self.scopes = scopes
         self.expires_at = expires_at
-        self.accept_url = accept_url
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

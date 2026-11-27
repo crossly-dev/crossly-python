@@ -56,8 +56,8 @@ class ListVaultReceiptTokenWalletsItem(ModelNormal):
 
     allowed_values = {
         ('status',): {
-            'ALLOWED': "allowed",
             'REVOKED': "revoked",
+            'ALLOWED': "allowed",
             'NOT_ALLOWED': "not_allowed",
         },
     }

@@ -75,9 +75,9 @@ class GetVaultMarketMmResponseRulesSpreadCapBps(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'c': (float,),  # noqa: E501
             'a': (float,),  # noqa: E501
             'b': (float,),  # noqa: E501
-            'c': (float,),  # noqa: E501
             'd': (float,),  # noqa: E501
         }
 
@@ -87,9 +87,9 @@ class GetVaultMarketMmResponseRulesSpreadCapBps(ModelNormal):
 
 
     attribute_map = {
+        'c': 'C',  # noqa: E501
         'a': 'A',  # noqa: E501
         'b': 'B',  # noqa: E501
-        'c': 'C',  # noqa: E501
         'd': 'D',  # noqa: E501
     }
 
@@ -100,13 +100,13 @@ class GetVaultMarketMmResponseRulesSpreadCapBps(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, a, b, c, d, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, c, a, b, d, *args, **kwargs):  # noqa: E501
         """GetVaultMarketMmResponseRulesSpreadCapBps - a model defined in OpenAPI
 
         Args:
+            c (float):
             a (float):
             b (float):
-            c (float):
             d (float):
 
         Keyword Args:
@@ -167,9 +167,9 @@ class GetVaultMarketMmResponseRulesSpreadCapBps(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.c = c
         self.a = a
         self.b = b
-        self.c = c
         self.d = d
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -191,13 +191,13 @@ class GetVaultMarketMmResponseRulesSpreadCapBps(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, a, b, c, d, *args, **kwargs):  # noqa: E501
+    def __init__(self, c, a, b, d, *args, **kwargs):  # noqa: E501
         """GetVaultMarketMmResponseRulesSpreadCapBps - a model defined in OpenAPI
 
         Args:
+            c (float):
             a (float):
             b (float):
-            c (float):
             d (float):
 
         Keyword Args:
@@ -256,9 +256,9 @@ class GetVaultMarketMmResponseRulesSpreadCapBps(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.c = c
         self.a = a
         self.b = b
-        self.c = c
         self.d = d
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

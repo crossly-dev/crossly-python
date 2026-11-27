@@ -75,11 +75,11 @@ class ListBuyerCatalogSellersItem(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'display_name': (str,),  # noqa: E501
             'username': (str,),  # noqa: E501
-            'total_items_sold': (float,),  # noqa: E501
+            'display_name': (str,),  # noqa: E501
             'is_verified': (bool,),  # noqa: E501
             'active_listings': (float,),  # noqa: E501
+            'total_items_sold': (float,),  # noqa: E501
             'avatar_url': (str, none_type,),  # noqa: E501
         }
 
@@ -89,11 +89,11 @@ class ListBuyerCatalogSellersItem(ModelNormal):
 
 
     attribute_map = {
-        'display_name': 'displayName',  # noqa: E501
         'username': 'username',  # noqa: E501
-        'total_items_sold': 'totalItemsSold',  # noqa: E501
+        'display_name': 'displayName',  # noqa: E501
         'is_verified': 'isVerified',  # noqa: E501
         'active_listings': 'activeListings',  # noqa: E501
+        'total_items_sold': 'totalItemsSold',  # noqa: E501
         'avatar_url': 'avatarUrl',  # noqa: E501
     }
 
@@ -104,15 +104,15 @@ class ListBuyerCatalogSellersItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, display_name, username, total_items_sold, is_verified, active_listings, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, username, display_name, is_verified, active_listings, total_items_sold, *args, **kwargs):  # noqa: E501
         """ListBuyerCatalogSellersItem - a model defined in OpenAPI
 
         Args:
-            display_name (str):
             username (str):
-            total_items_sold (float):
+            display_name (str):
             is_verified (bool):
             active_listings (float):
+            total_items_sold (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -173,11 +173,11 @@ class ListBuyerCatalogSellersItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.display_name = display_name
         self.username = username
-        self.total_items_sold = total_items_sold
+        self.display_name = display_name
         self.is_verified = is_verified
         self.active_listings = active_listings
+        self.total_items_sold = total_items_sold
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -198,15 +198,15 @@ class ListBuyerCatalogSellersItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, display_name, username, total_items_sold, is_verified, active_listings, *args, **kwargs):  # noqa: E501
+    def __init__(self, username, display_name, is_verified, active_listings, total_items_sold, *args, **kwargs):  # noqa: E501
         """ListBuyerCatalogSellersItem - a model defined in OpenAPI
 
         Args:
-            display_name (str):
             username (str):
-            total_items_sold (float):
+            display_name (str):
             is_verified (bool):
             active_listings (float):
+            total_items_sold (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -265,11 +265,11 @@ class ListBuyerCatalogSellersItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.display_name = display_name
         self.username = username
-        self.total_items_sold = total_items_sold
+        self.display_name = display_name
         self.is_verified = is_verified
         self.active_listings = active_listings
+        self.total_items_sold = total_items_sold
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -76,13 +76,12 @@ class GetBuyerCaseResponseDataCase(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'created_at': (str,),  # noqa: E501
-            'updated_at': (str,),  # noqa: E501
+            'purchase_id': (str,),  # noqa: E501
+            'seller_user_id': (str,),  # noqa: E501
             'reason': (str,),  # noqa: E501
             'state': (str,),  # noqa: E501
-            'seller_user_id': (str,),  # noqa: E501
-            'purchase_id': (str,),  # noqa: E501
-            'resolved_at': (str, none_type,),  # noqa: E501
+            'created_at': (str,),  # noqa: E501
+            'updated_at': (str,),  # noqa: E501
             'buyer_note': (str, none_type,),  # noqa: E501
             'photo_urls': ([str], none_type,),  # noqa: E501
             'awaiting_party': (str, none_type,),  # noqa: E501
@@ -90,6 +89,7 @@ class GetBuyerCaseResponseDataCase(ModelNormal):
             'offered_refund_cents': (float, none_type,),  # noqa: E501
             'resolved_refund_cents': (float, none_type,),  # noqa: E501
             'resolved_decision': (str, none_type,),  # noqa: E501
+            'resolved_at': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -99,13 +99,12 @@ class GetBuyerCaseResponseDataCase(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
-        'updated_at': 'updatedAt',  # noqa: E501
+        'purchase_id': 'purchaseId',  # noqa: E501
+        'seller_user_id': 'sellerUserId',  # noqa: E501
         'reason': 'reason',  # noqa: E501
         'state': 'state',  # noqa: E501
-        'seller_user_id': 'sellerUserId',  # noqa: E501
-        'purchase_id': 'purchaseId',  # noqa: E501
-        'resolved_at': 'resolvedAt',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
+        'updated_at': 'updatedAt',  # noqa: E501
         'buyer_note': 'buyerNote',  # noqa: E501
         'photo_urls': 'photoUrls',  # noqa: E501
         'awaiting_party': 'awaitingParty',  # noqa: E501
@@ -113,6 +112,7 @@ class GetBuyerCaseResponseDataCase(ModelNormal):
         'offered_refund_cents': 'offeredRefundCents',  # noqa: E501
         'resolved_refund_cents': 'resolvedRefundCents',  # noqa: E501
         'resolved_decision': 'resolvedDecision',  # noqa: E501
+        'resolved_at': 'resolvedAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -122,17 +122,17 @@ class GetBuyerCaseResponseDataCase(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, updated_at, reason, state, seller_user_id, purchase_id, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, purchase_id, seller_user_id, reason, state, created_at, updated_at, *args, **kwargs):  # noqa: E501
         """GetBuyerCaseResponseDataCase - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
-            updated_at (str):
+            purchase_id (str):
+            seller_user_id (str):
             reason (str):
             state (str):
-            seller_user_id (str):
-            purchase_id (str):
+            created_at (str):
+            updated_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -165,7 +165,6 @@ class GetBuyerCaseResponseDataCase(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            resolved_at (str, none_type): [optional]  # noqa: E501
             buyer_note (str, none_type): [optional]  # noqa: E501
             photo_urls ([str], none_type): [optional]  # noqa: E501
             awaiting_party (str, none_type): [optional]  # noqa: E501
@@ -173,6 +172,7 @@ class GetBuyerCaseResponseDataCase(ModelNormal):
             offered_refund_cents (float, none_type): [optional]  # noqa: E501
             resolved_refund_cents (float, none_type): [optional]  # noqa: E501
             resolved_decision (str, none_type): [optional]  # noqa: E501
+            resolved_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -201,12 +201,12 @@ class GetBuyerCaseResponseDataCase(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
-        self.updated_at = updated_at
+        self.purchase_id = purchase_id
+        self.seller_user_id = seller_user_id
         self.reason = reason
         self.state = state
-        self.seller_user_id = seller_user_id
-        self.purchase_id = purchase_id
+        self.created_at = created_at
+        self.updated_at = updated_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -227,17 +227,17 @@ class GetBuyerCaseResponseDataCase(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, updated_at, reason, state, seller_user_id, purchase_id, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, purchase_id, seller_user_id, reason, state, created_at, updated_at, *args, **kwargs):  # noqa: E501
         """GetBuyerCaseResponseDataCase - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
-            updated_at (str):
+            purchase_id (str):
+            seller_user_id (str):
             reason (str):
             state (str):
-            seller_user_id (str):
-            purchase_id (str):
+            created_at (str):
+            updated_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -270,7 +270,6 @@ class GetBuyerCaseResponseDataCase(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            resolved_at (str, none_type): [optional]  # noqa: E501
             buyer_note (str, none_type): [optional]  # noqa: E501
             photo_urls ([str], none_type): [optional]  # noqa: E501
             awaiting_party (str, none_type): [optional]  # noqa: E501
@@ -278,6 +277,7 @@ class GetBuyerCaseResponseDataCase(ModelNormal):
             offered_refund_cents (float, none_type): [optional]  # noqa: E501
             resolved_refund_cents (float, none_type): [optional]  # noqa: E501
             resolved_decision (str, none_type): [optional]  # noqa: E501
+            resolved_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -304,12 +304,12 @@ class GetBuyerCaseResponseDataCase(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
-        self.updated_at = updated_at
+        self.purchase_id = purchase_id
+        self.seller_user_id = seller_user_id
         self.reason = reason
         self.state = state
-        self.seller_user_id = seller_user_id
-        self.purchase_id = purchase_id
+        self.created_at = created_at
+        self.updated_at = updated_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

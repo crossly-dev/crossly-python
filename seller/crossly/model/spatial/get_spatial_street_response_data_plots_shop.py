@@ -59,8 +59,8 @@ class GetSpatialStreetResponseDataPlotsShop(ModelNormal):
             'None': None,
             'FULL': "full",
             'NONE': "none",
-            'AWNING': "awning",
             'FASCIA': "fascia",
+            'AWNING': "awning",
             'NEON_FASCIA': "neon_fascia",
             'GILDED_FASCIA': "gilded_fascia",
             'SCALLOPED_AWNING': "scalloped_awning",
@@ -189,7 +189,7 @@ class GetSpatialStreetResponseDataPlotsShop(ModelNormal):
             preview_images ([str]): Up to PREVIEW_IMAGES item images. Catalog art first, seller photo else.
             visitors_week (float): People who walked it in the last 7 days (spatial_item_attention).
             occupants (float): How many people are standing in this room RIGHT NOW.  The single most metaverse-shaped number in this payload: a directory of rooms is a menu, and a directory that says somebody is already inside one is a place. `roomOccupancy` has been able to answer this since presence shipped — nothing asked it.  Live, never stored: it comes from the socket table in `presence.ts`, so it cannot drift the way a counter column does, and it is 0 for every room on a process that holds no sockets for it.
-            closed (bool): The shop is shut — the seller is on vacation.  Sourced from `seller_profiles.vacation_mode`, which is the flag whose own schema comment says the storefront shows a banner and checkout blocks new orders. NOT `users.vacation_mode`, which pauses automation and share schedulers and has nothing to do with whether somebody is selling.  A closed room is still WALKABLE on purpose. Vacation pauses selling, it does not hide a collection, and a door that refuses to open is a worse answer than one that opens onto a shop with the shutter down — you can still look, you just cannot buy.
+            closed (bool): The shop is shut — the seller is on vacation.  Sourced from `users.vacation_mode` / `vacation_ends_at` — Settings › Vacation mode, the same flag checkout blocks new orders on (services/vacation/seller-vacation.ts, settings IA audit B3). The old `seller_profiles.vacation_mode` copy had no writer any client used.  A closed room is still WALKABLE on purpose. Vacation pauses selling, it does not hide a collection, and a door that refuses to open is a worse answer than one that opens onto a shop with the shutter down — you can still look, you just cannot buy.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -300,7 +300,7 @@ class GetSpatialStreetResponseDataPlotsShop(ModelNormal):
             preview_images ([str]): Up to PREVIEW_IMAGES item images. Catalog art first, seller photo else.
             visitors_week (float): People who walked it in the last 7 days (spatial_item_attention).
             occupants (float): How many people are standing in this room RIGHT NOW.  The single most metaverse-shaped number in this payload: a directory of rooms is a menu, and a directory that says somebody is already inside one is a place. `roomOccupancy` has been able to answer this since presence shipped — nothing asked it.  Live, never stored: it comes from the socket table in `presence.ts`, so it cannot drift the way a counter column does, and it is 0 for every room on a process that holds no sockets for it.
-            closed (bool): The shop is shut — the seller is on vacation.  Sourced from `seller_profiles.vacation_mode`, which is the flag whose own schema comment says the storefront shows a banner and checkout blocks new orders. NOT `users.vacation_mode`, which pauses automation and share schedulers and has nothing to do with whether somebody is selling.  A closed room is still WALKABLE on purpose. Vacation pauses selling, it does not hide a collection, and a door that refuses to open is a worse answer than one that opens onto a shop with the shutter down — you can still look, you just cannot buy.
+            closed (bool): The shop is shut — the seller is on vacation.  Sourced from `users.vacation_mode` / `vacation_ends_at` — Settings › Vacation mode, the same flag checkout blocks new orders on (services/vacation/seller-vacation.ts, settings IA audit B3). The old `seller_profiles.vacation_mode` copy had no writer any client used.  A closed room is still WALKABLE on purpose. Vacation pauses selling, it does not hide a collection, and a door that refuses to open is a worse answer than one that opens onto a shop with the shutter down — you can still look, you just cannot buy.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

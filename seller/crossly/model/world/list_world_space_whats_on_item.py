@@ -56,10 +56,10 @@ class ListWorldSpaceWhatsOnItem(ModelNormal):
 
     allowed_values = {
         ('place',): {
+            'STAGE': "stage",
             'STREET': "street",
             'FESTIVAL': "festival",
             'SPACE': "space",
-            'STAGE': "stage",
         },
     }
 

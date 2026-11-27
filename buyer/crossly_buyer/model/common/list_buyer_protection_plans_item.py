@@ -76,15 +76,15 @@ class ListBuyerProtectionPlansItem(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'created_at': (str,),  # noqa: E501
             'status': (str,),  # noqa: E501
             'title': (str,),  # noqa: E501
             'price_cents': (float,),  # noqa: E501
+            'created_at': (str,),  # noqa: E501
             'purchase_id': (str, none_type,),  # noqa: E501
-            'terms_url': (str, none_type,),  # noqa: E501
-            'refund_cents': (float, none_type,),  # noqa: E501
             'term_months': (float, none_type,),  # noqa: E501
             'coverage': (str, none_type,),  # noqa: E501
+            'terms_url': (str, none_type,),  # noqa: E501
+            'refund_cents': (float, none_type,),  # noqa: E501
             'contract_id': (str, none_type,),  # noqa: E501
             'item_title': (str, none_type,),  # noqa: E501
         }
@@ -96,15 +96,15 @@ class ListBuyerProtectionPlansItem(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
         'status': 'status',  # noqa: E501
         'title': 'title',  # noqa: E501
         'price_cents': 'priceCents',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
         'purchase_id': 'purchaseId',  # noqa: E501
-        'terms_url': 'termsUrl',  # noqa: E501
-        'refund_cents': 'refundCents',  # noqa: E501
         'term_months': 'termMonths',  # noqa: E501
         'coverage': 'coverage',  # noqa: E501
+        'terms_url': 'termsUrl',  # noqa: E501
+        'refund_cents': 'refundCents',  # noqa: E501
         'contract_id': 'contractId',  # noqa: E501
         'item_title': 'itemTitle',  # noqa: E501
     }
@@ -116,15 +116,15 @@ class ListBuyerProtectionPlansItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, status, title, price_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, status, title, price_cents, created_at, *args, **kwargs):  # noqa: E501
         """ListBuyerProtectionPlansItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
             status (str):
             title (str):
             price_cents (float):
+            created_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -158,10 +158,10 @@ class ListBuyerProtectionPlansItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             purchase_id (str, none_type): [optional]  # noqa: E501
-            terms_url (str, none_type): [optional]  # noqa: E501
-            refund_cents (float, none_type): [optional]  # noqa: E501
             term_months (float, none_type): [optional]  # noqa: E501
             coverage (str, none_type): [optional]  # noqa: E501
+            terms_url (str, none_type): [optional]  # noqa: E501
+            refund_cents (float, none_type): [optional]  # noqa: E501
             contract_id (str, none_type): [optional]  # noqa: E501
             item_title (str, none_type): [optional]  # noqa: E501
         """
@@ -192,10 +192,10 @@ class ListBuyerProtectionPlansItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
         self.status = status
         self.title = title
         self.price_cents = price_cents
+        self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -216,15 +216,15 @@ class ListBuyerProtectionPlansItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, status, title, price_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, status, title, price_cents, created_at, *args, **kwargs):  # noqa: E501
         """ListBuyerProtectionPlansItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
             status (str):
             title (str):
             price_cents (float):
+            created_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -258,10 +258,10 @@ class ListBuyerProtectionPlansItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             purchase_id (str, none_type): [optional]  # noqa: E501
-            terms_url (str, none_type): [optional]  # noqa: E501
-            refund_cents (float, none_type): [optional]  # noqa: E501
             term_months (float, none_type): [optional]  # noqa: E501
             coverage (str, none_type): [optional]  # noqa: E501
+            terms_url (str, none_type): [optional]  # noqa: E501
+            refund_cents (float, none_type): [optional]  # noqa: E501
             contract_id (str, none_type): [optional]  # noqa: E501
             item_title (str, none_type): [optional]  # noqa: E501
         """
@@ -290,10 +290,10 @@ class ListBuyerProtectionPlansItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
         self.status = status
         self.title = title
         self.price_cents = price_cents
+        self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

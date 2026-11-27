@@ -30,10 +30,12 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.web3.list_web3_launches_item_creator import ListWeb3LaunchesItemCreator
-    from crossly.model.web3.list_web3_launches_item_holder_gate import ListWeb3LaunchesItemHolderGate
-    globals()['ListWeb3LaunchesItemCreator'] = ListWeb3LaunchesItemCreator
-    globals()['ListWeb3LaunchesItemHolderGate'] = ListWeb3LaunchesItemHolderGate
+    from crossly.model.common.contract_name import ContractName
+    from crossly.model.web3.list_web3_launches_item_holder_perks_item import ListWeb3LaunchesItemHolderPerksItem
+    from crossly.model.common.name_object import NameObject
+    globals()['ContractName'] = ContractName
+    globals()['ListWeb3LaunchesItemHolderPerksItem'] = ListWeb3LaunchesItemHolderPerksItem
+    globals()['NameObject'] = NameObject
 
 
 class ListWeb3LaunchesItem(ModelNormal):
@@ -62,24 +64,24 @@ class ListWeb3LaunchesItem(ModelNormal):
 
     allowed_values = {
         ('chain',): {
-            'SOLANA': "solana",
             'ETHEREUM': "ethereum",
             'BASE': "base",
             'POLYGON': "polygon",
             'ARBITRUM': "arbitrum",
             'OPTIMISM': "optimism",
+            'SOLANA': "solana",
         },
         ('status',): {
-            'LIVE': "live",
             'DRAFT': "draft",
+            'LIVE': "live",
             'FAILED': "failed",
             'DEPLOYING': "deploying",
         },
         ('phase',): {
-            'ENDED': "ended",
-            'HOLDER': "holder",
             'PUBLIC': "public",
+            'ENDED': "ended",
             'UPCOMING': "upcoming",
+            'HOLDER': "holder",
             'SOLD_OUT': "sold_out",
         },
     }
@@ -116,7 +118,7 @@ class ListWeb3LaunchesItem(ModelNormal):
             'royalty_bps': (float,),  # noqa: E501
             'platform_bps': (float,),  # noqa: E501
             'phase': (str,),  # noqa: E501
-            'creator': (ListWeb3LaunchesItemCreator,),  # noqa: E501
+            'creator': (NameObject,),  # noqa: E501
             'card': (bool,),  # noqa: E501
             'allowlist': (bool,),  # noqa: E501
             'revealed': (bool,),  # noqa: E501
@@ -125,7 +127,10 @@ class ListWeb3LaunchesItem(ModelNormal):
             'image_url': (str, none_type,),  # noqa: E501
             'holder_start': (str, none_type,),  # noqa: E501
             'end_time': (str, none_type,),  # noqa: E501
-            'holder_gate': (ListWeb3LaunchesItemHolderGate,),  # noqa: E501
+            'holder_gate': (ContractName,),  # noqa: E501
+            'card_set_id': (str, none_type,),  # noqa: E501
+            'creation_refs': ([str], none_type,),  # noqa: E501
+            'holder_perks': ([ListWeb3LaunchesItemHolderPerksItem], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -157,6 +162,9 @@ class ListWeb3LaunchesItem(ModelNormal):
         'holder_start': 'holderStart',  # noqa: E501
         'end_time': 'endTime',  # noqa: E501
         'holder_gate': 'holderGate',  # noqa: E501
+        'card_set_id': 'cardSetId',  # noqa: E501
+        'creation_refs': 'creationRefs',  # noqa: E501
+        'holder_perks': 'holderPerks',  # noqa: E501
     }
 
     read_only_vars = {
@@ -183,7 +191,7 @@ class ListWeb3LaunchesItem(ModelNormal):
             royalty_bps (float):
             platform_bps (float):
             phase (str):
-            creator (ListWeb3LaunchesItemCreator):
+            creator (NameObject):
             card (bool): Card checkout (Crossmint) is set up and the collection is verified there.
             allowlist (bool): The creator set an early-phase allowlist (check a wallet with /launch/:id/allowlist/:address).
             revealed (bool): Per-token art has been revealed.
@@ -224,7 +232,10 @@ class ListWeb3LaunchesItem(ModelNormal):
             image_url (str, none_type): [optional]  # noqa: E501
             holder_start (str, none_type): [optional]  # noqa: E501
             end_time (str, none_type): [optional]  # noqa: E501
-            holder_gate (ListWeb3LaunchesItemHolderGate): [optional]  # noqa: E501
+            holder_gate (ContractName): [optional]  # noqa: E501
+            card_set_id (str, none_type): Creator Studio (migration 1163): the card set this collection takes on chain, and the creations it mints.. [optional]  # noqa: E501
+            creation_refs ([str], none_type): [optional]  # noqa: E501
+            holder_perks ([ListWeb3LaunchesItemHolderPerksItem], none_type): Migration 1178 (R-studio-15): what holding a token gets you, decided at mint (shared/creator/holder-perks).. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -306,7 +317,7 @@ class ListWeb3LaunchesItem(ModelNormal):
             royalty_bps (float):
             platform_bps (float):
             phase (str):
-            creator (ListWeb3LaunchesItemCreator):
+            creator (NameObject):
             card (bool): Card checkout (Crossmint) is set up and the collection is verified there.
             allowlist (bool): The creator set an early-phase allowlist (check a wallet with /launch/:id/allowlist/:address).
             revealed (bool): Per-token art has been revealed.
@@ -347,7 +358,10 @@ class ListWeb3LaunchesItem(ModelNormal):
             image_url (str, none_type): [optional]  # noqa: E501
             holder_start (str, none_type): [optional]  # noqa: E501
             end_time (str, none_type): [optional]  # noqa: E501
-            holder_gate (ListWeb3LaunchesItemHolderGate): [optional]  # noqa: E501
+            holder_gate (ContractName): [optional]  # noqa: E501
+            card_set_id (str, none_type): Creator Studio (migration 1163): the card set this collection takes on chain, and the creations it mints.. [optional]  # noqa: E501
+            creation_refs ([str], none_type): [optional]  # noqa: E501
+            holder_perks ([ListWeb3LaunchesItemHolderPerksItem], none_type): Migration 1178 (R-studio-15): what holding a token gets you, decided at mint (shared/creator/holder-perks).. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

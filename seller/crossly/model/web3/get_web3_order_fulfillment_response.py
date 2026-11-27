@@ -63,9 +63,9 @@ class GetWeb3OrderFulfillmentResponse(ModelNormal):
     allowed_values = {
         ('kind',): {
             'BUNDLE': "bundle",
+            'OFFER': "offer",
             'LISTING': "listing",
             'PRIVATE_LISTING': "private_listing",
-            'OFFER': "offer",
             'COLLECTION_OFFER': "collection_offer",
             'TRAIT_OFFER': "trait_offer",
         },

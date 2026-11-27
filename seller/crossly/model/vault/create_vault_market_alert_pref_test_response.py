@@ -60,10 +60,12 @@ class CreateVaultMarketAlertPrefTestResponse(ModelNormal):
 
     allowed_values = {
         ('kind',): {
-            'PRICE': "price",
-            'AUCTION': "auction",
-            'FILL': "fill",
             'ACCOUNT': "account",
+            'PRICE': "price",
+            'FILL': "fill",
+            'AUCTION': "auction",
+            'PREDICTION': "prediction",
+            'OPTION_EXPIRY': "option_expiry",
             'MARGIN_CALL': "margin_call",
             'ADL': "adl",
             'P2P_LOAN': "p2p_loan",
@@ -71,6 +73,10 @@ class CreateVaultMarketAlertPrefTestResponse(ModelNormal):
             'RECEIPT_TOKEN': "receipt_token",
             'SET_GOAL': "set_goal",
             'FOLLOW': "follow",
+            'SHARE_OFFERING': "share_offering",
+            'SHARE_VOTE': "share_vote",
+            'OPTION_SETTLEMENT': "option_settlement",
+            'PREDICTION_ODDS': "prediction_odds",
         },
     }
 

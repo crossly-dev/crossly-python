@@ -32,8 +32,10 @@ from crossly.exceptions import ApiAttributeError
 def lazy_import():
     from crossly.model.vault.get_vault_market_portfolio_history_response_now_marks import GetVaultMarketPortfolioHistoryResponseNowMarks
     from crossly.model.vault.get_vault_market_worth_vault_response_sell_now import GetVaultMarketWorthVaultResponseSellNow
+    from crossly.model.vault.get_vault_market_worth_vault_response_today import GetVaultMarketWorthVaultResponseToday
     globals()['GetVaultMarketPortfolioHistoryResponseNowMarks'] = GetVaultMarketPortfolioHistoryResponseNowMarks
     globals()['GetVaultMarketWorthVaultResponseSellNow'] = GetVaultMarketWorthVaultResponseSellNow
+    globals()['GetVaultMarketWorthVaultResponseToday'] = GetVaultMarketWorthVaultResponseToday
 
 
 class GetVaultMarketWorthVaultResponse(ModelNormal):
@@ -92,6 +94,7 @@ class GetVaultMarketWorthVaultResponse(ModelNormal):
             'marks': (GetVaultMarketPortfolioHistoryResponseNowMarks,),  # noqa: E501
             'cost_cents': (float,),  # noqa: E501
             'pnl_cents': (float,),  # noqa: E501
+            'today': (GetVaultMarketWorthVaultResponseToday,),  # noqa: E501
             'sell_now': (GetVaultMarketWorthVaultResponseSellNow,),  # noqa: E501
             'note': (str,),  # noqa: E501
         }
@@ -112,6 +115,7 @@ class GetVaultMarketWorthVaultResponse(ModelNormal):
         'marks': 'marks',  # noqa: E501
         'cost_cents': 'costCents',  # noqa: E501
         'pnl_cents': 'pnlCents',  # noqa: E501
+        'today': 'today',  # noqa: E501
         'sell_now': 'sellNow',  # noqa: E501
         'note': 'note',  # noqa: E501
     }
@@ -123,7 +127,7 @@ class GetVaultMarketWorthVaultResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, as_of, value_cents, vault_cents, on_loan_cents, positions_cents, units, units_on_loan, marks, cost_cents, pnl_cents, sell_now, note, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, as_of, value_cents, vault_cents, on_loan_cents, positions_cents, units, units_on_loan, marks, cost_cents, pnl_cents, today, sell_now, note, *args, **kwargs):  # noqa: E501
         """GetVaultMarketWorthVaultResponse - a model defined in OpenAPI
 
         Args:
@@ -137,6 +141,7 @@ class GetVaultMarketWorthVaultResponse(ModelNormal):
             marks (GetVaultMarketPortfolioHistoryResponseNowMarks):
             cost_cents (float):
             pnl_cents (float):
+            today (GetVaultMarketWorthVaultResponseToday):
             sell_now (GetVaultMarketWorthVaultResponseSellNow):
             note (str):
 
@@ -208,6 +213,7 @@ class GetVaultMarketWorthVaultResponse(ModelNormal):
         self.marks = marks
         self.cost_cents = cost_cents
         self.pnl_cents = pnl_cents
+        self.today = today
         self.sell_now = sell_now
         self.note = note
         for var_name, var_value in kwargs.items():
@@ -230,7 +236,7 @@ class GetVaultMarketWorthVaultResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, as_of, value_cents, vault_cents, on_loan_cents, positions_cents, units, units_on_loan, marks, cost_cents, pnl_cents, sell_now, note, *args, **kwargs):  # noqa: E501
+    def __init__(self, as_of, value_cents, vault_cents, on_loan_cents, positions_cents, units, units_on_loan, marks, cost_cents, pnl_cents, today, sell_now, note, *args, **kwargs):  # noqa: E501
         """GetVaultMarketWorthVaultResponse - a model defined in OpenAPI
 
         Args:
@@ -244,6 +250,7 @@ class GetVaultMarketWorthVaultResponse(ModelNormal):
             marks (GetVaultMarketPortfolioHistoryResponseNowMarks):
             cost_cents (float):
             pnl_cents (float):
+            today (GetVaultMarketWorthVaultResponseToday):
             sell_now (GetVaultMarketWorthVaultResponseSellNow):
             note (str):
 
@@ -313,6 +320,7 @@ class GetVaultMarketWorthVaultResponse(ModelNormal):
         self.marks = marks
         self.cost_cents = cost_cents
         self.pnl_cents = pnl_cents
+        self.today = today
         self.sell_now = sell_now
         self.note = note
         for var_name, var_value in kwargs.items():

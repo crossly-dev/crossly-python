@@ -56,8 +56,8 @@ class CreateVariationGroupPublishResponseDataOutcomes(ModelNormal):
 
     allowed_values = {
         ('mode',): {
-            'GROUPED': "grouped",
             'SEPARATE': "separate",
+            'GROUPED': "grouped",
         },
     }
 
@@ -85,6 +85,10 @@ class CreateVariationGroupPublishResponseDataOutcomes(ModelNormal):
             'warnings': ([str],),  # noqa: E501
             'listing_id': (str, none_type,),  # noqa: E501
             'job_ids': ([str], none_type,),  # noqa: E501
+            'members': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type,),  # noqa: E501
+            'failed': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type,),  # noqa: E501
+            'after_recorded': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
+            'own_option_rows': (bool, none_type,),  # noqa: E501
             'error': (str, none_type,),  # noqa: E501
         }
 
@@ -100,6 +104,10 @@ class CreateVariationGroupPublishResponseDataOutcomes(ModelNormal):
         'warnings': 'warnings',  # noqa: E501
         'listing_id': 'listingId',  # noqa: E501
         'job_ids': 'jobIds',  # noqa: E501
+        'members': 'members',  # noqa: E501
+        'failed': 'failed',  # noqa: E501
+        'after_recorded': 'afterRecorded',  # noqa: E501
+        'own_option_rows': 'ownOptionRows',  # noqa: E501
         'error': 'error',  # noqa: E501
     }
 
@@ -152,6 +160,10 @@ class CreateVariationGroupPublishResponseDataOutcomes(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             listing_id (str, none_type): The marketplace listing id — the GROUP's on a grouped platform, absent on a separate one where each option has its own.. [optional]  # noqa: E501
             job_ids ([str], none_type): Dispatcher job ids, on the separate path.. [optional]  # noqa: E501
+            members ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type): Grouped: every option that went live, with its own id on the platform. publishGroupToPlatform records one platform_listings row per entry (variation-publish-members.ts), so a sale or delist acts on that option.. [optional]  # noqa: E501
+            failed ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type): Grouped: options that did not go live. Reported in `warnings`; the live ones are still recorded.. [optional]  # noqa: E501
+            after_recorded ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): Grouped: work that needs the option rows to exist (a POS stock base, markPosPushed), run right after they are recorded. Returns warnings for the seller; must not throw for one option.. [optional]  # noqa: E501
+            own_option_rows (bool, none_type): The publisher tracks its options itself, not as platform_listings rows (Crossly: crossly_listing_variants with the member listing id, variation-publish-crossly.ts), so no `members` is not a gap.. [optional]  # noqa: E501
             error (str, none_type): [optional]  # noqa: E501
         """
 
@@ -246,6 +258,10 @@ class CreateVariationGroupPublishResponseDataOutcomes(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             listing_id (str, none_type): The marketplace listing id — the GROUP's on a grouped platform, absent on a separate one where each option has its own.. [optional]  # noqa: E501
             job_ids ([str], none_type): Dispatcher job ids, on the separate path.. [optional]  # noqa: E501
+            members ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type): Grouped: every option that went live, with its own id on the platform. publishGroupToPlatform records one platform_listings row per entry (variation-publish-members.ts), so a sale or delist acts on that option.. [optional]  # noqa: E501
+            failed ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}], none_type): Grouped: options that did not go live. Reported in `warnings`; the live ones are still recorded.. [optional]  # noqa: E501
+            after_recorded ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): Grouped: work that needs the option rows to exist (a POS stock base, markPosPushed), run right after they are recorded. Returns warnings for the seller; must not throw for one option.. [optional]  # noqa: E501
+            own_option_rows (bool, none_type): The publisher tracks its options itself, not as platform_listings rows (Crossly: crossly_listing_variants with the member listing id, variation-publish-crossly.ts), so no `members` is not a gap.. [optional]  # noqa: E501
             error (str, none_type): [optional]  # noqa: E501
         """
 

@@ -33,15 +33,15 @@ def lazy_import():
     from crossly.model.world.get_world_game_leaderboard_response_data_scoring import GetWorldGameLeaderboardResponseDataScoring
     from crossly.model.world.get_world_game_response_data_contests import GetWorldGameResponseDataContests
     from crossly.model.world.get_world_game_response_data_piece import GetWorldGameResponseDataPiece
-    from crossly.model.world.get_world_game_response_data_players import GetWorldGameResponseDataPlayers
     from crossly.model.world.get_world_game_response_data_rewards import GetWorldGameResponseDataRewards
     from crossly.model.world.list_world_games_item_places_item import ListWorldGamesItemPlacesItem
+    from crossly.model.common.min_max import MinMax
     globals()['GetWorldGameLeaderboardResponseDataScoring'] = GetWorldGameLeaderboardResponseDataScoring
     globals()['GetWorldGameResponseDataContests'] = GetWorldGameResponseDataContests
     globals()['GetWorldGameResponseDataPiece'] = GetWorldGameResponseDataPiece
-    globals()['GetWorldGameResponseDataPlayers'] = GetWorldGameResponseDataPlayers
     globals()['GetWorldGameResponseDataRewards'] = GetWorldGameResponseDataRewards
     globals()['ListWorldGamesItemPlacesItem'] = ListWorldGamesItemPlacesItem
+    globals()['MinMax'] = MinMax
 
 
 class ListWorldGamesItem(ModelNormal):
@@ -105,7 +105,7 @@ class ListWorldGamesItem(ModelNormal):
             'version': (str,),  # noqa: E501
             'description': (str,),  # noqa: E501
             'mode': (str,),  # noqa: E501
-            'players': (GetWorldGameResponseDataPlayers,),  # noqa: E501
+            'players': (MinMax,),  # noqa: E501
             'places': ([ListWorldGamesItemPlacesItem],),  # noqa: E501
             'rating': (str,),  # noqa: E501
             'rewards': ([GetWorldGameResponseDataRewards],),  # noqa: E501
@@ -158,7 +158,7 @@ class ListWorldGamesItem(ModelNormal):
             version (str):
             description (str):
             mode (str):
-            players (GetWorldGameResponseDataPlayers):
+            players (MinMax):
             places ([ListWorldGamesItemPlacesItem]):
             rating (str):
             rewards ([GetWorldGameResponseDataRewards]):
@@ -268,7 +268,7 @@ class ListWorldGamesItem(ModelNormal):
             version (str):
             description (str):
             mode (str):
-            players (GetWorldGameResponseDataPlayers):
+            players (MinMax):
             places ([ListWorldGamesItemPlacesItem]):
             rating (str):
             rewards ([GetWorldGameResponseDataRewards]):

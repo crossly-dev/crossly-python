@@ -57,14 +57,14 @@ class GetVaultMarketHealthResponseItems(ModelNormal):
     allowed_values = {
         ('quality',): {
             'NONE': "none",
+            'C': "C",
             'A': "A",
             'B': "B",
-            'C': "C",
         },
         ('tier',): {
+            'C': "C",
             'A': "A",
             'B': "B",
-            'C': "C",
             'D': "D",
             'UNCLASSIFIED': "unclassified",
         },

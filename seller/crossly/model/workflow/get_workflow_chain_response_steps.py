@@ -76,9 +76,10 @@ class GetWorkflowChainResponseSteps(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'position': (float,),  # noqa: E501
             'chain_id': (str,),  # noqa: E501
+            'position': (float,),  # noqa: E501
             'step_type': (str,),  # noqa: E501
+            'action_config': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'action_id': (str, none_type,),  # noqa: E501
             'wait_ms': (float, none_type,),  # noqa: E501
         }
@@ -90,9 +91,10 @@ class GetWorkflowChainResponseSteps(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'position': 'position',  # noqa: E501
         'chain_id': 'chainId',  # noqa: E501
+        'position': 'position',  # noqa: E501
         'step_type': 'stepType',  # noqa: E501
+        'action_config': 'actionConfig',  # noqa: E501
         'action_id': 'actionId',  # noqa: E501
         'wait_ms': 'waitMs',  # noqa: E501
     }
@@ -104,14 +106,15 @@ class GetWorkflowChainResponseSteps(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, position, chain_id, step_type, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, chain_id, position, step_type, action_config, *args, **kwargs):  # noqa: E501
         """GetWorkflowChainResponseSteps - a model defined in OpenAPI
 
         Args:
             id (str):
-            position (float):
             chain_id (str):
+            position (float):
             step_type (str):
+            action_config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -174,9 +177,10 @@ class GetWorkflowChainResponseSteps(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.position = position
         self.chain_id = chain_id
+        self.position = position
         self.step_type = step_type
+        self.action_config = action_config
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -197,14 +201,15 @@ class GetWorkflowChainResponseSteps(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, position, chain_id, step_type, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, chain_id, position, step_type, action_config, *args, **kwargs):  # noqa: E501
         """GetWorkflowChainResponseSteps - a model defined in OpenAPI
 
         Args:
             id (str):
-            position (float):
             chain_id (str):
+            position (float):
             step_type (str):
+            action_config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -265,9 +270,10 @@ class GetWorkflowChainResponseSteps(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.position = position
         self.chain_id = chain_id
+        self.position = position
         self.step_type = step_type
+        self.action_config = action_config
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

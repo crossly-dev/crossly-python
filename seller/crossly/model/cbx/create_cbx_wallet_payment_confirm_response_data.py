@@ -56,8 +56,8 @@ class CreateCbxWalletPaymentConfirmResponseData(ModelNormal):
 
     allowed_values = {
         ('release_decision',): {
-            'REVIEW': "review",
             'RELEASE': "release",
+            'REVIEW': "review",
             'REFUSE': "refuse",
         },
     }

@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.web3.create_web3_wallet_sync_response_summary import CreateWeb3WalletSyncResponseSummary
-    globals()['CreateWeb3WalletSyncResponseSummary'] = CreateWeb3WalletSyncResponseSummary
+    from crossly.model.web3.create_web3_store_wallet_sync_response_data import CreateWeb3StoreWalletSyncResponseData
+    globals()['CreateWeb3StoreWalletSyncResponseData'] = CreateWeb3StoreWalletSyncResponseData
 
 
 class CreateWeb3WalletSyncResponse(ModelNormal):
@@ -80,7 +80,7 @@ class CreateWeb3WalletSyncResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'summary': (CreateWeb3WalletSyncResponseSummary,),  # noqa: E501
+            'summary': (CreateWeb3StoreWalletSyncResponseData,),  # noqa: E501
         }
 
     @cached_property
@@ -103,7 +103,7 @@ class CreateWeb3WalletSyncResponse(ModelNormal):
         """CreateWeb3WalletSyncResponse - a model defined in OpenAPI
 
         Args:
-            summary (CreateWeb3WalletSyncResponseSummary):
+            summary (CreateWeb3StoreWalletSyncResponseData):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -188,7 +188,7 @@ class CreateWeb3WalletSyncResponse(ModelNormal):
         """CreateWeb3WalletSyncResponse - a model defined in OpenAPI
 
         Args:
-            summary (CreateWeb3WalletSyncResponseSummary):
+            summary (CreateWeb3StoreWalletSyncResponseData):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

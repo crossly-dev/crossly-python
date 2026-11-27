@@ -85,6 +85,7 @@ class ListConnectedAppsItem(ModelNormal):
             'app_description': (str, none_type,),  # noqa: E501
             'homepage_url': (str, none_type,),  # noqa: E501
             'developer_name': (str, none_type,),  # noqa: E501
+            'rev_share_bps': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -103,6 +104,7 @@ class ListConnectedAppsItem(ModelNormal):
         'app_description': 'appDescription',  # noqa: E501
         'homepage_url': 'homepageUrl',  # noqa: E501
         'developer_name': 'developerName',  # noqa: E501
+        'rev_share_bps': 'revShareBps',  # noqa: E501
     }
 
     read_only_vars = {
@@ -158,6 +160,7 @@ class ListConnectedAppsItem(ModelNormal):
             app_description (str, none_type): [optional]  # noqa: E501
             homepage_url (str, none_type): [optional]  # noqa: E501
             developer_name (str, none_type): [optional]  # noqa: E501
+            rev_share_bps (float, none_type): The share of take-home THIS install agreed to (frozen at consent), not the app's current terms. Null = free.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -257,6 +260,7 @@ class ListConnectedAppsItem(ModelNormal):
             app_description (str, none_type): [optional]  # noqa: E501
             homepage_url (str, none_type): [optional]  # noqa: E501
             developer_name (str, none_type): [optional]  # noqa: E501
+            rev_share_bps (float, none_type): The share of take-home THIS install agreed to (frozen at consent), not the app's current terms. Null = free.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

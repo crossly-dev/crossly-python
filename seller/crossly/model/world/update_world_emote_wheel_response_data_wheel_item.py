@@ -53,6 +53,7 @@ class UpdateWorldEmoteWheelResponseDataWheelItem(ModelSimple):
     allowed_values = {
         ('value',): {
             'None': None,
+            'PHONE': "phone",
             'SPIN': "spin",
             'WAVE': "wave",
             'POINT': "point",
@@ -73,6 +74,33 @@ class UpdateWorldEmoteWheelResponseDataWheelItem(ModelSimple):
             'HUG': "hug",
             'HIGH_FIVE': "high_five",
             'HANDSHAKE': "handshake",
+            'FACEPALM': "facepalm",
+            'THINK': "think",
+            'LAUGH': "laugh",
+            'SIGH': "sigh",
+            'NO': "no",
+            'FIST_PUMP': "fist_pump",
+            'VICTORY': "victory",
+            'YAWN': "yawn",
+            'SALUTE': "salute",
+            'BIG_WAVE': "big_wave",
+            'BECKON': "beckon",
+            'SHUSH': "shush",
+            'KISS': "kiss",
+            'PEACE': "peace",
+            'HEART': "heart",
+            'SWAY': "sway",
+            'VIBE': "vibe",
+            'AIR_GUITAR': "air_guitar",
+            'ROBOT': "robot",
+            'DISCO': "disco",
+            'GAVEL': "gavel",
+            'HAGGLE': "haggle",
+            'ARMS_CROSSED': "arms_crossed",
+            'HANDS_ON_HIPS': "hands_on_hips",
+            'KNEEL': "kneel",
+            'FIST_BUMP': "fist_bump",
+            'DANCE_OFF': "dance_off",
             'SHOWOFF': "showoff",
             'MOMENT:HANDSHAKE': "moment:handshake",
             'MOMENT:UNBOX': "moment:unbox",
@@ -128,10 +156,10 @@ class UpdateWorldEmoteWheelResponseDataWheelItem(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str):, must be one of ["spin", "wave", "point", "clap", "cheer", "hype", "shrug", "nod", "sit", "lean", "reach", "dance", "bow", "thumbs", "loupe", "box_spin", "flex", "hug", "high_five", "handshake", "showoff", "moment:handshake", "moment:unbox", "moment:slab_flip", ]  # noqa: E501
+            args[0] (str):, must be one of ["phone", "spin", "wave", "point", "clap", "cheer", "hype", "shrug", "nod", "sit", "lean", "reach", "dance", "bow", "thumbs", "loupe", "box_spin", "flex", "hug", "high_five", "handshake", "facepalm", "think", "laugh", "sigh", "no", "fist_pump", "victory", "yawn", "salute", "big_wave", "beckon", "shush", "kiss", "peace", "heart", "sway", "vibe", "air_guitar", "robot", "disco", "gavel", "haggle", "arms_crossed", "hands_on_hips", "kneel", "fist_bump", "dance_off", "showoff", "moment:handshake", "moment:unbox", "moment:slab_flip", ]  # noqa: E501
 
         Keyword Args:
-            value (str):, must be one of ["spin", "wave", "point", "clap", "cheer", "hype", "shrug", "nod", "sit", "lean", "reach", "dance", "bow", "thumbs", "loupe", "box_spin", "flex", "hug", "high_five", "handshake", "showoff", "moment:handshake", "moment:unbox", "moment:slab_flip", ]  # noqa: E501
+            value (str):, must be one of ["phone", "spin", "wave", "point", "clap", "cheer", "hype", "shrug", "nod", "sit", "lean", "reach", "dance", "bow", "thumbs", "loupe", "box_spin", "flex", "hug", "high_five", "handshake", "facepalm", "think", "laugh", "sigh", "no", "fist_pump", "victory", "yawn", "salute", "big_wave", "beckon", "shush", "kiss", "peace", "heart", "sway", "vibe", "air_guitar", "robot", "disco", "gavel", "haggle", "arms_crossed", "hands_on_hips", "kneel", "fist_bump", "dance_off", "showoff", "moment:handshake", "moment:unbox", "moment:slab_flip", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -218,10 +246,10 @@ class UpdateWorldEmoteWheelResponseDataWheelItem(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str):, must be one of ["spin", "wave", "point", "clap", "cheer", "hype", "shrug", "nod", "sit", "lean", "reach", "dance", "bow", "thumbs", "loupe", "box_spin", "flex", "hug", "high_five", "handshake", "showoff", "moment:handshake", "moment:unbox", "moment:slab_flip", ]  # noqa: E501
+            args[0] (str):, must be one of ["phone", "spin", "wave", "point", "clap", "cheer", "hype", "shrug", "nod", "sit", "lean", "reach", "dance", "bow", "thumbs", "loupe", "box_spin", "flex", "hug", "high_five", "handshake", "facepalm", "think", "laugh", "sigh", "no", "fist_pump", "victory", "yawn", "salute", "big_wave", "beckon", "shush", "kiss", "peace", "heart", "sway", "vibe", "air_guitar", "robot", "disco", "gavel", "haggle", "arms_crossed", "hands_on_hips", "kneel", "fist_bump", "dance_off", "showoff", "moment:handshake", "moment:unbox", "moment:slab_flip", ]  # noqa: E501
 
         Keyword Args:
-            value (str):, must be one of ["spin", "wave", "point", "clap", "cheer", "hype", "shrug", "nod", "sit", "lean", "reach", "dance", "bow", "thumbs", "loupe", "box_spin", "flex", "hug", "high_five", "handshake", "showoff", "moment:handshake", "moment:unbox", "moment:slab_flip", ]  # noqa: E501
+            value (str):, must be one of ["phone", "spin", "wave", "point", "clap", "cheer", "hype", "shrug", "nod", "sit", "lean", "reach", "dance", "bow", "thumbs", "loupe", "box_spin", "flex", "hug", "high_five", "handshake", "facepalm", "think", "laugh", "sigh", "no", "fist_pump", "victory", "yawn", "salute", "big_wave", "beckon", "shush", "kiss", "peace", "heart", "sway", "vibe", "air_guitar", "robot", "disco", "gavel", "haggle", "arms_crossed", "hands_on_hips", "kneel", "fist_bump", "dance_off", "showoff", "moment:handshake", "moment:unbox", "moment:slab_flip", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.

@@ -57,8 +57,8 @@ class GetVaultMarketHomeUnitResponseHome(ModelNormal):
     allowed_values = {
         ('privacy',): {
             'OPEN': "open",
-            'LOCKED': "locked",
             'FRIENDS': "friends",
+            'LOCKED': "locked",
         },
     }
 

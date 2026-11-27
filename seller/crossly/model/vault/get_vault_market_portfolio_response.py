@@ -32,9 +32,11 @@ from crossly.exceptions import ApiAttributeError
 def lazy_import():
     from crossly.model.vault.get_vault_market_portfolio_response_holdings import GetVaultMarketPortfolioResponseHoldings
     from crossly.model.vault.get_vault_market_portfolio_response_on_loan import GetVaultMarketPortfolioResponseOnLoan
+    from crossly.model.vault.get_vault_market_portfolio_response_shares import GetVaultMarketPortfolioResponseShares
     from crossly.model.vault.get_vault_market_portfolio_response_totals import GetVaultMarketPortfolioResponseTotals
     globals()['GetVaultMarketPortfolioResponseHoldings'] = GetVaultMarketPortfolioResponseHoldings
     globals()['GetVaultMarketPortfolioResponseOnLoan'] = GetVaultMarketPortfolioResponseOnLoan
+    globals()['GetVaultMarketPortfolioResponseShares'] = GetVaultMarketPortfolioResponseShares
     globals()['GetVaultMarketPortfolioResponseTotals'] = GetVaultMarketPortfolioResponseTotals
 
 
@@ -85,6 +87,7 @@ class GetVaultMarketPortfolioResponse(ModelNormal):
         lazy_import()
         return {
             'holdings': ([GetVaultMarketPortfolioResponseHoldings],),  # noqa: E501
+            'shares': (GetVaultMarketPortfolioResponseShares,),  # noqa: E501
             'on_loan': ([GetVaultMarketPortfolioResponseOnLoan],),  # noqa: E501
             'totals': (GetVaultMarketPortfolioResponseTotals,),  # noqa: E501
         }
@@ -96,6 +99,7 @@ class GetVaultMarketPortfolioResponse(ModelNormal):
 
     attribute_map = {
         'holdings': 'holdings',  # noqa: E501
+        'shares': 'shares',  # noqa: E501
         'on_loan': 'onLoan',  # noqa: E501
         'totals': 'totals',  # noqa: E501
     }
@@ -107,11 +111,12 @@ class GetVaultMarketPortfolioResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, holdings, on_loan, totals, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, holdings, shares, on_loan, totals, *args, **kwargs):  # noqa: E501
         """GetVaultMarketPortfolioResponse - a model defined in OpenAPI
 
         Args:
             holdings ([GetVaultMarketPortfolioResponseHoldings]):
+            shares (GetVaultMarketPortfolioResponseShares):
             on_loan ([GetVaultMarketPortfolioResponseOnLoan]):
             totals (GetVaultMarketPortfolioResponseTotals):
 
@@ -174,6 +179,7 @@ class GetVaultMarketPortfolioResponse(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.holdings = holdings
+        self.shares = shares
         self.on_loan = on_loan
         self.totals = totals
         for var_name, var_value in kwargs.items():
@@ -196,11 +202,12 @@ class GetVaultMarketPortfolioResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, holdings, on_loan, totals, *args, **kwargs):  # noqa: E501
+    def __init__(self, holdings, shares, on_loan, totals, *args, **kwargs):  # noqa: E501
         """GetVaultMarketPortfolioResponse - a model defined in OpenAPI
 
         Args:
             holdings ([GetVaultMarketPortfolioResponseHoldings]):
+            shares (GetVaultMarketPortfolioResponseShares):
             on_loan ([GetVaultMarketPortfolioResponseOnLoan]):
             totals (GetVaultMarketPortfolioResponseTotals):
 
@@ -261,6 +268,7 @@ class GetVaultMarketPortfolioResponse(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.holdings = holdings
+        self.shares = shares
         self.on_loan = on_loan
         self.totals = totals
         for var_name, var_value in kwargs.items():

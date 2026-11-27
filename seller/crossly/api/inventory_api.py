@@ -25,9 +25,9 @@ from crossly.model.catalog.create_catalog_match_confirm_response import CreateCa
 from crossly.model.inventory.create_inventory_bulk_archive_response import CreateInventoryBulkArchiveResponse
 from crossly.model.inventory.create_inventory_bulk_delete_response import CreateInventoryBulkDeleteResponse
 from crossly.model.inventory.create_inventory_bulk_quantity_response import CreateInventoryBulkQuantityResponse
+from crossly.model.inventory.create_inventory_bulk_restore_response import CreateInventoryBulkRestoreResponse
 from crossly.model.inventory.create_inventory_catalog_match_refresh_response import CreateInventoryCatalogMatchRefreshResponse
 from crossly.model.inventory.create_inventory_csv_import_response import CreateInventoryCsvImportResponse
-from crossly.model.inventory.create_inventory_label_rename_response import CreateInventoryLabelRenameResponse
 from crossly.model.inventory.create_inventory_merge_response import CreateInventoryMergeResponse
 from crossly.model.inventory.create_inventory_response import CreateInventoryResponse
 from crossly.model.inventory.create_inventory_unit_identifier_response import CreateInventoryUnitIdentifierResponse
@@ -36,7 +36,6 @@ from crossly.model.listing.create_listing_bulk_update_response import CreateList
 from crossly.model.spatial.create_spatial_property_deed_lease_response import CreateSpatialPropertyDeedLeaseResponse
 from crossly.model.spatial.create_spatial_property_deed_list_response import CreateSpatialPropertyDeedListResponse
 from crossly.model.spatial.create_spatial_property_deed_maintenance_response import CreateSpatialPropertyDeedMaintenanceResponse
-from crossly.model.spatial.create_spatial_property_lease_accept_response import CreateSpatialPropertyLeaseAcceptResponse
 from crossly.model.spatial.create_spatial_property_lease_end_response import CreateSpatialPropertyLeaseEndResponse
 from crossly.model.spatial.create_spatial_property_lease_rent_response import CreateSpatialPropertyLeaseRentResponse
 from crossly.model.spatial.create_spatial_property_listing_buy_response import CreateSpatialPropertyListingBuyResponse
@@ -45,9 +44,13 @@ from crossly.model.spatial.create_spatial_street_claim_response import CreateSpa
 from crossly.model.spatial.create_spatial_street_owned_upkeep_response import CreateSpatialStreetOwnedUpkeepResponse
 from crossly.model.spatial.create_spatial_street_plot_buy_response import CreateSpatialStreetPlotBuyResponse
 from crossly.model.world.create_world_crew_leave_response import CreateWorldCrewLeaveResponse
+from crossly.model.world.create_world_market_plot_rent_response import CreateWorldMarketPlotRentResponse
 from crossly.model.world.create_world_party_wishlist_response import CreateWorldPartyWishlistResponse
 from crossly.model.world.delete_world_job_shift_response import DeleteWorldJobShiftResponse
 from crossly.model.common.error import Error
+from crossly.model.analytic.get_analytic_inventory_response import GetAnalyticInventoryResponse
+from crossly.model.game.get_game_event_summary_response import GetGameEventSummaryResponse
+from crossly.model.game.get_game_hunt_build_response import GetGameHuntBuildResponse
 from crossly.model.game.get_game_leaderboard_response import GetGameLeaderboardResponse
 from crossly.model.home.get_home_response import GetHomeResponse
 from crossly.model.inventory.get_inventory_aging_response import GetInventoryAgingResponse
@@ -77,12 +80,14 @@ from crossly.model.spatial.get_spatial_shop_staff_response import GetSpatialShop
 from crossly.model.spatial.get_spatial_street_founding_response import GetSpatialStreetFoundingResponse
 from crossly.model.spatial.get_spatial_street_plot_quote_response import GetSpatialStreetPlotQuoteResponse
 from crossly.model.spatial.get_spatial_street_response import GetSpatialStreetResponse
+from crossly.model.world.get_world_pulse_response import GetWorldPulseResponse
 from crossly.model.world.get_world_room_funnel_response import GetWorldRoomFunnelResponse
 from crossly.model.world.get_world_shelf_response import GetWorldShelfResponse
 from crossly.model.world.get_world_skus_cheapest_response import GetWorldSkusCheapestResponse
 from crossly.model.catalog.list_catalog_matches_response import ListCatalogMatchesResponse
 from crossly.model.common.list_festivals_response import ListFestivalsResponse
 from crossly.model.game.list_game_break_upcoming_response import ListGameBreakUpcomingResponse
+from crossly.model.game.list_game_hunt_mine_response import ListGameHuntMineResponse
 from crossly.model.game.list_game_hunts_response import ListGameHuntsResponse
 from crossly.model.game.list_game_result_mine_response import ListGameResultMineResponse
 from crossly.model.home.list_home_mine_builders_response import ListHomeMineBuildersResponse
@@ -115,6 +120,7 @@ from crossly.model.common.ok_response import OkResponse
 from crossly.model.common.spatial_street_response import SpatialStreetResponse
 from crossly.model.spatial.update_spatial_employee_config_response import UpdateSpatialEmployeeConfigResponse
 from crossly.model.spatial.update_spatial_shop_staff_wage_response import UpdateSpatialShopStaffWageResponse
+from crossly.model.common.updated_response import UpdatedResponse
 
 
 class InventoryApi(object):
@@ -450,6 +456,50 @@ class InventoryApi(object):
             },
             api_client=api_client
         )
+        self.create_inventory_bulk_restore_endpoint = _Endpoint(
+            settings={
+                'response_type': (CreateInventoryBulkRestoreResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/inventory/bulk-restore',
+                'operation_id': 'create_inventory_bulk_restore',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.create_inventory_catalog_match_refresh_endpoint = _Endpoint(
             settings={
                 'response_type': (CreateInventoryCatalogMatchRefreshResponse,),
@@ -591,7 +641,7 @@ class InventoryApi(object):
         )
         self.create_inventory_label_rename_endpoint = _Endpoint(
             settings={
-                'response_type': (CreateInventoryLabelRenameResponse,),
+                'response_type': (UpdatedResponse,),
                 'auth': [
                     'PersonalAccessToken'
                 ],
@@ -927,7 +977,7 @@ class InventoryApi(object):
         )
         self.create_spatial_property_lease_accept_endpoint = _Endpoint(
             settings={
-                'response_type': (CreateSpatialPropertyLeaseAcceptResponse,),
+                'response_type': (CreateWorldMarketPlotRentResponse,),
                 'auth': [
                     'PersonalAccessToken'
                 ],
@@ -1585,6 +1635,238 @@ class InventoryApi(object):
                 },
                 'location_map': {
                     'slug': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_analytic_inventory_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetAnalyticInventoryResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/inventory',
+                'operation_id': 'get_analytic_inventory',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'range',
+                    '_from',
+                    'to',
+                    'compare',
+                    'cmp_from',
+                    'cmp_to',
+                    'labels',
+                    'platforms',
+                    'category',
+                    'brand',
+                    'tz',
+                    'maturity',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'range',
+                    'compare',
+                    'maturity',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('range',): {
+
+                        "7D": "7d",
+                        "30D": "30d",
+                        "90D": "90d",
+                        "1Y": "1y",
+                        "YTD": "ytd",
+                        "ALL": "all",
+                        "CUSTOM": "custom"
+                    },
+                    ('compare',): {
+
+                        "PREV": "prev",
+                        "YOY": "yoy",
+                        "NONE": "none",
+                        "CUSTOM": "custom"
+                    },
+                    ('maturity',): {
+
+                        "30": 30,
+                        "60": 60,
+                        "90": 90
+                    },
+                },
+                'openapi_types': {
+                    'range':
+                        (str,),
+                    '_from':
+                        (str,),
+                    'to':
+                        (str,),
+                    'compare':
+                        (str,),
+                    'cmp_from':
+                        (str,),
+                    'cmp_to':
+                        (str,),
+                    'labels':
+                        (str,),
+                    'platforms':
+                        (str,),
+                    'category':
+                        (str,),
+                    'brand':
+                        (str,),
+                    'tz':
+                        (str,),
+                    'maturity':
+                        (int,),
+                },
+                'attribute_map': {
+                    'range': 'range',
+                    '_from': 'from',
+                    'to': 'to',
+                    'compare': 'compare',
+                    'cmp_from': 'cmpFrom',
+                    'cmp_to': 'cmpTo',
+                    'labels': 'labels',
+                    'platforms': 'platforms',
+                    'category': 'category',
+                    'brand': 'brand',
+                    'tz': 'tz',
+                    'maturity': 'maturity',
+                },
+                'location_map': {
+                    'range': 'query',
+                    '_from': 'query',
+                    'to': 'query',
+                    'compare': 'query',
+                    'cmp_from': 'query',
+                    'cmp_to': 'query',
+                    'labels': 'query',
+                    'platforms': 'query',
+                    'category': 'query',
+                    'brand': 'query',
+                    'tz': 'query',
+                    'maturity': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_game_event_summary_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetGameEventSummaryResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/games/events/{eventId}/summary',
+                'operation_id': 'get_game_event_summary',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'event_id',
+                ],
+                'required': [
+                    'event_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'event_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'event_id': 'eventId',
+                },
+                'location_map': {
+                    'event_id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_game_hunt_build_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetGameHuntBuildResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/games/hunts/{id}/build',
+                'operation_id': 'get_game_hunt_build',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
                 },
                 'collection_format_map': {
                 }
@@ -3042,6 +3324,50 @@ class InventoryApi(object):
             },
             api_client=api_client
         )
+        self.get_world_pulse_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetWorldPulseResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/world/pulse',
+                'operation_id': 'get_world_pulse',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.get_world_room_funnel_endpoint = _Endpoint(
             settings={
                 'response_type': (GetWorldRoomFunnelResponse,),
@@ -3354,6 +3680,50 @@ class InventoryApi(object):
             },
             api_client=api_client
         )
+        self.list_game_hunt_mine_endpoint = _Endpoint(
+            settings={
+                'response_type': (ListGameHuntMineResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/games/hunts/mine',
+                'operation_id': 'list_game_hunt_mine',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.list_game_hunts_endpoint = _Endpoint(
             settings={
                 'response_type': (ListGameHuntsResponse,),
@@ -3555,6 +3925,8 @@ class InventoryApi(object):
                     'kind',
                     'platforms',
                     'platform_mode',
+                    'sku',
+                    'updated_since',
                 ],
                 'required': [],
                 'nullable': [
@@ -3566,6 +3938,7 @@ class InventoryApi(object):
                 'validation': [
                     'page',
                     'limit',
+                    'sku',
                 ]
             },
             root_map={
@@ -3578,6 +3951,9 @@ class InventoryApi(object):
 
                         'inclusive_maximum': 100,
                         'inclusive_minimum': 1,
+                    },
+                    ('sku',): {
+                        'max_length': 200,
                     },
                 },
                 'allowed_values': {
@@ -3607,6 +3983,10 @@ class InventoryApi(object):
                         (str,),
                     'platform_mode':
                         (str,),
+                    'sku':
+                        (str,),
+                    'updated_since':
+                        (datetime,),
                 },
                 'attribute_map': {
                     'page': 'page',
@@ -3616,6 +3996,8 @@ class InventoryApi(object):
                     'kind': 'kind',
                     'platforms': 'platforms',
                     'platform_mode': 'platformMode',
+                    'sku': 'sku',
+                    'updated_since': 'updatedSince',
                 },
                 'location_map': {
                     'page': 'query',
@@ -3625,6 +4007,8 @@ class InventoryApi(object):
                     'kind': 'query',
                     'platforms': 'query',
                     'platform_mode': 'query',
+                    'sku': 'query',
+                    'updated_since': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -5454,8 +5838,9 @@ class InventoryApi(object):
         self,
         **kwargs
     ):
-        """Set / add / subtract stock across many items, syncing live listings.  # noqa: E501
+        """Set / add / subtract stock across many items, or set a stock per item; syncs live listings.  # noqa: E501
 
+        Two bodies. {ids, mode: \"set\"|\"increase\"|\"decrease\", value, syncMarketplaces?} applies one value to every id. {mode: \"set\", items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped = ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -5521,6 +5906,78 @@ class InventoryApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.create_inventory_bulk_quantity_endpoint.call_with_http_info(**kwargs)
+
+    def create_inventory_bulk_restore(
+        self,
+        **kwargs
+    ):
+        """Restore archived inventory items (status returns to active, or sold_out when no stock).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_inventory_bulk_restore(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CreateInventoryBulkRestoreResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.create_inventory_bulk_restore_endpoint.call_with_http_info(**kwargs)
 
     def create_inventory_catalog_match_refresh(
         self,
@@ -5785,7 +6242,7 @@ class InventoryApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            CreateInventoryLabelRenameResponse
+            UpdatedResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -6318,7 +6775,7 @@ class InventoryApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            CreateSpatialPropertyLeaseAcceptResponse
+            CreateWorldMarketPlotRentResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -6357,7 +6814,7 @@ class InventoryApi(object):
     ):
         """End a lease (owner or tenant).  # noqa: E501
 
-        The tenant's shop gets a free Main Street address again.  # noqa: E501
+        The tenant's showroom leaves the plot.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -7284,6 +7741,244 @@ class InventoryApi(object):
             slug
         return self.delete_spatial_street_plot_endpoint.call_with_http_info(**kwargs)
 
+    def get_analytic_inventory(
+        self,
+        **kwargs
+    ):
+        """Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_analytic_inventory(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            range (str): Reporting window. Default 30d. custom needs from and to.. [optional]
+            _from (str): YYYY-MM-DD, inclusive, in tz. Only with range=custom.. [optional]
+            to (str): YYYY-MM-DD, inclusive, in tz. Only with range=custom.. [optional]
+            compare (str): Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo).. [optional]
+            cmp_from (str): YYYY-MM-DD. Only with compare=custom.. [optional]
+            cmp_to (str): YYYY-MM-DD. Only with compare=custom.. [optional]
+            labels (str): Comma-separated inventory labels (any of them).. [optional]
+            platforms (str): Comma-separated platform ids.. [optional]
+            category (str): Canonical main-category key.. [optional]
+            brand (str): Brand name.. [optional]
+            tz (str): IANA time zone for day boundaries. Default UTC. An invalid name is a 400.. [optional]
+            maturity (int): Days an item has to sell within to count as sold in the cohort. Default 30.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetAnalyticInventoryResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.get_analytic_inventory_endpoint.call_with_http_info(**kwargs)
+
+    def get_game_event_summary(
+        self,
+        event_id,
+        **kwargs
+    ):
+        """The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt -- status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break -- status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_game_event_summary(event_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            event_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetGameEventSummaryResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['event_id'] = \
+            event_id
+        return self.get_game_event_summary_endpoint.call_with_http_info(**kwargs)
+
+    def get_game_hunt_build(
+        self,
+        id,
+        **kwargs
+    ):
+        """One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink -- the Worlds app link that opens the builder. Read-only: coins are placed in the World.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_game_hunt_build(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetGameHuntBuildResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.get_game_hunt_build_endpoint.call_with_http_info(**kwargs)
+
     def get_game_leaderboard(
         self,
         **kwargs
@@ -7586,7 +8281,7 @@ class InventoryApi(object):
         self,
         **kwargs
     ):
-        """Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.  # noqa: E501
+        """Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -7951,7 +8646,7 @@ class InventoryApi(object):
         self,
         **kwargs
     ):
-        """Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.  # noqa: E501
+        """Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -8100,7 +8795,7 @@ class InventoryApi(object):
         self,
         **kwargs
     ):
-        """Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).  # noqa: E501
+        """Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -9534,6 +10229,78 @@ class InventoryApi(object):
             number
         return self.get_spatial_street_plot_quote_endpoint.call_with_http_info(**kwargs)
 
+    def get_world_pulse(
+        self,
+        **kwargs
+    ):
+        """Crossly World's pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only -- never counts, amounts or buyers), the times the world's shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain's mark.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_world_pulse(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetWorldPulseResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.get_world_pulse_endpoint.call_with_http_info(**kwargs)
+
     def get_world_room_funnel(
         self,
         scene_id,
@@ -9984,6 +10751,78 @@ class InventoryApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.list_game_break_upcoming_endpoint.call_with_http_info(**kwargs)
 
+    def list_game_hunt_mine(
+        self,
+        **kwargs
+    ):
+        """Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_game_hunt_mine(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ListGameHuntMineResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.list_game_hunt_mine_endpoint.call_with_http_info(**kwargs)
+
     def list_game_hunts(
         self,
         **kwargs
@@ -10294,6 +11133,8 @@ class InventoryApi(object):
             kind (str): Physical goods or Web3 assets (NFTs). Omit for both.. [optional]
             platforms (str): Comma-separated marketplaces, e.g. \"ebay,vinted\". Items live (an active listing) on any of them.. [optional]
             platform_mode (str): \"not_listed\" inverts `platforms`: items live on none of them. Default \"listed\".. [optional]
+            sku (str): Exact SKU match: look up the row a supplier product maps to.. [optional]
+            updated_since (datetime): Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw.. [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

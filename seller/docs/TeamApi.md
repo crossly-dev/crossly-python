@@ -4,8 +4,8 @@ All URIs are relative to *https://crossly.net/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_team_accept**](TeamApi.md#create_team_accept) | **POST** /v1/team/accept | Accept a pending team invitation by raw token.
-[**create_team_invite**](TeamApi.md#create_team_invite) | **POST** /v1/team/invite | Mint a team invitation; returns the one-time accept URL.
+[**create_team_accept**](TeamApi.md#create_team_accept) | **POST** /v1/team/accept | Accept a team invitation by the raw token from its link.
+[**create_team_invite**](TeamApi.md#create_team_invite) | **POST** /v1/team/invite | Issue a team invitation; returns the one-time accept URL (nothing is emailed).
 [**create_team_leave**](TeamApi.md#create_team_leave) | **POST** /v1/team/leave | Leave every team this user is currently a member of.
 [**create_team_revoke**](TeamApi.md#create_team_revoke) | **POST** /v1/team/revoke | Revoke a pending invite OR an active team member.
 [**get_team**](TeamApi.md#get_team) | **GET** /v1/team | List pending team invitations + active members.
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 # **create_team_accept**
 > CreateTeamAcceptResponse create_team_accept()
 
-Accept a pending team invitation by raw token.
+Accept a team invitation by the raw token from its link.
 
 ### Example
 
@@ -51,7 +51,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example, this endpoint has no required or optional parameters
     try:
-        # Accept a pending team invitation by raw token.
+        # Accept a team invitation by the raw token from its link.
         api_response = api_instance.create_team_accept()
         pprint(api_response)
     except crossly.ApiException as e:
@@ -93,7 +93,7 @@ This endpoint does not need any parameter.
 # **create_team_invite**
 > CreateTeamInviteResponse create_team_invite()
 
-Mint a team invitation; returns the one-time accept URL.
+Issue a team invitation; returns the one-time accept URL (nothing is emailed).
 
 ### Example
 
@@ -129,7 +129,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example, this endpoint has no required or optional parameters
     try:
-        # Mint a team invitation; returns the one-time accept URL.
+        # Issue a team invitation; returns the one-time accept URL (nothing is emailed).
         api_response = api_instance.create_team_invite()
         pprint(api_response)
     except crossly.ApiException as e:

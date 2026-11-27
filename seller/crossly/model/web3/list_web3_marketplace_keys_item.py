@@ -60,10 +60,10 @@ class ListWeb3MarketplaceKeysItem(ModelNormal):
 
     allowed_values = {
         ('marketplace',): {
-            'OPENSEA': "opensea",
-            'TENSOR': "tensor",
-            'MAGIC_EDEN': "magic_eden",
             'RARIBLE': "rarible",
+            'MAGIC_EDEN': "magic_eden",
+            'TENSOR': "tensor",
+            'OPENSEA': "opensea",
         },
     }
 

@@ -32,11 +32,13 @@ from crossly.exceptions import ApiAttributeError
 def lazy_import():
     from crossly.model.magic.create_magic_scan_response_ebay_hits import CreateMagicScanResponseEbayHits
     from crossly.model.magic.create_magic_scan_response_ebay_match import CreateMagicScanResponseEbayMatch
+    from crossly.model.magic.create_magic_scan_response_match_reference import CreateMagicScanResponseMatchReference
     from crossly.model.magic.create_magic_scan_response_photo_identifier import CreateMagicScanResponsePhotoIdentifier
     from crossly.model.magic.create_magic_scan_response_possible_duplicates import CreateMagicScanResponsePossibleDuplicates
     from crossly.model.magic.create_magic_scan_response_top_hits import CreateMagicScanResponseTopHits
     globals()['CreateMagicScanResponseEbayHits'] = CreateMagicScanResponseEbayHits
     globals()['CreateMagicScanResponseEbayMatch'] = CreateMagicScanResponseEbayMatch
+    globals()['CreateMagicScanResponseMatchReference'] = CreateMagicScanResponseMatchReference
     globals()['CreateMagicScanResponsePhotoIdentifier'] = CreateMagicScanResponsePhotoIdentifier
     globals()['CreateMagicScanResponsePossibleDuplicates'] = CreateMagicScanResponsePossibleDuplicates
     globals()['CreateMagicScanResponseTopHits'] = CreateMagicScanResponseTopHits
@@ -97,7 +99,9 @@ class CreateMagicScanResponse(ModelNormal):
             'possible_duplicates': ([CreateMagicScanResponsePossibleDuplicates],),  # noqa: E501
             'cached': (bool,),  # noqa: E501
             'photo_identifier': (CreateMagicScanResponsePhotoIdentifier,),  # noqa: E501
+            'match_reference': (CreateMagicScanResponseMatchReference,),  # noqa: E501
             'ebay_match': (CreateMagicScanResponseEbayMatch,),  # noqa: E501
+            'vision_calls_used': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -115,7 +119,9 @@ class CreateMagicScanResponse(ModelNormal):
         'possible_duplicates': 'possibleDuplicates',  # noqa: E501
         'cached': 'cached',  # noqa: E501
         'photo_identifier': 'photoIdentifier',  # noqa: E501
+        'match_reference': 'matchReference',  # noqa: E501
         'ebay_match': 'ebayMatch',  # noqa: E501
+        'vision_calls_used': 'visionCallsUsed',  # noqa: E501
     }
 
     read_only_vars = {
@@ -170,7 +176,9 @@ class CreateMagicScanResponse(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             photo_identifier (CreateMagicScanResponsePhotoIdentifier): [optional]  # noqa: E501
+            match_reference (CreateMagicScanResponseMatchReference): [optional]  # noqa: E501
             ebay_match (CreateMagicScanResponseEbayMatch): [optional]  # noqa: E501
+            vision_calls_used (float, none_type): Monthly vision calls (vision-quota.ts) this scan spent: the seller's Activity Log shows them as credits used. 0 for a single-photo scan and for a re-scan of the same photos.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -271,7 +279,9 @@ class CreateMagicScanResponse(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             photo_identifier (CreateMagicScanResponsePhotoIdentifier): [optional]  # noqa: E501
+            match_reference (CreateMagicScanResponseMatchReference): [optional]  # noqa: E501
             ebay_match (CreateMagicScanResponseEbayMatch): [optional]  # noqa: E501
+            vision_calls_used (float, none_type): Monthly vision calls (vision-quota.ts) this scan spent: the seller's Activity Log shows them as credits used. 0 for a single-photo scan and for a re-scan of the same photos.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

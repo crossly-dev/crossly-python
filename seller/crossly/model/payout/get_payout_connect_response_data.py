@@ -86,6 +86,7 @@ class GetPayoutConnectResponseData(ModelNormal):
         """
         return {
             'status': (str,),  # noqa: E501
+            'account_source': (str,),  # noqa: E501
             'default_country': (str,),  # noqa: E501
             'payouts_enabled': (bool,),  # noqa: E501
             'charges_enabled': (bool,),  # noqa: E501
@@ -107,6 +108,7 @@ class GetPayoutConnectResponseData(ModelNormal):
 
     attribute_map = {
         'status': 'status',  # noqa: E501
+        'account_source': 'accountSource',  # noqa: E501
         'default_country': 'defaultCountry',  # noqa: E501
         'payouts_enabled': 'payoutsEnabled',  # noqa: E501
         'charges_enabled': 'chargesEnabled',  # noqa: E501
@@ -128,11 +130,12 @@ class GetPayoutConnectResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, status, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, status, account_source, *args, **kwargs):  # noqa: E501
         """GetPayoutConnectResponseData - a model defined in OpenAPI
 
         Args:
             status (str):
+            account_source (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -205,6 +208,7 @@ class GetPayoutConnectResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.status = status
+        self.account_source = account_source
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -225,11 +229,12 @@ class GetPayoutConnectResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, status, *args, **kwargs):  # noqa: E501
+    def __init__(self, status, account_source, *args, **kwargs):  # noqa: E501
         """GetPayoutConnectResponseData - a model defined in OpenAPI
 
         Args:
             status (str):
+            account_source (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -300,6 +305,7 @@ class GetPayoutConnectResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.status = status
+        self.account_source = account_source
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

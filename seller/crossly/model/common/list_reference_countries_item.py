@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.common.list_reference_countries_item_subdivisions import ListReferenceCountriesItemSubdivisions
-    globals()['ListReferenceCountriesItemSubdivisions'] = ListReferenceCountriesItemSubdivisions
+    from crossly.model.common.code_name import CodeName
+    globals()['CodeName'] = CodeName
 
 
 class ListReferenceCountriesItem(ModelNormal):
@@ -90,7 +90,7 @@ class ListReferenceCountriesItem(ModelNormal):
             'state_required': (bool,),  # noqa: E501
             'state_label': (str,),  # noqa: E501
             'embargoed': (bool,),  # noqa: E501
-            'subdivisions': ([ListReferenceCountriesItemSubdivisions], none_type,),  # noqa: E501
+            'subdivisions': ([CodeName], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -165,7 +165,7 @@ class ListReferenceCountriesItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            subdivisions ([ListReferenceCountriesItemSubdivisions], none_type): [optional]  # noqa: E501
+            subdivisions ([CodeName], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -269,7 +269,7 @@ class ListReferenceCountriesItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            subdivisions ([ListReferenceCountriesItemSubdivisions], none_type): [optional]  # noqa: E501
+            subdivisions ([CodeName], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

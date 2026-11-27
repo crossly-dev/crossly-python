@@ -57,18 +57,18 @@ class GetVaultMarketMarketResponseMark(ModelNormal):
     allowed_values = {
         ('source',): {
             'NONE': "none",
-            'TWAP': "twap",
-            'MID': "mid",
             'ASK': "ask",
-            'BID': "bid",
+            'MID': "mid",
             'LAST': "last",
+            'BID': "bid",
+            'TWAP': "twap",
             'IMPLIED': "implied",
         },
         ('quality',): {
             'NONE': "none",
+            'C': "C",
             'A': "A",
             'B': "B",
-            'C': "C",
         },
     }
 

@@ -75,26 +75,32 @@ class ListInboxItem(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'can_send_offer': (bool,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'user_id': (str,),  # noqa: E501
-            'status': (str,),  # noqa: E501
             'platform': (str,),  # noqa: E501
             'account_slot': (float,),  # noqa: E501
+            'status': (str,),  # noqa: E501
+            'labels': ([str],),  # noqa: E501
             'platform_conversation_id': (str,),  # noqa: E501
             'is_read': (bool,),  # noqa: E501
             'is_hidden': (bool,),  # noqa: E501
             'has_offer': (bool,),  # noqa: E501
-            'listing_id': (str, none_type,),  # noqa: E501
+            'is_starred': (bool,),  # noqa: E501
+            'source': (str, none_type,),  # noqa: E501
             'inventory_item_id': (str, none_type,),  # noqa: E501
+            'listing_id': (str, none_type,),  # noqa: E501
             'platform_listing_id': (str, none_type,),  # noqa: E501
             'buyer_username': (str, none_type,),  # noqa: E501
-            'subject': (str, none_type,),  # noqa: E501
             'buyer_platform_id': (str, none_type,),  # noqa: E501
+            'buyer_avatar_url': (str, none_type,),  # noqa: E501
+            'subject': (str, none_type,),  # noqa: E501
             'offer_amount': (str, none_type,),  # noqa: E501
             'offer_status': (str, none_type,),  # noqa: E501
             'platform_conversation_url': (str, none_type,),  # noqa: E501
             'last_message_at': (datetime, none_type,),  # noqa: E501
+            'superseded_at': (datetime, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -103,26 +109,32 @@ class ListInboxItem(ModelNormal):
 
 
     attribute_map = {
+        'can_send_offer': 'canSendOffer',  # noqa: E501
         'id': 'id',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'user_id': 'userId',  # noqa: E501
-        'status': 'status',  # noqa: E501
         'platform': 'platform',  # noqa: E501
         'account_slot': 'accountSlot',  # noqa: E501
+        'status': 'status',  # noqa: E501
+        'labels': 'labels',  # noqa: E501
         'platform_conversation_id': 'platformConversationId',  # noqa: E501
         'is_read': 'isRead',  # noqa: E501
         'is_hidden': 'isHidden',  # noqa: E501
         'has_offer': 'hasOffer',  # noqa: E501
-        'listing_id': 'listingId',  # noqa: E501
+        'is_starred': 'isStarred',  # noqa: E501
+        'source': 'source',  # noqa: E501
         'inventory_item_id': 'inventoryItemId',  # noqa: E501
+        'listing_id': 'listingId',  # noqa: E501
         'platform_listing_id': 'platformListingId',  # noqa: E501
         'buyer_username': 'buyerUsername',  # noqa: E501
-        'subject': 'subject',  # noqa: E501
         'buyer_platform_id': 'buyerPlatformId',  # noqa: E501
+        'buyer_avatar_url': 'buyerAvatarUrl',  # noqa: E501
+        'subject': 'subject',  # noqa: E501
         'offer_amount': 'offerAmount',  # noqa: E501
         'offer_status': 'offerStatus',  # noqa: E501
         'platform_conversation_url': 'platformConversationUrl',  # noqa: E501
         'last_message_at': 'lastMessageAt',  # noqa: E501
+        'superseded_at': 'supersededAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -132,20 +144,23 @@ class ListInboxItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, user_id, status, platform, account_slot, platform_conversation_id, is_read, is_hidden, has_offer, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, can_send_offer, id, created_at, user_id, platform, account_slot, status, labels, platform_conversation_id, is_read, is_hidden, has_offer, is_starred, *args, **kwargs):  # noqa: E501
         """ListInboxItem - a model defined in OpenAPI
 
         Args:
+            can_send_offer (bool):
             id (str):
             created_at (datetime):
             user_id (str):
-            status (str):
             platform (str):
             account_slot (float):
+            status (str):
+            labels ([str]):
             platform_conversation_id (str):
             is_read (bool):
             is_hidden (bool):
             has_offer (bool):
+            is_starred (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -178,16 +193,19 @@ class ListInboxItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            listing_id (str, none_type): [optional]  # noqa: E501
+            source (str, none_type): [optional]  # noqa: E501
             inventory_item_id (str, none_type): [optional]  # noqa: E501
+            listing_id (str, none_type): [optional]  # noqa: E501
             platform_listing_id (str, none_type): [optional]  # noqa: E501
             buyer_username (str, none_type): [optional]  # noqa: E501
-            subject (str, none_type): [optional]  # noqa: E501
             buyer_platform_id (str, none_type): [optional]  # noqa: E501
+            buyer_avatar_url (str, none_type): [optional]  # noqa: E501
+            subject (str, none_type): [optional]  # noqa: E501
             offer_amount (str, none_type): [optional]  # noqa: E501
             offer_status (str, none_type): [optional]  # noqa: E501
             platform_conversation_url (str, none_type): [optional]  # noqa: E501
             last_message_at (datetime, none_type): [optional]  # noqa: E501
+            superseded_at (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -215,16 +233,19 @@ class ListInboxItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.can_send_offer = can_send_offer
         self.id = id
         self.created_at = created_at
         self.user_id = user_id
-        self.status = status
         self.platform = platform
         self.account_slot = account_slot
+        self.status = status
+        self.labels = labels
         self.platform_conversation_id = platform_conversation_id
         self.is_read = is_read
         self.is_hidden = is_hidden
         self.has_offer = has_offer
+        self.is_starred = is_starred
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -245,20 +266,23 @@ class ListInboxItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, user_id, status, platform, account_slot, platform_conversation_id, is_read, is_hidden, has_offer, *args, **kwargs):  # noqa: E501
+    def __init__(self, can_send_offer, id, created_at, user_id, platform, account_slot, status, labels, platform_conversation_id, is_read, is_hidden, has_offer, is_starred, *args, **kwargs):  # noqa: E501
         """ListInboxItem - a model defined in OpenAPI
 
         Args:
+            can_send_offer (bool):
             id (str):
             created_at (datetime):
             user_id (str):
-            status (str):
             platform (str):
             account_slot (float):
+            status (str):
+            labels ([str]):
             platform_conversation_id (str):
             is_read (bool):
             is_hidden (bool):
             has_offer (bool):
+            is_starred (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -291,16 +315,19 @@ class ListInboxItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            listing_id (str, none_type): [optional]  # noqa: E501
+            source (str, none_type): [optional]  # noqa: E501
             inventory_item_id (str, none_type): [optional]  # noqa: E501
+            listing_id (str, none_type): [optional]  # noqa: E501
             platform_listing_id (str, none_type): [optional]  # noqa: E501
             buyer_username (str, none_type): [optional]  # noqa: E501
-            subject (str, none_type): [optional]  # noqa: E501
             buyer_platform_id (str, none_type): [optional]  # noqa: E501
+            buyer_avatar_url (str, none_type): [optional]  # noqa: E501
+            subject (str, none_type): [optional]  # noqa: E501
             offer_amount (str, none_type): [optional]  # noqa: E501
             offer_status (str, none_type): [optional]  # noqa: E501
             platform_conversation_url (str, none_type): [optional]  # noqa: E501
             last_message_at (datetime, none_type): [optional]  # noqa: E501
+            superseded_at (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -326,16 +353,19 @@ class ListInboxItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.can_send_offer = can_send_offer
         self.id = id
         self.created_at = created_at
         self.user_id = user_id
-        self.status = status
         self.platform = platform
         self.account_slot = account_slot
+        self.status = status
+        self.labels = labels
         self.platform_conversation_id = platform_conversation_id
         self.is_read = is_read
         self.is_hidden = is_hidden
         self.has_offer = has_offer
+        self.is_starred = is_starred
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

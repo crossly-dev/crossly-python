@@ -22,8 +22,11 @@ from crossly.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from crossly.model.account.create_account_response import CreateAccountResponse
+from crossly.model.connection.create_connection_cardnexus_api_key_response import CreateConnectionCardnexusApiKeyResponse
 from crossly.model.connection.create_connection_email_imap_response import CreateConnectionEmailImapResponse
 from crossly.model.connection.create_connection_email_imap_test_response import CreateConnectionEmailImapTestResponse
+from crossly.model.connection.create_connection_lightspeed_x_token_request import CreateConnectionLightspeedXTokenRequest
+from crossly.model.connection.create_connection_lightspeed_x_token_response import CreateConnectionLightspeedXTokenResponse
 from crossly.model.platform.create_platform_account_connect_response import CreatePlatformAccountConnectResponse
 from crossly.model.platform.create_platform_account_disconnect_response import CreatePlatformAccountDisconnectResponse
 from crossly.model.platform.create_platform_account_history_import_request import CreatePlatformAccountHistoryImportRequest
@@ -32,9 +35,12 @@ from crossly.model.platform.create_platform_account_refresh_status_response impo
 from crossly.model.common.error import Error
 from crossly.model.connection.get_connection_email_response import GetConnectionEmailResponse
 from crossly.model.connection.get_connection_extension_online_response import GetConnectionExtensionOnlineResponse
+from crossly.model.connection.get_connection_policy_management_option_response import GetConnectionPolicyManagementOptionResponse
 from crossly.model.common.get_oauth_init_response import GetOauthInitResponse
 from crossly.model.platform.get_platform_limit_response import GetPlatformLimitResponse
 from crossly.model.account.list_accounts_response import ListAccountsResponse
+from crossly.model.connection.list_connection_policy_management_item import ListConnectionPolicyManagementItem
+from crossly.model.connection.list_connection_policy_management_response import ListConnectionPolicyManagementResponse
 from crossly.model.connection.list_connections_response import ListConnectionsResponse
 from crossly.model.common.ok_response import OkResponse
 from crossly.model.common.success_response import SuccessResponse
@@ -60,6 +66,50 @@ class AccountsApi(object):
                 ],
                 'endpoint_path': '/v1/accounts',
                 'operation_id': 'create_account',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.create_connection_cardnexus_api_key_endpoint = _Endpoint(
+            settings={
+                'response_type': (CreateConnectionCardnexusApiKeyResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/connections/cardnexus/api-key',
+                'operation_id': 'create_connection_cardnexus_api_key',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -181,6 +231,58 @@ class AccountsApi(object):
                     'application/json'
                 ],
                 'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.create_connection_lightspeed_x_token_endpoint = _Endpoint(
+            settings={
+                'response_type': (CreateConnectionLightspeedXTokenResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/connections/lightspeed_x/token',
+                'operation_id': 'create_connection_lightspeed_x_token',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'create_connection_lightspeed_x_token_request',
+                ],
+                'required': [
+                    'create_connection_lightspeed_x_token_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'create_connection_lightspeed_x_token_request':
+                        (CreateConnectionLightspeedXTokenRequest,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'create_connection_lightspeed_x_token_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
             },
             api_client=api_client
         )
@@ -680,6 +782,63 @@ class AccountsApi(object):
             },
             api_client=api_client
         )
+        self.get_connection_policy_management_option_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetConnectionPolicyManagementOptionResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/connections/policy-management/{connectionId}/options/{source}',
+                'operation_id': 'get_connection_policy_management_option',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'connection_id',
+                    'source',
+                ],
+                'required': [
+                    'connection_id',
+                    'source',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'connection_id':
+                        (str,),
+                    'source':
+                        (str,),
+                },
+                'attribute_map': {
+                    'connection_id': 'connectionId',
+                    'source': 'source',
+                },
+                'location_map': {
+                    'connection_id': 'path',
+                    'source': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.get_oauth_init_endpoint = _Endpoint(
             settings={
                 'response_type': (GetOauthInitResponse,),
@@ -834,6 +993,50 @@ class AccountsApi(object):
             },
             api_client=api_client
         )
+        self.list_connection_policy_management_endpoint = _Endpoint(
+            settings={
+                'response_type': (ListConnectionPolicyManagementResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/connections/policy-management',
+                'operation_id': 'list_connection_policy_management',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.list_connections_endpoint = _Endpoint(
             settings={
                 'response_type': (ListConnectionsResponse,),
@@ -917,6 +1120,57 @@ class AccountsApi(object):
                 },
                 'location_map': {
                     'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.update_connection_policy_management_endpoint = _Endpoint(
+            settings={
+                'response_type': (ListConnectionPolicyManagementItem,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/connections/policy-management/{connectionId}',
+                'operation_id': 'update_connection_policy_management',
+                'http_method': 'PUT',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'connection_id',
+                ],
+                'required': [
+                    'connection_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'connection_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'connection_id': 'connectionId',
+                },
+                'location_map': {
+                    'connection_id': 'path',
                 },
                 'collection_format_map': {
                 }
@@ -1057,6 +1311,78 @@ class AccountsApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.create_account_endpoint.call_with_http_info(**kwargs)
+
+    def create_connection_cardnexus_api_key(
+        self,
+        **kwargs
+    ):
+        """Connect CardNexus with a personal API key (validated live before it is stored).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_connection_cardnexus_api_key(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CreateConnectionCardnexusApiKeyResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.create_connection_cardnexus_api_key_endpoint.call_with_http_info(**kwargs)
 
     def create_connection_email_imap(
         self,
@@ -1201,6 +1527,83 @@ class AccountsApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.create_connection_email_imap_test_endpoint.call_with_http_info(**kwargs)
+
+    def create_connection_lightspeed_x_token(
+        self,
+        create_connection_lightspeed_x_token_request,
+        **kwargs
+    ):
+        """Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_connection_lightspeed_x_token(create_connection_lightspeed_x_token_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            create_connection_lightspeed_x_token_request (CreateConnectionLightspeedXTokenRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CreateConnectionLightspeedXTokenResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['create_connection_lightspeed_x_token_request'] = \
+            create_connection_lightspeed_x_token_request
+        return self.create_connection_lightspeed_x_token_endpoint.call_with_http_info(**kwargs)
 
     def create_connection_request(
         self,
@@ -1361,7 +1764,7 @@ class AccountsApi(object):
         platform,
         **kwargs
     ):
-        """Archive every active account row for a platform.  # noqa: E501
+        """Disconnect every account of a platform (archives the rows and deletes their stored sessions).  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -1961,6 +2364,88 @@ class AccountsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.get_connection_extension_online_endpoint.call_with_http_info(**kwargs)
 
+    def get_connection_policy_management_option(
+        self,
+        connection_id,
+        source,
+        **kwargs
+    ):
+        """List the live options a marketplace policy field offers (e.g. Allegro delivery methods).  # noqa: E501
+
+        For one of your managed connections, the choices a preset's `platformFields` picker offers, from the marketplace (`source` is the field's `optionsSource`, e.g. `delivery-methods`). An unknown connection or source is a 404.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_connection_policy_management_option(connection_id, source, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            connection_id (str):
+            source (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetConnectionPolicyManagementOptionResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['connection_id'] = \
+            connection_id
+        kwargs['source'] = \
+            source
+        return self.get_connection_policy_management_option_endpoint.call_with_http_info(**kwargs)
+
     def get_oauth_init(
         self,
         platform,
@@ -1968,7 +2453,7 @@ class AccountsApi(object):
     ):
         """Return the OAuth authorize URL for an API-track platform.  # noqa: E501
 
-        Most platforms return `{ url }`. Etsy adds `{ correlationId }` (PKCE verifier stashed in Redis). Bonanza adds `{ oneShot: true }`. WooCommerce requires `?siteUrl=...`. Walmart returns `{ status: \"request_only\", requestUrl, message }` instead of a URL because per-seller OAuth needs Solution Provider approval.  # noqa: E501
+        Most platforms return `{ url }` (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds `{ oneShot: true }`. WooCommerce requires `?siteUrl=...`. Walmart returns `{ status: \"request_only\", requestUrl, message }` instead of a URL because per-seller OAuth needs Solution Provider approval.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -2186,6 +2671,79 @@ class AccountsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.list_accounts_endpoint.call_with_http_info(**kwargs)
 
+    def list_connection_policy_management(
+        self,
+        **kwargs
+    ):
+        """List eBay and Etsy accounts with whether Crossly manages their policies.  # noqa: E501
+
+        One row per connected eBay or Etsy account: `eligible` (eBay only on EBAY_US), `managed` (Crossly keeps its policies / shipping profiles in step with your default presets) and sync `notes`.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_connection_policy_management(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ListConnectionPolicyManagementResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.list_connection_policy_management_endpoint.call_with_http_info(**kwargs)
+
     def list_connections(
         self,
         **kwargs
@@ -2334,6 +2892,84 @@ class AccountsApi(object):
         kwargs['id'] = \
             id
         return self.update_connection_email_imap_endpoint.call_with_http_info(**kwargs)
+
+    def update_connection_policy_management(
+        self,
+        connection_id,
+        **kwargs
+    ):
+        """Turn Crossly policy management on or off for one eBay or Etsy account.  # noqa: E501
+
+        Body `{ managed: boolean }`. On: Crossly may overwrite that account's own policies with your default presets and queues a sync now (409 for an ineligible account, e.g. non-US eBay). Off: Crossly stops touching them. A connection that is not yours (or not eBay/Etsy) is a 404.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_connection_policy_management(connection_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            connection_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ListConnectionPolicyManagementItem
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['connection_id'] = \
+            connection_id
+        return self.update_connection_policy_management_endpoint.call_with_http_info(**kwargs)
 
     def update_platform_preference(
         self,

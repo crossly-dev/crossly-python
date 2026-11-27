@@ -62,17 +62,17 @@ class CreateWeb3OrderResponseOrder(ModelNormal):
 
     allowed_values = {
         ('status',): {
-            'OPEN': "open",
-            'FILLED': "filled",
             'CANCELLED': "cancelled",
+            'OPEN': "open",
             'EXPIRED': "expired",
+            'FILLED': "filled",
             'INVALID': "invalid",
         },
         ('kind',): {
             'BUNDLE': "bundle",
+            'OFFER': "offer",
             'LISTING': "listing",
             'PRIVATE_LISTING': "private_listing",
-            'OFFER': "offer",
             'COLLECTION_OFFER': "collection_offer",
             'TRAIT_OFFER': "trait_offer",
         },
@@ -100,14 +100,14 @@ class CreateWeb3OrderResponseOrder(ModelNormal):
             'id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (datetime,),  # noqa: E501
-            'quantity': (float,),  # noqa: E501
             'status': (str,),  # noqa: E501
+            'quantity': (float,),  # noqa: E501
             'currency': (str,),  # noqa: E501
             'kind': (str,),  # noqa: E501
+            'marketplace': (str,),  # noqa: E501
             'chain': (str,),  # noqa: E501
             'contract': (str,),  # noqa: E501
             'order_hash': (str,),  # noqa: E501
-            'marketplace': (str,),  # noqa: E501
             'maker': (str,),  # noqa: E501
             'price_wei': (str,),  # noqa: E501
             'start_time': (datetime,),  # noqa: E501
@@ -117,14 +117,15 @@ class CreateWeb3OrderResponseOrder(ModelNormal):
             'inventory_item_id': (str, none_type,),  # noqa: E501
             'bundle': ([CreateWeb3OrderResponseOrderBundle], none_type,),  # noqa: E501
             'last_checked_at': (datetime, none_type,),  # noqa: E501
+            'storefront_id': (str, none_type,),  # noqa: E501
+            'token_id': (str, none_type,),  # noqa: E501
             'external_url': (str, none_type,),  # noqa: E501
             'wallet_id': (str, none_type,),  # noqa: E501
-            'token_id': (str, none_type,),  # noqa: E501
-            'collection_name': (str, none_type,),  # noqa: E501
             'end_price_wei': (str, none_type,),  # noqa: E501
             'status_reason': (str, none_type,),  # noqa: E501
             'item_name': (str, none_type,),  # noqa: E501
             'item_image': (str, none_type,),  # noqa: E501
+            'collection_name': (str, none_type,),  # noqa: E501
             'taker': (str, none_type,),  # noqa: E501
             'filled_tx': (str, none_type,),  # noqa: E501
             'filled_at': (datetime, none_type,),  # noqa: E501
@@ -141,14 +142,14 @@ class CreateWeb3OrderResponseOrder(ModelNormal):
         'id': 'id',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
-        'quantity': 'quantity',  # noqa: E501
         'status': 'status',  # noqa: E501
+        'quantity': 'quantity',  # noqa: E501
         'currency': 'currency',  # noqa: E501
         'kind': 'kind',  # noqa: E501
+        'marketplace': 'marketplace',  # noqa: E501
         'chain': 'chain',  # noqa: E501
         'contract': 'contract',  # noqa: E501
         'order_hash': 'orderHash',  # noqa: E501
-        'marketplace': 'marketplace',  # noqa: E501
         'maker': 'maker',  # noqa: E501
         'price_wei': 'priceWei',  # noqa: E501
         'start_time': 'startTime',  # noqa: E501
@@ -158,14 +159,15 @@ class CreateWeb3OrderResponseOrder(ModelNormal):
         'inventory_item_id': 'inventoryItemId',  # noqa: E501
         'bundle': 'bundle',  # noqa: E501
         'last_checked_at': 'lastCheckedAt',  # noqa: E501
+        'storefront_id': 'storefrontId',  # noqa: E501
+        'token_id': 'tokenId',  # noqa: E501
         'external_url': 'externalUrl',  # noqa: E501
         'wallet_id': 'walletId',  # noqa: E501
-        'token_id': 'tokenId',  # noqa: E501
-        'collection_name': 'collectionName',  # noqa: E501
         'end_price_wei': 'endPriceWei',  # noqa: E501
         'status_reason': 'statusReason',  # noqa: E501
         'item_name': 'itemName',  # noqa: E501
         'item_image': 'itemImage',  # noqa: E501
+        'collection_name': 'collectionName',  # noqa: E501
         'taker': 'taker',  # noqa: E501
         'filled_tx': 'filledTx',  # noqa: E501
         'filled_at': 'filledAt',  # noqa: E501
@@ -180,21 +182,21 @@ class CreateWeb3OrderResponseOrder(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, updated_at, quantity, status, currency, kind, chain, contract, order_hash, marketplace, maker, price_wei, start_time, end_time, signature, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, updated_at, status, quantity, currency, kind, marketplace, chain, contract, order_hash, maker, price_wei, start_time, end_time, signature, *args, **kwargs):  # noqa: E501
         """CreateWeb3OrderResponseOrder - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (datetime):
             updated_at (datetime):
-            quantity (float):
             status (str):
+            quantity (float):
             currency (str):
             kind (str):
+            marketplace (str):
             chain (str):
             contract (str):
             order_hash (str):
-            marketplace (str):
             maker (str):
             price_wei (str):
             start_time (datetime):
@@ -236,14 +238,15 @@ class CreateWeb3OrderResponseOrder(ModelNormal):
             inventory_item_id (str, none_type): [optional]  # noqa: E501
             bundle ([CreateWeb3OrderResponseOrderBundle], none_type): [optional]  # noqa: E501
             last_checked_at (datetime, none_type): [optional]  # noqa: E501
+            storefront_id (str, none_type): [optional]  # noqa: E501
+            token_id (str, none_type): [optional]  # noqa: E501
             external_url (str, none_type): [optional]  # noqa: E501
             wallet_id (str, none_type): [optional]  # noqa: E501
-            token_id (str, none_type): [optional]  # noqa: E501
-            collection_name (str, none_type): [optional]  # noqa: E501
             end_price_wei (str, none_type): [optional]  # noqa: E501
             status_reason (str, none_type): [optional]  # noqa: E501
             item_name (str, none_type): [optional]  # noqa: E501
             item_image (str, none_type): [optional]  # noqa: E501
+            collection_name (str, none_type): [optional]  # noqa: E501
             taker (str, none_type): [optional]  # noqa: E501
             filled_tx (str, none_type): [optional]  # noqa: E501
             filled_at (datetime, none_type): [optional]  # noqa: E501
@@ -279,14 +282,14 @@ class CreateWeb3OrderResponseOrder(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.updated_at = updated_at
-        self.quantity = quantity
         self.status = status
+        self.quantity = quantity
         self.currency = currency
         self.kind = kind
+        self.marketplace = marketplace
         self.chain = chain
         self.contract = contract
         self.order_hash = order_hash
-        self.marketplace = marketplace
         self.maker = maker
         self.price_wei = price_wei
         self.start_time = start_time
@@ -312,21 +315,21 @@ class CreateWeb3OrderResponseOrder(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, updated_at, quantity, status, currency, kind, chain, contract, order_hash, marketplace, maker, price_wei, start_time, end_time, signature, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, updated_at, status, quantity, currency, kind, marketplace, chain, contract, order_hash, maker, price_wei, start_time, end_time, signature, *args, **kwargs):  # noqa: E501
         """CreateWeb3OrderResponseOrder - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (datetime):
             updated_at (datetime):
-            quantity (float):
             status (str):
+            quantity (float):
             currency (str):
             kind (str):
+            marketplace (str):
             chain (str):
             contract (str):
             order_hash (str):
-            marketplace (str):
             maker (str):
             price_wei (str):
             start_time (datetime):
@@ -368,14 +371,15 @@ class CreateWeb3OrderResponseOrder(ModelNormal):
             inventory_item_id (str, none_type): [optional]  # noqa: E501
             bundle ([CreateWeb3OrderResponseOrderBundle], none_type): [optional]  # noqa: E501
             last_checked_at (datetime, none_type): [optional]  # noqa: E501
+            storefront_id (str, none_type): [optional]  # noqa: E501
+            token_id (str, none_type): [optional]  # noqa: E501
             external_url (str, none_type): [optional]  # noqa: E501
             wallet_id (str, none_type): [optional]  # noqa: E501
-            token_id (str, none_type): [optional]  # noqa: E501
-            collection_name (str, none_type): [optional]  # noqa: E501
             end_price_wei (str, none_type): [optional]  # noqa: E501
             status_reason (str, none_type): [optional]  # noqa: E501
             item_name (str, none_type): [optional]  # noqa: E501
             item_image (str, none_type): [optional]  # noqa: E501
+            collection_name (str, none_type): [optional]  # noqa: E501
             taker (str, none_type): [optional]  # noqa: E501
             filled_tx (str, none_type): [optional]  # noqa: E501
             filled_at (datetime, none_type): [optional]  # noqa: E501
@@ -409,14 +413,14 @@ class CreateWeb3OrderResponseOrder(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.updated_at = updated_at
-        self.quantity = quantity
         self.status = status
+        self.quantity = quantity
         self.currency = currency
         self.kind = kind
+        self.marketplace = marketplace
         self.chain = chain
         self.contract = contract
         self.order_hash = order_hash
-        self.marketplace = marketplace
         self.maker = maker
         self.price_wei = price_wei
         self.start_time = start_time

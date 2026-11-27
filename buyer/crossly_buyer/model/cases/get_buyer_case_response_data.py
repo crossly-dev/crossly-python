@@ -86,8 +86,8 @@ class GetBuyerCaseResponseData(ModelNormal):
         """
         lazy_import()
         return {
-            'messages': ([GetBuyerCaseResponseDataMessages],),  # noqa: E501
             'case': (GetBuyerCaseResponseDataCase,),  # noqa: E501
+            'messages': ([GetBuyerCaseResponseDataMessages],),  # noqa: E501
             'purchase': (GetBuyerCaseResponseDataPurchase,),  # noqa: E501
             'return_shipment': (GetBuyerCaseResponseDataReturnShipment,),  # noqa: E501
         }
@@ -98,8 +98,8 @@ class GetBuyerCaseResponseData(ModelNormal):
 
 
     attribute_map = {
-        'messages': 'messages',  # noqa: E501
         'case': 'case',  # noqa: E501
+        'messages': 'messages',  # noqa: E501
         'purchase': 'purchase',  # noqa: E501
         'return_shipment': 'returnShipment',  # noqa: E501
     }
@@ -111,12 +111,12 @@ class GetBuyerCaseResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, messages, case, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, case, messages, *args, **kwargs):  # noqa: E501
         """GetBuyerCaseResponseData - a model defined in OpenAPI
 
         Args:
-            messages ([GetBuyerCaseResponseDataMessages]):
             case (GetBuyerCaseResponseDataCase):
+            messages ([GetBuyerCaseResponseDataMessages]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -178,8 +178,8 @@ class GetBuyerCaseResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.messages = messages
         self.case = case
+        self.messages = messages
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -200,12 +200,12 @@ class GetBuyerCaseResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, messages, case, *args, **kwargs):  # noqa: E501
+    def __init__(self, case, messages, *args, **kwargs):  # noqa: E501
         """GetBuyerCaseResponseData - a model defined in OpenAPI
 
         Args:
-            messages ([GetBuyerCaseResponseDataMessages]):
             case (GetBuyerCaseResponseDataCase):
+            messages ([GetBuyerCaseResponseDataMessages]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -265,8 +265,8 @@ class GetBuyerCaseResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.messages = messages
         self.case = case
+        self.messages = messages
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

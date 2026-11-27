@@ -78,6 +78,8 @@ class GetAnalyticTimeseryResponseSeries(ModelNormal):
             'day': (str,),  # noqa: E501
             'sales': (float,),  # noqa: E501
             'revenue': (float,),  # noqa: E501
+            'net_sales_cents': (float,),  # noqa: E501
+            'net_profit_cents': (float,),  # noqa: E501
         }
 
     @cached_property
@@ -89,6 +91,8 @@ class GetAnalyticTimeseryResponseSeries(ModelNormal):
         'day': 'day',  # noqa: E501
         'sales': 'sales',  # noqa: E501
         'revenue': 'revenue',  # noqa: E501
+        'net_sales_cents': 'netSalesCents',  # noqa: E501
+        'net_profit_cents': 'netProfitCents',  # noqa: E501
     }
 
     read_only_vars = {
@@ -98,13 +102,15 @@ class GetAnalyticTimeseryResponseSeries(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, day, sales, revenue, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, day, sales, revenue, net_sales_cents, net_profit_cents, *args, **kwargs):  # noqa: E501
         """GetAnalyticTimeseryResponseSeries - a model defined in OpenAPI
 
         Args:
             day (str):
             sales (float):
             revenue (float):
+            net_sales_cents (float):
+            net_profit_cents (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -167,6 +173,8 @@ class GetAnalyticTimeseryResponseSeries(ModelNormal):
         self.day = day
         self.sales = sales
         self.revenue = revenue
+        self.net_sales_cents = net_sales_cents
+        self.net_profit_cents = net_profit_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -187,13 +195,15 @@ class GetAnalyticTimeseryResponseSeries(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, day, sales, revenue, *args, **kwargs):  # noqa: E501
+    def __init__(self, day, sales, revenue, net_sales_cents, net_profit_cents, *args, **kwargs):  # noqa: E501
         """GetAnalyticTimeseryResponseSeries - a model defined in OpenAPI
 
         Args:
             day (str):
             sales (float):
             revenue (float):
+            net_sales_cents (float):
+            net_profit_cents (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -254,6 +264,8 @@ class GetAnalyticTimeseryResponseSeries(ModelNormal):
         self.day = day
         self.sales = sales
         self.revenue = revenue
+        self.net_sales_cents = net_sales_cents
+        self.net_profit_cents = net_profit_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

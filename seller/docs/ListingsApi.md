@@ -5,7 +5,10 @@ All URIs are relative to *https://crossly.net/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_ai_detection_dispute**](ListingsApi.md#create_ai_detection_dispute) | **POST** /v1/ai-detections/{id}/dispute | Dispute an AI-image detection on your photo (sends it to Crossly review).
+[**create_event**](ListingsApi.md#create_event) | **POST** /v1/events | Create an event. A draft unless publish:true. Linked listings, the live show, the drop and the discount code must all be yours.
+[**create_event_publish**](ListingsApi.md#create_event_publish) | **POST** /v1/events/{id}/publish | Publish an event: its page goes live, and with notifyFollowers your followers are told once.
 [**create_listing**](ListingsApi.md#create_listing) | **POST** /v1/listings | Create a listing and fan out crosspost jobs across platforms.
+[**create_listing_bulk**](ListingsApi.md#create_listing_bulk) | **POST** /v1/listings/bulk | Create up to 50 listings in one call, with a result per item.
 [**create_listing_bulk_check_status**](ListingsApi.md#create_listing_bulk_check_status) | **POST** /v1/listings/bulk-check-status | Check listing status on platforms
 [**create_listing_bulk_crosspost**](ListingsApi.md#create_listing_bulk_crosspost) | **POST** /v1/listings/bulk-crosspost | Bulk crosspost (no delist phase)
 [**create_listing_bulk_delete**](ListingsApi.md#create_listing_bulk_delete) | **POST** /v1/listings/bulk-delete | Bulk archive + delist
@@ -21,35 +24,76 @@ Method | HTTP request | Description
 [**create_listing_import_by_url**](ListingsApi.md#create_listing_import_by_url) | **POST** /v1/listings/{id}/import-by-url | Attach a real platform listing to this listing by pasting its live URL.
 [**create_listing_magic_fill**](ListingsApi.md#create_listing_magic_fill) | **POST** /v1/listings/{id}/magic-fill | Auto-fill empty fields on one platform tab from the master listing + AI/deterministic taxonomy resolution.
 [**create_listing_merge**](ListingsApi.md#create_listing_merge) | **POST** /v1/listings/merge | Merge the same item listed on different marketplaces into one listing; all stay live.
+[**create_listing_tag_bulk**](ListingsApi.md#create_listing_tag_bulk) | **POST** /v1/listings/tags/bulk | Add and/or remove tags on many listings (yours only; max 30 tags a listing, 40 chars a tag). &#x60;dryRun&#x60; reports what would change.
+[**create_listing_tag_rename**](ListingsApi.md#create_listing_tag_rename) | **POST** /v1/listings/tags/rename | Rename a tag on every listing; merges into &#x60;to&#x60; when it already exists.
+[**create_live_stream**](ListingsApi.md#create_live_stream) | **POST** /v1/live-streams | Schedule a live show: title, start time, optional cover, category and the listings to feature (becomes the lineup, in order).
+[**create_live_stream_connection**](ListingsApi.md#create_live_stream_connection) | **POST** /v1/live-streams/{id}/connection | The show’s video connection, minted on first call and identical after: RTMP(S) server + stream key, SRT URL, WHIP URL for browser publishing (null where the ingest has none) and the HLS playback URL. configured&#x3D;false (with a reason) when the deployment has no streaming provider.
+[**create_live_stream_connection_rotate**](ListingsApi.md#create_live_stream_connection_rotate) | **POST** /v1/live-streams/{id}/connection/rotate | Replace the show’s stream key (e.g. after it was shown on screen). Refused while the show is live.
+[**create_live_stream_end**](ListingsApi.md#create_live_stream_end) | **POST** /v1/live-streams/{id}/end | End the show. Idempotent.
 [**create_live_stream_pin_launch**](ListingsApi.md#create_live_stream_pin_launch) | **POST** /v1/live-streams/{id}/pin-launch | Pin one of your live NFT launches on your live show; viewers mint it from the stream. Returns &#x60;{ ok }&#x60;.
-[**create_passport**](ListingsApi.md#create_passport) | **POST** /v1/passports | Register a product passport for a Crossly listing you sell, optionally bound to an NFC tag UID (hex). Returns the URL to write to the NFC tag or print as a QR; ownership then follows the item’s paid sales.
+[**create_live_stream_start**](ListingsApi.md#create_live_stream_start) | **POST** /v1/live-streams/{id}/start | Go live: the show’s status becomes live and followers are notified once. Idempotent while live; refused once ended.
+[**create_passport**](ListingsApi.md#create_passport) | **POST** /v1/passports | Register a product passport for a Crossly listing or an inventory item you sell, optionally bound to an NFC tag UID (hex). Active at once. Returns the URL to write to the NFC tag or print as a QR; ownership then follows the item’s sales. For several items with photos and labels, use the drafts flow (POST /passports/drafts).
+[**create_passport_draft**](ListingsApi.md#create_passport_draft) | **POST** /v1/passports/drafts | Start a passport draft for up to 100 inventory items (or Crossly listings): one draft passport per item with its code reserved. Items whose every unit already has a passport come back in skipped.
+[**create_passport_draft_activate**](ListingsApi.md#create_passport_draft_activate) | **POST** /v1/passports/drafts/{id}/activate | Activate every passport of a draft: their pages open for anyone who scans the tag or QR. Closes the draft’s capture link.
+[**create_passport_draft_capture_link**](ListingsApi.md#create_passport_draft_capture_link) | **POST** /v1/passports/drafts/{id}/capture-link | A link (and its QR as SVG) any phone opens with no sign-in to add photos, serials and NFC tags to this draft. Open 30 minutes after its last use, 4 hours at most; minting a new one closes the old.
+[**create_passport_print**](ListingsApi.md#create_passport_print) | **POST** /v1/passports/print | Print passport labels: sent to your printer agent (the Crossly desktop app includes one) when it is online and prints the template, else a signed PDF link with the reason. Templates: sticker-2in, sticker-1in, label-4x6, hang-tag, sheet-letter, sheet-a4, transfer-card.
 [**create_passport_revoke**](ListingsApi.md#create_passport_revoke) | **POST** /v1/passports/{id}/revoke | Revoke a passport (a lost or misprinted tag). Refused once the item has sold — the passport is then part of its history.
 [**create_passport_tag**](ListingsApi.md#create_passport_tag) | **POST** /v1/passports/{id}/tag | Bind (or re-bind) a passport to the NFC tag you wrote its nfcUrl to: the tag UID (hex), and whether you locked the tag read-only. Refused once the item has sold, for a locked tag, or a tag already on another item.
+[**create_rental_bulk_rentable**](ListingsApi.md#create_rental_bulk_rentable) | **POST** /v1/rentals/bulk-rentable | Make up to 200 Crossly listings rentable with the same options (a day rate, or a share of each price).
+[**create_shop_limit_request**](ListingsApi.md#create_shop_limit_request) | **POST** /v1/shop-limits/requests | Ask for a higher Crossly Shop selling limit.
+[**create_story**](ListingsApi.md#create_story) | **POST** /v1/stories | Share a story: 1–10 slides played in order. Each slide is a photo or video plus optional overlays (positions are fractions of the 9:16 frame). Listing stickers must be your own Crossly listings and also tag the slide; @mentions must be real shops. audience: everyone | followers; expiresInHours: 6, 12, 24 or 48.
 [**create_variation_group**](ListingsApi.md#create_variation_group) | **POST** /v1/variation-groups | Group listings you already have: a variation (one product, an axis such as Size) or a purchase-rule group (\&quot;buy any 3\&quot;).
 [**create_variation_group_generate**](ListingsApi.md#create_variation_group_generate) | **POST** /v1/variation-groups/generate | Turn one listing into a variation group: each new value becomes its own listing (a copy, with its own price, quantity and SKU) and all of them one group.
+[**create_variation_group_generate_matrix**](ListingsApi.md#create_variation_group_generate_matrix) | **POST** /v1/variation-groups/generate-matrix | Turn one listing into a variation group over up to three axes (Size × Color): each other cell is a listing you already have (listingId) or a new copy of this one with its own price, quantity and SKU.
 [**create_variation_group_publish**](ListingsApi.md#create_variation_group_publish) | **POST** /v1/variation-groups/{id}/publish | Publish a variation group per platform: one listing with a variation picker where the platform supports it (eBay, Shopify, Etsy), one per option elsewhere. Each platform reports its own outcome.
+[**create_video_studio_finalize**](ListingsApi.md#create_video_studio_finalize) | **POST** /v1/video-studio/finalize | Check an uploaded listing video (exists, MP4, size) and, with listingId, set it as that listing&#39;s video.
+[**create_video_studio_upload_url**](ListingsApi.md#create_video_studio_upload_url) | **POST** /v1/video-studio/upload-url | Presign an R2 PUT (video/mp4, 15 min) for a listing video; finalize it after the upload.
+[**delete_event**](ListingsApi.md#delete_event) | **DELETE** /v1/events/{id} | Delete a draft, or cancel a published event (its page then says it was called off).
 [**delete_listing**](ListingsApi.md#delete_listing) | **DELETE** /v1/listings/{id} | Delist a listing (optionally narrowed to specific platforms via ?platforms&#x3D;).
+[**delete_listing_tag**](ListingsApi.md#delete_listing_tag) | **DELETE** /v1/listings/tags/{tag} | Remove a tag (any case) from every listing.
 [**delete_live_stream_pin_launch**](ListingsApi.md#delete_live_stream_pin_launch) | **DELETE** /v1/live-streams/{id}/pin-launch | Unpin the launch from your live show. Returns &#x60;{ ok }&#x60;.
 [**delete_rental_offer**](ListingsApi.md#delete_rental_offer) | **DELETE** /v1/rentals/offers/{platformListingId} | Stop offering a listing for rent (existing bookings stand).
+[**delete_story**](ListingsApi.md#delete_story) | **DELETE** /v1/stories/{id} | Take one story slide down before it expires.
 [**delete_variation_group**](ListingsApi.md#delete_variation_group) | **DELETE** /v1/variation-groups/{id} | Dissolve a group. Its options stay as ordinary listings.
+[**get_event**](ListingsApi.md#get_event) | **GET** /v1/events/{id} | One of your events.
+[**get_event_analytic**](ListingsApi.md#get_event_analytic) | **GET** /v1/events/{id}/analytics | Views, RSVPs, and what the linked listings sold on Crossly during the event (orders, units, revenue in cents).
 [**get_listing**](ListingsApi.md#get_listing) | **GET** /v1/listings/{id} | Get one listing with its platform rows.
 [**get_listing_facet**](ListingsApi.md#get_listing_facet) | **GET** /v1/listings/facets | Distinct brands + categories across listings + inventory.
 [**get_listing_sku_exist**](ListingsApi.md#get_listing_sku_exist) | **GET** /v1/listings/sku-exists | Check whether a SKU is already used by one of this user&#39;s items.
+[**get_live_stream_recap**](ListingsApi.md#get_live_stream_recap) | **GET** /v1/live-streams/{id}/recap | The show’s numbers: duration, peak viewers, items sold and gross, tips, chat messages, auctions run, lineup size and the replay URL.
+[**get_passport**](ListingsApi.md#get_passport) | **GET** /v1/passports/{id} | One passport: its item and every listing of it, the event history (created, printed, tag bound, transferred, claimed…), scans per day for 30 days, custody, grading.
+[**get_passport_draft**](ListingsApi.md#get_passport_draft) | **GET** /v1/passports/drafts/{id} | A passport draft and its passports (photos, serial, tag and label state of each).
+[**get_passport_print**](ListingsApi.md#get_passport_print) | **GET** /v1/passports/print/{jobId} | Where a passport print job sent to your agent is: queued, sent, done, failed, expired or duplicate.
 [**get_pricing_setting**](ListingsApi.md#get_pricing_setting) | **GET** /v1/pricing/settings | Selling options: own-price match (Crossly sells your items at your own lower price for the same item on another marketplace; dollar-priced copies only) and layaway (buyers may put items on layaway). Both on by default.
 [**get_pricing_sold_comp**](ListingsApi.md#get_pricing_sold_comp) | **GET** /v1/pricing/sold-comps | What one catalog product (market_sku_id, in one condition) actually sold for across Crossly in the last 180 days: median, p25/p75, p10/p90 (null under 10 sales), sale count, last sold, and days from listing to sale (median, p25, p75). Pass marketSkuId (+ optional condition) or one of your listingIds. comps is null until there are 3+ sales from 2+ sellers; holdCode says why there is nothing (no_market_sku, mixed_inventory, below_privacy_floor) — the same reasons a sold_median reprice rule holds.
+[**get_rental_setting**](ListingsApi.md#get_rental_setting) | **GET** /v1/rentals/settings | The store’s rental defaults (every item inherits them) and its payout timing.
+[**get_shop_limit**](ListingsApi.md#get_shop_limit) | **GET** /v1/shop-limits | Your Crossly Shop selling limit: live listings and listed value, used of limit, per store, and the next step.
+[**list_event_attendees**](ListingsApi.md#list_event_attendees) | **GET** /v1/events/{id}/attendees | Who RSVPd: display name, avatar, going or interested, and when. No contact details.
+[**list_events**](ListingsApi.md#list_events) | **GET** /v1/events | Your events (launches, sales, live shows, drops, meetups, pop-ups, workshops, parties): schedule, status, phase, and going/interested counts.
 [**list_listing_ai_detections**](ListingsApi.md#list_listing_ai_detections) | **GET** /v1/listings/{id}/ai-detections | Crossly&#39;s AI-image detections for a listing&#39;s photos.
 [**list_listing_discrepancies**](ListingsApi.md#list_listing_discrepancies) | **GET** /v1/listings/{id}/discrepancies | List detected marketplace-drift discrepancies for a listing.
 [**list_listing_ids**](ListingsApi.md#list_listing_ids) | **GET** /v1/listings/ids | Filter listings → return matching id list (no pagination).
+[**list_listing_tag_suggest**](ListingsApi.md#list_listing_tag_suggest) | **GET** /v1/listings/tags/suggest | Deterministic tag suggestions for one listing (brand, category, size, condition, colors, style tags, era words in the title); &#x60;known&#x60; &#x3D; you already use the tag.
+[**list_listing_tags**](ListingsApi.md#list_listing_tags) | **GET** /v1/listings/tags | Your listing tags with how many listings carry each, most used first (case-insensitive; &#x60;q&#x60; filters).
 [**list_listings**](ListingsApi.md#list_listings) | **GET** /v1/listings | List active platform listings.
+[**list_live_streams**](ListingsApi.md#list_live_streams) | **GET** /v1/live-streams | Your live shows, newest scheduled first: status, cover, category, connection method and peak viewers.
+[**list_passport_events**](ListingsApi.md#list_passport_events) | **GET** /v1/passports/{id}/events | A passport’s event history, newest first (never a buyer or a price).
+[**list_passport_print_targets**](ListingsApi.md#list_passport_print_targets) | **GET** /v1/passports/print-targets | Your printer agents (online, printers, default) and the passport label templates each can print.
 [**list_passports**](ListingsApi.md#list_passports) | **GET** /v1/passports | Product passports you registered (optionally for one Crossly listing): the code and URL each tag carries.
 [**list_rental_offers**](ListingsApi.md#list_rental_offers) | **GET** /v1/rentals/offers | What you offer for rent.
+[**list_stories**](ListingsApi.md#list_stories) | **GET** /v1/stories | Your active story slides (newest run first, each run in play order), with their overlays: text, listing stickers, @mentions, links, emoji and drawing.
+[**update_event**](ListingsApi.md#update_event) | **PATCH** /v1/events/{id} | Edit an event. Omitted fields are unchanged; null clears.
 [**update_hotspot**](ListingsApi.md#update_hotspot) | **PUT** /v1/hotspots | Tag your listings at points on a story or lookbook photo (shop the look). Replaces that photo’s tags; at most 12.
 [**update_listing**](ListingsApi.md#update_listing) | **PATCH** /v1/listings/{id} | Edit a listing and fan out update jobs to existing platform listings.
 [**update_listing_custom**](ListingsApi.md#update_listing_custom) | **PUT** /v1/listings/{id}/customs | Set a listing’s customs: HS code (6–10 digits), country of origin, and countries this item must not ship to on Crossly. Omitted fields are left alone; null (or [] for restrictedCountries) clears.
 [**update_listing_platform_listing**](ListingsApi.md#update_listing_platform_listing) | **PATCH** /v1/listings/{id}/platform-listings/{plId} | Set one marketplace copy&#39;s price (e.g. the ebay.com copy of a listing also live on ebay.co.uk), in that copy&#39;s own currency.
+[**update_live_stream**](ListingsApi.md#update_live_stream) | **PATCH** /v1/live-streams/{id} | Edit a show that has not ended: title, description, cover, category, start time (not once live) or connection method (browser | phone | encoder).
 [**update_live_stream_lineup**](ListingsApi.md#update_live_stream_lineup) | **PUT** /v1/live-streams/{id}/lineup | Set a live show’s lineup: your Crossly listings, in the order you will sell them. Buyers see it before they join; a sale of a lineup item while the show is live is recorded at its replay moment.
-[**update_pricing_setting**](ListingsApi.md#update_pricing_setting) | **PUT** /v1/pricing/settings | Turn own-price match and/or layaway on or off.
-[**update_rental_offer**](ListingsApi.md#update_rental_offer) | **PUT** /v1/rentals/offers/{platformListingId} | Offer a Crossly listing for rent: day rate, optional week rate, deposit, min/max days, turnaround buffer, and rent-only (off sale while offered). Needs a ship-from address.
+[**update_passport**](ListingsApi.md#update_passport) | **PATCH** /v1/passports/{id} | Change what a passport says (title, condition, maker, year, materials, notes) or add photo URLs (photos append: a passport keeps the ones it was registered with).
+[**update_passport_draft**](ListingsApi.md#update_passport_draft) | **PATCH** /v1/passports/drafts/{id} | Move a draft to a step, pick its label template, add items or remove draft passports.
+[**update_pricing_setting**](ListingsApi.md#update_pricing_setting) | **PUT** /v1/pricing/settings | Turn own-price match and/or layaway on or off for every one of your stores. One store: PUT /v1/storefronts/{id}/settings.
+[**update_rental_offer**](ListingsApi.md#update_rental_offer) | **PUT** /v1/rentals/offers/{platformListingId} | Offer a Crossly listing for rent: day rate, optional week rate, deposit, min/max days, turnaround buffer, rent-only (off sale while offered), seller approval, unavailable date ranges (blackoutRanges, inclusive YYYY-MM-DD) and a return policy. Keeps the listing’s own rental terms in step. Needs a ship-from address.
+[**update_rental_setting**](ListingsApi.md#update_rental_setting) | **PUT** /v1/rentals/settings | Set the store’s rental defaults and payout timing (on_start needs 3 rentals that came back).
 [**update_variation_group**](ListingsApi.md#update_variation_group) | **PATCH** /v1/variation-groups/{id} | Retitle a group, rename its axis, or change a group&#39;s purchase rule (written into every member&#39;s description).
 
 
@@ -135,10 +179,172 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **create_event**
+> EventResponse create_event()
+
+Create an event. A draft unless publish:true. Linked listings, the live show, the drop and the discount code must all be yours.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.common.event_response import EventResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Create an event. A draft unless publish:true. Linked listings, the live show, the drop and the discount code must all be yours.
+        api_response = api_instance.create_event()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_event: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**EventResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_event_publish**
+> EventResponse create_event_publish(id)
+
+Publish an event: its page goes live, and with notifyFollowers your followers are told once.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.common.event_response import EventResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Publish an event: its page goes live, and with notifyFollowers your followers are told once.
+        api_response = api_instance.create_event_publish(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_event_publish: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**EventResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **create_listing**
 > CreateListingResponse create_listing()
 
 Create a listing and fan out crosspost jobs across platforms.
+
+Listing fields go in `data`. Channel apps can also send `categoryId` (GET /v1/categories/search), `itemSpecifics` (validated against GET /v1/categories/:id/aspects; `warnings` lists soft problems), `condition`, `brand`, per-marketplace `overrides` and `policies` (preset ids from GET /v1/policies), folded in the way the web form does: an override replaces the master value on that marketplace, anything derived only fills blanks.
 
 ### Example
 
@@ -188,6 +394,86 @@ This endpoint does not need any parameter.
 ### Return type
 
 **CreateListingResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_listing_bulk**
+> CreateListingBulkResponse create_listing_bulk()
+
+Create up to 50 listings in one call, with a result per item.
+
+Each item is a POST /v1/listings body plus a required `clientReferenceId` (your id for it). Items run in order and independently: `data[i].status` is `created`, `existing` (that reference was already used — the listing is returned, nothing is created) or `error` with the code the single route would give. `error` means no listing exists for the item. A listing that was saved but could not be sent to a platform (e.g. no weight) is `created`, with that platform in `skipped` (reason, code, details). `meta` counts each. Retrying a batch only creates what is missing.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.listing.create_listing_bulk_response import CreateListingBulkResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Create up to 50 listings in one call, with a result per item.
+        api_response = api_instance.create_listing_bulk()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_listing_bulk: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateListingBulkResponse**
 
 ### Authorization
 
@@ -1397,6 +1683,486 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **create_listing_tag_bulk**
+> CreateListingTagBulkResponse create_listing_tag_bulk()
+
+Add and/or remove tags on many listings (yours only; max 30 tags a listing, 40 chars a tag). `dryRun` reports what would change.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.listing.create_listing_tag_bulk_response import CreateListingTagBulkResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Add and/or remove tags on many listings (yours only; max 30 tags a listing, 40 chars a tag). `dryRun` reports what would change.
+        api_response = api_instance.create_listing_tag_bulk()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_listing_tag_bulk: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateListingTagBulkResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_listing_tag_rename**
+> CreateListingTagRenameResponse create_listing_tag_rename()
+
+Rename a tag on every listing; merges into `to` when it already exists.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.listing.create_listing_tag_rename_response import CreateListingTagRenameResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Rename a tag on every listing; merges into `to` when it already exists.
+        api_response = api_instance.create_listing_tag_rename()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_listing_tag_rename: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateListingTagRenameResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_live_stream**
+> LiveStreamResponse create_live_stream()
+
+Schedule a live show: title, start time, optional cover, category and the listings to feature (becomes the lineup, in order).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.common.live_stream_response import LiveStreamResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Schedule a live show: title, start time, optional cover, category and the listings to feature (becomes the lineup, in order).
+        api_response = api_instance.create_live_stream()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_live_stream: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**LiveStreamResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_live_stream_connection**
+> CreateLiveStreamConnectionResponse create_live_stream_connection(id)
+
+The show’s video connection, minted on first call and identical after: RTMP(S) server + stream key, SRT URL, WHIP URL for browser publishing (null where the ingest has none) and the HLS playback URL. configured=false (with a reason) when the deployment has no streaming provider.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.live.create_live_stream_connection_response import CreateLiveStreamConnectionResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # The show’s video connection, minted on first call and identical after: RTMP(S) server + stream key, SRT URL, WHIP URL for browser publishing (null where the ingest has none) and the HLS playback URL. configured=false (with a reason) when the deployment has no streaming provider.
+        api_response = api_instance.create_live_stream_connection(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_live_stream_connection: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**CreateLiveStreamConnectionResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_live_stream_connection_rotate**
+> CreateLiveStreamConnectionResponse create_live_stream_connection_rotate(id)
+
+Replace the show’s stream key (e.g. after it was shown on screen). Refused while the show is live.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.live.create_live_stream_connection_response import CreateLiveStreamConnectionResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Replace the show’s stream key (e.g. after it was shown on screen). Refused while the show is live.
+        api_response = api_instance.create_live_stream_connection_rotate(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_live_stream_connection_rotate: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**CreateLiveStreamConnectionResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_live_stream_end**
+> LiveStreamResponse create_live_stream_end(id)
+
+End the show. Idempotent.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.common.live_stream_response import LiveStreamResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # End the show. Idempotent.
+        api_response = api_instance.create_live_stream_end(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_live_stream_end: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**LiveStreamResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **create_live_stream_pin_launch**
 > OkResponse create_live_stream_pin_launch(id)
 
@@ -1479,10 +2245,92 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **create_live_stream_start**
+> LiveStreamResponse create_live_stream_start(id)
+
+Go live: the show’s status becomes live and followers are notified once. Idempotent while live; refused once ended.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.common.live_stream_response import LiveStreamResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Go live: the show’s status becomes live and followers are notified once. Idempotent while live; refused once ended.
+        api_response = api_instance.create_live_stream_start(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_live_stream_start: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**LiveStreamResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **create_passport**
 > PassportResponse create_passport()
 
-Register a product passport for a Crossly listing you sell, optionally bound to an NFC tag UID (hex). Returns the URL to write to the NFC tag or print as a QR; ownership then follows the item’s paid sales.
+Register a product passport for a Crossly listing or an inventory item you sell, optionally bound to an NFC tag UID (hex). Active at once. Returns the URL to write to the NFC tag or print as a QR; ownership then follows the item’s sales. For several items with photos and labels, use the drafts flow (POST /passports/drafts).
 
 ### Example
 
@@ -1518,7 +2366,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example, this endpoint has no required or optional parameters
     try:
-        # Register a product passport for a Crossly listing you sell, optionally bound to an NFC tag UID (hex). Returns the URL to write to the NFC tag or print as a QR; ownership then follows the item’s paid sales.
+        # Register a product passport for a Crossly listing or an inventory item you sell, optionally bound to an NFC tag UID (hex). Active at once. Returns the URL to write to the NFC tag or print as a QR; ownership then follows the item’s sales. For several items with photos and labels, use the drafts flow (POST /passports/drafts).
         api_response = api_instance.create_passport()
         pprint(api_response)
     except crossly.ApiException as e:
@@ -1532,6 +2380,326 @@ This endpoint does not need any parameter.
 ### Return type
 
 **PassportResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_passport_draft**
+> PassportDraftResponse create_passport_draft()
+
+Start a passport draft for up to 100 inventory items (or Crossly listings): one draft passport per item with its code reserved. Items whose every unit already has a passport come back in skipped.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.common.passport_draft_response import PassportDraftResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Start a passport draft for up to 100 inventory items (or Crossly listings): one draft passport per item with its code reserved. Items whose every unit already has a passport come back in skipped.
+        api_response = api_instance.create_passport_draft()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_passport_draft: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**PassportDraftResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_passport_draft_activate**
+> PassportDraftResponse create_passport_draft_activate(id)
+
+Activate every passport of a draft: their pages open for anyone who scans the tag or QR. Closes the draft’s capture link.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.common.passport_draft_response import PassportDraftResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Activate every passport of a draft: their pages open for anyone who scans the tag or QR. Closes the draft’s capture link.
+        api_response = api_instance.create_passport_draft_activate(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_passport_draft_activate: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**PassportDraftResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_passport_draft_capture_link**
+> CreatePassportDraftCaptureLinkResponse create_passport_draft_capture_link(id)
+
+A link (and its QR as SVG) any phone opens with no sign-in to add photos, serials and NFC tags to this draft. Open 30 minutes after its last use, 4 hours at most; minting a new one closes the old.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.passport.create_passport_draft_capture_link_response import CreatePassportDraftCaptureLinkResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # A link (and its QR as SVG) any phone opens with no sign-in to add photos, serials and NFC tags to this draft. Open 30 minutes after its last use, 4 hours at most; minting a new one closes the old.
+        api_response = api_instance.create_passport_draft_capture_link(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_passport_draft_capture_link: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**CreatePassportDraftCaptureLinkResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_passport_print**
+> CreatePassportPrintResponse create_passport_print()
+
+Print passport labels: sent to your printer agent (the Crossly desktop app includes one) when it is online and prints the template, else a signed PDF link with the reason. Templates: sticker-2in, sticker-1in, label-4x6, hang-tag, sheet-letter, sheet-a4, transfer-card.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.passport.create_passport_print_response import CreatePassportPrintResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Print passport labels: sent to your printer agent (the Crossly desktop app includes one) when it is online and prints the template, else a signed PDF link with the reason. Templates: sticker-2in, sticker-1in, label-4x6, hang-tag, sheet-letter, sheet-a4, transfer-card.
+        api_response = api_instance.create_passport_print()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_passport_print: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreatePassportPrintResponse**
 
 ### Authorization
 
@@ -1721,6 +2889,251 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **create_rental_bulk_rentable**
+> CreateRentalBulkRentableResponse create_rental_bulk_rentable()
+
+Make up to 200 Crossly listings rentable with the same options (a day rate, or a share of each price).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.rental.create_rental_bulk_rentable_response import CreateRentalBulkRentableResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Make up to 200 Crossly listings rentable with the same options (a day rate, or a share of each price).
+        api_response = api_instance.create_rental_bulk_rentable()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_rental_bulk_rentable: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateRentalBulkRentableResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_shop_limit_request**
+> CreateShopLimitRequestResponse create_shop_limit_request(create_shop_limit_request_request)
+
+Ask for a higher Crossly Shop selling limit.
+
+One pending request at a time (409 otherwise). Approved on the spot when your last 90 days are clean (no auto-cancelled orders, disputes lost or chargebacks lost) and every number asked is at most twice your current limit; otherwise Crossly staff review it. `valueCents` is US cents.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.shop.create_shop_limit_request_response import CreateShopLimitRequestResponse
+from crossly.model.shop.create_shop_limit_request_request import CreateShopLimitRequestRequest
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    create_shop_limit_request_request = CreateShopLimitRequestRequest(
+        listings=0,
+        value_cents=0,
+        reason="reason_example",
+    ) # CreateShopLimitRequestRequest | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Ask for a higher Crossly Shop selling limit.
+        api_response = api_instance.create_shop_limit_request(create_shop_limit_request_request)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_shop_limit_request: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_shop_limit_request_request** | **CreateShopLimitRequestRequest**|  |
+
+### Return type
+
+**CreateShopLimitRequestResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_story**
+> CreateStoryResponse create_story()
+
+Share a story: 1–10 slides played in order. Each slide is a photo or video plus optional overlays (positions are fractions of the 9:16 frame). Listing stickers must be your own Crossly listings and also tag the slide; @mentions must be real shops. audience: everyone | followers; expiresInHours: 6, 12, 24 or 48.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.common.create_story_response import CreateStoryResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Share a story: 1–10 slides played in order. Each slide is a photo or video plus optional overlays (positions are fractions of the 9:16 frame). Listing stickers must be your own Crossly listings and also tag the slide; @mentions must be real shops. audience: everyone | followers; expiresInHours: 6, 12, 24 or 48.
+        api_response = api_instance.create_story()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_story: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateStoryResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **create_variation_group**
 > CreateVariationGroupResponse create_variation_group()
 
@@ -1877,6 +3290,84 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **create_variation_group_generate_matrix**
+> CreateVariationGroupGenerateMatrixResponse create_variation_group_generate_matrix()
+
+Turn one listing into a variation group over up to three axes (Size × Color): each other cell is a listing you already have (listingId) or a new copy of this one with its own price, quantity and SKU.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.variation.create_variation_group_generate_matrix_response import CreateVariationGroupGenerateMatrixResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Turn one listing into a variation group over up to three axes (Size × Color): each other cell is a listing you already have (listingId) or a new copy of this one with its own price, quantity and SKU.
+        api_response = api_instance.create_variation_group_generate_matrix()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_variation_group_generate_matrix: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateVariationGroupGenerateMatrixResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **create_variation_group_publish**
 > CreateVariationGroupPublishResponse create_variation_group_publish(id)
 
@@ -1934,6 +3425,244 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CreateVariationGroupPublishResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_video_studio_finalize**
+> CreateVideoStudioFinalizeResponse create_video_studio_finalize()
+
+Check an uploaded listing video (exists, MP4, size) and, with listingId, set it as that listing's video.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.video.create_video_studio_finalize_response import CreateVideoStudioFinalizeResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Check an uploaded listing video (exists, MP4, size) and, with listingId, set it as that listing's video.
+        api_response = api_instance.create_video_studio_finalize()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_video_studio_finalize: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateVideoStudioFinalizeResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_video_studio_upload_url**
+> CreateVideoStudioUploadUrlResponse create_video_studio_upload_url()
+
+Presign an R2 PUT (video/mp4, 15 min) for a listing video; finalize it after the upload.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.video.create_video_studio_upload_url_response import CreateVideoStudioUploadUrlResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Presign an R2 PUT (video/mp4, 15 min) for a listing video; finalize it after the upload.
+        api_response = api_instance.create_video_studio_upload_url()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->create_video_studio_upload_url: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateVideoStudioUploadUrlResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **delete_event**
+> DeleteEventResponse delete_event(id)
+
+Delete a draft, or cancel a published event (its page then says it was called off).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.event.delete_event_response import DeleteEventResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Delete a draft, or cancel a published event (its page then says it was called off).
+        api_response = api_instance.delete_event(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->delete_event: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**DeleteEventResponse**
 
 ### Authorization
 
@@ -2054,6 +3783,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **delete_listing_tag**
+> UpdatedResponse delete_listing_tag(tag)
+
+Remove a tag (any case) from every listing.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.common.updated_response import UpdatedResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    tag = "tag_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Remove a tag (any case) from every listing.
+        api_response = api_instance.delete_listing_tag(tag)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->delete_listing_tag: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tag** | **str**|  |
+
+### Return type
+
+**UpdatedResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **delete_live_stream_pin_launch**
 > OkResponse delete_live_stream_pin_launch(id)
 
@@ -2137,7 +3948,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 # **delete_rental_offer**
-> CreateBreakCancelResponse delete_rental_offer(platform_listing_id)
+> UpdateGroupBuyResponse delete_rental_offer(platform_listing_id)
 
 Stop offering a listing for rent (existing bookings stand).
 
@@ -2149,8 +3960,8 @@ Stop offering a listing for rent (existing bookings stand).
 import time
 import crossly
 from crossly.api import listings_api
+from crossly.model.group.update_group_buy_response import UpdateGroupBuyResponse
 from crossly.model.common.error import Error
-from crossly.model.breaks.create_break_cancel_response import CreateBreakCancelResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://crossly.net/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -2192,7 +4003,89 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateBreakCancelResponse**
+**UpdateGroupBuyResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **delete_story**
+> DeleteStoryResponse delete_story(id)
+
+Take one story slide down before it expires.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.common.delete_story_response import DeleteStoryResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Take one story slide down before it expires.
+        api_response = api_instance.delete_story(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->delete_story: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**DeleteStoryResponse**
 
 ### Authorization
 
@@ -2219,7 +4112,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 # **delete_variation_group**
-> CreateBreakCancelResponse delete_variation_group(id)
+> UpdateGroupBuyResponse delete_variation_group(id)
 
 Dissolve a group. Its options stay as ordinary listings.
 
@@ -2231,8 +4124,8 @@ Dissolve a group. Its options stay as ordinary listings.
 import time
 import crossly
 from crossly.api import listings_api
+from crossly.model.group.update_group_buy_response import UpdateGroupBuyResponse
 from crossly.model.common.error import Error
-from crossly.model.breaks.create_break_cancel_response import CreateBreakCancelResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://crossly.net/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -2274,7 +4167,171 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateBreakCancelResponse**
+**UpdateGroupBuyResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **get_event**
+> EventResponse get_event(id)
+
+One of your events.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.common.event_response import EventResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # One of your events.
+        api_response = api_instance.get_event(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->get_event: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**EventResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **get_event_analytic**
+> GetEventAnalyticResponse get_event_analytic(id)
+
+Views, RSVPs, and what the linked listings sold on Crossly during the event (orders, units, revenue in cents).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.event.get_event_analytic_response import GetEventAnalyticResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Views, RSVPs, and what the linked listings sold on Crossly during the event (orders, units, revenue in cents).
+        api_response = api_instance.get_event_analytic(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->get_event_analytic: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**GetEventAnalyticResponse**
 
 ### Authorization
 
@@ -2542,6 +4599,334 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **get_live_stream_recap**
+> GetLiveStreamRecapResponse get_live_stream_recap(id)
+
+The show’s numbers: duration, peak viewers, items sold and gross, tips, chat messages, auctions run, lineup size and the replay URL.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.live.get_live_stream_recap_response import GetLiveStreamRecapResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # The show’s numbers: duration, peak viewers, items sold and gross, tips, chat messages, auctions run, lineup size and the replay URL.
+        api_response = api_instance.get_live_stream_recap(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->get_live_stream_recap: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**GetLiveStreamRecapResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **get_passport**
+> GetPassportResponse get_passport(id)
+
+One passport: its item and every listing of it, the event history (created, printed, tag bound, transferred, claimed…), scans per day for 30 days, custody, grading.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.passport.get_passport_response import GetPassportResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # One passport: its item and every listing of it, the event history (created, printed, tag bound, transferred, claimed…), scans per day for 30 days, custody, grading.
+        api_response = api_instance.get_passport(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->get_passport: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**GetPassportResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **get_passport_draft**
+> PassportDraftResponse get_passport_draft(id)
+
+A passport draft and its passports (photos, serial, tag and label state of each).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.common.passport_draft_response import PassportDraftResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # A passport draft and its passports (photos, serial, tag and label state of each).
+        api_response = api_instance.get_passport_draft(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->get_passport_draft: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**PassportDraftResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **get_passport_print**
+> GetPassportPrintResponse get_passport_print(job_id)
+
+Where a passport print job sent to your agent is: queued, sent, done, failed, expired or duplicate.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.passport.get_passport_print_response import GetPassportPrintResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    job_id = "jobId_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Where a passport print job sent to your agent is: queued, sent, done, failed, expired or duplicate.
+        api_response = api_instance.get_passport_print(job_id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->get_passport_print: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  |
+
+### Return type
+
+**GetPassportPrintResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **get_pricing_setting**
 > GetPricingSettingResponse get_pricing_setting()
 
@@ -2673,6 +5058,324 @@ This endpoint does not need any parameter.
 ### Return type
 
 **GetPricingSoldCompResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **get_rental_setting**
+> GetRentalSettingResponse get_rental_setting()
+
+The store’s rental defaults (every item inherits them) and its payout timing.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.rental.get_rental_setting_response import GetRentalSettingResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # The store’s rental defaults (every item inherits them) and its payout timing.
+        api_response = api_instance.get_rental_setting()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->get_rental_setting: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetRentalSettingResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **get_shop_limit**
+> GetShopLimitResponse get_shop_limit()
+
+Your Crossly Shop selling limit: live listings and listed value, used of limit, per store, and the next step.
+
+Per seller account, shared by all your stores. Counts live + scheduled Crossly Shop listings once each; value is the US-dollar shop price x quantity (an auction at max(start, reserve, buy-now)). Drafts, sold/ended listings and Trade Block posts are not counted, and selling frees space at once. `unlimited` is true for sandbox sellers.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.shop.get_shop_limit_response import GetShopLimitResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Your Crossly Shop selling limit: live listings and listed value, used of limit, per store, and the next step.
+        api_response = api_instance.get_shop_limit()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->get_shop_limit: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetShopLimitResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **list_event_attendees**
+> ListEventAttendeesResponse list_event_attendees(id)
+
+Who RSVPd: display name, avatar, going or interested, and when. No contact details.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.event.list_event_attendees_response import ListEventAttendeesResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Who RSVPd: display name, avatar, going or interested, and when. No contact details.
+        api_response = api_instance.list_event_attendees(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->list_event_attendees: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**ListEventAttendeesResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **list_events**
+> ListEventsResponse list_events()
+
+Your events (launches, sales, live shows, drops, meetups, pop-ups, workshops, parties): schedule, status, phase, and going/interested counts.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.event.list_events_response import ListEventsResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Your events (launches, sales, live shows, drops, meetups, pop-ups, workshops, parties): schedule, status, phase, and going/interested counts.
+        api_response = api_instance.list_events()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->list_events: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListEventsResponse**
 
 ### Authorization
 
@@ -2940,10 +5643,179 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **list_listing_tag_suggest**
+> ListListingTagSuggestResponse list_listing_tag_suggest(listing_id)
+
+Deterministic tag suggestions for one listing (brand, category, size, condition, colors, style tags, era words in the title); `known` = you already use the tag.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.listing.list_listing_tag_suggest_response import ListListingTagSuggestResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    listing_id = "listingId_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Deterministic tag suggestions for one listing (brand, category, size, condition, colors, style tags, era words in the title); `known` = you already use the tag.
+        api_response = api_instance.list_listing_tag_suggest(listing_id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->list_listing_tag_suggest: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **listing_id** | **str**|  |
+
+### Return type
+
+**ListListingTagSuggestResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **list_listing_tags**
+> ListListingTagsResponse list_listing_tags()
+
+Your listing tags with how many listings carry each, most used first (case-insensitive; `q` filters).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.listing.list_listing_tags_response import ListListingTagsResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    q = "q_example" # str |  (optional)
+    limit = 1 # int |  (optional)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Your listing tags with how many listings carry each, most used first (case-insensitive; `q` filters).
+        api_response = api_instance.list_listing_tags(q=q, limit=limit)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->list_listing_tags: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **str**|  | [optional]
+ **limit** | **int**|  | [optional]
+
+### Return type
+
+**ListListingTagsResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **list_listings**
 > ListListingsResponse list_listings()
 
 List active platform listings.
+
+Each row carries `pricing`: `avgAsking` (average price across its active marketplace rows, per-platform overrides and price rules applied) and `avgSale` (average price per unit sold, refunds netted), each `{ amount, currency, count }` or null. Never averaged across currencies.
 
 ### Example
 
@@ -2980,13 +5852,17 @@ with crossly.ApiClient(configuration) as api_client:
     limit = 25 # int |  (optional) if omitted the server will use the default value of 25
     platform = "platform_example" # str |  (optional)
     status = "status_example" # str |  (optional)
+    sku = "sku_example" # str | Exact SKU match: look up the row a supplier product maps to. (optional)
+    updated_since = dateutil_parser('1970-01-01T00:00:00.00Z') # datetime | Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)
     kind = "physical" # str | Physical goods or Web3 assets (NFT listings). Omit for both. (optional)
+    tag = None # bool, date, datetime, dict, float, int, list, str, none_type | Only listings carrying ANY of these tags (case-insensitive): repeat `tag` or comma-separate. (optional)
+    still_live = True # bool | Only listings still active on at least one marketplace. With status=sold: sold items still buyable somewhere (a delist failed, is pending or never ran). (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # List active platform listings.
-        api_response = api_instance.list_listings(page=page, limit=limit, platform=platform, status=status, kind=kind)
+        api_response = api_instance.list_listings(page=page, limit=limit, platform=platform, status=status, sku=sku, updated_since=updated_since, kind=kind, tag=tag, still_live=still_live)
         pprint(api_response)
     except crossly.ApiException as e:
         print("Exception when calling ListingsApi->list_listings: %s\n" % e)
@@ -3001,11 +5877,253 @@ Name | Type | Description  | Notes
  **limit** | **int**|  | [optional] if omitted the server will use the default value of 25
  **platform** | **str**|  | [optional]
  **status** | **str**|  | [optional]
+ **sku** | **str**| Exact SKU match: look up the row a supplier product maps to. | [optional]
+ **updated_since** | **datetime**| Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. | [optional]
  **kind** | **str**| Physical goods or Web3 assets (NFT listings). Omit for both. | [optional]
+ **tag** | **bool, date, datetime, dict, float, int, list, str, none_type**| Only listings carrying ANY of these tags (case-insensitive): repeat &#x60;tag&#x60; or comma-separate. | [optional]
+ **still_live** | **bool**| Only listings still active on at least one marketplace. With status&#x3D;sold: sold items still buyable somewhere (a delist failed, is pending or never ran). | [optional]
 
 ### Return type
 
 **ListListingsResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **list_live_streams**
+> ListLiveStreamsResponse list_live_streams()
+
+Your live shows, newest scheduled first: status, cover, category, connection method and peak viewers.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.live.list_live_streams_response import ListLiveStreamsResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Your live shows, newest scheduled first: status, cover, category, connection method and peak viewers.
+        api_response = api_instance.list_live_streams()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->list_live_streams: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListLiveStreamsResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **list_passport_events**
+> ListPassportEventsResponse list_passport_events(id)
+
+A passport’s event history, newest first (never a buyer or a price).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.passport.list_passport_events_response import ListPassportEventsResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # A passport’s event history, newest first (never a buyer or a price).
+        api_response = api_instance.list_passport_events(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->list_passport_events: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**ListPassportEventsResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **list_passport_print_targets**
+> ListPassportPrintTargetsResponse list_passport_print_targets()
+
+Your printer agents (online, printers, default) and the passport label templates each can print.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.passport.list_passport_print_targets_response import ListPassportPrintTargetsResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Your printer agents (online, printers, default) and the passport label templates each can print.
+        api_response = api_instance.list_passport_print_targets()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->list_passport_print_targets: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListPassportPrintTargetsResponse**
 
 ### Authorization
 
@@ -3044,7 +6162,7 @@ Product passports you registered (optionally for one Crossly listing): the code 
 import time
 import crossly
 from crossly.api import listings_api
-from crossly.model.common.list_passports_response import ListPassportsResponse
+from crossly.model.passport.list_passports_response import ListPassportsResponse
 from crossly.model.common.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://crossly.net/api
@@ -3187,6 +6305,166 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **list_stories**
+> ListStoriesResponse list_stories()
+
+Your active story slides (newest run first, each run in play order), with their overlays: text, listing stickers, @mentions, links, emoji and drawing.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.list_stories_response import ListStoriesResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Your active story slides (newest run first, each run in play order), with their overlays: text, listing stickers, @mentions, links, emoji and drawing.
+        api_response = api_instance.list_stories()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->list_stories: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListStoriesResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **update_event**
+> EventResponse update_event(id)
+
+Edit an event. Omitted fields are unchanged; null clears.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.common.event_response import EventResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Edit an event. Omitted fields are unchanged; null clears.
+        api_response = api_instance.update_event(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->update_event: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**EventResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **update_hotspot**
 > UpdateHotspotResponse update_hotspot()
 
@@ -3269,6 +6547,8 @@ This endpoint does not need any parameter.
 > UpdateListingResponse update_listing(id)
 
 Edit a listing and fan out update jobs to existing platform listings.
+
+The fields to change go in `changes` (a sparse object, e.g. `{ \"changes\": { \"price\": 24.99 } }`). `data` is accepted as an alias of `changes` (the name create and bulk create use); sending both is a 400. Omit `platforms` to push the edit everywhere the listing is live.
 
 ### Example
 
@@ -3513,6 +6793,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **update_live_stream**
+> LiveStreamResponse update_live_stream(id)
+
+Edit a show that has not ended: title, description, cover, category, start time (not once live) or connection method (browser | phone | encoder).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.common.live_stream_response import LiveStreamResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Edit a show that has not ended: title, description, cover, category, start time (not once live) or connection method (browser | phone | encoder).
+        api_response = api_instance.update_live_stream(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->update_live_stream: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**LiveStreamResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **update_live_stream_lineup**
 > UpdateLiveStreamLineupResponse update_live_stream_lineup(id)
 
@@ -3595,10 +6957,174 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **update_passport**
+> UpdatePassportResponse update_passport(id)
+
+Change what a passport says (title, condition, maker, year, materials, notes) or add photo URLs (photos append: a passport keeps the ones it was registered with).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.passport.update_passport_response import UpdatePassportResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Change what a passport says (title, condition, maker, year, materials, notes) or add photo URLs (photos append: a passport keeps the ones it was registered with).
+        api_response = api_instance.update_passport(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->update_passport: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**UpdatePassportResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **update_passport_draft**
+> PassportDraftResponse update_passport_draft(id)
+
+Move a draft to a step, pick its label template, add items or remove draft passports.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.common.passport_draft_response import PassportDraftResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Move a draft to a step, pick its label template, add items or remove draft passports.
+        api_response = api_instance.update_passport_draft(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->update_passport_draft: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**PassportDraftResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **update_pricing_setting**
 > GetPricingSettingResponse update_pricing_setting()
 
-Turn own-price match and/or layaway on or off.
+Turn own-price match and/or layaway on or off for every one of your stores. One store: PUT /v1/storefronts/{id}/settings.
 
 ### Example
 
@@ -3634,7 +7160,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example, this endpoint has no required or optional parameters
     try:
-        # Turn own-price match and/or layaway on or off.
+        # Turn own-price match and/or layaway on or off for every one of your stores. One store: PUT /v1/storefronts/{id}/settings.
         api_response = api_instance.update_pricing_setting()
         pprint(api_response)
     except crossly.ApiException as e:
@@ -3676,7 +7202,7 @@ This endpoint does not need any parameter.
 # **update_rental_offer**
 > UpdateRentalOfferResponse update_rental_offer(platform_listing_id)
 
-Offer a Crossly listing for rent: day rate, optional week rate, deposit, min/max days, turnaround buffer, and rent-only (off sale while offered). Needs a ship-from address.
+Offer a Crossly listing for rent: day rate, optional week rate, deposit, min/max days, turnaround buffer, rent-only (off sale while offered), seller approval, unavailable date ranges (blackoutRanges, inclusive YYYY-MM-DD) and a return policy. Keeps the listing’s own rental terms in step. Needs a ship-from address.
 
 ### Example
 
@@ -3713,7 +7239,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Offer a Crossly listing for rent: day rate, optional week rate, deposit, min/max days, turnaround buffer, and rent-only (off sale while offered). Needs a ship-from address.
+        # Offer a Crossly listing for rent: day rate, optional week rate, deposit, min/max days, turnaround buffer, rent-only (off sale while offered), seller approval, unavailable date ranges (blackoutRanges, inclusive YYYY-MM-DD) and a return policy. Keeps the listing’s own rental terms in step. Needs a ship-from address.
         api_response = api_instance.update_rental_offer(platform_listing_id)
         pprint(api_response)
     except crossly.ApiException as e:
@@ -3730,6 +7256,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 **UpdateRentalOfferResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **update_rental_setting**
+> GetRentalSettingResponse update_rental_setting()
+
+Set the store’s rental defaults and payout timing (on_start needs 3 rentals that came back).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import listings_api
+from crossly.model.common.error import Error
+from crossly.model.rental.get_rental_setting_response import GetRentalSettingResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = listings_api.ListingsApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Set the store’s rental defaults and payout timing (on_start needs 3 rentals that came back).
+        api_response = api_instance.update_rental_setting()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ListingsApi->update_rental_setting: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetRentalSettingResponse**
 
 ### Authorization
 

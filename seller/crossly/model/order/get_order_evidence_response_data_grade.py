@@ -61,8 +61,8 @@ class GetOrderEvidenceResponseDataGrade(ModelNormal):
     allowed_values = {
         ('grade',): {
             'NONE': "none",
-            'STRONG': "strong",
             'BASIC': "basic",
+            'STRONG': "strong",
             'CONCLUSIVE': "conclusive",
         },
     }

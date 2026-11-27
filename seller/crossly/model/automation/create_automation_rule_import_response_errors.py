@@ -76,7 +76,7 @@ class CreateAutomationRuleImportResponseErrors(ModelNormal):
         """
         return {
             'name': (str,),  # noqa: E501
-            'errors': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}],),  # noqa: E501
+            'errors': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
         }
 
     @cached_property
@@ -101,7 +101,7 @@ class CreateAutomationRuleImportResponseErrors(ModelNormal):
 
         Args:
             name (str):
-            errors ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]):
+            errors ([bool, date, datetime, dict, float, int, list, str, none_type]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -188,7 +188,7 @@ class CreateAutomationRuleImportResponseErrors(ModelNormal):
 
         Args:
             name (str):
-            errors ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]):
+            errors ([bool, date, datetime, dict, float, int, list, str, none_type]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

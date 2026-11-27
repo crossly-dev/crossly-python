@@ -87,6 +87,7 @@ class CreateBuyerCartItemRequest(ModelNormal):
         return {
             'listing_slug': (str,),  # noqa: E501
             'quantity': (int,),  # noqa: E501
+            'listing_variant_id': (str,),  # noqa: E501
             'via': (str,),  # noqa: E501
         }
 
@@ -98,6 +99,7 @@ class CreateBuyerCartItemRequest(ModelNormal):
     attribute_map = {
         'listing_slug': 'listingSlug',  # noqa: E501
         'quantity': 'quantity',  # noqa: E501
+        'listing_variant_id': 'listingVariantId',  # noqa: E501
         'via': 'via',  # noqa: E501
     }
 
@@ -146,6 +148,7 @@ class CreateBuyerCartItemRequest(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             quantity (int): [optional] if omitted the server will use the default value of 1  # noqa: E501
+            listing_variant_id (str): The option (variants[].id) on a listing with options.. [optional]  # noqa: E501
             via (str): Where in Crossly World it was added, e.g. room:<publicSlug>.. [optional]  # noqa: E501
         """
 
@@ -233,6 +236,7 @@ class CreateBuyerCartItemRequest(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             quantity (int): [optional] if omitted the server will use the default value of 1  # noqa: E501
+            listing_variant_id (str): The option (variants[].id) on a listing with options.. [optional]  # noqa: E501
             via (str): Where in Crossly World it was added, e.g. room:<publicSlug>.. [optional]  # noqa: E501
         """
 

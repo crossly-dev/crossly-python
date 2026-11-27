@@ -78,8 +78,8 @@ class GetMarketProductResponseDataVariants(ModelNormal):
             'id': (str,),  # noqa: E501
             'label': (str,),  # noqa: E501
             'sort_key': (float,),  # noqa: E501
-            'trades_count': (float,),  # noqa: E501
             'sku_id': (str,),  # noqa: E501
+            'trades_count': (float,),  # noqa: E501
             'external_id': (str, none_type,),  # noqa: E501
             'external_source': (str, none_type,),  # noqa: E501
             'external_synced_at': (datetime, none_type,),  # noqa: E501
@@ -98,8 +98,8 @@ class GetMarketProductResponseDataVariants(ModelNormal):
         'id': 'id',  # noqa: E501
         'label': 'label',  # noqa: E501
         'sort_key': 'sortKey',  # noqa: E501
-        'trades_count': 'tradesCount',  # noqa: E501
         'sku_id': 'skuId',  # noqa: E501
+        'trades_count': 'tradesCount',  # noqa: E501
         'external_id': 'externalId',  # noqa: E501
         'external_source': 'externalSource',  # noqa: E501
         'external_synced_at': 'externalSyncedAt',  # noqa: E501
@@ -116,15 +116,15 @@ class GetMarketProductResponseDataVariants(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, label, sort_key, trades_count, sku_id, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, label, sort_key, sku_id, trades_count, *args, **kwargs):  # noqa: E501
         """GetMarketProductResponseDataVariants - a model defined in OpenAPI
 
         Args:
             id (str):
             label (str):
             sort_key (float):
-            trades_count (float):
             sku_id (str):
+            trades_count (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -194,8 +194,8 @@ class GetMarketProductResponseDataVariants(ModelNormal):
         self.id = id
         self.label = label
         self.sort_key = sort_key
-        self.trades_count = trades_count
         self.sku_id = sku_id
+        self.trades_count = trades_count
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -216,15 +216,15 @@ class GetMarketProductResponseDataVariants(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, label, sort_key, trades_count, sku_id, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, label, sort_key, sku_id, trades_count, *args, **kwargs):  # noqa: E501
         """GetMarketProductResponseDataVariants - a model defined in OpenAPI
 
         Args:
             id (str):
             label (str):
             sort_key (float):
-            trades_count (float):
             sku_id (str):
+            trades_count (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -292,8 +292,8 @@ class GetMarketProductResponseDataVariants(ModelNormal):
         self.id = id
         self.label = label
         self.sort_key = sort_key
-        self.trades_count = trades_count
         self.sku_id = sku_id
+        self.trades_count = trades_count
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -56,8 +56,8 @@ class GetVaultMarketSetGoalBasketPlanResponseSkipped(ModelNormal):
 
     allowed_values = {
         ('reason',): {
-            'TOO_MANY': "too_many",
             'NO_PRICE': "no_price",
+            'TOO_MANY': "too_many",
             'OVER_BUDGET': "over_budget",
             'NOT_CHOSEN': "not_chosen",
         },

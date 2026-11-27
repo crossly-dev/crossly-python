@@ -80,6 +80,7 @@ class CreateStallBookResponseBookingUnits(ModelNormal):
             'ends_at': (str,),  # noqa: E501
             'cents': (float,),  # noqa: E501
             'external_id': (str, none_type,),  # noqa: E501
+            'payment_id': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -93,6 +94,7 @@ class CreateStallBookResponseBookingUnits(ModelNormal):
         'ends_at': 'endsAt',  # noqa: E501
         'cents': 'cents',  # noqa: E501
         'external_id': 'externalId',  # noqa: E501
+        'payment_id': 'paymentId',  # noqa: E501
     }
 
     read_only_vars = {
@@ -143,6 +145,7 @@ class CreateStallBookResponseBookingUnits(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             external_id (str, none_type): CBX only: the spend's external id for this unit (one spend per unit).. [optional]  # noqa: E501
+            payment_id (str, none_type): CBX only, booked since gap 6: this unit's world_payments row (refunds go through refundWorld).. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -235,6 +238,7 @@ class CreateStallBookResponseBookingUnits(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             external_id (str, none_type): CBX only: the spend's external id for this unit (one spend per unit).. [optional]  # noqa: E501
+            payment_id (str, none_type): CBX only, booked since gap 6: this unit's world_payments row (refunds go through refundWorld).. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

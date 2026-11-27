@@ -56,8 +56,8 @@ class CreateBuyerLockonConfirmResponseIdentifier(ModelNormal):
 
     allowed_values = {
         ('ns',): {
-            'STYLE_CODE': "style_code",
             'GTIN': "gtin",
+            'STYLE_CODE': "style_code",
             'LEGO_SET': "lego_set",
             'TCGPLAYER': "tcgplayer",
             'DISCOGS': "discogs",

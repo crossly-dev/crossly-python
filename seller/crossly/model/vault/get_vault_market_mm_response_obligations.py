@@ -78,8 +78,8 @@ class GetVaultMarketMmResponseObligations(ModelNormal):
             'updated_at': (datetime,),  # noqa: E501
             'user_id': (str,),  # noqa: E501
             'day': (str,),  # noqa: E501
-            'book_key': (str,),  # noqa: E501
             'program': (str,),  # noqa: E501
+            'book_key': (str,),  # noqa: E501
             'samples': (float,),  # noqa: E501
             'in_spread': (float,),  # noqa: E501
             'in_half_spread': (float,),  # noqa: E501
@@ -104,8 +104,8 @@ class GetVaultMarketMmResponseObligations(ModelNormal):
         'updated_at': 'updatedAt',  # noqa: E501
         'user_id': 'userId',  # noqa: E501
         'day': 'day',  # noqa: E501
-        'book_key': 'bookKey',  # noqa: E501
         'program': 'program',  # noqa: E501
+        'book_key': 'bookKey',  # noqa: E501
         'samples': 'samples',  # noqa: E501
         'in_spread': 'inSpread',  # noqa: E501
         'in_half_spread': 'inHalfSpread',  # noqa: E501
@@ -128,15 +128,15 @@ class GetVaultMarketMmResponseObligations(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, updated_at, user_id, day, book_key, program, samples, in_spread, in_half_spread, calls_total, calls_joined, rfq_invited, rfq_answered_fast, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, updated_at, user_id, day, program, book_key, samples, in_spread, in_half_spread, calls_total, calls_joined, rfq_invited, rfq_answered_fast, *args, **kwargs):  # noqa: E501
         """GetVaultMarketMmResponseObligations - a model defined in OpenAPI
 
         Args:
             updated_at (datetime):
             user_id (str):
             day (str):
-            book_key (str):
             program (str):
+            book_key (str):
             samples (float):
             in_spread (float):
             in_half_spread (float):
@@ -212,8 +212,8 @@ class GetVaultMarketMmResponseObligations(ModelNormal):
         self.updated_at = updated_at
         self.user_id = user_id
         self.day = day
-        self.book_key = book_key
         self.program = program
+        self.book_key = book_key
         self.samples = samples
         self.in_spread = in_spread
         self.in_half_spread = in_half_spread
@@ -241,15 +241,15 @@ class GetVaultMarketMmResponseObligations(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, updated_at, user_id, day, book_key, program, samples, in_spread, in_half_spread, calls_total, calls_joined, rfq_invited, rfq_answered_fast, *args, **kwargs):  # noqa: E501
+    def __init__(self, updated_at, user_id, day, program, book_key, samples, in_spread, in_half_spread, calls_total, calls_joined, rfq_invited, rfq_answered_fast, *args, **kwargs):  # noqa: E501
         """GetVaultMarketMmResponseObligations - a model defined in OpenAPI
 
         Args:
             updated_at (datetime):
             user_id (str):
             day (str):
-            book_key (str):
             program (str):
+            book_key (str):
             samples (float):
             in_spread (float):
             in_half_spread (float):
@@ -323,8 +323,8 @@ class GetVaultMarketMmResponseObligations(ModelNormal):
         self.updated_at = updated_at
         self.user_id = user_id
         self.day = day
-        self.book_key = book_key
         self.program = program
+        self.book_key = book_key
         self.samples = samples
         self.in_spread = in_spread
         self.in_half_spread = in_half_spread

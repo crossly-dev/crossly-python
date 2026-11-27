@@ -76,11 +76,12 @@ class ListInsightByPlatformItem(ModelNormal):
         """
         return {
             'platform': (str,),  # noqa: E501
-            'sales': (str,),  # noqa: E501
-            'gross_cents': (str,),  # noqa: E501
-            'avg_days_to_sale': (float,),  # noqa: E501
-            'avg_sale_cents': (float,),  # noqa: E501
-            'net_cents': (str,),  # noqa: E501
+            'sales': (float,),  # noqa: E501
+            'gross_cents': (float,),  # noqa: E501
+            'net_cents': (float,),  # noqa: E501
+            'avg_days_to_sale': (float, none_type,),  # noqa: E501
+            'avg_sale_cents': (float, none_type,),  # noqa: E501
+            'net_profit_cents': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -92,9 +93,10 @@ class ListInsightByPlatformItem(ModelNormal):
         'platform': 'platform',  # noqa: E501
         'sales': 'sales',  # noqa: E501
         'gross_cents': 'gross_cents',  # noqa: E501
+        'net_cents': 'net_cents',  # noqa: E501
         'avg_days_to_sale': 'avg_days_to_sale',  # noqa: E501
         'avg_sale_cents': 'avg_sale_cents',  # noqa: E501
-        'net_cents': 'net_cents',  # noqa: E501
+        'net_profit_cents': 'net_profit_cents',  # noqa: E501
     }
 
     read_only_vars = {
@@ -104,16 +106,14 @@ class ListInsightByPlatformItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, platform, sales, gross_cents, avg_days_to_sale, avg_sale_cents, net_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, platform, sales, gross_cents, net_cents, *args, **kwargs):  # noqa: E501
         """ListInsightByPlatformItem - a model defined in OpenAPI
 
         Args:
             platform (str):
-            sales (str):
-            gross_cents (str):
-            avg_days_to_sale (float):
-            avg_sale_cents (float):
-            net_cents (str):
+            sales (float):
+            gross_cents (float):
+            net_cents (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -146,6 +146,9 @@ class ListInsightByPlatformItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            avg_days_to_sale (float, none_type): [optional]  # noqa: E501
+            avg_sale_cents (float, none_type): [optional]  # noqa: E501
+            net_profit_cents (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -176,8 +179,6 @@ class ListInsightByPlatformItem(ModelNormal):
         self.platform = platform
         self.sales = sales
         self.gross_cents = gross_cents
-        self.avg_days_to_sale = avg_days_to_sale
-        self.avg_sale_cents = avg_sale_cents
         self.net_cents = net_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -199,16 +200,14 @@ class ListInsightByPlatformItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, platform, sales, gross_cents, avg_days_to_sale, avg_sale_cents, net_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, platform, sales, gross_cents, net_cents, *args, **kwargs):  # noqa: E501
         """ListInsightByPlatformItem - a model defined in OpenAPI
 
         Args:
             platform (str):
-            sales (str):
-            gross_cents (str):
-            avg_days_to_sale (float):
-            avg_sale_cents (float):
-            net_cents (str):
+            sales (float):
+            gross_cents (float):
+            net_cents (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -241,6 +240,9 @@ class ListInsightByPlatformItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            avg_days_to_sale (float, none_type): [optional]  # noqa: E501
+            avg_sale_cents (float, none_type): [optional]  # noqa: E501
+            net_profit_cents (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -269,8 +271,6 @@ class ListInsightByPlatformItem(ModelNormal):
         self.platform = platform
         self.sales = sales
         self.gross_cents = gross_cents
-        self.avg_days_to_sale = avg_days_to_sale
-        self.avg_sale_cents = avg_sale_cents
         self.net_cents = net_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

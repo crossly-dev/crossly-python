@@ -57,8 +57,8 @@ class UpdateWorldConventionStatusResponseData(ModelNormal):
     allowed_values = {
         ('status',): {
             'LIVE': "live",
-            'OPEN': "open",
             'CANCELLED': "cancelled",
+            'OPEN': "open",
             'ENDED': "ended",
         },
     }

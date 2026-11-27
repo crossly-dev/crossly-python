@@ -57,12 +57,12 @@ class UpdateVaultMarketSupplyDepositResponse(ModelNormal):
     allowed_values = {
         ('status',): {
             'STORED': "stored",
-            'LISTED': "listed",
-            'INBOUND': "inbound",
             'CANCELLED': "cancelled",
+            'LISTED': "listed",
+            'SHIPPED': "shipped",
+            'INBOUND': "inbound",
             'SOLD_ON_BOOK': "sold_on_book",
             'CHANNEL_SOLD': "channel_sold",
-            'SHIPPED': "shipped",
         },
     }
 

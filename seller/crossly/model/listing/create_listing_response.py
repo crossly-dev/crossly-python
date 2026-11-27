@@ -32,9 +32,11 @@ from crossly.exceptions import ApiAttributeError
 def lazy_import():
     from crossly.model.listing.create_listing_response_jobs import CreateListingResponseJobs
     from crossly.model.listing.create_listing_response_skipped import CreateListingResponseSkipped
+    from crossly.model.listing.create_listing_response_warnings import CreateListingResponseWarnings
     from crossly.model.common.id_response import IdResponse
     globals()['CreateListingResponseJobs'] = CreateListingResponseJobs
     globals()['CreateListingResponseSkipped'] = CreateListingResponseSkipped
+    globals()['CreateListingResponseWarnings'] = CreateListingResponseWarnings
     globals()['IdResponse'] = IdResponse
 
 
@@ -88,6 +90,9 @@ class CreateListingResponse(ModelNormal):
             'jobs': ([CreateListingResponseJobs],),  # noqa: E501
             'skipped': ([CreateListingResponseSkipped],),  # noqa: E501
             'bulk_job_id': (str, none_type,),  # noqa: E501
+            'client_reference_id': (str, none_type,),  # noqa: E501
+            'existing': (bool, none_type,),  # noqa: E501
+            'warnings': ([CreateListingResponseWarnings], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -100,6 +105,9 @@ class CreateListingResponse(ModelNormal):
         'jobs': 'jobs',  # noqa: E501
         'skipped': 'skipped',  # noqa: E501
         'bulk_job_id': 'bulkJobId',  # noqa: E501
+        'client_reference_id': 'clientReferenceId',  # noqa: E501
+        'existing': 'existing',  # noqa: E501
+        'warnings': 'warnings',  # noqa: E501
     }
 
     read_only_vars = {
@@ -114,8 +122,8 @@ class CreateListingResponse(ModelNormal):
 
         Args:
             listing (IdResponse):
-            jobs ([CreateListingResponseJobs]):
-            skipped ([CreateListingResponseSkipped]):
+            jobs ([CreateListingResponseJobs]): One dispatched crosspost job per accepted platform.
+            skipped ([CreateListingResponseSkipped]): Platforms not dispatched, and why (category gate, dropship_not_allowed_on_platform, a dispatch refusal such as validation_error \"Add a weight before listing\", ...). The listing itself was created.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -149,6 +157,9 @@ class CreateListingResponse(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             bulk_job_id (str, none_type): [optional]  # noqa: E501
+            client_reference_id (str, none_type): [optional]  # noqa: E501
+            existing (bool, none_type): [optional]  # noqa: E501
+            warnings ([CreateListingResponseWarnings], none_type): Soft item-specifics problems (strictItemSpecifics off) and eBay fields accepted but mapped or ignored.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -204,8 +215,8 @@ class CreateListingResponse(ModelNormal):
 
         Args:
             listing (IdResponse):
-            jobs ([CreateListingResponseJobs]):
-            skipped ([CreateListingResponseSkipped]):
+            jobs ([CreateListingResponseJobs]): One dispatched crosspost job per accepted platform.
+            skipped ([CreateListingResponseSkipped]): Platforms not dispatched, and why (category gate, dropship_not_allowed_on_platform, a dispatch refusal such as validation_error \"Add a weight before listing\", ...). The listing itself was created.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -239,6 +250,9 @@ class CreateListingResponse(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             bulk_job_id (str, none_type): [optional]  # noqa: E501
+            client_reference_id (str, none_type): [optional]  # noqa: E501
+            existing (bool, none_type): [optional]  # noqa: E501
+            warnings ([CreateListingResponseWarnings], none_type): Soft item-specifics problems (strictItemSpecifics off) and eBay fields accepted but mapped or ignored.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

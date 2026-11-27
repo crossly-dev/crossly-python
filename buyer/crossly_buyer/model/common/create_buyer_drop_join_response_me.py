@@ -57,8 +57,8 @@ class CreateBuyerDropJoinResponseMe(ModelNormal):
     allowed_values = {
         ('outcome',): {
             'None': None,
-            'WON': "won",
             'EXPIRED': "expired",
+            'WON': "won",
             'WAITLIST': "waitlist",
             'CLAIMED': "claimed",
         },

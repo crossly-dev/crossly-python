@@ -94,6 +94,7 @@ class ListBuyerCatalogBrowseItem(ModelNormal):
             'condition': (str, none_type,),  # noqa: E501
             'sale_price_cents': (float, none_type,),  # noqa: E501
             'sale_ends_at': (str, none_type,),  # noqa: E501
+            'has_passport': (bool, none_type,),  # noqa: E501
             'sold_at': (str, none_type,),  # noqa: E501
             'sold_price_cents': (float, none_type,),  # noqa: E501
             'sold_quantity': (float, none_type,),  # noqa: E501
@@ -124,6 +125,7 @@ class ListBuyerCatalogBrowseItem(ModelNormal):
         'condition': 'condition',  # noqa: E501
         'sale_price_cents': 'salePriceCents',  # noqa: E501
         'sale_ends_at': 'saleEndsAt',  # noqa: E501
+        'has_passport': 'hasPassport',  # noqa: E501
         'sold_at': 'soldAt',  # noqa: E501
         'sold_price_cents': 'soldPriceCents',  # noqa: E501
         'sold_quantity': 'soldQuantity',  # noqa: E501
@@ -191,6 +193,7 @@ class ListBuyerCatalogBrowseItem(ModelNormal):
             condition (str, none_type): [optional]  # noqa: E501
             sale_price_cents (float, none_type): The seller's running sale, applied: what checkout will charge. Null when none.. [optional]  # noqa: E501
             sale_ends_at (str, none_type): When that sale ends — the tile's countdown.. [optional]  # noqa: E501
+            has_passport (bool, none_type): The item has an active Crossly Passport (the tile's \"Crossly Passport\" chip, docs/PASSPORTS.md §7.4).  Optional: only the main browse query reads it; other row builders leave it out.. [optional]  # noqa: E501
             sold_at (str, none_type): ISO timestamp of the sale.. [optional]  # noqa: E501
             sold_price_cents (float, none_type): Per-unit item price the buyer paid. Also in `priceCents`, so a plain  product tile shows the sold price.. [optional]  # noqa: E501
             sold_quantity (float, none_type): Units in this sale.. [optional]  # noqa: E501
@@ -306,6 +309,7 @@ class ListBuyerCatalogBrowseItem(ModelNormal):
             condition (str, none_type): [optional]  # noqa: E501
             sale_price_cents (float, none_type): The seller's running sale, applied: what checkout will charge. Null when none.. [optional]  # noqa: E501
             sale_ends_at (str, none_type): When that sale ends — the tile's countdown.. [optional]  # noqa: E501
+            has_passport (bool, none_type): The item has an active Crossly Passport (the tile's \"Crossly Passport\" chip, docs/PASSPORTS.md §7.4).  Optional: only the main browse query reads it; other row builders leave it out.. [optional]  # noqa: E501
             sold_at (str, none_type): ISO timestamp of the sale.. [optional]  # noqa: E501
             sold_price_cents (float, none_type): Per-unit item price the buyer paid. Also in `priceCents`, so a plain  product tile shows the sold price.. [optional]  # noqa: E501
             sold_quantity (float, none_type): Units in this sale.. [optional]  # noqa: E501

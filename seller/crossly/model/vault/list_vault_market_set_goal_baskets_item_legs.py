@@ -57,9 +57,9 @@ class ListVaultMarketSetGoalBasketsItemLegs(ModelNormal):
     allowed_values = {
         ('status',): {
             'PENDING': "pending",
-            'FILLED': "filled",
             'CANCELLED': "cancelled",
             'REJECTED': "rejected",
+            'FILLED': "filled",
             'WORKING': "working",
         },
     }

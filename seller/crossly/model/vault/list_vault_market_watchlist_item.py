@@ -62,9 +62,9 @@ class ListVaultMarketWatchlistItem(ModelNormal):
         ('mark_quality',): {
             'None': None,
             'NONE': "none",
+            'C': "C",
             'A': "A",
             'B': "B",
-            'C': "C",
         },
     }
 

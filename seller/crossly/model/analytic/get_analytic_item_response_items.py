@@ -77,8 +77,12 @@ class GetAnalyticItemResponseItems(ModelNormal):
         return {
             'sale_id': (str,),  # noqa: E501
             'platform': (str,),  # noqa: E501
-            'margin_pct': (float,),  # noqa: E501
+            'details_pending': (bool,),  # noqa: E501
             'detected_at': (datetime,),  # noqa: E501
+            'inventory_item_id': (str, none_type,),  # noqa: E501
+            'listing_id': (str, none_type,),  # noqa: E501
+            'platform_listing_id': (str, none_type,),  # noqa: E501
+            'image_url': (str, none_type,),  # noqa: E501
             'platform_order_id': (str, none_type,),  # noqa: E501
             'item_title': (str, none_type,),  # noqa: E501
             'item_brand': (str, none_type,),  # noqa: E501
@@ -88,6 +92,7 @@ class GetAnalyticItemResponseItems(ModelNormal):
             'shipping_cost': (float, none_type,),  # noqa: E501
             'cost_of_goods': (float, none_type,),  # noqa: E501
             'net_profit': (float, none_type,),  # noqa: E501
+            'margin_pct': (float, none_type,),  # noqa: E501
             'days_to_sell': (float, none_type,),  # noqa: E501
         }
 
@@ -99,8 +104,12 @@ class GetAnalyticItemResponseItems(ModelNormal):
     attribute_map = {
         'sale_id': 'saleId',  # noqa: E501
         'platform': 'platform',  # noqa: E501
-        'margin_pct': 'marginPct',  # noqa: E501
+        'details_pending': 'detailsPending',  # noqa: E501
         'detected_at': 'detectedAt',  # noqa: E501
+        'inventory_item_id': 'inventoryItemId',  # noqa: E501
+        'listing_id': 'listingId',  # noqa: E501
+        'platform_listing_id': 'platformListingId',  # noqa: E501
+        'image_url': 'imageUrl',  # noqa: E501
         'platform_order_id': 'platformOrderId',  # noqa: E501
         'item_title': 'itemTitle',  # noqa: E501
         'item_brand': 'itemBrand',  # noqa: E501
@@ -110,6 +119,7 @@ class GetAnalyticItemResponseItems(ModelNormal):
         'shipping_cost': 'shippingCost',  # noqa: E501
         'cost_of_goods': 'costOfGoods',  # noqa: E501
         'net_profit': 'netProfit',  # noqa: E501
+        'margin_pct': 'marginPct',  # noqa: E501
         'days_to_sell': 'daysToSell',  # noqa: E501
     }
 
@@ -120,13 +130,13 @@ class GetAnalyticItemResponseItems(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, sale_id, platform, margin_pct, detected_at, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, sale_id, platform, details_pending, detected_at, *args, **kwargs):  # noqa: E501
         """GetAnalyticItemResponseItems - a model defined in OpenAPI
 
         Args:
             sale_id (str):
             platform (str):
-            margin_pct (float):
+            details_pending (bool):
             detected_at (datetime):
 
         Keyword Args:
@@ -160,6 +170,10 @@ class GetAnalyticItemResponseItems(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            inventory_item_id (str, none_type): [optional]  # noqa: E501
+            listing_id (str, none_type): [optional]  # noqa: E501
+            platform_listing_id (str, none_type): [optional]  # noqa: E501
+            image_url (str, none_type): [optional]  # noqa: E501
             platform_order_id (str, none_type): [optional]  # noqa: E501
             item_title (str, none_type): [optional]  # noqa: E501
             item_brand (str, none_type): [optional]  # noqa: E501
@@ -169,6 +183,7 @@ class GetAnalyticItemResponseItems(ModelNormal):
             shipping_cost (float, none_type): [optional]  # noqa: E501
             cost_of_goods (float, none_type): [optional]  # noqa: E501
             net_profit (float, none_type): [optional]  # noqa: E501
+            margin_pct (float, none_type): [optional]  # noqa: E501
             days_to_sell (float, none_type): [optional]  # noqa: E501
         """
 
@@ -199,7 +214,7 @@ class GetAnalyticItemResponseItems(ModelNormal):
 
         self.sale_id = sale_id
         self.platform = platform
-        self.margin_pct = margin_pct
+        self.details_pending = details_pending
         self.detected_at = detected_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -221,13 +236,13 @@ class GetAnalyticItemResponseItems(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, sale_id, platform, margin_pct, detected_at, *args, **kwargs):  # noqa: E501
+    def __init__(self, sale_id, platform, details_pending, detected_at, *args, **kwargs):  # noqa: E501
         """GetAnalyticItemResponseItems - a model defined in OpenAPI
 
         Args:
             sale_id (str):
             platform (str):
-            margin_pct (float):
+            details_pending (bool):
             detected_at (datetime):
 
         Keyword Args:
@@ -261,6 +276,10 @@ class GetAnalyticItemResponseItems(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            inventory_item_id (str, none_type): [optional]  # noqa: E501
+            listing_id (str, none_type): [optional]  # noqa: E501
+            platform_listing_id (str, none_type): [optional]  # noqa: E501
+            image_url (str, none_type): [optional]  # noqa: E501
             platform_order_id (str, none_type): [optional]  # noqa: E501
             item_title (str, none_type): [optional]  # noqa: E501
             item_brand (str, none_type): [optional]  # noqa: E501
@@ -270,6 +289,7 @@ class GetAnalyticItemResponseItems(ModelNormal):
             shipping_cost (float, none_type): [optional]  # noqa: E501
             cost_of_goods (float, none_type): [optional]  # noqa: E501
             net_profit (float, none_type): [optional]  # noqa: E501
+            margin_pct (float, none_type): [optional]  # noqa: E501
             days_to_sell (float, none_type): [optional]  # noqa: E501
         """
 
@@ -298,7 +318,7 @@ class GetAnalyticItemResponseItems(ModelNormal):
 
         self.sale_id = sale_id
         self.platform = platform
-        self.margin_pct = margin_pct
+        self.details_pending = details_pending
         self.detected_at = detected_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

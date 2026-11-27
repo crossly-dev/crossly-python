@@ -56,8 +56,8 @@ class ListVaultMarketValuationStatementsItem(ModelNormal):
 
     allowed_values = {
         ('purpose',): {
-            'INSURANCE': "insurance",
             'APPRAISAL': "appraisal",
+            'INSURANCE': "insurance",
         },
     }
 

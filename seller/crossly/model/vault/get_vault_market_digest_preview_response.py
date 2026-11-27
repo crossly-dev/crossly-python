@@ -31,9 +31,11 @@ from crossly.exceptions import ApiAttributeError
 
 def lazy_import():
     from crossly.model.vault.get_vault_market_digest_preview_response_first_marks import GetVaultMarketDigestPreviewResponseFirstMarks
+    from crossly.model.vault.get_vault_market_digest_preview_response_learn import GetVaultMarketDigestPreviewResponseLearn
     from crossly.model.vault.get_vault_market_digest_preview_response_offers import GetVaultMarketDigestPreviewResponseOffers
     from crossly.model.vault.get_vault_market_digest_preview_response_value import GetVaultMarketDigestPreviewResponseValue
     globals()['GetVaultMarketDigestPreviewResponseFirstMarks'] = GetVaultMarketDigestPreviewResponseFirstMarks
+    globals()['GetVaultMarketDigestPreviewResponseLearn'] = GetVaultMarketDigestPreviewResponseLearn
     globals()['GetVaultMarketDigestPreviewResponseOffers'] = GetVaultMarketDigestPreviewResponseOffers
     globals()['GetVaultMarketDigestPreviewResponseValue'] = GetVaultMarketDigestPreviewResponseValue
 
@@ -89,6 +91,7 @@ class GetVaultMarketDigestPreviewResponse(ModelNormal):
             'value': (GetVaultMarketDigestPreviewResponseValue,),  # noqa: E501
             'offers': ([GetVaultMarketDigestPreviewResponseOffers],),  # noqa: E501
             'first_marks': ([GetVaultMarketDigestPreviewResponseFirstMarks],),  # noqa: E501
+            'learn': (GetVaultMarketDigestPreviewResponseLearn,),  # noqa: E501
         }
 
     @cached_property
@@ -102,6 +105,7 @@ class GetVaultMarketDigestPreviewResponse(ModelNormal):
         'value': 'value',  # noqa: E501
         'offers': 'offers',  # noqa: E501
         'first_marks': 'firstMarks',  # noqa: E501
+        'learn': 'learn',  # noqa: E501
     }
 
     read_only_vars = {
@@ -111,7 +115,7 @@ class GetVaultMarketDigestPreviewResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, lines, week, value, offers, first_marks, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, lines, week, value, offers, first_marks, learn, *args, **kwargs):  # noqa: E501
         """GetVaultMarketDigestPreviewResponse - a model defined in OpenAPI
 
         Args:
@@ -120,6 +124,7 @@ class GetVaultMarketDigestPreviewResponse(ModelNormal):
             value (GetVaultMarketDigestPreviewResponseValue):
             offers ([GetVaultMarketDigestPreviewResponseOffers]):
             first_marks ([GetVaultMarketDigestPreviewResponseFirstMarks]):
+            learn (GetVaultMarketDigestPreviewResponseLearn):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -184,6 +189,7 @@ class GetVaultMarketDigestPreviewResponse(ModelNormal):
         self.value = value
         self.offers = offers
         self.first_marks = first_marks
+        self.learn = learn
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -204,7 +210,7 @@ class GetVaultMarketDigestPreviewResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, lines, week, value, offers, first_marks, *args, **kwargs):  # noqa: E501
+    def __init__(self, lines, week, value, offers, first_marks, learn, *args, **kwargs):  # noqa: E501
         """GetVaultMarketDigestPreviewResponse - a model defined in OpenAPI
 
         Args:
@@ -213,6 +219,7 @@ class GetVaultMarketDigestPreviewResponse(ModelNormal):
             value (GetVaultMarketDigestPreviewResponseValue):
             offers ([GetVaultMarketDigestPreviewResponseOffers]):
             first_marks ([GetVaultMarketDigestPreviewResponseFirstMarks]):
+            learn (GetVaultMarketDigestPreviewResponseLearn):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -275,6 +282,7 @@ class GetVaultMarketDigestPreviewResponse(ModelNormal):
         self.value = value
         self.offers = offers
         self.first_marks = first_marks
+        self.learn = learn
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

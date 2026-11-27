@@ -57,14 +57,14 @@ class GetSpatialStreetResponseDataDecor(ModelNormal):
     allowed_values = {
         ('banner_colour',): {
             'None': None,
-            'RED': "red",
-            'GREEN': "green",
-            'TEAL': "teal",
             'BLUE': "blue",
+            'GREEN': "green",
             'PURPLE': "purple",
+            'RED': "red",
+            'TEAL': "teal",
             'CREAM': "cream",
-            'AMBER': "amber",
             'INK': "ink",
+            'AMBER': "amber",
         },
     }
 

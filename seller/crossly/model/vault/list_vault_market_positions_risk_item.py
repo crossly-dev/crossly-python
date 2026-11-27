@@ -60,20 +60,20 @@ class ListVaultMarketPositionsRiskItem(ModelNormal):
             'BELOW': "at_or_below",
         },
         ('kind',): {
-            'LONG': "long",
             'SHORT': "short",
+            'LONG': "long",
         },
         ('tier',): {
-            'STANDARD': "standard",
             'CLOSED': "closed",
+            'STANDARD': "standard",
             'DEEP': "deep",
             'THIN': "thin",
         },
         ('margin_state',): {
             'None': None,
-            'BUY_IN': "buy_in",
             'HEALTHY': "healthy",
             'CALL': "call",
+            'BUY_IN': "buy_in",
         },
     }
 

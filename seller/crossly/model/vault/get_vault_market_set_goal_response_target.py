@@ -56,9 +56,9 @@ class GetVaultMarketSetGoalResponseTarget(ModelNormal):
 
     allowed_values = {
         ('grade_mode',): {
+            'ANY': "any",
             'EXACT': "exact",
             'UNGRADED': "ungraded",
-            'ANY': "any",
         },
     }
 

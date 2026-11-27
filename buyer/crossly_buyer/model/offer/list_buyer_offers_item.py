@@ -81,24 +81,24 @@ class ListBuyerOffersItem(ModelNormal):
         lazy_import()
         return {
             'id': (str,),  # noqa: E501
-            'created_at': (str,),  # noqa: E501
-            'status': (str,),  # noqa: E501
-            'expires_at': (str,),  # noqa: E501
-            'is_bundle': (bool,),  # noqa: E501
             'platform_listing_id': (str,),  # noqa: E501
             'seller_user_id': (str,),  # noqa: E501
             'amount_cents': (float,),  # noqa: E501
-            'expired': (bool,),  # noqa: E501
+            'status': (str,),  # noqa: E501
+            'expires_at': (str,),  # noqa: E501
+            'created_at': (str,),  # noqa: E501
             'items': ([ListBuyerOffersItemItems],),  # noqa: E501
-            'awaiting_buyer': (bool,),  # noqa: E501
+            'is_bundle': (bool,),  # noqa: E501
             'redeemable': (bool,),  # noqa: E501
-            'decided_at': (str, none_type,),  # noqa: E501
+            'expired': (bool,),  # noqa: E501
+            'awaiting_buyer': (bool,),  # noqa: E501
+            'platform_listing_ids': ([str], none_type,),  # noqa: E501
+            'listed_total_cents': (float, none_type,),  # noqa: E501
             'message': (str, none_type,),  # noqa: E501
             'parent_offer_id': (str, none_type,),  # noqa: E501
-            'platform_listing_ids': ([str], none_type,),  # noqa: E501
-            'consumed_at': (str, none_type,),  # noqa: E501
-            'listed_total_cents': (float, none_type,),  # noqa: E501
             'origin': (str, none_type,),  # noqa: E501
+            'decided_at': (str, none_type,),  # noqa: E501
+            'consumed_at': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -108,24 +108,24 @@ class ListBuyerOffersItem(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
-        'status': 'status',  # noqa: E501
-        'expires_at': 'expiresAt',  # noqa: E501
-        'is_bundle': 'isBundle',  # noqa: E501
         'platform_listing_id': 'platformListingId',  # noqa: E501
         'seller_user_id': 'sellerUserId',  # noqa: E501
         'amount_cents': 'amountCents',  # noqa: E501
-        'expired': 'expired',  # noqa: E501
+        'status': 'status',  # noqa: E501
+        'expires_at': 'expiresAt',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
         'items': 'items',  # noqa: E501
-        'awaiting_buyer': 'awaitingBuyer',  # noqa: E501
+        'is_bundle': 'isBundle',  # noqa: E501
         'redeemable': 'redeemable',  # noqa: E501
-        'decided_at': 'decidedAt',  # noqa: E501
+        'expired': 'expired',  # noqa: E501
+        'awaiting_buyer': 'awaitingBuyer',  # noqa: E501
+        'platform_listing_ids': 'platformListingIds',  # noqa: E501
+        'listed_total_cents': 'listedTotalCents',  # noqa: E501
         'message': 'message',  # noqa: E501
         'parent_offer_id': 'parentOfferId',  # noqa: E501
-        'platform_listing_ids': 'platformListingIds',  # noqa: E501
-        'consumed_at': 'consumedAt',  # noqa: E501
-        'listed_total_cents': 'listedTotalCents',  # noqa: E501
         'origin': 'origin',  # noqa: E501
+        'decided_at': 'decidedAt',  # noqa: E501
+        'consumed_at': 'consumedAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -135,22 +135,22 @@ class ListBuyerOffersItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, status, expires_at, is_bundle, platform_listing_id, seller_user_id, amount_cents, expired, items, awaiting_buyer, redeemable, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, platform_listing_id, seller_user_id, amount_cents, status, expires_at, created_at, items, is_bundle, redeemable, expired, awaiting_buyer, *args, **kwargs):  # noqa: E501
         """ListBuyerOffersItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
-            status (str):
-            expires_at (str):
-            is_bundle (bool):
             platform_listing_id (str):
             seller_user_id (str):
             amount_cents (float): The offer amount for the whole set, in cents.
-            expired (bool):
+            status (str):
+            expires_at (str):
+            created_at (str):
             items ([ListBuyerOffersItemItems]):
-            awaiting_buyer (bool): A seller counter waiting on YOU: accept, decline or counter back.
+            is_bundle (bool):
             redeemable (bool): Accepted, unpaid, unexpired and every item still live — pay for it now.
+            expired (bool):
+            awaiting_buyer (bool): A seller counter waiting on YOU: accept, decline or counter back.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -183,13 +183,13 @@ class ListBuyerOffersItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            decided_at (str, none_type): [optional]  # noqa: E501
+            platform_listing_ids ([str], none_type): [optional]  # noqa: E501
+            listed_total_cents (float, none_type): Asking-price total when the offer was made, in cents.. [optional]  # noqa: E501
             message (str, none_type): [optional]  # noqa: E501
             parent_offer_id (str, none_type): [optional]  # noqa: E501
-            platform_listing_ids ([str], none_type): [optional]  # noqa: E501
-            consumed_at (str, none_type): [optional]  # noqa: E501
-            listed_total_cents (float, none_type): Asking-price total when the offer was made, in cents.. [optional]  # noqa: E501
             origin (str, none_type): null = you made it; seller_counter / buyer_counter / second_chance / seller_offer (to watchers) / live_auction otherwise.. [optional]  # noqa: E501
+            decided_at (str, none_type): [optional]  # noqa: E501
+            consumed_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -218,17 +218,17 @@ class ListBuyerOffersItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
-        self.status = status
-        self.expires_at = expires_at
-        self.is_bundle = is_bundle
         self.platform_listing_id = platform_listing_id
         self.seller_user_id = seller_user_id
         self.amount_cents = amount_cents
-        self.expired = expired
+        self.status = status
+        self.expires_at = expires_at
+        self.created_at = created_at
         self.items = items
-        self.awaiting_buyer = awaiting_buyer
+        self.is_bundle = is_bundle
         self.redeemable = redeemable
+        self.expired = expired
+        self.awaiting_buyer = awaiting_buyer
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -249,22 +249,22 @@ class ListBuyerOffersItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, status, expires_at, is_bundle, platform_listing_id, seller_user_id, amount_cents, expired, items, awaiting_buyer, redeemable, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, platform_listing_id, seller_user_id, amount_cents, status, expires_at, created_at, items, is_bundle, redeemable, expired, awaiting_buyer, *args, **kwargs):  # noqa: E501
         """ListBuyerOffersItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
-            status (str):
-            expires_at (str):
-            is_bundle (bool):
             platform_listing_id (str):
             seller_user_id (str):
             amount_cents (float): The offer amount for the whole set, in cents.
-            expired (bool):
+            status (str):
+            expires_at (str):
+            created_at (str):
             items ([ListBuyerOffersItemItems]):
-            awaiting_buyer (bool): A seller counter waiting on YOU: accept, decline or counter back.
+            is_bundle (bool):
             redeemable (bool): Accepted, unpaid, unexpired and every item still live — pay for it now.
+            expired (bool):
+            awaiting_buyer (bool): A seller counter waiting on YOU: accept, decline or counter back.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -297,13 +297,13 @@ class ListBuyerOffersItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            decided_at (str, none_type): [optional]  # noqa: E501
+            platform_listing_ids ([str], none_type): [optional]  # noqa: E501
+            listed_total_cents (float, none_type): Asking-price total when the offer was made, in cents.. [optional]  # noqa: E501
             message (str, none_type): [optional]  # noqa: E501
             parent_offer_id (str, none_type): [optional]  # noqa: E501
-            platform_listing_ids ([str], none_type): [optional]  # noqa: E501
-            consumed_at (str, none_type): [optional]  # noqa: E501
-            listed_total_cents (float, none_type): Asking-price total when the offer was made, in cents.. [optional]  # noqa: E501
             origin (str, none_type): null = you made it; seller_counter / buyer_counter / second_chance / seller_offer (to watchers) / live_auction otherwise.. [optional]  # noqa: E501
+            decided_at (str, none_type): [optional]  # noqa: E501
+            consumed_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -330,17 +330,17 @@ class ListBuyerOffersItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
-        self.status = status
-        self.expires_at = expires_at
-        self.is_bundle = is_bundle
         self.platform_listing_id = platform_listing_id
         self.seller_user_id = seller_user_id
         self.amount_cents = amount_cents
-        self.expired = expired
+        self.status = status
+        self.expires_at = expires_at
+        self.created_at = created_at
         self.items = items
-        self.awaiting_buyer = awaiting_buyer
+        self.is_bundle = is_bundle
         self.redeemable = redeemable
+        self.expired = expired
+        self.awaiting_buyer = awaiting_buyer
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -10,7 +10,8 @@ Method | HTTP request | Description
 [**create_inventory_bulk_archive**](InventoryApi.md#create_inventory_bulk_archive) | **POST** /v1/inventory/bulk-archive | Bulk archive inventory items (soft).
 [**create_inventory_bulk_delete**](InventoryApi.md#create_inventory_bulk_delete) | **POST** /v1/inventory/bulk-delete | Bulk delete inventory items (delinks listings).
 [**create_inventory_bulk_label**](InventoryApi.md#create_inventory_bulk_label) | **POST** /v1/inventory/bulk-labels | Bulk add/remove labels on inventory items.
-[**create_inventory_bulk_quantity**](InventoryApi.md#create_inventory_bulk_quantity) | **POST** /v1/inventory/bulk-quantity | Set / add / subtract stock across many items, syncing live listings.
+[**create_inventory_bulk_quantity**](InventoryApi.md#create_inventory_bulk_quantity) | **POST** /v1/inventory/bulk-quantity | Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
+[**create_inventory_bulk_restore**](InventoryApi.md#create_inventory_bulk_restore) | **POST** /v1/inventory/bulk-restore | Restore archived inventory items (status returns to active, or sold_out when no stock).
 [**create_inventory_catalog_match_refresh**](InventoryApi.md#create_inventory_catalog_match_refresh) | **POST** /v1/inventory/{id}/catalog-matches/refresh | Run catalog matching for one item now. An identifier (UPC, style code, catalogue number) that resolves to exactly one product links it; otherwise likely products are returned as suggestions to confirm.
 [**create_inventory_csv_export**](InventoryApi.md#create_inventory_csv_export) | **POST** /v1/inventory/csv/export | Export inventory as CSV. Round-trips back through csv/import.
 [**create_inventory_csv_import**](InventoryApi.md#create_inventory_csv_import) | **POST** /v1/inventory/csv/import | Import a CSV. Rows whose sku matches an existing item update it; others are added. Pass dryRun to preview.
@@ -34,18 +35,21 @@ Method | HTTP request | Description
 [**create_spatial_street_request_found**](InventoryApi.md#create_spatial_street_request_found) | **POST** /v1/spatial/streets/requests/{id}/found | Found an approved street, in CBX.
 [**delete_inventory**](InventoryApi.md#delete_inventory) | **DELETE** /v1/inventory/{id} | Soft-archive an inventory item.
 [**delete_spatial_street_plot**](InventoryApi.md#delete_spatial_street_plot) | **DELETE** /v1/spatial/streets/{slug}/plot | Take your shop off a street.
+[**get_analytic_inventory**](InventoryApi.md#get_analytic_inventory) | **GET** /v1/analytics/inventory | Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+[**get_game_event_summary**](InventoryApi.md#get_game_event_summary) | **GET** /v1/games/events/{eventId}/summary | The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt -- status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break -- status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+[**get_game_hunt_build**](InventoryApi.md#get_game_hunt_build) | **GET** /v1/games/hunts/{id}/build | One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink -- the Worlds app link that opens the builder. Read-only: coins are placed in the World.
 [**get_game_leaderboard**](InventoryApi.md#get_game_leaderboard) | **GET** /v1/games/leaderboards | Game leaderboards: for each of Price Guess (wins, then points), scavenger hunts (finished) and speed trades (won), the top ten this week (Monday 00:00 UTC on) under week and of all time under all -- rank, name, named, value and, for Price Guess, score. A name appears only for somebody who chose to be seen by name in Crossly World; everyone else is \&quot;A player\&quot; in their place.
 [**get_home**](InventoryApi.md#get_home) | **GET** /v1/homes/{slug} | A home by its address, as you may see it: open homes to anybody, friends-only homes to mutual follows, locked homes to their owner. 404 when you may not enter.
 [**get_home_mine**](InventoryApi.md#get_home_mine) | **GET** /v1/homes/mine | Your Crossly World home: its address, privacy (open / friends / locked), theme, the room, the layout (each piece with what it shows -- things you no longer own are left out at read time) and the guestbook. Made on first read.
 [**get_inventory**](InventoryApi.md#get_inventory) | **GET** /v1/inventory/{id} | Get one inventory item with platform listings.
-[**get_inventory_aging**](InventoryApi.md#get_inventory_aging) | **GET** /v1/inventory/aging | Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+[**get_inventory_aging**](InventoryApi.md#get_inventory_aging) | **GET** /v1/inventory/aging | Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
 [**get_inventory_catalog_match**](InventoryApi.md#get_inventory_catalog_match) | **GET** /v1/inventory/{id}/catalog-matches | One inventory item&#39;s catalog binding (if confirmed) and its pending match suggestions.
 [**get_inventory_facet**](InventoryApi.md#get_inventory_facet) | **GET** /v1/inventory/facets | Distinct brands + categories across this user&#39;s inventory.
 [**get_inventory_label**](InventoryApi.md#get_inventory_label) | **GET** /v1/inventory/labels | List every distinct label across this user&#39;s inventory.
 [**get_inventory_label_stat**](InventoryApi.md#get_inventory_label_stat) | **GET** /v1/inventory/labels/stats | List distinct labels with usage counts + colors.
-[**get_inventory_sell_through**](InventoryApi.md#get_inventory_sell_through) | **GET** /v1/inventory/sell-through | Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+[**get_inventory_sell_through**](InventoryApi.md#get_inventory_sell_through) | **GET** /v1/inventory/sell-through | Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
 [**get_inventory_sku_exist**](InventoryApi.md#get_inventory_sku_exist) | **GET** /v1/inventory/sku-exists | Check whether a SKU is already in use on this user&#39;s inventory.
-[**get_inventory_value_history**](InventoryApi.md#get_inventory_value_history) | **GET** /v1/inventory/value-history | Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+[**get_inventory_value_history**](InventoryApi.md#get_inventory_value_history) | **GET** /v1/inventory/value-history | Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
 [**get_main_stage**](InventoryApi.md#get_main_stage) | **GET** /v1/main-stage | The Crossly World Main Stage right now: the live show (title, kind, host lineup), the stream on its big screen while a lineup host is on air, how many people are there (it holds 64 per copy and opens copies as it fills) and what is on next.
 [**get_pet_mine**](InventoryApi.md#get_pet_mine) | **GET** /v1/pets/mine | Your Crossly World pets: every kind (cat, dog, slab bot) with whether you own it, when it was earned and the ways to earn it (a quest or a reputation level -- pets are never sold), plus the pet walking beside you and the one greeting visitors at your shop door.
 [**get_reputation**](InventoryApi.md#get_reputation) | **GET** /v1/reputation/{profile} | Somebody&#39;s public reputation levels by their storefront handle: the level on each track and their nameplate badge. 404 for an unknown handle.
@@ -64,12 +68,14 @@ Method | HTTP request | Description
 [**get_spatial_street**](InventoryApi.md#get_spatial_street) | **GET** /v1/spatial/streets/{slug} | A street: every plot and the shop open on each.
 [**get_spatial_street_founding**](InventoryApi.md#get_spatial_street_founding) | **GET** /v1/spatial/streets/founding | What founding a street costs.
 [**get_spatial_street_plot_quote**](InventoryApi.md#get_spatial_street_plot_quote) | **GET** /v1/spatial/streets/{slug}/plots/{number}/quote | What a plot costs.
+[**get_world_pulse**](InventoryApi.md#get_world_pulse) | **GET** /v1/world/pulse | Crossly World&#39;s pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only -- never counts, amounts or buyers), the times the world&#39;s shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain&#39;s mark.
 [**get_world_room_funnel**](InventoryApi.md#get_world_room_funnel) | **GET** /v1/world/rooms/{sceneId}/funnel | Your room&#39;s funnel over the last &#x60;days&#x60; (1-35, default 30): visitors (people, once a day), looks, items opened, checkouts started from the room, paid sales and revenueCents. Sales count only lines the room itself put in a cart.
 [**get_world_shelf**](InventoryApi.md#get_world_shelf) | **GET** /v1/world/shelf/{listingSlug} | Where a Crossly listing sits on a shelf in a public room right now (roomSlug, roomName, itemId), or data:null when it is in no room.
 [**get_world_skus_cheapest**](InventoryApi.md#get_world_skus_cheapest) | **GET** /v1/world/skus/{skuId}/cheapest | The cheapest copy of a catalogue piece for sale on Crossly now, matched by the catalogue id (listingSlug, priceCents, and the room and item when it stands on a shelf), or data:null.
 [**list_catalog_matches**](InventoryApi.md#list_catalog_matches) | **GET** /v1/catalog-matches | Pending catalog-match suggestions: inventory items that look like a catalog product, awaiting your confirm.
 [**list_festivals**](InventoryApi.md#list_festivals) | **GET** /v1/festivals | Live and upcoming Crossly World festivals, soonest first: a weekend when every street wears one decor and the festival quest line (limited pins) counts. meta.live is the festival on now, if any.
 [**list_game_break_upcoming**](InventoryApi.md#list_game_break_upcoming) | **GET** /v1/games/breaks/upcoming | Pack breaks staged on shop stages in Crossly World, live first then soonest: the break, its shop, start time, spots (taken or not, buyer masked), hits revealed so far, and buyUrl -- the break&#39;s page on crossly.net, the only place a spot is bought (null once every spot has sold).
+[**list_game_hunt_mine**](InventoryApi.md#list_game_hunt_mine) | **GET** /v1/games/hunts/mine | Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
 [**list_game_hunts**](InventoryApi.md#list_game_hunts) | **GET** /v1/games/hunts | Scavenger hunts running now in Crossly World shops and pop-up stalls, ending soonest first: title, shop (name and slug -- for a hunt at a stall, the street slug, with stall.bookingId set), how many tokens, what finishing unlocks (\&quot;10% off\&quot; -- never the code), when it ends and how many people have finished. Optional place filters to one shop or street slug.
 [**list_game_result_mine**](InventoryApi.md#list_game_result_mine) | **GET** /v1/games/results/mine | Your market-game results, newest first: game (price_guess, price_guess_solo, hunt, speed_trade, break_host), the round/hunt/trade/break id, score, whether you won, Bucks prize in cents (0 while prizes are pins only) and detail. meta.unlocks lists the hunt coupons you earned (with their codes); meta.hits the break hits pulled for spots you bought, with the order each ships with.
 [**list_home_mine_builders**](InventoryApi.md#list_home_mine_builders) | **GET** /v1/homes/mine/builders | Your co-builders: friends you let rearrange your home in the world (move, turn, take out your things, add free furniture; never your bought pieces). Each: userId, name, friends (false once the friendship ended: listed but powerless).
@@ -583,7 +589,9 @@ This endpoint does not need any parameter.
 # **create_inventory_bulk_quantity**
 > CreateInventoryBulkQuantityResponse create_inventory_bulk_quantity()
 
-Set / add / subtract stock across many items, syncing live listings.
+Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
+
+Two bodies. {ids, mode: \"set\"|\"increase\"|\"decrease\", value, syncMarketplaces?} applies one value to every id. {mode: \"set\", items: [{id, quantity}], syncMarketplaces?} sets each item to its own quantity (1-5000 items, each id once; a repeated id, more than 5000 items, or a body mixing items with ids/value is a 400 naming both shapes). The value is the AVAILABLE stock (reserved units of open orders are kept). Stock changes at once; live listings are pushed in the background against the returned bulkJobId (anything dropping to 0 is delisted). Response: {affected, skipped, bulkJobId?}: skipped = ids that did not move (already at that number, or not yours). Send an Idempotency-Key to retry safely.
 
 ### Example
 
@@ -619,7 +627,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example, this endpoint has no required or optional parameters
     try:
-        # Set / add / subtract stock across many items, syncing live listings.
+        # Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
         api_response = api_instance.create_inventory_bulk_quantity()
         pprint(api_response)
     except crossly.ApiException as e:
@@ -633,6 +641,84 @@ This endpoint does not need any parameter.
 ### Return type
 
 **CreateInventoryBulkQuantityResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_inventory_bulk_restore**
+> CreateInventoryBulkRestoreResponse create_inventory_bulk_restore()
+
+Restore archived inventory items (status returns to active, or sold_out when no stock).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import inventory_api
+from crossly.model.inventory.create_inventory_bulk_restore_response import CreateInventoryBulkRestoreResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = inventory_api.InventoryApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Restore archived inventory items (status returns to active, or sold_out when no stock).
+        api_response = api_instance.create_inventory_bulk_restore()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling InventoryApi->create_inventory_bulk_restore: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateInventoryBulkRestoreResponse**
 
 ### Authorization
 
@@ -896,7 +982,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 # **create_inventory_label_rename**
-> CreateInventoryLabelRenameResponse create_inventory_label_rename()
+> UpdatedResponse create_inventory_label_rename()
 
 Rename a label across every inventory item.
 
@@ -909,7 +995,7 @@ import time
 import crossly
 from crossly.api import inventory_api
 from crossly.model.common.error import Error
-from crossly.model.inventory.create_inventory_label_rename_response import CreateInventoryLabelRenameResponse
+from crossly.model.common.updated_response import UpdatedResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://crossly.net/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -947,7 +1033,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**CreateInventoryLabelRenameResponse**
+**UpdatedResponse**
 
 ### Authorization
 
@@ -1468,7 +1554,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 # **create_spatial_property_lease_accept**
-> CreateSpatialPropertyLeaseAcceptResponse create_spatial_property_lease_accept(id)
+> CreateWorldMarketPlotRentResponse create_spatial_property_lease_accept(id)
 
 Take a plot on lease.
 
@@ -1482,8 +1568,8 @@ Pays the first week to the owner from your EARNED CBX and moves your (public) sh
 import time
 import crossly
 from crossly.api import inventory_api
-from crossly.model.spatial.create_spatial_property_lease_accept_response import CreateSpatialPropertyLeaseAcceptResponse
 from crossly.model.common.error import Error
+from crossly.model.world.create_world_market_plot_rent_response import CreateWorldMarketPlotRentResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://crossly.net/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -1525,7 +1611,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateSpatialPropertyLeaseAcceptResponse**
+**CreateWorldMarketPlotRentResponse**
 
 ### Authorization
 
@@ -1556,7 +1642,7 @@ Name | Type | Description  | Notes
 
 End a lease (owner or tenant).
 
-The tenant's shop gets a free Main Street address again.
+The tenant's showroom leaves the plot.
 
 ### Example
 
@@ -2555,6 +2641,275 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **get_analytic_inventory**
+> GetAnalyticInventoryResponse get_analytic_inventory()
+
+Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import inventory_api
+from crossly.model.analytic.get_analytic_inventory_response import GetAnalyticInventoryResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = inventory_api.InventoryApi(api_client)
+    range = "7d" # str | Reporting window. Default 30d. custom needs from and to. (optional)
+    _from = "from_example" # str | YYYY-MM-DD, inclusive, in tz. Only with range=custom. (optional)
+    to = "to_example" # str | YYYY-MM-DD, inclusive, in tz. Only with range=custom. (optional)
+    compare = "prev" # str | Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)
+    cmp_from = "cmpFrom_example" # str | YYYY-MM-DD. Only with compare=custom. (optional)
+    cmp_to = "cmpTo_example" # str | YYYY-MM-DD. Only with compare=custom. (optional)
+    labels = "labels_example" # str | Comma-separated inventory labels (any of them). (optional)
+    platforms = "platforms_example" # str | Comma-separated platform ids. (optional)
+    category = "category_example" # str | Canonical main-category key. (optional)
+    brand = "brand_example" # str | Brand name. (optional)
+    tz = "tz_example" # str | IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)
+    maturity = 30 # int | Days an item has to sell within to count as sold in the cohort. Default 30. (optional)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
+        api_response = api_instance.get_analytic_inventory(range=range, _from=_from, to=to, compare=compare, cmp_from=cmp_from, cmp_to=cmp_to, labels=labels, platforms=platforms, category=category, brand=brand, tz=tz, maturity=maturity)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling InventoryApi->get_analytic_inventory: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **range** | **str**| Reporting window. Default 30d. custom needs from and to. | [optional]
+ **_from** | **str**| YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. | [optional]
+ **to** | **str**| YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. | [optional]
+ **compare** | **str**| Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). | [optional]
+ **cmp_from** | **str**| YYYY-MM-DD. Only with compare&#x3D;custom. | [optional]
+ **cmp_to** | **str**| YYYY-MM-DD. Only with compare&#x3D;custom. | [optional]
+ **labels** | **str**| Comma-separated inventory labels (any of them). | [optional]
+ **platforms** | **str**| Comma-separated platform ids. | [optional]
+ **category** | **str**| Canonical main-category key. | [optional]
+ **brand** | **str**| Brand name. | [optional]
+ **tz** | **str**| IANA time zone for day boundaries. Default UTC. An invalid name is a 400. | [optional]
+ **maturity** | **int**| Days an item has to sell within to count as sold in the cohort. Default 30. | [optional]
+
+### Return type
+
+**GetAnalyticInventoryResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **get_game_event_summary**
+> GetGameEventSummaryResponse get_game_event_summary(event_id)
+
+The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt -- status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break -- status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import inventory_api
+from crossly.model.common.error import Error
+from crossly.model.game.get_game_event_summary_response import GetGameEventSummaryResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = inventory_api.InventoryApi(api_client)
+    event_id = "eventId_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt -- status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break -- status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
+        api_response = api_instance.get_game_event_summary(event_id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling InventoryApi->get_game_event_summary: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **event_id** | **str**|  |
+
+### Return type
+
+**GetGameEventSummaryResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **get_game_hunt_build**
+> GetGameHuntBuildResponse get_game_hunt_build(id)
+
+One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink -- the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import inventory_api
+from crossly.model.common.error import Error
+from crossly.model.game.get_game_hunt_build_response import GetGameHuntBuildResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = inventory_api.InventoryApi(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink -- the Worlds app link that opens the builder. Read-only: coins are placed in the World.
+        api_response = api_instance.get_game_hunt_build(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling InventoryApi->get_game_hunt_build: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**GetGameHuntBuildResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **get_game_leaderboard**
 > GetGameLeaderboardResponse get_game_leaderboard()
 
@@ -2878,7 +3233,7 @@ Name | Type | Description  | Notes
 # **get_inventory_aging**
 > GetInventoryAgingResponse get_inventory_aging()
 
-Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
 
 ### Example
 
@@ -2914,7 +3269,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example, this endpoint has no required or optional parameters
     try:
-        # Unsold stock by age (0-7, 7-30, 30-90, 90+ days, unlisted), each bucket with a recommendation.
+        # Unsold stock by days since first listed (unlisted, 0-7, 7-30, 30-90, 90+), each bucket with items, units, known cost (items without a cost counted separately) and listed value.
         api_response = api_instance.get_inventory_aging()
         pprint(api_response)
     except crossly.ApiException as e:
@@ -3272,7 +3627,7 @@ This endpoint does not need any parameter.
 # **get_inventory_sell_through**
 > GetInventorySellThroughResponse get_inventory_sell_through()
 
-Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
 
 ### Example
 
@@ -3308,7 +3663,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example, this endpoint has no required or optional parameters
     try:
-        # Cohort sell-through for a window (default: the 30 days ending 30 days ago) against the previous window of the same length.
+        # Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
         api_response = api_instance.get_inventory_sell_through()
         pprint(api_response)
     except crossly.ApiException as e:
@@ -3432,7 +3787,7 @@ Name | Type | Description  | Notes
 # **get_inventory_value_history**
 > GetInventoryValueHistoryResponse get_inventory_value_history()
 
-Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
 
 ### Example
 
@@ -3468,7 +3823,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example, this endpoint has no required or optional parameters
     try:
-        # Portfolio value of unsold stock over time, oldest first (one point per nightly snapshot).
+        # Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
         api_response = api_instance.get_inventory_value_history()
         pprint(api_response)
     except crossly.ApiException as e:
@@ -4979,6 +5334,84 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **get_world_pulse**
+> GetWorldPulseResponse get_world_pulse()
+
+Crossly World's pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only -- never counts, amounts or buyers), the times the world's shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain's mark.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import inventory_api
+from crossly.model.world.get_world_pulse_response import GetWorldPulseResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = inventory_api.InventoryApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Crossly World's pulse, aggregated with no people in it: the public world shops that made a sale today (slugs only -- never counts, amounts or buyers), the times the world's shops passed each sales milestone today (each fires a fireworks show), and what Crossly Cares took in this month against the Commons fountain's mark.
+        api_response = api_instance.get_world_pulse()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling InventoryApi->get_world_pulse: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetWorldPulseResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **get_world_room_funnel**
 > GetWorldRoomFunnelResponse get_world_room_funnel(scene_id)
 
@@ -5477,6 +5910,84 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **list_game_hunt_mine**
+> ListGameHuntMineResponse list_game_hunt_mine()
+
+Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import inventory_api
+from crossly.model.game.list_game_hunt_mine_response import ListGameHuntMineResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = inventory_api.InventoryApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Your scavenger hunts (spec WD6: made from Branding events, built in Crossly World), newest first: title, place slug, the event it belongs to (eventId), your discount code if it rewards one, whether it is a draft (not yet built and published), live or ended, its coins, and how many people finished.
+        api_response = api_instance.list_game_hunt_mine()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling InventoryApi->list_game_hunt_mine: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListGameHuntMineResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **list_game_hunts**
 > ListGameHuntsResponse list_game_hunts()
 
@@ -5837,12 +6348,14 @@ with crossly.ApiClient(configuration) as api_client:
     kind = "physical" # str | Physical goods or Web3 assets (NFTs). Omit for both. (optional)
     platforms = "platforms_example" # str | Comma-separated marketplaces, e.g. \"ebay,vinted\". Items live (an active listing) on any of them. (optional)
     platform_mode = "listed" # str | \"not_listed\" inverts `platforms`: items live on none of them. Default \"listed\". (optional)
+    sku = "sku_example" # str | Exact SKU match: look up the row a supplier product maps to. (optional)
+    updated_since = dateutil_parser('1970-01-01T00:00:00.00Z') # datetime | Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
         # List inventory items.
-        api_response = api_instance.list_inventory(page=page, limit=limit, search=search, status=status, kind=kind, platforms=platforms, platform_mode=platform_mode)
+        api_response = api_instance.list_inventory(page=page, limit=limit, search=search, status=status, kind=kind, platforms=platforms, platform_mode=platform_mode, sku=sku, updated_since=updated_since)
         pprint(api_response)
     except crossly.ApiException as e:
         print("Exception when calling InventoryApi->list_inventory: %s\n" % e)
@@ -5860,6 +6373,8 @@ Name | Type | Description  | Notes
  **kind** | **str**| Physical goods or Web3 assets (NFTs). Omit for both. | [optional]
  **platforms** | **str**| Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. | [optional]
  **platform_mode** | **str**| \&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. | [optional]
+ **sku** | **str**| Exact SKU match: look up the row a supplier product maps to. | [optional]
+ **updated_since** | **datetime**| Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. | [optional]
 
 ### Return type
 

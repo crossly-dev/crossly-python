@@ -83,13 +83,13 @@ class ListBuyerPacksItem(ModelNormal):
         lazy_import()
         return {
             'id': (str,),  # noqa: E501
-            'status': (str,),  # noqa: E501
-            'title': (str,),  # noqa: E501
             'slug': (str,),  # noqa: E501
+            'title': (str,),  # noqa: E501
             'price_cents': (float,),  # noqa: E501
-            'tiers': ([ListBuyerPacksItemTiers],),  # noqa: E501
+            'status': (str,),  # noqa: E501
             'buyback_bps': (float,),  # noqa: E501
             'buyback_days': (float,),  # noqa: E501
+            'tiers': ([ListBuyerPacksItemTiers],),  # noqa: E501
             'expected_value_cents': (float,),  # noqa: E501
             'openable': (bool,),  # noqa: E501
             'chase': ([ListBuyerPacksItemChase],),  # noqa: E501
@@ -104,13 +104,13 @@ class ListBuyerPacksItem(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'status': 'status',  # noqa: E501
-        'title': 'title',  # noqa: E501
         'slug': 'slug',  # noqa: E501
+        'title': 'title',  # noqa: E501
         'price_cents': 'priceCents',  # noqa: E501
-        'tiers': 'tiers',  # noqa: E501
+        'status': 'status',  # noqa: E501
         'buyback_bps': 'buybackBps',  # noqa: E501
         'buyback_days': 'buybackDays',  # noqa: E501
+        'tiers': 'tiers',  # noqa: E501
         'expected_value_cents': 'expectedValueCents',  # noqa: E501
         'openable': 'openable',  # noqa: E501
         'chase': 'chase',  # noqa: E501
@@ -125,18 +125,18 @@ class ListBuyerPacksItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, status, title, slug, price_cents, tiers, buyback_bps, buyback_days, expected_value_cents, openable, chase, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, slug, title, price_cents, status, buyback_bps, buyback_days, tiers, expected_value_cents, openable, chase, *args, **kwargs):  # noqa: E501
         """ListBuyerPacksItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            status (str):
-            title (str):
             slug (str):
+            title (str):
             price_cents (float):
-            tiers ([ListBuyerPacksItemTiers]):
+            status (str):
             buyback_bps (float):
             buyback_days (float):
+            tiers ([ListBuyerPacksItemTiers]):
             expected_value_cents (float):
             openable (bool):
             chase ([ListBuyerPacksItemChase]):
@@ -202,13 +202,13 @@ class ListBuyerPacksItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.status = status
-        self.title = title
         self.slug = slug
+        self.title = title
         self.price_cents = price_cents
-        self.tiers = tiers
+        self.status = status
         self.buyback_bps = buyback_bps
         self.buyback_days = buyback_days
+        self.tiers = tiers
         self.expected_value_cents = expected_value_cents
         self.openable = openable
         self.chase = chase
@@ -232,18 +232,18 @@ class ListBuyerPacksItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, status, title, slug, price_cents, tiers, buyback_bps, buyback_days, expected_value_cents, openable, chase, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, slug, title, price_cents, status, buyback_bps, buyback_days, tiers, expected_value_cents, openable, chase, *args, **kwargs):  # noqa: E501
         """ListBuyerPacksItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            status (str):
-            title (str):
             slug (str):
+            title (str):
             price_cents (float):
-            tiers ([ListBuyerPacksItemTiers]):
+            status (str):
             buyback_bps (float):
             buyback_days (float):
+            tiers ([ListBuyerPacksItemTiers]):
             expected_value_cents (float):
             openable (bool):
             chase ([ListBuyerPacksItemChase]):
@@ -307,13 +307,13 @@ class ListBuyerPacksItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.status = status
-        self.title = title
         self.slug = slug
+        self.title = title
         self.price_cents = price_cents
-        self.tiers = tiers
+        self.status = status
         self.buyback_bps = buyback_bps
         self.buyback_days = buyback_days
+        self.tiers = tiers
         self.expected_value_cents = expected_value_cents
         self.openable = openable
         self.chase = chase

@@ -77,13 +77,13 @@ class GetVaultMarketPositionResponseLoans(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'status': (str,),  # noqa: E501
-            'vault_item_id': (str,),  # noqa: E501
             'opened_at': (datetime,),  # noqa: E501
+            'vault_item_id': (str,),  # noqa: E501
+            'position_id': (str,),  # noqa: E501
             'book_key': (str,),  # noqa: E501
             'fees_paid_cents': (float,),  # noqa: E501
             'late_penalty_paid_cents': (float,),  # noqa: E501
             'lender_user_id': (str,),  # noqa: E501
-            'position_id': (str,),  # noqa: E501
             'apr_bps': (float,),  # noqa: E501
             'mark_cents_at_open': (float,),  # noqa: E501
             'fees_accrued_cents': (str,),  # noqa: E501
@@ -104,13 +104,13 @@ class GetVaultMarketPositionResponseLoans(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'status': 'status',  # noqa: E501
-        'vault_item_id': 'vaultItemId',  # noqa: E501
         'opened_at': 'openedAt',  # noqa: E501
+        'vault_item_id': 'vaultItemId',  # noqa: E501
+        'position_id': 'positionId',  # noqa: E501
         'book_key': 'bookKey',  # noqa: E501
         'fees_paid_cents': 'feesPaidCents',  # noqa: E501
         'late_penalty_paid_cents': 'latePenaltyPaidCents',  # noqa: E501
         'lender_user_id': 'lenderUserId',  # noqa: E501
-        'position_id': 'positionId',  # noqa: E501
         'apr_bps': 'aprBps',  # noqa: E501
         'mark_cents_at_open': 'markCentsAtOpen',  # noqa: E501
         'fees_accrued_cents': 'feesAccruedCents',  # noqa: E501
@@ -130,19 +130,19 @@ class GetVaultMarketPositionResponseLoans(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, status, vault_item_id, opened_at, book_key, fees_paid_cents, late_penalty_paid_cents, lender_user_id, position_id, apr_bps, mark_cents_at_open, fees_accrued_cents, lender_storage_cents, late_penalty_accrued_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, status, opened_at, vault_item_id, position_id, book_key, fees_paid_cents, late_penalty_paid_cents, lender_user_id, apr_bps, mark_cents_at_open, fees_accrued_cents, lender_storage_cents, late_penalty_accrued_cents, *args, **kwargs):  # noqa: E501
         """GetVaultMarketPositionResponseLoans - a model defined in OpenAPI
 
         Args:
             id (str):
             status (str):
-            vault_item_id (str):
             opened_at (datetime):
+            vault_item_id (str):
+            position_id (str):
             book_key (str):
             fees_paid_cents (float):
             late_penalty_paid_cents (float):
             lender_user_id (str):
-            position_id (str):
             apr_bps (float):
             mark_cents_at_open (float):
             fees_accrued_cents (str):
@@ -214,13 +214,13 @@ class GetVaultMarketPositionResponseLoans(ModelNormal):
 
         self.id = id
         self.status = status
-        self.vault_item_id = vault_item_id
         self.opened_at = opened_at
+        self.vault_item_id = vault_item_id
+        self.position_id = position_id
         self.book_key = book_key
         self.fees_paid_cents = fees_paid_cents
         self.late_penalty_paid_cents = late_penalty_paid_cents
         self.lender_user_id = lender_user_id
-        self.position_id = position_id
         self.apr_bps = apr_bps
         self.mark_cents_at_open = mark_cents_at_open
         self.fees_accrued_cents = fees_accrued_cents
@@ -246,19 +246,19 @@ class GetVaultMarketPositionResponseLoans(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, status, vault_item_id, opened_at, book_key, fees_paid_cents, late_penalty_paid_cents, lender_user_id, position_id, apr_bps, mark_cents_at_open, fees_accrued_cents, lender_storage_cents, late_penalty_accrued_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, status, opened_at, vault_item_id, position_id, book_key, fees_paid_cents, late_penalty_paid_cents, lender_user_id, apr_bps, mark_cents_at_open, fees_accrued_cents, lender_storage_cents, late_penalty_accrued_cents, *args, **kwargs):  # noqa: E501
         """GetVaultMarketPositionResponseLoans - a model defined in OpenAPI
 
         Args:
             id (str):
             status (str):
-            vault_item_id (str):
             opened_at (datetime):
+            vault_item_id (str):
+            position_id (str):
             book_key (str):
             fees_paid_cents (float):
             late_penalty_paid_cents (float):
             lender_user_id (str):
-            position_id (str):
             apr_bps (float):
             mark_cents_at_open (float):
             fees_accrued_cents (str):
@@ -328,13 +328,13 @@ class GetVaultMarketPositionResponseLoans(ModelNormal):
 
         self.id = id
         self.status = status
-        self.vault_item_id = vault_item_id
         self.opened_at = opened_at
+        self.vault_item_id = vault_item_id
+        self.position_id = position_id
         self.book_key = book_key
         self.fees_paid_cents = fees_paid_cents
         self.late_penalty_paid_cents = late_penalty_paid_cents
         self.lender_user_id = lender_user_id
-        self.position_id = position_id
         self.apr_bps = apr_bps
         self.mark_cents_at_open = mark_cents_at_open
         self.fees_accrued_cents = fees_accrued_cents

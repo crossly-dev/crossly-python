@@ -76,8 +76,8 @@ class GetWorldCapabilityWearResponseDataPicks(ModelNormal):
         """
         return {
             'body': (str, none_type,),  # noqa: E501
-            'legs': (str, none_type,),  # noqa: E501
             'head': (str, none_type,),  # noqa: E501
+            'legs': (str, none_type,),  # noqa: E501
             'feet': (str, none_type,),  # noqa: E501
             'back': (str, none_type,),  # noqa: E501
         }
@@ -89,8 +89,8 @@ class GetWorldCapabilityWearResponseDataPicks(ModelNormal):
 
     attribute_map = {
         'body': 'body',  # noqa: E501
-        'legs': 'legs',  # noqa: E501
         'head': 'head',  # noqa: E501
+        'legs': 'legs',  # noqa: E501
         'feet': 'feet',  # noqa: E501
         'back': 'back',  # noqa: E501
     }
@@ -137,8 +137,8 @@ class GetWorldCapabilityWearResponseDataPicks(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             body (str, none_type): [optional]  # noqa: E501
-            legs (str, none_type): [optional]  # noqa: E501
             head (str, none_type): [optional]  # noqa: E501
+            legs (str, none_type): [optional]  # noqa: E501
             feet (str, none_type): [optional]  # noqa: E501
             back (str, none_type): [optional]  # noqa: E501
         """
@@ -223,8 +223,8 @@ class GetWorldCapabilityWearResponseDataPicks(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             body (str, none_type): [optional]  # noqa: E501
-            legs (str, none_type): [optional]  # noqa: E501
             head (str, none_type): [optional]  # noqa: E501
+            legs (str, none_type): [optional]  # noqa: E501
             feet (str, none_type): [optional]  # noqa: E501
             back (str, none_type): [optional]  # noqa: E501
         """

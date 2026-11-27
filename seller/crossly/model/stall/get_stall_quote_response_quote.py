@@ -65,6 +65,11 @@ class GetStallQuoteResponseQuote(ModelNormal):
     """
 
     allowed_values = {
+        ('booth_kind',): {
+            'BOOTH': "booth",
+            'CART': "cart",
+            'PAVILION': "pavilion",
+        },
     }
 
     validations = {
@@ -93,6 +98,8 @@ class GetStallQuoteResponseQuote(ModelNormal):
             'units': ([GetStallQuoteResponseQuoteUnits],),  # noqa: E501
             'quote': (CreateStallBookResponseBookingQuote,),  # noqa: E501
             'rails': ([GetStallQuoteResponseQuoteRailsItem],),  # noqa: E501
+            'booth_kind': (str,),  # noqa: E501
+            'capacity': (float,),  # noqa: E501
             'bookable': (bool,),  # noqa: E501
             'unbookable_reason': (str, none_type,),  # noqa: E501
         }
@@ -110,6 +117,8 @@ class GetStallQuoteResponseQuote(ModelNormal):
         'units': 'units',  # noqa: E501
         'quote': 'quote',  # noqa: E501
         'rails': 'rails',  # noqa: E501
+        'booth_kind': 'boothKind',  # noqa: E501
+        'capacity': 'capacity',  # noqa: E501
         'bookable': 'bookable',  # noqa: E501
         'unbookable_reason': 'unbookableReason',  # noqa: E501
     }
@@ -121,7 +130,7 @@ class GetStallQuoteResponseQuote(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, street, spot_index, owner, open, units, quote, rails, bookable, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, street, spot_index, owner, open, units, quote, rails, booth_kind, capacity, bookable, *args, **kwargs):  # noqa: E501
         """GetStallQuoteResponseQuote - a model defined in OpenAPI
 
         Args:
@@ -132,6 +141,8 @@ class GetStallQuoteResponseQuote(ModelNormal):
             units ([GetStallQuoteResponseQuoteUnits]):
             quote (CreateStallBookResponseBookingQuote):
             rails ([GetStallQuoteResponseQuoteRailsItem]):
+            booth_kind (str):
+            capacity (float):
             bookable (bool):
 
         Keyword Args:
@@ -200,6 +211,8 @@ class GetStallQuoteResponseQuote(ModelNormal):
         self.units = units
         self.quote = quote
         self.rails = rails
+        self.booth_kind = booth_kind
+        self.capacity = capacity
         self.bookable = bookable
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -221,7 +234,7 @@ class GetStallQuoteResponseQuote(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, street, spot_index, owner, open, units, quote, rails, bookable, *args, **kwargs):  # noqa: E501
+    def __init__(self, street, spot_index, owner, open, units, quote, rails, booth_kind, capacity, bookable, *args, **kwargs):  # noqa: E501
         """GetStallQuoteResponseQuote - a model defined in OpenAPI
 
         Args:
@@ -232,6 +245,8 @@ class GetStallQuoteResponseQuote(ModelNormal):
             units ([GetStallQuoteResponseQuoteUnits]):
             quote (CreateStallBookResponseBookingQuote):
             rails ([GetStallQuoteResponseQuoteRailsItem]):
+            booth_kind (str):
+            capacity (float):
             bookable (bool):
 
         Keyword Args:
@@ -298,6 +313,8 @@ class GetStallQuoteResponseQuote(ModelNormal):
         self.units = units
         self.quote = quote
         self.rails = rails
+        self.booth_kind = booth_kind
+        self.capacity = capacity
         self.bookable = bookable
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

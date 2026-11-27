@@ -56,13 +56,13 @@ class ListWorldCapabilityDeclarationsItemDeclarationCollection(ModelNormal):
 
     allowed_values = {
         ('chain',): {
-            'SOLANA': "solana",
-            'COSM': "cosm",
             'ETHEREUM': "ethereum",
             'BASE': "base",
             'POLYGON': "polygon",
             'ARBITRUM': "arbitrum",
             'OPTIMISM': "optimism",
+            'SOLANA': "solana",
+            'COSM': "cosm",
         },
     }
 

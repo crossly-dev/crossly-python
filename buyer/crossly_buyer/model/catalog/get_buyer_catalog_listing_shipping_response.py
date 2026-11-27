@@ -85,6 +85,7 @@ class GetBuyerCatalogListingShippingResponse(ModelNormal):
             'quantity': (float,),  # noqa: E501
             'cached': (bool,),  # noqa: E501
             'ships_to_country': (bool,),  # noqa: E501
+            'partial': (bool,),  # noqa: E501
             'services': ([GetBuyerCatalogListingShippingResponseServices],),  # noqa: E501
             'international': (GetBuyerCatalogListingShippingResponseInternational,),  # noqa: E501
             'import_charges_note': (bool,),  # noqa: E501
@@ -95,7 +96,10 @@ class GetBuyerCatalogListingShippingResponse(ModelNormal):
             'free_shipping_threshold_cents': (float, none_type,),  # noqa: E501
             'destination_country': (str, none_type,),  # noqa: E501
             'no_ship_reason': (str, none_type,),  # noqa: E501
+            'no_ship_message': (str, none_type,),  # noqa: E501
+            'rule': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'default_service_id': (str, none_type,),  # noqa: E501
+            'calculated_at_checkout': (bool, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -107,6 +111,7 @@ class GetBuyerCatalogListingShippingResponse(ModelNormal):
         'quantity': 'quantity',  # noqa: E501
         'cached': 'cached',  # noqa: E501
         'ships_to_country': 'shipsToCountry',  # noqa: E501
+        'partial': 'partial',  # noqa: E501
         'services': 'services',  # noqa: E501
         'international': 'international',  # noqa: E501
         'import_charges_note': 'importChargesNote',  # noqa: E501
@@ -117,7 +122,10 @@ class GetBuyerCatalogListingShippingResponse(ModelNormal):
         'free_shipping_threshold_cents': 'freeShippingThresholdCents',  # noqa: E501
         'destination_country': 'destinationCountry',  # noqa: E501
         'no_ship_reason': 'noShipReason',  # noqa: E501
+        'no_ship_message': 'noShipMessage',  # noqa: E501
+        'rule': 'rule',  # noqa: E501
         'default_service_id': 'defaultServiceId',  # noqa: E501
+        'calculated_at_checkout': 'calculatedAtCheckout',  # noqa: E501
     }
 
     read_only_vars = {
@@ -127,13 +135,14 @@ class GetBuyerCatalogListingShippingResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, quantity, cached, ships_to_country, services, international, import_charges_note, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, quantity, cached, ships_to_country, partial, services, international, import_charges_note, *args, **kwargs):  # noqa: E501
         """GetBuyerCatalogListingShippingResponse - a model defined in OpenAPI
 
         Args:
             quantity (float):
             cached (bool):
             ships_to_country (bool):
+            partial (bool): True when a fuller address (ZIP / postcode) could change the answer.
             services ([GetBuyerCatalogListingShippingResponseServices]):
             international (GetBuyerCatalogListingShippingResponseInternational):
             import_charges_note (bool):
@@ -176,7 +185,10 @@ class GetBuyerCatalogListingShippingResponse(ModelNormal):
             free_shipping_threshold_cents (float, none_type): [optional]  # noqa: E501
             destination_country (str, none_type): [optional]  # noqa: E501
             no_ship_reason (str, none_type): [optional]  # noqa: E501
+            no_ship_message (str, none_type): Why it doesn't ship here, as the buyer should read it; null when it does.. [optional]  # noqa: E501
+            rule ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The seller's ship-to rule that decided a refusal; null when none did.. [optional]  # noqa: E501
             default_service_id (str, none_type): [optional]  # noqa: E501
+            calculated_at_checkout (bool, none_type): Buyer pays: calculated: no live label rate for this destination yet (give a ZIP); `cents` is null.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -207,6 +219,7 @@ class GetBuyerCatalogListingShippingResponse(ModelNormal):
         self.quantity = quantity
         self.cached = cached
         self.ships_to_country = ships_to_country
+        self.partial = partial
         self.services = services
         self.international = international
         self.import_charges_note = import_charges_note
@@ -230,13 +243,14 @@ class GetBuyerCatalogListingShippingResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, quantity, cached, ships_to_country, services, international, import_charges_note, *args, **kwargs):  # noqa: E501
+    def __init__(self, quantity, cached, ships_to_country, partial, services, international, import_charges_note, *args, **kwargs):  # noqa: E501
         """GetBuyerCatalogListingShippingResponse - a model defined in OpenAPI
 
         Args:
             quantity (float):
             cached (bool):
             ships_to_country (bool):
+            partial (bool): True when a fuller address (ZIP / postcode) could change the answer.
             services ([GetBuyerCatalogListingShippingResponseServices]):
             international (GetBuyerCatalogListingShippingResponseInternational):
             import_charges_note (bool):
@@ -279,7 +293,10 @@ class GetBuyerCatalogListingShippingResponse(ModelNormal):
             free_shipping_threshold_cents (float, none_type): [optional]  # noqa: E501
             destination_country (str, none_type): [optional]  # noqa: E501
             no_ship_reason (str, none_type): [optional]  # noqa: E501
+            no_ship_message (str, none_type): Why it doesn't ship here, as the buyer should read it; null when it does.. [optional]  # noqa: E501
+            rule ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): The seller's ship-to rule that decided a refusal; null when none did.. [optional]  # noqa: E501
             default_service_id (str, none_type): [optional]  # noqa: E501
+            calculated_at_checkout (bool, none_type): Buyer pays: calculated: no live label rate for this destination yet (give a ZIP); `cents` is null.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -308,6 +325,7 @@ class GetBuyerCatalogListingShippingResponse(ModelNormal):
         self.quantity = quantity
         self.cached = cached
         self.ships_to_country = ships_to_country
+        self.partial = partial
         self.services = services
         self.international = international
         self.import_charges_note = import_charges_note

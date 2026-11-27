@@ -64,8 +64,8 @@ class ListVaultMarketPriceWidgetsItem(ModelNormal):
 
     allowed_values = {
         ('kind',): {
-            'MARK': "mark",
             'INDEX': "index",
+            'MARK': "mark",
         },
         ('range',): {
             '1Y': "1y",

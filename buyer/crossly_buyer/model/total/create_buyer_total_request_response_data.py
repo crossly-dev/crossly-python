@@ -75,8 +75,8 @@ class CreateBuyerTotalRequestResponseData(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'id': (str,),  # noqa: E501
             'ok': (bool,),  # noqa: E501
+            'id': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -85,8 +85,8 @@ class CreateBuyerTotalRequestResponseData(ModelNormal):
 
 
     attribute_map = {
-        'id': 'id',  # noqa: E501
         'ok': 'ok',  # noqa: E501
+        'id': 'id',  # noqa: E501
     }
 
     read_only_vars = {
@@ -96,12 +96,12 @@ class CreateBuyerTotalRequestResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, ok, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, ok, id, *args, **kwargs):  # noqa: E501
         """CreateBuyerTotalRequestResponseData - a model defined in OpenAPI
 
         Args:
-            id (str):
             ok (bool):
+            id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -161,8 +161,8 @@ class CreateBuyerTotalRequestResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.id = id
         self.ok = ok
+        self.id = id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -183,12 +183,12 @@ class CreateBuyerTotalRequestResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, ok, *args, **kwargs):  # noqa: E501
+    def __init__(self, ok, id, *args, **kwargs):  # noqa: E501
         """CreateBuyerTotalRequestResponseData - a model defined in OpenAPI
 
         Args:
-            id (str):
             ok (bool):
+            id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -246,8 +246,8 @@ class CreateBuyerTotalRequestResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.id = id
         self.ok = ok
+        self.id = id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

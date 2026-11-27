@@ -80,8 +80,8 @@ class GetBuyerListingFitResponseDataComparisons(ModelNormal):
         """
         lazy_import()
         return {
-            'label': (str,),  # noqa: E501
             'ref_id': (str,),  # noqa: E501
+            'label': (str,),  # noqa: E501
             'result': (GetBuyerListingFitResponseDataComparisonsResult,),  # noqa: E501
         }
 
@@ -91,8 +91,8 @@ class GetBuyerListingFitResponseDataComparisons(ModelNormal):
 
 
     attribute_map = {
-        'label': 'label',  # noqa: E501
         'ref_id': 'refId',  # noqa: E501
+        'label': 'label',  # noqa: E501
         'result': 'result',  # noqa: E501
     }
 
@@ -103,12 +103,12 @@ class GetBuyerListingFitResponseDataComparisons(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, label, ref_id, result, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, ref_id, label, result, *args, **kwargs):  # noqa: E501
         """GetBuyerListingFitResponseDataComparisons - a model defined in OpenAPI
 
         Args:
-            label (str):
             ref_id (str):
+            label (str):
             result (GetBuyerListingFitResponseDataComparisonsResult):
 
         Keyword Args:
@@ -169,8 +169,8 @@ class GetBuyerListingFitResponseDataComparisons(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.label = label
         self.ref_id = ref_id
+        self.label = label
         self.result = result
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -192,12 +192,12 @@ class GetBuyerListingFitResponseDataComparisons(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, label, ref_id, result, *args, **kwargs):  # noqa: E501
+    def __init__(self, ref_id, label, result, *args, **kwargs):  # noqa: E501
         """GetBuyerListingFitResponseDataComparisons - a model defined in OpenAPI
 
         Args:
-            label (str):
             ref_id (str):
+            label (str):
             result (GetBuyerListingFitResponseDataComparisonsResult):
 
         Keyword Args:
@@ -256,8 +256,8 @@ class GetBuyerListingFitResponseDataComparisons(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.label = label
         self.ref_id = ref_id
+        self.label = label
         self.result = result
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

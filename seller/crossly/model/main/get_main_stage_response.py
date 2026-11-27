@@ -30,9 +30,11 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from crossly.model.main.get_main_stage_response_house import GetMainStageResponseHouse
     from crossly.model.main.get_main_stage_response_live import GetMainStageResponseLive
     from crossly.model.main.get_main_stage_response_stream import GetMainStageResponseStream
     from crossly.model.main.get_main_stage_response_upcoming import GetMainStageResponseUpcoming
+    globals()['GetMainStageResponseHouse'] = GetMainStageResponseHouse
     globals()['GetMainStageResponseLive'] = GetMainStageResponseLive
     globals()['GetMainStageResponseStream'] = GetMainStageResponseStream
     globals()['GetMainStageResponseUpcoming'] = GetMainStageResponseUpcoming
@@ -89,6 +91,7 @@ class GetMainStageResponse(ModelNormal):
             'capacity': (float,),  # noqa: E501
             'here': (float,),  # noqa: E501
             'upcoming': ([GetMainStageResponseUpcoming],),  # noqa: E501
+            'house': (GetMainStageResponseHouse,),  # noqa: E501
             'live': (GetMainStageResponseLive,),  # noqa: E501
             'stream': (GetMainStageResponseStream,),  # noqa: E501
         }
@@ -104,6 +107,7 @@ class GetMainStageResponse(ModelNormal):
         'capacity': 'capacity',  # noqa: E501
         'here': 'here',  # noqa: E501
         'upcoming': 'upcoming',  # noqa: E501
+        'house': 'house',  # noqa: E501
         'live': 'live',  # noqa: E501
         'stream': 'stream',  # noqa: E501
     }
@@ -115,7 +119,7 @@ class GetMainStageResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, slug, name, capacity, here, upcoming, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, slug, name, capacity, here, upcoming, house, *args, **kwargs):  # noqa: E501
         """GetMainStageResponse - a model defined in OpenAPI
 
         Args:
@@ -124,6 +128,7 @@ class GetMainStageResponse(ModelNormal):
             capacity (float):
             here (float): People on the stage right now, across copies.
             upcoming ([GetMainStageResponseUpcoming]):
+            house (GetMainStageResponseHouse):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -190,6 +195,7 @@ class GetMainStageResponse(ModelNormal):
         self.capacity = capacity
         self.here = here
         self.upcoming = upcoming
+        self.house = house
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -210,7 +216,7 @@ class GetMainStageResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, slug, name, capacity, here, upcoming, *args, **kwargs):  # noqa: E501
+    def __init__(self, slug, name, capacity, here, upcoming, house, *args, **kwargs):  # noqa: E501
         """GetMainStageResponse - a model defined in OpenAPI
 
         Args:
@@ -219,6 +225,7 @@ class GetMainStageResponse(ModelNormal):
             capacity (float):
             here (float): People on the stage right now, across copies.
             upcoming ([GetMainStageResponseUpcoming]):
+            house (GetMainStageResponseHouse):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -283,6 +290,7 @@ class GetMainStageResponse(ModelNormal):
         self.capacity = capacity
         self.here = here
         self.upcoming = upcoming
+        self.house = house
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -75,8 +75,8 @@ class GetBuyerOrderPriceProtectionResponseData(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'active': (bool,),  # noqa: E501
             'until': (str,),  # noqa: E501
+            'active': (bool,),  # noqa: E501
             'credited_cents': (float,),  # noqa: E501
         }
 
@@ -86,8 +86,8 @@ class GetBuyerOrderPriceProtectionResponseData(ModelNormal):
 
 
     attribute_map = {
-        'active': 'active',  # noqa: E501
         'until': 'until',  # noqa: E501
+        'active': 'active',  # noqa: E501
         'credited_cents': 'creditedCents',  # noqa: E501
     }
 
@@ -98,12 +98,12 @@ class GetBuyerOrderPriceProtectionResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, active, until, credited_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, until, active, credited_cents, *args, **kwargs):  # noqa: E501
         """GetBuyerOrderPriceProtectionResponseData - a model defined in OpenAPI
 
         Args:
-            active (bool):
             until (str):
+            active (bool):
             credited_cents (float):
 
         Keyword Args:
@@ -164,8 +164,8 @@ class GetBuyerOrderPriceProtectionResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.active = active
         self.until = until
+        self.active = active
         self.credited_cents = credited_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -187,12 +187,12 @@ class GetBuyerOrderPriceProtectionResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, active, until, credited_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, until, active, credited_cents, *args, **kwargs):  # noqa: E501
         """GetBuyerOrderPriceProtectionResponseData - a model defined in OpenAPI
 
         Args:
-            active (bool):
             until (str):
+            active (bool):
             credited_cents (float):
 
         Keyword Args:
@@ -251,8 +251,8 @@ class GetBuyerOrderPriceProtectionResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.active = active
         self.until = until
+        self.active = active
         self.credited_cents = credited_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

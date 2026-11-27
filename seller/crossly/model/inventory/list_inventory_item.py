@@ -30,9 +30,11 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.grading.list_grading_submissions_item_grading import ListGradingSubmissionsItemGrading
+    from crossly.model.bulk.create_bulk_batch_item_response_grading import CreateBulkBatchItemResponseGrading
+    from crossly.model.inventory.list_inventory_item_supplier import ListInventoryItemSupplier
     from crossly.model.common.main_sub import MainSub
-    globals()['ListGradingSubmissionsItemGrading'] = ListGradingSubmissionsItemGrading
+    globals()['CreateBulkBatchItemResponseGrading'] = CreateBulkBatchItemResponseGrading
+    globals()['ListInventoryItemSupplier'] = ListInventoryItemSupplier
     globals()['MainSub'] = MainSub
 
 
@@ -61,6 +63,12 @@ class ListInventoryItem(ModelNormal):
     """
 
     allowed_values = {
+        ('vault_sell_from',): {
+            'None': None,
+            'VAULT_FIRST': "vault_first",
+            'WAREHOUSE_FIRST': "warehouse_first",
+            'CHEAPEST': "cheapest",
+        },
     }
 
     validations = {
@@ -86,9 +94,12 @@ class ListInventoryItem(ModelNormal):
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (datetime,),  # noqa: E501
             'user_id': (str,),  # noqa: E501
+            'status': (str,),  # noqa: E501
+            'source': (str,),  # noqa: E501
             'quantity': (float,),  # noqa: E501
             'quantity_available': (float,),  # noqa: E501
             'quantity_reserved': (float,),  # noqa: E501
+            'wholesale_reserve': (float,),  # noqa: E501
             'quantity_sold': (float,),  # noqa: E501
             'color': ([str],),  # noqa: E501
             'default_title': (str,),  # noqa: E501
@@ -97,9 +108,8 @@ class ListInventoryItem(ModelNormal):
             'labels': ([str],),  # noqa: E501
             'include_tax_in_landed': (bool,),  # noqa: E501
             'floor_is_net': (bool,),  # noqa: E501
-            'status': (str,),  # noqa: E501
-            'source': (str,),  # noqa: E501
             'brand': (str, none_type,),  # noqa: E501
+            'notes': (str, none_type,),  # noqa: E501
             'sku': (str, none_type,),  # noqa: E501
             'original_price': (str, none_type,),  # noqa: E501
             'condition': (str, none_type,),  # noqa: E501
@@ -113,7 +123,6 @@ class ListInventoryItem(ModelNormal):
             'size_system': (str, none_type,),  # noqa: E501
             'video_url': (str, none_type,),  # noqa: E501
             'provenance_receipt_id': (str, none_type,),  # noqa: E501
-            'notes': (str, none_type,),  # noqa: E501
             'custom_label': (str, none_type,),  # noqa: E501
             'warehouse_location': (str, none_type,),  # noqa: E501
             'storage_bin': (str, none_type,),  # noqa: E501
@@ -121,9 +130,11 @@ class ListInventoryItem(ModelNormal):
             'market_sku_id': (str, none_type,),  # noqa: E501
             'market_variant_id': (str, none_type,),  # noqa: E501
             'grade_key': (str, none_type,),  # noqa: E501
-            'grading': (ListGradingSubmissionsItemGrading,),  # noqa: E501
+            'vault_sell_from': (str, none_type,),  # noqa: E501
+            'grading': (CreateBulkBatchItemResponseGrading,),  # noqa: E501
             'first_listed_at': (datetime, none_type,),  # noqa: E501
             'cost_basis_cents': (float, none_type,),  # noqa: E501
+            'supplier': (ListInventoryItemSupplier,),  # noqa: E501
             'price_floor_cents': (float, none_type,),  # noqa: E501
             'acquired_at': (datetime, none_type,),  # noqa: E501
             'acquired_source': (str, none_type,),  # noqa: E501
@@ -132,6 +143,7 @@ class ListInventoryItem(ModelNormal):
             'dimension_lin': (str, none_type,),  # noqa: E501
             'dimension_win': (str, none_type,),  # noqa: E501
             'dimension_hin': (str, none_type,),  # noqa: E501
+            'allowance_app_id': (str, none_type,),  # noqa: E501
             'category': (MainSub,),  # noqa: E501
         }
 
@@ -145,9 +157,12 @@ class ListInventoryItem(ModelNormal):
         'created_at': 'createdAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
         'user_id': 'userId',  # noqa: E501
+        'status': 'status',  # noqa: E501
+        'source': 'source',  # noqa: E501
         'quantity': 'quantity',  # noqa: E501
         'quantity_available': 'quantityAvailable',  # noqa: E501
         'quantity_reserved': 'quantityReserved',  # noqa: E501
+        'wholesale_reserve': 'wholesaleReserve',  # noqa: E501
         'quantity_sold': 'quantitySold',  # noqa: E501
         'color': 'color',  # noqa: E501
         'default_title': 'defaultTitle',  # noqa: E501
@@ -156,9 +171,8 @@ class ListInventoryItem(ModelNormal):
         'labels': 'labels',  # noqa: E501
         'include_tax_in_landed': 'includeTaxInLanded',  # noqa: E501
         'floor_is_net': 'floorIsNet',  # noqa: E501
-        'status': 'status',  # noqa: E501
-        'source': 'source',  # noqa: E501
         'brand': 'brand',  # noqa: E501
+        'notes': 'notes',  # noqa: E501
         'sku': 'sku',  # noqa: E501
         'original_price': 'originalPrice',  # noqa: E501
         'condition': 'condition',  # noqa: E501
@@ -172,7 +186,6 @@ class ListInventoryItem(ModelNormal):
         'size_system': 'sizeSystem',  # noqa: E501
         'video_url': 'videoUrl',  # noqa: E501
         'provenance_receipt_id': 'provenanceReceiptId',  # noqa: E501
-        'notes': 'notes',  # noqa: E501
         'custom_label': 'customLabel',  # noqa: E501
         'warehouse_location': 'warehouseLocation',  # noqa: E501
         'storage_bin': 'storageBin',  # noqa: E501
@@ -180,9 +193,11 @@ class ListInventoryItem(ModelNormal):
         'market_sku_id': 'marketSkuId',  # noqa: E501
         'market_variant_id': 'marketVariantId',  # noqa: E501
         'grade_key': 'gradeKey',  # noqa: E501
+        'vault_sell_from': 'vaultSellFrom',  # noqa: E501
         'grading': 'grading',  # noqa: E501
         'first_listed_at': 'firstListedAt',  # noqa: E501
         'cost_basis_cents': 'costBasisCents',  # noqa: E501
+        'supplier': 'supplier',  # noqa: E501
         'price_floor_cents': 'priceFloorCents',  # noqa: E501
         'acquired_at': 'acquiredAt',  # noqa: E501
         'acquired_source': 'acquiredSource',  # noqa: E501
@@ -191,6 +206,7 @@ class ListInventoryItem(ModelNormal):
         'dimension_lin': 'dimensionLIn',  # noqa: E501
         'dimension_win': 'dimensionWIn',  # noqa: E501
         'dimension_hin': 'dimensionHIn',  # noqa: E501
+        'allowance_app_id': 'allowanceAppId',  # noqa: E501
         'category': 'category',  # noqa: E501
     }
 
@@ -201,7 +217,7 @@ class ListInventoryItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, updated_at, user_id, quantity, quantity_available, quantity_reserved, quantity_sold, color, default_title, images, tags, labels, include_tax_in_landed, floor_is_net, status, source, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, updated_at, user_id, status, source, quantity, quantity_available, quantity_reserved, wholesale_reserve, quantity_sold, color, default_title, images, tags, labels, include_tax_in_landed, floor_is_net, *args, **kwargs):  # noqa: E501
         """ListInventoryItem - a model defined in OpenAPI
 
         Args:
@@ -209,9 +225,12 @@ class ListInventoryItem(ModelNormal):
             created_at (datetime):
             updated_at (datetime):
             user_id (str):
+            status (str):
+            source (str):
             quantity (float):
             quantity_available (float):
             quantity_reserved (float):
+            wholesale_reserve (float):
             quantity_sold (float):
             color ([str]):
             default_title (str):
@@ -220,8 +239,6 @@ class ListInventoryItem(ModelNormal):
             labels ([str]):
             include_tax_in_landed (bool):
             floor_is_net (bool):
-            status (str):
-            source (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -255,6 +272,7 @@ class ListInventoryItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             brand (str, none_type): [optional]  # noqa: E501
+            notes (str, none_type): [optional]  # noqa: E501
             sku (str, none_type): [optional]  # noqa: E501
             original_price (str, none_type): [optional]  # noqa: E501
             condition (str, none_type): [optional]  # noqa: E501
@@ -268,7 +286,6 @@ class ListInventoryItem(ModelNormal):
             size_system (str, none_type): [optional]  # noqa: E501
             video_url (str, none_type): [optional]  # noqa: E501
             provenance_receipt_id (str, none_type): [optional]  # noqa: E501
-            notes (str, none_type): [optional]  # noqa: E501
             custom_label (str, none_type): [optional]  # noqa: E501
             warehouse_location (str, none_type): [optional]  # noqa: E501
             storage_bin (str, none_type): [optional]  # noqa: E501
@@ -276,9 +293,11 @@ class ListInventoryItem(ModelNormal):
             market_sku_id (str, none_type): [optional]  # noqa: E501
             market_variant_id (str, none_type): [optional]  # noqa: E501
             grade_key (str, none_type): [optional]  # noqa: E501
-            grading (ListGradingSubmissionsItemGrading): [optional]  # noqa: E501
+            vault_sell_from (str, none_type): [optional]  # noqa: E501
+            grading (CreateBulkBatchItemResponseGrading): [optional]  # noqa: E501
             first_listed_at (datetime, none_type): [optional]  # noqa: E501
             cost_basis_cents (float, none_type): [optional]  # noqa: E501
+            supplier (ListInventoryItemSupplier): [optional]  # noqa: E501
             price_floor_cents (float, none_type): [optional]  # noqa: E501
             acquired_at (datetime, none_type): [optional]  # noqa: E501
             acquired_source (str, none_type): [optional]  # noqa: E501
@@ -287,6 +306,7 @@ class ListInventoryItem(ModelNormal):
             dimension_lin (str, none_type): [optional]  # noqa: E501
             dimension_win (str, none_type): [optional]  # noqa: E501
             dimension_hin (str, none_type): [optional]  # noqa: E501
+            allowance_app_id (str, none_type): [optional]  # noqa: E501
             category (MainSub): [optional]  # noqa: E501
         """
 
@@ -319,9 +339,12 @@ class ListInventoryItem(ModelNormal):
         self.created_at = created_at
         self.updated_at = updated_at
         self.user_id = user_id
+        self.status = status
+        self.source = source
         self.quantity = quantity
         self.quantity_available = quantity_available
         self.quantity_reserved = quantity_reserved
+        self.wholesale_reserve = wholesale_reserve
         self.quantity_sold = quantity_sold
         self.color = color
         self.default_title = default_title
@@ -330,8 +353,6 @@ class ListInventoryItem(ModelNormal):
         self.labels = labels
         self.include_tax_in_landed = include_tax_in_landed
         self.floor_is_net = floor_is_net
-        self.status = status
-        self.source = source
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -352,7 +373,7 @@ class ListInventoryItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, updated_at, user_id, quantity, quantity_available, quantity_reserved, quantity_sold, color, default_title, images, tags, labels, include_tax_in_landed, floor_is_net, status, source, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, updated_at, user_id, status, source, quantity, quantity_available, quantity_reserved, wholesale_reserve, quantity_sold, color, default_title, images, tags, labels, include_tax_in_landed, floor_is_net, *args, **kwargs):  # noqa: E501
         """ListInventoryItem - a model defined in OpenAPI
 
         Args:
@@ -360,9 +381,12 @@ class ListInventoryItem(ModelNormal):
             created_at (datetime):
             updated_at (datetime):
             user_id (str):
+            status (str):
+            source (str):
             quantity (float):
             quantity_available (float):
             quantity_reserved (float):
+            wholesale_reserve (float):
             quantity_sold (float):
             color ([str]):
             default_title (str):
@@ -371,8 +395,6 @@ class ListInventoryItem(ModelNormal):
             labels ([str]):
             include_tax_in_landed (bool):
             floor_is_net (bool):
-            status (str):
-            source (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -406,6 +428,7 @@ class ListInventoryItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             brand (str, none_type): [optional]  # noqa: E501
+            notes (str, none_type): [optional]  # noqa: E501
             sku (str, none_type): [optional]  # noqa: E501
             original_price (str, none_type): [optional]  # noqa: E501
             condition (str, none_type): [optional]  # noqa: E501
@@ -419,7 +442,6 @@ class ListInventoryItem(ModelNormal):
             size_system (str, none_type): [optional]  # noqa: E501
             video_url (str, none_type): [optional]  # noqa: E501
             provenance_receipt_id (str, none_type): [optional]  # noqa: E501
-            notes (str, none_type): [optional]  # noqa: E501
             custom_label (str, none_type): [optional]  # noqa: E501
             warehouse_location (str, none_type): [optional]  # noqa: E501
             storage_bin (str, none_type): [optional]  # noqa: E501
@@ -427,9 +449,11 @@ class ListInventoryItem(ModelNormal):
             market_sku_id (str, none_type): [optional]  # noqa: E501
             market_variant_id (str, none_type): [optional]  # noqa: E501
             grade_key (str, none_type): [optional]  # noqa: E501
-            grading (ListGradingSubmissionsItemGrading): [optional]  # noqa: E501
+            vault_sell_from (str, none_type): [optional]  # noqa: E501
+            grading (CreateBulkBatchItemResponseGrading): [optional]  # noqa: E501
             first_listed_at (datetime, none_type): [optional]  # noqa: E501
             cost_basis_cents (float, none_type): [optional]  # noqa: E501
+            supplier (ListInventoryItemSupplier): [optional]  # noqa: E501
             price_floor_cents (float, none_type): [optional]  # noqa: E501
             acquired_at (datetime, none_type): [optional]  # noqa: E501
             acquired_source (str, none_type): [optional]  # noqa: E501
@@ -438,6 +462,7 @@ class ListInventoryItem(ModelNormal):
             dimension_lin (str, none_type): [optional]  # noqa: E501
             dimension_win (str, none_type): [optional]  # noqa: E501
             dimension_hin (str, none_type): [optional]  # noqa: E501
+            allowance_app_id (str, none_type): [optional]  # noqa: E501
             category (MainSub): [optional]  # noqa: E501
         """
 
@@ -468,9 +493,12 @@ class ListInventoryItem(ModelNormal):
         self.created_at = created_at
         self.updated_at = updated_at
         self.user_id = user_id
+        self.status = status
+        self.source = source
         self.quantity = quantity
         self.quantity_available = quantity_available
         self.quantity_reserved = quantity_reserved
+        self.wholesale_reserve = wholesale_reserve
         self.quantity_sold = quantity_sold
         self.color = color
         self.default_title = default_title
@@ -479,8 +507,6 @@ class ListInventoryItem(ModelNormal):
         self.labels = labels
         self.include_tax_in_landed = include_tax_in_landed
         self.floor_is_net = floor_is_net
-        self.status = status
-        self.source = source
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

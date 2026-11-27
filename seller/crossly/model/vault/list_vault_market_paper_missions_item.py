@@ -56,26 +56,31 @@ class ListVaultMarketPaperMissionsItem(ModelNormal):
 
     allowed_values = {
         ('key',): {
-            'ROUND_TRIP': "round_trip",
             'FIRST_FILL': "first_fill",
             'READ_MARK': "read_mark",
             'BID_BELOW': "bid_below",
             'MAKER_FILL': "maker_fill",
             'INSTANT_EXIT': "instant_exit",
             'PRICE_WATCH': "price_watch",
+            'ROUND_TRIP': "round_trip",
             'MINI_SET': "mini_set",
+            'SHARE_FIRST': "share_first",
+            'SHARE_QUEUE': "share_queue",
+            'OPTION_FIRST': "option_first",
+            'OPTION_EXPIRY': "option_expiry",
         },
         ('action',): {
             'MARKET': "market",
-            'ASSISTANT': "assistant",
             'PAPER': "paper",
-            'MARK_CHECK': "mark_check",
+            'ASSISTANT': "assistant",
             'SETS': "sets",
+            'MARK_CHECK': "mark_check",
         },
         ('learn',): {
             'None': None,
             'INSTANT-EXIT': "instant-exit",
             'MARKS': "marks",
+            'VAULT-SHARES': "vault-shares",
         },
     }
 

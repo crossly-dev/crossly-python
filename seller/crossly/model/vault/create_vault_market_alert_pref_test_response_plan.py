@@ -61,13 +61,13 @@ class CreateVaultMarketAlertPrefTestResponsePlan(ModelNormal):
             'SEND': "send",
             'QUIET': "quiet",
         },
-        ('webhook',): {
+        ('push',): {
             'UNAVAILABLE': "unavailable",
             'OFF': "off",
             'SEND': "send",
             'QUIET': "quiet",
         },
-        ('push',): {
+        ('webhook',): {
             'UNAVAILABLE': "unavailable",
             'OFF': "off",
             'SEND': "send",
@@ -106,8 +106,8 @@ class CreateVaultMarketAlertPrefTestResponsePlan(ModelNormal):
         """
         return {
             'email': (str,),  # noqa: E501
-            'webhook': (str,),  # noqa: E501
             'push': (str,),  # noqa: E501
+            'webhook': (str,),  # noqa: E501
             'telegram': (str,),  # noqa: E501
             'terminal': (str,),  # noqa: E501
         }
@@ -119,8 +119,8 @@ class CreateVaultMarketAlertPrefTestResponsePlan(ModelNormal):
 
     attribute_map = {
         'email': 'email',  # noqa: E501
-        'webhook': 'webhook',  # noqa: E501
         'push': 'push',  # noqa: E501
+        'webhook': 'webhook',  # noqa: E501
         'telegram': 'telegram',  # noqa: E501
         'terminal': 'terminal',  # noqa: E501
     }
@@ -132,13 +132,13 @@ class CreateVaultMarketAlertPrefTestResponsePlan(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, email, webhook, push, telegram, terminal, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, email, push, webhook, telegram, terminal, *args, **kwargs):  # noqa: E501
         """CreateVaultMarketAlertPrefTestResponsePlan - a model defined in OpenAPI
 
         Args:
             email (str):
-            webhook (str):
             push (str):
+            webhook (str):
             telegram (str):
             terminal (str):
 
@@ -201,8 +201,8 @@ class CreateVaultMarketAlertPrefTestResponsePlan(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.email = email
-        self.webhook = webhook
         self.push = push
+        self.webhook = webhook
         self.telegram = telegram
         self.terminal = terminal
         for var_name, var_value in kwargs.items():
@@ -225,13 +225,13 @@ class CreateVaultMarketAlertPrefTestResponsePlan(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, email, webhook, push, telegram, terminal, *args, **kwargs):  # noqa: E501
+    def __init__(self, email, push, webhook, telegram, terminal, *args, **kwargs):  # noqa: E501
         """CreateVaultMarketAlertPrefTestResponsePlan - a model defined in OpenAPI
 
         Args:
             email (str):
-            webhook (str):
             push (str):
+            webhook (str):
             telegram (str):
             terminal (str):
 
@@ -292,8 +292,8 @@ class CreateVaultMarketAlertPrefTestResponsePlan(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.email = email
-        self.webhook = webhook
         self.push = push
+        self.webhook = webhook
         self.telegram = telegram
         self.terminal = terminal
         for var_name, var_value in kwargs.items():

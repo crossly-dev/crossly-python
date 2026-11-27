@@ -32,9 +32,11 @@ from crossly.exceptions import ApiAttributeError
 def lazy_import():
     from crossly.model.common.account_id_label import AccountIdLabel
     from crossly.model.vault.get_vault_market_tca_response_items import GetVaultMarketTcaResponseItems
+    from crossly.model.vault.get_vault_market_tca_response_options import GetVaultMarketTcaResponseOptions
     from crossly.model.vault.get_vault_market_tca_response_summary import GetVaultMarketTcaResponseSummary
     globals()['AccountIdLabel'] = AccountIdLabel
     globals()['GetVaultMarketTcaResponseItems'] = GetVaultMarketTcaResponseItems
+    globals()['GetVaultMarketTcaResponseOptions'] = GetVaultMarketTcaResponseOptions
     globals()['GetVaultMarketTcaResponseSummary'] = GetVaultMarketTcaResponseSummary
 
 
@@ -89,6 +91,7 @@ class GetVaultMarketTcaResponse(ModelNormal):
             'to': (str,),  # noqa: E501
             'summary': (GetVaultMarketTcaResponseSummary,),  # noqa: E501
             'items': ([GetVaultMarketTcaResponseItems],),  # noqa: E501
+            'options': (GetVaultMarketTcaResponseOptions,),  # noqa: E501
             'note': (str,),  # noqa: E501
         }
 
@@ -103,6 +106,7 @@ class GetVaultMarketTcaResponse(ModelNormal):
         'to': 'to',  # noqa: E501
         'summary': 'summary',  # noqa: E501
         'items': 'items',  # noqa: E501
+        'options': 'options',  # noqa: E501
         'note': 'note',  # noqa: E501
     }
 
@@ -113,7 +117,7 @@ class GetVaultMarketTcaResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, account, _from, to, summary, items, note, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, account, _from, to, summary, items, options, note, *args, **kwargs):  # noqa: E501
         """GetVaultMarketTcaResponse - a model defined in OpenAPI
 
         Args:
@@ -122,6 +126,7 @@ class GetVaultMarketTcaResponse(ModelNormal):
             to (str):
             summary (GetVaultMarketTcaResponseSummary):
             items ([GetVaultMarketTcaResponseItems]):
+            options (GetVaultMarketTcaResponseOptions):
             note (str):
 
         Keyword Args:
@@ -187,6 +192,7 @@ class GetVaultMarketTcaResponse(ModelNormal):
         self.to = to
         self.summary = summary
         self.items = items
+        self.options = options
         self.note = note
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -208,7 +214,7 @@ class GetVaultMarketTcaResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, account, _from, to, summary, items, note, *args, **kwargs):  # noqa: E501
+    def __init__(self, account, _from, to, summary, items, options, note, *args, **kwargs):  # noqa: E501
         """GetVaultMarketTcaResponse - a model defined in OpenAPI
 
         Args:
@@ -217,6 +223,7 @@ class GetVaultMarketTcaResponse(ModelNormal):
             to (str):
             summary (GetVaultMarketTcaResponseSummary):
             items ([GetVaultMarketTcaResponseItems]):
+            options (GetVaultMarketTcaResponseOptions):
             note (str):
 
         Keyword Args:
@@ -280,6 +287,7 @@ class GetVaultMarketTcaResponse(ModelNormal):
         self.to = to
         self.summary = summary
         self.items = items
+        self.options = options
         self.note = note
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

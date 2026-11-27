@@ -32,10 +32,12 @@ from crossly.exceptions import ApiAttributeError
 def lazy_import():
     from crossly.model.vault.create_vault_market_valuation_statement_response_account import CreateVaultMarketValuationStatementResponseAccount
     from crossly.model.vault.create_vault_market_valuation_statement_response_seal import CreateVaultMarketValuationStatementResponseSeal
+    from crossly.model.vault.create_vault_market_valuation_statement_response_shares import CreateVaultMarketValuationStatementResponseShares
     from crossly.model.vault.create_vault_market_valuation_statement_response_totals import CreateVaultMarketValuationStatementResponseTotals
     from crossly.model.vault.create_vault_market_valuation_statement_response_units import CreateVaultMarketValuationStatementResponseUnits
     globals()['CreateVaultMarketValuationStatementResponseAccount'] = CreateVaultMarketValuationStatementResponseAccount
     globals()['CreateVaultMarketValuationStatementResponseSeal'] = CreateVaultMarketValuationStatementResponseSeal
+    globals()['CreateVaultMarketValuationStatementResponseShares'] = CreateVaultMarketValuationStatementResponseShares
     globals()['CreateVaultMarketValuationStatementResponseTotals'] = CreateVaultMarketValuationStatementResponseTotals
     globals()['CreateVaultMarketValuationStatementResponseUnits'] = CreateVaultMarketValuationStatementResponseUnits
 
@@ -66,8 +68,8 @@ class CreateVaultMarketValuationStatementResponse(ModelNormal):
 
     allowed_values = {
         ('purpose',): {
-            'INSURANCE': "insurance",
             'APPRAISAL': "appraisal",
+            'INSURANCE': "insurance",
         },
     }
 
@@ -109,6 +111,7 @@ class CreateVaultMarketValuationStatementResponse(ModelNormal):
             'prepared_for': (str, none_type,),  # noqa: E501
             'policy_ref': (str, none_type,),  # noqa: E501
             'verify_url': (str, none_type,),  # noqa: E501
+            'shares': (CreateVaultMarketValuationStatementResponseShares,),  # noqa: E501
         }
 
     @cached_property
@@ -136,6 +139,7 @@ class CreateVaultMarketValuationStatementResponse(ModelNormal):
         'prepared_for': 'preparedFor',  # noqa: E501
         'policy_ref': 'policyRef',  # noqa: E501
         'verify_url': 'verifyUrl',  # noqa: E501
+        'shares': 'shares',  # noqa: E501
     }
 
     read_only_vars = {
@@ -200,6 +204,7 @@ class CreateVaultMarketValuationStatementResponse(ModelNormal):
             prepared_for (str, none_type): [optional]  # noqa: E501
             policy_ref (str, none_type): [optional]  # noqa: E501
             verify_url (str, none_type): [optional]  # noqa: E501
+            shares (CreateVaultMarketValuationStatementResponseShares): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -317,6 +322,7 @@ class CreateVaultMarketValuationStatementResponse(ModelNormal):
             prepared_for (str, none_type): [optional]  # noqa: E501
             policy_ref (str, none_type): [optional]  # noqa: E501
             verify_url (str, none_type): [optional]  # noqa: E501
+            shares (CreateVaultMarketValuationStatementResponseShares): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -30,12 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.vault.create_vault_market_partner_batch_response_label import CreateVaultMarketPartnerBatchResponseLabel
-    from crossly.model.vault.create_vault_market_supply_send_response_created import CreateVaultMarketSupplySendResponseCreated
-    from crossly.model.vault.create_vault_market_supply_send_response_skipped import CreateVaultMarketSupplySendResponseSkipped
-    globals()['CreateVaultMarketPartnerBatchResponseLabel'] = CreateVaultMarketPartnerBatchResponseLabel
-    globals()['CreateVaultMarketSupplySendResponseCreated'] = CreateVaultMarketSupplySendResponseCreated
-    globals()['CreateVaultMarketSupplySendResponseSkipped'] = CreateVaultMarketSupplySendResponseSkipped
+    from crossly.model.common.inventory_item_id_reason import InventoryItemIdReason
+    globals()['InventoryItemIdReason'] = InventoryItemIdReason
 
 
 class CreateVaultMarketSupplySendResponse(ModelNormal):
@@ -68,7 +64,14 @@ class CreateVaultMarketSupplySendResponse(ModelNormal):
     validations = {
     }
 
-    additional_properties_type = None
+    @cached_property
+    def additional_properties_type():
+        """
+        This must be a method because a model may have properties that are
+        of type self, this must run after the class is loaded
+        """
+        lazy_import()
+        return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
     _nullable = False
 
@@ -84,10 +87,12 @@ class CreateVaultMarketSupplySendResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'created': ([CreateVaultMarketSupplySendResponseCreated],),  # noqa: E501
-            'skipped': ([CreateVaultMarketSupplySendResponseSkipped],),  # noqa: E501
-            'label': (CreateVaultMarketPartnerBatchResponseLabel,),  # noqa: E501
-            'label_error': (str, none_type,),  # noqa: E501
+            'created': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
+            'skipped': ([InventoryItemIdReason],),  # noqa: E501
+            'batch_id': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
+            'label': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
+            'label_error': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
+            'storefront_id': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -98,8 +103,10 @@ class CreateVaultMarketSupplySendResponse(ModelNormal):
     attribute_map = {
         'created': 'created',  # noqa: E501
         'skipped': 'skipped',  # noqa: E501
+        'batch_id': 'batchId',  # noqa: E501
         'label': 'label',  # noqa: E501
         'label_error': 'labelError',  # noqa: E501
+        'storefront_id': 'storefrontId',  # noqa: E501
     }
 
     read_only_vars = {
@@ -113,8 +120,8 @@ class CreateVaultMarketSupplySendResponse(ModelNormal):
         """CreateVaultMarketSupplySendResponse - a model defined in OpenAPI
 
         Args:
-            created ([CreateVaultMarketSupplySendResponseCreated]):
-            skipped ([CreateVaultMarketSupplySendResponseSkipped]):
+            created (bool, date, datetime, dict, float, int, list, str, none_type):
+            skipped ([InventoryItemIdReason]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -147,8 +154,10 @@ class CreateVaultMarketSupplySendResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            label (CreateVaultMarketPartnerBatchResponseLabel): [optional]  # noqa: E501
-            label_error (str, none_type): [optional]  # noqa: E501
+            batch_id (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            label (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            label_error (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            storefront_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -202,8 +211,8 @@ class CreateVaultMarketSupplySendResponse(ModelNormal):
         """CreateVaultMarketSupplySendResponse - a model defined in OpenAPI
 
         Args:
-            created ([CreateVaultMarketSupplySendResponseCreated]):
-            skipped ([CreateVaultMarketSupplySendResponseSkipped]):
+            created (bool, date, datetime, dict, float, int, list, str, none_type):
+            skipped ([InventoryItemIdReason]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -236,8 +245,10 @@ class CreateVaultMarketSupplySendResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            label (CreateVaultMarketPartnerBatchResponseLabel): [optional]  # noqa: E501
-            label_error (str, none_type): [optional]  # noqa: E501
+            batch_id (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            label (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            label_error (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
+            storefront_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

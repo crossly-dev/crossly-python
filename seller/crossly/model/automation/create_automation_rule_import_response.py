@@ -30,10 +30,10 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.automation.create_automation_rule_import_response_created import CreateAutomationRuleImportResponseCreated
     from crossly.model.automation.create_automation_rule_import_response_errors import CreateAutomationRuleImportResponseErrors
-    globals()['CreateAutomationRuleImportResponseCreated'] = CreateAutomationRuleImportResponseCreated
+    from crossly.model.common.id_name import IdName
     globals()['CreateAutomationRuleImportResponseErrors'] = CreateAutomationRuleImportResponseErrors
+    globals()['IdName'] = IdName
 
 
 class CreateAutomationRuleImportResponse(ModelNormal):
@@ -82,7 +82,7 @@ class CreateAutomationRuleImportResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'created': ([CreateAutomationRuleImportResponseCreated],),  # noqa: E501
+            'created': ([IdName],),  # noqa: E501
             'errors': ([CreateAutomationRuleImportResponseErrors],),  # noqa: E501
         }
 
@@ -107,7 +107,7 @@ class CreateAutomationRuleImportResponse(ModelNormal):
         """CreateAutomationRuleImportResponse - a model defined in OpenAPI
 
         Args:
-            created ([CreateAutomationRuleImportResponseCreated]):
+            created ([IdName]):
             errors ([CreateAutomationRuleImportResponseErrors]):
 
         Keyword Args:
@@ -194,7 +194,7 @@ class CreateAutomationRuleImportResponse(ModelNormal):
         """CreateAutomationRuleImportResponse - a model defined in OpenAPI
 
         Args:
-            created ([CreateAutomationRuleImportResponseCreated]):
+            created ([IdName]):
             errors ([CreateAutomationRuleImportResponseErrors]):
 
         Keyword Args:

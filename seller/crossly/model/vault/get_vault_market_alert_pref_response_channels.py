@@ -57,8 +57,8 @@ class GetVaultMarketAlertPrefResponseChannels(ModelNormal):
     allowed_values = {
         ('key',): {
             'EMAIL': "email",
-            'WEBHOOK': "webhook",
             'PUSH': "push",
+            'WEBHOOK': "webhook",
             'TELEGRAM': "telegram",
             'TERMINAL': "terminal",
         },

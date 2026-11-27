@@ -76,8 +76,8 @@ class CreateBuyerListingSplitResponseDataShares(ModelNormal):
         """
         return {
             'token': (str,),  # noqa: E501
-            'position': (float,),  # noqa: E501
             'share_cents': (float,),  # noqa: E501
+            'position': (float,),  # noqa: E501
         }
 
     @cached_property
@@ -87,8 +87,8 @@ class CreateBuyerListingSplitResponseDataShares(ModelNormal):
 
     attribute_map = {
         'token': 'token',  # noqa: E501
-        'position': 'position',  # noqa: E501
         'share_cents': 'shareCents',  # noqa: E501
+        'position': 'position',  # noqa: E501
     }
 
     read_only_vars = {
@@ -98,13 +98,13 @@ class CreateBuyerListingSplitResponseDataShares(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, token, position, share_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, token, share_cents, position, *args, **kwargs):  # noqa: E501
         """CreateBuyerListingSplitResponseDataShares - a model defined in OpenAPI
 
         Args:
             token (str):
-            position (float):
             share_cents (float):
+            position (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -165,8 +165,8 @@ class CreateBuyerListingSplitResponseDataShares(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.token = token
-        self.position = position
         self.share_cents = share_cents
+        self.position = position
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -187,13 +187,13 @@ class CreateBuyerListingSplitResponseDataShares(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, token, position, share_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, token, share_cents, position, *args, **kwargs):  # noqa: E501
         """CreateBuyerListingSplitResponseDataShares - a model defined in OpenAPI
 
         Args:
             token (str):
-            position (float):
             share_cents (float):
+            position (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -252,8 +252,8 @@ class CreateBuyerListingSplitResponseDataShares(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.token = token
-        self.position = position
         self.share_cents = share_cents
+        self.position = position
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

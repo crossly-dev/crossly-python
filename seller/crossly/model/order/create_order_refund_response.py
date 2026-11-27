@@ -77,6 +77,10 @@ class CreateOrderRefundResponse(ModelNormal):
         return {
             'refund_id': (str,),  # noqa: E501
             'amount': (float,),  # noqa: E501
+            'id': (str,),  # noqa: E501
+            'total_refunded': (float,),  # noqa: E501
+            'replayed': (bool,),  # noqa: E501
+            'remaining': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -87,6 +91,10 @@ class CreateOrderRefundResponse(ModelNormal):
     attribute_map = {
         'refund_id': 'refundId',  # noqa: E501
         'amount': 'amount',  # noqa: E501
+        'id': 'id',  # noqa: E501
+        'total_refunded': 'totalRefunded',  # noqa: E501
+        'replayed': 'replayed',  # noqa: E501
+        'remaining': 'remaining',  # noqa: E501
     }
 
     read_only_vars = {
@@ -96,12 +104,15 @@ class CreateOrderRefundResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, refund_id, amount, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, refund_id, amount, id, total_refunded, replayed, *args, **kwargs):  # noqa: E501
         """CreateOrderRefundResponse - a model defined in OpenAPI
 
         Args:
             refund_id (str):
             amount (float):
+            id (str):
+            total_refunded (float):
+            replayed (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -134,6 +145,7 @@ class CreateOrderRefundResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            remaining (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -163,6 +175,9 @@ class CreateOrderRefundResponse(ModelNormal):
 
         self.refund_id = refund_id
         self.amount = amount
+        self.id = id
+        self.total_refunded = total_refunded
+        self.replayed = replayed
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -183,12 +198,15 @@ class CreateOrderRefundResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, refund_id, amount, *args, **kwargs):  # noqa: E501
+    def __init__(self, refund_id, amount, id, total_refunded, replayed, *args, **kwargs):  # noqa: E501
         """CreateOrderRefundResponse - a model defined in OpenAPI
 
         Args:
             refund_id (str):
             amount (float):
+            id (str):
+            total_refunded (float):
+            replayed (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -221,6 +239,7 @@ class CreateOrderRefundResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            remaining (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -248,6 +267,9 @@ class CreateOrderRefundResponse(ModelNormal):
 
         self.refund_id = refund_id
         self.amount = amount
+        self.id = id
+        self.total_refunded = total_refunded
+        self.replayed = replayed
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

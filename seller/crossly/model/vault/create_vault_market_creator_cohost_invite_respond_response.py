@@ -56,10 +56,10 @@ class CreateVaultMarketCreatorCohostInviteRespondResponse(ModelNormal):
 
     allowed_values = {
         ('status',): {
-            'INVITED': "invited",
-            'WITHDRAWN': "withdrawn",
             'ACCEPTED': "accepted",
             'DECLINED': "declined",
+            'WITHDRAWN': "withdrawn",
+            'INVITED': "invited",
         },
     }
 

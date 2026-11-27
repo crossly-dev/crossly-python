@@ -77,8 +77,8 @@ class CreateBuyerOrderReceivedResponseData(ModelNormal):
         return {
             'ok': (bool,),  # noqa: E501
             'can_review': (bool,),  # noqa: E501
-            'buyer_received_at': (str, none_type,),  # noqa: E501
             'already_confirmed': (bool, none_type,),  # noqa: E501
+            'buyer_received_at': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -89,8 +89,8 @@ class CreateBuyerOrderReceivedResponseData(ModelNormal):
     attribute_map = {
         'ok': 'ok',  # noqa: E501
         'can_review': 'canReview',  # noqa: E501
-        'buyer_received_at': 'buyerReceivedAt',  # noqa: E501
         'already_confirmed': 'alreadyConfirmed',  # noqa: E501
+        'buyer_received_at': 'buyerReceivedAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -138,8 +138,8 @@ class CreateBuyerOrderReceivedResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            buyer_received_at (str, none_type): [optional]  # noqa: E501
             already_confirmed (bool, none_type): [optional]  # noqa: E501
+            buyer_received_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -227,8 +227,8 @@ class CreateBuyerOrderReceivedResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            buyer_received_at (str, none_type): [optional]  # noqa: E501
             already_confirmed (bool, none_type): [optional]  # noqa: E501
+            buyer_received_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

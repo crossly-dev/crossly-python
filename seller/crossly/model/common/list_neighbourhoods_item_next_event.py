@@ -80,8 +80,8 @@ class ListNeighbourhoodsItemNextEvent(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'live': (bool,),  # noqa: E501
             'title': (str,),  # noqa: E501
+            'live': (bool,),  # noqa: E501
             'ends_at': (str,),  # noqa: E501
             'kind': (str,),  # noqa: E501
             'starts_at': (str,),  # noqa: E501
@@ -94,8 +94,8 @@ class ListNeighbourhoodsItemNextEvent(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'live': 'live',  # noqa: E501
         'title': 'title',  # noqa: E501
+        'live': 'live',  # noqa: E501
         'ends_at': 'endsAt',  # noqa: E501
         'kind': 'kind',  # noqa: E501
         'starts_at': 'startsAt',  # noqa: E501
@@ -108,13 +108,13 @@ class ListNeighbourhoodsItemNextEvent(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, live, title, ends_at, kind, starts_at, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, title, live, ends_at, kind, starts_at, *args, **kwargs):  # noqa: E501
         """ListNeighbourhoodsItemNextEvent - a model defined in OpenAPI
 
         Args:
             id (str):
-            live (bool):
             title (str):
+            live (bool):
             ends_at (str):
             kind (str):
             starts_at (str):
@@ -178,8 +178,8 @@ class ListNeighbourhoodsItemNextEvent(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.live = live
         self.title = title
+        self.live = live
         self.ends_at = ends_at
         self.kind = kind
         self.starts_at = starts_at
@@ -203,13 +203,13 @@ class ListNeighbourhoodsItemNextEvent(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, live, title, ends_at, kind, starts_at, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, title, live, ends_at, kind, starts_at, *args, **kwargs):  # noqa: E501
         """ListNeighbourhoodsItemNextEvent - a model defined in OpenAPI
 
         Args:
             id (str):
-            live (bool):
             title (str):
+            live (bool):
             ends_at (str):
             kind (str):
             starts_at (str):
@@ -271,8 +271,8 @@ class ListNeighbourhoodsItemNextEvent(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.live = live
         self.title = title
+        self.live = live
         self.ends_at = ends_at
         self.kind = kind
         self.starts_at = starts_at

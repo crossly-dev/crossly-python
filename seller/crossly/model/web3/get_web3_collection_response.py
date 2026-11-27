@@ -62,12 +62,12 @@ class GetWeb3CollectionResponse(ModelNormal):
 
     allowed_values = {
         ('chain',): {
-            'SOLANA': "solana",
             'ETHEREUM': "ethereum",
             'BASE': "base",
             'POLYGON': "polygon",
             'ARBITRUM': "arbitrum",
             'OPTIMISM': "optimism",
+            'SOLANA': "solana",
         },
     }
 

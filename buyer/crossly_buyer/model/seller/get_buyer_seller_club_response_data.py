@@ -82,8 +82,8 @@ class GetBuyerSellerClubResponseData(ModelNormal):
         """
         lazy_import()
         return {
-            'name': (str,),  # noqa: E501
             'seller_user_id': (str,),  # noqa: E501
+            'name': (str,),  # noqa: E501
             'tiers': ([CreateBuyerSellerClubJoinResponseDataTiers],),  # noqa: E501
             'description': (str, none_type,),  # noqa: E501
             'member': (CreateBuyerSellerClubJoinResponseDataMember,),  # noqa: E501
@@ -95,8 +95,8 @@ class GetBuyerSellerClubResponseData(ModelNormal):
 
 
     attribute_map = {
-        'name': 'name',  # noqa: E501
         'seller_user_id': 'sellerUserId',  # noqa: E501
+        'name': 'name',  # noqa: E501
         'tiers': 'tiers',  # noqa: E501
         'description': 'description',  # noqa: E501
         'member': 'member',  # noqa: E501
@@ -109,12 +109,12 @@ class GetBuyerSellerClubResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, name, seller_user_id, tiers, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, seller_user_id, name, tiers, *args, **kwargs):  # noqa: E501
         """GetBuyerSellerClubResponseData - a model defined in OpenAPI
 
         Args:
-            name (str):
             seller_user_id (str):
+            name (str):
             tiers ([CreateBuyerSellerClubJoinResponseDataTiers]):
 
         Keyword Args:
@@ -177,8 +177,8 @@ class GetBuyerSellerClubResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.name = name
         self.seller_user_id = seller_user_id
+        self.name = name
         self.tiers = tiers
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -200,12 +200,12 @@ class GetBuyerSellerClubResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, name, seller_user_id, tiers, *args, **kwargs):  # noqa: E501
+    def __init__(self, seller_user_id, name, tiers, *args, **kwargs):  # noqa: E501
         """GetBuyerSellerClubResponseData - a model defined in OpenAPI
 
         Args:
-            name (str):
             seller_user_id (str):
+            name (str):
             tiers ([CreateBuyerSellerClubJoinResponseDataTiers]):
 
         Keyword Args:
@@ -266,8 +266,8 @@ class GetBuyerSellerClubResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.name = name
         self.seller_user_id = seller_user_id
+        self.name = name
         self.tiers = tiers
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

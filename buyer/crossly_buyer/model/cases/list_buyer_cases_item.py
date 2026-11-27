@@ -76,25 +76,25 @@ class ListBuyerCasesItem(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'created_at': (str,),  # noqa: E501
-            'updated_at': (str,),  # noqa: E501
+            'purchase_id': (str,),  # noqa: E501
             'reason': (str,),  # noqa: E501
             'state': (str,),  # noqa: E501
+            'created_at': (str,),  # noqa: E501
+            'updated_at': (str,),  # noqa: E501
             'kind': (str,),  # noqa: E501
-            'purchase_id': (str,),  # noqa: E501
             'closed': (bool,),  # noqa: E501
             'your_turn': (bool,),  # noqa: E501
-            'resolved_at': (str, none_type,),  # noqa: E501
-            'buyer_paid_cents': (float, none_type,),  # noqa: E501
             'awaiting_party': (str, none_type,),  # noqa: E501
             'escalate_after': (str, none_type,),  # noqa: E501
             'offered_refund_cents': (float, none_type,),  # noqa: E501
             'resolved_refund_cents': (float, none_type,),  # noqa: E501
+            'resolved_at': (str, none_type,),  # noqa: E501
             'return_label_url': (str, none_type,),  # noqa: E501
             'return_tracking_code': (str, none_type,),  # noqa: E501
             'return_tracking_carrier': (str, none_type,),  # noqa: E501
             'return_tracking_status': (str, none_type,),  # noqa: E501
             'return_delivered_at': (str, none_type,),  # noqa: E501
+            'buyer_paid_cents': (float, none_type,),  # noqa: E501
             'item_title': (str, none_type,),  # noqa: E501
             'item_thumbnail': (str, none_type,),  # noqa: E501
             'seller_name': (str, none_type,),  # noqa: E501
@@ -107,25 +107,25 @@ class ListBuyerCasesItem(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
-        'updated_at': 'updatedAt',  # noqa: E501
+        'purchase_id': 'purchaseId',  # noqa: E501
         'reason': 'reason',  # noqa: E501
         'state': 'state',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
+        'updated_at': 'updatedAt',  # noqa: E501
         'kind': 'kind',  # noqa: E501
-        'purchase_id': 'purchaseId',  # noqa: E501
         'closed': 'closed',  # noqa: E501
         'your_turn': 'yourTurn',  # noqa: E501
-        'resolved_at': 'resolvedAt',  # noqa: E501
-        'buyer_paid_cents': 'buyerPaidCents',  # noqa: E501
         'awaiting_party': 'awaitingParty',  # noqa: E501
         'escalate_after': 'escalateAfter',  # noqa: E501
         'offered_refund_cents': 'offeredRefundCents',  # noqa: E501
         'resolved_refund_cents': 'resolvedRefundCents',  # noqa: E501
+        'resolved_at': 'resolvedAt',  # noqa: E501
         'return_label_url': 'returnLabelUrl',  # noqa: E501
         'return_tracking_code': 'returnTrackingCode',  # noqa: E501
         'return_tracking_carrier': 'returnTrackingCarrier',  # noqa: E501
         'return_tracking_status': 'returnTrackingStatus',  # noqa: E501
         'return_delivered_at': 'returnDeliveredAt',  # noqa: E501
+        'buyer_paid_cents': 'buyerPaidCents',  # noqa: E501
         'item_title': 'itemTitle',  # noqa: E501
         'item_thumbnail': 'itemThumbnail',  # noqa: E501
         'seller_name': 'sellerName',  # noqa: E501
@@ -138,17 +138,17 @@ class ListBuyerCasesItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, updated_at, reason, state, kind, purchase_id, closed, your_turn, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, purchase_id, reason, state, created_at, updated_at, kind, closed, your_turn, *args, **kwargs):  # noqa: E501
         """ListBuyerCasesItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
-            updated_at (str):
+            purchase_id (str):
             reason (str): inr, snad, counterfeit, damaged, wrong_item, other.
             state (str):
+            created_at (str):
+            updated_at (str):
             kind (str): not_received | return | problem.
-            purchase_id (str):
             closed (bool):
             your_turn (bool): The case is waiting on you.
 
@@ -183,17 +183,17 @@ class ListBuyerCasesItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            resolved_at (str, none_type): [optional]  # noqa: E501
-            buyer_paid_cents (float, none_type): What you paid for the order, in cents.. [optional]  # noqa: E501
             awaiting_party (str, none_type): [optional]  # noqa: E501
             escalate_after (str, none_type): [optional]  # noqa: E501
             offered_refund_cents (float, none_type): A refund on the table, in cents.. [optional]  # noqa: E501
             resolved_refund_cents (float, none_type): [optional]  # noqa: E501
+            resolved_at (str, none_type): [optional]  # noqa: E501
             return_label_url (str, none_type): [optional]  # noqa: E501
             return_tracking_code (str, none_type): [optional]  # noqa: E501
             return_tracking_carrier (str, none_type): [optional]  # noqa: E501
             return_tracking_status (str, none_type): [optional]  # noqa: E501
             return_delivered_at (str, none_type): [optional]  # noqa: E501
+            buyer_paid_cents (float, none_type): What you paid for the order, in cents.. [optional]  # noqa: E501
             item_title (str, none_type): [optional]  # noqa: E501
             item_thumbnail (str, none_type): [optional]  # noqa: E501
             seller_name (str, none_type): [optional]  # noqa: E501
@@ -225,12 +225,12 @@ class ListBuyerCasesItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
-        self.updated_at = updated_at
+        self.purchase_id = purchase_id
         self.reason = reason
         self.state = state
+        self.created_at = created_at
+        self.updated_at = updated_at
         self.kind = kind
-        self.purchase_id = purchase_id
         self.closed = closed
         self.your_turn = your_turn
         for var_name, var_value in kwargs.items():
@@ -253,17 +253,17 @@ class ListBuyerCasesItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, updated_at, reason, state, kind, purchase_id, closed, your_turn, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, purchase_id, reason, state, created_at, updated_at, kind, closed, your_turn, *args, **kwargs):  # noqa: E501
         """ListBuyerCasesItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
-            updated_at (str):
+            purchase_id (str):
             reason (str): inr, snad, counterfeit, damaged, wrong_item, other.
             state (str):
+            created_at (str):
+            updated_at (str):
             kind (str): not_received | return | problem.
-            purchase_id (str):
             closed (bool):
             your_turn (bool): The case is waiting on you.
 
@@ -298,17 +298,17 @@ class ListBuyerCasesItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            resolved_at (str, none_type): [optional]  # noqa: E501
-            buyer_paid_cents (float, none_type): What you paid for the order, in cents.. [optional]  # noqa: E501
             awaiting_party (str, none_type): [optional]  # noqa: E501
             escalate_after (str, none_type): [optional]  # noqa: E501
             offered_refund_cents (float, none_type): A refund on the table, in cents.. [optional]  # noqa: E501
             resolved_refund_cents (float, none_type): [optional]  # noqa: E501
+            resolved_at (str, none_type): [optional]  # noqa: E501
             return_label_url (str, none_type): [optional]  # noqa: E501
             return_tracking_code (str, none_type): [optional]  # noqa: E501
             return_tracking_carrier (str, none_type): [optional]  # noqa: E501
             return_tracking_status (str, none_type): [optional]  # noqa: E501
             return_delivered_at (str, none_type): [optional]  # noqa: E501
+            buyer_paid_cents (float, none_type): What you paid for the order, in cents.. [optional]  # noqa: E501
             item_title (str, none_type): [optional]  # noqa: E501
             item_thumbnail (str, none_type): [optional]  # noqa: E501
             seller_name (str, none_type): [optional]  # noqa: E501
@@ -338,12 +338,12 @@ class ListBuyerCasesItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
-        self.updated_at = updated_at
+        self.purchase_id = purchase_id
         self.reason = reason
         self.state = state
+        self.created_at = created_at
+        self.updated_at = updated_at
         self.kind = kind
-        self.purchase_id = purchase_id
         self.closed = closed
         self.your_turn = your_turn
         for var_name, var_value in kwargs.items():

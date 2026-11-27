@@ -31,7 +31,9 @@ from crossly.exceptions import ApiAttributeError
 
 def lazy_import():
     from crossly.model.vault.get_vault_market_proof_of_reserve_by_day_response_units import GetVaultMarketProofOfReserveByDayResponseUnits
+    from crossly.model.vault.get_vault_market_proof_of_reserve_response_latest_anchor import GetVaultMarketProofOfReserveResponseLatestAnchor
     globals()['GetVaultMarketProofOfReserveByDayResponseUnits'] = GetVaultMarketProofOfReserveByDayResponseUnits
+    globals()['GetVaultMarketProofOfReserveResponseLatestAnchor'] = GetVaultMarketProofOfReserveResponseLatestAnchor
 
 
 class GetVaultMarketProofOfReserveResponseLatest(ModelNormal):
@@ -89,6 +91,7 @@ class GetVaultMarketProofOfReserveResponseLatest(ModelNormal):
             'loans_open': (float,),  # noqa: E501
             'total_insured_cents': (float,),  # noqa: E501
             'memo': (str,),  # noqa: E501
+            'anchor': (GetVaultMarketProofOfReserveResponseLatestAnchor,),  # noqa: E501
         }
 
     @cached_property
@@ -106,6 +109,7 @@ class GetVaultMarketProofOfReserveResponseLatest(ModelNormal):
         'loans_open': 'loansOpen',  # noqa: E501
         'total_insured_cents': 'totalInsuredCents',  # noqa: E501
         'memo': 'memo',  # noqa: E501
+        'anchor': 'anchor',  # noqa: E501
     }
 
     read_only_vars = {
@@ -115,7 +119,7 @@ class GetVaultMarketProofOfReserveResponseLatest(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, day, root, leaf_count, method_version, built_at, units, loans_open, total_insured_cents, memo, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, day, root, leaf_count, method_version, built_at, units, loans_open, total_insured_cents, memo, anchor, *args, **kwargs):  # noqa: E501
         """GetVaultMarketProofOfReserveResponseLatest - a model defined in OpenAPI
 
         Args:
@@ -128,6 +132,7 @@ class GetVaultMarketProofOfReserveResponseLatest(ModelNormal):
             loans_open (float):
             total_insured_cents (float):
             memo (str):
+            anchor (GetVaultMarketProofOfReserveResponseLatestAnchor):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -196,6 +201,7 @@ class GetVaultMarketProofOfReserveResponseLatest(ModelNormal):
         self.loans_open = loans_open
         self.total_insured_cents = total_insured_cents
         self.memo = memo
+        self.anchor = anchor
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -216,7 +222,7 @@ class GetVaultMarketProofOfReserveResponseLatest(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, day, root, leaf_count, method_version, built_at, units, loans_open, total_insured_cents, memo, *args, **kwargs):  # noqa: E501
+    def __init__(self, day, root, leaf_count, method_version, built_at, units, loans_open, total_insured_cents, memo, anchor, *args, **kwargs):  # noqa: E501
         """GetVaultMarketProofOfReserveResponseLatest - a model defined in OpenAPI
 
         Args:
@@ -229,6 +235,7 @@ class GetVaultMarketProofOfReserveResponseLatest(ModelNormal):
             loans_open (float):
             total_insured_cents (float):
             memo (str):
+            anchor (GetVaultMarketProofOfReserveResponseLatestAnchor):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -295,6 +302,7 @@ class GetVaultMarketProofOfReserveResponseLatest(ModelNormal):
         self.loans_open = loans_open
         self.total_insured_cents = total_insured_cents
         self.memo = memo
+        self.anchor = anchor
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

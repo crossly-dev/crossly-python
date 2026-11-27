@@ -56,19 +56,19 @@ class GetVaultMarketLiquidityResponseComponents(ModelNormal):
 
     allowed_values = {
         ('name',): {
-            'SPREADBPS': "spreadBps",
             'TRADES30D': "trades30d",
             'TRADES90D': "trades90d",
             'COUNTERPARTIES90D': "counterparties90d",
             'MEDIANGAPDAYS': "medianGapDays",
+            'SPREADBPS': "spreadBps",
             'TWOSIDEDSHARE': "twoSidedShare",
             'DEPTHCENTS': "depthCents",
             'AMIHUD': "amihud",
             'ROLLBPS': "rollBps",
         },
         ('better',): {
-            'HIGH': "high",
             'LOW': "low",
+            'HIGH': "high",
         },
     }
 

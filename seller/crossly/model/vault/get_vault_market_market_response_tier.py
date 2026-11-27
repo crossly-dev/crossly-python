@@ -56,16 +56,16 @@ class GetVaultMarketMarketResponseTier(ModelNormal):
 
     allowed_values = {
         ('tier',): {
-            'STANDARD': "standard",
             'CLOSED': "closed",
+            'STANDARD': "standard",
             'DEEP': "deep",
             'THIN': "thin",
         },
         ('liquidity_tier',): {
             'None': None,
+            'C': "C",
             'A': "A",
             'B': "B",
-            'C': "C",
             'D': "D",
         },
     }

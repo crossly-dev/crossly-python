@@ -62,8 +62,8 @@ class CreateVaultMarketInstantExitResponse(ModelNormal):
 
     allowed_values = {
         ('status',): {
-            'FILLED': "filled",
             'MISSED': "missed",
+            'FILLED': "filled",
         },
     }
 

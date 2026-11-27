@@ -60,11 +60,11 @@ class ListVaultReceiptsItem(ModelNormal):
             'NEGOTIABLE': "negotiable",
         },
         ('status',): {
+            'VOID': "void",
             'PLEDGED': "pledged",
             'ISSUED': "issued",
             'TRANSFERRED': "transferred",
             'SURRENDERED': "surrendered",
-            'VOID': "void",
         },
     }
 

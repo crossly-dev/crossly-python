@@ -60,10 +60,10 @@ class GetVaultMarketFeeQuoteResponseMaker(ModelNormal):
             'TAKER': "taker",
         },
         ('program',): {
+            'RETAIL': "retail",
             'VOLUME': "volume",
             'LP': "lp",
             'DMM': "dmm",
-            'RETAIL': "retail",
         },
     }
 

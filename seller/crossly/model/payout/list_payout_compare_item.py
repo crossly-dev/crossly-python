@@ -60,8 +60,8 @@ class ListPayoutCompareItem(ModelNormal):
             'ESTIMATED': "estimated",
         },
         ('shipping_source',): {
-            'NONE': "none",
             'UNKNOWN': "unknown",
+            'NONE': "none",
             'QUOTED': "quoted",
             'PLATFORM_LABEL': "platform_label",
             'BUYER_PAID': "buyer_paid",

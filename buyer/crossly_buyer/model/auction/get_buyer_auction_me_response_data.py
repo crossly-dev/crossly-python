@@ -76,9 +76,9 @@ class GetBuyerAuctionMeResponseData(ModelNormal):
         """
         return {
             'bidding': (bool,),  # noqa: E501
-            'won': (bool, none_type,),  # noqa: E501
             'my_max_cents': (float, none_type,),  # noqa: E501
             'leading': (bool, none_type,),  # noqa: E501
+            'won': (bool, none_type,),  # noqa: E501
             'needs_payment': (bool, none_type,),  # noqa: E501
         }
 
@@ -89,9 +89,9 @@ class GetBuyerAuctionMeResponseData(ModelNormal):
 
     attribute_map = {
         'bidding': 'bidding',  # noqa: E501
-        'won': 'won',  # noqa: E501
         'my_max_cents': 'myMaxCents',  # noqa: E501
         'leading': 'leading',  # noqa: E501
+        'won': 'won',  # noqa: E501
         'needs_payment': 'needsPayment',  # noqa: E501
     }
 
@@ -139,9 +139,9 @@ class GetBuyerAuctionMeResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            won (bool, none_type): [optional]  # noqa: E501
             my_max_cents (float, none_type): [optional]  # noqa: E501
             leading (bool, none_type): [optional]  # noqa: E501
+            won (bool, none_type): [optional]  # noqa: E501
             needs_payment (bool, none_type): Won, and the charge at close did not go through — call pay.. [optional]  # noqa: E501
         """
 
@@ -228,9 +228,9 @@ class GetBuyerAuctionMeResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            won (bool, none_type): [optional]  # noqa: E501
             my_max_cents (float, none_type): [optional]  # noqa: E501
             leading (bool, none_type): [optional]  # noqa: E501
+            won (bool, none_type): [optional]  # noqa: E501
             needs_payment (bool, none_type): Won, and the charge at close did not go through — call pay.. [optional]  # noqa: E501
         """
 

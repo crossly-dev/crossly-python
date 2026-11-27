@@ -82,7 +82,6 @@ class GetOauthInitResponse(ModelNormal):
         """
         return {
             'url': (str,),  # noqa: E501
-            'correlation_id': (str,),  # noqa: E501
             'one_shot': (bool,),  # noqa: E501
             'status': (str,),  # noqa: E501
             'request_url': (str,),  # noqa: E501
@@ -96,7 +95,6 @@ class GetOauthInitResponse(ModelNormal):
 
     attribute_map = {
         'url': 'url',  # noqa: E501
-        'correlation_id': 'correlationId',  # noqa: E501
         'one_shot': 'oneShot',  # noqa: E501
         'status': 'status',  # noqa: E501
         'request_url': 'requestUrl',  # noqa: E501
@@ -145,7 +143,6 @@ class GetOauthInitResponse(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             url (str): [optional]  # noqa: E501
-            correlation_id (str): [optional]  # noqa: E501
             one_shot (bool): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
             request_url (str): [optional]  # noqa: E501
@@ -232,7 +229,6 @@ class GetOauthInitResponse(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             url (str): [optional]  # noqa: E501
-            correlation_id (str): [optional]  # noqa: E501
             one_shot (bool): [optional]  # noqa: E501
             status (str): [optional]  # noqa: E501
             request_url (str): [optional]  # noqa: E501

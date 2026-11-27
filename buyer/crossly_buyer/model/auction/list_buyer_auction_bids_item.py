@@ -75,8 +75,8 @@ class ListBuyerAuctionBidsItem(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'amount_cents': (float,),  # noqa: E501
             'bidder': (str,),  # noqa: E501
+            'amount_cents': (float,),  # noqa: E501
             'placed_at': (str, none_type,),  # noqa: E501
         }
 
@@ -86,8 +86,8 @@ class ListBuyerAuctionBidsItem(ModelNormal):
 
 
     attribute_map = {
-        'amount_cents': 'amountCents',  # noqa: E501
         'bidder': 'bidder',  # noqa: E501
+        'amount_cents': 'amountCents',  # noqa: E501
         'placed_at': 'placedAt',  # noqa: E501
     }
 
@@ -98,12 +98,12 @@ class ListBuyerAuctionBidsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, amount_cents, bidder, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, bidder, amount_cents, *args, **kwargs):  # noqa: E501
         """ListBuyerAuctionBidsItem - a model defined in OpenAPI
 
         Args:
-            amount_cents (float):
             bidder (str): \"You\" for your own bids; otherwise anonymised, e.g. \"a***e (12)\".
+            amount_cents (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -164,8 +164,8 @@ class ListBuyerAuctionBidsItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.amount_cents = amount_cents
         self.bidder = bidder
+        self.amount_cents = amount_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -186,12 +186,12 @@ class ListBuyerAuctionBidsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, amount_cents, bidder, *args, **kwargs):  # noqa: E501
+    def __init__(self, bidder, amount_cents, *args, **kwargs):  # noqa: E501
         """ListBuyerAuctionBidsItem - a model defined in OpenAPI
 
         Args:
-            amount_cents (float):
             bidder (str): \"You\" for your own bids; otherwise anonymised, e.g. \"a***e (12)\".
+            amount_cents (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -250,8 +250,8 @@ class ListBuyerAuctionBidsItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.amount_cents = amount_cents
         self.bidder = bidder
+        self.amount_cents = amount_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -54,6 +54,8 @@ class CreateMeTemplateRenderResponseTokensUsedItem(ModelSimple):
         ('value',): {
             'DATE': "date",
             'BRAND': "brand",
+            'CATEGORY': "category",
+            'MONTH': "month",
             'SKU': "sku",
             'CONDITION': "condition",
             'SIZE': "size",
@@ -61,11 +63,9 @@ class CreateMeTemplateRenderResponseTokensUsedItem(ModelSimple):
             'STYLE': "style",
             'COLOR': "color",
             'PRICE': "price",
-            'CATEGORY': "category",
             'YEAR': "year",
             'MODEL': "model",
             'ITEM_NAME': "item_name",
-            'MONTH': "month",
         },
     }
 
@@ -117,10 +117,10 @@ class CreateMeTemplateRenderResponseTokensUsedItem(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str):, must be one of ["date", "brand", "sku", "condition", "size", "material", "style", "color", "price", "category", "year", "model", "item_name", "month", ]  # noqa: E501
+            args[0] (str):, must be one of ["date", "brand", "category", "month", "sku", "condition", "size", "material", "style", "color", "price", "year", "model", "item_name", ]  # noqa: E501
 
         Keyword Args:
-            value (str):, must be one of ["date", "brand", "sku", "condition", "size", "material", "style", "color", "price", "category", "year", "model", "item_name", "month", ]  # noqa: E501
+            value (str):, must be one of ["date", "brand", "category", "month", "sku", "condition", "size", "material", "style", "color", "price", "year", "model", "item_name", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -207,10 +207,10 @@ class CreateMeTemplateRenderResponseTokensUsedItem(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str):, must be one of ["date", "brand", "sku", "condition", "size", "material", "style", "color", "price", "category", "year", "model", "item_name", "month", ]  # noqa: E501
+            args[0] (str):, must be one of ["date", "brand", "category", "month", "sku", "condition", "size", "material", "style", "color", "price", "year", "model", "item_name", ]  # noqa: E501
 
         Keyword Args:
-            value (str):, must be one of ["date", "brand", "sku", "condition", "size", "material", "style", "color", "price", "category", "year", "model", "item_name", "month", ]  # noqa: E501
+            value (str):, must be one of ["date", "brand", "category", "month", "sku", "condition", "size", "material", "style", "color", "price", "year", "model", "item_name", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.

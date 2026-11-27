@@ -75,8 +75,9 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'platform': (str,),  # noqa: E501
             'list_price_cents': (float,),  # noqa: E501
+            'platform': (str,),  # noqa: E501
+            'platform_name': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -85,8 +86,9 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch(ModelNormal):
 
 
     attribute_map = {
-        'platform': 'platform',  # noqa: E501
         'list_price_cents': 'listPriceCents',  # noqa: E501
+        'platform': 'platform',  # noqa: E501
+        'platform_name': 'platformName',  # noqa: E501
     }
 
     read_only_vars = {
@@ -96,12 +98,12 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, platform, list_price_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, list_price_cents, platform, *args, **kwargs):  # noqa: E501
         """GetBuyerCatalogListingPriceResponseDataPriceMatch - a model defined in OpenAPI
 
         Args:
-            platform (str):
             list_price_cents (float):
+            platform (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -134,6 +136,7 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            platform_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -161,8 +164,8 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.platform = platform
         self.list_price_cents = list_price_cents
+        self.platform = platform
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -183,12 +186,12 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, platform, list_price_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, list_price_cents, platform, *args, **kwargs):  # noqa: E501
         """GetBuyerCatalogListingPriceResponseDataPriceMatch - a model defined in OpenAPI
 
         Args:
-            platform (str):
             list_price_cents (float):
+            platform (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -221,6 +224,7 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            platform_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -246,8 +250,8 @@ class GetBuyerCatalogListingPriceResponseDataPriceMatch(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.platform = platform
         self.list_price_cents = list_price_cents
+        self.platform = platform
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

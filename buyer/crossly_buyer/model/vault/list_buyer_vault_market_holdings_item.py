@@ -57,9 +57,9 @@ class ListBuyerVaultMarketHoldingsItem(ModelNormal):
     allowed_values = {
         ('mark_quality',): {
             'NONE': "none",
+            'C': "C",
             'A': "A",
             'B': "B",
-            'C': "C",
         },
     }
 

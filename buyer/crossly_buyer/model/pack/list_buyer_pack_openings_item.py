@@ -81,18 +81,18 @@ class ListBuyerPackOpeningsItem(ModelNormal):
         lazy_import()
         return {
             'id': (str,),  # noqa: E501
+            'pack_title': (str,),  # noqa: E501
+            'pack_slug': (str,),  # noqa: E501
             'status': (str,),  # noqa: E501
             'price_cents': (float,),  # noqa: E501
             'proof': (ListBuyerPackOpeningsItemProof,),  # noqa: E501
-            'pack_title': (str,),  # noqa: E501
-            'pack_slug': (str,),  # noqa: E501
-            'image_url': (str, none_type,),  # noqa: E501
-            'vault_item_id': (str, none_type,),  # noqa: E501
-            'opened_at': (str, none_type,),  # noqa: E501
-            'tier_name': (str, none_type,),  # noqa: E501
             'value_cents': (float, none_type,),  # noqa: E501
             'buyback_cents': (float, none_type,),  # noqa: E501
             'item_title': (str, none_type,),  # noqa: E501
+            'image_url': (str, none_type,),  # noqa: E501
+            'tier_name': (str, none_type,),  # noqa: E501
+            'vault_item_id': (str, none_type,),  # noqa: E501
+            'opened_at': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -102,18 +102,18 @@ class ListBuyerPackOpeningsItem(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
+        'pack_title': 'packTitle',  # noqa: E501
+        'pack_slug': 'packSlug',  # noqa: E501
         'status': 'status',  # noqa: E501
         'price_cents': 'priceCents',  # noqa: E501
         'proof': 'proof',  # noqa: E501
-        'pack_title': 'packTitle',  # noqa: E501
-        'pack_slug': 'packSlug',  # noqa: E501
-        'image_url': 'imageUrl',  # noqa: E501
-        'vault_item_id': 'vaultItemId',  # noqa: E501
-        'opened_at': 'openedAt',  # noqa: E501
-        'tier_name': 'tierName',  # noqa: E501
         'value_cents': 'valueCents',  # noqa: E501
         'buyback_cents': 'buybackCents',  # noqa: E501
         'item_title': 'itemTitle',  # noqa: E501
+        'image_url': 'imageUrl',  # noqa: E501
+        'tier_name': 'tierName',  # noqa: E501
+        'vault_item_id': 'vaultItemId',  # noqa: E501
+        'opened_at': 'openedAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -123,16 +123,16 @@ class ListBuyerPackOpeningsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, status, price_cents, proof, pack_title, pack_slug, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, pack_title, pack_slug, status, price_cents, proof, *args, **kwargs):  # noqa: E501
         """ListBuyerPackOpeningsItem - a model defined in OpenAPI
 
         Args:
             id (str):
+            pack_title (str):
+            pack_slug (str):
             status (str):
             price_cents (float):
             proof (ListBuyerPackOpeningsItemProof):
-            pack_title (str):
-            pack_slug (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -165,13 +165,13 @@ class ListBuyerPackOpeningsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            image_url (str, none_type): [optional]  # noqa: E501
-            vault_item_id (str, none_type): [optional]  # noqa: E501
-            opened_at (str, none_type): [optional]  # noqa: E501
-            tier_name (str, none_type): [optional]  # noqa: E501
             value_cents (float, none_type): [optional]  # noqa: E501
             buyback_cents (float, none_type): [optional]  # noqa: E501
             item_title (str, none_type): [optional]  # noqa: E501
+            image_url (str, none_type): [optional]  # noqa: E501
+            tier_name (str, none_type): [optional]  # noqa: E501
+            vault_item_id (str, none_type): [optional]  # noqa: E501
+            opened_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -200,11 +200,11 @@ class ListBuyerPackOpeningsItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
+        self.pack_title = pack_title
+        self.pack_slug = pack_slug
         self.status = status
         self.price_cents = price_cents
         self.proof = proof
-        self.pack_title = pack_title
-        self.pack_slug = pack_slug
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -225,16 +225,16 @@ class ListBuyerPackOpeningsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, status, price_cents, proof, pack_title, pack_slug, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, pack_title, pack_slug, status, price_cents, proof, *args, **kwargs):  # noqa: E501
         """ListBuyerPackOpeningsItem - a model defined in OpenAPI
 
         Args:
             id (str):
+            pack_title (str):
+            pack_slug (str):
             status (str):
             price_cents (float):
             proof (ListBuyerPackOpeningsItemProof):
-            pack_title (str):
-            pack_slug (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -267,13 +267,13 @@ class ListBuyerPackOpeningsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            image_url (str, none_type): [optional]  # noqa: E501
-            vault_item_id (str, none_type): [optional]  # noqa: E501
-            opened_at (str, none_type): [optional]  # noqa: E501
-            tier_name (str, none_type): [optional]  # noqa: E501
             value_cents (float, none_type): [optional]  # noqa: E501
             buyback_cents (float, none_type): [optional]  # noqa: E501
             item_title (str, none_type): [optional]  # noqa: E501
+            image_url (str, none_type): [optional]  # noqa: E501
+            tier_name (str, none_type): [optional]  # noqa: E501
+            vault_item_id (str, none_type): [optional]  # noqa: E501
+            opened_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -300,11 +300,11 @@ class ListBuyerPackOpeningsItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
+        self.pack_title = pack_title
+        self.pack_slug = pack_slug
         self.status = status
         self.price_cents = price_cents
         self.proof = proof
-        self.pack_title = pack_title
-        self.pack_slug = pack_slug
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

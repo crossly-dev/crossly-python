@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.vault.get_vault_market_widget_index_response_points import GetVaultMarketWidgetIndexResponsePoints
-    globals()['GetVaultMarketWidgetIndexResponsePoints'] = GetVaultMarketWidgetIndexResponsePoints
+    from crossly.model.vault.get_vault_market_option_analytic_response_historical_vol_series import GetVaultMarketOptionAnalyticResponseHistoricalVolSeries
+    globals()['GetVaultMarketOptionAnalyticResponseHistoricalVolSeries'] = GetVaultMarketOptionAnalyticResponseHistoricalVolSeries
 
 
 class GetVaultMarketWidgetIndexResponse(ModelNormal):
@@ -63,9 +63,9 @@ class GetVaultMarketWidgetIndexResponse(ModelNormal):
             'CUSTOM': "custom",
             'BRAND': "brand",
             'CATEGORY': "category",
+            'SEGMENT': "segment",
             'CURATED': "curated",
             'COMPOSITE': "composite",
-            'SEGMENT': "segment",
         },
         ('weighting',): {
             'MARK': "mark",
@@ -75,9 +75,9 @@ class GetVaultMarketWidgetIndexResponse(ModelNormal):
         },
         ('quality',): {
             'NONE': "none",
+            'C': "C",
             'A': "A",
             'B': "B",
-            'C': "C",
         },
     }
 
@@ -105,7 +105,7 @@ class GetVaultMarketWidgetIndexResponse(ModelNormal):
             'kind': (str,),  # noqa: E501
             'weighting': (str,),  # noqa: E501
             'base_value': (float,),  # noqa: E501
-            'points': ([GetVaultMarketWidgetIndexResponsePoints],),  # noqa: E501
+            'points': ([GetVaultMarketOptionAnalyticResponseHistoricalVolSeries],),  # noqa: E501
             'quality': (str,),  # noqa: E501
             'n': (float,),  # noqa: E501
             'members': (float,),  # noqa: E501
@@ -160,7 +160,7 @@ class GetVaultMarketWidgetIndexResponse(ModelNormal):
             kind (str):
             weighting (str):
             base_value (float):
-            points ([GetVaultMarketWidgetIndexResponsePoints]):
+            points ([GetVaultMarketOptionAnalyticResponseHistoricalVolSeries]):
             quality (str):
             n (float):
             members (float):
@@ -271,7 +271,7 @@ class GetVaultMarketWidgetIndexResponse(ModelNormal):
             kind (str):
             weighting (str):
             base_value (float):
-            points ([GetVaultMarketWidgetIndexResponsePoints]):
+            points ([GetVaultMarketOptionAnalyticResponseHistoricalVolSeries]):
             quality (str):
             n (float):
             members (float):

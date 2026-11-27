@@ -75,8 +75,8 @@ class GetBuyerGiftFinderOptionResponseDataBudgets(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'label': (str,),  # noqa: E501
             'key': (str,),  # noqa: E501
+            'label': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -85,8 +85,8 @@ class GetBuyerGiftFinderOptionResponseDataBudgets(ModelNormal):
 
 
     attribute_map = {
-        'label': 'label',  # noqa: E501
         'key': 'key',  # noqa: E501
+        'label': 'label',  # noqa: E501
     }
 
     read_only_vars = {
@@ -96,12 +96,12 @@ class GetBuyerGiftFinderOptionResponseDataBudgets(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, label, key, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, key, label, *args, **kwargs):  # noqa: E501
         """GetBuyerGiftFinderOptionResponseDataBudgets - a model defined in OpenAPI
 
         Args:
-            label (str):
             key (str):
+            label (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -161,8 +161,8 @@ class GetBuyerGiftFinderOptionResponseDataBudgets(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.label = label
         self.key = key
+        self.label = label
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -183,12 +183,12 @@ class GetBuyerGiftFinderOptionResponseDataBudgets(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, label, key, *args, **kwargs):  # noqa: E501
+    def __init__(self, key, label, *args, **kwargs):  # noqa: E501
         """GetBuyerGiftFinderOptionResponseDataBudgets - a model defined in OpenAPI
 
         Args:
-            label (str):
             key (str):
+            label (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -246,8 +246,8 @@ class GetBuyerGiftFinderOptionResponseDataBudgets(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.label = label
         self.key = key
+        self.label = label
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

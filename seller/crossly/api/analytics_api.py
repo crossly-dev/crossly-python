@@ -21,11 +21,25 @@ from crossly.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
+from crossly.model.common.analytic_experiment_response import AnalyticExperimentResponse
+from crossly.model.common.delete_story_response import DeleteStoryResponse
 from crossly.model.common.error import Error
 from crossly.model.analytic.get_analytic_bookkeeping_response import GetAnalyticBookkeepingResponse
 from crossly.model.analytic.get_analytic_by_platform_response import GetAnalyticByPlatformResponse
+from crossly.model.analytic.get_analytic_compare_response import GetAnalyticCompareResponse
 from crossly.model.analytic.get_analytic_dashboard_response import GetAnalyticDashboardResponse
+from crossly.model.analytic.get_analytic_experiment_by_id_response import GetAnalyticExperimentByIdResponse
+from crossly.model.analytic.get_analytic_experiment_response import GetAnalyticExperimentResponse
+from crossly.model.analytic.get_analytic_inventory_response import GetAnalyticInventoryResponse
+from crossly.model.analytic.get_analytic_item_by_listing_id_response import GetAnalyticItemByListingIdResponse
 from crossly.model.analytic.get_analytic_item_response import GetAnalyticItemResponse
+from crossly.model.analytic.get_analytic_marketplace_by_platform_response import GetAnalyticMarketplaceByPlatformResponse
+from crossly.model.analytic.get_analytic_marketplace_response import GetAnalyticMarketplaceResponse
+from crossly.model.analytic.get_analytic_overview_response import GetAnalyticOverviewResponse
+from crossly.model.analytic.get_analytic_performance_response import GetAnalyticPerformanceResponse
+from crossly.model.analytic.get_analytic_program_response import GetAnalyticProgramResponse
+from crossly.model.analytic.get_analytic_segment_by_key_response import GetAnalyticSegmentByKeyResponse
+from crossly.model.analytic.get_analytic_segment_response import GetAnalyticSegmentResponse
 from crossly.model.analytic.get_analytic_summary_response import GetAnalyticSummaryResponse
 from crossly.model.analytic.get_analytic_timesery_response import GetAnalyticTimeseryResponse
 from crossly.model.analytic.get_analytic_today_response import GetAnalyticTodayResponse
@@ -43,6 +57,203 @@ class AnalyticsApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
+        self.create_analytic_experiment_endpoint = _Endpoint(
+            settings={
+                'response_type': (AnalyticExperimentResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/experiments',
+                'operation_id': 'create_analytic_experiment',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.create_analytic_experiment_declare_endpoint = _Endpoint(
+            settings={
+                'response_type': (AnalyticExperimentResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/experiments/{id}/declare',
+                'operation_id': 'create_analytic_experiment_declare',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.create_analytic_experiment_stop_endpoint = _Endpoint(
+            settings={
+                'response_type': (AnalyticExperimentResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/experiments/{id}/stop',
+                'operation_id': 'create_analytic_experiment_stop',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.delete_analytic_experiment_endpoint = _Endpoint(
+            settings={
+                'response_type': (DeleteStoryResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/experiments/{id}',
+                'operation_id': 'delete_analytic_experiment',
+                'http_method': 'DELETE',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.get_analytic_bookkeeping_endpoint = _Endpoint(
             settings={
                 'response_type': (GetAnalyticBookkeepingResponse,),
@@ -100,11 +311,77 @@ class AnalyticsApi(object):
             },
             params_map={
                 'all': [
+                    'days',
+                    'tz',
                 ],
                 'required': [],
                 'nullable': [
                 ],
                 'enum': [
+                ],
+                'validation': [
+                    'days',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('days',): {
+
+                        'inclusive_minimum': 1,
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'days':
+                        (int,),
+                    'tz':
+                        (str,),
+                },
+                'attribute_map': {
+                    'days': 'days',
+                    'tz': 'tz',
+                },
+                'location_map': {
+                    'days': 'query',
+                    'tz': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_analytic_compare_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetAnalyticCompareResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/compare',
+                'operation_id': 'get_analytic_compare',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'ids',
+                    'align',
+                    'platform',
+                    'tz',
+                ],
+                'required': [
+                    'ids',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                    'align',
                 ],
                 'validation': [
                 ]
@@ -113,12 +390,33 @@ class AnalyticsApi(object):
                 'validations': {
                 },
                 'allowed_values': {
+                    ('align',): {
+
+                        "AGE": "age",
+                        "CALENDAR": "calendar"
+                    },
                 },
                 'openapi_types': {
+                    'ids':
+                        (str,),
+                    'align':
+                        (str,),
+                    'platform':
+                        (str,),
+                    'tz':
+                        (str,),
                 },
                 'attribute_map': {
+                    'ids': 'ids',
+                    'align': 'align',
+                    'platform': 'platform',
+                    'tz': 'tz',
                 },
                 'location_map': {
+                    'ids': 'query',
+                    'align': 'query',
+                    'platform': 'query',
+                    'tz': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -175,6 +473,265 @@ class AnalyticsApi(object):
             },
             api_client=api_client
         )
+        self.get_analytic_experiment_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetAnalyticExperimentResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/experiments',
+                'operation_id': 'get_analytic_experiment',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'status',
+                    'page',
+                    'size',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'status',
+                ],
+                'validation': [
+                    'page',
+                    'size',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('page',): {
+
+                        'inclusive_minimum': 1,
+                    },
+                    ('size',): {
+
+                        'inclusive_maximum': 100,
+                        'inclusive_minimum': 1,
+                    },
+                },
+                'allowed_values': {
+                    ('status',): {
+
+                        "ALL": "all",
+                        "RUNNING": "running",
+                        "CONCLUDED": "concluded",
+                        "DRAFT": "draft"
+                    },
+                },
+                'openapi_types': {
+                    'status':
+                        (str,),
+                    'page':
+                        (int,),
+                    'size':
+                        (int,),
+                },
+                'attribute_map': {
+                    'status': 'status',
+                    'page': 'page',
+                    'size': 'size',
+                },
+                'location_map': {
+                    'status': 'query',
+                    'page': 'query',
+                    'size': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_analytic_experiment_by_id_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetAnalyticExperimentByIdResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/experiments/{id}',
+                'operation_id': 'get_analytic_experiment_by_id',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_analytic_inventory_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetAnalyticInventoryResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/inventory',
+                'operation_id': 'get_analytic_inventory',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'range',
+                    '_from',
+                    'to',
+                    'compare',
+                    'cmp_from',
+                    'cmp_to',
+                    'labels',
+                    'platforms',
+                    'category',
+                    'brand',
+                    'tz',
+                    'maturity',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'range',
+                    'compare',
+                    'maturity',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('range',): {
+
+                        "7D": "7d",
+                        "30D": "30d",
+                        "90D": "90d",
+                        "1Y": "1y",
+                        "YTD": "ytd",
+                        "ALL": "all",
+                        "CUSTOM": "custom"
+                    },
+                    ('compare',): {
+
+                        "PREV": "prev",
+                        "YOY": "yoy",
+                        "NONE": "none",
+                        "CUSTOM": "custom"
+                    },
+                    ('maturity',): {
+
+                        "30": 30,
+                        "60": 60,
+                        "90": 90
+                    },
+                },
+                'openapi_types': {
+                    'range':
+                        (str,),
+                    '_from':
+                        (str,),
+                    'to':
+                        (str,),
+                    'compare':
+                        (str,),
+                    'cmp_from':
+                        (str,),
+                    'cmp_to':
+                        (str,),
+                    'labels':
+                        (str,),
+                    'platforms':
+                        (str,),
+                    'category':
+                        (str,),
+                    'brand':
+                        (str,),
+                    'tz':
+                        (str,),
+                    'maturity':
+                        (int,),
+                },
+                'attribute_map': {
+                    'range': 'range',
+                    '_from': 'from',
+                    'to': 'to',
+                    'compare': 'compare',
+                    'cmp_from': 'cmpFrom',
+                    'cmp_to': 'cmpTo',
+                    'labels': 'labels',
+                    'platforms': 'platforms',
+                    'category': 'category',
+                    'brand': 'brand',
+                    'tz': 'tz',
+                    'maturity': 'maturity',
+                },
+                'location_map': {
+                    'range': 'query',
+                    '_from': 'query',
+                    'to': 'query',
+                    'compare': 'query',
+                    'cmp_from': 'query',
+                    'cmp_to': 'query',
+                    'labels': 'query',
+                    'platforms': 'query',
+                    'category': 'query',
+                    'brand': 'query',
+                    'tz': 'query',
+                    'maturity': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.get_analytic_item_endpoint = _Endpoint(
             settings={
                 'response_type': (GetAnalyticItemResponse,),
@@ -219,6 +776,1083 @@ class AnalyticsApi(object):
             },
             api_client=api_client
         )
+        self.get_analytic_item_by_listing_id_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetAnalyticItemByListingIdResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/items/{listingId}',
+                'operation_id': 'get_analytic_item_by_listing_id',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'listing_id',
+                    'by',
+                    'tz',
+                ],
+                'required': [
+                    'listing_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                    'by',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('by',): {
+
+                        "LISTING": "listing",
+                        "INVENTORY": "inventory"
+                    },
+                },
+                'openapi_types': {
+                    'listing_id':
+                        (str,),
+                    'by':
+                        (str,),
+                    'tz':
+                        (str,),
+                },
+                'attribute_map': {
+                    'listing_id': 'listingId',
+                    'by': 'by',
+                    'tz': 'tz',
+                },
+                'location_map': {
+                    'listing_id': 'path',
+                    'by': 'query',
+                    'tz': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_analytic_marketplace_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetAnalyticMarketplaceResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/marketplaces',
+                'operation_id': 'get_analytic_marketplace',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'range',
+                    '_from',
+                    'to',
+                    'compare',
+                    'cmp_from',
+                    'cmp_to',
+                    'labels',
+                    'platforms',
+                    'category',
+                    'brand',
+                    'tz',
+                    'vs',
+                    'sort',
+                    'dir',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'range',
+                    'compare',
+                    'sort',
+                    'dir',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('range',): {
+
+                        "7D": "7d",
+                        "30D": "30d",
+                        "90D": "90d",
+                        "1Y": "1y",
+                        "YTD": "ytd",
+                        "ALL": "all",
+                        "CUSTOM": "custom"
+                    },
+                    ('compare',): {
+
+                        "PREV": "prev",
+                        "YOY": "yoy",
+                        "NONE": "none",
+                        "CUSTOM": "custom"
+                    },
+                    ('sort',): {
+
+                        "NETSALES": "netSales",
+                        "NETPROFIT": "netProfit",
+                        "UNITSSOLD": "unitsSold",
+                        "ASP": "asp",
+                        "TAKERATE": "takeRate",
+                        "MARGINRATE": "marginRate",
+                        "SHIPPINGSUBSIDY": "shippingSubsidy",
+                        "MEDIANDAYSTOSELL": "medianDaysToSell",
+                        "SELLTHROUGHRATE": "sellThroughRate",
+                        "CANCELRATE": "cancelRate",
+                        "RETURNRATE": "returnRate",
+                        "OFFERACCEPTRATE": "offerAcceptRate",
+                        "AVGOFFERPCTOFASK": "avgOfferPctOfAsk",
+                        "VIEWSPERLISTINGDAY": "viewsPerListingDay",
+                        "FAVORITERATE": "favoriteRate",
+                        "PLATFORM": "platform",
+                        "ACTIVELISTINGS": "activeListings",
+                        "STALELISTINGS": "staleListings"
+                    },
+                    ('dir',): {
+
+                        "ASC": "asc",
+                        "DESC": "desc"
+                    },
+                },
+                'openapi_types': {
+                    'range':
+                        (str,),
+                    '_from':
+                        (str,),
+                    'to':
+                        (str,),
+                    'compare':
+                        (str,),
+                    'cmp_from':
+                        (str,),
+                    'cmp_to':
+                        (str,),
+                    'labels':
+                        (str,),
+                    'platforms':
+                        (str,),
+                    'category':
+                        (str,),
+                    'brand':
+                        (str,),
+                    'tz':
+                        (str,),
+                    'vs':
+                        (str,),
+                    'sort':
+                        (str,),
+                    'dir':
+                        (str,),
+                },
+                'attribute_map': {
+                    'range': 'range',
+                    '_from': 'from',
+                    'to': 'to',
+                    'compare': 'compare',
+                    'cmp_from': 'cmpFrom',
+                    'cmp_to': 'cmpTo',
+                    'labels': 'labels',
+                    'platforms': 'platforms',
+                    'category': 'category',
+                    'brand': 'brand',
+                    'tz': 'tz',
+                    'vs': 'vs',
+                    'sort': 'sort',
+                    'dir': 'dir',
+                },
+                'location_map': {
+                    'range': 'query',
+                    '_from': 'query',
+                    'to': 'query',
+                    'compare': 'query',
+                    'cmp_from': 'query',
+                    'cmp_to': 'query',
+                    'labels': 'query',
+                    'platforms': 'query',
+                    'category': 'query',
+                    'brand': 'query',
+                    'tz': 'query',
+                    'vs': 'query',
+                    'sort': 'query',
+                    'dir': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_analytic_marketplace_by_platform_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetAnalyticMarketplaceByPlatformResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/marketplaces/{platform}',
+                'operation_id': 'get_analytic_marketplace_by_platform',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'platform',
+                    'range',
+                    '_from',
+                    'to',
+                    'compare',
+                    'cmp_from',
+                    'cmp_to',
+                    'labels',
+                    'platforms',
+                    'category',
+                    'brand',
+                    'tz',
+                ],
+                'required': [
+                    'platform',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                    'range',
+                    'compare',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('range',): {
+
+                        "7D": "7d",
+                        "30D": "30d",
+                        "90D": "90d",
+                        "1Y": "1y",
+                        "YTD": "ytd",
+                        "ALL": "all",
+                        "CUSTOM": "custom"
+                    },
+                    ('compare',): {
+
+                        "PREV": "prev",
+                        "YOY": "yoy",
+                        "NONE": "none",
+                        "CUSTOM": "custom"
+                    },
+                },
+                'openapi_types': {
+                    'platform':
+                        (str,),
+                    'range':
+                        (str,),
+                    '_from':
+                        (str,),
+                    'to':
+                        (str,),
+                    'compare':
+                        (str,),
+                    'cmp_from':
+                        (str,),
+                    'cmp_to':
+                        (str,),
+                    'labels':
+                        (str,),
+                    'platforms':
+                        (str,),
+                    'category':
+                        (str,),
+                    'brand':
+                        (str,),
+                    'tz':
+                        (str,),
+                },
+                'attribute_map': {
+                    'platform': 'platform',
+                    'range': 'range',
+                    '_from': 'from',
+                    'to': 'to',
+                    'compare': 'compare',
+                    'cmp_from': 'cmpFrom',
+                    'cmp_to': 'cmpTo',
+                    'labels': 'labels',
+                    'platforms': 'platforms',
+                    'category': 'category',
+                    'brand': 'brand',
+                    'tz': 'tz',
+                },
+                'location_map': {
+                    'platform': 'path',
+                    'range': 'query',
+                    '_from': 'query',
+                    'to': 'query',
+                    'compare': 'query',
+                    'cmp_from': 'query',
+                    'cmp_to': 'query',
+                    'labels': 'query',
+                    'platforms': 'query',
+                    'category': 'query',
+                    'brand': 'query',
+                    'tz': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_analytic_overview_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetAnalyticOverviewResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/overview',
+                'operation_id': 'get_analytic_overview',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'range',
+                    '_from',
+                    'to',
+                    'compare',
+                    'cmp_from',
+                    'cmp_to',
+                    'labels',
+                    'platforms',
+                    'category',
+                    'brand',
+                    'tz',
+                    'stores',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'range',
+                    'compare',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('range',): {
+
+                        "7D": "7d",
+                        "30D": "30d",
+                        "90D": "90d",
+                        "1Y": "1y",
+                        "YTD": "ytd",
+                        "ALL": "all",
+                        "CUSTOM": "custom"
+                    },
+                    ('compare',): {
+
+                        "PREV": "prev",
+                        "YOY": "yoy",
+                        "NONE": "none",
+                        "CUSTOM": "custom"
+                    },
+                },
+                'openapi_types': {
+                    'range':
+                        (str,),
+                    '_from':
+                        (str,),
+                    'to':
+                        (str,),
+                    'compare':
+                        (str,),
+                    'cmp_from':
+                        (str,),
+                    'cmp_to':
+                        (str,),
+                    'labels':
+                        (str,),
+                    'platforms':
+                        (str,),
+                    'category':
+                        (str,),
+                    'brand':
+                        (str,),
+                    'tz':
+                        (str,),
+                    'stores':
+                        (str,),
+                },
+                'attribute_map': {
+                    'range': 'range',
+                    '_from': 'from',
+                    'to': 'to',
+                    'compare': 'compare',
+                    'cmp_from': 'cmpFrom',
+                    'cmp_to': 'cmpTo',
+                    'labels': 'labels',
+                    'platforms': 'platforms',
+                    'category': 'category',
+                    'brand': 'brand',
+                    'tz': 'tz',
+                    'stores': 'stores',
+                },
+                'location_map': {
+                    'range': 'query',
+                    '_from': 'query',
+                    'to': 'query',
+                    'compare': 'query',
+                    'cmp_from': 'query',
+                    'cmp_to': 'query',
+                    'labels': 'query',
+                    'platforms': 'query',
+                    'category': 'query',
+                    'brand': 'query',
+                    'tz': 'query',
+                    'stores': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_analytic_performance_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetAnalyticPerformanceResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/performance',
+                'operation_id': 'get_analytic_performance',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'range',
+                    '_from',
+                    'to',
+                    'compare',
+                    'cmp_from',
+                    'cmp_to',
+                    'labels',
+                    'platforms',
+                    'category',
+                    'brand',
+                    'tz',
+                    'status',
+                    'q',
+                    'sort',
+                    'dir',
+                    'page',
+                    'size',
+                    'min_days',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'range',
+                    'compare',
+                    'status',
+                    'sort',
+                    'dir',
+                    'size',
+                ],
+                'validation': [
+                    'page',
+                    'min_days',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('page',): {
+
+                        'inclusive_minimum': 1,
+                    },
+                    ('min_days',): {
+
+                        'inclusive_minimum': 0,
+                    },
+                },
+                'allowed_values': {
+                    ('range',): {
+
+                        "7D": "7d",
+                        "30D": "30d",
+                        "90D": "90d",
+                        "1Y": "1y",
+                        "YTD": "ytd",
+                        "ALL": "all",
+                        "CUSTOM": "custom"
+                    },
+                    ('compare',): {
+
+                        "PREV": "prev",
+                        "YOY": "yoy",
+                        "NONE": "none",
+                        "CUSTOM": "custom"
+                    },
+                    ('status',): {
+
+                        "ALL": "all",
+                        "ACTIVE": "active",
+                        "SOLD": "sold",
+                        "UNSOLD": "unsold",
+                        "ENDED": "ended"
+                    },
+                    ('sort',): {
+
+                        "LASTACTIVITY": "lastActivity",
+                        "TITLE": "title",
+                        "PRICE": "price",
+                        "DAYSLISTED": "daysListed",
+                        "VIEWS": "views",
+                        "FAVORITES": "favorites",
+                        "OFFERS": "offers",
+                        "UNITSSOLD": "unitsSold",
+                        "NETSALES": "netSales",
+                        "NETPROFIT": "netProfit",
+                        "MARGIN": "margin",
+                        "DAYSTOSELL": "daysToSell",
+                        "HEALTH": "health"
+                    },
+                    ('dir',): {
+
+                        "ASC": "asc",
+                        "DESC": "desc"
+                    },
+                    ('size',): {
+
+                        "25": 25,
+                        "50": 50,
+                        "100": 100
+                    },
+                },
+                'openapi_types': {
+                    'range':
+                        (str,),
+                    '_from':
+                        (str,),
+                    'to':
+                        (str,),
+                    'compare':
+                        (str,),
+                    'cmp_from':
+                        (str,),
+                    'cmp_to':
+                        (str,),
+                    'labels':
+                        (str,),
+                    'platforms':
+                        (str,),
+                    'category':
+                        (str,),
+                    'brand':
+                        (str,),
+                    'tz':
+                        (str,),
+                    'status':
+                        (str,),
+                    'q':
+                        (str,),
+                    'sort':
+                        (str,),
+                    'dir':
+                        (str,),
+                    'page':
+                        (int,),
+                    'size':
+                        (int,),
+                    'min_days':
+                        (int,),
+                },
+                'attribute_map': {
+                    'range': 'range',
+                    '_from': 'from',
+                    'to': 'to',
+                    'compare': 'compare',
+                    'cmp_from': 'cmpFrom',
+                    'cmp_to': 'cmpTo',
+                    'labels': 'labels',
+                    'platforms': 'platforms',
+                    'category': 'category',
+                    'brand': 'brand',
+                    'tz': 'tz',
+                    'status': 'status',
+                    'q': 'q',
+                    'sort': 'sort',
+                    'dir': 'dir',
+                    'page': 'page',
+                    'size': 'size',
+                    'min_days': 'minDays',
+                },
+                'location_map': {
+                    'range': 'query',
+                    '_from': 'query',
+                    'to': 'query',
+                    'compare': 'query',
+                    'cmp_from': 'query',
+                    'cmp_to': 'query',
+                    'labels': 'query',
+                    'platforms': 'query',
+                    'category': 'query',
+                    'brand': 'query',
+                    'tz': 'query',
+                    'status': 'query',
+                    'q': 'query',
+                    'sort': 'query',
+                    'dir': 'query',
+                    'page': 'query',
+                    'size': 'query',
+                    'min_days': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_analytic_program_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetAnalyticProgramResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/programs/{program}',
+                'operation_id': 'get_analytic_program',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'program',
+                    '_from',
+                    'to',
+                    'by',
+                ],
+                'required': [
+                    'program',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                    'program',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('program',): {
+
+                        "WHOLESALE": "wholesale",
+                        "ADS": "ads",
+                        "RENTALS": "rentals",
+                        "BRANDING": "branding",
+                        "EVENTS": "events",
+                        "DROPS": "drops",
+                        "DISCOUNTS": "discounts",
+                        "MARKET": "market",
+                        "WORLDS": "worlds",
+                        "FUNDING": "funding",
+                        "VAULT": "vault",
+                        "TEAM": "team",
+                        "REFERRALS": "referrals",
+                        "DEVELOPER-APPS": "developer-apps"
+                    },
+                },
+                'openapi_types': {
+                    'program':
+                        (str,),
+                    '_from':
+                        (date,),
+                    'to':
+                        (date,),
+                    'by':
+                        (str,),
+                },
+                'attribute_map': {
+                    'program': 'program',
+                    '_from': 'from',
+                    'to': 'to',
+                    'by': 'by',
+                },
+                'location_map': {
+                    'program': 'path',
+                    '_from': 'query',
+                    'to': 'query',
+                    'by': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_analytic_segment_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetAnalyticSegmentResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/segments',
+                'operation_id': 'get_analytic_segment',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'range',
+                    '_from',
+                    'to',
+                    'compare',
+                    'cmp_from',
+                    'cmp_to',
+                    'labels',
+                    'platforms',
+                    'category',
+                    'brand',
+                    'tz',
+                    'dim',
+                    'sort',
+                    'dir',
+                    'min_n',
+                    'q',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'range',
+                    'compare',
+                    'dim',
+                    'sort',
+                    'dir',
+                ],
+                'validation': [
+                    'min_n',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('min_n',): {
+
+                        'inclusive_minimum': 1,
+                    },
+                },
+                'allowed_values': {
+                    ('range',): {
+
+                        "7D": "7d",
+                        "30D": "30d",
+                        "90D": "90d",
+                        "1Y": "1y",
+                        "YTD": "ytd",
+                        "ALL": "all",
+                        "CUSTOM": "custom"
+                    },
+                    ('compare',): {
+
+                        "PREV": "prev",
+                        "YOY": "yoy",
+                        "NONE": "none",
+                        "CUSTOM": "custom"
+                    },
+                    ('dim',): {
+
+                        "CATEGORY": "category",
+                        "SUBCATEGORY": "subcategory",
+                        "BRAND": "brand",
+                        "CONDITION": "condition",
+                        "SIZE": "size",
+                        "SOURCE": "source",
+                        "DEPARTMENT": "department",
+                        "PRICEBAND": "priceBand",
+                        "AGEBAND": "ageBand"
+                    },
+                    ('sort',): {
+
+                        "LABEL": "label",
+                        "LISTEDCOUNT": "listedCount",
+                        "ACTIVECOUNT": "activeCount",
+                        "UNITSSOLD": "unitsSold",
+                        "SELLTHROUGH": "sellThrough",
+                        "MEDIANDAYSTOSELL": "medianDaysToSell",
+                        "NETSALES": "netSales",
+                        "NETPROFIT": "netProfit",
+                        "MARGINRATE": "marginRate",
+                        "MARGIN": "margin",
+                        "ROI": "roi",
+                        "ASP": "asp",
+                        "SHARE": "share"
+                    },
+                    ('dir',): {
+
+                        "ASC": "asc",
+                        "DESC": "desc"
+                    },
+                },
+                'openapi_types': {
+                    'range':
+                        (str,),
+                    '_from':
+                        (str,),
+                    'to':
+                        (str,),
+                    'compare':
+                        (str,),
+                    'cmp_from':
+                        (str,),
+                    'cmp_to':
+                        (str,),
+                    'labels':
+                        (str,),
+                    'platforms':
+                        (str,),
+                    'category':
+                        (str,),
+                    'brand':
+                        (str,),
+                    'tz':
+                        (str,),
+                    'dim':
+                        (str,),
+                    'sort':
+                        (str,),
+                    'dir':
+                        (str,),
+                    'min_n':
+                        (int,),
+                    'q':
+                        (str,),
+                },
+                'attribute_map': {
+                    'range': 'range',
+                    '_from': 'from',
+                    'to': 'to',
+                    'compare': 'compare',
+                    'cmp_from': 'cmpFrom',
+                    'cmp_to': 'cmpTo',
+                    'labels': 'labels',
+                    'platforms': 'platforms',
+                    'category': 'category',
+                    'brand': 'brand',
+                    'tz': 'tz',
+                    'dim': 'dim',
+                    'sort': 'sort',
+                    'dir': 'dir',
+                    'min_n': 'minN',
+                    'q': 'q',
+                },
+                'location_map': {
+                    'range': 'query',
+                    '_from': 'query',
+                    'to': 'query',
+                    'compare': 'query',
+                    'cmp_from': 'query',
+                    'cmp_to': 'query',
+                    'labels': 'query',
+                    'platforms': 'query',
+                    'category': 'query',
+                    'brand': 'query',
+                    'tz': 'query',
+                    'dim': 'query',
+                    'sort': 'query',
+                    'dir': 'query',
+                    'min_n': 'query',
+                    'q': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_analytic_segment_by_key_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetAnalyticSegmentByKeyResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/segments/{dim}/{key}',
+                'operation_id': 'get_analytic_segment_by_key',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'dim',
+                    'key',
+                    'range',
+                    '_from',
+                    'to',
+                    'compare',
+                    'cmp_from',
+                    'cmp_to',
+                    'labels',
+                    'platforms',
+                    'category',
+                    'brand',
+                    'tz',
+                ],
+                'required': [
+                    'dim',
+                    'key',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                    'range',
+                    'compare',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('range',): {
+
+                        "7D": "7d",
+                        "30D": "30d",
+                        "90D": "90d",
+                        "1Y": "1y",
+                        "YTD": "ytd",
+                        "ALL": "all",
+                        "CUSTOM": "custom"
+                    },
+                    ('compare',): {
+
+                        "PREV": "prev",
+                        "YOY": "yoy",
+                        "NONE": "none",
+                        "CUSTOM": "custom"
+                    },
+                },
+                'openapi_types': {
+                    'dim':
+                        (str,),
+                    'key':
+                        (str,),
+                    'range':
+                        (str,),
+                    '_from':
+                        (str,),
+                    'to':
+                        (str,),
+                    'compare':
+                        (str,),
+                    'cmp_from':
+                        (str,),
+                    'cmp_to':
+                        (str,),
+                    'labels':
+                        (str,),
+                    'platforms':
+                        (str,),
+                    'category':
+                        (str,),
+                    'brand':
+                        (str,),
+                    'tz':
+                        (str,),
+                },
+                'attribute_map': {
+                    'dim': 'dim',
+                    'key': 'key',
+                    'range': 'range',
+                    '_from': 'from',
+                    'to': 'to',
+                    'compare': 'compare',
+                    'cmp_from': 'cmpFrom',
+                    'cmp_to': 'cmpTo',
+                    'labels': 'labels',
+                    'platforms': 'platforms',
+                    'category': 'category',
+                    'brand': 'brand',
+                    'tz': 'tz',
+                },
+                'location_map': {
+                    'dim': 'path',
+                    'key': 'path',
+                    'range': 'query',
+                    '_from': 'query',
+                    'to': 'query',
+                    'compare': 'query',
+                    'cmp_from': 'query',
+                    'cmp_to': 'query',
+                    'labels': 'query',
+                    'platforms': 'query',
+                    'category': 'query',
+                    'brand': 'query',
+                    'tz': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.get_analytic_summary_endpoint = _Endpoint(
             settings={
                 'response_type': (GetAnalyticSummaryResponse,),
@@ -233,6 +1867,7 @@ class AnalyticsApi(object):
             params_map={
                 'all': [
                     'days',
+                    'tz',
                 ],
                 'required': [],
                 'nullable': [
@@ -247,7 +1882,6 @@ class AnalyticsApi(object):
                 'validations': {
                     ('days',): {
 
-                        'inclusive_maximum': 365,
                         'inclusive_minimum': 1,
                     },
                 },
@@ -256,12 +1890,16 @@ class AnalyticsApi(object):
                 'openapi_types': {
                     'days':
                         (int,),
+                    'tz':
+                        (str,),
                 },
                 'attribute_map': {
                     'days': 'days',
+                    'tz': 'tz',
                 },
                 'location_map': {
                     'days': 'query',
+                    'tz': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -287,6 +1925,8 @@ class AnalyticsApi(object):
             },
             params_map={
                 'all': [
+                    'days',
+                    'tz',
                 ],
                 'required': [],
                 'nullable': [
@@ -294,18 +1934,31 @@ class AnalyticsApi(object):
                 'enum': [
                 ],
                 'validation': [
+                    'days',
                 ]
             },
             root_map={
                 'validations': {
+                    ('days',): {
+
+                        'inclusive_minimum': 1,
+                    },
                 },
                 'allowed_values': {
                 },
                 'openapi_types': {
+                    'days':
+                        (int,),
+                    'tz':
+                        (str,),
                 },
                 'attribute_map': {
+                    'days': 'days',
+                    'tz': 'tz',
                 },
                 'location_map': {
+                    'days': 'query',
+                    'tz': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -375,6 +2028,7 @@ class AnalyticsApi(object):
             },
             params_map={
                 'all': [
+                    'tz',
                 ],
                 'required': [],
                 'nullable': [
@@ -390,10 +2044,14 @@ class AnalyticsApi(object):
                 'allowed_values': {
                 },
                 'openapi_types': {
+                    'tz':
+                        (str,),
                 },
                 'attribute_map': {
+                    'tz': 'tz',
                 },
                 'location_map': {
+                    'tz': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -406,6 +2064,360 @@ class AnalyticsApi(object):
             },
             api_client=api_client
         )
+        self.update_analytic_experiment_endpoint = _Endpoint(
+            settings={
+                'response_type': (AnalyticExperimentResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/analytics/experiments/{id}',
+                'operation_id': 'update_analytic_experiment',
+                'http_method': 'PATCH',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+
+    def create_analytic_experiment(
+        self,
+        **kwargs
+    ):
+        """Start a listing experiment. split: 2-4 live platform listings observed over the same window; sequential: one platform listing, before vs after changeAt (optionally applying a new price).  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_analytic_experiment(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AnalyticExperimentResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.create_analytic_experiment_endpoint.call_with_http_info(**kwargs)
+
+    def create_analytic_experiment_declare(
+        self,
+        id,
+        **kwargs
+    ):
+        """Record the outcome: a winning arm, no difference, or inconclusive. Concludes the experiment.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_analytic_experiment_declare(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): The experiment id (a uuid; any other id is a 404).
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AnalyticExperimentResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.create_analytic_experiment_declare_endpoint.call_with_http_info(**kwargs)
+
+    def create_analytic_experiment_stop(
+        self,
+        id,
+        **kwargs
+    ):
+        """Stop an experiment: no more data is counted after now.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_analytic_experiment_stop(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): The experiment id (a uuid; any other id is a 404).
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AnalyticExperimentResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.create_analytic_experiment_stop_endpoint.call_with_http_info(**kwargs)
+
+    def delete_analytic_experiment(
+        self,
+        id,
+        **kwargs
+    ):
+        """Delete an experiment. The listings are untouched.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.delete_analytic_experiment(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): The experiment id (a uuid; any other id is a 404).
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            DeleteStoryResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.delete_analytic_experiment_endpoint.call_with_http_info(**kwargs)
 
     def get_analytic_bookkeeping(
         self,
@@ -483,7 +2495,7 @@ class AnalyticsApi(object):
         self,
         **kwargs
     ):
-        """Sales + revenue grouped by platform for the last N days.  # noqa: E501
+        """Sales, net sales, fees and net profit by platform for the last N days.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -493,6 +2505,8 @@ class AnalyticsApi(object):
 
 
         Keyword Args:
+            days (int): Calendar days back, today included. Larger values are clamped to 365.. [optional] if omitted the server will use the default value of 30
+            tz (str): IANA time zone for day boundaries. Default UTC.. [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -550,6 +2564,86 @@ class AnalyticsApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.get_analytic_by_platform_endpoint.call_with_http_info(**kwargs)
+
+    def get_analytic_compare(
+        self,
+        ids,
+        **kwargs
+    ):
+        """Compare 2-4 of your listings: columns of price, quality, channels, views, favorites, offers and outcome, engagement curves, the fields that differ, and observational tests of favorite rate, view-to-offer rate and views per day.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_analytic_compare(ids, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            ids (str): Comma-separated listing ids, 2 to 4. The first is arm A.
+
+        Keyword Args:
+            align (str): age = x is days since first listed (default); calendar = x is the date.. [optional]
+            platform (str): Restrict engagement to one channel (platform id).. [optional]
+            tz (str): IANA time zone. Default UTC.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetAnalyticCompareResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['ids'] = \
+            ids
+        return self.get_analytic_compare_endpoint.call_with_http_info(**kwargs)
 
     def get_analytic_dashboard(
         self,
@@ -623,6 +2717,242 @@ class AnalyticsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.get_analytic_dashboard_endpoint.call_with_http_info(**kwargs)
 
+    def get_analytic_experiment(
+        self,
+        **kwargs
+    ):
+        """Your listing A/B experiments, newest first, with status, days running and the current verdict.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_analytic_experiment(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            status (str): Default all.. [optional]
+            page (int): 1-indexed page. Default 1.. [optional]
+            size (int): Rows per page. Default 20.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetAnalyticExperimentResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.get_analytic_experiment_endpoint.call_with_http_info(**kwargs)
+
+    def get_analytic_experiment_by_id(
+        self,
+        id,
+        **kwargs
+    ):
+        """One experiment: arms with their windows, exposure and rates, the primary-metric test per arm against A, guardrail tests, the daily series and what to do next.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_analytic_experiment_by_id(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): The experiment id (a uuid).
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetAnalyticExperimentByIdResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.get_analytic_experiment_by_id_endpoint.call_with_http_info(**kwargs)
+
+    def get_analytic_inventory(
+        self,
+        **kwargs
+    ):
+        """Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_analytic_inventory(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            range (str): Reporting window. Default 30d. custom needs from and to.. [optional]
+            _from (str): YYYY-MM-DD, inclusive, in tz. Only with range=custom.. [optional]
+            to (str): YYYY-MM-DD, inclusive, in tz. Only with range=custom.. [optional]
+            compare (str): Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo).. [optional]
+            cmp_from (str): YYYY-MM-DD. Only with compare=custom.. [optional]
+            cmp_to (str): YYYY-MM-DD. Only with compare=custom.. [optional]
+            labels (str): Comma-separated inventory labels (any of them).. [optional]
+            platforms (str): Comma-separated platform ids.. [optional]
+            category (str): Canonical main-category key.. [optional]
+            brand (str): Brand name.. [optional]
+            tz (str): IANA time zone for day boundaries. Default UTC. An invalid name is a 400.. [optional]
+            maturity (int): Days an item has to sell within to count as sold in the cohort. Default 30.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetAnalyticInventoryResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.get_analytic_inventory_endpoint.call_with_http_info(**kwargs)
+
     def get_analytic_item(
         self,
         **kwargs
@@ -695,11 +3025,698 @@ class AnalyticsApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.get_analytic_item_endpoint.call_with_http_info(**kwargs)
 
+    def get_analytic_item_by_listing_id(
+        self,
+        listing_id,
+        **kwargs
+    ):
+        """One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_analytic_item_by_listing_id(listing_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            listing_id (str): A listings.id you own (or an inventory item id with by=inventory).
+
+        Keyword Args:
+            by (str): inventory = the id is an inventory item id; the answer is { redirectListingId }. Default listing.. [optional]
+            tz (str): IANA time zone for day boundaries. Default UTC.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetAnalyticItemByListingIdResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['listing_id'] = \
+            listing_id
+        return self.get_analytic_item_by_listing_id_endpoint.call_with_http_info(**kwargs)
+
+    def get_analytic_marketplace(
+        self,
+        **kwargs
+    ):
+        """Every marketplace side by side: net sales and profit, units, ASP, take rate, margin, shipping subsidy, days to sell, sell-through, cancel and return rates, offers and engagement; with vs=2-3 platforms, a head-to-head over listings live on all of them.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_analytic_marketplace(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            range (str): Reporting window. Default 30d. custom needs from and to.. [optional]
+            _from (str): YYYY-MM-DD, inclusive, in tz. Only with range=custom.. [optional]
+            to (str): YYYY-MM-DD, inclusive, in tz. Only with range=custom.. [optional]
+            compare (str): Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo).. [optional]
+            cmp_from (str): YYYY-MM-DD. Only with compare=custom.. [optional]
+            cmp_to (str): YYYY-MM-DD. Only with compare=custom.. [optional]
+            labels (str): Comma-separated inventory labels (any of them).. [optional]
+            platforms (str): Comma-separated platform ids.. [optional]
+            category (str): Canonical main-category key.. [optional]
+            brand (str): Brand name.. [optional]
+            tz (str): IANA time zone for day boundaries. Default UTC. An invalid name is a 400.. [optional]
+            vs (str): Comma-separated 2-3 platform ids for the head-to-head.. [optional]
+            sort (str): Default netSales.. [optional]
+            dir (str): Default desc.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetAnalyticMarketplaceResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.get_analytic_marketplace_endpoint.call_with_http_info(**kwargs)
+
+    def get_analytic_marketplace_by_platform(
+        self,
+        platform,
+        **kwargs
+    ):
+        """One marketplace in depth: its row, the money series, fee breakdown, days-to-sell and price-realization histograms, categories, top items, at-risk listings, a day-by-hour sales heatmap and offer stats.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_analytic_marketplace_by_platform(platform, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            platform (str): A platform id, e.g. ebay, poshmark.
+
+        Keyword Args:
+            range (str): Reporting window. Default 30d. custom needs from and to.. [optional]
+            _from (str): YYYY-MM-DD, inclusive, in tz. Only with range=custom.. [optional]
+            to (str): YYYY-MM-DD, inclusive, in tz. Only with range=custom.. [optional]
+            compare (str): Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo).. [optional]
+            cmp_from (str): YYYY-MM-DD. Only with compare=custom.. [optional]
+            cmp_to (str): YYYY-MM-DD. Only with compare=custom.. [optional]
+            labels (str): Comma-separated inventory labels (any of them).. [optional]
+            platforms (str): Comma-separated platform ids.. [optional]
+            category (str): Canonical main-category key.. [optional]
+            brand (str): Brand name.. [optional]
+            tz (str): IANA time zone for day boundaries. Default UTC. An invalid name is a 400.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetAnalyticMarketplaceByPlatformResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['platform'] = \
+            platform
+        return self.get_analytic_marketplace_by_platform_endpoint.call_with_http_info(**kwargs)
+
+    def get_analytic_overview(
+        self,
+        **kwargs
+    ):
+        """KPIs with deltas (net sales, net profit, units, ASP, margin, sell-through, median days to sell, active listings, take rate), the trend series, by-marketplace split, top categories, brands and items, sell-through cohort, data health and insights.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_analytic_overview(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            range (str): Reporting window. Default 30d. custom needs from and to.. [optional]
+            _from (str): YYYY-MM-DD, inclusive, in tz. Only with range=custom.. [optional]
+            to (str): YYYY-MM-DD, inclusive, in tz. Only with range=custom.. [optional]
+            compare (str): Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo).. [optional]
+            cmp_from (str): YYYY-MM-DD. Only with compare=custom.. [optional]
+            cmp_to (str): YYYY-MM-DD. Only with compare=custom.. [optional]
+            labels (str): Comma-separated inventory labels (any of them).. [optional]
+            platforms (str): Comma-separated platform ids.. [optional]
+            category (str): Canonical main-category key.. [optional]
+            brand (str): Brand name.. [optional]
+            tz (str): IANA time zone for day boundaries. Default UTC. An invalid name is a 400.. [optional]
+            stores (str): Comma-separated store ids.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetAnalyticOverviewResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.get_analytic_overview_endpoint.call_with_http_info(**kwargs)
+
+    def get_analytic_performance(
+        self,
+        **kwargs
+    ):
+        """Per-listing performance: channels, views, favorites, offers and conversations in the period, units sold, net sales and profit, margin, days to sell and a 0-100 health score, paged and sortable.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_analytic_performance(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            range (str): Reporting window. Default 30d. custom needs from and to.. [optional]
+            _from (str): YYYY-MM-DD, inclusive, in tz. Only with range=custom.. [optional]
+            to (str): YYYY-MM-DD, inclusive, in tz. Only with range=custom.. [optional]
+            compare (str): Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo).. [optional]
+            cmp_from (str): YYYY-MM-DD. Only with compare=custom.. [optional]
+            cmp_to (str): YYYY-MM-DD. Only with compare=custom.. [optional]
+            labels (str): Comma-separated inventory labels (any of them).. [optional]
+            platforms (str): Comma-separated platform ids.. [optional]
+            category (str): Canonical main-category key.. [optional]
+            brand (str): Brand name.. [optional]
+            tz (str): IANA time zone for day boundaries. Default UTC. An invalid name is a 400.. [optional]
+            status (str): unsold = listed at least minDays with no completed sale.. [optional]
+            q (str): Title, SKU or brand contains.. [optional]
+            sort (str): Default lastActivity.. [optional]
+            dir (str): Default desc.. [optional]
+            page (int): 1-indexed page. Default 1.. [optional]
+            size (int): Rows per page. Default 50.. [optional]
+            min_days (int): Minimum days listed (for status=unsold). Default 0.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetAnalyticPerformanceResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.get_analytic_performance_endpoint.call_with_http_info(**kwargs)
+
+    def get_analytic_program(
+        self,
+        program,
+        **kwargs
+    ):
+        """One program's report over a date range (default the last 30 days, at most 366): KPIs, a daily trend and a breakdown table. Money in integer cents.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_analytic_program(program, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            program (str):
+
+        Keyword Args:
+            _from (date): First UTC day (YYYY-MM-DD), inclusive.. [optional]
+            to (date): Last UTC day (YYYY-MM-DD), inclusive. Default today.. [optional]
+            by (str): Breakdown dimension, when the program offers one (worlds: showroom, property, event).. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetAnalyticProgramResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['program'] = \
+            program
+        return self.get_analytic_program_endpoint.call_with_http_info(**kwargs)
+
+    def get_analytic_segment(
+        self,
+        **kwargs
+    ):
+        """Niches along one dimension: listed and active counts, units sold, cohort sell-through, median days to sell, net sales and profit, margin, ROI, ASP and discount from ask; rows under minN are flagged lowSample.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_analytic_segment(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            range (str): Reporting window. Default 30d. custom needs from and to.. [optional]
+            _from (str): YYYY-MM-DD, inclusive, in tz. Only with range=custom.. [optional]
+            to (str): YYYY-MM-DD, inclusive, in tz. Only with range=custom.. [optional]
+            compare (str): Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo).. [optional]
+            cmp_from (str): YYYY-MM-DD. Only with compare=custom.. [optional]
+            cmp_to (str): YYYY-MM-DD. Only with compare=custom.. [optional]
+            labels (str): Comma-separated inventory labels (any of them).. [optional]
+            platforms (str): Comma-separated platform ids.. [optional]
+            category (str): Canonical main-category key.. [optional]
+            brand (str): Brand name.. [optional]
+            tz (str): IANA time zone for day boundaries. Default UTC. An invalid name is a 400.. [optional]
+            dim (str): category = main category; subcategory = main > sub; brand; condition; size; source = where you acquired it; department; priceBand = ask in <$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand = days live at sale or now (<7, 7-30, 30-90, 90+).. [optional]
+            sort (str): Default netSales.. [optional]
+            dir (str): Default desc.. [optional]
+            min_n (int): Minimum sample for a row to count as a winner or loser. Default 3.. [optional]
+            q (str): Segment label contains.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetAnalyticSegmentResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.get_analytic_segment_endpoint.call_with_http_info(**kwargs)
+
+    def get_analytic_segment_by_key(
+        self,
+        dim,
+        key,
+        **kwargs
+    ):
+        """One niche in depth: its row, series, by-marketplace split, days-to-sell histogram, price bands, top items and the 10 oldest unsold listings in it.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_analytic_segment_by_key(dim, key, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            dim (str): One of category, subcategory, brand, condition, size, source, department, priceBand, ageBand. category = main category; subcategory = main > sub; brand; condition; size; source = where you acquired it; department; priceBand = ask in <$10, $10-25, $25-50, $50-100, $100-250, $250+; ageBand = days live at sale or now (<7, 7-30, 30-90, 90+).
+            key (str): The segment key from a segments row (URL-encoded). A key with no data in scope is a 404.
+
+        Keyword Args:
+            range (str): Reporting window. Default 30d. custom needs from and to.. [optional]
+            _from (str): YYYY-MM-DD, inclusive, in tz. Only with range=custom.. [optional]
+            to (str): YYYY-MM-DD, inclusive, in tz. Only with range=custom.. [optional]
+            compare (str): Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo).. [optional]
+            cmp_from (str): YYYY-MM-DD. Only with compare=custom.. [optional]
+            cmp_to (str): YYYY-MM-DD. Only with compare=custom.. [optional]
+            labels (str): Comma-separated inventory labels (any of them).. [optional]
+            platforms (str): Comma-separated platform ids.. [optional]
+            category (str): Canonical main-category key.. [optional]
+            brand (str): Brand name.. [optional]
+            tz (str): IANA time zone for day boundaries. Default UTC. An invalid name is a 400.. [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetAnalyticSegmentByKeyResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['dim'] = \
+            dim
+        kwargs['key'] = \
+            key
+        return self.get_analytic_segment_by_key_endpoint.call_with_http_info(**kwargs)
+
     def get_analytic_summary(
         self,
         **kwargs
     ):
-        """Headline KPIs for the last N days.  # noqa: E501
+        """Headline KPIs for the last N days (the same numbers as the analytics overview).  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -709,7 +3726,8 @@ class AnalyticsApi(object):
 
 
         Keyword Args:
-            days (int): [optional] if omitted the server will use the default value of 30
+            days (int): Calendar days back, today included. Larger values are clamped to 365.. [optional] if omitted the server will use the default value of 30
+            tz (str): IANA time zone for day boundaries. Default UTC.. [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -772,7 +3790,7 @@ class AnalyticsApi(object):
         self,
         **kwargs
     ):
-        """Daily sales + revenue series for the last N days.  # noqa: E501
+        """Sales and net sales over the last N days, zero-filled, one row per calendar day.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -782,6 +3800,8 @@ class AnalyticsApi(object):
 
 
         Keyword Args:
+            days (int): Calendar days back, today included. Larger values are clamped to 365.. [optional] if omitted the server will use the default value of 30
+            tz (str): IANA time zone for day boundaries. Default UTC.. [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -916,7 +3936,7 @@ class AnalyticsApi(object):
         self,
         **kwargs
     ):
-        """Platform velocity + margin insight (90-day window).  # noqa: E501
+        """Platform velocity + margin insight (90-day window): units, net sales, median days to sell, ASP and net after the real marketplace fees.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -926,6 +3946,7 @@ class AnalyticsApi(object):
 
 
         Keyword Args:
+            tz (str): IANA time zone for day boundaries. Default UTC.. [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object
@@ -983,4 +4004,81 @@ class AnalyticsApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.list_insight_by_platform_endpoint.call_with_http_info(**kwargs)
+
+    def update_analytic_experiment(
+        self,
+        id,
+        **kwargs
+    ):
+        """Rename an experiment or change its hypothesis, notes or planned end.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_analytic_experiment(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str): The experiment id (a uuid; any other id is a 404).
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            AnalyticExperimentResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.update_analytic_experiment_endpoint.call_with_http_info(**kwargs)
 

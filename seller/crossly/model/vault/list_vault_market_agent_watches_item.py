@@ -56,10 +56,10 @@ class ListVaultMarketAgentWatchesItem(ModelNormal):
 
     allowed_values = {
         ('metric',): {
-            'MARK': "mark",
             'ASK': "ask",
-            'BID': "bid",
             'LAST': "last",
+            'MARK': "mark",
+            'BID': "bid",
         },
         ('direction',): {
             'ABOVE': "above",

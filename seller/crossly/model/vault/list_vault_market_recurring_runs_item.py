@@ -82,8 +82,8 @@ class ListVaultMarketRecurringRunsItem(ModelNormal):
             'status': (str,),  # noqa: E501
             'schedule_id': (str,),  # noqa: E501
             'used_backup': (bool,),  # noqa: E501
-            'reason': (str, none_type,),  # noqa: E501
             'order_id': (str, none_type,),  # noqa: E501
+            'reason': (str, none_type,),  # noqa: E501
             'mark_cents': (float, none_type,),  # noqa: E501
             'limit_cents': (float, none_type,),  # noqa: E501
             'filled_cents': (float, none_type,),  # noqa: E501
@@ -102,8 +102,8 @@ class ListVaultMarketRecurringRunsItem(ModelNormal):
         'status': 'status',  # noqa: E501
         'schedule_id': 'scheduleId',  # noqa: E501
         'used_backup': 'usedBackup',  # noqa: E501
-        'reason': 'reason',  # noqa: E501
         'order_id': 'orderId',  # noqa: E501
+        'reason': 'reason',  # noqa: E501
         'mark_cents': 'markCents',  # noqa: E501
         'limit_cents': 'limitCents',  # noqa: E501
         'filled_cents': 'filledCents',  # noqa: E501
@@ -159,8 +159,8 @@ class ListVaultMarketRecurringRunsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            reason (str, none_type): [optional]  # noqa: E501
             order_id (str, none_type): [optional]  # noqa: E501
+            reason (str, none_type): [optional]  # noqa: E501
             mark_cents (float, none_type): [optional]  # noqa: E501
             limit_cents (float, none_type): [optional]  # noqa: E501
             filled_cents (float, none_type): [optional]  # noqa: E501
@@ -261,8 +261,8 @@ class ListVaultMarketRecurringRunsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            reason (str, none_type): [optional]  # noqa: E501
             order_id (str, none_type): [optional]  # noqa: E501
+            reason (str, none_type): [optional]  # noqa: E501
             mark_cents (float, none_type): [optional]  # noqa: E501
             limit_cents (float, none_type): [optional]  # noqa: E501
             filled_cents (float, none_type): [optional]  # noqa: E501

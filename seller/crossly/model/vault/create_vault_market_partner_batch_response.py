@@ -31,9 +31,9 @@ from crossly.exceptions import ApiAttributeError
 
 def lazy_import():
     from crossly.model.vault.create_vault_market_partner_batch_response_created import CreateVaultMarketPartnerBatchResponseCreated
-    from crossly.model.vault.create_vault_market_partner_batch_response_label import CreateVaultMarketPartnerBatchResponseLabel
+    from crossly.model.common.label_url_tracking_code import LabelUrlTrackingCode
     globals()['CreateVaultMarketPartnerBatchResponseCreated'] = CreateVaultMarketPartnerBatchResponseCreated
-    globals()['CreateVaultMarketPartnerBatchResponseLabel'] = CreateVaultMarketPartnerBatchResponseLabel
+    globals()['LabelUrlTrackingCode'] = LabelUrlTrackingCode
 
 
 class CreateVaultMarketPartnerBatchResponse(ModelNormal):
@@ -85,7 +85,7 @@ class CreateVaultMarketPartnerBatchResponse(ModelNormal):
             'batch_id': (str,),  # noqa: E501
             'partner_code': (str,),  # noqa: E501
             'created': ([CreateVaultMarketPartnerBatchResponseCreated],),  # noqa: E501
-            'label': (CreateVaultMarketPartnerBatchResponseLabel,),  # noqa: E501
+            'label': (LabelUrlTrackingCode,),  # noqa: E501
             'label_error': (str, none_type,),  # noqa: E501
         }
 
@@ -148,7 +148,7 @@ class CreateVaultMarketPartnerBatchResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            label (CreateVaultMarketPartnerBatchResponseLabel): [optional]  # noqa: E501
+            label (LabelUrlTrackingCode): [optional]  # noqa: E501
             label_error (str, none_type): [optional]  # noqa: E501
         """
 
@@ -239,7 +239,7 @@ class CreateVaultMarketPartnerBatchResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            label (CreateVaultMarketPartnerBatchResponseLabel): [optional]  # noqa: E501
+            label (LabelUrlTrackingCode): [optional]  # noqa: E501
             label_error (str, none_type): [optional]  # noqa: E501
         """
 

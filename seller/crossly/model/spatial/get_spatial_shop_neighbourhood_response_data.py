@@ -95,11 +95,9 @@ class GetSpatialShopNeighbourhoodResponseData(ModelNormal):
         lazy_import()
         return {
             'shop': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
-            'can_move': (bool,),  # noqa: E501
             'options': ([ListNeighbourhoodsItem],),  # noqa: E501
             'home': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
             'suggested': (str, none_type,),  # noqa: E501
-            'move': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -109,11 +107,9 @@ class GetSpatialShopNeighbourhoodResponseData(ModelNormal):
 
     attribute_map = {
         'shop': 'shop',  # noqa: E501
-        'can_move': 'canMove',  # noqa: E501
         'options': 'options',  # noqa: E501
         'home': 'home',  # noqa: E501
         'suggested': 'suggested',  # noqa: E501
-        'move': 'move',  # noqa: E501
     }
 
     read_only_vars = {
@@ -123,12 +119,11 @@ class GetSpatialShopNeighbourhoodResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, shop, can_move, options, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, shop, options, *args, **kwargs):  # noqa: E501
         """GetSpatialShopNeighbourhoodResponseData - a model defined in OpenAPI
 
         Args:
             shop (bool, date, datetime, dict, float, int, list, str, none_type):
-            can_move (bool):
             options ([ListNeighbourhoodsItem]):
 
         Keyword Args:
@@ -164,7 +159,6 @@ class GetSpatialShopNeighbourhoodResponseData(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             home (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
             suggested (str, none_type): [optional]  # noqa: E501
-            move (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -193,7 +187,6 @@ class GetSpatialShopNeighbourhoodResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.shop = shop
-        self.can_move = can_move
         self.options = options
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -215,12 +208,11 @@ class GetSpatialShopNeighbourhoodResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, shop, can_move, options, *args, **kwargs):  # noqa: E501
+    def __init__(self, shop, options, *args, **kwargs):  # noqa: E501
         """GetSpatialShopNeighbourhoodResponseData - a model defined in OpenAPI
 
         Args:
             shop (bool, date, datetime, dict, float, int, list, str, none_type):
-            can_move (bool):
             options ([ListNeighbourhoodsItem]):
 
         Keyword Args:
@@ -256,7 +248,6 @@ class GetSpatialShopNeighbourhoodResponseData(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             home (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
             suggested (str, none_type): [optional]  # noqa: E501
-            move (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -283,7 +274,6 @@ class GetSpatialShopNeighbourhoodResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.shop = shop
-        self.can_move = can_move
         self.options = options
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

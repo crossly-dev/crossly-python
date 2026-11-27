@@ -56,9 +56,9 @@ class CreateBuyerAgentSessionActResponseQuotePriceCheck(ModelNormal):
 
     allowed_values = {
         ('verdict',): {
-            'HIGH': "high",
-            'FAIR': "fair",
             'GOOD': "good",
+            'FAIR': "fair",
+            'HIGH': "high",
             'GREAT': "great",
         },
     }

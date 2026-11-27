@@ -30,10 +30,12 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from crossly.model.game.list_game_hunts_item_rules import ListGameHuntsItemRules
     from crossly.model.game.list_game_hunts_item_stall import ListGameHuntsItemStall
-    from crossly.model.common.slug_name import SlugName
+    from crossly.model.common.name_slug import NameSlug
+    globals()['ListGameHuntsItemRules'] = ListGameHuntsItemRules
     globals()['ListGameHuntsItemStall'] = ListGameHuntsItemStall
-    globals()['SlugName'] = SlugName
+    globals()['NameSlug'] = NameSlug
 
 
 class ListGameHuntsItem(ModelNormal):
@@ -84,12 +86,13 @@ class ListGameHuntsItem(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'title': (str,),  # noqa: E501
-            'shop': (SlugName,),  # noqa: E501
+            'shop': (NameSlug,),  # noqa: E501
             'tokens': (float,),  # noqa: E501
             'reward': (str,),  # noqa: E501
             'ends_at': (str,),  # noqa: E501
             'finishers': (float,),  # noqa: E501
             'stall': (ListGameHuntsItemStall,),  # noqa: E501
+            'rules': (ListGameHuntsItemRules,),  # noqa: E501
         }
 
     @cached_property
@@ -106,6 +109,7 @@ class ListGameHuntsItem(ModelNormal):
         'ends_at': 'endsAt',  # noqa: E501
         'finishers': 'finishers',  # noqa: E501
         'stall': 'stall',  # noqa: E501
+        'rules': 'rules',  # noqa: E501
     }
 
     read_only_vars = {
@@ -121,7 +125,7 @@ class ListGameHuntsItem(ModelNormal):
         Args:
             id (str):
             title (str):
-            shop (SlugName):
+            shop (NameSlug):
             tokens (float):
             reward (str): \"10% off\" / \"$5 off\": what finishing it unlocks, never the code itself.
             ends_at (str):
@@ -159,6 +163,7 @@ class ListGameHuntsItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             stall (ListGameHuntsItemStall): [optional]  # noqa: E501
+            rules (ListGameHuntsItemRules): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -219,7 +224,7 @@ class ListGameHuntsItem(ModelNormal):
         Args:
             id (str):
             title (str):
-            shop (SlugName):
+            shop (NameSlug):
             tokens (float):
             reward (str): \"10% off\" / \"$5 off\": what finishing it unlocks, never the code itself.
             ends_at (str):
@@ -257,6 +262,7 @@ class ListGameHuntsItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             stall (ListGameHuntsItemStall): [optional]  # noqa: E501
+            rules (ListGameHuntsItemRules): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

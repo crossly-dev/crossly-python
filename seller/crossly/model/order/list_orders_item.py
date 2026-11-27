@@ -30,8 +30,14 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.order.list_orders_item_tracking_history import ListOrdersItemTrackingHistory
-    globals()['ListOrdersItemTrackingHistory'] = ListOrdersItemTrackingHistory
+    from crossly.model.order.get_order_response_app_share import GetOrderResponseAppShare
+    from crossly.model.order.get_order_response_line_items import GetOrderResponseLineItems
+    from crossly.model.order.get_order_response_tracking_history import GetOrderResponseTrackingHistory
+    from crossly.model.order.get_order_response_trade import GetOrderResponseTrade
+    globals()['GetOrderResponseAppShare'] = GetOrderResponseAppShare
+    globals()['GetOrderResponseLineItems'] = GetOrderResponseLineItems
+    globals()['GetOrderResponseTrackingHistory'] = GetOrderResponseTrackingHistory
+    globals()['GetOrderResponseTrade'] = GetOrderResponseTrade
 
 
 class ListOrdersItem(ModelNormal):
@@ -80,31 +86,43 @@ class ListOrdersItem(ModelNormal):
         """
         lazy_import()
         return {
-            'id': (str,),  # noqa: E501
-            'created_at': (datetime,),  # noqa: E501
-            'updated_at': (datetime,),  # noqa: E501
-            'user_id': (str,),  # noqa: E501
+            'details_pending': (bool,),  # noqa: E501
             'quantity': (float,),  # noqa: E501
-            'status': (str,),  # noqa: E501
+            'id': (str,),  # noqa: E501
+            'user_id': (str,),  # noqa: E501
             'platform': (str,),  # noqa: E501
             'duties_cents': (float,),  # noqa: E501
+            'status': (str,),  # noqa: E501
             'sales_channel': (str,),  # noqa: E501
+            'channel': (str,),  # noqa: E501
             'oversold_by': (float,),  # noqa: E501
             'is_disputed': (bool,),  # noqa: E501
             'arrival_condition_photos': ([str],),  # noqa: E501
             'fulfillment_method': (str,),  # noqa: E501
-            'notes': (str, none_type,),  # noqa: E501
-            'cancelled_at': (datetime, none_type,),  # noqa: E501
-            'listing_id': (str, none_type,),  # noqa: E501
+            'created_at': (datetime,),  # noqa: E501
+            'updated_at': (datetime,),  # noqa: E501
+            'app_share': (GetOrderResponseAppShare,),  # noqa: E501
+            'trade': (GetOrderResponseTrade,),  # noqa: E501
+            'sale_price': (float, none_type,),  # noqa: E501
+            'platform_fee': (float, none_type,),  # noqa: E501
+            'tax_collected': (float, none_type,),  # noqa: E501
+            'shipping_charged': (float, none_type,),  # noqa: E501
+            'fee_source': (str, none_type,),  # noqa: E501
+            'sku': (str, none_type,),  # noqa: E501
+            'line_items': ([GetOrderResponseLineItems], none_type,),  # noqa: E501
             'inventory_item_id': (str, none_type,),  # noqa: E501
+            'listing_id': (str, none_type,),  # noqa: E501
             'platform_listing_id': (str, none_type,),  # noqa: E501
-            'handling_time_days': (float, none_type,),  # noqa: E501
             'platform_order_id': (str, none_type,),  # noqa: E501
+            'reported_by_app_id': (str, none_type,),  # noqa: E501
+            'storefront_id': (str, none_type,),  # noqa: E501
             'buyer_username': (str, none_type,),  # noqa: E501
             'pickup_point': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'consolidation_id': (str, none_type,),  # noqa: E501
             'duties_refunded_at': (datetime, none_type,),  # noqa: E501
             'channel_location_id': (str, none_type,),  # noqa: E501
+            'invoice_id': (str, none_type,),  # noqa: E501
+            'buyer_company_id': (str, none_type,),  # noqa: E501
             'package_preset_id': (str, none_type,),  # noqa: E501
             'carrier': (str, none_type,),  # noqa: E501
             'service': (str, none_type,),  # noqa: E501
@@ -119,7 +137,7 @@ class ListOrdersItem(ModelNormal):
             'delivered_at': (datetime, none_type,),  # noqa: E501
             'carrier_status': (str, none_type,),  # noqa: E501
             'carrier_status_detail': (str, none_type,),  # noqa: E501
-            'tracking_history': ([ListOrdersItemTrackingHistory], none_type,),  # noqa: E501
+            'tracking_history': ([GetOrderResponseTrackingHistory], none_type,),  # noqa: E501
             'delivery_location': (str, none_type,),  # noqa: E501
             'delivery_signature': (str, none_type,),  # noqa: E501
             'tracking_submitted_at': (datetime, none_type,),  # noqa: E501
@@ -128,6 +146,7 @@ class ListOrdersItem(ModelNormal):
             'cost_of_goods': (str, none_type,),  # noqa: E501
             'requested_carrier': (str, none_type,),  # noqa: E501
             'requested_service': (str, none_type,),  # noqa: E501
+            'handling_time_days': (float, none_type,),  # noqa: E501
             'ship_by_at': (datetime, none_type,),  # noqa: E501
             'ship_by_alerted_at': (datetime, none_type,),  # noqa: E501
             'last_status_check_at': (datetime, none_type,),  # noqa: E501
@@ -139,13 +158,18 @@ class ListOrdersItem(ModelNormal):
             'refund_reason': (str, none_type,),  # noqa: E501
             'refund_platform_id': (str, none_type,),  # noqa: E501
             'refunded_at': (datetime, none_type,),  # noqa: E501
+            'cancelled_at': (datetime, none_type,),  # noqa: E501
             'cancellation_reason': (str, none_type,),  # noqa: E501
+            'notes': (str, none_type,),  # noqa: E501
             'arrival_condition_requested_at': (datetime, none_type,),  # noqa: E501
             'arrival_condition_submitted_at': (datetime, none_type,),  # noqa: E501
             'arrival_condition_declined_at': (datetime, none_type,),  # noqa: E501
             'delivery_photo_url': (str, none_type,),  # noqa: E501
+            'delivery_photo_source': (str, none_type,),  # noqa: E501
             'purchase_order_ref': (str, none_type,),  # noqa: E501
             'buyer_email': (str, none_type,),  # noqa: E501
+            'source': (str, none_type,),  # noqa: E501
+            'platform_confirmed_at': (datetime, none_type,),  # noqa: E501
             'deleted_at': (datetime, none_type,),  # noqa: E501
         }
 
@@ -155,31 +179,43 @@ class ListOrdersItem(ModelNormal):
 
 
     attribute_map = {
-        'id': 'id',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
-        'updated_at': 'updatedAt',  # noqa: E501
-        'user_id': 'userId',  # noqa: E501
+        'details_pending': 'detailsPending',  # noqa: E501
         'quantity': 'quantity',  # noqa: E501
-        'status': 'status',  # noqa: E501
+        'id': 'id',  # noqa: E501
+        'user_id': 'userId',  # noqa: E501
         'platform': 'platform',  # noqa: E501
         'duties_cents': 'dutiesCents',  # noqa: E501
+        'status': 'status',  # noqa: E501
         'sales_channel': 'salesChannel',  # noqa: E501
+        'channel': 'channel',  # noqa: E501
         'oversold_by': 'oversoldBy',  # noqa: E501
         'is_disputed': 'isDisputed',  # noqa: E501
         'arrival_condition_photos': 'arrivalConditionPhotos',  # noqa: E501
         'fulfillment_method': 'fulfillmentMethod',  # noqa: E501
-        'notes': 'notes',  # noqa: E501
-        'cancelled_at': 'cancelledAt',  # noqa: E501
-        'listing_id': 'listingId',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
+        'updated_at': 'updatedAt',  # noqa: E501
+        'app_share': 'appShare',  # noqa: E501
+        'trade': 'trade',  # noqa: E501
+        'sale_price': 'salePrice',  # noqa: E501
+        'platform_fee': 'platformFee',  # noqa: E501
+        'tax_collected': 'taxCollected',  # noqa: E501
+        'shipping_charged': 'shippingCharged',  # noqa: E501
+        'fee_source': 'feeSource',  # noqa: E501
+        'sku': 'sku',  # noqa: E501
+        'line_items': 'lineItems',  # noqa: E501
         'inventory_item_id': 'inventoryItemId',  # noqa: E501
+        'listing_id': 'listingId',  # noqa: E501
         'platform_listing_id': 'platformListingId',  # noqa: E501
-        'handling_time_days': 'handlingTimeDays',  # noqa: E501
         'platform_order_id': 'platformOrderId',  # noqa: E501
+        'reported_by_app_id': 'reportedByAppId',  # noqa: E501
+        'storefront_id': 'storefrontId',  # noqa: E501
         'buyer_username': 'buyerUsername',  # noqa: E501
         'pickup_point': 'pickupPoint',  # noqa: E501
         'consolidation_id': 'consolidationId',  # noqa: E501
         'duties_refunded_at': 'dutiesRefundedAt',  # noqa: E501
         'channel_location_id': 'channelLocationId',  # noqa: E501
+        'invoice_id': 'invoiceId',  # noqa: E501
+        'buyer_company_id': 'buyerCompanyId',  # noqa: E501
         'package_preset_id': 'packagePresetId',  # noqa: E501
         'carrier': 'carrier',  # noqa: E501
         'service': 'service',  # noqa: E501
@@ -203,6 +239,7 @@ class ListOrdersItem(ModelNormal):
         'cost_of_goods': 'costOfGoods',  # noqa: E501
         'requested_carrier': 'requestedCarrier',  # noqa: E501
         'requested_service': 'requestedService',  # noqa: E501
+        'handling_time_days': 'handlingTimeDays',  # noqa: E501
         'ship_by_at': 'shipByAt',  # noqa: E501
         'ship_by_alerted_at': 'shipByAlertedAt',  # noqa: E501
         'last_status_check_at': 'lastStatusCheckAt',  # noqa: E501
@@ -214,13 +251,18 @@ class ListOrdersItem(ModelNormal):
         'refund_reason': 'refundReason',  # noqa: E501
         'refund_platform_id': 'refundPlatformId',  # noqa: E501
         'refunded_at': 'refundedAt',  # noqa: E501
+        'cancelled_at': 'cancelledAt',  # noqa: E501
         'cancellation_reason': 'cancellationReason',  # noqa: E501
+        'notes': 'notes',  # noqa: E501
         'arrival_condition_requested_at': 'arrivalConditionRequestedAt',  # noqa: E501
         'arrival_condition_submitted_at': 'arrivalConditionSubmittedAt',  # noqa: E501
         'arrival_condition_declined_at': 'arrivalConditionDeclinedAt',  # noqa: E501
         'delivery_photo_url': 'deliveryPhotoUrl',  # noqa: E501
+        'delivery_photo_source': 'deliveryPhotoSource',  # noqa: E501
         'purchase_order_ref': 'purchaseOrderRef',  # noqa: E501
         'buyer_email': 'buyerEmail',  # noqa: E501
+        'source': 'source',  # noqa: E501
+        'platform_confirmed_at': 'platformConfirmedAt',  # noqa: E501
         'deleted_at': 'deletedAt',  # noqa: E501
     }
 
@@ -231,23 +273,25 @@ class ListOrdersItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, updated_at, user_id, quantity, status, platform, duties_cents, sales_channel, oversold_by, is_disputed, arrival_condition_photos, fulfillment_method, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, details_pending, quantity, id, user_id, platform, duties_cents, status, sales_channel, channel, oversold_by, is_disputed, arrival_condition_photos, fulfillment_method, created_at, updated_at, *args, **kwargs):  # noqa: E501
         """ListOrdersItem - a model defined in OpenAPI
 
         Args:
+            details_pending (bool):
+            quantity (float): Units purchased in this order (default 1). Drives how many units the Available→Reserved→Sold state machine moves. See migration 0139. Units on the order (order.created `quantity`).
             id (str):
+            user_id (str):
+            platform (str):
+            duties_cents (float): X4 (0479): import duties + taxes + fees the buyer paid at checkout for this parcel (services/landed-cost/); the label ships DDP.
+            status (str):
+            sales_channel (str): Where the sale happened, as distinct from which platform it was on.  Shopify POS orders arrive through the same Orders API as web orders, so before this they were detected as ordinary online sales and landed in `needs_fulfillment` — queued for a shipment that will never happen, because the customer already walked out with the item.  'online' for everything else, which is what every pre-existing row is.
+            channel (str): 1121 — which BUSINESS channel sold it: retail | wholesale | auction | live | world | pos (@crosslister/shared/wholesale ORDER_CHANNELS). Orthogonal to `salesChannel` (online vs in person): a wholesale order is usually online. Written at sale record time (sale/detect/order-write.ts).
+            oversold_by (float): Units this order could NOT be covered from stock — an oversell (0 = normal). Set at detection by recordSale's shortfall; the seller must cancel or refund. See migration 0156.
+            is_disputed (bool):
+            arrival_condition_photos ([str]): Buyer's arrival photos. Always read as a set, for one delivery.
+            fulfillment_method (str): `'ship'` | `'pickup'` | `'mixed'` — a DERIVED summary of this order's lines, for reads that only need the headline.  The authority is `crossly_order_items.fulfillment_method`: a buyer can collect part of one seller's order and have the rest posted, so the order-level value is 'mixed' whenever its lines disagree. Anything that acts on the difference — buying a label, packing a parcel — must read the lines, not this (migrations 0219, 0220).
             created_at (datetime):
             updated_at (datetime):
-            user_id (str):
-            quantity (float):
-            status (str):
-            platform (str):
-            duties_cents (float):
-            sales_channel (str):
-            oversold_by (float):
-            is_disputed (bool):
-            arrival_condition_photos ([str]):
-            fulfillment_method (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -280,18 +324,28 @@ class ListOrdersItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            notes (str, none_type): [optional]  # noqa: E501
-            cancelled_at (datetime, none_type): [optional]  # noqa: E501
-            listing_id (str, none_type): [optional]  # noqa: E501
+            app_share (GetOrderResponseAppShare): [optional]  # noqa: E501
+            trade (GetOrderResponseTrade): [optional]  # noqa: E501
+            sale_price (float, none_type): DOLLARS (numbers, as order.created sends them). null = not known (no sale row, or details pending).. [optional]  # noqa: E501
+            platform_fee (float, none_type): [optional]  # noqa: E501
+            tax_collected (float, none_type): [optional]  # noqa: E501
+            shipping_charged (float, none_type): [optional]  # noqa: E501
+            fee_source (str, none_type): 'exact' (the marketplace's charged fee) | 'estimated'.. [optional]  # noqa: E501
+            sku (str, none_type): The listing's SKU (order.created `sku`).. [optional]  # noqa: E501
+            line_items ([GetOrderResponseLineItems], none_type): [optional]  # noqa: E501
             inventory_item_id (str, none_type): [optional]  # noqa: E501
+            listing_id (str, none_type): [optional]  # noqa: E501
             platform_listing_id (str, none_type): [optional]  # noqa: E501
-            handling_time_days (float, none_type): [optional]  # noqa: E501
             platform_order_id (str, none_type): [optional]  # noqa: E501
+            reported_by_app_id (str, none_type): 1066 (order relay): the developer app that reported this order through an inbound item.sold (FK oauth_apps.id ON DELETE SET NULL in SQL). Null for every order Crossly detected itself. Read by action authority.. [optional]  # noqa: E501
+            storefront_id (str, none_type): Crossly orders only: the seller's storefront this sale came from. Null for every non-crossly platform. See db/schema/storefronts.ts.. [optional]  # noqa: E501
             buyer_username (str, none_type): [optional]  # noqa: E501
-            pickup_point ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
-            consolidation_id (str, none_type): [optional]  # noqa: E501
-            duties_refunded_at (datetime, none_type): [optional]  # noqa: E501
-            channel_location_id (str, none_type): [optional]  # noqa: E501
+            pickup_point ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): C8 (0448): the carrier location the parcel is held at — services/pickup-points.ts.. [optional]  # noqa: E501
+            consolidation_id (str, none_type): D4 (0448): set when this seller ships to the consolidation hub, not the buyer — services/hub/.. [optional]  # noqa: E501
+            duties_refunded_at (datetime, none_type): X4: refunded because the order never shipped.. [optional]  # noqa: E501
+            channel_location_id (str, none_type): POS location that rang it up. Null for online sales.. [optional]  # noqa: E501
+            invoice_id (str, none_type): 1121 — the on-account invoice this order was placed on (crossly_invoices.id).. [optional]  # noqa: E501
+            buyer_company_id (str, none_type): 1121 — the buyer company (W7 crossly_buyer_companies; no FK until that table exists).. [optional]  # noqa: E501
             package_preset_id (str, none_type): [optional]  # noqa: E501
             carrier (str, none_type): [optional]  # noqa: E501
             service (str, none_type): [optional]  # noqa: E501
@@ -306,19 +360,20 @@ class ListOrdersItem(ModelNormal):
             delivered_at (datetime, none_type): [optional]  # noqa: E501
             carrier_status (str, none_type): [optional]  # noqa: E501
             carrier_status_detail (str, none_type): [optional]  # noqa: E501
-            tracking_history ([ListOrdersItemTrackingHistory], none_type): [optional]  # noqa: E501
-            delivery_location (str, none_type): [optional]  # noqa: E501
-            delivery_signature (str, none_type): [optional]  # noqa: E501
+            tracking_history ([GetOrderResponseTrackingHistory], none_type): Every carrier scan, newest first (migration 0243).  The two columns above are the CURRENT state, overwritten on each refresh. For a dispute that proves nothing: \"delivered\" with no date, no location and no chain of scans is a claim, not evidence. Shippo returns the full history on every track call; it used to be discarded.. [optional]  # noqa: E501
+            delivery_location (str, none_type): Where the carrier says it was left, when they say.. [optional]  # noqa: E501
+            delivery_signature (str, none_type): Signature name, where the service captured one. Most residential deliveries have none — absence is not evidence of non-delivery.. [optional]  # noqa: E501
             tracking_submitted_at (datetime, none_type): [optional]  # noqa: E501
             tracking_submit_status (str, none_type): [optional]  # noqa: E501
             label_cost (str, none_type): [optional]  # noqa: E501
             cost_of_goods (str, none_type): [optional]  # noqa: E501
             requested_carrier (str, none_type): [optional]  # noqa: E501
             requested_service (str, none_type): [optional]  # noqa: E501
+            handling_time_days (float, none_type): [optional]  # noqa: E501
             ship_by_at (datetime, none_type): [optional]  # noqa: E501
             ship_by_alerted_at (datetime, none_type): [optional]  # noqa: E501
-            last_status_check_at (datetime, none_type): [optional]  # noqa: E501
-            last_chat_check_at (datetime, none_type): [optional]  # noqa: E501
+            last_status_check_at (datetime, none_type): Last time this order's status was reconciled against the platform. NULL = never. Drives the targeted sweeper for orders that fall off page 1 of the sold-list walk. See migration 0157.. [optional]  # noqa: E501
+            last_chat_check_at (datetime, none_type): Last time this order's platform CHAT thread was pulled. NULL = never. Separate from lastStatusCheckAt because the cadences differ by an order of magnitude — a buyer question needs answering in minutes, a status reconcile can wait an hour. See migration 0158.. [optional]  # noqa: E501
             dispute_reason (str, none_type): [optional]  # noqa: E501
             dispute_platform_case_id (str, none_type): [optional]  # noqa: E501
             dispute_resolved_at (datetime, none_type): [optional]  # noqa: E501
@@ -326,14 +381,19 @@ class ListOrdersItem(ModelNormal):
             refund_reason (str, none_type): [optional]  # noqa: E501
             refund_platform_id (str, none_type): [optional]  # noqa: E501
             refunded_at (datetime, none_type): [optional]  # noqa: E501
+            cancelled_at (datetime, none_type): [optional]  # noqa: E501
             cancellation_reason (str, none_type): [optional]  # noqa: E501
-            arrival_condition_requested_at (datetime, none_type): [optional]  # noqa: E501
+            notes (str, none_type): [optional]  # noqa: E501
+            arrival_condition_requested_at (datetime, none_type): The arrival-condition ask, recorded on the ORDER rather than read off the seller's toggle at review time. The seller can flip that toggle later; what a reviewer needs is what was asked of THIS buyer on THIS delivery — including that they were asked and declined.. [optional]  # noqa: E501
             arrival_condition_submitted_at (datetime, none_type): [optional]  # noqa: E501
             arrival_condition_declined_at (datetime, none_type): [optional]  # noqa: E501
-            delivery_photo_url (str, none_type): [optional]  # noqa: E501
-            purchase_order_ref (str, none_type): [optional]  # noqa: E501
+            delivery_photo_url (str, none_type): The courier's proof-of-delivery photo, when one can be obtained. Third-party provenance, which makes it the strongest seal frame we can get — see services/evidence/delivery-photo.ts.. [optional]  # noqa: E501
+            delivery_photo_source (str, none_type): Where it came from: 'carrier_api:ups' | 'trackified' | 'platform:<p>' | 'pasted' | 'uploaded' (shared delivery-photo-source.ts).. [optional]  # noqa: E501
+            purchase_order_ref (str, none_type): The buyer's OWN purchase-order reference.  A trade buyer's accounts department reconciles on their number, not ours. An order without it is one somebody has to chase by hand, which is the difference between getting paid on day 30 and day 75.. [optional]  # noqa: E501
             buyer_email (str, none_type): [optional]  # noqa: E501
-            deleted_at (datetime, none_type): [optional]  # noqa: E501
+            source (str, none_type): 1074 — 'email' = the sale was found by the email monitor, not reported by the platform: the order is incomplete (no buyer address, label or confirmed fees) until the platform reports it. NULL = platform-reported.. [optional]  # noqa: E501
+            platform_confirmed_at (datetime, none_type): 1074 — when the platform itself reported this email-found order (same order id). Clears the banner.. [optional]  # noqa: E501
+            deleted_at (datetime, none_type): Soft-delete tombstone for bulk-delete on /orders. UI list + count queries filter WHERE deleted_at IS NULL.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -361,19 +421,21 @@ class ListOrdersItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.id = id
-        self.created_at = created_at
-        self.updated_at = updated_at
-        self.user_id = user_id
+        self.details_pending = details_pending
         self.quantity = quantity
-        self.status = status
+        self.id = id
+        self.user_id = user_id
         self.platform = platform
         self.duties_cents = duties_cents
+        self.status = status
         self.sales_channel = sales_channel
+        self.channel = channel
         self.oversold_by = oversold_by
         self.is_disputed = is_disputed
         self.arrival_condition_photos = arrival_condition_photos
         self.fulfillment_method = fulfillment_method
+        self.created_at = created_at
+        self.updated_at = updated_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -394,23 +456,25 @@ class ListOrdersItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, updated_at, user_id, quantity, status, platform, duties_cents, sales_channel, oversold_by, is_disputed, arrival_condition_photos, fulfillment_method, *args, **kwargs):  # noqa: E501
+    def __init__(self, details_pending, quantity, id, user_id, platform, duties_cents, status, sales_channel, channel, oversold_by, is_disputed, arrival_condition_photos, fulfillment_method, created_at, updated_at, *args, **kwargs):  # noqa: E501
         """ListOrdersItem - a model defined in OpenAPI
 
         Args:
+            details_pending (bool):
+            quantity (float): Units purchased in this order (default 1). Drives how many units the Available→Reserved→Sold state machine moves. See migration 0139. Units on the order (order.created `quantity`).
             id (str):
+            user_id (str):
+            platform (str):
+            duties_cents (float): X4 (0479): import duties + taxes + fees the buyer paid at checkout for this parcel (services/landed-cost/); the label ships DDP.
+            status (str):
+            sales_channel (str): Where the sale happened, as distinct from which platform it was on.  Shopify POS orders arrive through the same Orders API as web orders, so before this they were detected as ordinary online sales and landed in `needs_fulfillment` — queued for a shipment that will never happen, because the customer already walked out with the item.  'online' for everything else, which is what every pre-existing row is.
+            channel (str): 1121 — which BUSINESS channel sold it: retail | wholesale | auction | live | world | pos (@crosslister/shared/wholesale ORDER_CHANNELS). Orthogonal to `salesChannel` (online vs in person): a wholesale order is usually online. Written at sale record time (sale/detect/order-write.ts).
+            oversold_by (float): Units this order could NOT be covered from stock — an oversell (0 = normal). Set at detection by recordSale's shortfall; the seller must cancel or refund. See migration 0156.
+            is_disputed (bool):
+            arrival_condition_photos ([str]): Buyer's arrival photos. Always read as a set, for one delivery.
+            fulfillment_method (str): `'ship'` | `'pickup'` | `'mixed'` — a DERIVED summary of this order's lines, for reads that only need the headline.  The authority is `crossly_order_items.fulfillment_method`: a buyer can collect part of one seller's order and have the rest posted, so the order-level value is 'mixed' whenever its lines disagree. Anything that acts on the difference — buying a label, packing a parcel — must read the lines, not this (migrations 0219, 0220).
             created_at (datetime):
             updated_at (datetime):
-            user_id (str):
-            quantity (float):
-            status (str):
-            platform (str):
-            duties_cents (float):
-            sales_channel (str):
-            oversold_by (float):
-            is_disputed (bool):
-            arrival_condition_photos ([str]):
-            fulfillment_method (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -443,18 +507,28 @@ class ListOrdersItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            notes (str, none_type): [optional]  # noqa: E501
-            cancelled_at (datetime, none_type): [optional]  # noqa: E501
-            listing_id (str, none_type): [optional]  # noqa: E501
+            app_share (GetOrderResponseAppShare): [optional]  # noqa: E501
+            trade (GetOrderResponseTrade): [optional]  # noqa: E501
+            sale_price (float, none_type): DOLLARS (numbers, as order.created sends them). null = not known (no sale row, or details pending).. [optional]  # noqa: E501
+            platform_fee (float, none_type): [optional]  # noqa: E501
+            tax_collected (float, none_type): [optional]  # noqa: E501
+            shipping_charged (float, none_type): [optional]  # noqa: E501
+            fee_source (str, none_type): 'exact' (the marketplace's charged fee) | 'estimated'.. [optional]  # noqa: E501
+            sku (str, none_type): The listing's SKU (order.created `sku`).. [optional]  # noqa: E501
+            line_items ([GetOrderResponseLineItems], none_type): [optional]  # noqa: E501
             inventory_item_id (str, none_type): [optional]  # noqa: E501
+            listing_id (str, none_type): [optional]  # noqa: E501
             platform_listing_id (str, none_type): [optional]  # noqa: E501
-            handling_time_days (float, none_type): [optional]  # noqa: E501
             platform_order_id (str, none_type): [optional]  # noqa: E501
+            reported_by_app_id (str, none_type): 1066 (order relay): the developer app that reported this order through an inbound item.sold (FK oauth_apps.id ON DELETE SET NULL in SQL). Null for every order Crossly detected itself. Read by action authority.. [optional]  # noqa: E501
+            storefront_id (str, none_type): Crossly orders only: the seller's storefront this sale came from. Null for every non-crossly platform. See db/schema/storefronts.ts.. [optional]  # noqa: E501
             buyer_username (str, none_type): [optional]  # noqa: E501
-            pickup_point ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
-            consolidation_id (str, none_type): [optional]  # noqa: E501
-            duties_refunded_at (datetime, none_type): [optional]  # noqa: E501
-            channel_location_id (str, none_type): [optional]  # noqa: E501
+            pickup_point ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): C8 (0448): the carrier location the parcel is held at — services/pickup-points.ts.. [optional]  # noqa: E501
+            consolidation_id (str, none_type): D4 (0448): set when this seller ships to the consolidation hub, not the buyer — services/hub/.. [optional]  # noqa: E501
+            duties_refunded_at (datetime, none_type): X4: refunded because the order never shipped.. [optional]  # noqa: E501
+            channel_location_id (str, none_type): POS location that rang it up. Null for online sales.. [optional]  # noqa: E501
+            invoice_id (str, none_type): 1121 — the on-account invoice this order was placed on (crossly_invoices.id).. [optional]  # noqa: E501
+            buyer_company_id (str, none_type): 1121 — the buyer company (W7 crossly_buyer_companies; no FK until that table exists).. [optional]  # noqa: E501
             package_preset_id (str, none_type): [optional]  # noqa: E501
             carrier (str, none_type): [optional]  # noqa: E501
             service (str, none_type): [optional]  # noqa: E501
@@ -469,19 +543,20 @@ class ListOrdersItem(ModelNormal):
             delivered_at (datetime, none_type): [optional]  # noqa: E501
             carrier_status (str, none_type): [optional]  # noqa: E501
             carrier_status_detail (str, none_type): [optional]  # noqa: E501
-            tracking_history ([ListOrdersItemTrackingHistory], none_type): [optional]  # noqa: E501
-            delivery_location (str, none_type): [optional]  # noqa: E501
-            delivery_signature (str, none_type): [optional]  # noqa: E501
+            tracking_history ([GetOrderResponseTrackingHistory], none_type): Every carrier scan, newest first (migration 0243).  The two columns above are the CURRENT state, overwritten on each refresh. For a dispute that proves nothing: \"delivered\" with no date, no location and no chain of scans is a claim, not evidence. Shippo returns the full history on every track call; it used to be discarded.. [optional]  # noqa: E501
+            delivery_location (str, none_type): Where the carrier says it was left, when they say.. [optional]  # noqa: E501
+            delivery_signature (str, none_type): Signature name, where the service captured one. Most residential deliveries have none — absence is not evidence of non-delivery.. [optional]  # noqa: E501
             tracking_submitted_at (datetime, none_type): [optional]  # noqa: E501
             tracking_submit_status (str, none_type): [optional]  # noqa: E501
             label_cost (str, none_type): [optional]  # noqa: E501
             cost_of_goods (str, none_type): [optional]  # noqa: E501
             requested_carrier (str, none_type): [optional]  # noqa: E501
             requested_service (str, none_type): [optional]  # noqa: E501
+            handling_time_days (float, none_type): [optional]  # noqa: E501
             ship_by_at (datetime, none_type): [optional]  # noqa: E501
             ship_by_alerted_at (datetime, none_type): [optional]  # noqa: E501
-            last_status_check_at (datetime, none_type): [optional]  # noqa: E501
-            last_chat_check_at (datetime, none_type): [optional]  # noqa: E501
+            last_status_check_at (datetime, none_type): Last time this order's status was reconciled against the platform. NULL = never. Drives the targeted sweeper for orders that fall off page 1 of the sold-list walk. See migration 0157.. [optional]  # noqa: E501
+            last_chat_check_at (datetime, none_type): Last time this order's platform CHAT thread was pulled. NULL = never. Separate from lastStatusCheckAt because the cadences differ by an order of magnitude — a buyer question needs answering in minutes, a status reconcile can wait an hour. See migration 0158.. [optional]  # noqa: E501
             dispute_reason (str, none_type): [optional]  # noqa: E501
             dispute_platform_case_id (str, none_type): [optional]  # noqa: E501
             dispute_resolved_at (datetime, none_type): [optional]  # noqa: E501
@@ -489,14 +564,19 @@ class ListOrdersItem(ModelNormal):
             refund_reason (str, none_type): [optional]  # noqa: E501
             refund_platform_id (str, none_type): [optional]  # noqa: E501
             refunded_at (datetime, none_type): [optional]  # noqa: E501
+            cancelled_at (datetime, none_type): [optional]  # noqa: E501
             cancellation_reason (str, none_type): [optional]  # noqa: E501
-            arrival_condition_requested_at (datetime, none_type): [optional]  # noqa: E501
+            notes (str, none_type): [optional]  # noqa: E501
+            arrival_condition_requested_at (datetime, none_type): The arrival-condition ask, recorded on the ORDER rather than read off the seller's toggle at review time. The seller can flip that toggle later; what a reviewer needs is what was asked of THIS buyer on THIS delivery — including that they were asked and declined.. [optional]  # noqa: E501
             arrival_condition_submitted_at (datetime, none_type): [optional]  # noqa: E501
             arrival_condition_declined_at (datetime, none_type): [optional]  # noqa: E501
-            delivery_photo_url (str, none_type): [optional]  # noqa: E501
-            purchase_order_ref (str, none_type): [optional]  # noqa: E501
+            delivery_photo_url (str, none_type): The courier's proof-of-delivery photo, when one can be obtained. Third-party provenance, which makes it the strongest seal frame we can get — see services/evidence/delivery-photo.ts.. [optional]  # noqa: E501
+            delivery_photo_source (str, none_type): Where it came from: 'carrier_api:ups' | 'trackified' | 'platform:<p>' | 'pasted' | 'uploaded' (shared delivery-photo-source.ts).. [optional]  # noqa: E501
+            purchase_order_ref (str, none_type): The buyer's OWN purchase-order reference.  A trade buyer's accounts department reconciles on their number, not ours. An order without it is one somebody has to chase by hand, which is the difference between getting paid on day 30 and day 75.. [optional]  # noqa: E501
             buyer_email (str, none_type): [optional]  # noqa: E501
-            deleted_at (datetime, none_type): [optional]  # noqa: E501
+            source (str, none_type): 1074 — 'email' = the sale was found by the email monitor, not reported by the platform: the order is incomplete (no buyer address, label or confirmed fees) until the platform reports it. NULL = platform-reported.. [optional]  # noqa: E501
+            platform_confirmed_at (datetime, none_type): 1074 — when the platform itself reported this email-found order (same order id). Clears the banner.. [optional]  # noqa: E501
+            deleted_at (datetime, none_type): Soft-delete tombstone for bulk-delete on /orders. UI list + count queries filter WHERE deleted_at IS NULL.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -522,19 +602,21 @@ class ListOrdersItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.id = id
-        self.created_at = created_at
-        self.updated_at = updated_at
-        self.user_id = user_id
+        self.details_pending = details_pending
         self.quantity = quantity
-        self.status = status
+        self.id = id
+        self.user_id = user_id
         self.platform = platform
         self.duties_cents = duties_cents
+        self.status = status
         self.sales_channel = sales_channel
+        self.channel = channel
         self.oversold_by = oversold_by
         self.is_disputed = is_disputed
         self.arrival_condition_photos = arrival_condition_photos
         self.fulfillment_method = fulfillment_method
+        self.created_at = created_at
+        self.updated_at = updated_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -84,7 +84,10 @@ class GetInventoryValueHistoryResponseDataPoints(ModelNormal):
             'cost_cents': (float,),  # noqa: E501
             'retail_cents': (float,),  # noqa: E501
             'stuck_cost_cents': (float,),  # noqa: E501
+            'reconstructed': (bool,),  # noqa: E501
             'market_cents': (float, none_type,),  # noqa: E501
+            'over90_cost_cents': (float, none_type,),  # noqa: E501
+            'cost_known_items': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -102,7 +105,10 @@ class GetInventoryValueHistoryResponseDataPoints(ModelNormal):
         'cost_cents': 'costCents',  # noqa: E501
         'retail_cents': 'retailCents',  # noqa: E501
         'stuck_cost_cents': 'stuckCostCents',  # noqa: E501
+        'reconstructed': 'reconstructed',  # noqa: E501
         'market_cents': 'marketCents',  # noqa: E501
+        'over90_cost_cents': 'over90CostCents',  # noqa: E501
+        'cost_known_items': 'costKnownItems',  # noqa: E501
     }
 
     read_only_vars = {
@@ -112,7 +118,7 @@ class GetInventoryValueHistoryResponseDataPoints(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, user_id, snapshot_date, item_count, unit_count, cost_cents, retail_cents, stuck_cost_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, user_id, snapshot_date, item_count, unit_count, cost_cents, retail_cents, stuck_cost_cents, reconstructed, *args, **kwargs):  # noqa: E501
         """GetInventoryValueHistoryResponseDataPoints - a model defined in OpenAPI
 
         Args:
@@ -125,6 +131,7 @@ class GetInventoryValueHistoryResponseDataPoints(ModelNormal):
             cost_cents (float):
             retail_cents (float):
             stuck_cost_cents (float):
+            reconstructed (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -158,6 +165,8 @@ class GetInventoryValueHistoryResponseDataPoints(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             market_cents (float, none_type): [optional]  # noqa: E501
+            over90_cost_cents (float, none_type): [optional]  # noqa: E501
+            cost_known_items (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -194,6 +203,7 @@ class GetInventoryValueHistoryResponseDataPoints(ModelNormal):
         self.cost_cents = cost_cents
         self.retail_cents = retail_cents
         self.stuck_cost_cents = stuck_cost_cents
+        self.reconstructed = reconstructed
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -214,7 +224,7 @@ class GetInventoryValueHistoryResponseDataPoints(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, user_id, snapshot_date, item_count, unit_count, cost_cents, retail_cents, stuck_cost_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, user_id, snapshot_date, item_count, unit_count, cost_cents, retail_cents, stuck_cost_cents, reconstructed, *args, **kwargs):  # noqa: E501
         """GetInventoryValueHistoryResponseDataPoints - a model defined in OpenAPI
 
         Args:
@@ -227,6 +237,7 @@ class GetInventoryValueHistoryResponseDataPoints(ModelNormal):
             cost_cents (float):
             retail_cents (float):
             stuck_cost_cents (float):
+            reconstructed (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -260,6 +271,8 @@ class GetInventoryValueHistoryResponseDataPoints(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             market_cents (float, none_type): [optional]  # noqa: E501
+            over90_cost_cents (float, none_type): [optional]  # noqa: E501
+            cost_known_items (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -294,6 +307,7 @@ class GetInventoryValueHistoryResponseDataPoints(ModelNormal):
         self.cost_cents = cost_cents
         self.retail_cents = retail_cents
         self.stuck_cost_cents = stuck_cost_cents
+        self.reconstructed = reconstructed
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -81,8 +81,8 @@ class GetBuyerListingFitResponseDataChart(ModelNormal):
         lazy_import()
         return {
             'kind': (str,),  # noqa: E501
-            'rows': ([GetBuyerListingFitResponseDataChartRows],),  # noqa: E501
             'kind_label': (str,),  # noqa: E501
+            'rows': ([GetBuyerListingFitResponseDataChartRows],),  # noqa: E501
         }
 
     @cached_property
@@ -92,8 +92,8 @@ class GetBuyerListingFitResponseDataChart(ModelNormal):
 
     attribute_map = {
         'kind': 'kind',  # noqa: E501
-        'rows': 'rows',  # noqa: E501
         'kind_label': 'kindLabel',  # noqa: E501
+        'rows': 'rows',  # noqa: E501
     }
 
     read_only_vars = {
@@ -103,13 +103,13 @@ class GetBuyerListingFitResponseDataChart(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, kind, rows, kind_label, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, kind, kind_label, rows, *args, **kwargs):  # noqa: E501
         """GetBuyerListingFitResponseDataChart - a model defined in OpenAPI
 
         Args:
             kind (str):
-            rows ([GetBuyerListingFitResponseDataChartRows]):
             kind_label (str):
+            rows ([GetBuyerListingFitResponseDataChartRows]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -170,8 +170,8 @@ class GetBuyerListingFitResponseDataChart(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.kind = kind
-        self.rows = rows
         self.kind_label = kind_label
+        self.rows = rows
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -192,13 +192,13 @@ class GetBuyerListingFitResponseDataChart(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, kind, rows, kind_label, *args, **kwargs):  # noqa: E501
+    def __init__(self, kind, kind_label, rows, *args, **kwargs):  # noqa: E501
         """GetBuyerListingFitResponseDataChart - a model defined in OpenAPI
 
         Args:
             kind (str):
-            rows ([GetBuyerListingFitResponseDataChartRows]):
             kind_label (str):
+            rows ([GetBuyerListingFitResponseDataChartRows]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -257,8 +257,8 @@ class GetBuyerListingFitResponseDataChart(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.kind = kind
-        self.rows = rows
         self.kind_label = kind_label
+        self.rows = rows
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

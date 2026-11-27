@@ -32,10 +32,10 @@ from crossly.exceptions import ApiAttributeError
 def lazy_import():
     from crossly.model.game.list_game_break_upcoming_item_hits import ListGameBreakUpcomingItemHits
     from crossly.model.game.list_game_break_upcoming_item_spots import ListGameBreakUpcomingItemSpots
-    from crossly.model.common.slug_name import SlugName
+    from crossly.model.common.name_slug import NameSlug
     globals()['ListGameBreakUpcomingItemHits'] = ListGameBreakUpcomingItemHits
     globals()['ListGameBreakUpcomingItemSpots'] = ListGameBreakUpcomingItemSpots
-    globals()['SlugName'] = SlugName
+    globals()['NameSlug'] = NameSlug
 
 
 class ListGameBreakUpcomingItem(ModelNormal):
@@ -88,12 +88,13 @@ class ListGameBreakUpcomingItem(ModelNormal):
             'title': (str,),  # noqa: E501
             'status': (str,),  # noqa: E501
             'live': (bool,),  # noqa: E501
-            'shop': (SlugName,),  # noqa: E501
+            'shop': (NameSlug,),  # noqa: E501
             'spots_left': (float,),  # noqa: E501
             'spots': ([ListGameBreakUpcomingItemSpots],),  # noqa: E501
             'hits': ([ListGameBreakUpcomingItemHits],),  # noqa: E501
             'product': (str, none_type,),  # noqa: E501
             'starts_at': (str, none_type,),  # noqa: E501
+            'doors_open_at': (str, none_type,),  # noqa: E501
             'buy_url': (str, none_type,),  # noqa: E501
         }
 
@@ -113,6 +114,7 @@ class ListGameBreakUpcomingItem(ModelNormal):
         'hits': 'hits',  # noqa: E501
         'product': 'product',  # noqa: E501
         'starts_at': 'startsAt',  # noqa: E501
+        'doors_open_at': 'doorsOpenAt',  # noqa: E501
         'buy_url': 'buyUrl',  # noqa: E501
     }
 
@@ -131,7 +133,7 @@ class ListGameBreakUpcomingItem(ModelNormal):
             title (str):
             status (str):
             live (bool):
-            shop (SlugName):
+            shop (NameSlug):
             spots_left (float):
             spots ([ListGameBreakUpcomingItemSpots]):
             hits ([ListGameBreakUpcomingItemHits]):
@@ -169,6 +171,7 @@ class ListGameBreakUpcomingItem(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             product (str, none_type): [optional]  # noqa: E501
             starts_at (str, none_type): Scheduled start (ISO), and whether the seller is breaking right now.. [optional]  # noqa: E501
+            doors_open_at (str, none_type): When the viewer gets in (ISO): the start, or earlier for a loyalty member with the seller's `live_early_entry` perk. Null with no start. Optional: a board read without a viewer leaves it at the start.. [optional]  # noqa: E501
             buy_url (str, none_type): The listing the spots are bought through, on crossly.net. Never a world checkout.. [optional]  # noqa: E501
         """
 
@@ -233,7 +236,7 @@ class ListGameBreakUpcomingItem(ModelNormal):
             title (str):
             status (str):
             live (bool):
-            shop (SlugName):
+            shop (NameSlug):
             spots_left (float):
             spots ([ListGameBreakUpcomingItemSpots]):
             hits ([ListGameBreakUpcomingItemHits]):
@@ -271,6 +274,7 @@ class ListGameBreakUpcomingItem(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             product (str, none_type): [optional]  # noqa: E501
             starts_at (str, none_type): Scheduled start (ISO), and whether the seller is breaking right now.. [optional]  # noqa: E501
+            doors_open_at (str, none_type): When the viewer gets in (ISO): the start, or earlier for a loyalty member with the seller's `live_early_entry` perk. Null with no start. Optional: a board read without a viewer leaves it at the start.. [optional]  # noqa: E501
             buy_url (str, none_type): The listing the spots are bought through, on crossly.net. Never a world checkout.. [optional]  # noqa: E501
         """
 

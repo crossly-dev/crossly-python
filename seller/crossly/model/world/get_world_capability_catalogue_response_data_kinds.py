@@ -61,14 +61,16 @@ class GetWorldCapabilityCatalogueResponseDataKinds(ModelNormal):
     allowed_values = {
         ('review',): {
             'ALWAYS': "always",
-            'ASSET': "asset",
             'NEVER': "never",
+            'ASSET': "asset",
         },
         ('kind',): {
             'PORTAL': "portal",
-            'DISPLAY': "display",
+            'INTERACTIVE': "interactive",
             'PLACE': "place",
+            'DISPLAY': "display",
             'BADGE': "badge",
+            'PERK': "perk",
             'WEAR': "wear",
             'EMOTE': "emote",
             'ROOM_THEME': "room_theme",
@@ -76,8 +78,6 @@ class GetWorldCapabilityCatalogueResponseDataKinds(ModelNormal):
             'GATE': "gate",
             'QUEST': "quest",
             'GAME_PASS': "game_pass",
-            'PERK': "perk",
-            'INTERACTIVE': "interactive",
         },
     }
 

@@ -30,7 +30,9 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from crossly.model.listing.create_listing_response_warnings import CreateListingResponseWarnings
     from crossly.model.listing.update_listing_response_jobs import UpdateListingResponseJobs
+    globals()['CreateListingResponseWarnings'] = CreateListingResponseWarnings
     globals()['UpdateListingResponseJobs'] = UpdateListingResponseJobs
 
 
@@ -81,6 +83,7 @@ class UpdateListingResponse(ModelNormal):
         lazy_import()
         return {
             'jobs': ([UpdateListingResponseJobs],),  # noqa: E501
+            'warnings': ([CreateListingResponseWarnings], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -90,6 +93,7 @@ class UpdateListingResponse(ModelNormal):
 
     attribute_map = {
         'jobs': 'jobs',  # noqa: E501
+        'warnings': 'warnings',  # noqa: E501
     }
 
     read_only_vars = {
@@ -136,6 +140,7 @@ class UpdateListingResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            warnings ([CreateListingResponseWarnings], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -221,6 +226,7 @@ class UpdateListingResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            warnings ([CreateListingResponseWarnings], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

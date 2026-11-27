@@ -98,15 +98,15 @@ class GetMarketProductResponseDataProduct(ModelNormal):
             'color_family': ([str],),  # noqa: E501
             'brand': (str, none_type,),  # noqa: E501
             'retail_cents': (float, none_type,),  # noqa: E501
-            'external_id': (str, none_type,),  # noqa: E501
             'image_url': (str, none_type,),  # noqa: E501
+            'approved_by_user_id': (str, none_type,),  # noqa: E501
+            'approved_at': (datetime, none_type,),  # noqa: E501
+            'external_id': (str, none_type,),  # noqa: E501
             'model': (str, none_type,),  # noqa: E501
             'colorway': (str, none_type,),  # noqa: E501
             'style_code': (str, none_type,),  # noqa: E501
             'release_date': (str, none_type,),  # noqa: E501
             'submitted_by_user_id': (str, none_type,),  # noqa: E501
-            'approved_by_user_id': (str, none_type,),  # noqa: E501
-            'approved_at': (datetime, none_type,),  # noqa: E501
             'rejection_reason': (str, none_type,),  # noqa: E501
             'ai_verdict': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
             'submission_source': (str, none_type,),  # noqa: E501
@@ -146,15 +146,15 @@ class GetMarketProductResponseDataProduct(ModelNormal):
         'color_family': 'colorFamily',  # noqa: E501
         'brand': 'brand',  # noqa: E501
         'retail_cents': 'retailCents',  # noqa: E501
-        'external_id': 'externalId',  # noqa: E501
         'image_url': 'imageUrl',  # noqa: E501
+        'approved_by_user_id': 'approvedByUserId',  # noqa: E501
+        'approved_at': 'approvedAt',  # noqa: E501
+        'external_id': 'externalId',  # noqa: E501
         'model': 'model',  # noqa: E501
         'colorway': 'colorway',  # noqa: E501
         'style_code': 'styleCode',  # noqa: E501
         'release_date': 'releaseDate',  # noqa: E501
         'submitted_by_user_id': 'submittedByUserId',  # noqa: E501
-        'approved_by_user_id': 'approvedByUserId',  # noqa: E501
-        'approved_at': 'approvedAt',  # noqa: E501
         'rejection_reason': 'rejectionReason',  # noqa: E501
         'ai_verdict': 'aiVerdict',  # noqa: E501
         'submission_source': 'submissionSource',  # noqa: E501
@@ -231,15 +231,15 @@ class GetMarketProductResponseDataProduct(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             brand (str, none_type): [optional]  # noqa: E501
             retail_cents (float, none_type): [optional]  # noqa: E501
-            external_id (str, none_type): [optional]  # noqa: E501
             image_url (str, none_type): [optional]  # noqa: E501
+            approved_by_user_id (str, none_type): [optional]  # noqa: E501
+            approved_at (datetime, none_type): [optional]  # noqa: E501
+            external_id (str, none_type): [optional]  # noqa: E501
             model (str, none_type): [optional]  # noqa: E501
             colorway (str, none_type): [optional]  # noqa: E501
             style_code (str, none_type): [optional]  # noqa: E501
             release_date (str, none_type): [optional]  # noqa: E501
             submitted_by_user_id (str, none_type): [optional]  # noqa: E501
-            approved_by_user_id (str, none_type): [optional]  # noqa: E501
-            approved_at (datetime, none_type): [optional]  # noqa: E501
             rejection_reason (str, none_type): [optional]  # noqa: E501
             ai_verdict ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
             submission_source (str, none_type): [optional]  # noqa: E501
@@ -368,15 +368,15 @@ class GetMarketProductResponseDataProduct(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             brand (str, none_type): [optional]  # noqa: E501
             retail_cents (float, none_type): [optional]  # noqa: E501
-            external_id (str, none_type): [optional]  # noqa: E501
             image_url (str, none_type): [optional]  # noqa: E501
+            approved_by_user_id (str, none_type): [optional]  # noqa: E501
+            approved_at (datetime, none_type): [optional]  # noqa: E501
+            external_id (str, none_type): [optional]  # noqa: E501
             model (str, none_type): [optional]  # noqa: E501
             colorway (str, none_type): [optional]  # noqa: E501
             style_code (str, none_type): [optional]  # noqa: E501
             release_date (str, none_type): [optional]  # noqa: E501
             submitted_by_user_id (str, none_type): [optional]  # noqa: E501
-            approved_by_user_id (str, none_type): [optional]  # noqa: E501
-            approved_at (datetime, none_type): [optional]  # noqa: E501
             rejection_reason (str, none_type): [optional]  # noqa: E501
             ai_verdict ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
             submission_source (str, none_type): [optional]  # noqa: E501

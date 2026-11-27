@@ -82,12 +82,17 @@ class GetSpatialPropertyResponseDataDeedsLease(ModelNormal):
             'plot_id': (str,),  # noqa: E501
             'deed_id': (str,),  # noqa: E501
             'rent_weekly_cents': (float,),  # noqa: E501
+            'autopay': (bool,),  # noqa: E501
             'ended_at': (datetime, none_type,),  # noqa: E501
-            'end_reason': (str, none_type,),  # noqa: E501
+            'rail': (str, none_type,),  # noqa: E501
             'paid_through': (datetime, none_type,),  # noqa: E501
             'tenant_user_id': (str, none_type,),  # noqa: E501
             'tenant_scene_id': (str, none_type,),  # noqa: E501
             'terms_frozen_at': (datetime, none_type,),  # noqa: E501
+            'end_reason': (str, none_type,),  # noqa: E501
+            'address': (str, none_type,),  # noqa: E501
+            'label': (str, none_type,),  # noqa: E501
+            'tenant_name': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -103,12 +108,17 @@ class GetSpatialPropertyResponseDataDeedsLease(ModelNormal):
         'plot_id': 'plotId',  # noqa: E501
         'deed_id': 'deedId',  # noqa: E501
         'rent_weekly_cents': 'rentWeeklyCents',  # noqa: E501
+        'autopay': 'autopay',  # noqa: E501
         'ended_at': 'endedAt',  # noqa: E501
-        'end_reason': 'endReason',  # noqa: E501
+        'rail': 'rail',  # noqa: E501
         'paid_through': 'paidThrough',  # noqa: E501
         'tenant_user_id': 'tenantUserId',  # noqa: E501
         'tenant_scene_id': 'tenantSceneId',  # noqa: E501
         'terms_frozen_at': 'termsFrozenAt',  # noqa: E501
+        'end_reason': 'endReason',  # noqa: E501
+        'address': 'address',  # noqa: E501
+        'label': 'label',  # noqa: E501
+        'tenant_name': 'tenantName',  # noqa: E501
     }
 
     read_only_vars = {
@@ -118,7 +128,7 @@ class GetSpatialPropertyResponseDataDeedsLease(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, status, owner_user_id, plot_id, deed_id, rent_weekly_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, status, owner_user_id, plot_id, deed_id, rent_weekly_cents, autopay, *args, **kwargs):  # noqa: E501
         """GetSpatialPropertyResponseDataDeedsLease - a model defined in OpenAPI
 
         Args:
@@ -129,6 +139,7 @@ class GetSpatialPropertyResponseDataDeedsLease(ModelNormal):
             plot_id (str):
             deed_id (str):
             rent_weekly_cents (float):
+            autopay (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -162,11 +173,15 @@ class GetSpatialPropertyResponseDataDeedsLease(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             ended_at (datetime, none_type): [optional]  # noqa: E501
-            end_reason (str, none_type): [optional]  # noqa: E501
+            rail (str, none_type): [optional]  # noqa: E501
             paid_through (datetime, none_type): [optional]  # noqa: E501
             tenant_user_id (str, none_type): [optional]  # noqa: E501
             tenant_scene_id (str, none_type): [optional]  # noqa: E501
             terms_frozen_at (datetime, none_type): [optional]  # noqa: E501
+            end_reason (str, none_type): [optional]  # noqa: E501
+            address (str, none_type): [optional]  # noqa: E501
+            label (str, none_type): [optional]  # noqa: E501
+            tenant_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -201,6 +216,7 @@ class GetSpatialPropertyResponseDataDeedsLease(ModelNormal):
         self.plot_id = plot_id
         self.deed_id = deed_id
         self.rent_weekly_cents = rent_weekly_cents
+        self.autopay = autopay
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -221,7 +237,7 @@ class GetSpatialPropertyResponseDataDeedsLease(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, status, owner_user_id, plot_id, deed_id, rent_weekly_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, status, owner_user_id, plot_id, deed_id, rent_weekly_cents, autopay, *args, **kwargs):  # noqa: E501
         """GetSpatialPropertyResponseDataDeedsLease - a model defined in OpenAPI
 
         Args:
@@ -232,6 +248,7 @@ class GetSpatialPropertyResponseDataDeedsLease(ModelNormal):
             plot_id (str):
             deed_id (str):
             rent_weekly_cents (float):
+            autopay (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -265,11 +282,15 @@ class GetSpatialPropertyResponseDataDeedsLease(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             ended_at (datetime, none_type): [optional]  # noqa: E501
-            end_reason (str, none_type): [optional]  # noqa: E501
+            rail (str, none_type): [optional]  # noqa: E501
             paid_through (datetime, none_type): [optional]  # noqa: E501
             tenant_user_id (str, none_type): [optional]  # noqa: E501
             tenant_scene_id (str, none_type): [optional]  # noqa: E501
             terms_frozen_at (datetime, none_type): [optional]  # noqa: E501
+            end_reason (str, none_type): [optional]  # noqa: E501
+            address (str, none_type): [optional]  # noqa: E501
+            label (str, none_type): [optional]  # noqa: E501
+            tenant_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -302,6 +323,7 @@ class GetSpatialPropertyResponseDataDeedsLease(ModelNormal):
         self.plot_id = plot_id
         self.deed_id = deed_id
         self.rent_weekly_cents = rent_weekly_cents
+        self.autopay = autopay
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

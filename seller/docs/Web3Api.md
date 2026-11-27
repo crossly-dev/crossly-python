@@ -37,19 +37,31 @@ Method | HTTP request | Description
 [**create_web3_solana_order_delist_tx**](Web3Api.md#create_web3_solana_order_delist_tx) | **POST** /v1/web3/solana/orders/{hash}/delist-tx | Build the unsigned transaction that takes your Solana listing down.
 [**create_web3_solana_tensor_bid_accept_tx**](Web3Api.md#create_web3_solana_tensor_bid_accept_tx) | **POST** /v1/web3/solana/tensor-bids/accept-tx | Build the transaction that sells your NFT into a Tensor bid, never below &#x60;minLamports&#x60;.
 [**create_web3_solana_tensor_bid_cancel_tx**](Web3Api.md#create_web3_solana_tensor_bid_cancel_tx) | **POST** /v1/web3/solana/tensor-bids/cancel-tx | Build the transaction that cancels your Tensor bid.
+[**create_web3_solana_tensor_bid_confirm**](Web3Api.md#create_web3_solana_tensor_bid_confirm) | **POST** /v1/web3/solana/tensor-bids/confirm | After your wallet’s Tensor transaction confirms: &#x60;action&#x60; place, cancel or accept, with its &#x60;signature&#x60; and the &#x60;wallet&#x60; that signed. Checked on chain, then recorded in your Activity. Accept needs listings:write; place and cancel need buyer:offers:write.
 [**create_web3_solana_tensor_bid_place_tx**](Web3Api.md#create_web3_solana_tensor_bid_place_tx) | **POST** /v1/web3/solana/tensor-bids/place-tx | Build a Tensor collection bid (or trait bid with &#x60;trait&#x60;) for your Solana wallet to sign. Price in lamports.
+[**create_web3_staking_stake**](Web3Api.md#create_web3_staking_stake) | **POST** /v1/web3/staking/stake | Lock earned CBX (&#x60;baseUnits&#x60;, a string) into the best tier it reaches. 409 while a stake or unstake is in progress.
+[**create_web3_staking_unstake**](Web3Api.md#create_web3_staking_unstake) | **POST** /v1/web3/staking/unstake | Start unstaking: the earn boost stops now, the tokens release when the tier’s cooldown ends. Returns &#x60;{ unlocksAt, cooldownDays }&#x60;.
+[**create_web3_store_wallet**](Web3Api.md#create_web3_store_wallet) | **POST** /v1/web3/store-wallets | Link one of your verified wallets to the store so it sells NFTs from it and is paid into it.
+[**create_web3_store_wallet_challenge**](Web3Api.md#create_web3_store_wallet_challenge) | **POST** /v1/web3/store-wallets/challenge | Start adding a selling wallet to the store: the message the wallet signs.
+[**create_web3_store_wallet_import**](Web3Api.md#create_web3_store_wallet_import) | **POST** /v1/web3/store-wallets/{walletId}/import | Add picked NFTs (&#x60;tokens: [{ chain, contract, tokenId }]&#x60;) from a store wallet to inventory.
+[**create_web3_store_wallet_sync**](Web3Api.md#create_web3_store_wallet_sync) | **POST** /v1/web3/store-wallets/{walletId}/sync | Sync a store wallet: refresh its NFTs in inventory; new ones are added when the store&#39;s link auto-imports.
+[**create_web3_store_wallet_verify**](Web3Api.md#create_web3_store_wallet_verify) | **POST** /v1/web3/store-wallets/verify | Finish adding a selling wallet: verify its signature and link it to the store.
 [**create_web3_token_refresh**](Web3Api.md#create_web3_token_refresh) | **POST** /v1/web3/tokens/{chain}/{contract}/{tokenId}/refresh | Re-read a token&#39;s metadata from the chain&#39;s provider (name, traits, image — a new image is copied to Crossly&#39;s CDN). Once per token per 10 minutes.
 [**create_web3_transaction**](Web3Api.md#create_web3_transaction) | **POST** /v1/web3/transactions | Apply a Seaport transaction&#39;s fills and cancels to the Crossly book (read from the receipt).
 [**create_web3_wallet_challenge**](Web3Api.md#create_web3_wallet_challenge) | **POST** /v1/web3/wallets/challenge | Start linking a wallet: returns the message the wallet must sign.
+[**create_web3_wallet_import**](Web3Api.md#create_web3_wallet_import) | **POST** /v1/web3/wallets/{id}/import | Add picked NFTs (&#x60;tokens&#x60;: chain, contract, tokenId; up to 200) from a linked wallet to inventory. Tokens the wallet does not hold are counted in &#x60;notInWallet&#x60;, never added.
 [**create_web3_wallet_sync**](Web3Api.md#create_web3_wallet_sync) | **POST** /v1/web3/wallets/{id}/sync | Import a linked wallet&#39;s NFTs into inventory; archives ones that have left the wallet.
 [**create_web3_wallet_verify**](Web3Api.md#create_web3_wallet_verify) | **POST** /v1/web3/wallets/verify | Finish linking a wallet with its signature over the challenge message.
 [**delete_web3_alert**](Web3Api.md#delete_web3_alert) | **DELETE** /v1/web3/alerts/{id} | Delete a price alert.
-[**delete_web3_holder_perk**](Web3Api.md#delete_web3_holder_perk) | **DELETE** /v1/web3/holder-perks/{id} | Remove a holder perk. Returns &#x60;{ ok }&#x60;.
+[**delete_web3_holder_perk**](Web3Api.md#delete_web3_holder_perk) | **DELETE** /v1/web3/holder-perks/{id} | DEPRECATED: use /api/v1/discounts/holders/:id. Remove a Collection holders deal. Returns &#x60;{ ok }&#x60;.
 [**delete_web3_launch**](Web3Api.md#delete_web3_launch) | **DELETE** /v1/web3/launches/{id} | Delete a launch draft that never went live. Returns &#x60;{ ok }&#x60;.
 [**delete_web3_launch_follow_creator**](Web3Api.md#delete_web3_launch_follow_creator) | **DELETE** /v1/web3/launches/{id}/follow-creator | Stop following the creator of a launch. Returns &#x60;{ following }&#x60;.
+[**delete_web3_launch_perk**](Web3Api.md#delete_web3_launch_perk) | **DELETE** /v1/web3/launches/{id}/perks | Remove every collection perk of a launch. Returns &#x60;{ ok }&#x60;.
 [**delete_web3_marketplace_key**](Web3Api.md#delete_web3_marketplace_key) | **DELETE** /v1/web3/marketplace-keys/{marketplace} | Remove your own key for a marketplace; Crossly&#39;s key is used again.
+[**delete_web3_store_wallet**](Web3Api.md#delete_web3_store_wallet) | **DELETE** /v1/web3/store-wallets/{walletId} | Stop the store selling from a wallet (the wallet and its other stores are unaffected).
 [**delete_web3_wallet**](Web3Api.md#delete_web3_wallet) | **DELETE** /v1/web3/wallets/{id} | Unlink a wallet. Its NFTs stay in inventory but stop syncing.
 [**get_web3_auction**](Web3Api.md#get_web3_auction) | **GET** /v1/web3/auctions/{chain}/{contract}/{tokenId} | A token&#39;s live (or latest) auction: reserve, end, top bid, bid count and the minimum next bid.
+[**get_web3_balance**](Web3Api.md#get_web3_balance) | **GET** /v1/web3/balances | Every CBX you have, in one read, with the three balances kept apart.
 [**get_web3_browse**](Web3Api.md#get_web3_browse) | **GET** /v1/web3/browse | The Web3 directory&#39;s categories and chains, with how many collections each holds.
 [**get_web3_collection**](Web3Api.md#get_web3_collection) | **GET** /v1/web3/collections/{chain}/{contract} | A collection: metadata and Crossly stats (floor, listed, volume, best collection offer).
 [**get_web3_collection_depth**](Web3Api.md#get_web3_collection_depth) | **GET** /v1/web3/collections/{chain}/{contract}/depth | A collection&#39;s Crossly order book by price level — asks cheapest first, bids dearest first, with running totals — and the floor of every trait value.
@@ -64,6 +76,7 @@ Method | HTTP request | Description
 [**get_web3_inventory**](Web3Api.md#get_web3_inventory) | **GET** /v1/web3/inventory/{itemId} | The NFT behind an inventory item: its token, wallet, and open listings on every marketplace (null if it is not an NFT).
 [**get_web3_launch_allowlist_root_tx**](Web3Api.md#get_web3_launch_allowlist_root_tx) | **GET** /v1/web3/launches/{id}/allowlist/root-tx | The setAllowlistRoot transaction for the allowlist Crossly holds (EVM, live): &#x60;{ chain, from, to, data }&#x60;.
 [**get_web3_launch_deploy_tx**](Web3Api.md#get_web3_launch_deploy_tx) | **GET** /v1/web3/launches/{id}/deploy-tx | The contract-creation transaction for the draft: send it from the owner wallet, then confirm it. Returns &#x60;{ chain, from, data }&#x60;.
+[**get_web3_launch_stat**](Web3Api.md#get_web3_launch_stat) | **GET** /v1/web3/launches/{id}/stats | A launch’s phase timeline, mint progress, proceeds (gross, Crossly’s cut, yours; airdrops excluded), allowlist and art counts, and recent mints.
 [**get_web3_launch_tool**](Web3Api.md#get_web3_launch_tool) | **GET** /v1/web3/launches/{id}/tools | A launch’s creator tools: allowlist size and root (and whether the contract has it yet), uploaded art and reveal, supply minted.
 [**get_web3_order_fulfillment**](Web3Api.md#get_web3_order_fulfillment) | **GET** /v1/web3/orders/{chain}/{hash}/fulfillment | The signed order a taker passes to Seaport, after re-checking it can still fill.
 [**get_web3_phygital**](Web3Api.md#get_web3_phygital) | **GET** /v1/web3/phygitals/{chain}/{contract}/{tokenId} | A token&#39;s phygital: the physical item it can be redeemed for, and whether it has been.
@@ -73,7 +86,11 @@ Method | HTTP request | Description
 [**get_web3_profile**](Web3Api.md#get_web3_profile) | **GET** /v1/web3/profiles/{address} | A wallet&#39;s public profile: NFTs held, open Crossly listings, and activity.
 [**get_web3_resolve**](Web3Api.md#get_web3_resolve) | **GET** /v1/web3/resolve/{chain}/{slug} | A collection&#39;s chain and contract from its readable URL slug (e.g. eth / boredapeyachtclub).
 [**get_web3_solana_collection_tensor_bid**](Web3Api.md#get_web3_solana_collection_tensor_bid) | **GET** /v1/web3/solana/collections/{collection}/tensor-bids | A Solana collection’s Tensor bids (collection-wide and by trait), best first; price in lamports. Needs your Tensor key.
+[**get_web3_staking**](Web3Api.md#get_web3_staking) | **GET** /v1/web3/staking | Your CBX stake: what is locked, its tier, the tier ladder and your past positions.
+[**get_web3_store_wallet_holding**](Web3Api.md#get_web3_store_wallet_holding) | **GET** /v1/web3/store-wallets/{walletId}/holdings | What a store wallet holds (chain + contract + token id), each marked in-inventory or not.
+[**get_web3_store_wallet_nft**](Web3Api.md#get_web3_store_wallet_nft) | **GET** /v1/web3/store-wallets/nfts | The store&#39;s Crossly NFTs: plots (deeds and leases), streets its owner founded and vault receipt tokens in its wallets, with the wallets a plot purchase and a receipt export use.
 [**get_web3_token**](Web3Api.md#get_web3_token) | **GET** /v1/web3/tokens/{chain}/{contract}/{tokenId} | One NFT: metadata, traits, owner, open listings and offers, activity.
+[**get_web3_wallet_holding**](Web3Api.md#get_web3_wallet_holding) | **GET** /v1/web3/wallets/{id}/holdings | What a linked wallet holds right now, each NFT marked &#x60;inInventory&#x60; or not. Reads the chain; writes nothing.
 [**list_web3_activity**](Web3Api.md#list_web3_activity) | **GET** /v1/web3/activity | Listings, offers, sales and cancels in the Crossly book, newest first.
 [**list_web3_alerts**](Web3Api.md#list_web3_alerts) | **GET** /v1/web3/alerts | Your NFT price alerts, with the cheapest open Crossly listing each one covers now.
 [**list_web3_approvals**](Web3Api.md#list_web3_approvals) | **GET** /v1/web3/approvals | Your collections the OpenSea conduit is approved to move, per linked wallet.
@@ -85,23 +102,31 @@ Method | HTTP request | Description
 [**list_web3_collections**](Web3Api.md#list_web3_collections) | **GET** /v1/web3/collections | Collections ranked by 30-day Crossly volume, with floor and listed count.
 [**list_web3_creator_collections**](Web3Api.md#list_web3_creator_collections) | **GET** /v1/web3/creator/collections | Collections you are the creator of: your launches, and contracts you claimed by owning them.
 [**list_web3_drops**](Web3Api.md#list_web3_drops) | **GET** /v1/web3/drops | Upcoming and live NFT drops (curated mints on the creator&#39;s own page), soonest first, with whether you asked to be reminded.
-[**list_web3_holder_perks**](Web3Api.md#list_web3_holder_perks) | **GET** /v1/web3/holder-perks | Your holder perks: percent off your Crossly shop for holders of an NFT collection, best first.
+[**list_web3_holder_perks**](Web3Api.md#list_web3_holder_perks) | **GET** /v1/web3/holder-perks | DEPRECATED: use /api/v1/discounts/holders. Your Collection holders deals in the old holder-perk shape, best first.
+[**list_web3_launch_perks**](Web3Api.md#list_web3_launch_perks) | **GET** /v1/web3/launches/{id}/perks | The perks holders of this launch’s collection get (percent off your shop, early drop access, a World item, a loyalty tier, live early entry, an event ticket).
 [**list_web3_launches**](Web3Api.md#list_web3_launches) | **GET** /v1/web3/launches | Your launchpad collections (drafts and live), newest first, with minted count and phase.
 [**list_web3_listings**](Web3Api.md#list_web3_listings) | **GET** /v1/web3/listings | Open NFT listings in the Crossly book — the cheapest per token.
 [**list_web3_marketplace_keys**](Web3Api.md#list_web3_marketplace_keys) | **GET** /v1/web3/marketplace-keys | Your own marketplace API keys (last four characters only) and whether Crossly&#39;s key covers each marketplace.
 [**list_web3_nfts**](Web3Api.md#list_web3_nfts) | **GET** /v1/web3/nfts | List the NFTs in your inventory, imported from your linked wallets.
-[**list_web3_orders**](Web3Api.md#list_web3_orders) | **GET** /v1/web3/orders | Your orders in the Crossly book (listings and offers), any status.
+[**list_web3_orders**](Web3Api.md#list_web3_orders) | **GET** /v1/web3/orders | Your orders in the Crossly book (listings and offers), any status. With X-Storefront-Id: that store&#39;s listings (offers always).
 [**list_web3_purchases**](Web3Api.md#list_web3_purchases) | **GET** /v1/web3/purchases | NFTs your linked wallets bought — on Crossly or any marketplace the chain feed saw — newest first, with price and whether you still hold each.
 [**list_web3_rankings**](Web3Api.md#list_web3_rankings) | **GET** /v1/web3/rankings | Collections by sales volume over 24h, 7d or 30d, in one coin: the ETH chains together, or Polygon / Solana on their own.
 [**list_web3_reserved**](Web3Api.md#list_web3_reserved) | **GET** /v1/web3/reserved | Private listings reserved for one of your linked wallets — only you can see or buy them.
 [**list_web3_sales**](Web3Api.md#list_web3_sales) | **GET** /v1/web3/sales | The latest NFT sales across the directory, from the chain (Seaport and Blur) and the Crossly book, newest first; page with &#x60;before&#x60;.
 [**list_web3_search**](Web3Api.md#list_web3_search) | **GET** /v1/web3/search | Find collections by contract address (every chain) or by name.
 [**list_web3_search_tokens**](Web3Api.md#list_web3_search_tokens) | **GET** /v1/web3/search/tokens | Find tokens by collection name and number: &#39;pudgy 42&#39;, &#39;Bored Ape #1234&#39;.
+[**list_web3_store_wallet_balances**](Web3Api.md#list_web3_store_wallet_balances) | **GET** /v1/web3/store-wallets/balances | The native-coin balance (SOL, ETH, POL, …) of each of the store&#39;s selling wallets, read on chain.
+[**list_web3_store_wallets**](Web3Api.md#list_web3_store_wallets) | **GET** /v1/web3/store-wallets | List the store&#39;s selling wallets (X-Storefront-Id; default store when omitted).
 [**list_web3_wallets**](Web3Api.md#list_web3_wallets) | **GET** /v1/web3/wallets | List your verified, linked wallets (EVM and Solana).
 [**list_web3_watchlist**](Web3Api.md#list_web3_watchlist) | **GET** /v1/web3/watchlist | Your favourited NFTs, with the cheapest open Crossly listing and the last sale of each.
-[**update_web3_holder_perk**](Web3Api.md#update_web3_holder_perk) | **PUT** /v1/web3/holder-perks | Set the percent off (100–5000 bps) holders of a collection get across your Crossly shop; one perk per collection.
+[**update_web3_holder_perk**](Web3Api.md#update_web3_holder_perk) | **PUT** /v1/web3/holder-perks | DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection.
+[**update_web3_launch**](Web3Api.md#update_web3_launch) | **PATCH** /v1/web3/launches/{id} | Edit a launch draft (or a failed deploy) before it deploys: any creation field except chain and owner. The schedule is re-checked; 409 once live.
 [**update_web3_launch_allowlist**](Web3Api.md#update_web3_launch_allowlist) | **PUT** /v1/web3/launches/{id}/allowlist | Replace the early-phase allowlist (up to 10,000 wallets). EVM live launches get back &#x60;rootTx&#x60;, the setAllowlistRoot transaction for the owner wallet.
+[**update_web3_launch_perk**](Web3Api.md#update_web3_launch_perk) | **PUT** /v1/web3/launches/{id}/perks | Replace a launch’s collection perks: &#x60;{ perks: [{ config: { type, ... }, active }] }&#x60;, one per type; a type left out is removed.
 [**update_web3_marketplace_key**](Web3Api.md#update_web3_marketplace_key) | **PUT** /v1/web3/marketplace-keys/{marketplace} | Save your own API key for a marketplace (checked against the marketplace first where it can be); stored encrypted.
+[**update_web3_store_wallet**](Web3Api.md#update_web3_store_wallet) | **PATCH** /v1/web3/store-wallets/{walletId} | Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id).
+[**update_web3_store_wallet_default**](Web3Api.md#update_web3_store_wallet_default) | **PUT** /v1/web3/store-wallets/{walletId}/default | Make a linked wallet the store&#39;s default selling wallet on its network (EVM or Solana).
+[**update_web3_wallet**](Web3Api.md#update_web3_wallet) | **PATCH** /v1/web3/wallets/{id} | Change a linked wallet: &#x60;autoImport&#x60; (a sync adds new NFTs to inventory; off, it only refreshes the ones there) and &#x60;label&#x60;.
 
 
 # **create_web3_alert**
@@ -2752,6 +2777,84 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **create_web3_solana_tensor_bid_confirm**
+> CreateWeb3SolanaTensorBidConfirmResponse create_web3_solana_tensor_bid_confirm()
+
+After your wallet’s Tensor transaction confirms: `action` place, cancel or accept, with its `signature` and the `wallet` that signed. Checked on chain, then recorded in your Activity. Accept needs listings:write; place and cancel need buyer:offers:write.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.common.error import Error
+from crossly.model.web3.create_web3_solana_tensor_bid_confirm_response import CreateWeb3SolanaTensorBidConfirmResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # After your wallet’s Tensor transaction confirms: `action` place, cancel or accept, with its `signature` and the `wallet` that signed. Checked on chain, then recorded in your Activity. Accept needs listings:write; place and cancel need buyer:offers:write.
+        api_response = api_instance.create_web3_solana_tensor_bid_confirm()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->create_web3_solana_tensor_bid_confirm: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateWeb3SolanaTensorBidConfirmResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **create_web3_solana_tensor_bid_place_tx**
 > CreateWeb3SolanaTensorBidPlaceTxResponse create_web3_solana_tensor_bid_place_tx()
 
@@ -2805,6 +2908,560 @@ This endpoint does not need any parameter.
 ### Return type
 
 **CreateWeb3SolanaTensorBidPlaceTxResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_web3_staking_stake**
+> CreateWeb3StakingStakeResponse create_web3_staking_stake()
+
+Lock earned CBX (`baseUnits`, a string) into the best tier it reaches. 409 while a stake or unstake is in progress.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.web3.create_web3_staking_stake_response import CreateWeb3StakingStakeResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Lock earned CBX (`baseUnits`, a string) into the best tier it reaches. 409 while a stake or unstake is in progress.
+        api_response = api_instance.create_web3_staking_stake()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->create_web3_staking_stake: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateWeb3StakingStakeResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_web3_staking_unstake**
+> CreateWeb3StakingUnstakeResponse create_web3_staking_unstake()
+
+Start unstaking: the earn boost stops now, the tokens release when the tier’s cooldown ends. Returns `{ unlocksAt, cooldownDays }`.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.web3.create_web3_staking_unstake_response import CreateWeb3StakingUnstakeResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Start unstaking: the earn boost stops now, the tokens release when the tier’s cooldown ends. Returns `{ unlocksAt, cooldownDays }`.
+        api_response = api_instance.create_web3_staking_unstake()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->create_web3_staking_unstake: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateWeb3StakingUnstakeResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_web3_store_wallet**
+> CreateWeb3StoreWalletResponse create_web3_store_wallet()
+
+Link one of your verified wallets to the store so it sells NFTs from it and is paid into it.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.web3.create_web3_store_wallet_response import CreateWeb3StoreWalletResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Link one of your verified wallets to the store so it sells NFTs from it and is paid into it.
+        api_response = api_instance.create_web3_store_wallet()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->create_web3_store_wallet: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateWeb3StoreWalletResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_web3_store_wallet_challenge**
+> CreateWeb3WalletChallengeResponse create_web3_store_wallet_challenge()
+
+Start adding a selling wallet to the store: the message the wallet signs.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.web3.create_web3_wallet_challenge_response import CreateWeb3WalletChallengeResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Start adding a selling wallet to the store: the message the wallet signs.
+        api_response = api_instance.create_web3_store_wallet_challenge()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->create_web3_store_wallet_challenge: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateWeb3WalletChallengeResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_web3_store_wallet_import**
+> CreateWeb3WalletImportResponse create_web3_store_wallet_import(wallet_id)
+
+Add picked NFTs (`tokens: [{ chain, contract, tokenId }]`) from a store wallet to inventory.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.common.error import Error
+from crossly.model.web3.create_web3_wallet_import_response import CreateWeb3WalletImportResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+    wallet_id = "walletId_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Add picked NFTs (`tokens: [{ chain, contract, tokenId }]`) from a store wallet to inventory.
+        api_response = api_instance.create_web3_store_wallet_import(wallet_id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->create_web3_store_wallet_import: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **wallet_id** | **str**|  |
+
+### Return type
+
+**CreateWeb3WalletImportResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_web3_store_wallet_sync**
+> CreateWeb3StoreWalletSyncResponse create_web3_store_wallet_sync(wallet_id)
+
+Sync a store wallet: refresh its NFTs in inventory; new ones are added when the store's link auto-imports.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.common.error import Error
+from crossly.model.web3.create_web3_store_wallet_sync_response import CreateWeb3StoreWalletSyncResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+    wallet_id = "walletId_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Sync a store wallet: refresh its NFTs in inventory; new ones are added when the store's link auto-imports.
+        api_response = api_instance.create_web3_store_wallet_sync(wallet_id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->create_web3_store_wallet_sync: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **wallet_id** | **str**|  |
+
+### Return type
+
+**CreateWeb3StoreWalletSyncResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_web3_store_wallet_verify**
+> CreateWeb3StoreWalletResponse create_web3_store_wallet_verify()
+
+Finish adding a selling wallet: verify its signature and link it to the store.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.web3.create_web3_store_wallet_response import CreateWeb3StoreWalletResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Finish adding a selling wallet: verify its signature and link it to the store.
+        api_response = api_instance.create_web3_store_wallet_verify()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->create_web3_store_wallet_verify: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateWeb3StoreWalletResponse**
 
 ### Authorization
 
@@ -3047,6 +3704,88 @@ This endpoint does not need any parameter.
 ### Return type
 
 **CreateWeb3WalletChallengeResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **create_web3_wallet_import**
+> CreateWeb3WalletImportResponse create_web3_wallet_import(id)
+
+Add picked NFTs (`tokens`: chain, contract, tokenId; up to 200) from a linked wallet to inventory. Tokens the wallet does not hold are counted in `notInWallet`, never added.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.common.error import Error
+from crossly.model.web3.create_web3_wallet_import_response import CreateWeb3WalletImportResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Add picked NFTs (`tokens`: chain, contract, tokenId; up to 200) from a linked wallet to inventory. Tokens the wallet does not hold are counted in `notInWallet`, never added.
+        api_response = api_instance.create_web3_wallet_import(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->create_web3_wallet_import: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**CreateWeb3WalletImportResponse**
 
 ### Authorization
 
@@ -3317,7 +4056,7 @@ Name | Type | Description  | Notes
 # **delete_web3_holder_perk**
 > OkResponse delete_web3_holder_perk(id)
 
-Remove a holder perk. Returns `{ ok }`.
+DEPRECATED: use /api/v1/discounts/holders/:id. Remove a Collection holders deal. Returns `{ ok }`.
 
 ### Example
 
@@ -3354,7 +4093,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Remove a holder perk. Returns `{ ok }`.
+        # DEPRECATED: use /api/v1/discounts/holders/:id. Remove a Collection holders deal. Returns `{ ok }`.
         api_response = api_instance.delete_web3_holder_perk(id)
         pprint(api_response)
     except crossly.ApiException as e:
@@ -3560,6 +4299,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **delete_web3_launch_perk**
+> OkResponse delete_web3_launch_perk(id)
+
+Remove every collection perk of a launch. Returns `{ ok }`.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.common.ok_response import OkResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Remove every collection perk of a launch. Returns `{ ok }`.
+        api_response = api_instance.delete_web3_launch_perk(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->delete_web3_launch_perk: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**OkResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **delete_web3_marketplace_key**
 > delete_web3_marketplace_key(marketplace)
 
@@ -3611,6 +4432,86 @@ with crossly.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **marketplace** | **str**|  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content — the request succeeded and there is no body. |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **delete_web3_store_wallet**
+> delete_web3_store_wallet(wallet_id)
+
+Stop the store selling from a wallet (the wallet and its other stores are unaffected).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+    wallet_id = "walletId_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Stop the store selling from a wallet (the wallet and its other stores are unaffected).
+        api_instance.delete_web3_store_wallet(wallet_id)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->delete_web3_store_wallet: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **wallet_id** | **str**|  |
 
 ### Return type
 
@@ -3783,6 +4684,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 **GetWeb3AuctionResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **get_web3_balance**
+> GetWeb3BalanceResponse get_web3_balance()
+
+Every CBX you have, in one read, with the three balances kept apart.
+
+`credit`: EARNED (withdrawable once matured; `withdrawableBaseUnits` is earned minus anything staked) and GRANTED (in-platform spend only, never withdrawable). `connected`: headroom on your connected-wallet delegation, a ceiling on what Crossly may pull, never a balance. `wallets`: each linked wallet with its own on-chain CBX (`status` read / not_solana / not_live / unavailable). `totals.allBaseUnits` is credit + wallets and never adds the delegation headroom. Amounts are base-unit strings (`decimals`).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.web3.get_web3_balance_response import GetWeb3BalanceResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Every CBX you have, in one read, with the three balances kept apart.
+        api_response = api_instance.get_web3_balance()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->get_web3_balance: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetWeb3BalanceResponse**
 
 ### Authorization
 
@@ -4954,6 +5935,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **get_web3_launch_stat**
+> GetWeb3LaunchStatResponse get_web3_launch_stat(id)
+
+A launch’s phase timeline, mint progress, proceeds (gross, Crossly’s cut, yours; airdrops excluded), allowlist and art counts, and recent mints.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.web3.get_web3_launch_stat_response import GetWeb3LaunchStatResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # A launch’s phase timeline, mint progress, proceeds (gross, Crossly’s cut, yours; airdrops excluded), allowlist and art counts, and recent mints.
+        api_response = api_instance.get_web3_launch_stat(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->get_web3_launch_stat: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**GetWeb3LaunchStatResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **get_web3_launch_tool**
 > GetWeb3LaunchToolResponse get_web3_launch_tool(id)
 
@@ -5688,6 +6751,246 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **get_web3_staking**
+> GetWeb3StakingResponse get_web3_staking()
+
+Your CBX stake: what is locked, its tier, the tier ladder and your past positions.
+
+A stake locks EARNED CBX; it moves nothing and pays no yield. Each tier buys a withdrawal-fee discount and an earn-rate boost on future purchases, and has a cooldown before an unstake releases.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.common.error import Error
+from crossly.model.web3.get_web3_staking_response import GetWeb3StakingResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Your CBX stake: what is locked, its tier, the tier ladder and your past positions.
+        api_response = api_instance.get_web3_staking()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->get_web3_staking: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetWeb3StakingResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **get_web3_store_wallet_holding**
+> GetWeb3WalletHoldingResponse get_web3_store_wallet_holding(wallet_id)
+
+What a store wallet holds (chain + contract + token id), each marked in-inventory or not.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.common.error import Error
+from crossly.model.web3.get_web3_wallet_holding_response import GetWeb3WalletHoldingResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+    wallet_id = "walletId_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # What a store wallet holds (chain + contract + token id), each marked in-inventory or not.
+        api_response = api_instance.get_web3_store_wallet_holding(wallet_id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->get_web3_store_wallet_holding: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **wallet_id** | **str**|  |
+
+### Return type
+
+**GetWeb3WalletHoldingResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **get_web3_store_wallet_nft**
+> GetWeb3StoreWalletNftResponse get_web3_store_wallet_nft()
+
+The store's Crossly NFTs: plots (deeds and leases), streets its owner founded and vault receipt tokens in its wallets, with the wallets a plot purchase and a receipt export use.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.web3.get_web3_store_wallet_nft_response import GetWeb3StoreWalletNftResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # The store's Crossly NFTs: plots (deeds and leases), streets its owner founded and vault receipt tokens in its wallets, with the wallets a plot purchase and a receipt export use.
+        api_response = api_instance.get_web3_store_wallet_nft()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->get_web3_store_wallet_nft: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetWeb3StoreWalletNftResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **get_web3_token**
 > GetWeb3TokenResponse get_web3_token(chain, contract, token_id)
 
@@ -5749,6 +7052,88 @@ Name | Type | Description  | Notes
 ### Return type
 
 **GetWeb3TokenResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **get_web3_wallet_holding**
+> GetWeb3WalletHoldingResponse get_web3_wallet_holding(id)
+
+What a linked wallet holds right now, each NFT marked `inInventory` or not. Reads the chain; writes nothing.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.common.error import Error
+from crossly.model.web3.get_web3_wallet_holding_response import GetWeb3WalletHoldingResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # What a linked wallet holds right now, each NFT marked `inInventory` or not. Reads the chain; writes nothing.
+        api_response = api_instance.get_web3_wallet_holding(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->get_web3_wallet_holding: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**GetWeb3WalletHoldingResponse**
 
 ### Authorization
 
@@ -6641,7 +8026,7 @@ This endpoint does not need any parameter.
 # **list_web3_holder_perks**
 > ListWeb3HolderPerksResponse list_web3_holder_perks()
 
-Your holder perks: percent off your Crossly shop for holders of an NFT collection, best first.
+DEPRECATED: use /api/v1/discounts/holders. Your Collection holders deals in the old holder-perk shape, best first.
 
 ### Example
 
@@ -6677,7 +8062,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example, this endpoint has no required or optional parameters
     try:
-        # Your holder perks: percent off your Crossly shop for holders of an NFT collection, best first.
+        # DEPRECATED: use /api/v1/discounts/holders. Your Collection holders deals in the old holder-perk shape, best first.
         api_response = api_instance.list_web3_holder_perks()
         pprint(api_response)
     except crossly.ApiException as e:
@@ -6691,6 +8076,88 @@ This endpoint does not need any parameter.
 ### Return type
 
 **ListWeb3HolderPerksResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **list_web3_launch_perks**
+> ListWeb3LaunchPerksResponse list_web3_launch_perks(id)
+
+The perks holders of this launch’s collection get (percent off your shop, early drop access, a World item, a loyalty tier, live early entry, an event ticket).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.common.error import Error
+from crossly.model.web3.list_web3_launch_perks_response import ListWeb3LaunchPerksResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # The perks holders of this launch’s collection get (percent off your shop, early drop access, a World item, a loyalty tier, live early entry, an event ticket).
+        api_response = api_instance.list_web3_launch_perks(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->list_web3_launch_perks: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**ListWeb3LaunchPerksResponse**
 
 ### Authorization
 
@@ -7042,7 +8509,7 @@ Name | Type | Description  | Notes
 # **list_web3_orders**
 > ListWeb3OrdersResponse list_web3_orders()
 
-Your orders in the Crossly book (listings and offers), any status.
+Your orders in the Crossly book (listings and offers), any status. With X-Storefront-Id: that store's listings (offers always).
 
 ### Example
 
@@ -7078,7 +8545,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example, this endpoint has no required or optional parameters
     try:
-        # Your orders in the Crossly book (listings and offers), any status.
+        # Your orders in the Crossly book (listings and offers), any status. With X-Storefront-Id: that store's listings (offers always).
         api_response = api_instance.list_web3_orders()
         pprint(api_response)
     except crossly.ApiException as e:
@@ -7585,6 +9052,162 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **list_web3_store_wallet_balances**
+> ListWeb3StoreWalletBalancesResponse list_web3_store_wallet_balances()
+
+The native-coin balance (SOL, ETH, POL, …) of each of the store's selling wallets, read on chain.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.web3.list_web3_store_wallet_balances_response import ListWeb3StoreWalletBalancesResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # The native-coin balance (SOL, ETH, POL, …) of each of the store's selling wallets, read on chain.
+        api_response = api_instance.list_web3_store_wallet_balances()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->list_web3_store_wallet_balances: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListWeb3StoreWalletBalancesResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **list_web3_store_wallets**
+> ListWeb3StoreWalletsResponse list_web3_store_wallets()
+
+List the store's selling wallets (X-Storefront-Id; default store when omitted).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.common.error import Error
+from crossly.model.web3.list_web3_store_wallets_response import ListWeb3StoreWalletsResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # List the store's selling wallets (X-Storefront-Id; default store when omitted).
+        api_response = api_instance.list_web3_store_wallets()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->list_web3_store_wallets: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListWeb3StoreWalletsResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **list_web3_wallets**
 > ListWeb3WalletsResponse list_web3_wallets()
 
@@ -7742,9 +9365,9 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 # **update_web3_holder_perk**
-> ListWeb3HolderPerksItem update_web3_holder_perk()
+> UpdateWeb3HolderPerkResponse update_web3_holder_perk()
 
-Set the percent off (100–5000 bps) holders of a collection get across your Crossly shop; one perk per collection.
+DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection.
 
 ### Example
 
@@ -7754,7 +9377,7 @@ Set the percent off (100–5000 bps) holders of a collection get across your Cro
 import time
 import crossly
 from crossly.api import web3_api
-from crossly.model.web3.list_web3_holder_perks_item import ListWeb3HolderPerksItem
+from crossly.model.web3.update_web3_holder_perk_response import UpdateWeb3HolderPerkResponse
 from crossly.model.common.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://crossly.net/api
@@ -7780,7 +9403,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example, this endpoint has no required or optional parameters
     try:
-        # Set the percent off (100–5000 bps) holders of a collection get across your Crossly shop; one perk per collection.
+        # DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection.
         api_response = api_instance.update_web3_holder_perk()
         pprint(api_response)
     except crossly.ApiException as e:
@@ -7793,7 +9416,89 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**ListWeb3HolderPerksItem**
+**UpdateWeb3HolderPerkResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **update_web3_launch**
+> UpdateWeb3LaunchResponse update_web3_launch(id)
+
+Edit a launch draft (or a failed deploy) before it deploys: any creation field except chain and owner. The schedule is re-checked; 409 once live.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.common.error import Error
+from crossly.model.web3.update_web3_launch_response import UpdateWeb3LaunchResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Edit a launch draft (or a failed deploy) before it deploys: any creation field except chain and owner. The schedule is re-checked; 409 once live.
+        api_response = api_instance.update_web3_launch(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->update_web3_launch: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**UpdateWeb3LaunchResponse**
 
 ### Authorization
 
@@ -7901,6 +9606,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **update_web3_launch_perk**
+> ListWeb3LaunchPerksResponse update_web3_launch_perk(id)
+
+Replace a launch’s collection perks: `{ perks: [{ config: { type, ... }, active }] }`, one per type; a type left out is removed.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.common.error import Error
+from crossly.model.web3.list_web3_launch_perks_response import ListWeb3LaunchPerksResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Replace a launch’s collection perks: `{ perks: [{ config: { type, ... }, active }] }`, one per type; a type left out is removed.
+        api_response = api_instance.update_web3_launch_perk(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->update_web3_launch_perk: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**ListWeb3LaunchPerksResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **update_web3_marketplace_key**
 > ListWeb3MarketplaceKeysItem update_web3_marketplace_key(marketplace)
 
@@ -7958,6 +9745,252 @@ Name | Type | Description  | Notes
 ### Return type
 
 **ListWeb3MarketplaceKeysItem**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **update_web3_store_wallet**
+> UpdateWeb3StoreWalletResponse update_web3_store_wallet(wallet_id)
+
+Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.web3.update_web3_store_wallet_response import UpdateWeb3StoreWalletResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+    wallet_id = "walletId_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id).
+        api_response = api_instance.update_web3_store_wallet(wallet_id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->update_web3_store_wallet: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **wallet_id** | **str**|  |
+
+### Return type
+
+**UpdateWeb3StoreWalletResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **update_web3_store_wallet_default**
+> ListWeb3StoreWalletsResponse update_web3_store_wallet_default(wallet_id)
+
+Make a linked wallet the store's default selling wallet on its network (EVM or Solana).
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.common.error import Error
+from crossly.model.web3.list_web3_store_wallets_response import ListWeb3StoreWalletsResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+    wallet_id = "walletId_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Make a linked wallet the store's default selling wallet on its network (EVM or Solana).
+        api_response = api_instance.update_web3_store_wallet_default(wallet_id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->update_web3_store_wallet_default: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **wallet_id** | **str**|  |
+
+### Return type
+
+**ListWeb3StoreWalletsResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **update_web3_wallet**
+> UpdateWeb3WalletResponse update_web3_wallet(id)
+
+Change a linked wallet: `autoImport` (a sync adds new NFTs to inventory; off, it only refreshes the ones there) and `label`.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import web3_api
+from crossly.model.web3.update_web3_wallet_response import UpdateWeb3WalletResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = web3_api.Web3Api(api_client)
+    id = "id_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Change a linked wallet: `autoImport` (a sync adds new NFTs to inventory; off, it only refreshes the ones there) and `label`.
+        api_response = api_instance.update_web3_wallet(id)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling Web3Api->update_web3_wallet: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+
+### Return type
+
+**UpdateWeb3WalletResponse**
 
 ### Authorization
 

@@ -77,10 +77,10 @@ class ListBuyerOffersItemItems(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'price_cents': (float,),  # noqa: E501
-            'status': (str, none_type,),  # noqa: E501
-            'title': (str, none_type,),  # noqa: E501
             'slug': (str, none_type,),  # noqa: E501
+            'title': (str, none_type,),  # noqa: E501
             'thumbnail': (str, none_type,),  # noqa: E501
+            'status': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -91,10 +91,10 @@ class ListBuyerOffersItemItems(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'price_cents': 'priceCents',  # noqa: E501
-        'status': 'status',  # noqa: E501
-        'title': 'title',  # noqa: E501
         'slug': 'slug',  # noqa: E501
+        'title': 'title',  # noqa: E501
         'thumbnail': 'thumbnail',  # noqa: E501
+        'status': 'status',  # noqa: E501
     }
 
     read_only_vars = {
@@ -142,10 +142,10 @@ class ListBuyerOffersItemItems(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            status (str, none_type): [optional]  # noqa: E501
-            title (str, none_type): [optional]  # noqa: E501
             slug (str, none_type): [optional]  # noqa: E501
+            title (str, none_type): [optional]  # noqa: E501
             thumbnail (str, none_type): [optional]  # noqa: E501
+            status (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -233,10 +233,10 @@ class ListBuyerOffersItemItems(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            status (str, none_type): [optional]  # noqa: E501
-            title (str, none_type): [optional]  # noqa: E501
             slug (str, none_type): [optional]  # noqa: E501
+            title (str, none_type): [optional]  # noqa: E501
             thumbnail (str, none_type): [optional]  # noqa: E501
+            status (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -79,11 +79,11 @@ class ListListingDiscrepanciesItem(ModelNormal):
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (datetime,),  # noqa: E501
             'user_id': (str,),  # noqa: E501
-            'source': (str,),  # noqa: E501
             'platform': (str,),  # noqa: E501
-            'listing_id': (str,),  # noqa: E501
-            'marketplace_id': (str,),  # noqa: E501
             'account_slot': (float,),  # noqa: E501
+            'marketplace_id': (str,),  # noqa: E501
+            'source': (str,),  # noqa: E501
+            'listing_id': (str,),  # noqa: E501
             'field': (str,),  # noqa: E501
             'first_detected_at': (datetime,),  # noqa: E501
             'last_detected_at': (datetime,),  # noqa: E501
@@ -104,11 +104,11 @@ class ListListingDiscrepanciesItem(ModelNormal):
         'created_at': 'createdAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
         'user_id': 'userId',  # noqa: E501
-        'source': 'source',  # noqa: E501
         'platform': 'platform',  # noqa: E501
-        'listing_id': 'listingId',  # noqa: E501
-        'marketplace_id': 'marketplaceId',  # noqa: E501
         'account_slot': 'accountSlot',  # noqa: E501
+        'marketplace_id': 'marketplaceId',  # noqa: E501
+        'source': 'source',  # noqa: E501
+        'listing_id': 'listingId',  # noqa: E501
         'field': 'field',  # noqa: E501
         'first_detected_at': 'firstDetectedAt',  # noqa: E501
         'last_detected_at': 'lastDetectedAt',  # noqa: E501
@@ -126,7 +126,7 @@ class ListListingDiscrepanciesItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, updated_at, user_id, source, platform, listing_id, marketplace_id, account_slot, field, first_detected_at, last_detected_at, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, updated_at, user_id, platform, account_slot, marketplace_id, source, listing_id, field, first_detected_at, last_detected_at, *args, **kwargs):  # noqa: E501
         """ListListingDiscrepanciesItem - a model defined in OpenAPI
 
         Args:
@@ -134,11 +134,11 @@ class ListListingDiscrepanciesItem(ModelNormal):
             created_at (datetime):
             updated_at (datetime):
             user_id (str):
-            source (str):
             platform (str):
-            listing_id (str):
-            marketplace_id (str):
             account_slot (float):
+            marketplace_id (str):
+            source (str):
+            listing_id (str):
             field (str):
             first_detected_at (datetime):
             last_detected_at (datetime):
@@ -210,11 +210,11 @@ class ListListingDiscrepanciesItem(ModelNormal):
         self.created_at = created_at
         self.updated_at = updated_at
         self.user_id = user_id
-        self.source = source
         self.platform = platform
-        self.listing_id = listing_id
-        self.marketplace_id = marketplace_id
         self.account_slot = account_slot
+        self.marketplace_id = marketplace_id
+        self.source = source
+        self.listing_id = listing_id
         self.field = field
         self.first_detected_at = first_detected_at
         self.last_detected_at = last_detected_at
@@ -238,7 +238,7 @@ class ListListingDiscrepanciesItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, updated_at, user_id, source, platform, listing_id, marketplace_id, account_slot, field, first_detected_at, last_detected_at, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, updated_at, user_id, platform, account_slot, marketplace_id, source, listing_id, field, first_detected_at, last_detected_at, *args, **kwargs):  # noqa: E501
         """ListListingDiscrepanciesItem - a model defined in OpenAPI
 
         Args:
@@ -246,11 +246,11 @@ class ListListingDiscrepanciesItem(ModelNormal):
             created_at (datetime):
             updated_at (datetime):
             user_id (str):
-            source (str):
             platform (str):
-            listing_id (str):
-            marketplace_id (str):
             account_slot (float):
+            marketplace_id (str):
+            source (str):
+            listing_id (str):
             field (str):
             first_detected_at (datetime):
             last_detected_at (datetime):
@@ -320,11 +320,11 @@ class ListListingDiscrepanciesItem(ModelNormal):
         self.created_at = created_at
         self.updated_at = updated_at
         self.user_id = user_id
-        self.source = source
         self.platform = platform
-        self.listing_id = listing_id
-        self.marketplace_id = marketplace_id
         self.account_slot = account_slot
+        self.marketplace_id = marketplace_id
+        self.source = source
+        self.listing_id = listing_id
         self.field = field
         self.first_detected_at = first_detected_at
         self.last_detected_at = last_detected_at

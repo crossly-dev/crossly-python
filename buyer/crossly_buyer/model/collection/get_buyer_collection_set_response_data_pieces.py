@@ -75,9 +75,9 @@ class GetBuyerCollectionSetResponseDataPieces(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'number': (float,),  # noqa: E501
-            'title': (str,),  # noqa: E501
             'sku_id': (str,),  # noqa: E501
+            'title': (str,),  # noqa: E501
+            'number': (float,),  # noqa: E501
             'owned': (bool,),  # noqa: E501
             'image_url': (str, none_type,),  # noqa: E501
             'best_ask_cents': (float, none_type,),  # noqa: E501
@@ -89,9 +89,9 @@ class GetBuyerCollectionSetResponseDataPieces(ModelNormal):
 
 
     attribute_map = {
-        'number': 'number',  # noqa: E501
-        'title': 'title',  # noqa: E501
         'sku_id': 'skuId',  # noqa: E501
+        'title': 'title',  # noqa: E501
+        'number': 'number',  # noqa: E501
         'owned': 'owned',  # noqa: E501
         'image_url': 'imageUrl',  # noqa: E501
         'best_ask_cents': 'bestAskCents',  # noqa: E501
@@ -104,13 +104,13 @@ class GetBuyerCollectionSetResponseDataPieces(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, number, title, sku_id, owned, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, sku_id, title, number, owned, *args, **kwargs):  # noqa: E501
         """GetBuyerCollectionSetResponseDataPieces - a model defined in OpenAPI
 
         Args:
-            number (float):
-            title (str):
             sku_id (str):
+            title (str):
+            number (float):
             owned (bool):
 
         Keyword Args:
@@ -173,9 +173,9 @@ class GetBuyerCollectionSetResponseDataPieces(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.number = number
-        self.title = title
         self.sku_id = sku_id
+        self.title = title
+        self.number = number
         self.owned = owned
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -197,13 +197,13 @@ class GetBuyerCollectionSetResponseDataPieces(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, number, title, sku_id, owned, *args, **kwargs):  # noqa: E501
+    def __init__(self, sku_id, title, number, owned, *args, **kwargs):  # noqa: E501
         """GetBuyerCollectionSetResponseDataPieces - a model defined in OpenAPI
 
         Args:
-            number (float):
-            title (str):
             sku_id (str):
+            title (str):
+            number (float):
             owned (bool):
 
         Keyword Args:
@@ -264,9 +264,9 @@ class GetBuyerCollectionSetResponseDataPieces(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.number = number
-        self.title = title
         self.sku_id = sku_id
+        self.title = title
+        self.number = number
         self.owned = owned
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

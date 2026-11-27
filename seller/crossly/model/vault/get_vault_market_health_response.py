@@ -31,12 +31,14 @@ from crossly.exceptions import ApiAttributeError
 
 def lazy_import():
     from crossly.model.vault.get_vault_market_health_response_concentration import GetVaultMarketHealthResponseConcentration
+    from crossly.model.vault.get_vault_market_health_response_hedges import GetVaultMarketHealthResponseHedges
     from crossly.model.vault.get_vault_market_health_response_items import GetVaultMarketHealthResponseItems
     from crossly.model.vault.get_vault_market_health_response_liquidity import GetVaultMarketHealthResponseLiquidity
     from crossly.model.vault.get_vault_market_health_response_marks import GetVaultMarketHealthResponseMarks
     from crossly.model.vault.get_vault_market_health_response_stress import GetVaultMarketHealthResponseStress
     from crossly.model.vault.get_vault_market_health_response_totals import GetVaultMarketHealthResponseTotals
     globals()['GetVaultMarketHealthResponseConcentration'] = GetVaultMarketHealthResponseConcentration
+    globals()['GetVaultMarketHealthResponseHedges'] = GetVaultMarketHealthResponseHedges
     globals()['GetVaultMarketHealthResponseItems'] = GetVaultMarketHealthResponseItems
     globals()['GetVaultMarketHealthResponseLiquidity'] = GetVaultMarketHealthResponseLiquidity
     globals()['GetVaultMarketHealthResponseMarks'] = GetVaultMarketHealthResponseMarks
@@ -99,6 +101,7 @@ class GetVaultMarketHealthResponse(ModelNormal):
             'marks': (GetVaultMarketHealthResponseMarks,),  # noqa: E501
             'notes': ([str],),  # noqa: E501
             'items': ([GetVaultMarketHealthResponseItems],),  # noqa: E501
+            'hedges': (GetVaultMarketHealthResponseHedges,),  # noqa: E501
         }
 
     @cached_property
@@ -116,6 +119,7 @@ class GetVaultMarketHealthResponse(ModelNormal):
         'marks': 'marks',  # noqa: E501
         'notes': 'notes',  # noqa: E501
         'items': 'items',  # noqa: E501
+        'hedges': 'hedges',  # noqa: E501
     }
 
     read_only_vars = {
@@ -125,7 +129,7 @@ class GetVaultMarketHealthResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, as_of, disclosure, totals, concentration, liquidity, stress, marks, notes, items, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, as_of, disclosure, totals, concentration, liquidity, stress, marks, notes, items, hedges, *args, **kwargs):  # noqa: E501
         """GetVaultMarketHealthResponse - a model defined in OpenAPI
 
         Args:
@@ -138,6 +142,7 @@ class GetVaultMarketHealthResponse(ModelNormal):
             marks (GetVaultMarketHealthResponseMarks):
             notes ([str]):
             items ([GetVaultMarketHealthResponseItems]): The items a what-if can be run on, largest first.
+            hedges (GetVaultMarketHealthResponseHedges):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -206,6 +211,7 @@ class GetVaultMarketHealthResponse(ModelNormal):
         self.marks = marks
         self.notes = notes
         self.items = items
+        self.hedges = hedges
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -226,7 +232,7 @@ class GetVaultMarketHealthResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, as_of, disclosure, totals, concentration, liquidity, stress, marks, notes, items, *args, **kwargs):  # noqa: E501
+    def __init__(self, as_of, disclosure, totals, concentration, liquidity, stress, marks, notes, items, hedges, *args, **kwargs):  # noqa: E501
         """GetVaultMarketHealthResponse - a model defined in OpenAPI
 
         Args:
@@ -239,6 +245,7 @@ class GetVaultMarketHealthResponse(ModelNormal):
             marks (GetVaultMarketHealthResponseMarks):
             notes ([str]):
             items ([GetVaultMarketHealthResponseItems]): The items a what-if can be run on, largest first.
+            hedges (GetVaultMarketHealthResponseHedges):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -305,6 +312,7 @@ class GetVaultMarketHealthResponse(ModelNormal):
         self.marks = marks
         self.notes = notes
         self.items = items
+        self.hedges = hedges
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -58,9 +58,9 @@ class GetSpatialPartyResponsePartyInvites(ModelNormal):
         ('status',): {
             'PENDING': "pending",
             'CANCELLED': "cancelled",
-            'EXPIRED': "expired",
             'ACCEPTED': "accepted",
             'DECLINED': "declined",
+            'EXPIRED': "expired",
         },
     }
 

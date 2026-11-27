@@ -76,8 +76,8 @@ class GetBuyerPurchaseDeliveryResponseData(ModelNormal):
         """
         return {
             'pickup_point': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
-            'carrier': (str, none_type,),  # noqa: E501
             'tracking_number': (str, none_type,),  # noqa: E501
+            'carrier': (str, none_type,),  # noqa: E501
             'consolidation': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
         }
 
@@ -88,8 +88,8 @@ class GetBuyerPurchaseDeliveryResponseData(ModelNormal):
 
     attribute_map = {
         'pickup_point': 'pickupPoint',  # noqa: E501
-        'carrier': 'carrier',  # noqa: E501
         'tracking_number': 'trackingNumber',  # noqa: E501
+        'carrier': 'carrier',  # noqa: E501
         'consolidation': 'consolidation',  # noqa: E501
     }
 
@@ -135,8 +135,8 @@ class GetBuyerPurchaseDeliveryResponseData(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             pickup_point ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
-            carrier (str, none_type): [optional]  # noqa: E501
             tracking_number (str, none_type): [optional]  # noqa: E501
+            carrier (str, none_type): [optional]  # noqa: E501
             consolidation ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
         """
 
@@ -220,8 +220,8 @@ class GetBuyerPurchaseDeliveryResponseData(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             pickup_point ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
-            carrier (str, none_type): [optional]  # noqa: E501
             tracking_number (str, none_type): [optional]  # noqa: E501
+            carrier (str, none_type): [optional]  # noqa: E501
             consolidation ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
         """
 

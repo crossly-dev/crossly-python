@@ -64,10 +64,10 @@ class ListBuyerSizeMemorySizesItem(ModelNormal):
         },
         ('department',): {
             'None': None,
+            'UNISEX': "unisex",
             'MEN': "men",
             'WOMEN': "women",
             'KIDS': "kids",
-            'UNISEX': "unisex",
         },
     }
 

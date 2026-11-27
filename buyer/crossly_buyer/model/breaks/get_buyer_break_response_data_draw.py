@@ -75,8 +75,8 @@ class GetBuyerBreakResponseDataDraw(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'position': (float,),  # noqa: E501
             'entry': (float,),  # noqa: E501
+            'position': (float,),  # noqa: E501
         }
 
     @cached_property
@@ -85,8 +85,8 @@ class GetBuyerBreakResponseDataDraw(ModelNormal):
 
 
     attribute_map = {
-        'position': 'position',  # noqa: E501
         'entry': 'entry',  # noqa: E501
+        'position': 'position',  # noqa: E501
     }
 
     read_only_vars = {
@@ -96,12 +96,12 @@ class GetBuyerBreakResponseDataDraw(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, position, entry, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, entry, position, *args, **kwargs):  # noqa: E501
         """GetBuyerBreakResponseDataDraw - a model defined in OpenAPI
 
         Args:
-            position (float):
             entry (float):
+            position (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -161,8 +161,8 @@ class GetBuyerBreakResponseDataDraw(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.position = position
         self.entry = entry
+        self.position = position
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -183,12 +183,12 @@ class GetBuyerBreakResponseDataDraw(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, position, entry, *args, **kwargs):  # noqa: E501
+    def __init__(self, entry, position, *args, **kwargs):  # noqa: E501
         """GetBuyerBreakResponseDataDraw - a model defined in OpenAPI
 
         Args:
-            position (float):
             entry (float):
+            position (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -246,8 +246,8 @@ class GetBuyerBreakResponseDataDraw(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.position = position
         self.entry = entry
+        self.position = position
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

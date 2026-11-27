@@ -30,12 +30,12 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.automation.get_automation_rule_export_by_id_response_action import GetAutomationRuleExportByIdResponseAction
     from crossly.model.automation.get_automation_rule_export_by_id_response_condition import GetAutomationRuleExportByIdResponseCondition
     from crossly.model.automation.get_automation_rule_export_by_id_response_metadata import GetAutomationRuleExportByIdResponseMetadata
-    globals()['GetAutomationRuleExportByIdResponseAction'] = GetAutomationRuleExportByIdResponseAction
+    from crossly.model.automation.get_automation_rule_export_by_id_response_trigger import GetAutomationRuleExportByIdResponseTrigger
     globals()['GetAutomationRuleExportByIdResponseCondition'] = GetAutomationRuleExportByIdResponseCondition
     globals()['GetAutomationRuleExportByIdResponseMetadata'] = GetAutomationRuleExportByIdResponseMetadata
+    globals()['GetAutomationRuleExportByIdResponseTrigger'] = GetAutomationRuleExportByIdResponseTrigger
 
 
 class GetAutomationRuleExportByIdResponse(ModelNormal):
@@ -84,15 +84,15 @@ class GetAutomationRuleExportByIdResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'name': (str,),  # noqa: E501
-            'action': (GetAutomationRuleExportByIdResponseAction,),  # noqa: E501
             'schema_version': (float,),  # noqa: E501
-            'trigger': (GetAutomationRuleExportByIdResponseAction,),  # noqa: E501
-            'condition': (GetAutomationRuleExportByIdResponseCondition,),  # noqa: E501
-            'metadata': (GetAutomationRuleExportByIdResponseMetadata,),  # noqa: E501
-            'description': (str, none_type,),  # noqa: E501
-            'platforms': ([str], none_type,),  # noqa: E501
+            'name': (str,),  # noqa: E501
+            'trigger': (GetAutomationRuleExportByIdResponseTrigger,),  # noqa: E501
+            'action': (GetAutomationRuleExportByIdResponseTrigger,),  # noqa: E501
             'schema': (str, none_type,),  # noqa: E501
+            'description': (str, none_type,),  # noqa: E501
+            'condition': (GetAutomationRuleExportByIdResponseCondition,),  # noqa: E501
+            'platforms': ([str], none_type,),  # noqa: E501
+            'metadata': (GetAutomationRuleExportByIdResponseMetadata,),  # noqa: E501
         }
 
     @cached_property
@@ -101,15 +101,15 @@ class GetAutomationRuleExportByIdResponse(ModelNormal):
 
 
     attribute_map = {
-        'name': 'name',  # noqa: E501
-        'action': 'action',  # noqa: E501
         'schema_version': 'schemaVersion',  # noqa: E501
+        'name': 'name',  # noqa: E501
         'trigger': 'trigger',  # noqa: E501
-        'condition': 'condition',  # noqa: E501
-        'metadata': 'metadata',  # noqa: E501
-        'description': 'description',  # noqa: E501
-        'platforms': 'platforms',  # noqa: E501
+        'action': 'action',  # noqa: E501
         'schema': '$schema',  # noqa: E501
+        'description': 'description',  # noqa: E501
+        'condition': 'condition',  # noqa: E501
+        'platforms': 'platforms',  # noqa: E501
+        'metadata': 'metadata',  # noqa: E501
     }
 
     read_only_vars = {
@@ -119,14 +119,14 @@ class GetAutomationRuleExportByIdResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, name, action, schema_version, trigger, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, schema_version, name, trigger, action, *args, **kwargs):  # noqa: E501
         """GetAutomationRuleExportByIdResponse - a model defined in OpenAPI
 
         Args:
-            name (str):
-            action (GetAutomationRuleExportByIdResponseAction):
             schema_version (float):
-            trigger (GetAutomationRuleExportByIdResponseAction):
+            name (str):
+            trigger (GetAutomationRuleExportByIdResponseTrigger):
+            action (GetAutomationRuleExportByIdResponseTrigger):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -159,11 +159,11 @@ class GetAutomationRuleExportByIdResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            condition (GetAutomationRuleExportByIdResponseCondition): [optional]  # noqa: E501
-            metadata (GetAutomationRuleExportByIdResponseMetadata): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
-            platforms ([str], none_type): [optional]  # noqa: E501
             schema (str, none_type): Optional reference to the public schema URL — purely cosmetic.. [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
+            condition (GetAutomationRuleExportByIdResponseCondition): [optional]  # noqa: E501
+            platforms ([str], none_type): [optional]  # noqa: E501
+            metadata (GetAutomationRuleExportByIdResponseMetadata): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -191,10 +191,10 @@ class GetAutomationRuleExportByIdResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.name = name
-        self.action = action
         self.schema_version = schema_version
+        self.name = name
         self.trigger = trigger
+        self.action = action
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -215,14 +215,14 @@ class GetAutomationRuleExportByIdResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, name, action, schema_version, trigger, *args, **kwargs):  # noqa: E501
+    def __init__(self, schema_version, name, trigger, action, *args, **kwargs):  # noqa: E501
         """GetAutomationRuleExportByIdResponse - a model defined in OpenAPI
 
         Args:
-            name (str):
-            action (GetAutomationRuleExportByIdResponseAction):
             schema_version (float):
-            trigger (GetAutomationRuleExportByIdResponseAction):
+            name (str):
+            trigger (GetAutomationRuleExportByIdResponseTrigger):
+            action (GetAutomationRuleExportByIdResponseTrigger):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -255,11 +255,11 @@ class GetAutomationRuleExportByIdResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            condition (GetAutomationRuleExportByIdResponseCondition): [optional]  # noqa: E501
-            metadata (GetAutomationRuleExportByIdResponseMetadata): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
-            platforms ([str], none_type): [optional]  # noqa: E501
             schema (str, none_type): Optional reference to the public schema URL — purely cosmetic.. [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
+            condition (GetAutomationRuleExportByIdResponseCondition): [optional]  # noqa: E501
+            platforms ([str], none_type): [optional]  # noqa: E501
+            metadata (GetAutomationRuleExportByIdResponseMetadata): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -285,10 +285,10 @@ class GetAutomationRuleExportByIdResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.name = name
-        self.action = action
         self.schema_version = schema_version
+        self.name = name
         self.trigger = trigger
+        self.action = action
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

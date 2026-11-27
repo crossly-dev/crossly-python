@@ -21,12 +21,12 @@ from crossly.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from crossly.model.breaks.create_break_cancel_response import CreateBreakCancelResponse
 from crossly.model.breaks.create_break_draw_response import CreateBreakDrawResponse
 from crossly.model.breaks.create_break_response import CreateBreakResponse
 from crossly.model.common.error import Error
 from crossly.model.breaks.get_break_response import GetBreakResponse
 from crossly.model.breaks.list_breaks_response import ListBreaksResponse
+from crossly.model.group.update_group_buy_response import UpdateGroupBuyResponse
 
 
 class BreaksApi(object):
@@ -86,7 +86,7 @@ class BreaksApi(object):
         )
         self.create_break_cancel_endpoint = _Endpoint(
             settings={
-                'response_type': (CreateBreakCancelResponse,),
+                'response_type': (UpdateGroupBuyResponse,),
                 'auth': [
                     'PersonalAccessToken'
                 ],
@@ -188,7 +188,7 @@ class BreaksApi(object):
         )
         self.create_break_opened_endpoint = _Endpoint(
             settings={
-                'response_type': (CreateBreakCancelResponse,),
+                'response_type': (UpdateGroupBuyResponse,),
                 'auth': [
                     'PersonalAccessToken'
                 ],
@@ -239,7 +239,7 @@ class BreaksApi(object):
         )
         self.create_break_spot_hit_endpoint = _Endpoint(
             settings={
-                'response_type': (CreateBreakCancelResponse,),
+                'response_type': (UpdateGroupBuyResponse,),
                 'auth': [
                     'PersonalAccessToken'
                 ],
@@ -507,7 +507,7 @@ class BreaksApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            CreateBreakCancelResponse
+            UpdateGroupBuyResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -661,7 +661,7 @@ class BreaksApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            CreateBreakCancelResponse
+            UpdateGroupBuyResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -740,7 +740,7 @@ class BreaksApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            CreateBreakCancelResponse
+            UpdateGroupBuyResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """

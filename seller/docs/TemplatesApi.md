@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**delete_me_template_share**](TemplatesApi.md#delete_me_template_share) | **DELETE** /v1/me/templates/{id}/share | Revoke a template share link.
 [**get_me_template**](TemplatesApi.md#get_me_template) | **GET** /v1/me/templates/{id} | Fetch one template in full.
 [**get_me_template_suggest**](TemplatesApi.md#get_me_template_suggest) | **GET** /v1/me/templates/suggest | The seller&#39;s default template for a category.
+[**get_public_template**](TemplatesApi.md#get_public_template) | **GET** /v1/public/templates/{token} | A shared template by its share token (public, no auth).
 [**list_me_templates**](TemplatesApi.md#list_me_templates) | **GET** /v1/me/templates | List the seller&#39;s templates.
 [**update_me_template**](TemplatesApi.md#update_me_template) | **PATCH** /v1/me/templates/{id} | Patch a template.
 
@@ -645,6 +646,78 @@ This endpoint does not need any parameter.
 ### Authorization
 
 [PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **get_public_template**
+> GetPublicTemplateResponse get_public_template(token)
+
+A shared template by its share token (public, no auth).
+
+### Example
+
+
+```python
+import time
+import crossly
+from crossly.api import templates_api
+from crossly.model.publics.get_public_template_response import GetPublicTemplateResponse
+from crossly.model.common.error import Error
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = templates_api.TemplatesApi(api_client)
+    token = "token_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # A shared template by its share token (public, no auth).
+        api_response = api_instance.get_public_template(token)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling TemplatesApi->get_public_template: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **str**|  |
+
+### Return type
+
+**GetPublicTemplateResponse**
+
+### Authorization
+
+No authorization required
 
 ### HTTP request headers
 

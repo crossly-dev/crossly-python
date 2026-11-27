@@ -56,13 +56,13 @@ class GetHomeResponseLayoutRef(ModelNormal):
 
     allowed_values = {
         ('kind',): {
-            'TOKEN': "token",
-            'PORTAL': "portal",
-            'PORTFOLIO': "portfolio",
             'INVENTORY': "inventory",
+            'VAULT': "vault",
+            'PORTAL': "portal",
+            'TOKEN': "token",
             'PURCHASE': "purchase",
             'NFT': "nft",
-            'VAULT': "vault",
+            'PORTFOLIO': "portfolio",
         },
     }
 

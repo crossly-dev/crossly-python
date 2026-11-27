@@ -92,16 +92,36 @@ class ListRentalsItem(ModelNormal):
             'condition_photos_out': ([str],),  # noqa: E501
             'condition_photos_in': ([str],),  # noqa: E501
             'deposit_refunded_cents': (float,),  # noqa: E501
+            'unit': (float,),  # noqa: E501
+            'fulfilment': (str,),  # noqa: E501
+            'cleaning_fee_cents': (float,),  # noqa: E501
+            'damage_waiver': (bool,),  # noqa: E501
+            'damage_waiver_cents': (float,),  # noqa: E501
+            'late_fee_cents': (float,),  # noqa: E501
+            'rent_refunded_cents': (float,),  # noqa: E501
+            'charges': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'condition_photos_return': ([str],),  # noqa: E501
             'shipped_at': (str, none_type,),  # noqa: E501
             'returned_at': (str, none_type,),  # noqa: E501
             'closed_at': (str, none_type,),  # noqa: E501
             'ship_to': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
+            'platform_listing_id': (str, none_type,),  # noqa: E501
+            'payout_timing': (str, none_type,),  # noqa: E501
+            'payout_released_at': (str, none_type,),  # noqa: E501
+            'order_id': (str, none_type,),  # noqa: E501
+            'crossly_fee_cents': (float, none_type,),  # noqa: E501
             'slug': (str, none_type,),  # noqa: E501
             'outbound_tracking': (str, none_type,),  # noqa: E501
             'return_tracking': (str, none_type,),  # noqa: E501
             'label_url': (str, none_type,),  # noqa: E501
             'claim_note': (str, none_type,),  # noqa: E501
             'approval_due_at': (str, none_type,),  # noqa: E501
+            'buyout_cents': (float, none_type,),  # noqa: E501
+            'approved_at': (str, none_type,),  # noqa: E501
+            'delivered_at': (str, none_type,),  # noqa: E501
+            'return_shipped_at': (str, none_type,),  # noqa: E501
+            'inspected_at': (str, none_type,),  # noqa: E501
+            'bought_out_at': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -127,16 +147,36 @@ class ListRentalsItem(ModelNormal):
         'condition_photos_out': 'conditionPhotosOut',  # noqa: E501
         'condition_photos_in': 'conditionPhotosIn',  # noqa: E501
         'deposit_refunded_cents': 'depositRefundedCents',  # noqa: E501
+        'unit': 'unit',  # noqa: E501
+        'fulfilment': 'fulfilment',  # noqa: E501
+        'cleaning_fee_cents': 'cleaningFeeCents',  # noqa: E501
+        'damage_waiver': 'damageWaiver',  # noqa: E501
+        'damage_waiver_cents': 'damageWaiverCents',  # noqa: E501
+        'late_fee_cents': 'lateFeeCents',  # noqa: E501
+        'rent_refunded_cents': 'rentRefundedCents',  # noqa: E501
+        'charges': 'charges',  # noqa: E501
+        'condition_photos_return': 'conditionPhotosReturn',  # noqa: E501
         'shipped_at': 'shippedAt',  # noqa: E501
         'returned_at': 'returnedAt',  # noqa: E501
         'closed_at': 'closedAt',  # noqa: E501
         'ship_to': 'shipTo',  # noqa: E501
+        'platform_listing_id': 'platformListingId',  # noqa: E501
+        'payout_timing': 'payoutTiming',  # noqa: E501
+        'payout_released_at': 'payoutReleasedAt',  # noqa: E501
+        'order_id': 'orderId',  # noqa: E501
+        'crossly_fee_cents': 'crosslyFeeCents',  # noqa: E501
         'slug': 'slug',  # noqa: E501
         'outbound_tracking': 'outboundTracking',  # noqa: E501
         'return_tracking': 'returnTracking',  # noqa: E501
         'label_url': 'labelUrl',  # noqa: E501
         'claim_note': 'claimNote',  # noqa: E501
         'approval_due_at': 'approvalDueAt',  # noqa: E501
+        'buyout_cents': 'buyoutCents',  # noqa: E501
+        'approved_at': 'approvedAt',  # noqa: E501
+        'delivered_at': 'deliveredAt',  # noqa: E501
+        'return_shipped_at': 'returnShippedAt',  # noqa: E501
+        'inspected_at': 'inspectedAt',  # noqa: E501
+        'bought_out_at': 'boughtOutAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -146,7 +186,7 @@ class ListRentalsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, created_at, id, status, title, image_url, start_date, end_date, days, rent_cents, shipping_cents, deposit_cents, claim_cents, claim_photos, claim_disputed, condition_photos_out, condition_photos_in, deposit_refunded_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, created_at, id, status, title, image_url, start_date, end_date, days, rent_cents, shipping_cents, deposit_cents, claim_cents, claim_photos, claim_disputed, condition_photos_out, condition_photos_in, deposit_refunded_cents, unit, fulfilment, cleaning_fee_cents, damage_waiver, damage_waiver_cents, late_fee_cents, rent_refunded_cents, charges, condition_photos_return, *args, **kwargs):  # noqa: E501
         """ListRentalsItem - a model defined in OpenAPI
 
         Args:
@@ -167,6 +207,15 @@ class ListRentalsItem(ModelNormal):
             condition_photos_out ([str]):
             condition_photos_in ([str]):
             deposit_refunded_cents (float):
+            unit (float):
+            fulfilment (str):
+            cleaning_fee_cents (float):
+            damage_waiver (bool):
+            damage_waiver_cents (float):
+            late_fee_cents (float):
+            rent_refunded_cents (float):
+            charges ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
+            condition_photos_return ([str]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -203,12 +252,23 @@ class ListRentalsItem(ModelNormal):
             returned_at (str, none_type): [optional]  # noqa: E501
             closed_at (str, none_type): [optional]  # noqa: E501
             ship_to ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
+            platform_listing_id (str, none_type): [optional]  # noqa: E501
+            payout_timing (str, none_type): [optional]  # noqa: E501
+            payout_released_at (str, none_type): [optional]  # noqa: E501
+            order_id (str, none_type): [optional]  # noqa: E501
+            crossly_fee_cents (float, none_type): [optional]  # noqa: E501
             slug (str, none_type): [optional]  # noqa: E501
             outbound_tracking (str, none_type): [optional]  # noqa: E501
             return_tracking (str, none_type): [optional]  # noqa: E501
             label_url (str, none_type): [optional]  # noqa: E501
             claim_note (str, none_type): [optional]  # noqa: E501
             approval_due_at (str, none_type): [optional]  # noqa: E501
+            buyout_cents (float, none_type): [optional]  # noqa: E501
+            approved_at (str, none_type): [optional]  # noqa: E501
+            delivered_at (str, none_type): [optional]  # noqa: E501
+            return_shipped_at (str, none_type): [optional]  # noqa: E501
+            inspected_at (str, none_type): [optional]  # noqa: E501
+            bought_out_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -253,6 +313,15 @@ class ListRentalsItem(ModelNormal):
         self.condition_photos_out = condition_photos_out
         self.condition_photos_in = condition_photos_in
         self.deposit_refunded_cents = deposit_refunded_cents
+        self.unit = unit
+        self.fulfilment = fulfilment
+        self.cleaning_fee_cents = cleaning_fee_cents
+        self.damage_waiver = damage_waiver
+        self.damage_waiver_cents = damage_waiver_cents
+        self.late_fee_cents = late_fee_cents
+        self.rent_refunded_cents = rent_refunded_cents
+        self.charges = charges
+        self.condition_photos_return = condition_photos_return
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -273,7 +342,7 @@ class ListRentalsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, created_at, id, status, title, image_url, start_date, end_date, days, rent_cents, shipping_cents, deposit_cents, claim_cents, claim_photos, claim_disputed, condition_photos_out, condition_photos_in, deposit_refunded_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, created_at, id, status, title, image_url, start_date, end_date, days, rent_cents, shipping_cents, deposit_cents, claim_cents, claim_photos, claim_disputed, condition_photos_out, condition_photos_in, deposit_refunded_cents, unit, fulfilment, cleaning_fee_cents, damage_waiver, damage_waiver_cents, late_fee_cents, rent_refunded_cents, charges, condition_photos_return, *args, **kwargs):  # noqa: E501
         """ListRentalsItem - a model defined in OpenAPI
 
         Args:
@@ -294,6 +363,15 @@ class ListRentalsItem(ModelNormal):
             condition_photos_out ([str]):
             condition_photos_in ([str]):
             deposit_refunded_cents (float):
+            unit (float):
+            fulfilment (str):
+            cleaning_fee_cents (float):
+            damage_waiver (bool):
+            damage_waiver_cents (float):
+            late_fee_cents (float):
+            rent_refunded_cents (float):
+            charges ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
+            condition_photos_return ([str]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -330,12 +408,23 @@ class ListRentalsItem(ModelNormal):
             returned_at (str, none_type): [optional]  # noqa: E501
             closed_at (str, none_type): [optional]  # noqa: E501
             ship_to ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
+            platform_listing_id (str, none_type): [optional]  # noqa: E501
+            payout_timing (str, none_type): [optional]  # noqa: E501
+            payout_released_at (str, none_type): [optional]  # noqa: E501
+            order_id (str, none_type): [optional]  # noqa: E501
+            crossly_fee_cents (float, none_type): [optional]  # noqa: E501
             slug (str, none_type): [optional]  # noqa: E501
             outbound_tracking (str, none_type): [optional]  # noqa: E501
             return_tracking (str, none_type): [optional]  # noqa: E501
             label_url (str, none_type): [optional]  # noqa: E501
             claim_note (str, none_type): [optional]  # noqa: E501
             approval_due_at (str, none_type): [optional]  # noqa: E501
+            buyout_cents (float, none_type): [optional]  # noqa: E501
+            approved_at (str, none_type): [optional]  # noqa: E501
+            delivered_at (str, none_type): [optional]  # noqa: E501
+            return_shipped_at (str, none_type): [optional]  # noqa: E501
+            inspected_at (str, none_type): [optional]  # noqa: E501
+            bought_out_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -378,6 +467,15 @@ class ListRentalsItem(ModelNormal):
         self.condition_photos_out = condition_photos_out
         self.condition_photos_in = condition_photos_in
         self.deposit_refunded_cents = deposit_refunded_cents
+        self.unit = unit
+        self.fulfilment = fulfilment
+        self.cleaning_fee_cents = cleaning_fee_cents
+        self.damage_waiver = damage_waiver
+        self.damage_waiver_cents = damage_waiver_cents
+        self.late_fee_cents = late_fee_cents
+        self.rent_refunded_cents = rent_refunded_cents
+        self.charges = charges
+        self.condition_photos_return = condition_photos_return
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

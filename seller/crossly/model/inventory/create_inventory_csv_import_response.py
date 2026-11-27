@@ -30,7 +30,9 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from crossly.model.inventory.create_inventory_csv_import_response_capacity import CreateInventoryCsvImportResponseCapacity
     from crossly.model.inventory.create_inventory_csv_import_response_problems import CreateInventoryCsvImportResponseProblems
+    globals()['CreateInventoryCsvImportResponseCapacity'] = CreateInventoryCsvImportResponseCapacity
     globals()['CreateInventoryCsvImportResponseProblems'] = CreateInventoryCsvImportResponseProblems
 
 
@@ -88,6 +90,8 @@ class CreateInventoryCsvImportResponse(ModelNormal):
             'usable': (float,),  # noqa: E501
             'total_rows': (float,),  # noqa: E501
             'listings_created': (float,),  # noqa: E501
+            'skipped_over_limit': (float,),  # noqa: E501
+            'capacity': (CreateInventoryCsvImportResponseCapacity,),  # noqa: E501
             'dry_run': (bool,),  # noqa: E501
         }
 
@@ -105,6 +109,8 @@ class CreateInventoryCsvImportResponse(ModelNormal):
         'usable': 'usable',  # noqa: E501
         'total_rows': 'totalRows',  # noqa: E501
         'listings_created': 'listingsCreated',  # noqa: E501
+        'skipped_over_limit': 'skippedOverLimit',  # noqa: E501
+        'capacity': 'capacity',  # noqa: E501
         'dry_run': 'dryRun',  # noqa: E501
     }
 
@@ -115,18 +121,20 @@ class CreateInventoryCsvImportResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, problems, problem_count, max_rows, created, updated, usable, total_rows, listings_created, dry_run, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, problems, problem_count, max_rows, created, updated, usable, total_rows, listings_created, skipped_over_limit, capacity, dry_run, *args, **kwargs):  # noqa: E501
         """CreateInventoryCsvImportResponse - a model defined in OpenAPI
 
         Args:
             problems ([CreateInventoryCsvImportResponseProblems]):
             problem_count (float):
             max_rows (float):
-            created (float):
-            updated (float):
-            usable (float): Rows that mapped cleanly. `created + updated` when not a dry run.
+            created (float): New items written — or, on a dry run, that WOULD be written.
+            updated (float): Existing items updated by SKU — or, on a dry run, that would be.
+            usable (float): Rows that can be imported: `created + updated + skippedOverLimit`. Zero means the file has nothing usable in it.
             total_rows (float):
             listings_created (float):
+            skipped_over_limit (float): New rows left out because the monthly item limit was reached.
+            capacity (CreateInventoryCsvImportResponseCapacity):
             dry_run (bool): True when nothing was written — a preview pass.
 
         Keyword Args:
@@ -195,6 +203,8 @@ class CreateInventoryCsvImportResponse(ModelNormal):
         self.usable = usable
         self.total_rows = total_rows
         self.listings_created = listings_created
+        self.skipped_over_limit = skipped_over_limit
+        self.capacity = capacity
         self.dry_run = dry_run
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -216,18 +226,20 @@ class CreateInventoryCsvImportResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, problems, problem_count, max_rows, created, updated, usable, total_rows, listings_created, dry_run, *args, **kwargs):  # noqa: E501
+    def __init__(self, problems, problem_count, max_rows, created, updated, usable, total_rows, listings_created, skipped_over_limit, capacity, dry_run, *args, **kwargs):  # noqa: E501
         """CreateInventoryCsvImportResponse - a model defined in OpenAPI
 
         Args:
             problems ([CreateInventoryCsvImportResponseProblems]):
             problem_count (float):
             max_rows (float):
-            created (float):
-            updated (float):
-            usable (float): Rows that mapped cleanly. `created + updated` when not a dry run.
+            created (float): New items written — or, on a dry run, that WOULD be written.
+            updated (float): Existing items updated by SKU — or, on a dry run, that would be.
+            usable (float): Rows that can be imported: `created + updated + skippedOverLimit`. Zero means the file has nothing usable in it.
             total_rows (float):
             listings_created (float):
+            skipped_over_limit (float): New rows left out because the monthly item limit was reached.
+            capacity (CreateInventoryCsvImportResponseCapacity):
             dry_run (bool): True when nothing was written — a preview pass.
 
         Keyword Args:
@@ -294,6 +306,8 @@ class CreateInventoryCsvImportResponse(ModelNormal):
         self.usable = usable
         self.total_rows = total_rows
         self.listings_created = listings_created
+        self.skipped_over_limit = skipped_over_limit
+        self.capacity = capacity
         self.dry_run = dry_run
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

@@ -60,7 +60,13 @@ class CreateSpatialPropertyLeaseRentResponseData(ModelNormal):
     validations = {
     }
 
-    additional_properties_type = None
+    @cached_property
+    def additional_properties_type():
+        """
+        This must be a method because a model may have properties that are
+        of type self, this must run after the class is loaded
+        """
+        return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
     _nullable = False
 
@@ -75,6 +81,9 @@ class CreateSpatialPropertyLeaseRentResponseData(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'requires_action': (bool,),  # noqa: E501
+            'payment_id': (str,),  # noqa: E501
+            'client_secret': (str, none_type,),  # noqa: E501
             'paid_through': (str,),  # noqa: E501
             'waived': (bool,),  # noqa: E501
             'paid_cents': (float,),  # noqa: E501
@@ -86,6 +95,9 @@ class CreateSpatialPropertyLeaseRentResponseData(ModelNormal):
 
 
     attribute_map = {
+        'requires_action': 'requiresAction',  # noqa: E501
+        'payment_id': 'paymentId',  # noqa: E501
+        'client_secret': 'clientSecret',  # noqa: E501
         'paid_through': 'paidThrough',  # noqa: E501
         'waived': 'waived',  # noqa: E501
         'paid_cents': 'paidCents',  # noqa: E501
@@ -98,13 +110,8 @@ class CreateSpatialPropertyLeaseRentResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, paid_through, waived, paid_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
         """CreateSpatialPropertyLeaseRentResponseData - a model defined in OpenAPI
-
-        Args:
-            paid_through (str):
-            waived (bool):
-            paid_cents (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -137,6 +144,12 @@ class CreateSpatialPropertyLeaseRentResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            requires_action (bool): [optional]  # noqa: E501
+            payment_id (str): [optional]  # noqa: E501
+            client_secret (str, none_type): [optional]  # noqa: E501
+            paid_through (str): [optional]  # noqa: E501
+            waived (bool): [optional]  # noqa: E501
+            paid_cents (float): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -164,9 +177,6 @@ class CreateSpatialPropertyLeaseRentResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.paid_through = paid_through
-        self.waived = waived
-        self.paid_cents = paid_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -187,13 +197,8 @@ class CreateSpatialPropertyLeaseRentResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, paid_through, waived, paid_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, *args, **kwargs):  # noqa: E501
         """CreateSpatialPropertyLeaseRentResponseData - a model defined in OpenAPI
-
-        Args:
-            paid_through (str):
-            waived (bool):
-            paid_cents (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -226,6 +231,12 @@ class CreateSpatialPropertyLeaseRentResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            requires_action (bool): [optional]  # noqa: E501
+            payment_id (str): [optional]  # noqa: E501
+            client_secret (str, none_type): [optional]  # noqa: E501
+            paid_through (str): [optional]  # noqa: E501
+            waived (bool): [optional]  # noqa: E501
+            paid_cents (float): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -251,9 +262,6 @@ class CreateSpatialPropertyLeaseRentResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.paid_through = paid_through
-        self.waived = waived
-        self.paid_cents = paid_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

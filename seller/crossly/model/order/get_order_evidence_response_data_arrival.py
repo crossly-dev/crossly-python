@@ -56,10 +56,10 @@ class GetOrderEvidenceResponseDataArrival(ModelNormal):
 
     allowed_values = {
         ('state',): {
-            'AWAITING': "awaiting",
-            'SUBMITTED': "submitted",
             'DECLINED': "declined",
+            'SUBMITTED': "submitted",
             'NOT_REQUESTED': "not_requested",
+            'AWAITING': "awaiting",
             'WINDOW_CLOSED': "window_closed",
         },
     }

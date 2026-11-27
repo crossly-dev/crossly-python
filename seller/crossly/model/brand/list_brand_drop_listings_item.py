@@ -81,6 +81,8 @@ class ListBrandDropListingsItem(ModelNormal):
             'title': (str, none_type,),  # noqa: E501
             'image_url': (str, none_type,),  # noqa: E501
             'price_cents': (float, none_type,),  # noqa: E501
+            'slug': (str, none_type,),  # noqa: E501
+            'quantity': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -95,6 +97,8 @@ class ListBrandDropListingsItem(ModelNormal):
         'title': 'title',  # noqa: E501
         'image_url': 'imageUrl',  # noqa: E501
         'price_cents': 'priceCents',  # noqa: E501
+        'slug': 'slug',  # noqa: E501
+        'quantity': 'quantity',  # noqa: E501
     }
 
     read_only_vars = {
@@ -146,6 +150,8 @@ class ListBrandDropListingsItem(ModelNormal):
             title (str, none_type): [optional]  # noqa: E501
             image_url (str, none_type): [optional]  # noqa: E501
             price_cents (float, none_type): [optional]  # noqa: E501
+            slug (str, none_type): The Crossly listing's slug (platform_listings.platform_listing_id): what the cart adds by.. [optional]  # noqa: E501
+            quantity (float, none_type): Units the listing offers (null = untracked): a pre-book's reservable quantity.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -238,6 +244,8 @@ class ListBrandDropListingsItem(ModelNormal):
             title (str, none_type): [optional]  # noqa: E501
             image_url (str, none_type): [optional]  # noqa: E501
             price_cents (float, none_type): [optional]  # noqa: E501
+            slug (str, none_type): The Crossly listing's slug (platform_listings.platform_listing_id): what the cart adds by.. [optional]  # noqa: E501
+            quantity (float, none_type): Units the listing offers (null = untracked): a pre-book's reservable quantity.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -75,8 +75,8 @@ class ListBuyerTotalRequestsItemLines(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'quantity': (float,),  # noqa: E501
             'platform_listing_id': (str,),  # noqa: E501
+            'quantity': (float,),  # noqa: E501
         }
 
     @cached_property
@@ -85,8 +85,8 @@ class ListBuyerTotalRequestsItemLines(ModelNormal):
 
 
     attribute_map = {
-        'quantity': 'quantity',  # noqa: E501
         'platform_listing_id': 'platformListingId',  # noqa: E501
+        'quantity': 'quantity',  # noqa: E501
     }
 
     read_only_vars = {
@@ -96,12 +96,12 @@ class ListBuyerTotalRequestsItemLines(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, quantity, platform_listing_id, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, platform_listing_id, quantity, *args, **kwargs):  # noqa: E501
         """ListBuyerTotalRequestsItemLines - a model defined in OpenAPI
 
         Args:
-            quantity (float):
             platform_listing_id (str):
+            quantity (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -161,8 +161,8 @@ class ListBuyerTotalRequestsItemLines(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.quantity = quantity
         self.platform_listing_id = platform_listing_id
+        self.quantity = quantity
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -183,12 +183,12 @@ class ListBuyerTotalRequestsItemLines(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, quantity, platform_listing_id, *args, **kwargs):  # noqa: E501
+    def __init__(self, platform_listing_id, quantity, *args, **kwargs):  # noqa: E501
         """ListBuyerTotalRequestsItemLines - a model defined in OpenAPI
 
         Args:
-            quantity (float):
             platform_listing_id (str):
+            quantity (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -246,8 +246,8 @@ class ListBuyerTotalRequestsItemLines(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.quantity = quantity
         self.platform_listing_id = platform_listing_id
+        self.quantity = quantity
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

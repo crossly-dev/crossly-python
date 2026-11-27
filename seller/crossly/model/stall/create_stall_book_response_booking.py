@@ -70,8 +70,8 @@ class CreateStallBookResponseBooking(ModelNormal):
 
     allowed_values = {
         ('unit',): {
-            'EVENT': "event",
             'DAY': "day",
+            'EVENT': "event",
         },
         ('status',): {
             'CANCELLED': "cancelled",
@@ -81,8 +81,13 @@ class CreateStallBookResponseBooking(ModelNormal):
         },
         ('rail',): {
             'CARD': "card",
-            'BUCKS': "bucks",
             'CBX': "cbx",
+            'BUCKS': "bucks",
+        },
+        ('booth_kind',): {
+            'BOOTH': "booth",
+            'CART': "cart",
+            'PAVILION': "pavilion",
         },
     }
 
@@ -120,6 +125,8 @@ class CreateStallBookResponseBooking(ModelNormal):
             'refunded_cents': (float,),  # noqa: E501
             'cancellable': (bool,),  # noqa: E501
             'listing_ids': ([str],),  # noqa: E501
+            'booth_kind': (str,),  # noqa: E501
+            'capacity': (float,),  # noqa: E501
             'attendant': (bool,),  # noqa: E501
             'stats': (CreateStallBookResponseBookingStats,),  # noqa: E501
             'created_at': (str,),  # noqa: E501
@@ -149,6 +156,8 @@ class CreateStallBookResponseBooking(ModelNormal):
         'refunded_cents': 'refundedCents',  # noqa: E501
         'cancellable': 'cancellable',  # noqa: E501
         'listing_ids': 'listingIds',  # noqa: E501
+        'booth_kind': 'boothKind',  # noqa: E501
+        'capacity': 'capacity',  # noqa: E501
         'attendant': 'attendant',  # noqa: E501
         'stats': 'stats',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
@@ -164,7 +173,7 @@ class CreateStallBookResponseBooking(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, street, spot_index, unit, units, starts_at, ends_at, status, rail, owner, quote, total_cents, refunded_cents, cancellable, listing_ids, attendant, stats, created_at, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, street, spot_index, unit, units, starts_at, ends_at, status, rail, owner, quote, total_cents, refunded_cents, cancellable, listing_ids, booth_kind, capacity, attendant, stats, created_at, *args, **kwargs):  # noqa: E501
         """CreateStallBookResponseBooking - a model defined in OpenAPI
 
         Args:
@@ -183,6 +192,8 @@ class CreateStallBookResponseBooking(ModelNormal):
             refunded_cents (float):
             cancellable (bool):
             listing_ids ([str]):
+            booth_kind (str):
+            capacity (float):
             attendant (bool):
             stats (CreateStallBookResponseBookingStats):
             created_at (str):
@@ -263,6 +274,8 @@ class CreateStallBookResponseBooking(ModelNormal):
         self.refunded_cents = refunded_cents
         self.cancellable = cancellable
         self.listing_ids = listing_ids
+        self.booth_kind = booth_kind
+        self.capacity = capacity
         self.attendant = attendant
         self.stats = stats
         self.created_at = created_at
@@ -286,7 +299,7 @@ class CreateStallBookResponseBooking(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, street, spot_index, unit, units, starts_at, ends_at, status, rail, owner, quote, total_cents, refunded_cents, cancellable, listing_ids, attendant, stats, created_at, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, street, spot_index, unit, units, starts_at, ends_at, status, rail, owner, quote, total_cents, refunded_cents, cancellable, listing_ids, booth_kind, capacity, attendant, stats, created_at, *args, **kwargs):  # noqa: E501
         """CreateStallBookResponseBooking - a model defined in OpenAPI
 
         Args:
@@ -305,6 +318,8 @@ class CreateStallBookResponseBooking(ModelNormal):
             refunded_cents (float):
             cancellable (bool):
             listing_ids ([str]):
+            booth_kind (str):
+            capacity (float):
             attendant (bool):
             stats (CreateStallBookResponseBookingStats):
             created_at (str):
@@ -383,6 +398,8 @@ class CreateStallBookResponseBooking(ModelNormal):
         self.refunded_cents = refunded_cents
         self.cancellable = cancellable
         self.listing_ids = listing_ids
+        self.booth_kind = booth_kind
+        self.capacity = capacity
         self.attendant = attendant
         self.stats = stats
         self.created_at = created_at

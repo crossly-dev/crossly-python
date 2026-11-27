@@ -57,11 +57,11 @@ class GetSpatialEmployeeConfigResponseDataConfigRules(ModelNormal):
     allowed_values = {
         ('when',): {
             'ENTERED': "entered",
+            'ASKED': "asked",
             'LINGERED': "lingered",
             'INSPECTED': "inspected",
             'ADDED_TO_CART': "added_to_cart",
             'LEAVING_WITH_CART': "leaving_with_cart",
-            'ASKED': "asked",
         },
     }
 

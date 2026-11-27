@@ -30,9 +30,9 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.world.get_world_place_live_response_data_lot import GetWorldPlaceLiveResponseDataLot
+    from crossly.model.main.get_main_stage_response_stream_lot import GetMainStageResponseStreamLot
     from crossly.model.world.get_world_place_live_response_data_stream import GetWorldPlaceLiveResponseDataStream
-    globals()['GetWorldPlaceLiveResponseDataLot'] = GetWorldPlaceLiveResponseDataLot
+    globals()['GetMainStageResponseStreamLot'] = GetMainStageResponseStreamLot
     globals()['GetWorldPlaceLiveResponseDataStream'] = GetWorldPlaceLiveResponseDataStream
 
 
@@ -83,7 +83,7 @@ class GetWorldPlaceLiveResponseData(ModelNormal):
         lazy_import()
         return {
             'stream': (GetWorldPlaceLiveResponseDataStream,),  # noqa: E501
-            'lot': (GetWorldPlaceLiveResponseDataLot,),  # noqa: E501
+            'lot': (GetMainStageResponseStreamLot,),  # noqa: E501
         }
 
     @cached_property
@@ -138,7 +138,7 @@ class GetWorldPlaceLiveResponseData(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             stream (GetWorldPlaceLiveResponseDataStream): [optional]  # noqa: E501
-            lot (GetWorldPlaceLiveResponseDataLot): [optional]  # noqa: E501
+            lot (GetMainStageResponseStreamLot): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -221,7 +221,7 @@ class GetWorldPlaceLiveResponseData(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             stream (GetWorldPlaceLiveResponseDataStream): [optional]  # noqa: E501
-            lot (GetWorldPlaceLiveResponseDataLot): [optional]  # noqa: E501
+            lot (GetMainStageResponseStreamLot): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

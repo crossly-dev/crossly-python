@@ -56,8 +56,8 @@ class GetVaultMarketPositionResponseSplits(ModelNormal):
 
     allowed_values = {
         ('reason',): {
-            'AUCTION': "auction",
             'CLOSE': "close",
+            'AUCTION': "auction",
             'RECALL': "recall",
         },
         ('status',): {
@@ -68,8 +68,8 @@ class GetVaultMarketPositionResponseSplits(ModelNormal):
         },
         ('action',): {
             'None': None,
-            'AUCTION': "auction",
             'CLOSE': "close",
+            'AUCTION': "auction",
         },
     }
 

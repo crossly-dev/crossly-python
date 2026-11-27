@@ -75,8 +75,8 @@ class GetBuyerCollectionSetResponseDataGroup(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'brand': (str,),  # noqa: E501
             'category': (str,),  # noqa: E501
+            'brand': (str,),  # noqa: E501
             'model': (str,),  # noqa: E501
             'brand_slug': (str,),  # noqa: E501
             'model_slug': (str,),  # noqa: E501
@@ -90,8 +90,8 @@ class GetBuyerCollectionSetResponseDataGroup(ModelNormal):
 
 
     attribute_map = {
-        'brand': 'brand',  # noqa: E501
         'category': 'category',  # noqa: E501
+        'brand': 'brand',  # noqa: E501
         'model': 'model',  # noqa: E501
         'brand_slug': 'brandSlug',  # noqa: E501
         'model_slug': 'modelSlug',  # noqa: E501
@@ -106,12 +106,12 @@ class GetBuyerCollectionSetResponseDataGroup(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, brand, category, model, brand_slug, model_slug, total, owned, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, category, brand, model, brand_slug, model_slug, total, owned, *args, **kwargs):  # noqa: E501
         """GetBuyerCollectionSetResponseDataGroup - a model defined in OpenAPI
 
         Args:
-            brand (str):
             category (str):
+            brand (str):
             model (str):
             brand_slug (str):
             model_slug (str):
@@ -176,8 +176,8 @@ class GetBuyerCollectionSetResponseDataGroup(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.brand = brand
         self.category = category
+        self.brand = brand
         self.model = model
         self.brand_slug = brand_slug
         self.model_slug = model_slug
@@ -203,12 +203,12 @@ class GetBuyerCollectionSetResponseDataGroup(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, brand, category, model, brand_slug, model_slug, total, owned, *args, **kwargs):  # noqa: E501
+    def __init__(self, category, brand, model, brand_slug, model_slug, total, owned, *args, **kwargs):  # noqa: E501
         """GetBuyerCollectionSetResponseDataGroup - a model defined in OpenAPI
 
         Args:
-            brand (str):
             category (str):
+            brand (str):
             model (str):
             brand_slug (str):
             model_slug (str):
@@ -271,8 +271,8 @@ class GetBuyerCollectionSetResponseDataGroup(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.brand = brand
         self.category = category
+        self.brand = brand
         self.model = model
         self.brand_slug = brand_slug
         self.model_slug = model_slug

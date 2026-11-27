@@ -23,14 +23,16 @@ from crossly.model_utils import (  # noqa: F401
 )
 from crossly.model.common.error import Error
 from crossly.model.brand.get_brand_response import GetBrandResponse
-from crossly.model.common.get_category_response import GetCategoryResponse
+from crossly.model.category.get_category_response import GetCategoryResponse
 from crossly.model.common.get_department_response import GetDepartmentResponse
 from crossly.model.common.get_gender_response import GetGenderResponse
 from crossly.model.common.get_pattern_response import GetPatternResponse
+from crossly.model.common.get_reference_postal_response import GetReferencePostalResponse
 from crossly.model.common.get_size_system_response import GetSizeSystemResponse
 from crossly.model.common.get_style_response import GetStyleResponse
 from crossly.model.common.get_type_response import GetTypeResponse
 from crossly.model.common.list_reference_countries_response import ListReferenceCountriesResponse
+from crossly.model.common.list_reference_metros_response import ListReferenceMetrosResponse
 
 
 class ReferenceApi(object):
@@ -264,6 +266,63 @@ class ReferenceApi(object):
             },
             api_client=api_client
         )
+        self.get_reference_postal_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetReferencePostalResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/reference/postal/{country}/{code}',
+                'operation_id': 'get_reference_postal',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'country',
+                    'code',
+                ],
+                'required': [
+                    'country',
+                    'code',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'country':
+                        (str,),
+                    'code':
+                        (str,),
+                },
+                'attribute_map': {
+                    'country': 'country',
+                    'code': 'code',
+                },
+                'location_map': {
+                    'country': 'path',
+                    'code': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.get_size_system_endpoint = _Endpoint(
             settings={
                 'response_type': (GetSizeSystemResponse,),
@@ -428,6 +487,73 @@ class ReferenceApi(object):
                 'attribute_map': {
                 },
                 'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.list_reference_metros_endpoint = _Endpoint(
+            settings={
+                'response_type': (ListReferenceMetrosResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/reference/metros',
+                'operation_id': 'list_reference_metros',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'q',
+                    'limit',
+                ],
+                'required': [
+                    'q',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'q',
+                    'limit',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('q',): {
+
+                        'min_length': 2,
+                    },
+                    ('limit',): {
+
+                        'inclusive_maximum': 20,
+                        'inclusive_minimum': 1,
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'q':
+                        (str,),
+                    'limit':
+                        (int,),
+                },
+                'attribute_map': {
+                    'q': 'q',
+                    'limit': 'limit',
+                },
+                'location_map': {
+                    'q': 'query',
+                    'limit': 'query',
                 },
                 'collection_format_map': {
                 }
@@ -801,6 +927,88 @@ class ReferenceApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.get_pattern_endpoint.call_with_http_info(**kwargs)
 
+    def get_reference_postal(
+        self,
+        country,
+        code,
+        **kwargs
+    ):
+        """Look up a postal code: canonical shape, state and US metro areas.  # noqa: E501
+
+        Every country gets its canonical shape and `valid`. A US ZIP (territories normalize to country US with `territory`) also gets state, county FIPS and CBSA/CSA. `metroStatus` is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_reference_postal(country, code, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            country (str):
+            code (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetReferencePostalResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['country'] = \
+            country
+        kwargs['code'] = \
+            code
+        return self.get_reference_postal_endpoint.call_with_http_info(**kwargs)
+
     def get_size_system(
         self,
         **kwargs
@@ -1089,4 +1297,83 @@ class ReferenceApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.list_reference_countries_endpoint.call_with_http_info(**kwargs)
+
+    def list_reference_metros(
+        self,
+        q,
+        **kwargs
+    ):
+        """Search US metro areas (CSA / CBSA) for location rules.  # noqa: E501
+
+        Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. `q` needs 2+ characters. `meta.datasetAvailable` is false when the census dataset is not loaded, in which case no metro rule can match.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_reference_metros(q, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            q (str):
+
+        Keyword Args:
+            limit (int): [optional] if omitted the server will use the default value of 20
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ListReferenceMetrosResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['q'] = \
+            q
+        return self.list_reference_metros_endpoint.call_with_http_info(**kwargs)
 

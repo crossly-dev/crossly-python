@@ -76,6 +76,7 @@ class GetVaultMarketAccountResponseIdentity(ModelNormal):
         """
         return {
             'verified': (bool,),  # noqa: E501
+            'retry': (bool,),  # noqa: E501
             'status': (str, none_type,),  # noqa: E501
         }
 
@@ -86,6 +87,7 @@ class GetVaultMarketAccountResponseIdentity(ModelNormal):
 
     attribute_map = {
         'verified': 'verified',  # noqa: E501
+        'retry': 'retry',  # noqa: E501
         'status': 'status',  # noqa: E501
     }
 
@@ -96,11 +98,12 @@ class GetVaultMarketAccountResponseIdentity(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, verified, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, verified, retry, *args, **kwargs):  # noqa: E501
         """GetVaultMarketAccountResponseIdentity - a model defined in OpenAPI
 
         Args:
             verified (bool):
+            retry (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -162,6 +165,7 @@ class GetVaultMarketAccountResponseIdentity(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.verified = verified
+        self.retry = retry
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -182,11 +186,12 @@ class GetVaultMarketAccountResponseIdentity(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, verified, *args, **kwargs):  # noqa: E501
+    def __init__(self, verified, retry, *args, **kwargs):  # noqa: E501
         """GetVaultMarketAccountResponseIdentity - a model defined in OpenAPI
 
         Args:
             verified (bool):
+            retry (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -246,6 +251,7 @@ class GetVaultMarketAccountResponseIdentity(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.verified = verified
+        self.retry = retry
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

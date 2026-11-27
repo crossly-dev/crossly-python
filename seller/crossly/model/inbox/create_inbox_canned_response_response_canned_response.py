@@ -79,8 +79,9 @@ class CreateInboxCannedResponseResponseCannedResponse(ModelNormal):
             'name': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'user_id': (str,),  # noqa: E501
-            'surface': (str,),  # noqa: E501
             'body': (str,),  # noqa: E501
+            'surface': (str,),  # noqa: E501
+            'sort_order': (float,),  # noqa: E501
             'title': (str, none_type,),  # noqa: E501
         }
 
@@ -94,8 +95,9 @@ class CreateInboxCannedResponseResponseCannedResponse(ModelNormal):
         'name': 'name',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'user_id': 'userId',  # noqa: E501
-        'surface': 'surface',  # noqa: E501
         'body': 'body',  # noqa: E501
+        'surface': 'surface',  # noqa: E501
+        'sort_order': 'sortOrder',  # noqa: E501
         'title': 'title',  # noqa: E501
     }
 
@@ -106,7 +108,7 @@ class CreateInboxCannedResponseResponseCannedResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, created_at, user_id, surface, body, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, name, created_at, user_id, body, surface, sort_order, *args, **kwargs):  # noqa: E501
         """CreateInboxCannedResponseResponseCannedResponse - a model defined in OpenAPI
 
         Args:
@@ -114,8 +116,9 @@ class CreateInboxCannedResponseResponseCannedResponse(ModelNormal):
             name (str):
             created_at (datetime):
             user_id (str):
-            surface (str):
             body (str):
+            surface (str):
+            sort_order (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -180,8 +183,9 @@ class CreateInboxCannedResponseResponseCannedResponse(ModelNormal):
         self.name = name
         self.created_at = created_at
         self.user_id = user_id
-        self.surface = surface
         self.body = body
+        self.surface = surface
+        self.sort_order = sort_order
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -202,7 +206,7 @@ class CreateInboxCannedResponseResponseCannedResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, created_at, user_id, surface, body, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, name, created_at, user_id, body, surface, sort_order, *args, **kwargs):  # noqa: E501
         """CreateInboxCannedResponseResponseCannedResponse - a model defined in OpenAPI
 
         Args:
@@ -210,8 +214,9 @@ class CreateInboxCannedResponseResponseCannedResponse(ModelNormal):
             name (str):
             created_at (datetime):
             user_id (str):
-            surface (str):
             body (str):
+            surface (str):
+            sort_order (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -274,8 +279,9 @@ class CreateInboxCannedResponseResponseCannedResponse(ModelNormal):
         self.name = name
         self.created_at = created_at
         self.user_id = user_id
-        self.surface = surface
         self.body = body
+        self.surface = surface
+        self.sort_order = sort_order
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -75,13 +75,13 @@ class ListBuyerLiveStreamLineupItem(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'available': (bool,),  # noqa: E501
             'platform_listing_id': (str,),  # noqa: E501
             'position': (float,),  # noqa: E501
             'price_cents': (float,),  # noqa: E501
+            'available': (bool,),  # noqa: E501
             'pinned': (bool,),  # noqa: E501
-            'title': (str, none_type,),  # noqa: E501
             'slug': (str, none_type,),  # noqa: E501
+            'title': (str, none_type,),  # noqa: E501
             'image_url': (str, none_type,),  # noqa: E501
         }
 
@@ -91,13 +91,13 @@ class ListBuyerLiveStreamLineupItem(ModelNormal):
 
 
     attribute_map = {
-        'available': 'available',  # noqa: E501
         'platform_listing_id': 'platformListingId',  # noqa: E501
         'position': 'position',  # noqa: E501
         'price_cents': 'priceCents',  # noqa: E501
+        'available': 'available',  # noqa: E501
         'pinned': 'pinned',  # noqa: E501
-        'title': 'title',  # noqa: E501
         'slug': 'slug',  # noqa: E501
+        'title': 'title',  # noqa: E501
         'image_url': 'imageUrl',  # noqa: E501
     }
 
@@ -108,14 +108,14 @@ class ListBuyerLiveStreamLineupItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, available, platform_listing_id, position, price_cents, pinned, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, platform_listing_id, position, price_cents, available, pinned, *args, **kwargs):  # noqa: E501
         """ListBuyerLiveStreamLineupItem - a model defined in OpenAPI
 
         Args:
-            available (bool):
             platform_listing_id (str):
             position (float):
             price_cents (float):
+            available (bool):
             pinned (bool):
 
         Keyword Args:
@@ -149,8 +149,8 @@ class ListBuyerLiveStreamLineupItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            title (str, none_type): [optional]  # noqa: E501
             slug (str, none_type): [optional]  # noqa: E501
+            title (str, none_type): [optional]  # noqa: E501
             image_url (str, none_type): [optional]  # noqa: E501
         """
 
@@ -179,10 +179,10 @@ class ListBuyerLiveStreamLineupItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.available = available
         self.platform_listing_id = platform_listing_id
         self.position = position
         self.price_cents = price_cents
+        self.available = available
         self.pinned = pinned
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -204,14 +204,14 @@ class ListBuyerLiveStreamLineupItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, available, platform_listing_id, position, price_cents, pinned, *args, **kwargs):  # noqa: E501
+    def __init__(self, platform_listing_id, position, price_cents, available, pinned, *args, **kwargs):  # noqa: E501
         """ListBuyerLiveStreamLineupItem - a model defined in OpenAPI
 
         Args:
-            available (bool):
             platform_listing_id (str):
             position (float):
             price_cents (float):
+            available (bool):
             pinned (bool):
 
         Keyword Args:
@@ -245,8 +245,8 @@ class ListBuyerLiveStreamLineupItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            title (str, none_type): [optional]  # noqa: E501
             slug (str, none_type): [optional]  # noqa: E501
+            title (str, none_type): [optional]  # noqa: E501
             image_url (str, none_type): [optional]  # noqa: E501
         """
 
@@ -273,10 +273,10 @@ class ListBuyerLiveStreamLineupItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.available = available
         self.platform_listing_id = platform_listing_id
         self.position = position
         self.price_cents = price_cents
+        self.available = available
         self.pinned = pinned
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

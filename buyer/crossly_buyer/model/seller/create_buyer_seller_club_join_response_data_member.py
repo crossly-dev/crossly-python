@@ -80,9 +80,9 @@ class CreateBuyerSellerClubJoinResponseDataMember(ModelNormal):
         """
         lazy_import()
         return {
-            'joined_at': (str,),  # noqa: E501
-            'discount_bps': (float,),  # noqa: E501
             'spend_cents': (float,),  # noqa: E501
+            'discount_bps': (float,),  # noqa: E501
+            'joined_at': (str,),  # noqa: E501
             'tier': (str, none_type,),  # noqa: E501
             'next': (CreateBuyerSellerClubJoinResponseDataMemberNext,),  # noqa: E501
         }
@@ -93,9 +93,9 @@ class CreateBuyerSellerClubJoinResponseDataMember(ModelNormal):
 
 
     attribute_map = {
-        'joined_at': 'joinedAt',  # noqa: E501
-        'discount_bps': 'discountBps',  # noqa: E501
         'spend_cents': 'spendCents',  # noqa: E501
+        'discount_bps': 'discountBps',  # noqa: E501
+        'joined_at': 'joinedAt',  # noqa: E501
         'tier': 'tier',  # noqa: E501
         'next': 'next',  # noqa: E501
     }
@@ -107,13 +107,13 @@ class CreateBuyerSellerClubJoinResponseDataMember(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, joined_at, discount_bps, spend_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, spend_cents, discount_bps, joined_at, *args, **kwargs):  # noqa: E501
         """CreateBuyerSellerClubJoinResponseDataMember - a model defined in OpenAPI
 
         Args:
-            joined_at (str):
-            discount_bps (float):
             spend_cents (float):
+            discount_bps (float):
+            joined_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -175,9 +175,9 @@ class CreateBuyerSellerClubJoinResponseDataMember(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.joined_at = joined_at
-        self.discount_bps = discount_bps
         self.spend_cents = spend_cents
+        self.discount_bps = discount_bps
+        self.joined_at = joined_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -198,13 +198,13 @@ class CreateBuyerSellerClubJoinResponseDataMember(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, joined_at, discount_bps, spend_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, spend_cents, discount_bps, joined_at, *args, **kwargs):  # noqa: E501
         """CreateBuyerSellerClubJoinResponseDataMember - a model defined in OpenAPI
 
         Args:
-            joined_at (str):
-            discount_bps (float):
             spend_cents (float):
+            discount_bps (float):
+            joined_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -264,9 +264,9 @@ class CreateBuyerSellerClubJoinResponseDataMember(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.joined_at = joined_at
-        self.discount_bps = discount_bps
         self.spend_cents = spend_cents
+        self.discount_bps = discount_bps
+        self.joined_at = joined_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

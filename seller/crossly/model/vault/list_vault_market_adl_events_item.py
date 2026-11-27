@@ -56,16 +56,16 @@ class ListVaultMarketAdlEventsItem(ModelNormal):
 
     allowed_values = {
         ('kind',): {
-            'UNIT': "unit",
             'CASH': "cash",
+            'UNIT': "unit",
         },
         ('role',): {
             'BANKRUPT': "bankrupt",
             'COUNTERPARTY': "counterparty",
         },
         ('side',): {
-            'LONG': "long",
             'SHORT': "short",
+            'LONG': "long",
         },
     }
 

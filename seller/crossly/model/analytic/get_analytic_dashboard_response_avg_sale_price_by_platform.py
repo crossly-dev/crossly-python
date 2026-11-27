@@ -77,7 +77,7 @@ class GetAnalyticDashboardResponseAvgSalePriceByPlatform(ModelNormal):
         return {
             'platform': (str,),  # noqa: E501
             'avg_price': (float,),  # noqa: E501
-            'count': (str,),  # noqa: E501
+            'count': (float,),  # noqa: E501
         }
 
     @cached_property
@@ -104,7 +104,7 @@ class GetAnalyticDashboardResponseAvgSalePriceByPlatform(ModelNormal):
         Args:
             platform (str):
             avg_price (float):
-            count (str):
+            count (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -193,7 +193,7 @@ class GetAnalyticDashboardResponseAvgSalePriceByPlatform(ModelNormal):
         Args:
             platform (str):
             avg_price (float):
-            count (str):
+            count (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

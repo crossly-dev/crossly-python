@@ -83,12 +83,12 @@ class GetBuyerCollectionOfferResponseData(ModelNormal):
         lazy_import()
         return {
             'portfolio_id': (str,),  # noqa: E501
-            'pending': (GetBuyerCollectionOfferResponseDataPending,),  # noqa: E501
             'title': (str, none_type,),  # noqa: E501
             'last_sale_cents': (float, none_type,),  # noqa: E501
+            'top_bid_cents': (float, none_type,),  # noqa: E501
             'sku_id': (str, none_type,),  # noqa: E501
             'offer': (GetBuyerCollectionOfferResponseDataOffer,),  # noqa: E501
-            'top_bid_cents': (float, none_type,),  # noqa: E501
+            'pending': (GetBuyerCollectionOfferResponseDataPending,),  # noqa: E501
         }
 
     @cached_property
@@ -98,12 +98,12 @@ class GetBuyerCollectionOfferResponseData(ModelNormal):
 
     attribute_map = {
         'portfolio_id': 'portfolioId',  # noqa: E501
-        'pending': 'pending',  # noqa: E501
         'title': 'title',  # noqa: E501
         'last_sale_cents': 'lastSaleCents',  # noqa: E501
+        'top_bid_cents': 'topBidCents',  # noqa: E501
         'sku_id': 'skuId',  # noqa: E501
         'offer': 'offer',  # noqa: E501
-        'top_bid_cents': 'topBidCents',  # noqa: E501
+        'pending': 'pending',  # noqa: E501
     }
 
     read_only_vars = {
@@ -150,12 +150,12 @@ class GetBuyerCollectionOfferResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            pending (GetBuyerCollectionOfferResponseDataPending): [optional]  # noqa: E501
             title (str, none_type): [optional]  # noqa: E501
             last_sale_cents (float, none_type): [optional]  # noqa: E501
+            top_bid_cents (float, none_type): [optional]  # noqa: E501
             sku_id (str, none_type): [optional]  # noqa: E501
             offer (GetBuyerCollectionOfferResponseDataOffer): [optional]  # noqa: E501
-            top_bid_cents (float, none_type): [optional]  # noqa: E501
+            pending (GetBuyerCollectionOfferResponseDataPending): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -241,12 +241,12 @@ class GetBuyerCollectionOfferResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            pending (GetBuyerCollectionOfferResponseDataPending): [optional]  # noqa: E501
             title (str, none_type): [optional]  # noqa: E501
             last_sale_cents (float, none_type): [optional]  # noqa: E501
+            top_bid_cents (float, none_type): [optional]  # noqa: E501
             sku_id (str, none_type): [optional]  # noqa: E501
             offer (GetBuyerCollectionOfferResponseDataOffer): [optional]  # noqa: E501
-            top_bid_cents (float, none_type): [optional]  # noqa: E501
+            pending (GetBuyerCollectionOfferResponseDataPending): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

@@ -62,8 +62,8 @@ class ListVaultMarketIndexConsultationsItem(ModelNormal):
         ('status',): {
             'OPEN': "open",
             'CLOSED': "closed",
-            'ADOPTED': "adopted",
             'WITHDRAWN': "withdrawn",
+            'ADOPTED': "adopted",
         },
     }
 

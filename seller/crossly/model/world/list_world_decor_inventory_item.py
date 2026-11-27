@@ -62,11 +62,11 @@ class ListWorldDecorInventoryItem(ModelNormal):
 
     allowed_values = {
         ('surface',): {
-            'SHOP': "shop",
             'HOME': "home",
             'STREET': "street",
-            'STALL': "stall",
+            'SHOP': "shop",
             'AVATAR': "avatar",
+            'STALL': "stall",
         },
     }
 

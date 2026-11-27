@@ -56,8 +56,8 @@ class ListVaultMarketAdlPositionsItem(ModelNormal):
 
     allowed_values = {
         ('kind',): {
-            'LONG': "long",
             'SHORT': "short",
+            'LONG': "long",
         },
     }
 

@@ -75,8 +75,8 @@ class CreateBuyerWishlistInviteResponseData(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'url': (str,),  # noqa: E501
             'token': (str,),  # noqa: E501
+            'url': (str,),  # noqa: E501
             'expires_at': (str,),  # noqa: E501
         }
 
@@ -86,8 +86,8 @@ class CreateBuyerWishlistInviteResponseData(ModelNormal):
 
 
     attribute_map = {
-        'url': 'url',  # noqa: E501
         'token': 'token',  # noqa: E501
+        'url': 'url',  # noqa: E501
         'expires_at': 'expiresAt',  # noqa: E501
     }
 
@@ -98,12 +98,12 @@ class CreateBuyerWishlistInviteResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, url, token, expires_at, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, token, url, expires_at, *args, **kwargs):  # noqa: E501
         """CreateBuyerWishlistInviteResponseData - a model defined in OpenAPI
 
         Args:
-            url (str):
             token (str):
+            url (str):
             expires_at (str):
 
         Keyword Args:
@@ -164,8 +164,8 @@ class CreateBuyerWishlistInviteResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.url = url
         self.token = token
+        self.url = url
         self.expires_at = expires_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -187,12 +187,12 @@ class CreateBuyerWishlistInviteResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, url, token, expires_at, *args, **kwargs):  # noqa: E501
+    def __init__(self, token, url, expires_at, *args, **kwargs):  # noqa: E501
         """CreateBuyerWishlistInviteResponseData - a model defined in OpenAPI
 
         Args:
-            url (str):
             token (str):
+            url (str):
             expires_at (str):
 
         Keyword Args:
@@ -251,8 +251,8 @@ class CreateBuyerWishlistInviteResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.url = url
         self.token = token
+        self.url = url
         self.expires_at = expires_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

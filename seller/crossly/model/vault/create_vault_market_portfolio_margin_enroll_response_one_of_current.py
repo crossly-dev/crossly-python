@@ -57,9 +57,9 @@ class CreateVaultMarketPortfolioMarginEnrollResponseOneOfCurrent(ModelNormal):
     allowed_values = {
         ('state',): {
             'None': None,
-            'BUY_IN': "buy_in",
             'HEALTHY': "healthy",
             'CALL': "call",
+            'BUY_IN': "buy_in",
         },
     }
 

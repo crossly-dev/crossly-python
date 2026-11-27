@@ -57,8 +57,8 @@ class ListWorldOutfitsItemItems(ModelNormal):
     allowed_values = {
         ('door',): {
             'RECEIPT': "receipt",
-            'COSMETIC': "cosmetic",
             'STOCK': "stock",
+            'COSMETIC': "cosmetic",
         },
     }
 

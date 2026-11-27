@@ -78,10 +78,10 @@ class CreateBuyerRegistryResponseData(ModelNormal):
             'id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (datetime,),  # noqa: E501
-            'token': (str,),  # noqa: E501
-            'kind': (str,),  # noqa: E501
             'owner_user_id': (str,),  # noqa: E501
+            'kind': (str,),  # noqa: E501
             'wishlist_id': (str,),  # noqa: E501
+            'token': (str,),  # noqa: E501
             'message': (str, none_type,),  # noqa: E501
             'event_date': (str, none_type,),  # noqa: E501
             'ship_address_id': (str, none_type,),  # noqa: E501
@@ -96,10 +96,10 @@ class CreateBuyerRegistryResponseData(ModelNormal):
         'id': 'id',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
-        'token': 'token',  # noqa: E501
-        'kind': 'kind',  # noqa: E501
         'owner_user_id': 'ownerUserId',  # noqa: E501
+        'kind': 'kind',  # noqa: E501
         'wishlist_id': 'wishlistId',  # noqa: E501
+        'token': 'token',  # noqa: E501
         'message': 'message',  # noqa: E501
         'event_date': 'eventDate',  # noqa: E501
         'ship_address_id': 'shipAddressId',  # noqa: E501
@@ -112,17 +112,17 @@ class CreateBuyerRegistryResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, updated_at, token, kind, owner_user_id, wishlist_id, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, updated_at, owner_user_id, kind, wishlist_id, token, *args, **kwargs):  # noqa: E501
         """CreateBuyerRegistryResponseData - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (datetime):
             updated_at (datetime):
-            token (str):
-            kind (str):
             owner_user_id (str):
+            kind (str):
             wishlist_id (str):
+            token (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -188,10 +188,10 @@ class CreateBuyerRegistryResponseData(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.updated_at = updated_at
-        self.token = token
-        self.kind = kind
         self.owner_user_id = owner_user_id
+        self.kind = kind
         self.wishlist_id = wishlist_id
+        self.token = token
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -212,17 +212,17 @@ class CreateBuyerRegistryResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, updated_at, token, kind, owner_user_id, wishlist_id, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, updated_at, owner_user_id, kind, wishlist_id, token, *args, **kwargs):  # noqa: E501
         """CreateBuyerRegistryResponseData - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (datetime):
             updated_at (datetime):
-            token (str):
-            kind (str):
             owner_user_id (str):
+            kind (str):
             wishlist_id (str):
+            token (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -286,10 +286,10 @@ class CreateBuyerRegistryResponseData(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.updated_at = updated_at
-        self.token = token
-        self.kind = kind
         self.owner_user_id = owner_user_id
+        self.kind = kind
         self.wishlist_id = wishlist_id
+        self.token = token
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

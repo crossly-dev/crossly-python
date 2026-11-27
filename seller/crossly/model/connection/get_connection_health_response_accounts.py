@@ -64,11 +64,11 @@ class GetConnectionHealthResponseAccounts(ModelNormal):
 
     allowed_values = {
         ('state',): {
-            'STALE': "stale",
             'UNKNOWN': "unknown",
-            'HEALTHY': "healthy",
             'UNMONITORED': "unmonitored",
             'DISCONNECTED': "disconnected",
+            'HEALTHY': "healthy",
+            'STALE': "stale",
             'PARTIAL_BLANK': "partial_blank",
             'BLANK_CREDENTIAL': "blank_credential",
             'SIGNED_OUT': "signed_out",
@@ -76,11 +76,11 @@ class GetConnectionHealthResponseAccounts(ModelNormal):
             'NO_COOKIES': "no_cookies",
         },
         ('severity',): {
-            'ERROR': "error",
-            'UNKNOWN': "unknown",
-            'OK': "ok",
-            'WARN': "warn",
             'INFO': "info",
+            'UNKNOWN': "unknown",
+            'ERROR': "error",
+            'WARN': "warn",
+            'OK': "ok",
         },
         ('audience',): {
             'SELLER': "seller",

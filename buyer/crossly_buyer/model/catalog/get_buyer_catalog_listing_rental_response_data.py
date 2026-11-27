@@ -31,7 +31,9 @@ from crossly_buyer.exceptions import ApiAttributeError
 
 def lazy_import():
     from crossly_buyer.model.catalog.get_buyer_catalog_listing_rental_response_data_booked import GetBuyerCatalogListingRentalResponseDataBooked
+    from crossly_buyer.model.catalog.get_buyer_catalog_listing_rental_response_data_options import GetBuyerCatalogListingRentalResponseDataOptions
     globals()['GetBuyerCatalogListingRentalResponseDataBooked'] = GetBuyerCatalogListingRentalResponseDataBooked
+    globals()['GetBuyerCatalogListingRentalResponseDataOptions'] = GetBuyerCatalogListingRentalResponseDataOptions
 
 
 class GetBuyerCatalogListingRentalResponseData(ModelNormal):
@@ -81,7 +83,6 @@ class GetBuyerCatalogListingRentalResponseData(ModelNormal):
         lazy_import()
         return {
             'daily_cents': (float,),  # noqa: E501
-            'deposit_cents': (float,),  # noqa: E501
             'min_days': (float,),  # noqa: E501
             'max_days': (float,),  # noqa: E501
             'buffer_days': (float,),  # noqa: E501
@@ -89,7 +90,11 @@ class GetBuyerCatalogListingRentalResponseData(ModelNormal):
             'require_approval': (bool,),  # noqa: E501
             'available': (bool,),  # noqa: E501
             'booked': ([GetBuyerCatalogListingRentalResponseDataBooked],),  # noqa: E501
+            'options': (GetBuyerCatalogListingRentalResponseDataOptions,),  # noqa: E501
+            'units_free': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'weekly_cents': (float, none_type,),  # noqa: E501
+            'deposit_cents': (float, none_type,),  # noqa: E501
+            'return_policy': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -99,7 +104,6 @@ class GetBuyerCatalogListingRentalResponseData(ModelNormal):
 
     attribute_map = {
         'daily_cents': 'dailyCents',  # noqa: E501
-        'deposit_cents': 'depositCents',  # noqa: E501
         'min_days': 'minDays',  # noqa: E501
         'max_days': 'maxDays',  # noqa: E501
         'buffer_days': 'bufferDays',  # noqa: E501
@@ -107,7 +111,11 @@ class GetBuyerCatalogListingRentalResponseData(ModelNormal):
         'require_approval': 'requireApproval',  # noqa: E501
         'available': 'available',  # noqa: E501
         'booked': 'booked',  # noqa: E501
+        'options': 'options',  # noqa: E501
+        'units_free': 'unitsFree',  # noqa: E501
         'weekly_cents': 'weeklyCents',  # noqa: E501
+        'deposit_cents': 'depositCents',  # noqa: E501
+        'return_policy': 'returnPolicy',  # noqa: E501
     }
 
     read_only_vars = {
@@ -117,12 +125,11 @@ class GetBuyerCatalogListingRentalResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, daily_cents, deposit_cents, min_days, max_days, buffer_days, rent_only, require_approval, available, booked, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, daily_cents, min_days, max_days, buffer_days, rent_only, require_approval, available, booked, options, units_free, *args, **kwargs):  # noqa: E501
         """GetBuyerCatalogListingRentalResponseData - a model defined in OpenAPI
 
         Args:
             daily_cents (float):
-            deposit_cents (float):
             min_days (float):
             max_days (float):
             buffer_days (float):
@@ -130,6 +137,8 @@ class GetBuyerCatalogListingRentalResponseData(ModelNormal):
             require_approval (bool):
             available (bool):
             booked ([GetBuyerCatalogListingRentalResponseDataBooked]):
+            options (GetBuyerCatalogListingRentalResponseDataOptions):
+            units_free ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -163,6 +172,8 @@ class GetBuyerCatalogListingRentalResponseData(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             weekly_cents (float, none_type): [optional]  # noqa: E501
+            deposit_cents (float, none_type): [optional]  # noqa: E501
+            return_policy (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -191,7 +202,6 @@ class GetBuyerCatalogListingRentalResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.daily_cents = daily_cents
-        self.deposit_cents = deposit_cents
         self.min_days = min_days
         self.max_days = max_days
         self.buffer_days = buffer_days
@@ -199,6 +209,8 @@ class GetBuyerCatalogListingRentalResponseData(ModelNormal):
         self.require_approval = require_approval
         self.available = available
         self.booked = booked
+        self.options = options
+        self.units_free = units_free
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -219,12 +231,11 @@ class GetBuyerCatalogListingRentalResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, daily_cents, deposit_cents, min_days, max_days, buffer_days, rent_only, require_approval, available, booked, *args, **kwargs):  # noqa: E501
+    def __init__(self, daily_cents, min_days, max_days, buffer_days, rent_only, require_approval, available, booked, options, units_free, *args, **kwargs):  # noqa: E501
         """GetBuyerCatalogListingRentalResponseData - a model defined in OpenAPI
 
         Args:
             daily_cents (float):
-            deposit_cents (float):
             min_days (float):
             max_days (float):
             buffer_days (float):
@@ -232,6 +243,8 @@ class GetBuyerCatalogListingRentalResponseData(ModelNormal):
             require_approval (bool):
             available (bool):
             booked ([GetBuyerCatalogListingRentalResponseDataBooked]):
+            options (GetBuyerCatalogListingRentalResponseDataOptions):
+            units_free ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -265,6 +278,8 @@ class GetBuyerCatalogListingRentalResponseData(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             weekly_cents (float, none_type): [optional]  # noqa: E501
+            deposit_cents (float, none_type): [optional]  # noqa: E501
+            return_policy (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -291,7 +306,6 @@ class GetBuyerCatalogListingRentalResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.daily_cents = daily_cents
-        self.deposit_cents = deposit_cents
         self.min_days = min_days
         self.max_days = max_days
         self.buffer_days = buffer_days
@@ -299,6 +313,8 @@ class GetBuyerCatalogListingRentalResponseData(ModelNormal):
         self.require_approval = require_approval
         self.available = available
         self.booked = booked
+        self.options = options
+        self.units_free = units_free
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

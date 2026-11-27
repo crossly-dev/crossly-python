@@ -75,8 +75,8 @@ class ListBuyerListingSellerReviewsItemMedia(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'url': (str,),  # noqa: E501
             'kind': (str,),  # noqa: E501
+            'url': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -85,8 +85,8 @@ class ListBuyerListingSellerReviewsItemMedia(ModelNormal):
 
 
     attribute_map = {
-        'url': 'url',  # noqa: E501
         'kind': 'kind',  # noqa: E501
+        'url': 'url',  # noqa: E501
     }
 
     read_only_vars = {
@@ -96,12 +96,12 @@ class ListBuyerListingSellerReviewsItemMedia(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, url, kind, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, kind, url, *args, **kwargs):  # noqa: E501
         """ListBuyerListingSellerReviewsItemMedia - a model defined in OpenAPI
 
         Args:
-            url (str):
             kind (str):
+            url (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -161,8 +161,8 @@ class ListBuyerListingSellerReviewsItemMedia(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.url = url
         self.kind = kind
+        self.url = url
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -183,12 +183,12 @@ class ListBuyerListingSellerReviewsItemMedia(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, url, kind, *args, **kwargs):  # noqa: E501
+    def __init__(self, kind, url, *args, **kwargs):  # noqa: E501
         """ListBuyerListingSellerReviewsItemMedia - a model defined in OpenAPI
 
         Args:
-            url (str):
             kind (str):
+            url (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -246,8 +246,8 @@ class ListBuyerListingSellerReviewsItemMedia(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.url = url
         self.kind = kind
+        self.url = url
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

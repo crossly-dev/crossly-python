@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.common.slug_name import SlugName
-    globals()['SlugName'] = SlugName
+    from crossly.model.common.name_slug import NameSlug
+    globals()['NameSlug'] = NameSlug
 
 
 class ListJobShiftsItem(ModelNormal):
@@ -64,12 +64,12 @@ class ListJobShiftsItem(ModelNormal):
             'HUB_HELPER': "hub_helper",
         },
         ('rail',): {
-            'BUCKS': "bucks",
             'CBX': "cbx",
+            'BUCKS': "bucks",
         },
         ('status',): {
-            'OPEN': "open",
             'CANCELLED': "cancelled",
+            'OPEN': "open",
             'PAID': "paid",
             'CLAIMED': "claimed",
             'WORKED': "worked",
@@ -99,7 +99,7 @@ class ListJobShiftsItem(ModelNormal):
             'id': (str,),  # noqa: E501
             'role': (str,),  # noqa: E501
             'title': (str,),  # noqa: E501
-            'place': (SlugName,),  # noqa: E501
+            'place': (NameSlug,),  # noqa: E501
             'starts_at': (str,),  # noqa: E501
             'ends_at': (str,),  # noqa: E501
             'pay_cents': (float,),  # noqa: E501
@@ -150,7 +150,7 @@ class ListJobShiftsItem(ModelNormal):
             id (str):
             role (str):
             title (str):
-            place (SlugName):
+            place (NameSlug):
             starts_at (str):
             ends_at (str):
             pay_cents (float):
@@ -262,7 +262,7 @@ class ListJobShiftsItem(ModelNormal):
             id (str):
             role (str):
             title (str):
-            place (SlugName):
+            place (NameSlug):
             starts_at (str):
             ends_at (str):
             pay_cents (float):

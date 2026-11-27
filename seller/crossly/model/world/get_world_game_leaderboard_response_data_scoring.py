@@ -56,8 +56,8 @@ class GetWorldGameLeaderboardResponseDataScoring(ModelNormal):
 
     allowed_values = {
         ('kind',): {
-            'WINS': "wins",
             'POINTS': "points",
+            'WINS': "wins",
             'TIME': "time",
         },
         ('order',): {

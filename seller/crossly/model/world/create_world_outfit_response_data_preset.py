@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.world.list_world_outfits_item_appearance import ListWorldOutfitsItemAppearance
-    globals()['ListWorldOutfitsItemAppearance'] = ListWorldOutfitsItemAppearance
+    from crossly.model.world.create_world_outfit_response_data_preset_appearance import CreateWorldOutfitResponseDataPresetAppearance
+    globals()['CreateWorldOutfitResponseDataPresetAppearance'] = CreateWorldOutfitResponseDataPresetAppearance
 
 
 class CreateWorldOutfitResponseDataPreset(ModelNormal):
@@ -82,7 +82,7 @@ class CreateWorldOutfitResponseDataPreset(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
-            'appearance': (ListWorldOutfitsItemAppearance,),  # noqa: E501
+            'appearance': (CreateWorldOutfitResponseDataPresetAppearance,),  # noqa: E501
             'items': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}],),  # noqa: E501
             'created_at': (str,),  # noqa: E501
             'updated_at': (str,),  # noqa: E501
@@ -115,7 +115,7 @@ class CreateWorldOutfitResponseDataPreset(ModelNormal):
         Args:
             id (str):
             name (str):
-            appearance (ListWorldOutfitsItemAppearance):
+            appearance (CreateWorldOutfitResponseDataPresetAppearance):
             items ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]):
             created_at (str):
             updated_at (str):
@@ -210,7 +210,7 @@ class CreateWorldOutfitResponseDataPreset(ModelNormal):
         Args:
             id (str):
             name (str):
-            appearance (ListWorldOutfitsItemAppearance):
+            appearance (CreateWorldOutfitResponseDataPresetAppearance):
             items ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]):
             created_at (str):
             updated_at (str):

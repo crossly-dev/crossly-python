@@ -5,24 +5,27 @@ All URIs are relative to *https://crossly.net/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_inbox_ai_suggest**](InboxApi.md#create_inbox_ai_suggest) | **POST** /v1/inbox/ai-suggest | AI reply suggestion for a conversation.
-[**create_inbox_canned_response**](InboxApi.md#create_inbox_canned_response) | **POST** /v1/inbox/canned-responses | Create a canned response.
+[**create_inbox_canned_response**](InboxApi.md#create_inbox_canned_response) | **POST** /v1/inbox/canned-responses | Create a canned response (added to the end of the list).
 [**create_inbox_conversation_bulk**](InboxApi.md#create_inbox_conversation_bulk) | **POST** /v1/inbox/conversations/bulk | Bulk mark read / mark unread / soft-delete conversations.
 [**create_inbox_conversation_bulk_ai_respond**](InboxApi.md#create_inbox_conversation_bulk_ai_respond) | **POST** /v1/inbox/conversations/bulk-ai-respond | AI reply suggestion for multiple conversations — draft or send.
 [**create_inbox_conversation_offer_action**](InboxApi.md#create_inbox_conversation_offer_action) | **POST** /v1/inbox/conversations/{id}/offer-action | Accept / counter / decline an active offer on a conversation.
 [**create_inbox_message_triage**](InboxApi.md#create_inbox_message_triage) | **POST** /v1/inbox/messages/{id}/triage | Manually re-triage a buyer message.
 [**create_inbox_offer**](InboxApi.md#create_inbox_offer) | **POST** /v1/inbox/{id}/offer | Accept, counter, or decline an offer on a conversation.
 [**create_inbox_reply**](InboxApi.md#create_inbox_reply) | **POST** /v1/inbox/{id}/reply | Send a reply to a conversation thread.
+[**create_inbox_send_offer**](InboxApi.md#create_inbox_send_offer) | **POST** /v1/inbox/{id}/send-offer | Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation&#39;s canSendOffer is true (Grailed today). &#x60;amount&#x60; is in the listing&#39;s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus &#39;sending&#39; until the platform confirms.
 [**create_video_request_answer**](InboxApi.md#create_video_request_answer) | **POST** /v1/video-requests/{id}/answer | Answer a video request with a clip you uploaded (POST /v1/video-requests/upload-url, then PUT the file to uploadUrl). The buyer is notified and the clip shows on the listing.
 [**create_video_request_decline**](InboxApi.md#create_video_request_decline) | **POST** /v1/video-requests/{id}/decline | Decline a video request, with an optional note to the buyer.
 [**create_video_request_upload_url**](InboxApi.md#create_video_request_upload_url) | **POST** /v1/video-requests/upload-url | A presigned upload for a video answer: PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then answer with publicUrl.
 [**delete_inbox_canned_response**](InboxApi.md#delete_inbox_canned_response) | **DELETE** /v1/inbox/canned-responses/{id} | Delete a canned response.
-[**get_inbox**](InboxApi.md#get_inbox) | **GET** /v1/inbox/{id} | Get one conversation with its messages.
-[**get_inbox_canned_response**](InboxApi.md#get_inbox_canned_response) | **GET** /v1/inbox/canned-responses | List canned responses.
+[**get_inbox**](InboxApi.md#get_inbox) | **GET** /v1/inbox/{id} | Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus.
+[**get_inbox_canned_response**](InboxApi.md#get_inbox_canned_response) | **GET** /v1/inbox/canned-responses | List canned responses in the seller&#39;s order.
 [**get_inbox_conversation_message**](InboxApi.md#get_inbox_conversation_message) | **GET** /v1/inbox/conversations/{id}/messages | Paginated messages for a conversation.
-[**get_inbox_conversation_unread_count**](InboxApi.md#get_inbox_conversation_unread_count) | **GET** /v1/inbox/conversations/unread-count | Sidebar badge: unread conversation count.
-[**list_inbox**](InboxApi.md#list_inbox) | **GET** /v1/inbox | List conversations.
+[**get_inbox_conversation_unread_count**](InboxApi.md#get_inbox_conversation_unread_count) | **GET** /v1/inbox/conversations/unread-count | Unread conversation count (threads only; /v1/inbox/counts adds offers).
+[**get_inbox_count**](InboxApi.md#get_inbox_count) | **GET** /v1/inbox/counts | Inbox badges: unread and needs-reply, split into conversations and offers.
+[**list_inbox**](InboxApi.md#list_inbox) | **GET** /v1/inbox | List conversations. &#x60;filter&#x60; narrows to the rows GET /v1/inbox/counts counts.
 [**list_video_requests**](InboxApi.md#list_video_requests) | **GET** /v1/video-requests | Buyers asking for a video of your items. status: open (default), answered, declined or all.
 [**update_inbox_canned_response**](InboxApi.md#update_inbox_canned_response) | **PUT** /v1/inbox/canned-responses/{id} | Update a canned response.
+[**update_inbox_canned_response_order**](InboxApi.md#update_inbox_canned_response_order) | **PUT** /v1/inbox/canned-responses/order | Reorder canned responses.
 [**update_inbox_conversation**](InboxApi.md#update_inbox_conversation) | **PATCH** /v1/inbox/conversations/{id} | Mark read / change status / close conversation.
 
 
@@ -107,7 +110,7 @@ This endpoint does not need any parameter.
 # **create_inbox_canned_response**
 > CreateInboxCannedResponseResponse create_inbox_canned_response()
 
-Create a canned response.
+Create a canned response (added to the end of the list).
 
 ### Example
 
@@ -143,7 +146,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example, this endpoint has no required or optional parameters
     try:
-        # Create a canned response.
+        # Create a canned response (added to the end of the list).
         api_response = api_instance.create_inbox_canned_response()
         pprint(api_response)
     except crossly.ApiException as e:
@@ -666,6 +669,94 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **create_inbox_send_offer**
+> CreateInboxSendOfferResponse create_inbox_send_offer(id, create_inbox_send_offer_request)
+
+Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation's canSendOffer is true (Grailed today). `amount` is in the listing's currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus 'sending' until the platform confirms.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import inbox_api
+from crossly.model.inbox.create_inbox_send_offer_response import CreateInboxSendOfferResponse
+from crossly.model.common.error import Error
+from crossly.model.inbox.create_inbox_send_offer_request import CreateInboxSendOfferRequest
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = inbox_api.InboxApi(api_client)
+    id = "id_example" # str | 
+    create_inbox_send_offer_request = CreateInboxSendOfferRequest(
+        amount=3.14,
+        note="note_example",
+    ) # CreateInboxSendOfferRequest | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation's canSendOffer is true (Grailed today). `amount` is in the listing's currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus 'sending' until the platform confirms.
+        api_response = api_instance.create_inbox_send_offer(id, create_inbox_send_offer_request)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling InboxApi->create_inbox_send_offer: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**|  |
+ **create_inbox_send_offer_request** | **CreateInboxSendOfferRequest**|  |
+
+### Return type
+
+**CreateInboxSendOfferResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **create_video_request_answer**
 > CreateVideoRequestAnswerResponse create_video_request_answer(id)
 
@@ -909,7 +1000,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 # **delete_inbox_canned_response**
-> CreateOrderDisputeResponse delete_inbox_canned_response(id)
+> delete_inbox_canned_response(id)
 
 Delete a canned response.
 
@@ -921,7 +1012,6 @@ Delete a canned response.
 import time
 import crossly
 from crossly.api import inbox_api
-from crossly.model.order.create_order_dispute_response import CreateOrderDisputeResponse
 from crossly.model.common.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://crossly.net/api
@@ -949,8 +1039,7 @@ with crossly.ApiClient(configuration) as api_client:
     # example passing only required values which don't have defaults set
     try:
         # Delete a canned response.
-        api_response = api_instance.delete_inbox_canned_response(id)
-        pprint(api_response)
+        api_instance.delete_inbox_canned_response(id)
     except crossly.ApiException as e:
         print("Exception when calling InboxApi->delete_inbox_canned_response: %s\n" % e)
 ```
@@ -964,7 +1053,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateOrderDisputeResponse**
+void (empty response body)
 
 ### Authorization
 
@@ -980,7 +1069,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
+**204** | No Content — the request succeeded and there is no body. |  -  |
 **400** | Error |  -  |
 **401** | Error |  -  |
 **403** | Error |  -  |
@@ -993,7 +1082,7 @@ Name | Type | Description  | Notes
 # **get_inbox**
 > GetInboxResponse get_inbox(id)
 
-Get one conversation with its messages.
+Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus.
 
 ### Example
 
@@ -1030,7 +1119,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example passing only required values which don't have defaults set
     try:
-        # Get one conversation with its messages.
+        # Get one conversation with its messages and the item it is about (itemTitle, itemThumbnail, itemPrice, itemCurrency, itemUrl on the platform, listingId in Crossly, crosslyListingSlug, canSendOffer). An offer made in the thread is a message with offerAmount + offerStatus.
         api_response = api_instance.get_inbox(id)
         pprint(api_response)
     except crossly.ApiException as e:
@@ -1075,7 +1164,7 @@ Name | Type | Description  | Notes
 # **get_inbox_canned_response**
 > GetInboxCannedResponseResponse get_inbox_canned_response()
 
-List canned responses.
+List canned responses in the seller's order.
 
 ### Example
 
@@ -1111,7 +1200,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example, this endpoint has no required or optional parameters
     try:
-        # List canned responses.
+        # List canned responses in the seller's order.
         api_response = api_instance.get_inbox_canned_response()
         pprint(api_response)
     except crossly.ApiException as e:
@@ -1235,7 +1324,7 @@ Name | Type | Description  | Notes
 # **get_inbox_conversation_unread_count**
 > CreateWeb3LaunchArtResponse get_inbox_conversation_unread_count()
 
-Sidebar badge: unread conversation count.
+Unread conversation count (threads only; /v1/inbox/counts adds offers).
 
 ### Example
 
@@ -1271,7 +1360,7 @@ with crossly.ApiClient(configuration) as api_client:
 
     # example, this endpoint has no required or optional parameters
     try:
-        # Sidebar badge: unread conversation count.
+        # Unread conversation count (threads only; /v1/inbox/counts adds offers).
         api_response = api_instance.get_inbox_conversation_unread_count()
         pprint(api_response)
     except crossly.ApiException as e:
@@ -1310,10 +1399,88 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+# **get_inbox_count**
+> GetInboxCountResponse get_inbox_count()
+
+Inbox badges: unread and needs-reply, split into conversations and offers.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import inbox_api
+from crossly.model.common.error import Error
+from crossly.model.inbox.get_inbox_count_response import GetInboxCountResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = inbox_api.InboxApi(api_client)
+
+    # example, this endpoint has no required or optional parameters
+    try:
+        # Inbox badges: unread and needs-reply, split into conversations and offers.
+        api_response = api_instance.get_inbox_count()
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling InboxApi->get_inbox_count: %s\n" % e)
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetInboxCountResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 # **list_inbox**
 > ListInboxResponse list_inbox()
 
-List conversations.
+List conversations. `filter` narrows to the rows GET /v1/inbox/counts counts.
 
 ### Example
 
@@ -1348,12 +1515,13 @@ with crossly.ApiClient(configuration) as api_client:
     api_instance = inbox_api.InboxApi(api_client)
     page = 1 # int |  (optional) if omitted the server will use the default value of 1
     limit = 25 # int |  (optional) if omitted the server will use the default value of 25
+    filter = "unread" # str | unread | needs_reply (services/inbox/attention.ts). Omit for all. (optional)
 
     # example passing only required values which don't have defaults set
     # and optional values
     try:
-        # List conversations.
-        api_response = api_instance.list_inbox(page=page, limit=limit)
+        # List conversations. `filter` narrows to the rows GET /v1/inbox/counts counts.
+        api_response = api_instance.list_inbox(page=page, limit=limit, filter=filter)
         pprint(api_response)
     except crossly.ApiException as e:
         print("Exception when calling InboxApi->list_inbox: %s\n" % e)
@@ -1366,6 +1534,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**|  | [optional] if omitted the server will use the default value of 1
  **limit** | **int**|  | [optional] if omitted the server will use the default value of 25
+ **filter** | **str**| unread | needs_reply (services/inbox/attention.ts). Omit for all. | [optional]
 
 ### Return type
 
@@ -1538,6 +1707,95 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **update_inbox_canned_response_order**
+> GetInboxCannedResponseResponse update_inbox_canned_response_order(update_inbox_canned_response_order_request)
+
+Reorder canned responses.
+
+Pass EVERY canned response id in the new order (first = top of the picker). A list with an unknown, missing or repeated id is refused with a validation error and nothing changes.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import inbox_api
+from crossly.model.common.error import Error
+from crossly.model.inbox.update_inbox_canned_response_order_request import UpdateInboxCannedResponseOrderRequest
+from crossly.model.inbox.get_inbox_canned_response_response import GetInboxCannedResponseResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = inbox_api.InboxApi(api_client)
+    update_inbox_canned_response_order_request = UpdateInboxCannedResponseOrderRequest(
+        ids=[
+            "ids_example",
+        ],
+    ) # UpdateInboxCannedResponseOrderRequest | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Reorder canned responses.
+        api_response = api_instance.update_inbox_canned_response_order(update_inbox_canned_response_order_request)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling InboxApi->update_inbox_canned_response_order: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **update_inbox_canned_response_order_request** | **UpdateInboxCannedResponseOrderRequest**|  |
+
+### Return type
+
+**GetInboxCannedResponseResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

@@ -75,8 +75,8 @@ class ListBuyerWishlistMembersItem(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'name': (str,),  # noqa: E501
             'user_id': (str,),  # noqa: E501
+            'name': (str,),  # noqa: E501
             'joined_at': (str,),  # noqa: E501
         }
 
@@ -86,8 +86,8 @@ class ListBuyerWishlistMembersItem(ModelNormal):
 
 
     attribute_map = {
-        'name': 'name',  # noqa: E501
         'user_id': 'userId',  # noqa: E501
+        'name': 'name',  # noqa: E501
         'joined_at': 'joinedAt',  # noqa: E501
     }
 
@@ -98,12 +98,12 @@ class ListBuyerWishlistMembersItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, name, user_id, joined_at, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, user_id, name, joined_at, *args, **kwargs):  # noqa: E501
         """ListBuyerWishlistMembersItem - a model defined in OpenAPI
 
         Args:
-            name (str):
             user_id (str):
+            name (str):
             joined_at (str):
 
         Keyword Args:
@@ -164,8 +164,8 @@ class ListBuyerWishlistMembersItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.name = name
         self.user_id = user_id
+        self.name = name
         self.joined_at = joined_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -187,12 +187,12 @@ class ListBuyerWishlistMembersItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, name, user_id, joined_at, *args, **kwargs):  # noqa: E501
+    def __init__(self, user_id, name, joined_at, *args, **kwargs):  # noqa: E501
         """ListBuyerWishlistMembersItem - a model defined in OpenAPI
 
         Args:
-            name (str):
             user_id (str):
+            name (str):
             joined_at (str):
 
         Keyword Args:
@@ -251,8 +251,8 @@ class ListBuyerWishlistMembersItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.name = name
         self.user_id = user_id
+        self.name = name
         self.joined_at = joined_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

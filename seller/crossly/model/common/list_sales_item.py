@@ -30,7 +30,9 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from crossly.model.order.get_order_response_app_share import GetOrderResponseAppShare
     from crossly.model.common.list_sales_item_documents import ListSalesItemDocuments
+    globals()['GetOrderResponseAppShare'] = GetOrderResponseAppShare
     globals()['ListSalesItemDocuments'] = ListSalesItemDocuments
 
 
@@ -85,24 +87,29 @@ class ListSalesItem(ModelNormal):
             'platform': (str,),  # noqa: E501
             'detected_by': (str,),  # noqa: E501
             'detected_at': (datetime,),  # noqa: E501
-            'cancelled_at': (datetime, none_type,),  # noqa: E501
-            'order_id': (str, none_type,),  # noqa: E501
-            'listing_id': (str, none_type,),  # noqa: E501
+            'details_pending': (bool,),  # noqa: E501
+            'app_share': (GetOrderResponseAppShare,),  # noqa: E501
+            'net_profit': (str, none_type,),  # noqa: E501
+            'shipping_cost': (str, none_type,),  # noqa: E501
+            'shipping_charged': (str, none_type,),  # noqa: E501
             'inventory_item_id': (str, none_type,),  # noqa: E501
             'currency': (str, none_type,),  # noqa: E501
+            'listing_id': (str, none_type,),  # noqa: E501
             'platform_listing_id': (str, none_type,),  # noqa: E501
+            'storefront_id': (str, none_type,),  # noqa: E501
             'platform_order_id': (str, none_type,),  # noqa: E501
             'cost_of_goods': (str, none_type,),  # noqa: E501
+            'cancelled_at': (datetime, none_type,),  # noqa: E501
             'deleted_at': (datetime, none_type,),  # noqa: E501
+            'order_id': (str, none_type,),  # noqa: E501
             'sale_price': (str, none_type,),  # noqa: E501
             'platform_fee': (str, none_type,),  # noqa: E501
-            'shipping_cost': (str, none_type,),  # noqa: E501
-            'net_profit': (str, none_type,),  # noqa: E501
             'tax_collected': (str, none_type,),  # noqa: E501
-            'shipping_charged': (str, none_type,),  # noqa: E501
             'fee_source': (str, none_type,),  # noqa: E501
             'documents': ([ListSalesItemDocuments], none_type,),  # noqa: E501
             'refunded_amount': (str, none_type,),  # noqa: E501
+            'variant_sku': (str, none_type,),  # noqa: E501
+            'variant_id': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -116,24 +123,29 @@ class ListSalesItem(ModelNormal):
         'platform': 'platform',  # noqa: E501
         'detected_by': 'detectedBy',  # noqa: E501
         'detected_at': 'detectedAt',  # noqa: E501
-        'cancelled_at': 'cancelledAt',  # noqa: E501
-        'order_id': 'orderId',  # noqa: E501
-        'listing_id': 'listingId',  # noqa: E501
+        'details_pending': 'detailsPending',  # noqa: E501
+        'app_share': 'appShare',  # noqa: E501
+        'net_profit': 'netProfit',  # noqa: E501
+        'shipping_cost': 'shippingCost',  # noqa: E501
+        'shipping_charged': 'shippingCharged',  # noqa: E501
         'inventory_item_id': 'inventoryItemId',  # noqa: E501
         'currency': 'currency',  # noqa: E501
+        'listing_id': 'listingId',  # noqa: E501
         'platform_listing_id': 'platformListingId',  # noqa: E501
+        'storefront_id': 'storefrontId',  # noqa: E501
         'platform_order_id': 'platformOrderId',  # noqa: E501
         'cost_of_goods': 'costOfGoods',  # noqa: E501
+        'cancelled_at': 'cancelledAt',  # noqa: E501
         'deleted_at': 'deletedAt',  # noqa: E501
+        'order_id': 'orderId',  # noqa: E501
         'sale_price': 'salePrice',  # noqa: E501
         'platform_fee': 'platformFee',  # noqa: E501
-        'shipping_cost': 'shippingCost',  # noqa: E501
-        'net_profit': 'netProfit',  # noqa: E501
         'tax_collected': 'taxCollected',  # noqa: E501
-        'shipping_charged': 'shippingCharged',  # noqa: E501
         'fee_source': 'feeSource',  # noqa: E501
         'documents': 'documents',  # noqa: E501
         'refunded_amount': 'refundedAmount',  # noqa: E501
+        'variant_sku': 'variantSku',  # noqa: E501
+        'variant_id': 'variantId',  # noqa: E501
     }
 
     read_only_vars = {
@@ -143,7 +155,7 @@ class ListSalesItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, user_id, platform, detected_by, detected_at, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, user_id, platform, detected_by, detected_at, details_pending, *args, **kwargs):  # noqa: E501
         """ListSalesItem - a model defined in OpenAPI
 
         Args:
@@ -152,6 +164,7 @@ class ListSalesItem(ModelNormal):
             platform (str):
             detected_by (str):
             detected_at (datetime):
+            details_pending (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -184,24 +197,28 @@ class ListSalesItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            cancelled_at (datetime, none_type): [optional]  # noqa: E501
-            order_id (str, none_type): [optional]  # noqa: E501
-            listing_id (str, none_type): [optional]  # noqa: E501
+            app_share (GetOrderResponseAppShare): [optional]  # noqa: E501
+            net_profit (str, none_type): [optional]  # noqa: E501
+            shipping_cost (str, none_type): [optional]  # noqa: E501
+            shipping_charged (str, none_type): [optional]  # noqa: E501
             inventory_item_id (str, none_type): [optional]  # noqa: E501
             currency (str, none_type): [optional]  # noqa: E501
+            listing_id (str, none_type): [optional]  # noqa: E501
             platform_listing_id (str, none_type): [optional]  # noqa: E501
+            storefront_id (str, none_type): [optional]  # noqa: E501
             platform_order_id (str, none_type): [optional]  # noqa: E501
             cost_of_goods (str, none_type): [optional]  # noqa: E501
+            cancelled_at (datetime, none_type): [optional]  # noqa: E501
             deleted_at (datetime, none_type): [optional]  # noqa: E501
+            order_id (str, none_type): [optional]  # noqa: E501
             sale_price (str, none_type): [optional]  # noqa: E501
             platform_fee (str, none_type): [optional]  # noqa: E501
-            shipping_cost (str, none_type): [optional]  # noqa: E501
-            net_profit (str, none_type): [optional]  # noqa: E501
             tax_collected (str, none_type): [optional]  # noqa: E501
-            shipping_charged (str, none_type): [optional]  # noqa: E501
             fee_source (str, none_type): [optional]  # noqa: E501
             documents ([ListSalesItemDocuments], none_type): [optional]  # noqa: E501
             refunded_amount (str, none_type): [optional]  # noqa: E501
+            variant_sku (str, none_type): [optional]  # noqa: E501
+            variant_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -234,6 +251,7 @@ class ListSalesItem(ModelNormal):
         self.platform = platform
         self.detected_by = detected_by
         self.detected_at = detected_at
+        self.details_pending = details_pending
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -254,7 +272,7 @@ class ListSalesItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, user_id, platform, detected_by, detected_at, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, user_id, platform, detected_by, detected_at, details_pending, *args, **kwargs):  # noqa: E501
         """ListSalesItem - a model defined in OpenAPI
 
         Args:
@@ -263,6 +281,7 @@ class ListSalesItem(ModelNormal):
             platform (str):
             detected_by (str):
             detected_at (datetime):
+            details_pending (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -295,24 +314,28 @@ class ListSalesItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            cancelled_at (datetime, none_type): [optional]  # noqa: E501
-            order_id (str, none_type): [optional]  # noqa: E501
-            listing_id (str, none_type): [optional]  # noqa: E501
+            app_share (GetOrderResponseAppShare): [optional]  # noqa: E501
+            net_profit (str, none_type): [optional]  # noqa: E501
+            shipping_cost (str, none_type): [optional]  # noqa: E501
+            shipping_charged (str, none_type): [optional]  # noqa: E501
             inventory_item_id (str, none_type): [optional]  # noqa: E501
             currency (str, none_type): [optional]  # noqa: E501
+            listing_id (str, none_type): [optional]  # noqa: E501
             platform_listing_id (str, none_type): [optional]  # noqa: E501
+            storefront_id (str, none_type): [optional]  # noqa: E501
             platform_order_id (str, none_type): [optional]  # noqa: E501
             cost_of_goods (str, none_type): [optional]  # noqa: E501
+            cancelled_at (datetime, none_type): [optional]  # noqa: E501
             deleted_at (datetime, none_type): [optional]  # noqa: E501
+            order_id (str, none_type): [optional]  # noqa: E501
             sale_price (str, none_type): [optional]  # noqa: E501
             platform_fee (str, none_type): [optional]  # noqa: E501
-            shipping_cost (str, none_type): [optional]  # noqa: E501
-            net_profit (str, none_type): [optional]  # noqa: E501
             tax_collected (str, none_type): [optional]  # noqa: E501
-            shipping_charged (str, none_type): [optional]  # noqa: E501
             fee_source (str, none_type): [optional]  # noqa: E501
             documents ([ListSalesItemDocuments], none_type): [optional]  # noqa: E501
             refunded_amount (str, none_type): [optional]  # noqa: E501
+            variant_sku (str, none_type): [optional]  # noqa: E501
+            variant_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -343,6 +366,7 @@ class ListSalesItem(ModelNormal):
         self.platform = platform
         self.detected_by = detected_by
         self.detected_at = detected_at
+        self.details_pending = details_pending
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

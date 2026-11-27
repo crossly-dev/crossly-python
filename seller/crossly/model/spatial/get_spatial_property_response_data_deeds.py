@@ -63,9 +63,9 @@ class GetSpatialPropertyResponseDataDeeds(ModelNormal):
     allowed_values = {
         ('status',): {
             'ACTIVE': "active",
-            'FORECLOSED': "foreclosed",
             'GRACE': "grace",
             'DELINQUENT': "delinquent",
+            'FORECLOSED': "foreclosed",
         },
     }
 
@@ -89,6 +89,7 @@ class GetSpatialPropertyResponseDataDeeds(ModelNormal):
         lazy_import()
         return {
             'id': (str,),  # noqa: E501
+            'plot_id': (str,),  # noqa: E501
             'address': (str,),  # noqa: E501
             'label': (str,),  # noqa: E501
             'price_cents': (float,),  # noqa: E501
@@ -107,6 +108,7 @@ class GetSpatialPropertyResponseDataDeeds(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
+        'plot_id': 'plotId',  # noqa: E501
         'address': 'address',  # noqa: E501
         'label': 'label',  # noqa: E501
         'price_cents': 'priceCents',  # noqa: E501
@@ -125,11 +127,12 @@ class GetSpatialPropertyResponseDataDeeds(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, address, label, price_cents, maintenance_weekly_cents, paid_through, status, occupied, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, plot_id, address, label, price_cents, maintenance_weekly_cents, paid_through, status, occupied, *args, **kwargs):  # noqa: E501
         """GetSpatialPropertyResponseDataDeeds - a model defined in OpenAPI
 
         Args:
             id (str):
+            plot_id (str):
             address (str):
             label (str):
             price_cents (float):
@@ -199,6 +202,7 @@ class GetSpatialPropertyResponseDataDeeds(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
+        self.plot_id = plot_id
         self.address = address
         self.label = label
         self.price_cents = price_cents
@@ -226,11 +230,12 @@ class GetSpatialPropertyResponseDataDeeds(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, address, label, price_cents, maintenance_weekly_cents, paid_through, status, occupied, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, plot_id, address, label, price_cents, maintenance_weekly_cents, paid_through, status, occupied, *args, **kwargs):  # noqa: E501
         """GetSpatialPropertyResponseDataDeeds - a model defined in OpenAPI
 
         Args:
             id (str):
+            plot_id (str):
             address (str):
             label (str):
             price_cents (float):
@@ -298,6 +303,7 @@ class GetSpatialPropertyResponseDataDeeds(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
+        self.plot_id = plot_id
         self.address = address
         self.label = label
         self.price_cents = price_cents

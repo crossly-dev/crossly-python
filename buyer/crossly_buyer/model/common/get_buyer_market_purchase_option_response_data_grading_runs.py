@@ -76,10 +76,10 @@ class GetBuyerMarketPurchaseOptionResponseDataGradingRuns(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'price_cents': (float,),  # noqa: E501
-            'tier_name': (str,),  # noqa: E501
-            'cutoff_at': (str,),  # noqa: E501
             'grader_name': (str,),  # noqa: E501
+            'tier_name': (str,),  # noqa: E501
+            'price_cents': (float,),  # noqa: E501
+            'cutoff_at': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -89,10 +89,10 @@ class GetBuyerMarketPurchaseOptionResponseDataGradingRuns(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'price_cents': 'priceCents',  # noqa: E501
-        'tier_name': 'tierName',  # noqa: E501
-        'cutoff_at': 'cutoffAt',  # noqa: E501
         'grader_name': 'graderName',  # noqa: E501
+        'tier_name': 'tierName',  # noqa: E501
+        'price_cents': 'priceCents',  # noqa: E501
+        'cutoff_at': 'cutoffAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -102,15 +102,15 @@ class GetBuyerMarketPurchaseOptionResponseDataGradingRuns(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, price_cents, tier_name, cutoff_at, grader_name, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, grader_name, tier_name, price_cents, cutoff_at, *args, **kwargs):  # noqa: E501
         """GetBuyerMarketPurchaseOptionResponseDataGradingRuns - a model defined in OpenAPI
 
         Args:
             id (str):
-            price_cents (float):
-            tier_name (str):
-            cutoff_at (str):
             grader_name (str):
+            tier_name (str):
+            price_cents (float):
+            cutoff_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -171,10 +171,10 @@ class GetBuyerMarketPurchaseOptionResponseDataGradingRuns(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.price_cents = price_cents
-        self.tier_name = tier_name
-        self.cutoff_at = cutoff_at
         self.grader_name = grader_name
+        self.tier_name = tier_name
+        self.price_cents = price_cents
+        self.cutoff_at = cutoff_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -195,15 +195,15 @@ class GetBuyerMarketPurchaseOptionResponseDataGradingRuns(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, price_cents, tier_name, cutoff_at, grader_name, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, grader_name, tier_name, price_cents, cutoff_at, *args, **kwargs):  # noqa: E501
         """GetBuyerMarketPurchaseOptionResponseDataGradingRuns - a model defined in OpenAPI
 
         Args:
             id (str):
-            price_cents (float):
-            tier_name (str):
-            cutoff_at (str):
             grader_name (str):
+            tier_name (str):
+            price_cents (float):
+            cutoff_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -262,10 +262,10 @@ class GetBuyerMarketPurchaseOptionResponseDataGradingRuns(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.price_cents = price_cents
-        self.tier_name = tier_name
-        self.cutoff_at = cutoff_at
         self.grader_name = grader_name
+        self.tier_name = tier_name
+        self.price_cents = price_cents
+        self.cutoff_at = cutoff_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

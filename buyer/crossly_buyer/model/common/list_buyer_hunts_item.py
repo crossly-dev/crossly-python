@@ -78,9 +78,9 @@ class ListBuyerHuntsItem(ModelNormal):
             'id': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'mode': (str,),  # noqa: E501
-            'status': (str,),  # noqa: E501
             'max_price_cents': (float,),  # noqa: E501
             'buys_left': (float,),  # noqa: E501
+            'status': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -92,9 +92,9 @@ class ListBuyerHuntsItem(ModelNormal):
         'id': 'id',  # noqa: E501
         'name': 'name',  # noqa: E501
         'mode': 'mode',  # noqa: E501
-        'status': 'status',  # noqa: E501
         'max_price_cents': 'maxPriceCents',  # noqa: E501
         'buys_left': 'buysLeft',  # noqa: E501
+        'status': 'status',  # noqa: E501
     }
 
     read_only_vars = {
@@ -104,16 +104,16 @@ class ListBuyerHuntsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, mode, status, max_price_cents, buys_left, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, name, mode, max_price_cents, buys_left, status, *args, **kwargs):  # noqa: E501
         """ListBuyerHuntsItem - a model defined in OpenAPI
 
         Args:
             id (str):
             name (str):
             mode (str):
-            status (str):
             max_price_cents (float):
             buys_left (float):
+            status (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -176,9 +176,9 @@ class ListBuyerHuntsItem(ModelNormal):
         self.id = id
         self.name = name
         self.mode = mode
-        self.status = status
         self.max_price_cents = max_price_cents
         self.buys_left = buys_left
+        self.status = status
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -199,16 +199,16 @@ class ListBuyerHuntsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, mode, status, max_price_cents, buys_left, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, name, mode, max_price_cents, buys_left, status, *args, **kwargs):  # noqa: E501
         """ListBuyerHuntsItem - a model defined in OpenAPI
 
         Args:
             id (str):
             name (str):
             mode (str):
-            status (str):
             max_price_cents (float):
             buys_left (float):
+            status (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -269,9 +269,9 @@ class ListBuyerHuntsItem(ModelNormal):
         self.id = id
         self.name = name
         self.mode = mode
-        self.status = status
         self.max_price_cents = max_price_cents
         self.buys_left = buys_left
+        self.status = status
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

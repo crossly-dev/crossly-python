@@ -61,14 +61,14 @@ class GetVaultMarketTaxLossSuggestionResponseSuggestions(ModelNormal):
     allowed_values = {
         ('mark_quality',): {
             'NONE': "none",
+            'C': "C",
             'A': "A",
             'B': "B",
-            'C': "C",
         },
         ('term',): {
             'None': None,
-            'LONG': "long",
             'SHORT': "short",
+            'LONG': "long",
         },
     }
 

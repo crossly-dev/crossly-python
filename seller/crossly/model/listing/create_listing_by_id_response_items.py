@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.grading.list_grading_submissions_item_grading import ListGradingSubmissionsItemGrading
-    globals()['ListGradingSubmissionsItemGrading'] = ListGradingSubmissionsItemGrading
+    from crossly.model.bulk.create_bulk_batch_item_response_grading import CreateBulkBatchItemResponseGrading
+    globals()['CreateBulkBatchItemResponseGrading'] = CreateBulkBatchItemResponseGrading
 
 
 class CreateListingByIdResponseItems(ModelNormal):
@@ -107,6 +107,8 @@ class CreateListingByIdResponseItems(ModelNormal):
             'automation_blocked_rule_ids': ([str],),  # noqa: E501
             'automation_assigned_chain_ids': ([str],),  # noqa: E501
             'automation_blocked_chain_ids': ([str],),  # noqa: E501
+            'workflow_blocked_ids': ([str],),  # noqa: E501
+            'workflow_assigned_ids': ([str],),  # noqa: E501
             'floor_is_net': (bool,),  # noqa: E501
             'source': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
@@ -128,7 +130,7 @@ class CreateListingByIdResponseItems(ModelNormal):
             'video_url': (str, none_type,),  # noqa: E501
             'condition': (str, none_type,),  # noqa: E501
             'grade_key': (str, none_type,),  # noqa: E501
-            'grading': (ListGradingSubmissionsItemGrading,),  # noqa: E501
+            'grading': (CreateBulkBatchItemResponseGrading,),  # noqa: E501
             'brand': (str, none_type,),  # noqa: E501
             'size': (str, none_type,),  # noqa: E501
             'material': (str, none_type,),  # noqa: E501
@@ -156,6 +158,9 @@ class CreateListingByIdResponseItems(ModelNormal):
             'ebay_attributes_enriched_at': (datetime, none_type,),  # noqa: E501
             'duplicate_of_listing_id': (str, none_type,),  # noqa: E501
             'client_draft_id': (str, none_type,),  # noqa: E501
+            'attributed_oauth_app_id': (str, none_type,),  # noqa: E501
+            'attributed_grant_id': (str, none_type,),  # noqa: E501
+            'quota_bucket': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -185,6 +190,8 @@ class CreateListingByIdResponseItems(ModelNormal):
         'automation_blocked_rule_ids': 'automationBlockedRuleIds',  # noqa: E501
         'automation_assigned_chain_ids': 'automationAssignedChainIds',  # noqa: E501
         'automation_blocked_chain_ids': 'automationBlockedChainIds',  # noqa: E501
+        'workflow_blocked_ids': 'workflowBlockedIds',  # noqa: E501
+        'workflow_assigned_ids': 'workflowAssignedIds',  # noqa: E501
         'floor_is_net': 'floorIsNet',  # noqa: E501
         'source': 'source',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
@@ -234,6 +241,9 @@ class CreateListingByIdResponseItems(ModelNormal):
         'ebay_attributes_enriched_at': 'ebayAttributesEnrichedAt',  # noqa: E501
         'duplicate_of_listing_id': 'duplicateOfListingId',  # noqa: E501
         'client_draft_id': 'clientDraftId',  # noqa: E501
+        'attributed_oauth_app_id': 'attributedOauthAppId',  # noqa: E501
+        'attributed_grant_id': 'attributedGrantId',  # noqa: E501
+        'quota_bucket': 'quotaBucket',  # noqa: E501
     }
 
     read_only_vars = {
@@ -243,7 +253,7 @@ class CreateListingByIdResponseItems(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, effective_title, effective_images, effective_color, effective_tags, platform_listings, id, user_id, ai_media_urls, ai_media_declared, ai_media_detected_urls, status, color, tags, is_digital, quantity, quantity_available, is_bundle, automation_assigned_rule_ids, automation_blocked_rule_ids, automation_assigned_chain_ids, automation_blocked_chain_ids, floor_is_net, source, created_at, updated_at, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, effective_title, effective_images, effective_color, effective_tags, platform_listings, id, user_id, ai_media_urls, ai_media_declared, ai_media_detected_urls, status, color, tags, is_digital, quantity, quantity_available, is_bundle, automation_assigned_rule_ids, automation_blocked_rule_ids, automation_assigned_chain_ids, automation_blocked_chain_ids, workflow_blocked_ids, workflow_assigned_ids, floor_is_net, source, created_at, updated_at, *args, **kwargs):  # noqa: E501
         """CreateListingByIdResponseItems - a model defined in OpenAPI
 
         Args:
@@ -268,6 +278,8 @@ class CreateListingByIdResponseItems(ModelNormal):
             automation_blocked_rule_ids ([str]):
             automation_assigned_chain_ids ([str]):
             automation_blocked_chain_ids ([str]):
+            workflow_blocked_ids ([str]): Per-listing workflow overrides (migration 1099, docs/WORKFLOWS.md §10): the automation_* rule/chain ids above map here on conversion; `find.listings` and listing action nodes honour them.   workflowBlockedIds  — workflows (workflows.id) this listing is exempt from  workflowAssignedIds — workflows this listing is force-included in
+            workflow_assigned_ids ([str]):
             floor_is_net (bool): When true the floor is a TAKE-HOME target, converted to a per-platform gross at reprice time. A gross floor is four different promises across four platforms; this is the one number a seller actually cares about.
             source (str): Mirrors inventory_items.source. 'manual' for every seller-created listing; external-stub.ts sets 'external_sale' on the synthetic listing it fabricates for a sale detected on a platform id Crossly never listed — those rows have no real photos/description of their own (everything is lifted from the platform's sale payload) and are otherwise indistinguishable from a real listing in the UI.
             created_at (datetime):
@@ -321,7 +333,7 @@ class CreateListingByIdResponseItems(ModelNormal):
             video_url (str, none_type): Optional single product video (R2/CDN URL). Shown on the Crossly buyer page.. [optional]  # noqa: E501
             condition (str, none_type): [optional]  # noqa: E501
             grade_key (str, none_type): Third-party grading, when the item is slabbed. Migration 0277.  Separate from `condition` on purpose and never derived from it: a grade is a claim about what a GRADING COMPANY certified, and inferring \"PSA 10\" from a coarse condition would be a false authenticity claim. It is also never filled from our own AI estimate (`bulk_market_items.grade`), which carries an explicit \"not a professional grade\" disclaimer.  `gradeKey` is the canonical form from `gradeKey()` in shared/constants/graders.ts; `grading` holds the full GradingInfo including the cert number and whether a cert lookup verified it.. [optional]  # noqa: E501
-            grading (ListGradingSubmissionsItemGrading): [optional]  # noqa: E501
+            grading (CreateBulkBatchItemResponseGrading): [optional]  # noqa: E501
             brand (str, none_type): [optional]  # noqa: E501
             size (str, none_type): [optional]  # noqa: E501
             material (str, none_type): Migration 0179 — see the matching fields on inventory_items above.. [optional]  # noqa: E501
@@ -349,6 +361,9 @@ class CreateListingByIdResponseItems(ModelNormal):
             ebay_attributes_enriched_at (datetime, none_type): When the eBay per-item attribute back-fill (GetItem → condition/ category/item-specifics/…) last RAN for this listing — set whether or not it found anything, so the background enrichment pass (services/import-listings/ebay-attribute-enrich.ts) terminates and resumes cleanly: it only picks up eBay listings where this is null. The bulk import leaves it null (it only reads GetMyeBaySelling, which carries none of those fields); null on a non-eBay listing is just \"n/a\". See quota.ts for why this is decoupled from the import.. [optional]  # noqa: E501
             duplicate_of_listing_id (str, none_type): Set when import's bin-packing (see _import-one.ts) created THIS listing to hold a same-platform straggler it couldn't fit onto an existing candidate listing for the same physical item — points at the primary/first candidate. Purely informational: this listing is a real, independently listable/delistable row, not a shadow. Null for every ordinarily-created listing.. [optional]  # noqa: E501
             client_draft_id (str, none_type): UUID minted on a seller's machine for a draft written offline.  The idempotency key for desktop sync. The failure it guards is a POST that succeeds server-side whose reply is lost — the client cannot tell that from a failure, retries, and one item becomes two live listings against one piece of stock. Unique per user (partial index, migration 0268); null for every listing that did not come from an offline draft.. [optional]  # noqa: E501
+            attributed_oauth_app_id (str, none_type): The third-party OAuth app that created this listing (via its access token), if any — the anchor for developer revenue-share: the app that created the item earns a cut of its sales. Stamped once at create time (first writer wins, never overwritten); null for the web app, a PAT, or anything first-party. `attributedGrantId` pins the specific install whose agreed terms apply. See services/developer-earnings/.. [optional]  # noqa: E501
+            attributed_grant_id (str, none_type): [optional]  # noqa: E501
+            quota_bucket (str, none_type): Which quota this listing is counted in (migration 1064): 'app_allowance' = the attributed app's per-seller allowance (services/app-allowance/), 'plan' = the seller's plan, null = created before allowances / by no app (plan rules). Stays 'app_allowance' after an unlink (grandfathered, no longer counted).. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -397,6 +412,8 @@ class CreateListingByIdResponseItems(ModelNormal):
         self.automation_blocked_rule_ids = automation_blocked_rule_ids
         self.automation_assigned_chain_ids = automation_assigned_chain_ids
         self.automation_blocked_chain_ids = automation_blocked_chain_ids
+        self.workflow_blocked_ids = workflow_blocked_ids
+        self.workflow_assigned_ids = workflow_assigned_ids
         self.floor_is_net = floor_is_net
         self.source = source
         self.created_at = created_at
@@ -421,7 +438,7 @@ class CreateListingByIdResponseItems(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, effective_title, effective_images, effective_color, effective_tags, platform_listings, id, user_id, ai_media_urls, ai_media_declared, ai_media_detected_urls, status, color, tags, is_digital, quantity, quantity_available, is_bundle, automation_assigned_rule_ids, automation_blocked_rule_ids, automation_assigned_chain_ids, automation_blocked_chain_ids, floor_is_net, source, created_at, updated_at, *args, **kwargs):  # noqa: E501
+    def __init__(self, effective_title, effective_images, effective_color, effective_tags, platform_listings, id, user_id, ai_media_urls, ai_media_declared, ai_media_detected_urls, status, color, tags, is_digital, quantity, quantity_available, is_bundle, automation_assigned_rule_ids, automation_blocked_rule_ids, automation_assigned_chain_ids, automation_blocked_chain_ids, workflow_blocked_ids, workflow_assigned_ids, floor_is_net, source, created_at, updated_at, *args, **kwargs):  # noqa: E501
         """CreateListingByIdResponseItems - a model defined in OpenAPI
 
         Args:
@@ -446,6 +463,8 @@ class CreateListingByIdResponseItems(ModelNormal):
             automation_blocked_rule_ids ([str]):
             automation_assigned_chain_ids ([str]):
             automation_blocked_chain_ids ([str]):
+            workflow_blocked_ids ([str]): Per-listing workflow overrides (migration 1099, docs/WORKFLOWS.md §10): the automation_* rule/chain ids above map here on conversion; `find.listings` and listing action nodes honour them.   workflowBlockedIds  — workflows (workflows.id) this listing is exempt from  workflowAssignedIds — workflows this listing is force-included in
+            workflow_assigned_ids ([str]):
             floor_is_net (bool): When true the floor is a TAKE-HOME target, converted to a per-platform gross at reprice time. A gross floor is four different promises across four platforms; this is the one number a seller actually cares about.
             source (str): Mirrors inventory_items.source. 'manual' for every seller-created listing; external-stub.ts sets 'external_sale' on the synthetic listing it fabricates for a sale detected on a platform id Crossly never listed — those rows have no real photos/description of their own (everything is lifted from the platform's sale payload) and are otherwise indistinguishable from a real listing in the UI.
             created_at (datetime):
@@ -499,7 +518,7 @@ class CreateListingByIdResponseItems(ModelNormal):
             video_url (str, none_type): Optional single product video (R2/CDN URL). Shown on the Crossly buyer page.. [optional]  # noqa: E501
             condition (str, none_type): [optional]  # noqa: E501
             grade_key (str, none_type): Third-party grading, when the item is slabbed. Migration 0277.  Separate from `condition` on purpose and never derived from it: a grade is a claim about what a GRADING COMPANY certified, and inferring \"PSA 10\" from a coarse condition would be a false authenticity claim. It is also never filled from our own AI estimate (`bulk_market_items.grade`), which carries an explicit \"not a professional grade\" disclaimer.  `gradeKey` is the canonical form from `gradeKey()` in shared/constants/graders.ts; `grading` holds the full GradingInfo including the cert number and whether a cert lookup verified it.. [optional]  # noqa: E501
-            grading (ListGradingSubmissionsItemGrading): [optional]  # noqa: E501
+            grading (CreateBulkBatchItemResponseGrading): [optional]  # noqa: E501
             brand (str, none_type): [optional]  # noqa: E501
             size (str, none_type): [optional]  # noqa: E501
             material (str, none_type): Migration 0179 — see the matching fields on inventory_items above.. [optional]  # noqa: E501
@@ -527,6 +546,9 @@ class CreateListingByIdResponseItems(ModelNormal):
             ebay_attributes_enriched_at (datetime, none_type): When the eBay per-item attribute back-fill (GetItem → condition/ category/item-specifics/…) last RAN for this listing — set whether or not it found anything, so the background enrichment pass (services/import-listings/ebay-attribute-enrich.ts) terminates and resumes cleanly: it only picks up eBay listings where this is null. The bulk import leaves it null (it only reads GetMyeBaySelling, which carries none of those fields); null on a non-eBay listing is just \"n/a\". See quota.ts for why this is decoupled from the import.. [optional]  # noqa: E501
             duplicate_of_listing_id (str, none_type): Set when import's bin-packing (see _import-one.ts) created THIS listing to hold a same-platform straggler it couldn't fit onto an existing candidate listing for the same physical item — points at the primary/first candidate. Purely informational: this listing is a real, independently listable/delistable row, not a shadow. Null for every ordinarily-created listing.. [optional]  # noqa: E501
             client_draft_id (str, none_type): UUID minted on a seller's machine for a draft written offline.  The idempotency key for desktop sync. The failure it guards is a POST that succeeds server-side whose reply is lost — the client cannot tell that from a failure, retries, and one item becomes two live listings against one piece of stock. Unique per user (partial index, migration 0268); null for every listing that did not come from an offline draft.. [optional]  # noqa: E501
+            attributed_oauth_app_id (str, none_type): The third-party OAuth app that created this listing (via its access token), if any — the anchor for developer revenue-share: the app that created the item earns a cut of its sales. Stamped once at create time (first writer wins, never overwritten); null for the web app, a PAT, or anything first-party. `attributedGrantId` pins the specific install whose agreed terms apply. See services/developer-earnings/.. [optional]  # noqa: E501
+            attributed_grant_id (str, none_type): [optional]  # noqa: E501
+            quota_bucket (str, none_type): Which quota this listing is counted in (migration 1064): 'app_allowance' = the attributed app's per-seller allowance (services/app-allowance/), 'plan' = the seller's plan, null = created before allowances / by no app (plan rules). Stays 'app_allowance' after an unlink (grandfathered, no longer counted).. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -573,6 +595,8 @@ class CreateListingByIdResponseItems(ModelNormal):
         self.automation_blocked_rule_ids = automation_blocked_rule_ids
         self.automation_assigned_chain_ids = automation_assigned_chain_ids
         self.automation_blocked_chain_ids = automation_blocked_chain_ids
+        self.workflow_blocked_ids = workflow_blocked_ids
+        self.workflow_assigned_ids = workflow_assigned_ids
         self.floor_is_net = floor_is_net
         self.source = source
         self.created_at = created_at

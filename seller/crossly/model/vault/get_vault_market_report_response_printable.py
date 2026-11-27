@@ -88,10 +88,10 @@ class GetVaultMarketReportResponsePrintable(ModelNormal):
         """
         lazy_import()
         return {
-            'notes': ([str],),  # noqa: E501
             'title': (str,),  # noqa: E501
             'meta': ([str],),  # noqa: E501
             'sections': ([GetVaultMarketOrderHandlingResponseSections],),  # noqa: E501
+            'notes': ([str],),  # noqa: E501
             'paper': (str,),  # noqa: E501
             'table': (GetVaultMarketReportResponsePrintableTable,),  # noqa: E501
             'qr': (GetVaultMarketReportResponsePrintableQr,),  # noqa: E501
@@ -103,10 +103,10 @@ class GetVaultMarketReportResponsePrintable(ModelNormal):
 
 
     attribute_map = {
-        'notes': 'notes',  # noqa: E501
         'title': 'title',  # noqa: E501
         'meta': 'meta',  # noqa: E501
         'sections': 'sections',  # noqa: E501
+        'notes': 'notes',  # noqa: E501
         'paper': 'paper',  # noqa: E501
         'table': 'table',  # noqa: E501
         'qr': 'qr',  # noqa: E501
@@ -119,14 +119,14 @@ class GetVaultMarketReportResponsePrintable(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, notes, title, meta, sections, paper, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, title, meta, sections, notes, paper, *args, **kwargs):  # noqa: E501
         """GetVaultMarketReportResponsePrintable - a model defined in OpenAPI
 
         Args:
-            notes ([str]): Closing paragraphs, small and grey.
             title (str):
             meta ([str]): Small grey lines under the title (order id, date, seller…).
             sections ([GetVaultMarketOrderHandlingResponseSections]): Labelled blocks: \"Shipped to\" + its lines.
+            notes ([str]): Closing paragraphs, small and grey.
             paper (str):
 
         Keyword Args:
@@ -189,10 +189,10 @@ class GetVaultMarketReportResponsePrintable(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.notes = notes
         self.title = title
         self.meta = meta
         self.sections = sections
+        self.notes = notes
         self.paper = paper
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -214,14 +214,14 @@ class GetVaultMarketReportResponsePrintable(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, notes, title, meta, sections, paper, *args, **kwargs):  # noqa: E501
+    def __init__(self, title, meta, sections, notes, paper, *args, **kwargs):  # noqa: E501
         """GetVaultMarketReportResponsePrintable - a model defined in OpenAPI
 
         Args:
-            notes ([str]): Closing paragraphs, small and grey.
             title (str):
             meta ([str]): Small grey lines under the title (order id, date, seller…).
             sections ([GetVaultMarketOrderHandlingResponseSections]): Labelled blocks: \"Shipped to\" + its lines.
+            notes ([str]): Closing paragraphs, small and grey.
             paper (str):
 
         Keyword Args:
@@ -282,10 +282,10 @@ class GetVaultMarketReportResponsePrintable(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.notes = notes
         self.title = title
         self.meta = meta
         self.sections = sections
+        self.notes = notes
         self.paper = paper
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

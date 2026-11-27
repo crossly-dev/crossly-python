@@ -79,6 +79,7 @@ class ListBuyerOrdersItem(ModelNormal):
             'status': (str,),  # noqa: E501
             'buyer_paid_cents': (float,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
+            'order_number': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -91,6 +92,7 @@ class ListBuyerOrdersItem(ModelNormal):
         'status': 'status',  # noqa: E501
         'buyer_paid_cents': 'buyerPaidCents',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
+        'order_number': 'orderNumber',  # noqa: E501
     }
 
     read_only_vars = {
@@ -140,6 +142,7 @@ class ListBuyerOrdersItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            order_number (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -231,6 +234,7 @@ class ListBuyerOrdersItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            order_number (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

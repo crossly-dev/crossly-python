@@ -56,9 +56,9 @@ class CreateBuyerAgentSessionResponseBriefPending(ModelNormal):
 
     allowed_values = {
         ('kind',): {
-            'DISPUTE': "dispute",
-            'CANCEL': "cancel",
             'RETURN': "return",
+            'CANCEL': "cancel",
+            'DISPUTE': "dispute",
         },
     }
 

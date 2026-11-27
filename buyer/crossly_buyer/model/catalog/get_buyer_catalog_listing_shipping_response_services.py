@@ -82,6 +82,9 @@ class GetBuyerCatalogListingShippingResponseServices(ModelNormal):
             'cost_type': (str,),  # noqa: E501
             'min_days': (float, none_type,),  # noqa: E501
             'max_days': (float, none_type,),  # noqa: E501
+            'carrier': (str, none_type,),  # noqa: E501
+            'carrier_service': (str, none_type,),  # noqa: E501
+            'handling_fee_cents': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -97,6 +100,9 @@ class GetBuyerCatalogListingShippingResponseServices(ModelNormal):
         'cost_type': 'costType',  # noqa: E501
         'min_days': 'minDays',  # noqa: E501
         'max_days': 'maxDays',  # noqa: E501
+        'carrier': 'carrier',  # noqa: E501
+        'carrier_service': 'carrierService',  # noqa: E501
+        'handling_fee_cents': 'handlingFeeCents',  # noqa: E501
     }
 
     read_only_vars = {
@@ -149,6 +155,9 @@ class GetBuyerCatalogListingShippingResponseServices(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             min_days (float, none_type): [optional]  # noqa: E501
             max_days (float, none_type): [optional]  # noqa: E501
+            carrier (str, none_type): Buyer pays: calculated: the carrier and service token the label is bought with, and the handling fee inside `cents`.. [optional]  # noqa: E501
+            carrier_service (str, none_type): [optional]  # noqa: E501
+            handling_fee_cents (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -244,6 +253,9 @@ class GetBuyerCatalogListingShippingResponseServices(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             min_days (float, none_type): [optional]  # noqa: E501
             max_days (float, none_type): [optional]  # noqa: E501
+            carrier (str, none_type): Buyer pays: calculated: the carrier and service token the label is bought with, and the handling fee inside `cents`.. [optional]  # noqa: E501
+            carrier_service (str, none_type): [optional]  # noqa: E501
+            handling_fee_cents (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

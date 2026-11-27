@@ -76,14 +76,14 @@ class ListBuyerGiftSentItem(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'created_at': (str,),  # noqa: E501
-            'status': (str,),  # noqa: E501
-            'url': (str,),  # noqa: E501
-            'recipient_email': (str,),  # noqa: E501
             'recipient_name': (str,),  # noqa: E501
-            'opened_at': (str, none_type,),  # noqa: E501
-            'revealed_at': (str, none_type,),  # noqa: E501
+            'recipient_email': (str,),  # noqa: E501
+            'status': (str,),  # noqa: E501
+            'created_at': (str,),  # noqa: E501
+            'url': (str,),  # noqa: E501
             'teaser_sent_at': (str, none_type,),  # noqa: E501
+            'revealed_at': (str, none_type,),  # noqa: E501
+            'opened_at': (str, none_type,),  # noqa: E501
             'thanks_message': (str, none_type,),  # noqa: E501
         }
 
@@ -94,14 +94,14 @@ class ListBuyerGiftSentItem(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
-        'status': 'status',  # noqa: E501
-        'url': 'url',  # noqa: E501
-        'recipient_email': 'recipientEmail',  # noqa: E501
         'recipient_name': 'recipientName',  # noqa: E501
-        'opened_at': 'openedAt',  # noqa: E501
-        'revealed_at': 'revealedAt',  # noqa: E501
+        'recipient_email': 'recipientEmail',  # noqa: E501
+        'status': 'status',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
+        'url': 'url',  # noqa: E501
         'teaser_sent_at': 'teaserSentAt',  # noqa: E501
+        'revealed_at': 'revealedAt',  # noqa: E501
+        'opened_at': 'openedAt',  # noqa: E501
         'thanks_message': 'thanksMessage',  # noqa: E501
     }
 
@@ -112,16 +112,16 @@ class ListBuyerGiftSentItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, status, url, recipient_email, recipient_name, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, recipient_name, recipient_email, status, created_at, url, *args, **kwargs):  # noqa: E501
         """ListBuyerGiftSentItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
-            status (str):
-            url (str):
-            recipient_email (str):
             recipient_name (str):
+            recipient_email (str):
+            status (str):
+            created_at (str):
+            url (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -154,9 +154,9 @@ class ListBuyerGiftSentItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            opened_at (str, none_type): [optional]  # noqa: E501
-            revealed_at (str, none_type): [optional]  # noqa: E501
             teaser_sent_at (str, none_type): [optional]  # noqa: E501
+            revealed_at (str, none_type): [optional]  # noqa: E501
+            opened_at (str, none_type): [optional]  # noqa: E501
             thanks_message (str, none_type): [optional]  # noqa: E501
         """
 
@@ -186,11 +186,11 @@ class ListBuyerGiftSentItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
-        self.status = status
-        self.url = url
-        self.recipient_email = recipient_email
         self.recipient_name = recipient_name
+        self.recipient_email = recipient_email
+        self.status = status
+        self.created_at = created_at
+        self.url = url
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -211,16 +211,16 @@ class ListBuyerGiftSentItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, status, url, recipient_email, recipient_name, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, recipient_name, recipient_email, status, created_at, url, *args, **kwargs):  # noqa: E501
         """ListBuyerGiftSentItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
-            status (str):
-            url (str):
-            recipient_email (str):
             recipient_name (str):
+            recipient_email (str):
+            status (str):
+            created_at (str):
+            url (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -253,9 +253,9 @@ class ListBuyerGiftSentItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            opened_at (str, none_type): [optional]  # noqa: E501
-            revealed_at (str, none_type): [optional]  # noqa: E501
             teaser_sent_at (str, none_type): [optional]  # noqa: E501
+            revealed_at (str, none_type): [optional]  # noqa: E501
+            opened_at (str, none_type): [optional]  # noqa: E501
             thanks_message (str, none_type): [optional]  # noqa: E501
         """
 
@@ -283,11 +283,11 @@ class ListBuyerGiftSentItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
-        self.status = status
-        self.url = url
-        self.recipient_email = recipient_email
         self.recipient_name = recipient_name
+        self.recipient_email = recipient_email
+        self.status = status
+        self.created_at = created_at
+        self.url = url
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

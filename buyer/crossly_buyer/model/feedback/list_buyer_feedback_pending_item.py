@@ -77,11 +77,11 @@ class ListBuyerFeedbackPendingItem(ModelNormal):
         return {
             'purchase_id': (str,),  # noqa: E501
             'item_title': (str,),  # noqa: E501
-            'shipped_at': (str, none_type,),  # noqa: E501
-            'delivered_at': (str, none_type,),  # noqa: E501
             'image_url': (str, none_type,),  # noqa: E501
-            'seller_name': (str, none_type,),  # noqa: E501
+            'delivered_at': (str, none_type,),  # noqa: E501
+            'shipped_at': (str, none_type,),  # noqa: E501
             'ordered_at': (str, none_type,),  # noqa: E501
+            'seller_name': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -92,11 +92,11 @@ class ListBuyerFeedbackPendingItem(ModelNormal):
     attribute_map = {
         'purchase_id': 'purchaseId',  # noqa: E501
         'item_title': 'itemTitle',  # noqa: E501
-        'shipped_at': 'shippedAt',  # noqa: E501
-        'delivered_at': 'deliveredAt',  # noqa: E501
         'image_url': 'imageUrl',  # noqa: E501
-        'seller_name': 'sellerName',  # noqa: E501
+        'delivered_at': 'deliveredAt',  # noqa: E501
+        'shipped_at': 'shippedAt',  # noqa: E501
         'ordered_at': 'orderedAt',  # noqa: E501
+        'seller_name': 'sellerName',  # noqa: E501
     }
 
     read_only_vars = {
@@ -144,11 +144,11 @@ class ListBuyerFeedbackPendingItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            shipped_at (str, none_type): [optional]  # noqa: E501
-            delivered_at (str, none_type): [optional]  # noqa: E501
             image_url (str, none_type): [optional]  # noqa: E501
-            seller_name (str, none_type): [optional]  # noqa: E501
+            delivered_at (str, none_type): [optional]  # noqa: E501
+            shipped_at (str, none_type): [optional]  # noqa: E501
             ordered_at (str, none_type): [optional]  # noqa: E501
+            seller_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -236,11 +236,11 @@ class ListBuyerFeedbackPendingItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            shipped_at (str, none_type): [optional]  # noqa: E501
-            delivered_at (str, none_type): [optional]  # noqa: E501
             image_url (str, none_type): [optional]  # noqa: E501
-            seller_name (str, none_type): [optional]  # noqa: E501
+            delivered_at (str, none_type): [optional]  # noqa: E501
+            shipped_at (str, none_type): [optional]  # noqa: E501
             ordered_at (str, none_type): [optional]  # noqa: E501
+            seller_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

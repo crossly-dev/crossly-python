@@ -9,10 +9,12 @@ Method | HTTP request | Description
 [**get_department**](ReferenceApi.md#get_department) | **GET** /v1/departments | Search the eBay-sourced \&quot;Department\&quot; item-specific values.
 [**get_gender**](ReferenceApi.md#get_gender) | **GET** /v1/genders | Search the eBay-sourced \&quot;Gender\&quot; item-specific values.
 [**get_pattern**](ReferenceApi.md#get_pattern) | **GET** /v1/patterns | Search the eBay-sourced \&quot;Pattern\&quot; item-specific values.
+[**get_reference_postal**](ReferenceApi.md#get_reference_postal) | **GET** /v1/reference/postal/{country}/{code} | Look up a postal code: canonical shape, state and US metro areas.
 [**get_size_system**](ReferenceApi.md#get_size_system) | **GET** /v1/size-systems | Search the Poshmark + Vestiaire size-system union (US/UK/EU/AU/FR/KR).
 [**get_style**](ReferenceApi.md#get_style) | **GET** /v1/styles | Search the eBay-sourced \&quot;Style\&quot; item-specific values.
 [**get_type**](ReferenceApi.md#get_type) | **GET** /v1/types | Search the eBay-sourced \&quot;Type\&quot; item-specific values.
 [**list_reference_countries**](ReferenceApi.md#list_reference_countries) | **GET** /v1/reference/countries | Every country with its delivery-address rules.
+[**list_reference_metros**](ReferenceApi.md#list_reference_metros) | **GET** /v1/reference/metros | Search US metro areas (CSA / CBSA) for location rules.
 
 
 # **get_brand**
@@ -106,7 +108,7 @@ List Crossly's canonical category tree.
 import time
 import crossly
 from crossly.api import reference_api
-from crossly.model.common.get_category_response import GetCategoryResponse
+from crossly.model.category.get_category_response import GetCategoryResponse
 from crossly.model.common.error import Error
 from pprint import pprint
 # Defining the host is optional and defaults to https://crossly.net/api
@@ -380,6 +382,92 @@ This endpoint does not need any parameter.
 ### Return type
 
 **GetPatternResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **get_reference_postal**
+> GetReferencePostalResponse get_reference_postal(country, code)
+
+Look up a postal code: canonical shape, state and US metro areas.
+
+Every country gets its canonical shape and `valid`. A US ZIP (territories normalize to country US with `territory`) also gets state, county FIPS and CBSA/CSA. `metroStatus` is known (the ZIP is mapped), unmapped (a ZIP with no metro mapping: it matches no metro rule) or no_zip.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import reference_api
+from crossly.model.common.error import Error
+from crossly.model.common.get_reference_postal_response import GetReferencePostalResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = reference_api.ReferenceApi(api_client)
+    country = "country_example" # str | 
+    code = "code_example" # str | 
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Look up a postal code: canonical shape, state and US metro areas.
+        api_response = api_instance.get_reference_postal(country, code)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ReferenceApi->get_reference_postal: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **country** | **str**|  |
+ **code** | **str**|  |
+
+### Return type
+
+**GetReferencePostalResponse**
 
 ### Authorization
 
@@ -694,6 +782,101 @@ This endpoint does not need any parameter.
 ### Return type
 
 **ListReferenceCountriesResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Error |  -  |
+**401** | Error |  -  |
+**403** | Error |  -  |
+**404** | Error |  -  |
+**429** | Error |  -  |
+**500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+# **list_reference_metros**
+> ListReferenceMetrosResponse list_reference_metros(q)
+
+Search US metro areas (CSA / CBSA) for location rules.
+
+Combined Statistical Areas first, then Core-Based Statistical Areas, matched on title (or an exact code); at most 20. `q` needs 2+ characters. `meta.datasetAvailable` is false when the census dataset is not loaded, in which case no metro rule can match.
+
+### Example
+
+* Bearer Authentication (PersonalAccessToken):
+
+```python
+import time
+import crossly
+from crossly.api import reference_api
+from crossly.model.common.error import Error
+from crossly.model.common.list_reference_metros_response import ListReferenceMetrosResponse
+from pprint import pprint
+# Defining the host is optional and defaults to https://crossly.net/api
+# See configuration.py for a list of all supported configuration parameters.
+configuration = crossly.Configuration(
+    host = "https://crossly.net/api"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure Bearer authorization: PersonalAccessToken
+configuration = crossly.Configuration(
+    access_token = 'YOUR_BEARER_TOKEN'
+)
+
+# Enter a context with an instance of the API client
+with crossly.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = reference_api.ReferenceApi(api_client)
+    q = "q_example" # str | 
+    limit = 20 # int |  (optional) if omitted the server will use the default value of 20
+
+    # example passing only required values which don't have defaults set
+    try:
+        # Search US metro areas (CSA / CBSA) for location rules.
+        api_response = api_instance.list_reference_metros(q)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ReferenceApi->list_reference_metros: %s\n" % e)
+
+    # example passing only required values which don't have defaults set
+    # and optional values
+    try:
+        # Search US metro areas (CSA / CBSA) for location rules.
+        api_response = api_instance.list_reference_metros(q, limit=limit)
+        pprint(api_response)
+    except crossly.ApiException as e:
+        print("Exception when calling ReferenceApi->list_reference_metros: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **str**|  |
+ **limit** | **int**|  | [optional] if omitted the server will use the default value of 20
+
+### Return type
+
+**ListReferenceMetrosResponse**
 
 ### Authorization
 

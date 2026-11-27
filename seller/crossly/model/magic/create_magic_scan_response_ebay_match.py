@@ -157,13 +157,13 @@ class CreateMagicScanResponseEbayMatch(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             legacy_item_id (str, none_type): [optional]  # noqa: E501
             brand (str, none_type): [optional]  # noqa: E501
-            price_cents (float, none_type): Normalized cents. eBay returns string + currency on `price.value`.. [optional]  # noqa: E501
+            price_cents (float, none_type): Integer cents.. [optional]  # noqa: E501
             currency (str, none_type): [optional]  # noqa: E501
             condition (str, none_type): [optional]  # noqa: E501
-            category_id (str, none_type): Top-level category eBay assigned to the match (id + path).. [optional]  # noqa: E501
+            category_id (str, none_type): The category the marketplace filed the match under (id + path), when the provider returns it.. [optional]  # noqa: E501
             category_path (str, none_type): [optional]  # noqa: E501
             thumbnail_url (str, none_type): [optional]  # noqa: E501
-            aspects ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): Loosely-typed aspect bag — Brand, Color, Material, etc. when eBay inlines them. Always inspected defensively by the synthesizer.. [optional]  # noqa: E501
+            aspects ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): Item specifics, when the provider returns them. Always read defensively.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -255,13 +255,13 @@ class CreateMagicScanResponseEbayMatch(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             legacy_item_id (str, none_type): [optional]  # noqa: E501
             brand (str, none_type): [optional]  # noqa: E501
-            price_cents (float, none_type): Normalized cents. eBay returns string + currency on `price.value`.. [optional]  # noqa: E501
+            price_cents (float, none_type): Integer cents.. [optional]  # noqa: E501
             currency (str, none_type): [optional]  # noqa: E501
             condition (str, none_type): [optional]  # noqa: E501
-            category_id (str, none_type): Top-level category eBay assigned to the match (id + path).. [optional]  # noqa: E501
+            category_id (str, none_type): The category the marketplace filed the match under (id + path), when the provider returns it.. [optional]  # noqa: E501
             category_path (str, none_type): [optional]  # noqa: E501
             thumbnail_url (str, none_type): [optional]  # noqa: E501
-            aspects ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): Loosely-typed aspect bag — Brand, Color, Material, etc. when eBay inlines them. Always inspected defensively by the synthesizer.. [optional]  # noqa: E501
+            aspects ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): Item specifics, when the provider returns them. Always read defensively.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

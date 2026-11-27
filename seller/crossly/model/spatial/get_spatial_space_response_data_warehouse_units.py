@@ -62,10 +62,10 @@ class GetSpatialSpaceResponseDataWarehouseUnits(ModelNormal):
         ('segment_kind',): {
             'None': None,
             'LEVEL': "level",
+            'BIN': "bin",
             'ZONE': "zone",
             'AISLE': "aisle",
             'BAY': "bay",
-            'BIN': "bin",
         },
     }
 

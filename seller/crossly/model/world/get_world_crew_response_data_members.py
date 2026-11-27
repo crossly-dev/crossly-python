@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.common.name_slug import NameSlug
-    globals()['NameSlug'] = NameSlug
+    from crossly.model.common.name_slug2 import NameSlug2
+    globals()['NameSlug2'] = NameSlug2
 
 
 class GetWorldCrewResponseDataMembers(ModelNormal):
@@ -83,7 +83,7 @@ class GetWorldCrewResponseDataMembers(ModelNormal):
             'user_id': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'you': (bool,),  # noqa: E501
-            'room': (NameSlug,),  # noqa: E501
+            'room': (NameSlug2,),  # noqa: E501
         }
 
     @cached_property
@@ -144,7 +144,7 @@ class GetWorldCrewResponseDataMembers(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            room (NameSlug): [optional]  # noqa: E501
+            room (NameSlug2): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -234,7 +234,7 @@ class GetWorldCrewResponseDataMembers(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            room (NameSlug): [optional]  # noqa: E501
+            room (NameSlug2): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

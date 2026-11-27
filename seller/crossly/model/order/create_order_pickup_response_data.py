@@ -81,15 +81,15 @@ class CreateOrderPickupResponseData(ModelNormal):
             'status': (str,),  # noqa: E501
             'carrier': (str,),  # noqa: E501
             'order_ids': ([str],),  # noqa: E501
-            'shippo_pickup_id': (str,),  # noqa: E501
-            'pickup_date': (str,),  # noqa: E501
             'min_time': (str,),  # noqa: E501
             'max_time': (str,),  # noqa: E501
+            'shippo_pickup_id': (str,),  # noqa: E501
+            'pickup_date': (str,),  # noqa: E501
             'warnings': ([str],),  # noqa: E501
             'confirmation': (str, none_type,),  # noqa: E501
+            'instructions': (str, none_type,),  # noqa: E501
             'confirmed_start': (datetime, none_type,),  # noqa: E501
             'confirmed_end': (datetime, none_type,),  # noqa: E501
-            'instructions': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -104,15 +104,15 @@ class CreateOrderPickupResponseData(ModelNormal):
         'status': 'status',  # noqa: E501
         'carrier': 'carrier',  # noqa: E501
         'order_ids': 'orderIds',  # noqa: E501
-        'shippo_pickup_id': 'shippoPickupId',  # noqa: E501
-        'pickup_date': 'pickupDate',  # noqa: E501
         'min_time': 'minTime',  # noqa: E501
         'max_time': 'maxTime',  # noqa: E501
+        'shippo_pickup_id': 'shippoPickupId',  # noqa: E501
+        'pickup_date': 'pickupDate',  # noqa: E501
         'warnings': 'warnings',  # noqa: E501
         'confirmation': 'confirmation',  # noqa: E501
+        'instructions': 'instructions',  # noqa: E501
         'confirmed_start': 'confirmedStart',  # noqa: E501
         'confirmed_end': 'confirmedEnd',  # noqa: E501
-        'instructions': 'instructions',  # noqa: E501
     }
 
     read_only_vars = {
@@ -122,7 +122,7 @@ class CreateOrderPickupResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, user_id, status, carrier, order_ids, shippo_pickup_id, pickup_date, min_time, max_time, warnings, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, user_id, status, carrier, order_ids, min_time, max_time, shippo_pickup_id, pickup_date, warnings, *args, **kwargs):  # noqa: E501
         """CreateOrderPickupResponseData - a model defined in OpenAPI
 
         Args:
@@ -132,10 +132,10 @@ class CreateOrderPickupResponseData(ModelNormal):
             status (str):
             carrier (str):
             order_ids ([str]):
-            shippo_pickup_id (str):
-            pickup_date (str):
             min_time (str):
             max_time (str):
+            shippo_pickup_id (str):
+            pickup_date (str):
             warnings ([str]):
 
         Keyword Args:
@@ -170,9 +170,9 @@ class CreateOrderPickupResponseData(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             confirmation (str, none_type): [optional]  # noqa: E501
+            instructions (str, none_type): [optional]  # noqa: E501
             confirmed_start (datetime, none_type): [optional]  # noqa: E501
             confirmed_end (datetime, none_type): [optional]  # noqa: E501
-            instructions (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -206,10 +206,10 @@ class CreateOrderPickupResponseData(ModelNormal):
         self.status = status
         self.carrier = carrier
         self.order_ids = order_ids
-        self.shippo_pickup_id = shippo_pickup_id
-        self.pickup_date = pickup_date
         self.min_time = min_time
         self.max_time = max_time
+        self.shippo_pickup_id = shippo_pickup_id
+        self.pickup_date = pickup_date
         self.warnings = warnings
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -231,7 +231,7 @@ class CreateOrderPickupResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, user_id, status, carrier, order_ids, shippo_pickup_id, pickup_date, min_time, max_time, warnings, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, user_id, status, carrier, order_ids, min_time, max_time, shippo_pickup_id, pickup_date, warnings, *args, **kwargs):  # noqa: E501
         """CreateOrderPickupResponseData - a model defined in OpenAPI
 
         Args:
@@ -241,10 +241,10 @@ class CreateOrderPickupResponseData(ModelNormal):
             status (str):
             carrier (str):
             order_ids ([str]):
-            shippo_pickup_id (str):
-            pickup_date (str):
             min_time (str):
             max_time (str):
+            shippo_pickup_id (str):
+            pickup_date (str):
             warnings ([str]):
 
         Keyword Args:
@@ -279,9 +279,9 @@ class CreateOrderPickupResponseData(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             confirmation (str, none_type): [optional]  # noqa: E501
+            instructions (str, none_type): [optional]  # noqa: E501
             confirmed_start (datetime, none_type): [optional]  # noqa: E501
             confirmed_end (datetime, none_type): [optional]  # noqa: E501
-            instructions (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -313,10 +313,10 @@ class CreateOrderPickupResponseData(ModelNormal):
         self.status = status
         self.carrier = carrier
         self.order_ids = order_ids
-        self.shippo_pickup_id = shippo_pickup_id
-        self.pickup_date = pickup_date
         self.min_time = min_time
         self.max_time = max_time
+        self.shippo_pickup_id = shippo_pickup_id
+        self.pickup_date = pickup_date
         self.warnings = warnings
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

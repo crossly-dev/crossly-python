@@ -56,10 +56,10 @@ class GetVaultMarketCreatorRoomResponseRoom(ModelNormal):
 
     allowed_values = {
         ('status',): {
-            'APPLIED': "applied",
-            'VERIFIED': "verified",
-            'REJECTED': "rejected",
             'PAUSED': "paused",
+            'VERIFIED': "verified",
+            'APPLIED': "applied",
+            'REJECTED': "rejected",
         },
     }
 

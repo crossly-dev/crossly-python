@@ -76,17 +76,20 @@ class ListBuyerCartSavedItem(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'quantity': (float,),  # noqa: E501
-            'title': (str,),  # noqa: E501
             'platform_listing_id': (str,),  # noqa: E501
-            'seller_user_id': (str,),  # noqa: E501
             'slug': (str,),  # noqa: E501
+            'title': (str,),  # noqa: E501
             'price_cents': (float,),  # noqa: E501
+            'quantity': (float,),  # noqa: E501
             'in_stock': (bool,),  # noqa: E501
             'available_quantity': (float,),  # noqa: E501
+            'seller_user_id': (str,),  # noqa: E501
             'saved_at': (str,),  # noqa: E501
-            'seller_display_name': (str, none_type,),  # noqa: E501
             'thumbnail': (str, none_type,),  # noqa: E501
+            'seller_display_name': (str, none_type,),  # noqa: E501
+            'listing_variant_id': (str, none_type,),  # noqa: E501
+            'variant_name': (str, none_type,),  # noqa: E501
+            'needs_option': (bool, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -96,17 +99,20 @@ class ListBuyerCartSavedItem(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'quantity': 'quantity',  # noqa: E501
-        'title': 'title',  # noqa: E501
         'platform_listing_id': 'platformListingId',  # noqa: E501
-        'seller_user_id': 'sellerUserId',  # noqa: E501
         'slug': 'slug',  # noqa: E501
+        'title': 'title',  # noqa: E501
         'price_cents': 'priceCents',  # noqa: E501
+        'quantity': 'quantity',  # noqa: E501
         'in_stock': 'inStock',  # noqa: E501
         'available_quantity': 'availableQuantity',  # noqa: E501
+        'seller_user_id': 'sellerUserId',  # noqa: E501
         'saved_at': 'savedAt',  # noqa: E501
-        'seller_display_name': 'sellerDisplayName',  # noqa: E501
         'thumbnail': 'thumbnail',  # noqa: E501
+        'seller_display_name': 'sellerDisplayName',  # noqa: E501
+        'listing_variant_id': 'listingVariantId',  # noqa: E501
+        'variant_name': 'variantName',  # noqa: E501
+        'needs_option': 'needsOption',  # noqa: E501
     }
 
     read_only_vars = {
@@ -116,19 +122,19 @@ class ListBuyerCartSavedItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, quantity, title, platform_listing_id, seller_user_id, slug, price_cents, in_stock, available_quantity, saved_at, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, platform_listing_id, slug, title, price_cents, quantity, in_stock, available_quantity, seller_user_id, saved_at, *args, **kwargs):  # noqa: E501
         """ListBuyerCartSavedItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            quantity (float):
-            title (str):
             platform_listing_id (str):
-            seller_user_id (str):
             slug (str):
+            title (str):
             price_cents (float): The listing's price NOW, in cents — what moving it back would charge.
+            quantity (float):
             in_stock (bool):
             available_quantity (float):
+            seller_user_id (str):
             saved_at (str):
 
         Keyword Args:
@@ -162,8 +168,11 @@ class ListBuyerCartSavedItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            seller_display_name (str, none_type): [optional]  # noqa: E501
             thumbnail (str, none_type): [optional]  # noqa: E501
+            seller_display_name (str, none_type): [optional]  # noqa: E501
+            listing_variant_id (str, none_type): The option it was saved as (catalog `variants[].id`), restored on move-to-cart; null otherwise.. [optional]  # noqa: E501
+            variant_name (str, none_type): That option's label (\"M\").. [optional]  # noqa: E501
+            needs_option (bool, none_type): The listing has options and this item names none: add it again with an option (move-to-cart refuses).. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -192,14 +201,14 @@ class ListBuyerCartSavedItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.quantity = quantity
-        self.title = title
         self.platform_listing_id = platform_listing_id
-        self.seller_user_id = seller_user_id
         self.slug = slug
+        self.title = title
         self.price_cents = price_cents
+        self.quantity = quantity
         self.in_stock = in_stock
         self.available_quantity = available_quantity
+        self.seller_user_id = seller_user_id
         self.saved_at = saved_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -221,19 +230,19 @@ class ListBuyerCartSavedItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, quantity, title, platform_listing_id, seller_user_id, slug, price_cents, in_stock, available_quantity, saved_at, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, platform_listing_id, slug, title, price_cents, quantity, in_stock, available_quantity, seller_user_id, saved_at, *args, **kwargs):  # noqa: E501
         """ListBuyerCartSavedItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            quantity (float):
-            title (str):
             platform_listing_id (str):
-            seller_user_id (str):
             slug (str):
+            title (str):
             price_cents (float): The listing's price NOW, in cents — what moving it back would charge.
+            quantity (float):
             in_stock (bool):
             available_quantity (float):
+            seller_user_id (str):
             saved_at (str):
 
         Keyword Args:
@@ -267,8 +276,11 @@ class ListBuyerCartSavedItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            seller_display_name (str, none_type): [optional]  # noqa: E501
             thumbnail (str, none_type): [optional]  # noqa: E501
+            seller_display_name (str, none_type): [optional]  # noqa: E501
+            listing_variant_id (str, none_type): The option it was saved as (catalog `variants[].id`), restored on move-to-cart; null otherwise.. [optional]  # noqa: E501
+            variant_name (str, none_type): That option's label (\"M\").. [optional]  # noqa: E501
+            needs_option (bool, none_type): The listing has options and this item names none: add it again with an option (move-to-cart refuses).. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -295,14 +307,14 @@ class ListBuyerCartSavedItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.quantity = quantity
-        self.title = title
         self.platform_listing_id = platform_listing_id
-        self.seller_user_id = seller_user_id
         self.slug = slug
+        self.title = title
         self.price_cents = price_cents
+        self.quantity = quantity
         self.in_stock = in_stock
         self.available_quantity = available_quantity
+        self.seller_user_id = seller_user_id
         self.saved_at = saved_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

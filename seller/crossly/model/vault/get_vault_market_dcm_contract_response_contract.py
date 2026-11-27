@@ -62,8 +62,8 @@ class GetVaultMarketDcmContractResponseContract(ModelNormal):
         },
         ('option_type',): {
             'None': None,
-            'CALL': "call",
             'PUT': "put",
+            'CALL': "call",
         },
     }
 

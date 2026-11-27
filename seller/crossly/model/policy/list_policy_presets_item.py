@@ -75,6 +75,9 @@ class ListPolicyPresetsItem(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'summary': (str,),  # noqa: E501
+            'incomplete': (bool,),  # noqa: E501
+            'listing_count': (float,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
@@ -82,6 +85,8 @@ class ListPolicyPresetsItem(ModelNormal):
             'user_id': (str,),  # noqa: E501
             'is_default': (bool,),  # noqa: E501
             'kind': (str,),  # noqa: E501
+            'revision': (float,),  # noqa: E501
+            'has_domestic_rules': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -90,6 +95,9 @@ class ListPolicyPresetsItem(ModelNormal):
 
 
     attribute_map = {
+        'summary': 'summary',  # noqa: E501
+        'incomplete': 'incomplete',  # noqa: E501
+        'listing_count': 'listingCount',  # noqa: E501
         'id': 'id',  # noqa: E501
         'name': 'name',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
@@ -97,6 +105,8 @@ class ListPolicyPresetsItem(ModelNormal):
         'user_id': 'userId',  # noqa: E501
         'is_default': 'isDefault',  # noqa: E501
         'kind': 'kind',  # noqa: E501
+        'revision': 'revision',  # noqa: E501
+        'has_domestic_rules': 'hasDomesticRules',  # noqa: E501
     }
 
     read_only_vars = {
@@ -106,10 +116,13 @@ class ListPolicyPresetsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, created_at, updated_at, user_id, is_default, kind, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, summary, incomplete, listing_count, id, name, created_at, updated_at, user_id, is_default, kind, revision, has_domestic_rules, *args, **kwargs):  # noqa: E501
         """ListPolicyPresetsItem - a model defined in OpenAPI
 
         Args:
+            summary (str):
+            incomplete (bool):
+            listing_count (float):
             id (str):
             name (str):
             created_at (datetime):
@@ -117,6 +130,8 @@ class ListPolicyPresetsItem(ModelNormal):
             user_id (str):
             is_default (bool):
             kind (str):
+            revision (float):
+            has_domestic_rules (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -176,6 +191,9 @@ class ListPolicyPresetsItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.summary = summary
+        self.incomplete = incomplete
+        self.listing_count = listing_count
         self.id = id
         self.name = name
         self.created_at = created_at
@@ -183,6 +201,8 @@ class ListPolicyPresetsItem(ModelNormal):
         self.user_id = user_id
         self.is_default = is_default
         self.kind = kind
+        self.revision = revision
+        self.has_domestic_rules = has_domestic_rules
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -203,10 +223,13 @@ class ListPolicyPresetsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, created_at, updated_at, user_id, is_default, kind, *args, **kwargs):  # noqa: E501
+    def __init__(self, summary, incomplete, listing_count, id, name, created_at, updated_at, user_id, is_default, kind, revision, has_domestic_rules, *args, **kwargs):  # noqa: E501
         """ListPolicyPresetsItem - a model defined in OpenAPI
 
         Args:
+            summary (str):
+            incomplete (bool):
+            listing_count (float):
             id (str):
             name (str):
             created_at (datetime):
@@ -214,6 +237,8 @@ class ListPolicyPresetsItem(ModelNormal):
             user_id (str):
             is_default (bool):
             kind (str):
+            revision (float):
+            has_domestic_rules (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -271,6 +296,9 @@ class ListPolicyPresetsItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.summary = summary
+        self.incomplete = incomplete
+        self.listing_count = listing_count
         self.id = id
         self.name = name
         self.created_at = created_at
@@ -278,6 +306,8 @@ class ListPolicyPresetsItem(ModelNormal):
         self.user_id = user_id
         self.is_default = is_default
         self.kind = kind
+        self.revision = revision
+        self.has_domestic_rules = has_domestic_rules
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

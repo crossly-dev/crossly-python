@@ -76,18 +76,22 @@ class ListAutomationRulesItem(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'name': (str,),  # noqa: E501
-            'created_at': (datetime,),  # noqa: E501
-            'updated_at': (datetime,),  # noqa: E501
             'user_id': (str,),  # noqa: E501
+            'name': (str,),  # noqa: E501
             'is_active': (bool,),  # noqa: E501
             'trigger_type': (str,),  # noqa: E501
+            'trigger_config': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'action_type': (str,),  # noqa: E501
+            'action_config': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'run_count': (float,),  # noqa: E501
-            'platforms': ([str], none_type,),  # noqa: E501
-            'next_run_at': (datetime, none_type,),  # noqa: E501
-            'last_run_at': (datetime, none_type,),  # noqa: E501
+            'created_at': (datetime,),  # noqa: E501
+            'updated_at': (datetime,),  # noqa: E501
+            'workflow_id': (str,),  # noqa: E501
             'condition_type': (str, none_type,),  # noqa: E501
+            'condition_config': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
+            'platforms': ([str], none_type,),  # noqa: E501
+            'last_run_at': (datetime, none_type,),  # noqa: E501
+            'next_run_at': (datetime, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -97,18 +101,22 @@ class ListAutomationRulesItem(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'name': 'name',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
-        'updated_at': 'updatedAt',  # noqa: E501
         'user_id': 'userId',  # noqa: E501
+        'name': 'name',  # noqa: E501
         'is_active': 'isActive',  # noqa: E501
         'trigger_type': 'triggerType',  # noqa: E501
+        'trigger_config': 'triggerConfig',  # noqa: E501
         'action_type': 'actionType',  # noqa: E501
+        'action_config': 'actionConfig',  # noqa: E501
         'run_count': 'runCount',  # noqa: E501
-        'platforms': 'platforms',  # noqa: E501
-        'next_run_at': 'nextRunAt',  # noqa: E501
-        'last_run_at': 'lastRunAt',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
+        'updated_at': 'updatedAt',  # noqa: E501
+        'workflow_id': 'workflowId',  # noqa: E501
         'condition_type': 'conditionType',  # noqa: E501
+        'condition_config': 'conditionConfig',  # noqa: E501
+        'platforms': 'platforms',  # noqa: E501
+        'last_run_at': 'lastRunAt',  # noqa: E501
+        'next_run_at': 'nextRunAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -118,19 +126,22 @@ class ListAutomationRulesItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, created_at, updated_at, user_id, is_active, trigger_type, action_type, run_count, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, user_id, name, is_active, trigger_type, trigger_config, action_type, action_config, run_count, created_at, updated_at, workflow_id, *args, **kwargs):  # noqa: E501
         """ListAutomationRulesItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            name (str):
-            created_at (datetime):
-            updated_at (datetime):
             user_id (str):
+            name (str):
             is_active (bool):
             trigger_type (str):
+            trigger_config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
             action_type (str):
+            action_config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
             run_count (float):
+            created_at (datetime):
+            updated_at (datetime):
+            workflow_id (str): The workflow this rule is (open it in /v1/workflows).
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -163,10 +174,11 @@ class ListAutomationRulesItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            platforms ([str], none_type): [optional]  # noqa: E501
-            next_run_at (datetime, none_type): [optional]  # noqa: E501
-            last_run_at (datetime, none_type): [optional]  # noqa: E501
             condition_type (str, none_type): [optional]  # noqa: E501
+            condition_config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
+            platforms ([str], none_type): [optional]  # noqa: E501
+            last_run_at (datetime, none_type): [optional]  # noqa: E501
+            next_run_at (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -195,14 +207,17 @@ class ListAutomationRulesItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.name = name
-        self.created_at = created_at
-        self.updated_at = updated_at
         self.user_id = user_id
+        self.name = name
         self.is_active = is_active
         self.trigger_type = trigger_type
+        self.trigger_config = trigger_config
         self.action_type = action_type
+        self.action_config = action_config
         self.run_count = run_count
+        self.created_at = created_at
+        self.updated_at = updated_at
+        self.workflow_id = workflow_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -223,19 +238,22 @@ class ListAutomationRulesItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, created_at, updated_at, user_id, is_active, trigger_type, action_type, run_count, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, user_id, name, is_active, trigger_type, trigger_config, action_type, action_config, run_count, created_at, updated_at, workflow_id, *args, **kwargs):  # noqa: E501
         """ListAutomationRulesItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            name (str):
-            created_at (datetime):
-            updated_at (datetime):
             user_id (str):
+            name (str):
             is_active (bool):
             trigger_type (str):
+            trigger_config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
             action_type (str):
+            action_config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
             run_count (float):
+            created_at (datetime):
+            updated_at (datetime):
+            workflow_id (str): The workflow this rule is (open it in /v1/workflows).
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -268,10 +286,11 @@ class ListAutomationRulesItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            platforms ([str], none_type): [optional]  # noqa: E501
-            next_run_at (datetime, none_type): [optional]  # noqa: E501
-            last_run_at (datetime, none_type): [optional]  # noqa: E501
             condition_type (str, none_type): [optional]  # noqa: E501
+            condition_config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
+            platforms ([str], none_type): [optional]  # noqa: E501
+            last_run_at (datetime, none_type): [optional]  # noqa: E501
+            next_run_at (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -298,14 +317,17 @@ class ListAutomationRulesItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.name = name
-        self.created_at = created_at
-        self.updated_at = updated_at
         self.user_id = user_id
+        self.name = name
         self.is_active = is_active
         self.trigger_type = trigger_type
+        self.trigger_config = trigger_config
         self.action_type = action_type
+        self.action_config = action_config
         self.run_count = run_count
+        self.created_at = created_at
+        self.updated_at = updated_at
+        self.workflow_id = workflow_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

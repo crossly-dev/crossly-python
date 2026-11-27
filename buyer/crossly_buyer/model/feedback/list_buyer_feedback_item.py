@@ -76,18 +76,18 @@ class ListBuyerFeedbackItem(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'created_at': (str,),  # noqa: E501
             'rating': (float,),  # noqa: E501
+            'created_at': (str,),  # noqa: E501
             'body': (str, none_type,),  # noqa: E501
+            'revised_at': (str, none_type,),  # noqa: E501
+            'seller_reply': (str, none_type,),  # noqa: E501
+            'seller_replied_at': (str, none_type,),  # noqa: E501
+            'seller_name': (str, none_type,),  # noqa: E501
+            'item_title': (str, none_type,),  # noqa: E501
+            'rating_as_described': (float, none_type,),  # noqa: E501
             'rating_communication': (float, none_type,),  # noqa: E501
             'rating_ship_speed': (float, none_type,),  # noqa: E501
             'rating_ship_cost': (float, none_type,),  # noqa: E501
-            'rating_as_described': (float, none_type,),  # noqa: E501
-            'seller_reply': (str, none_type,),  # noqa: E501
-            'seller_replied_at': (str, none_type,),  # noqa: E501
-            'revised_at': (str, none_type,),  # noqa: E501
-            'item_title': (str, none_type,),  # noqa: E501
-            'seller_name': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -97,18 +97,18 @@ class ListBuyerFeedbackItem(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
         'rating': 'rating',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
         'body': 'body',  # noqa: E501
+        'revised_at': 'revisedAt',  # noqa: E501
+        'seller_reply': 'sellerReply',  # noqa: E501
+        'seller_replied_at': 'sellerRepliedAt',  # noqa: E501
+        'seller_name': 'sellerName',  # noqa: E501
+        'item_title': 'itemTitle',  # noqa: E501
+        'rating_as_described': 'ratingAsDescribed',  # noqa: E501
         'rating_communication': 'ratingCommunication',  # noqa: E501
         'rating_ship_speed': 'ratingShipSpeed',  # noqa: E501
         'rating_ship_cost': 'ratingShipCost',  # noqa: E501
-        'rating_as_described': 'ratingAsDescribed',  # noqa: E501
-        'seller_reply': 'sellerReply',  # noqa: E501
-        'seller_replied_at': 'sellerRepliedAt',  # noqa: E501
-        'revised_at': 'revisedAt',  # noqa: E501
-        'item_title': 'itemTitle',  # noqa: E501
-        'seller_name': 'sellerName',  # noqa: E501
     }
 
     read_only_vars = {
@@ -118,13 +118,13 @@ class ListBuyerFeedbackItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, rating, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, rating, created_at, *args, **kwargs):  # noqa: E501
         """ListBuyerFeedbackItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
             rating (float):
+            created_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -158,15 +158,15 @@ class ListBuyerFeedbackItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             body (str, none_type): [optional]  # noqa: E501
+            revised_at (str, none_type): [optional]  # noqa: E501
+            seller_reply (str, none_type): [optional]  # noqa: E501
+            seller_replied_at (str, none_type): [optional]  # noqa: E501
+            seller_name (str, none_type): [optional]  # noqa: E501
+            item_title (str, none_type): [optional]  # noqa: E501
+            rating_as_described (float, none_type): [optional]  # noqa: E501
             rating_communication (float, none_type): [optional]  # noqa: E501
             rating_ship_speed (float, none_type): [optional]  # noqa: E501
             rating_ship_cost (float, none_type): [optional]  # noqa: E501
-            rating_as_described (float, none_type): [optional]  # noqa: E501
-            seller_reply (str, none_type): [optional]  # noqa: E501
-            seller_replied_at (str, none_type): [optional]  # noqa: E501
-            revised_at (str, none_type): [optional]  # noqa: E501
-            item_title (str, none_type): [optional]  # noqa: E501
-            seller_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -195,8 +195,8 @@ class ListBuyerFeedbackItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
         self.rating = rating
+        self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -217,13 +217,13 @@ class ListBuyerFeedbackItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, rating, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, rating, created_at, *args, **kwargs):  # noqa: E501
         """ListBuyerFeedbackItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
             rating (float):
+            created_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -257,15 +257,15 @@ class ListBuyerFeedbackItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             body (str, none_type): [optional]  # noqa: E501
+            revised_at (str, none_type): [optional]  # noqa: E501
+            seller_reply (str, none_type): [optional]  # noqa: E501
+            seller_replied_at (str, none_type): [optional]  # noqa: E501
+            seller_name (str, none_type): [optional]  # noqa: E501
+            item_title (str, none_type): [optional]  # noqa: E501
+            rating_as_described (float, none_type): [optional]  # noqa: E501
             rating_communication (float, none_type): [optional]  # noqa: E501
             rating_ship_speed (float, none_type): [optional]  # noqa: E501
             rating_ship_cost (float, none_type): [optional]  # noqa: E501
-            rating_as_described (float, none_type): [optional]  # noqa: E501
-            seller_reply (str, none_type): [optional]  # noqa: E501
-            seller_replied_at (str, none_type): [optional]  # noqa: E501
-            revised_at (str, none_type): [optional]  # noqa: E501
-            item_title (str, none_type): [optional]  # noqa: E501
-            seller_name (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -292,8 +292,8 @@ class ListBuyerFeedbackItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
         self.rating = rating
+        self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

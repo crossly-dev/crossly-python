@@ -30,14 +30,14 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from crossly.model.bulk.create_bulk_batch_item_response_grading import CreateBulkBatchItemResponseGrading
     from crossly.model.magic.create_magic_scan_synthesize_response_payload_category import CreateMagicScanSynthesizeResponsePayloadCategory
     from crossly.model.magic.create_magic_scan_synthesize_response_payload_dimensions import CreateMagicScanSynthesizeResponsePayloadDimensions
     from crossly.model.magic.create_magic_scan_synthesize_response_payload_section_applicability import CreateMagicScanSynthesizeResponsePayloadSectionApplicability
-    from crossly.model.grading.list_grading_submissions_item_grading import ListGradingSubmissionsItemGrading
+    globals()['CreateBulkBatchItemResponseGrading'] = CreateBulkBatchItemResponseGrading
     globals()['CreateMagicScanSynthesizeResponsePayloadCategory'] = CreateMagicScanSynthesizeResponsePayloadCategory
     globals()['CreateMagicScanSynthesizeResponsePayloadDimensions'] = CreateMagicScanSynthesizeResponsePayloadDimensions
     globals()['CreateMagicScanSynthesizeResponsePayloadSectionApplicability'] = CreateMagicScanSynthesizeResponsePayloadSectionApplicability
-    globals()['ListGradingSubmissionsItemGrading'] = ListGradingSubmissionsItemGrading
 
 
 class CreateMagicScanSynthesizeResponsePayload(ModelNormal):
@@ -68,8 +68,8 @@ class CreateMagicScanSynthesizeResponsePayload(ModelNormal):
         ('condition',): {
             'None': None,
             'NEW': "new",
-            'FAIR': "fair",
             'GOOD': "good",
+            'FAIR': "fair",
             'LIKE_NEW': "like_new",
             'POOR': "poor",
             'REFURBISHED': "refurbished",
@@ -81,8 +81,8 @@ class CreateMagicScanSynthesizeResponsePayload(ModelNormal):
         },
         ('returns_accepted',): {
             'None': None,
-            'YES': "yes",
             'NO': "no",
+            'YES': "yes",
         },
     }
 
@@ -111,7 +111,7 @@ class CreateMagicScanSynthesizeResponsePayload(ModelNormal):
             'confidence': (float,),  # noqa: E501
             'brand': (str, none_type,),  # noqa: E501
             'condition': (str, none_type,),  # noqa: E501
-            'grading': (ListGradingSubmissionsItemGrading,),  # noqa: E501
+            'grading': (CreateBulkBatchItemResponseGrading,),  # noqa: E501
             'color': (str, none_type,),  # noqa: E501
             'material': (str, none_type,),  # noqa: E501
             'size': (str, none_type,),  # noqa: E501
@@ -244,7 +244,7 @@ class CreateMagicScanSynthesizeResponsePayload(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             brand (str, none_type): [optional]  # noqa: E501
             condition (str, none_type): Master form enum value — one of new/like_new/good/fair/poor. The heuristic synth maps eBay/Mercari/Poshmark condition strings into this canonical form so the UI's <Select> finds a match.. [optional]  # noqa: E501
-            grading (ListGradingSubmissionsItemGrading): [optional]  # noqa: E501
+            grading (CreateBulkBatchItemResponseGrading): [optional]  # noqa: E501
             color (str, none_type): [optional]  # noqa: E501
             material (str, none_type): [optional]  # noqa: E501
             size (str, none_type): [optional]  # noqa: E501
@@ -371,7 +371,7 @@ class CreateMagicScanSynthesizeResponsePayload(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             brand (str, none_type): [optional]  # noqa: E501
             condition (str, none_type): Master form enum value — one of new/like_new/good/fair/poor. The heuristic synth maps eBay/Mercari/Poshmark condition strings into this canonical form so the UI's <Select> finds a match.. [optional]  # noqa: E501
-            grading (ListGradingSubmissionsItemGrading): [optional]  # noqa: E501
+            grading (CreateBulkBatchItemResponseGrading): [optional]  # noqa: E501
             color (str, none_type): [optional]  # noqa: E501
             material (str, none_type): [optional]  # noqa: E501
             size (str, none_type): [optional]  # noqa: E501

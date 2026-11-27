@@ -78,23 +78,23 @@ class ListPolicyReturnsItem(ModelNormal):
             'id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'status': (str,),  # noqa: E501
+            'buyer_user_id': (str,),  # noqa: E501
             'reason': (str,),  # noqa: E501
             'seller_user_id': (str,),  # noqa: E501
-            'buyer_user_id': (str,),  # noqa: E501
             'purchase_id': (str,),  # noqa: E501
             'fee_cents': (float,),  # noqa: E501
             'refund_cents': (float,),  # noqa: E501
             'prepaid_label': (bool,),  # noqa: E501
             'order_id': (str, none_type,),  # noqa: E501
-            'received_at': (datetime, none_type,),  # noqa: E501
             'carrier': (str, none_type,),  # noqa: E501
             'shipped_at': (datetime, none_type,),  # noqa: E501
             'refunded_at': (datetime, none_type,),  # noqa: E501
-            'fit': (str, none_type,),  # noqa: E501
+            'received_at': (datetime, none_type,),  # noqa: E501
             'label_url': (str, none_type,),  # noqa: E501
             'refund_stripe_id': (str, none_type,),  # noqa: E501
             'note': (str, none_type,),  # noqa: E501
             'tracking_code': (str, none_type,),  # noqa: E501
+            'fit': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -106,23 +106,23 @@ class ListPolicyReturnsItem(ModelNormal):
         'id': 'id',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'status': 'status',  # noqa: E501
+        'buyer_user_id': 'buyerUserId',  # noqa: E501
         'reason': 'reason',  # noqa: E501
         'seller_user_id': 'sellerUserId',  # noqa: E501
-        'buyer_user_id': 'buyerUserId',  # noqa: E501
         'purchase_id': 'purchaseId',  # noqa: E501
         'fee_cents': 'feeCents',  # noqa: E501
         'refund_cents': 'refundCents',  # noqa: E501
         'prepaid_label': 'prepaidLabel',  # noqa: E501
         'order_id': 'orderId',  # noqa: E501
-        'received_at': 'receivedAt',  # noqa: E501
         'carrier': 'carrier',  # noqa: E501
         'shipped_at': 'shippedAt',  # noqa: E501
         'refunded_at': 'refundedAt',  # noqa: E501
-        'fit': 'fit',  # noqa: E501
+        'received_at': 'receivedAt',  # noqa: E501
         'label_url': 'labelUrl',  # noqa: E501
         'refund_stripe_id': 'refundStripeId',  # noqa: E501
         'note': 'note',  # noqa: E501
         'tracking_code': 'trackingCode',  # noqa: E501
+        'fit': 'fit',  # noqa: E501
     }
 
     read_only_vars = {
@@ -132,16 +132,16 @@ class ListPolicyReturnsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, status, reason, seller_user_id, buyer_user_id, purchase_id, fee_cents, refund_cents, prepaid_label, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, status, buyer_user_id, reason, seller_user_id, purchase_id, fee_cents, refund_cents, prepaid_label, *args, **kwargs):  # noqa: E501
         """ListPolicyReturnsItem - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (datetime):
             status (str):
+            buyer_user_id (str):
             reason (str):
             seller_user_id (str):
-            buyer_user_id (str):
             purchase_id (str):
             fee_cents (float):
             refund_cents (float):
@@ -179,15 +179,15 @@ class ListPolicyReturnsItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             order_id (str, none_type): [optional]  # noqa: E501
-            received_at (datetime, none_type): [optional]  # noqa: E501
             carrier (str, none_type): [optional]  # noqa: E501
             shipped_at (datetime, none_type): [optional]  # noqa: E501
             refunded_at (datetime, none_type): [optional]  # noqa: E501
-            fit (str, none_type): [optional]  # noqa: E501
+            received_at (datetime, none_type): [optional]  # noqa: E501
             label_url (str, none_type): [optional]  # noqa: E501
             refund_stripe_id (str, none_type): [optional]  # noqa: E501
             note (str, none_type): [optional]  # noqa: E501
             tracking_code (str, none_type): [optional]  # noqa: E501
+            fit (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -218,9 +218,9 @@ class ListPolicyReturnsItem(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.status = status
+        self.buyer_user_id = buyer_user_id
         self.reason = reason
         self.seller_user_id = seller_user_id
-        self.buyer_user_id = buyer_user_id
         self.purchase_id = purchase_id
         self.fee_cents = fee_cents
         self.refund_cents = refund_cents
@@ -245,16 +245,16 @@ class ListPolicyReturnsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, status, reason, seller_user_id, buyer_user_id, purchase_id, fee_cents, refund_cents, prepaid_label, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, status, buyer_user_id, reason, seller_user_id, purchase_id, fee_cents, refund_cents, prepaid_label, *args, **kwargs):  # noqa: E501
         """ListPolicyReturnsItem - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (datetime):
             status (str):
+            buyer_user_id (str):
             reason (str):
             seller_user_id (str):
-            buyer_user_id (str):
             purchase_id (str):
             fee_cents (float):
             refund_cents (float):
@@ -292,15 +292,15 @@ class ListPolicyReturnsItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             order_id (str, none_type): [optional]  # noqa: E501
-            received_at (datetime, none_type): [optional]  # noqa: E501
             carrier (str, none_type): [optional]  # noqa: E501
             shipped_at (datetime, none_type): [optional]  # noqa: E501
             refunded_at (datetime, none_type): [optional]  # noqa: E501
-            fit (str, none_type): [optional]  # noqa: E501
+            received_at (datetime, none_type): [optional]  # noqa: E501
             label_url (str, none_type): [optional]  # noqa: E501
             refund_stripe_id (str, none_type): [optional]  # noqa: E501
             note (str, none_type): [optional]  # noqa: E501
             tracking_code (str, none_type): [optional]  # noqa: E501
+            fit (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -329,9 +329,9 @@ class ListPolicyReturnsItem(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.status = status
+        self.buyer_user_id = buyer_user_id
         self.reason = reason
         self.seller_user_id = seller_user_id
-        self.buyer_user_id = buyer_user_id
         self.purchase_id = purchase_id
         self.fee_cents = fee_cents
         self.refund_cents = refund_cents

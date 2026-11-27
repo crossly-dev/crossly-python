@@ -57,9 +57,11 @@ class ListWorldCapabilityDeclarationsItemDeclarationCapabilities(ModelNormal):
     allowed_values = {
         ('kind',): {
             'PORTAL': "portal",
-            'DISPLAY': "display",
+            'INTERACTIVE': "interactive",
             'PLACE': "place",
+            'DISPLAY': "display",
             'BADGE': "badge",
+            'PERK': "perk",
             'WEAR': "wear",
             'EMOTE': "emote",
             'ROOM_THEME': "room_theme",
@@ -67,8 +69,6 @@ class ListWorldCapabilityDeclarationsItemDeclarationCapabilities(ModelNormal):
             'GATE': "gate",
             'QUEST': "quest",
             'GAME_PASS': "game_pass",
-            'PERK': "perk",
-            'INTERACTIVE': "interactive",
         },
     }
 

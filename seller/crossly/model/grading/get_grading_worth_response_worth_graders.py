@@ -56,8 +56,8 @@ class GetGradingWorthResponseWorthGraders(ModelNormal):
 
     allowed_values = {
         ('via',): {
-            'RUN': "run",
             'SINGLE': "single",
+            'RUN': "run",
         },
     }
 

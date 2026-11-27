@@ -80,9 +80,9 @@ class CreateBuyerLockonConfirmResponse(ModelNormal):
         ('identity_source',): {
             'None': None,
             'CONFIRMED': "confirmed",
+            'BARCODE': "barcode",
             'VISUAL': "visual",
             'OCR': "ocr",
-            'BARCODE': "barcode",
         },
     }
 

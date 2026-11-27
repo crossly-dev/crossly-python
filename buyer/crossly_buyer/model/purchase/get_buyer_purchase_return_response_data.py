@@ -80,8 +80,8 @@ class GetBuyerPurchaseReturnResponseData(ModelNormal):
         """
         lazy_import()
         return {
-            'reasons': ([GetBuyerPurchaseReturnResponseDataReasons],),  # noqa: E501
             'terms': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'reasons': ([GetBuyerPurchaseReturnResponseDataReasons],),  # noqa: E501
             'existing': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
         }
 
@@ -91,8 +91,8 @@ class GetBuyerPurchaseReturnResponseData(ModelNormal):
 
 
     attribute_map = {
-        'reasons': 'reasons',  # noqa: E501
         'terms': 'terms',  # noqa: E501
+        'reasons': 'reasons',  # noqa: E501
         'existing': 'existing',  # noqa: E501
     }
 
@@ -103,12 +103,12 @@ class GetBuyerPurchaseReturnResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, reasons, terms, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, terms, reasons, *args, **kwargs):  # noqa: E501
         """GetBuyerPurchaseReturnResponseData - a model defined in OpenAPI
 
         Args:
-            reasons ([GetBuyerPurchaseReturnResponseDataReasons]):
             terms ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
+            reasons ([GetBuyerPurchaseReturnResponseDataReasons]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -169,8 +169,8 @@ class GetBuyerPurchaseReturnResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.reasons = reasons
         self.terms = terms
+        self.reasons = reasons
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -191,12 +191,12 @@ class GetBuyerPurchaseReturnResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, reasons, terms, *args, **kwargs):  # noqa: E501
+    def __init__(self, terms, reasons, *args, **kwargs):  # noqa: E501
         """GetBuyerPurchaseReturnResponseData - a model defined in OpenAPI
 
         Args:
-            reasons ([GetBuyerPurchaseReturnResponseDataReasons]):
             terms ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
+            reasons ([GetBuyerPurchaseReturnResponseDataReasons]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -255,8 +255,8 @@ class GetBuyerPurchaseReturnResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.reasons = reasons
         self.terms = terms
+        self.reasons = reasons
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

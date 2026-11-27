@@ -81,15 +81,15 @@ class ListBuyerTotalRequestsItem(ModelNormal):
         lazy_import()
         return {
             'id': (str,),  # noqa: E501
-            'created_at': (str,),  # noqa: E501
-            'status': (str,),  # noqa: E501
             'seller_user_id': (str,),  # noqa: E501
+            'status': (str,),  # noqa: E501
             'lines': ([ListBuyerTotalRequestsItemLines],),  # noqa: E501
+            'created_at': (str,),  # noqa: E501
             'matches_cart': (bool,),  # noqa: E501
-            'expires_at': (str, none_type,),  # noqa: E501
+            'seller_display_name': (str, none_type,),  # noqa: E501
             'quoted_shipping_cents': (float, none_type,),  # noqa: E501
             'seller_message': (str, none_type,),  # noqa: E501
-            'seller_display_name': (str, none_type,),  # noqa: E501
+            'expires_at': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -99,15 +99,15 @@ class ListBuyerTotalRequestsItem(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
-        'status': 'status',  # noqa: E501
         'seller_user_id': 'sellerUserId',  # noqa: E501
+        'status': 'status',  # noqa: E501
         'lines': 'lines',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
         'matches_cart': 'matchesCart',  # noqa: E501
-        'expires_at': 'expiresAt',  # noqa: E501
+        'seller_display_name': 'sellerDisplayName',  # noqa: E501
         'quoted_shipping_cents': 'quotedShippingCents',  # noqa: E501
         'seller_message': 'sellerMessage',  # noqa: E501
-        'seller_display_name': 'sellerDisplayName',  # noqa: E501
+        'expires_at': 'expiresAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -117,15 +117,15 @@ class ListBuyerTotalRequestsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, status, seller_user_id, lines, matches_cart, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, seller_user_id, status, lines, created_at, matches_cart, *args, **kwargs):  # noqa: E501
         """ListBuyerTotalRequestsItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
-            status (str): requested | quoted | declined | expired.
             seller_user_id (str):
+            status (str): requested | quoted | declined | expired.
             lines ([ListBuyerTotalRequestsItemLines]): The cart lines the request covers.
+            created_at (str):
             matches_cart (bool): Your cart still holds exactly the quoted items, so checkout applies the quote.
 
         Keyword Args:
@@ -159,10 +159,10 @@ class ListBuyerTotalRequestsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            expires_at (str, none_type): [optional]  # noqa: E501
+            seller_display_name (str, none_type): [optional]  # noqa: E501
             quoted_shipping_cents (float, none_type): The seller's combined shipping for these items, in cents, once quoted.. [optional]  # noqa: E501
             seller_message (str, none_type): [optional]  # noqa: E501
-            seller_display_name (str, none_type): [optional]  # noqa: E501
+            expires_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -191,10 +191,10 @@ class ListBuyerTotalRequestsItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
-        self.status = status
         self.seller_user_id = seller_user_id
+        self.status = status
         self.lines = lines
+        self.created_at = created_at
         self.matches_cart = matches_cart
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -216,15 +216,15 @@ class ListBuyerTotalRequestsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, status, seller_user_id, lines, matches_cart, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, seller_user_id, status, lines, created_at, matches_cart, *args, **kwargs):  # noqa: E501
         """ListBuyerTotalRequestsItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (str):
-            status (str): requested | quoted | declined | expired.
             seller_user_id (str):
+            status (str): requested | quoted | declined | expired.
             lines ([ListBuyerTotalRequestsItemLines]): The cart lines the request covers.
+            created_at (str):
             matches_cart (bool): Your cart still holds exactly the quoted items, so checkout applies the quote.
 
         Keyword Args:
@@ -258,10 +258,10 @@ class ListBuyerTotalRequestsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            expires_at (str, none_type): [optional]  # noqa: E501
+            seller_display_name (str, none_type): [optional]  # noqa: E501
             quoted_shipping_cents (float, none_type): The seller's combined shipping for these items, in cents, once quoted.. [optional]  # noqa: E501
             seller_message (str, none_type): [optional]  # noqa: E501
-            seller_display_name (str, none_type): [optional]  # noqa: E501
+            expires_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -288,10 +288,10 @@ class ListBuyerTotalRequestsItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
-        self.status = status
         self.seller_user_id = seller_user_id
+        self.status = status
         self.lines = lines
+        self.created_at = created_at
         self.matches_cart = matches_cart
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

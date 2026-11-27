@@ -60,12 +60,12 @@ class GetWorldJobResponseDataMineShifts(ModelNormal):
             'HUB_HELPER': "hub_helper",
         },
         ('rail',): {
-            'BUCKS': "bucks",
             'CBX': "cbx",
+            'BUCKS': "bucks",
         },
         ('status',): {
-            'OPEN': "open",
             'CANCELLED': "cancelled",
+            'OPEN': "open",
             'PAID': "paid",
             'CLAIMED': "claimed",
             'WORKED': "worked",

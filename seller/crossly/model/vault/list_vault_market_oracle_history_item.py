@@ -57,8 +57,8 @@ class ListVaultMarketOracleHistoryItem(ModelNormal):
     allowed_values = {
         ('status',): {
             'SKIPPED': "skipped",
-            'FAILED': "failed",
             'PUBLISHED': "published",
+            'FAILED': "failed",
         },
     }
 

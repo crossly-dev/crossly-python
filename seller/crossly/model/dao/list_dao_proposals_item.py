@@ -86,6 +86,7 @@ class ListDaoProposalsItem(ModelNormal):
             'power_abstain': (str,),  # noqa: E501
             'quorum_bps': (float,),  # noqa: E501
             'pass_threshold_bps': (float,),  # noqa: E501
+            'proposal_kind': (str,),  # noqa: E501
             'created_at': (str,),  # noqa: E501
             'beneficiary_note': (str, none_type,),  # noqa: E501
             'requested_base_units': (str, none_type,),  # noqa: E501
@@ -94,6 +95,7 @@ class ListDaoProposalsItem(ModelNormal):
             'tallied_at': (str, none_type,),  # noqa: E501
             'vetoed_reason': (str, none_type,),  # noqa: E501
             'charity_goal_id': (str, none_type,),  # noqa: E501
+            'params': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -113,6 +115,7 @@ class ListDaoProposalsItem(ModelNormal):
         'power_abstain': 'powerAbstain',  # noqa: E501
         'quorum_bps': 'quorumBps',  # noqa: E501
         'pass_threshold_bps': 'passThresholdBps',  # noqa: E501
+        'proposal_kind': 'proposalKind',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'beneficiary_note': 'beneficiaryNote',  # noqa: E501
         'requested_base_units': 'requestedBaseUnits',  # noqa: E501
@@ -121,6 +124,7 @@ class ListDaoProposalsItem(ModelNormal):
         'tallied_at': 'talliedAt',  # noqa: E501
         'vetoed_reason': 'vetoedReason',  # noqa: E501
         'charity_goal_id': 'charityGoalId',  # noqa: E501
+        'params': 'params',  # noqa: E501
     }
 
     read_only_vars = {
@@ -130,7 +134,7 @@ class ListDaoProposalsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, title, body, beneficiary_kind, status, total_voting_power, power_for, power_against, power_abstain, quorum_bps, pass_threshold_bps, created_at, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, title, body, beneficiary_kind, status, total_voting_power, power_for, power_against, power_abstain, quorum_bps, pass_threshold_bps, proposal_kind, created_at, *args, **kwargs):  # noqa: E501
         """ListDaoProposalsItem - a model defined in OpenAPI
 
         Args:
@@ -145,6 +149,7 @@ class ListDaoProposalsItem(ModelNormal):
             power_abstain (str):
             quorum_bps (float):
             pass_threshold_bps (float):
+            proposal_kind (str):
             created_at (str):
 
         Keyword Args:
@@ -185,6 +190,7 @@ class ListDaoProposalsItem(ModelNormal):
             tallied_at (str, none_type): [optional]  # noqa: E501
             vetoed_reason (str, none_type): [optional]  # noqa: E501
             charity_goal_id (str, none_type): [optional]  # noqa: E501
+            params ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -223,6 +229,7 @@ class ListDaoProposalsItem(ModelNormal):
         self.power_abstain = power_abstain
         self.quorum_bps = quorum_bps
         self.pass_threshold_bps = pass_threshold_bps
+        self.proposal_kind = proposal_kind
         self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -244,7 +251,7 @@ class ListDaoProposalsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, title, body, beneficiary_kind, status, total_voting_power, power_for, power_against, power_abstain, quorum_bps, pass_threshold_bps, created_at, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, title, body, beneficiary_kind, status, total_voting_power, power_for, power_against, power_abstain, quorum_bps, pass_threshold_bps, proposal_kind, created_at, *args, **kwargs):  # noqa: E501
         """ListDaoProposalsItem - a model defined in OpenAPI
 
         Args:
@@ -259,6 +266,7 @@ class ListDaoProposalsItem(ModelNormal):
             power_abstain (str):
             quorum_bps (float):
             pass_threshold_bps (float):
+            proposal_kind (str):
             created_at (str):
 
         Keyword Args:
@@ -299,6 +307,7 @@ class ListDaoProposalsItem(ModelNormal):
             tallied_at (str, none_type): [optional]  # noqa: E501
             vetoed_reason (str, none_type): [optional]  # noqa: E501
             charity_goal_id (str, none_type): [optional]  # noqa: E501
+            params ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -335,6 +344,7 @@ class ListDaoProposalsItem(ModelNormal):
         self.power_abstain = power_abstain
         self.quorum_bps = quorum_bps
         self.pass_threshold_bps = pass_threshold_bps
+        self.proposal_kind = proposal_kind
         self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

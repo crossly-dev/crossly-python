@@ -85,6 +85,8 @@ class UpdateSpatialSceneShopLayoutResponseDataSections(ModelNormal):
             'rotation_y': (float, none_type,),  # noqa: E501
             'sign': (str, none_type,),  # noqa: E501
             'hidden': (bool, none_type,),  # noqa: E501
+            'units': (float, none_type,),  # noqa: E501
+            'holder': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -99,6 +101,8 @@ class UpdateSpatialSceneShopLayoutResponseDataSections(ModelNormal):
         'rotation_y': 'rotationY',  # noqa: E501
         'sign': 'sign',  # noqa: E501
         'hidden': 'hidden',  # noqa: E501
+        'units': 'units',  # noqa: E501
+        'holder': 'holder',  # noqa: E501
     }
 
     read_only_vars = {
@@ -150,6 +154,8 @@ class UpdateSpatialSceneShopLayoutResponseDataSections(ModelNormal):
             rotation_y (float, none_type): [optional]  # noqa: E501
             sign (str, none_type): A sign over it, ≤ 40 chars. Absent = the profile's label.. [optional]  # noqa: E501
             hidden (bool, none_type): Shown to visitors? A hidden section keeps its stock off the floor.. [optional]  # noqa: E501
+            units (float, none_type): How many units (cases, bays, pages) it stands with, at least; absent = as many as its stock needs. Set from the showroom organizer so an empty display has slots to fill (shared showroom/).. [optional]  # noqa: E501
+            holder (str, none_type): The holder model it stands as (showroom/fixtures.ts FIXTURE_HOLDERS); absent = its type's free holder.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -241,6 +247,8 @@ class UpdateSpatialSceneShopLayoutResponseDataSections(ModelNormal):
             rotation_y (float, none_type): [optional]  # noqa: E501
             sign (str, none_type): A sign over it, ≤ 40 chars. Absent = the profile's label.. [optional]  # noqa: E501
             hidden (bool, none_type): Shown to visitors? A hidden section keeps its stock off the floor.. [optional]  # noqa: E501
+            units (float, none_type): How many units (cases, bays, pages) it stands with, at least; absent = as many as its stock needs. Set from the showroom organizer so an empty display has slots to fill (shared showroom/).. [optional]  # noqa: E501
+            holder (str, none_type): The holder model it stands as (showroom/fixtures.ts FIXTURE_HOLDERS); absent = its type's free holder.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

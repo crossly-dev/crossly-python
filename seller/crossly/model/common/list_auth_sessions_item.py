@@ -77,12 +77,12 @@ class ListAuthSessionsItem(ModelNormal):
         return {
             'is_current': (bool,),  # noqa: E501
             'id': (str,),  # noqa: E501
-            'created_at': (datetime,),  # noqa: E501
-            'last_used_at': (datetime,),  # noqa: E501
-            'expires_at': (datetime,),  # noqa: E501
             'user_agent': (str, none_type,),  # noqa: E501
             'ip_address': (str, none_type,),  # noqa: E501
             'ip_country': (str, none_type,),  # noqa: E501
+            'created_at': (str, none_type,),  # noqa: E501
+            'last_used_at': (str, none_type,),  # noqa: E501
+            'expires_at': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -93,12 +93,12 @@ class ListAuthSessionsItem(ModelNormal):
     attribute_map = {
         'is_current': 'isCurrent',  # noqa: E501
         'id': 'id',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
-        'last_used_at': 'lastUsedAt',  # noqa: E501
-        'expires_at': 'expiresAt',  # noqa: E501
         'user_agent': 'userAgent',  # noqa: E501
         'ip_address': 'ipAddress',  # noqa: E501
         'ip_country': 'ipCountry',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
+        'last_used_at': 'lastUsedAt',  # noqa: E501
+        'expires_at': 'expiresAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -108,15 +108,12 @@ class ListAuthSessionsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, is_current, id, created_at, last_used_at, expires_at, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, is_current, id, *args, **kwargs):  # noqa: E501
         """ListAuthSessionsItem - a model defined in OpenAPI
 
         Args:
             is_current (bool):
             id (str):
-            created_at (datetime):
-            last_used_at (datetime):
-            expires_at (datetime):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -152,6 +149,9 @@ class ListAuthSessionsItem(ModelNormal):
             user_agent (str, none_type): [optional]  # noqa: E501
             ip_address (str, none_type): [optional]  # noqa: E501
             ip_country (str, none_type): [optional]  # noqa: E501
+            created_at (str, none_type): [optional]  # noqa: E501
+            last_used_at (str, none_type): [optional]  # noqa: E501
+            expires_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -181,9 +181,6 @@ class ListAuthSessionsItem(ModelNormal):
 
         self.is_current = is_current
         self.id = id
-        self.created_at = created_at
-        self.last_used_at = last_used_at
-        self.expires_at = expires_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -204,15 +201,12 @@ class ListAuthSessionsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, is_current, id, created_at, last_used_at, expires_at, *args, **kwargs):  # noqa: E501
+    def __init__(self, is_current, id, *args, **kwargs):  # noqa: E501
         """ListAuthSessionsItem - a model defined in OpenAPI
 
         Args:
             is_current (bool):
             id (str):
-            created_at (datetime):
-            last_used_at (datetime):
-            expires_at (datetime):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -248,6 +242,9 @@ class ListAuthSessionsItem(ModelNormal):
             user_agent (str, none_type): [optional]  # noqa: E501
             ip_address (str, none_type): [optional]  # noqa: E501
             ip_country (str, none_type): [optional]  # noqa: E501
+            created_at (str, none_type): [optional]  # noqa: E501
+            last_used_at (str, none_type): [optional]  # noqa: E501
+            expires_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -275,9 +272,6 @@ class ListAuthSessionsItem(ModelNormal):
 
         self.is_current = is_current
         self.id = id
-        self.created_at = created_at
-        self.last_used_at = last_used_at
-        self.expires_at = expires_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

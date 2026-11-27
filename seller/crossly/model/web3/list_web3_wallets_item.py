@@ -56,8 +56,8 @@ class ListWeb3WalletsItem(ModelNormal):
 
     allowed_values = {
         ('family',): {
-            'EVM': "evm",
             'SOLANA': "solana",
+            'EVM': "evm",
         },
     }
 
@@ -82,6 +82,7 @@ class ListWeb3WalletsItem(ModelNormal):
             'id': (str,),  # noqa: E501
             'family': (str,),  # noqa: E501
             'address': (str,),  # noqa: E501
+            'auto_import': (bool,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'label': (str, none_type,),  # noqa: E501
             'verified_at': (datetime, none_type,),  # noqa: E501
@@ -97,6 +98,7 @@ class ListWeb3WalletsItem(ModelNormal):
         'id': 'id',  # noqa: E501
         'family': 'family',  # noqa: E501
         'address': 'address',  # noqa: E501
+        'auto_import': 'autoImport',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'label': 'label',  # noqa: E501
         'verified_at': 'verifiedAt',  # noqa: E501
@@ -110,13 +112,14 @@ class ListWeb3WalletsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, family, address, created_at, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, family, address, auto_import, created_at, *args, **kwargs):  # noqa: E501
         """ListWeb3WalletsItem - a model defined in OpenAPI
 
         Args:
             id (str):
             family (str):
             address (str):
+            auto_import (bool): A sync adds new NFTs to inventory (migration 0740); off, it only refreshes the ones already there.
             created_at (datetime):
 
         Keyword Args:
@@ -183,6 +186,7 @@ class ListWeb3WalletsItem(ModelNormal):
         self.id = id
         self.family = family
         self.address = address
+        self.auto_import = auto_import
         self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -204,13 +208,14 @@ class ListWeb3WalletsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, family, address, created_at, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, family, address, auto_import, created_at, *args, **kwargs):  # noqa: E501
         """ListWeb3WalletsItem - a model defined in OpenAPI
 
         Args:
             id (str):
             family (str):
             address (str):
+            auto_import (bool): A sync adds new NFTs to inventory (migration 0740); off, it only refreshes the ones already there.
             created_at (datetime):
 
         Keyword Args:
@@ -275,6 +280,7 @@ class ListWeb3WalletsItem(ModelNormal):
         self.id = id
         self.family = family
         self.address = address
+        self.auto_import = auto_import
         self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

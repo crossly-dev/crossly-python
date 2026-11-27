@@ -76,20 +76,20 @@ class ListBuyerVaultItem(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'condition': (str,),  # noqa: E501
             'status': (str,),  # noqa: E501
             'sku_id': (str,),  # noqa: E501
-            'grade_key': (str, none_type,),  # noqa: E501
-            'received_at': (str, none_type,),  # noqa: E501
+            'condition': (str,),  # noqa: E501
+            'sku_name': (str, none_type,),  # noqa: E501
             'image_url': (str, none_type,),  # noqa: E501
             'variant_id': (str, none_type,),  # noqa: E501
+            'variant_label': (str, none_type,),  # noqa: E501
+            'grade_key': (str, none_type,),  # noqa: E501
+            'location': (str, none_type,),  # noqa: E501
             'last_sale_cents': (float, none_type,),  # noqa: E501
+            'ask_price_cents': (float, none_type,),  # noqa: E501
             'withdraw_speed': (str, none_type,),  # noqa: E501
             'withdraw_tracking': (str, none_type,),  # noqa: E501
-            'location': (str, none_type,),  # noqa: E501
-            'sku_name': (str, none_type,),  # noqa: E501
-            'variant_label': (str, none_type,),  # noqa: E501
-            'ask_price_cents': (float, none_type,),  # noqa: E501
+            'received_at': (str, none_type,),  # noqa: E501
             'situation': (str, none_type,),  # noqa: E501
             'early_withdraw_fee_cents': (float, none_type,),  # noqa: E501
         }
@@ -101,20 +101,20 @@ class ListBuyerVaultItem(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'condition': 'condition',  # noqa: E501
         'status': 'status',  # noqa: E501
         'sku_id': 'skuId',  # noqa: E501
-        'grade_key': 'gradeKey',  # noqa: E501
-        'received_at': 'receivedAt',  # noqa: E501
+        'condition': 'condition',  # noqa: E501
+        'sku_name': 'skuName',  # noqa: E501
         'image_url': 'imageUrl',  # noqa: E501
         'variant_id': 'variantId',  # noqa: E501
+        'variant_label': 'variantLabel',  # noqa: E501
+        'grade_key': 'gradeKey',  # noqa: E501
+        'location': 'location',  # noqa: E501
         'last_sale_cents': 'lastSaleCents',  # noqa: E501
+        'ask_price_cents': 'askPriceCents',  # noqa: E501
         'withdraw_speed': 'withdrawSpeed',  # noqa: E501
         'withdraw_tracking': 'withdrawTracking',  # noqa: E501
-        'location': 'location',  # noqa: E501
-        'sku_name': 'skuName',  # noqa: E501
-        'variant_label': 'variantLabel',  # noqa: E501
-        'ask_price_cents': 'askPriceCents',  # noqa: E501
+        'received_at': 'receivedAt',  # noqa: E501
         'situation': 'situation',  # noqa: E501
         'early_withdraw_fee_cents': 'earlyWithdrawFeeCents',  # noqa: E501
     }
@@ -126,14 +126,14 @@ class ListBuyerVaultItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, condition, status, sku_id, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, status, sku_id, condition, *args, **kwargs):  # noqa: E501
         """ListBuyerVaultItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            condition (str):
             status (str):
             sku_id (str):
+            condition (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -166,17 +166,17 @@ class ListBuyerVaultItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            grade_key (str, none_type): [optional]  # noqa: E501
-            received_at (str, none_type): [optional]  # noqa: E501
+            sku_name (str, none_type): [optional]  # noqa: E501
             image_url (str, none_type): [optional]  # noqa: E501
             variant_id (str, none_type): [optional]  # noqa: E501
+            variant_label (str, none_type): [optional]  # noqa: E501
+            grade_key (str, none_type): [optional]  # noqa: E501
+            location (str, none_type): [optional]  # noqa: E501
             last_sale_cents (float, none_type): [optional]  # noqa: E501
+            ask_price_cents (float, none_type): [optional]  # noqa: E501
             withdraw_speed (str, none_type): [optional]  # noqa: E501
             withdraw_tracking (str, none_type): [optional]  # noqa: E501
-            location (str, none_type): [optional]  # noqa: E501
-            sku_name (str, none_type): [optional]  # noqa: E501
-            variant_label (str, none_type): [optional]  # noqa: E501
-            ask_price_cents (float, none_type): [optional]  # noqa: E501
+            received_at (str, none_type): [optional]  # noqa: E501
             situation (str, none_type): What is really going on with it: in_auction, pledged, collateral, lent, in_grading, gift_pending, else the status.. [optional]  # noqa: E501
             early_withdraw_fee_cents (float, none_type): [optional]  # noqa: E501
         """
@@ -207,9 +207,9 @@ class ListBuyerVaultItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.condition = condition
         self.status = status
         self.sku_id = sku_id
+        self.condition = condition
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -230,14 +230,14 @@ class ListBuyerVaultItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, condition, status, sku_id, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, status, sku_id, condition, *args, **kwargs):  # noqa: E501
         """ListBuyerVaultItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            condition (str):
             status (str):
             sku_id (str):
+            condition (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -270,17 +270,17 @@ class ListBuyerVaultItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            grade_key (str, none_type): [optional]  # noqa: E501
-            received_at (str, none_type): [optional]  # noqa: E501
+            sku_name (str, none_type): [optional]  # noqa: E501
             image_url (str, none_type): [optional]  # noqa: E501
             variant_id (str, none_type): [optional]  # noqa: E501
+            variant_label (str, none_type): [optional]  # noqa: E501
+            grade_key (str, none_type): [optional]  # noqa: E501
+            location (str, none_type): [optional]  # noqa: E501
             last_sale_cents (float, none_type): [optional]  # noqa: E501
+            ask_price_cents (float, none_type): [optional]  # noqa: E501
             withdraw_speed (str, none_type): [optional]  # noqa: E501
             withdraw_tracking (str, none_type): [optional]  # noqa: E501
-            location (str, none_type): [optional]  # noqa: E501
-            sku_name (str, none_type): [optional]  # noqa: E501
-            variant_label (str, none_type): [optional]  # noqa: E501
-            ask_price_cents (float, none_type): [optional]  # noqa: E501
+            received_at (str, none_type): [optional]  # noqa: E501
             situation (str, none_type): What is really going on with it: in_auction, pledged, collateral, lent, in_grading, gift_pending, else the status.. [optional]  # noqa: E501
             early_withdraw_fee_cents (float, none_type): [optional]  # noqa: E501
         """
@@ -309,9 +309,9 @@ class ListBuyerVaultItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.condition = condition
         self.status = status
         self.sku_id = sku_id
+        self.condition = condition
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

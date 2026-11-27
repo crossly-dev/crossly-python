@@ -64,17 +64,17 @@ class GetVaultMarketUnitStoryResponseEvents(ModelNormal):
 
     allowed_values = {
         ('kind',): {
-            'TRANSFER': "transfer",
-            'EVIDENCE': "evidence",
             'SALE': "sale",
-            'GRADED': "graded",
-            'PLEDGED': "pledged",
-            'RELEASED': "released",
-            'RECEIVED': "received",
             'RECEIPT': "receipt",
+            'RECEIVED': "received",
+            'RELEASED': "released",
+            'EVIDENCE': "evidence",
+            'GRADED': "graded",
+            'TRANSFER': "transfer",
+            'PLEDGED': "pledged",
             'LENT': "lent",
-            'RECALLED': "recalled",
             'FORECLOSED': "foreclosed",
+            'RECALLED': "recalled",
             'SENT_IN': "sent_in",
             'VAULTED_FROM_GRADING': "vaulted_from_grading",
             'BOUGHT_IN': "bought_in",
@@ -88,14 +88,14 @@ class GetVaultMarketUnitStoryResponseEvents(ModelNormal):
             'SHIPPED_OUT': "shipped_out",
         },
         ('group',): {
-            'TOKEN': "token",
             'GRADE': "grade",
-            'LOAN': "loan",
-            'HALL': "hall",
+            'TOKEN': "token",
             'RECEIPT': "receipt",
-            'INTAKE': "intake",
             'OWNER': "owner",
+            'HALL': "hall",
+            'INTAKE': "intake",
             'CUSTODY': "custody",
+            'LOAN': "loan",
         },
     }
 

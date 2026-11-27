@@ -35,6 +35,7 @@ def lazy_import():
     from crossly.model.home.get_home_response_guestbook import GetHomeResponseGuestbook
     from crossly.model.home.get_home_response_layout import GetHomeResponseLayout
     from crossly.model.home.get_home_response_pin_case import GetHomeResponsePinCase
+    from crossly.model.home.get_home_response_pulls_shelf import GetHomeResponsePullsShelf
     from crossly.model.home.get_home_response_room import GetHomeResponseRoom
     from crossly.model.home.get_home_response_set_wall import GetHomeResponseSetWall
     from crossly.model.home.get_home_response_vault_wall import GetHomeResponseVaultWall
@@ -44,6 +45,7 @@ def lazy_import():
     globals()['GetHomeResponseGuestbook'] = GetHomeResponseGuestbook
     globals()['GetHomeResponseLayout'] = GetHomeResponseLayout
     globals()['GetHomeResponsePinCase'] = GetHomeResponsePinCase
+    globals()['GetHomeResponsePullsShelf'] = GetHomeResponsePullsShelf
     globals()['GetHomeResponseRoom'] = GetHomeResponseRoom
     globals()['GetHomeResponseSetWall'] = GetHomeResponseSetWall
     globals()['GetHomeResponseVaultWall'] = GetHomeResponseVaultWall
@@ -77,15 +79,15 @@ class GetHomeResponse(ModelNormal):
     allowed_values = {
         ('privacy',): {
             'OPEN': "open",
-            'LOCKED': "locked",
             'FRIENDS': "friends",
+            'LOCKED': "locked",
         },
         ('theme',): {
-            'STORYBOOK': "storybook",
             'STUDIO': "studio",
             'NOIR': "noir",
             'DAYLIGHT': "daylight",
             'VITRINE': "vitrine",
+            'STORYBOOK': "storybook",
         },
     }
 
@@ -122,6 +124,7 @@ class GetHomeResponse(ModelNormal):
             'here': (float,),  # noqa: E501
             'updated_at': (str,),  # noqa: E501
             'gift_shelf': (GetHomeResponseGiftShelf,),  # noqa: E501
+            'pulls_shelf': (GetHomeResponsePullsShelf,),  # noqa: E501
             'pin_case': ([GetHomeResponsePinCase], none_type,),  # noqa: E501
             'vault_wall': (GetHomeResponseVaultWall,),  # noqa: E501
             'set_wall': (GetHomeResponseSetWall,),  # noqa: E501
@@ -147,6 +150,7 @@ class GetHomeResponse(ModelNormal):
         'here': 'here',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
         'gift_shelf': 'giftShelf',  # noqa: E501
+        'pulls_shelf': 'pullsShelf',  # noqa: E501
         'pin_case': 'pinCase',  # noqa: E501
         'vault_wall': 'vaultWall',  # noqa: E501
         'set_wall': 'setWall',  # noqa: E501
@@ -209,6 +213,7 @@ class GetHomeResponse(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             gift_shelf (GetHomeResponseGiftShelf): [optional]  # noqa: E501
+            pulls_shelf (GetHomeResponsePullsShelf): [optional]  # noqa: E501
             pin_case ([GetHomeResponsePinCase], none_type): The owner's earned pins, rarest first, when a pin case stands here (pin-case.ts).. [optional]  # noqa: E501
             vault_wall (GetHomeResponseVaultWall): [optional]  # noqa: E501
             set_wall (GetHomeResponseSetWall): [optional]  # noqa: E501
@@ -322,6 +327,7 @@ class GetHomeResponse(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             gift_shelf (GetHomeResponseGiftShelf): [optional]  # noqa: E501
+            pulls_shelf (GetHomeResponsePullsShelf): [optional]  # noqa: E501
             pin_case ([GetHomeResponsePinCase], none_type): The owner's earned pins, rarest first, when a pin case stands here (pin-case.ts).. [optional]  # noqa: E501
             vault_wall (GetHomeResponseVaultWall): [optional]  # noqa: E501
             set_wall (GetHomeResponseSetWall): [optional]  # noqa: E501

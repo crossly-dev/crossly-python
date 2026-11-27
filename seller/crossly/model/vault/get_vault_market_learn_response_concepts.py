@@ -63,6 +63,7 @@ class GetVaultMarketLearnResponseConcepts(ModelNormal):
             'AUCTIONS': "auctions",
             'INDEXES': "indexes",
             'MARKS': "marks",
+            'VAULT-SHARES': "vault-shares",
         },
     }
 

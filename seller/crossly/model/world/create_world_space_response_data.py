@@ -81,13 +81,13 @@ class CreateWorldSpaceResponseData(ModelNormal):
             'updated_at': (datetime,),  # noqa: E501
             'status': (str,),  # noqa: E501
             'slug': (str,),  # noqa: E501
-            'host_user_id': (str,),  # noqa: E501
             'venue': (str,),  # noqa: E501
+            'host_user_id': (str,),  # noqa: E501
             'membership': (str,),  # noqa: E501
+            'about': (str, none_type,),  # noqa: E501
             'gate_chain': (str, none_type,),  # noqa: E501
             'gate_contract': (str, none_type,),  # noqa: E501
             'gate_name': (str, none_type,),  # noqa: E501
-            'about': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -102,13 +102,13 @@ class CreateWorldSpaceResponseData(ModelNormal):
         'updated_at': 'updatedAt',  # noqa: E501
         'status': 'status',  # noqa: E501
         'slug': 'slug',  # noqa: E501
-        'host_user_id': 'hostUserId',  # noqa: E501
         'venue': 'venue',  # noqa: E501
+        'host_user_id': 'hostUserId',  # noqa: E501
         'membership': 'membership',  # noqa: E501
+        'about': 'about',  # noqa: E501
         'gate_chain': 'gateChain',  # noqa: E501
         'gate_contract': 'gateContract',  # noqa: E501
         'gate_name': 'gateName',  # noqa: E501
-        'about': 'about',  # noqa: E501
     }
 
     read_only_vars = {
@@ -118,7 +118,7 @@ class CreateWorldSpaceResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, created_at, updated_at, status, slug, host_user_id, venue, membership, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, name, created_at, updated_at, status, slug, venue, host_user_id, membership, *args, **kwargs):  # noqa: E501
         """CreateWorldSpaceResponseData - a model defined in OpenAPI
 
         Args:
@@ -128,8 +128,8 @@ class CreateWorldSpaceResponseData(ModelNormal):
             updated_at (datetime):
             status (str):
             slug (str):
-            host_user_id (str):
             venue (str):
+            host_user_id (str):
             membership (str):
 
         Keyword Args:
@@ -163,10 +163,10 @@ class CreateWorldSpaceResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            about (str, none_type): [optional]  # noqa: E501
             gate_chain (str, none_type): [optional]  # noqa: E501
             gate_contract (str, none_type): [optional]  # noqa: E501
             gate_name (str, none_type): [optional]  # noqa: E501
-            about (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -200,8 +200,8 @@ class CreateWorldSpaceResponseData(ModelNormal):
         self.updated_at = updated_at
         self.status = status
         self.slug = slug
-        self.host_user_id = host_user_id
         self.venue = venue
+        self.host_user_id = host_user_id
         self.membership = membership
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -223,7 +223,7 @@ class CreateWorldSpaceResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, created_at, updated_at, status, slug, host_user_id, venue, membership, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, name, created_at, updated_at, status, slug, venue, host_user_id, membership, *args, **kwargs):  # noqa: E501
         """CreateWorldSpaceResponseData - a model defined in OpenAPI
 
         Args:
@@ -233,8 +233,8 @@ class CreateWorldSpaceResponseData(ModelNormal):
             updated_at (datetime):
             status (str):
             slug (str):
-            host_user_id (str):
             venue (str):
+            host_user_id (str):
             membership (str):
 
         Keyword Args:
@@ -268,10 +268,10 @@ class CreateWorldSpaceResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            about (str, none_type): [optional]  # noqa: E501
             gate_chain (str, none_type): [optional]  # noqa: E501
             gate_contract (str, none_type): [optional]  # noqa: E501
             gate_name (str, none_type): [optional]  # noqa: E501
-            about (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -303,8 +303,8 @@ class CreateWorldSpaceResponseData(ModelNormal):
         self.updated_at = updated_at
         self.status = status
         self.slug = slug
-        self.host_user_id = host_user_id
         self.venue = venue
+        self.host_user_id = host_user_id
         self.membership = membership
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

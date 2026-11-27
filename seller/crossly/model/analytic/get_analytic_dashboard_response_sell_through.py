@@ -79,6 +79,7 @@ class GetAnalyticDashboardResponseSellThrough(ModelNormal):
             'cohort_sold': (float,),  # noqa: E501
             'maturity_days': (float,),  # noqa: E501
             'too_young_to_judge': (bool,),  # noqa: E501
+            'immature': (float,),  # noqa: E501
             'rate': (float, none_type,),  # noqa: E501
         }
 
@@ -92,6 +93,7 @@ class GetAnalyticDashboardResponseSellThrough(ModelNormal):
         'cohort_sold': 'cohortSold',  # noqa: E501
         'maturity_days': 'maturityDays',  # noqa: E501
         'too_young_to_judge': 'tooYoungToJudge',  # noqa: E501
+        'immature': 'immature',  # noqa: E501
         'rate': 'rate',  # noqa: E501
     }
 
@@ -102,7 +104,7 @@ class GetAnalyticDashboardResponseSellThrough(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, cohort_size, cohort_sold, maturity_days, too_young_to_judge, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, cohort_size, cohort_sold, maturity_days, too_young_to_judge, immature, *args, **kwargs):  # noqa: E501
         """GetAnalyticDashboardResponseSellThrough - a model defined in OpenAPI
 
         Args:
@@ -110,6 +112,7 @@ class GetAnalyticDashboardResponseSellThrough(ModelNormal):
             cohort_sold (float):
             maturity_days (float):
             too_young_to_judge (bool):
+            immature (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -174,6 +177,7 @@ class GetAnalyticDashboardResponseSellThrough(ModelNormal):
         self.cohort_sold = cohort_sold
         self.maturity_days = maturity_days
         self.too_young_to_judge = too_young_to_judge
+        self.immature = immature
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -194,7 +198,7 @@ class GetAnalyticDashboardResponseSellThrough(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, cohort_size, cohort_sold, maturity_days, too_young_to_judge, *args, **kwargs):  # noqa: E501
+    def __init__(self, cohort_size, cohort_sold, maturity_days, too_young_to_judge, immature, *args, **kwargs):  # noqa: E501
         """GetAnalyticDashboardResponseSellThrough - a model defined in OpenAPI
 
         Args:
@@ -202,6 +206,7 @@ class GetAnalyticDashboardResponseSellThrough(ModelNormal):
             cohort_sold (float):
             maturity_days (float):
             too_young_to_judge (bool):
+            immature (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -264,6 +269,7 @@ class GetAnalyticDashboardResponseSellThrough(ModelNormal):
         self.cohort_sold = cohort_sold
         self.maturity_days = maturity_days
         self.too_young_to_judge = too_young_to_judge
+        self.immature = immature
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

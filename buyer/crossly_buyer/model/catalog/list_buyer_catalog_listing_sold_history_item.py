@@ -75,9 +75,9 @@ class ListBuyerCatalogListingSoldHistoryItem(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'price_cents': (float,),  # noqa: E501
             'quantity': (float,),  # noqa: E501
             'sold_at': (str,),  # noqa: E501
-            'price_cents': (float,),  # noqa: E501
         }
 
     @cached_property
@@ -86,9 +86,9 @@ class ListBuyerCatalogListingSoldHistoryItem(ModelNormal):
 
 
     attribute_map = {
+        'price_cents': 'priceCents',  # noqa: E501
         'quantity': 'quantity',  # noqa: E501
         'sold_at': 'soldAt',  # noqa: E501
-        'price_cents': 'priceCents',  # noqa: E501
     }
 
     read_only_vars = {
@@ -98,13 +98,13 @@ class ListBuyerCatalogListingSoldHistoryItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, quantity, sold_at, price_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, price_cents, quantity, sold_at, *args, **kwargs):  # noqa: E501
         """ListBuyerCatalogListingSoldHistoryItem - a model defined in OpenAPI
 
         Args:
+            price_cents (float): Per-unit item price the buyer paid, in cents — excludes shipping and tax.
             quantity (float):
             sold_at (str):
-            price_cents (float): Per-unit item price the buyer paid, in cents — excludes shipping and tax.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -164,9 +164,9 @@ class ListBuyerCatalogListingSoldHistoryItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.price_cents = price_cents
         self.quantity = quantity
         self.sold_at = sold_at
-        self.price_cents = price_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -187,13 +187,13 @@ class ListBuyerCatalogListingSoldHistoryItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, quantity, sold_at, price_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, price_cents, quantity, sold_at, *args, **kwargs):  # noqa: E501
         """ListBuyerCatalogListingSoldHistoryItem - a model defined in OpenAPI
 
         Args:
+            price_cents (float): Per-unit item price the buyer paid, in cents — excludes shipping and tax.
             quantity (float):
             sold_at (str):
-            price_cents (float): Per-unit item price the buyer paid, in cents — excludes shipping and tax.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -251,9 +251,9 @@ class ListBuyerCatalogListingSoldHistoryItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.price_cents = price_cents
         self.quantity = quantity
         self.sold_at = sold_at
-        self.price_cents = price_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

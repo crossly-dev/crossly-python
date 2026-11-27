@@ -76,11 +76,11 @@ class GetBuyerPackFairnessResponseDataRevealed(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'nonce': (float,),  # noqa: E501
-            'revealed_at': (str,),  # noqa: E501
             'server_seed': (str,),  # noqa: E501
             'server_seed_hash': (str,),  # noqa: E501
             'client_seed': (str,),  # noqa: E501
+            'nonce': (float,),  # noqa: E501
+            'revealed_at': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -90,11 +90,11 @@ class GetBuyerPackFairnessResponseDataRevealed(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'nonce': 'nonce',  # noqa: E501
-        'revealed_at': 'revealedAt',  # noqa: E501
         'server_seed': 'serverSeed',  # noqa: E501
         'server_seed_hash': 'serverSeedHash',  # noqa: E501
         'client_seed': 'clientSeed',  # noqa: E501
+        'nonce': 'nonce',  # noqa: E501
+        'revealed_at': 'revealedAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -104,16 +104,16 @@ class GetBuyerPackFairnessResponseDataRevealed(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, nonce, revealed_at, server_seed, server_seed_hash, client_seed, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, server_seed, server_seed_hash, client_seed, nonce, revealed_at, *args, **kwargs):  # noqa: E501
         """GetBuyerPackFairnessResponseDataRevealed - a model defined in OpenAPI
 
         Args:
             id (str):
-            nonce (float):
-            revealed_at (str):
             server_seed (str):
             server_seed_hash (str):
             client_seed (str):
+            nonce (float):
+            revealed_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -174,11 +174,11 @@ class GetBuyerPackFairnessResponseDataRevealed(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.nonce = nonce
-        self.revealed_at = revealed_at
         self.server_seed = server_seed
         self.server_seed_hash = server_seed_hash
         self.client_seed = client_seed
+        self.nonce = nonce
+        self.revealed_at = revealed_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -199,16 +199,16 @@ class GetBuyerPackFairnessResponseDataRevealed(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, nonce, revealed_at, server_seed, server_seed_hash, client_seed, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, server_seed, server_seed_hash, client_seed, nonce, revealed_at, *args, **kwargs):  # noqa: E501
         """GetBuyerPackFairnessResponseDataRevealed - a model defined in OpenAPI
 
         Args:
             id (str):
-            nonce (float):
-            revealed_at (str):
             server_seed (str):
             server_seed_hash (str):
             client_seed (str):
+            nonce (float):
+            revealed_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -267,11 +267,11 @@ class GetBuyerPackFairnessResponseDataRevealed(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.nonce = nonce
-        self.revealed_at = revealed_at
         self.server_seed = server_seed
         self.server_seed_hash = server_seed_hash
         self.client_seed = client_seed
+        self.nonce = nonce
+        self.revealed_at = revealed_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -76,12 +76,12 @@ class GetBuyerListingBreakResponseData(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'status': (str,),  # noqa: E501
             'title': (str,),  # noqa: E501
-            'price_cents': (float,),  # noqa: E501
             'format': (str,),  # noqa: E501
-            'seed_commit': (str,),  # noqa: E501
+            'status': (str,),  # noqa: E501
+            'price_cents': (float,),  # noqa: E501
             'spots_left': (float,),  # noqa: E501
+            'seed_commit': (str,),  # noqa: E501
             'slug': (str, none_type,),  # noqa: E501
             'seed': (str, none_type,),  # noqa: E501
         }
@@ -93,12 +93,12 @@ class GetBuyerListingBreakResponseData(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'status': 'status',  # noqa: E501
         'title': 'title',  # noqa: E501
-        'price_cents': 'priceCents',  # noqa: E501
         'format': 'format',  # noqa: E501
-        'seed_commit': 'seedCommit',  # noqa: E501
+        'status': 'status',  # noqa: E501
+        'price_cents': 'priceCents',  # noqa: E501
         'spots_left': 'spotsLeft',  # noqa: E501
+        'seed_commit': 'seedCommit',  # noqa: E501
         'slug': 'slug',  # noqa: E501
         'seed': 'seed',  # noqa: E501
     }
@@ -110,17 +110,17 @@ class GetBuyerListingBreakResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, status, title, price_cents, format, seed_commit, spots_left, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, title, format, status, price_cents, spots_left, seed_commit, *args, **kwargs):  # noqa: E501
         """GetBuyerListingBreakResponseData - a model defined in OpenAPI
 
         Args:
             id (str):
-            status (str):
             title (str):
-            price_cents (float):
             format (str):
-            seed_commit (str):
+            status (str):
+            price_cents (float):
             spots_left (float):
+            seed_commit (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -183,12 +183,12 @@ class GetBuyerListingBreakResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.status = status
         self.title = title
-        self.price_cents = price_cents
         self.format = format
-        self.seed_commit = seed_commit
+        self.status = status
+        self.price_cents = price_cents
         self.spots_left = spots_left
+        self.seed_commit = seed_commit
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -209,17 +209,17 @@ class GetBuyerListingBreakResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, status, title, price_cents, format, seed_commit, spots_left, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, title, format, status, price_cents, spots_left, seed_commit, *args, **kwargs):  # noqa: E501
         """GetBuyerListingBreakResponseData - a model defined in OpenAPI
 
         Args:
             id (str):
-            status (str):
             title (str):
-            price_cents (float):
             format (str):
-            seed_commit (str):
+            status (str):
+            price_cents (float):
             spots_left (float):
+            seed_commit (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -280,12 +280,12 @@ class GetBuyerListingBreakResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.status = status
         self.title = title
-        self.price_cents = price_cents
         self.format = format
-        self.seed_commit = seed_commit
+        self.status = status
+        self.price_cents = price_cents
         self.spots_left = spots_left
+        self.seed_commit = seed_commit
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

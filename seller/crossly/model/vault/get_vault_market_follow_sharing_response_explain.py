@@ -77,9 +77,9 @@ class GetVaultMarketFollowSharingResponseExplain(ModelNormal):
         return {
             'orders': (str,),  # noqa: E501
             'sales': (str,),  # noqa: E501
-            'hall_loans': (str,),  # noqa: E501
             'leaderboard': (str,),  # noqa: E501
             'deposits': (str,),  # noqa: E501
+            'hall_loans': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -90,9 +90,9 @@ class GetVaultMarketFollowSharingResponseExplain(ModelNormal):
     attribute_map = {
         'orders': 'orders',  # noqa: E501
         'sales': 'sales',  # noqa: E501
-        'hall_loans': 'hallLoans',  # noqa: E501
         'leaderboard': 'leaderboard',  # noqa: E501
         'deposits': 'deposits',  # noqa: E501
+        'hall_loans': 'hallLoans',  # noqa: E501
     }
 
     read_only_vars = {
@@ -102,15 +102,15 @@ class GetVaultMarketFollowSharingResponseExplain(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, orders, sales, hall_loans, leaderboard, deposits, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, orders, sales, leaderboard, deposits, hall_loans, *args, **kwargs):  # noqa: E501
         """GetVaultMarketFollowSharingResponseExplain - a model defined in OpenAPI
 
         Args:
             orders (str):
             sales (str):
-            hall_loans (str):
             leaderboard (str):
             deposits (str):
+            hall_loans (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -172,9 +172,9 @@ class GetVaultMarketFollowSharingResponseExplain(ModelNormal):
 
         self.orders = orders
         self.sales = sales
-        self.hall_loans = hall_loans
         self.leaderboard = leaderboard
         self.deposits = deposits
+        self.hall_loans = hall_loans
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -195,15 +195,15 @@ class GetVaultMarketFollowSharingResponseExplain(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, orders, sales, hall_loans, leaderboard, deposits, *args, **kwargs):  # noqa: E501
+    def __init__(self, orders, sales, leaderboard, deposits, hall_loans, *args, **kwargs):  # noqa: E501
         """GetVaultMarketFollowSharingResponseExplain - a model defined in OpenAPI
 
         Args:
             orders (str):
             sales (str):
-            hall_loans (str):
             leaderboard (str):
             deposits (str):
+            hall_loans (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -263,9 +263,9 @@ class GetVaultMarketFollowSharingResponseExplain(ModelNormal):
 
         self.orders = orders
         self.sales = sales
-        self.hall_loans = hall_loans
         self.leaderboard = leaderboard
         self.deposits = deposits
+        self.hall_loans = hall_loans
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

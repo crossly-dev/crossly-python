@@ -56,8 +56,8 @@ class GetVariationGroupPublishPlanResponsePlans(ModelNormal):
 
     allowed_values = {
         ('mode',): {
-            'GROUPED': "grouped",
             'SEPARATE': "separate",
+            'GROUPED': "grouped",
         },
     }
 

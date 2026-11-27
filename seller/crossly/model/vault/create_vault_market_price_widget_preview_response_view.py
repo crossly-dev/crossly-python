@@ -56,14 +56,14 @@ class CreateVaultMarketPriceWidgetPreviewResponseView(ModelNormal):
 
     allowed_values = {
         ('kind',): {
-            'MARK': "mark",
             'INDEX': "index",
+            'MARK': "mark",
         },
         ('quality',): {
             'NONE': "none",
+            'C': "C",
             'A': "A",
             'B': "B",
-            'C': "C",
         },
         ('range',): {
             '1Y': "1y",

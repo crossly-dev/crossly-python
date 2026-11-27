@@ -83,11 +83,12 @@ class GetOrderShipmentResponseData(ModelNormal):
             'carrier': (str, none_type,),  # noqa: E501
             'service': (str, none_type,),  # noqa: E501
             'tracking_number': (str, none_type,),  # noqa: E501
-            'voided_at': (datetime, none_type,),  # noqa: E501
             'label_cost_cents': (float, none_type,),  # noqa: E501
             'label_url': (str, none_type,),  # noqa: E501
+            'label_qr_url': (str, none_type,),  # noqa: E501
             'shippo_shipment_id': (str, none_type,),  # noqa: E501
             'tracking_registered_at': (datetime, none_type,),  # noqa: E501
+            'voided_at': (datetime, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -104,11 +105,12 @@ class GetOrderShipmentResponseData(ModelNormal):
         'carrier': 'carrier',  # noqa: E501
         'service': 'service',  # noqa: E501
         'tracking_number': 'trackingNumber',  # noqa: E501
-        'voided_at': 'voidedAt',  # noqa: E501
         'label_cost_cents': 'labelCostCents',  # noqa: E501
         'label_url': 'labelUrl',  # noqa: E501
+        'label_qr_url': 'labelQrUrl',  # noqa: E501
         'shippo_shipment_id': 'shippoShipmentId',  # noqa: E501
         'tracking_registered_at': 'trackingRegisteredAt',  # noqa: E501
+        'voided_at': 'voidedAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -162,11 +164,12 @@ class GetOrderShipmentResponseData(ModelNormal):
             carrier (str, none_type): [optional]  # noqa: E501
             service (str, none_type): [optional]  # noqa: E501
             tracking_number (str, none_type): [optional]  # noqa: E501
-            voided_at (datetime, none_type): [optional]  # noqa: E501
             label_cost_cents (float, none_type): [optional]  # noqa: E501
             label_url (str, none_type): [optional]  # noqa: E501
+            label_qr_url (str, none_type): [optional]  # noqa: E501
             shippo_shipment_id (str, none_type): [optional]  # noqa: E501
             tracking_registered_at (datetime, none_type): [optional]  # noqa: E501
+            voided_at (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -263,11 +266,12 @@ class GetOrderShipmentResponseData(ModelNormal):
             carrier (str, none_type): [optional]  # noqa: E501
             service (str, none_type): [optional]  # noqa: E501
             tracking_number (str, none_type): [optional]  # noqa: E501
-            voided_at (datetime, none_type): [optional]  # noqa: E501
             label_cost_cents (float, none_type): [optional]  # noqa: E501
             label_url (str, none_type): [optional]  # noqa: E501
+            label_qr_url (str, none_type): [optional]  # noqa: E501
             shippo_shipment_id (str, none_type): [optional]  # noqa: E501
             tracking_registered_at (datetime, none_type): [optional]  # noqa: E501
+            voided_at (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

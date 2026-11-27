@@ -85,13 +85,13 @@ class CreateTradeBlockSetRecipeResponseRecipe(ModelNormal):
             'active': (bool,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (datetime,),  # noqa: E501
+            'version': (float,),  # noqa: E501
+            'members': ([CreateTradeBlockSetRecipeResponseRecipeMembers],),  # noqa: E501
             'merchant_id': (str,),  # noqa: E501
             'creator_subject_id': (str,),  # noqa: E501
             'output_cosmetic_id': (str,),  # noqa: E501
-            'version': (float,),  # noqa: E501
-            'members': ([CreateTradeBlockSetRecipeResponseRecipeMembers],),  # noqa: E501
-            'note': (str, none_type,),  # noqa: E501
             'reviewed_at': (datetime, none_type,),  # noqa: E501
+            'note': (str, none_type,),  # noqa: E501
             'frozen_at': (datetime, none_type,),  # noqa: E501
         }
 
@@ -106,13 +106,13 @@ class CreateTradeBlockSetRecipeResponseRecipe(ModelNormal):
         'active': 'active',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
+        'version': 'version',  # noqa: E501
+        'members': 'members',  # noqa: E501
         'merchant_id': 'merchantId',  # noqa: E501
         'creator_subject_id': 'creatorSubjectId',  # noqa: E501
         'output_cosmetic_id': 'outputCosmeticId',  # noqa: E501
-        'version': 'version',  # noqa: E501
-        'members': 'members',  # noqa: E501
-        'note': 'note',  # noqa: E501
         'reviewed_at': 'reviewedAt',  # noqa: E501
+        'note': 'note',  # noqa: E501
         'frozen_at': 'frozenAt',  # noqa: E501
     }
 
@@ -123,7 +123,7 @@ class CreateTradeBlockSetRecipeResponseRecipe(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, active, created_at, updated_at, merchant_id, creator_subject_id, output_cosmetic_id, version, members, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, name, active, created_at, updated_at, version, members, merchant_id, creator_subject_id, output_cosmetic_id, *args, **kwargs):  # noqa: E501
         """CreateTradeBlockSetRecipeResponseRecipe - a model defined in OpenAPI
 
         Args:
@@ -132,11 +132,11 @@ class CreateTradeBlockSetRecipeResponseRecipe(ModelNormal):
             active (bool):
             created_at (datetime):
             updated_at (datetime):
+            version (float):
+            members ([CreateTradeBlockSetRecipeResponseRecipeMembers]):
             merchant_id (str):
             creator_subject_id (str):
             output_cosmetic_id (str):
-            version (float):
-            members ([CreateTradeBlockSetRecipeResponseRecipeMembers]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -169,8 +169,8 @@ class CreateTradeBlockSetRecipeResponseRecipe(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            note (str, none_type): [optional]  # noqa: E501
             reviewed_at (datetime, none_type): [optional]  # noqa: E501
+            note (str, none_type): [optional]  # noqa: E501
             frozen_at (datetime, none_type): [optional]  # noqa: E501
         """
 
@@ -204,11 +204,11 @@ class CreateTradeBlockSetRecipeResponseRecipe(ModelNormal):
         self.active = active
         self.created_at = created_at
         self.updated_at = updated_at
+        self.version = version
+        self.members = members
         self.merchant_id = merchant_id
         self.creator_subject_id = creator_subject_id
         self.output_cosmetic_id = output_cosmetic_id
-        self.version = version
-        self.members = members
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -229,7 +229,7 @@ class CreateTradeBlockSetRecipeResponseRecipe(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, active, created_at, updated_at, merchant_id, creator_subject_id, output_cosmetic_id, version, members, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, name, active, created_at, updated_at, version, members, merchant_id, creator_subject_id, output_cosmetic_id, *args, **kwargs):  # noqa: E501
         """CreateTradeBlockSetRecipeResponseRecipe - a model defined in OpenAPI
 
         Args:
@@ -238,11 +238,11 @@ class CreateTradeBlockSetRecipeResponseRecipe(ModelNormal):
             active (bool):
             created_at (datetime):
             updated_at (datetime):
+            version (float):
+            members ([CreateTradeBlockSetRecipeResponseRecipeMembers]):
             merchant_id (str):
             creator_subject_id (str):
             output_cosmetic_id (str):
-            version (float):
-            members ([CreateTradeBlockSetRecipeResponseRecipeMembers]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -275,8 +275,8 @@ class CreateTradeBlockSetRecipeResponseRecipe(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            note (str, none_type): [optional]  # noqa: E501
             reviewed_at (datetime, none_type): [optional]  # noqa: E501
+            note (str, none_type): [optional]  # noqa: E501
             frozen_at (datetime, none_type): [optional]  # noqa: E501
         """
 
@@ -308,11 +308,11 @@ class CreateTradeBlockSetRecipeResponseRecipe(ModelNormal):
         self.active = active
         self.created_at = created_at
         self.updated_at = updated_at
+        self.version = version
+        self.members = members
         self.merchant_id = merchant_id
         self.creator_subject_id = creator_subject_id
         self.output_cosmetic_id = output_cosmetic_id
-        self.version = version
-        self.members = members
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

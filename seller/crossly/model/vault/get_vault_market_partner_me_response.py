@@ -30,7 +30,9 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from crossly.model.vault.get_vault_market_partner_me_response_identity import GetVaultMarketPartnerMeResponseIdentity
     from crossly.model.vault.get_vault_market_partner_me_response_partnership import GetVaultMarketPartnerMeResponsePartnership
+    globals()['GetVaultMarketPartnerMeResponseIdentity'] = GetVaultMarketPartnerMeResponseIdentity
     globals()['GetVaultMarketPartnerMeResponsePartnership'] = GetVaultMarketPartnerMeResponsePartnership
 
 
@@ -80,6 +82,7 @@ class GetVaultMarketPartnerMeResponse(ModelNormal):
         """
         lazy_import()
         return {
+            'identity': (GetVaultMarketPartnerMeResponseIdentity,),  # noqa: E501
             'partnership': (GetVaultMarketPartnerMeResponsePartnership,),  # noqa: E501
         }
 
@@ -89,6 +92,7 @@ class GetVaultMarketPartnerMeResponse(ModelNormal):
 
 
     attribute_map = {
+        'identity': 'identity',  # noqa: E501
         'partnership': 'partnership',  # noqa: E501
     }
 
@@ -99,8 +103,11 @@ class GetVaultMarketPartnerMeResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, identity, *args, **kwargs):  # noqa: E501
         """GetVaultMarketPartnerMeResponse - a model defined in OpenAPI
+
+        Args:
+            identity (GetVaultMarketPartnerMeResponseIdentity):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -161,6 +168,7 @@ class GetVaultMarketPartnerMeResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.identity = identity
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -181,8 +189,11 @@ class GetVaultMarketPartnerMeResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, *args, **kwargs):  # noqa: E501
+    def __init__(self, identity, *args, **kwargs):  # noqa: E501
         """GetVaultMarketPartnerMeResponse - a model defined in OpenAPI
+
+        Args:
+            identity (GetVaultMarketPartnerMeResponseIdentity):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -241,6 +252,7 @@ class GetVaultMarketPartnerMeResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.identity = identity
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

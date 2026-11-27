@@ -33,16 +33,22 @@ def lazy_import():
     from crossly.model.vault.get_vault_market_tax_response_files import GetVaultMarketTaxResponseFiles
     from crossly.model.vault.get_vault_market_tax_response_gifts_out import GetVaultMarketTaxResponseGiftsOut
     from crossly.model.vault.get_vault_market_tax_response_income import GetVaultMarketTaxResponseIncome
+    from crossly.model.vault.get_vault_market_tax_response_options import GetVaultMarketTaxResponseOptions
     from crossly.model.vault.get_vault_market_tax_response_positions import GetVaultMarketTaxResponsePositions
+    from crossly.model.vault.get_vault_market_tax_response_predictions import GetVaultMarketTaxResponsePredictions
     from crossly.model.vault.get_vault_market_tax_response_purchases import GetVaultMarketTaxResponsePurchases
     from crossly.model.vault.get_vault_market_tax_response_sales import GetVaultMarketTaxResponseSales
+    from crossly.model.vault.get_vault_market_tax_response_shares import GetVaultMarketTaxResponseShares
     from crossly.model.vault.get_vault_market_tax_response_totals import GetVaultMarketTaxResponseTotals
     globals()['GetVaultMarketTaxResponseFiles'] = GetVaultMarketTaxResponseFiles
     globals()['GetVaultMarketTaxResponseGiftsOut'] = GetVaultMarketTaxResponseGiftsOut
     globals()['GetVaultMarketTaxResponseIncome'] = GetVaultMarketTaxResponseIncome
+    globals()['GetVaultMarketTaxResponseOptions'] = GetVaultMarketTaxResponseOptions
     globals()['GetVaultMarketTaxResponsePositions'] = GetVaultMarketTaxResponsePositions
+    globals()['GetVaultMarketTaxResponsePredictions'] = GetVaultMarketTaxResponsePredictions
     globals()['GetVaultMarketTaxResponsePurchases'] = GetVaultMarketTaxResponsePurchases
     globals()['GetVaultMarketTaxResponseSales'] = GetVaultMarketTaxResponseSales
+    globals()['GetVaultMarketTaxResponseShares'] = GetVaultMarketTaxResponseShares
     globals()['GetVaultMarketTaxResponseTotals'] = GetVaultMarketTaxResponseTotals
 
 
@@ -101,6 +107,9 @@ class GetVaultMarketTaxResponse(ModelNormal):
             'income': (GetVaultMarketTaxResponseIncome,),  # noqa: E501
             'positions': ([GetVaultMarketTaxResponsePositions],),  # noqa: E501
             'notes': ([str],),  # noqa: E501
+            'options': (GetVaultMarketTaxResponseOptions,),  # noqa: E501
+            'shares': (GetVaultMarketTaxResponseShares,),  # noqa: E501
+            'predictions': (GetVaultMarketTaxResponsePredictions,),  # noqa: E501
         }
 
     @cached_property
@@ -118,6 +127,9 @@ class GetVaultMarketTaxResponse(ModelNormal):
         'income': 'income',  # noqa: E501
         'positions': 'positions',  # noqa: E501
         'notes': 'notes',  # noqa: E501
+        'options': 'options',  # noqa: E501
+        'shares': 'shares',  # noqa: E501
+        'predictions': 'predictions',  # noqa: E501
     }
 
     read_only_vars = {
@@ -172,6 +184,9 @@ class GetVaultMarketTaxResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            options (GetVaultMarketTaxResponseOptions): [optional]  # noqa: E501
+            shares (GetVaultMarketTaxResponseShares): [optional]  # noqa: E501
+            predictions (GetVaultMarketTaxResponsePredictions): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -273,6 +288,9 @@ class GetVaultMarketTaxResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            options (GetVaultMarketTaxResponseOptions): [optional]  # noqa: E501
+            shares (GetVaultMarketTaxResponseShares): [optional]  # noqa: E501
+            predictions (GetVaultMarketTaxResponsePredictions): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

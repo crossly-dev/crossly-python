@@ -57,8 +57,8 @@ class GetVaultMarketAdvanceQuoteResponseUnit(ModelNormal):
     allowed_values = {
         ('tier',): {
             'None': None,
-            'STANDARD': "standard",
             'CLOSED': "closed",
+            'STANDARD': "standard",
             'DEEP': "deep",
             'THIN': "thin",
         },

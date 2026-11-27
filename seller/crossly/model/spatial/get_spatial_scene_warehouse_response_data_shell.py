@@ -62,12 +62,12 @@ class GetSpatialSceneWarehouseResponseDataShell(ModelNormal):
 
     allowed_values = {
         ('theme',): {
-            'STORYBOOK': "storybook",
             'STUDIO': "studio",
             'NOIR': "noir",
             'DAYLIGHT': "daylight",
             'VITRINE': "vitrine",
             'STREET': "street",
+            'STORYBOOK': "storybook",
         },
     }
 

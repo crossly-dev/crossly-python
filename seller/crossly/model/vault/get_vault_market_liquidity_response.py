@@ -65,9 +65,9 @@ class GetVaultMarketLiquidityResponse(ModelNormal):
         },
         ('bucket',): {
             'None': None,
-            'HIGH': "high",
             'MID': "mid",
             'LOW': "low",
+            'HIGH': "high",
         },
     }
 

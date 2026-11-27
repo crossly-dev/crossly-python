@@ -87,10 +87,10 @@ class GetWorldContestMineResponseDataPrizes(ModelNormal):
             'created_at': (datetime,),  # noqa: E501
             'user_id': (str,),  # noqa: E501
             'status': (str,),  # noqa: E501
+            'amount': (float,),  # noqa: E501
             'kind': (str,),  # noqa: E501
             'place': (float,),  # noqa: E501
             'contest_id': (str,),  # noqa: E501
-            'amount': (float,),  # noqa: E501
             'ref': (str, none_type,),  # noqa: E501
             'note': (str, none_type,),  # noqa: E501
         }
@@ -105,10 +105,10 @@ class GetWorldContestMineResponseDataPrizes(ModelNormal):
         'created_at': 'createdAt',  # noqa: E501
         'user_id': 'userId',  # noqa: E501
         'status': 'status',  # noqa: E501
+        'amount': 'amount',  # noqa: E501
         'kind': 'kind',  # noqa: E501
         'place': 'place',  # noqa: E501
         'contest_id': 'contestId',  # noqa: E501
-        'amount': 'amount',  # noqa: E501
         'ref': 'ref',  # noqa: E501
         'note': 'note',  # noqa: E501
     }
@@ -120,7 +120,7 @@ class GetWorldContestMineResponseDataPrizes(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, user_id, status, kind, place, contest_id, amount, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, user_id, status, amount, kind, place, contest_id, *args, **kwargs):  # noqa: E501
         """GetWorldContestMineResponseDataPrizes - a model defined in OpenAPI
 
         Args:
@@ -128,10 +128,10 @@ class GetWorldContestMineResponseDataPrizes(ModelNormal):
             created_at (datetime):
             user_id (str):
             status (str):
+            amount (float):
             kind (str):
             place (float):
             contest_id (str):
-            amount (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -197,10 +197,10 @@ class GetWorldContestMineResponseDataPrizes(ModelNormal):
         self.created_at = created_at
         self.user_id = user_id
         self.status = status
+        self.amount = amount
         self.kind = kind
         self.place = place
         self.contest_id = contest_id
-        self.amount = amount
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -221,7 +221,7 @@ class GetWorldContestMineResponseDataPrizes(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, user_id, status, kind, place, contest_id, amount, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, user_id, status, amount, kind, place, contest_id, *args, **kwargs):  # noqa: E501
         """GetWorldContestMineResponseDataPrizes - a model defined in OpenAPI
 
         Args:
@@ -229,10 +229,10 @@ class GetWorldContestMineResponseDataPrizes(ModelNormal):
             created_at (datetime):
             user_id (str):
             status (str):
+            amount (float):
             kind (str):
             place (float):
             contest_id (str):
-            amount (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -296,10 +296,10 @@ class GetWorldContestMineResponseDataPrizes(ModelNormal):
         self.created_at = created_at
         self.user_id = user_id
         self.status = status
+        self.amount = amount
         self.kind = kind
         self.place = place
         self.contest_id = contest_id
-        self.amount = amount
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

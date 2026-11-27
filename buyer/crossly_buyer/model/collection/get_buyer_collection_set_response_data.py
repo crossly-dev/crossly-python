@@ -85,13 +85,13 @@ class GetBuyerCollectionSetResponseData(ModelNormal):
         lazy_import()
         return {
             'group': (GetBuyerCollectionSetResponseDataGroup,),  # noqa: E501
-            'leaderboard': ([GetBuyerCollectionSetResponseDataLeaderboard],),  # noqa: E501
-            'missing': (float,),  # noqa: E501
-            'pieces': ([GetBuyerCollectionSetResponseDataPieces],),  # noqa: E501
-            'leaderboard_opt_in': (bool,),  # noqa: E501
             'pct': (float,),  # noqa: E501
+            'pieces': ([GetBuyerCollectionSetResponseDataPieces],),  # noqa: E501
+            'missing': (float,),  # noqa: E501
             'missing_cost_cents': (float,),  # noqa: E501
             'missing_unpriced': (float,),  # noqa: E501
+            'leaderboard': ([GetBuyerCollectionSetResponseDataLeaderboard],),  # noqa: E501
+            'leaderboard_opt_in': (bool,),  # noqa: E501
             'my_rank': (float, none_type,),  # noqa: E501
         }
 
@@ -102,13 +102,13 @@ class GetBuyerCollectionSetResponseData(ModelNormal):
 
     attribute_map = {
         'group': 'group',  # noqa: E501
-        'leaderboard': 'leaderboard',  # noqa: E501
-        'missing': 'missing',  # noqa: E501
-        'pieces': 'pieces',  # noqa: E501
-        'leaderboard_opt_in': 'leaderboardOptIn',  # noqa: E501
         'pct': 'pct',  # noqa: E501
+        'pieces': 'pieces',  # noqa: E501
+        'missing': 'missing',  # noqa: E501
         'missing_cost_cents': 'missingCostCents',  # noqa: E501
         'missing_unpriced': 'missingUnpriced',  # noqa: E501
+        'leaderboard': 'leaderboard',  # noqa: E501
+        'leaderboard_opt_in': 'leaderboardOptIn',  # noqa: E501
         'my_rank': 'myRank',  # noqa: E501
     }
 
@@ -119,18 +119,18 @@ class GetBuyerCollectionSetResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, group, leaderboard, missing, pieces, leaderboard_opt_in, pct, missing_cost_cents, missing_unpriced, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, group, pct, pieces, missing, missing_cost_cents, missing_unpriced, leaderboard, leaderboard_opt_in, *args, **kwargs):  # noqa: E501
         """GetBuyerCollectionSetResponseData - a model defined in OpenAPI
 
         Args:
             group (GetBuyerCollectionSetResponseDataGroup):
-            leaderboard ([GetBuyerCollectionSetResponseDataLeaderboard]):
-            missing (float):
-            pieces ([GetBuyerCollectionSetResponseDataPieces]):
-            leaderboard_opt_in (bool):
             pct (float):
+            pieces ([GetBuyerCollectionSetResponseDataPieces]):
+            missing (float):
             missing_cost_cents (float):
             missing_unpriced (float):
+            leaderboard ([GetBuyerCollectionSetResponseDataLeaderboard]):
+            leaderboard_opt_in (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -192,13 +192,13 @@ class GetBuyerCollectionSetResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.group = group
-        self.leaderboard = leaderboard
-        self.missing = missing
-        self.pieces = pieces
-        self.leaderboard_opt_in = leaderboard_opt_in
         self.pct = pct
+        self.pieces = pieces
+        self.missing = missing
         self.missing_cost_cents = missing_cost_cents
         self.missing_unpriced = missing_unpriced
+        self.leaderboard = leaderboard
+        self.leaderboard_opt_in = leaderboard_opt_in
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -219,18 +219,18 @@ class GetBuyerCollectionSetResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, group, leaderboard, missing, pieces, leaderboard_opt_in, pct, missing_cost_cents, missing_unpriced, *args, **kwargs):  # noqa: E501
+    def __init__(self, group, pct, pieces, missing, missing_cost_cents, missing_unpriced, leaderboard, leaderboard_opt_in, *args, **kwargs):  # noqa: E501
         """GetBuyerCollectionSetResponseData - a model defined in OpenAPI
 
         Args:
             group (GetBuyerCollectionSetResponseDataGroup):
-            leaderboard ([GetBuyerCollectionSetResponseDataLeaderboard]):
-            missing (float):
-            pieces ([GetBuyerCollectionSetResponseDataPieces]):
-            leaderboard_opt_in (bool):
             pct (float):
+            pieces ([GetBuyerCollectionSetResponseDataPieces]):
+            missing (float):
             missing_cost_cents (float):
             missing_unpriced (float):
+            leaderboard ([GetBuyerCollectionSetResponseDataLeaderboard]):
+            leaderboard_opt_in (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -290,13 +290,13 @@ class GetBuyerCollectionSetResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.group = group
-        self.leaderboard = leaderboard
-        self.missing = missing
-        self.pieces = pieces
-        self.leaderboard_opt_in = leaderboard_opt_in
         self.pct = pct
+        self.pieces = pieces
+        self.missing = missing
         self.missing_cost_cents = missing_cost_cents
         self.missing_unpriced = missing_unpriced
+        self.leaderboard = leaderboard
+        self.leaderboard_opt_in = leaderboard_opt_in
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

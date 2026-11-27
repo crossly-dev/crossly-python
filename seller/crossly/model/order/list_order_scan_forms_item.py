@@ -81,9 +81,9 @@ class ListOrderScanFormsItem(ModelNormal):
             'status': (str,),  # noqa: E501
             'carrier': (str,),  # noqa: E501
             'order_ids': ([str],),  # noqa: E501
-            'shippo_manifest_id': (str,),  # noqa: E501
-            'ship_date': (str,),  # noqa: E501
             'warnings': ([str],),  # noqa: E501
+            'ship_date': (str,),  # noqa: E501
+            'shippo_manifest_id': (str,),  # noqa: E501
             'document_url': (str, none_type,),  # noqa: E501
         }
 
@@ -99,9 +99,9 @@ class ListOrderScanFormsItem(ModelNormal):
         'status': 'status',  # noqa: E501
         'carrier': 'carrier',  # noqa: E501
         'order_ids': 'orderIds',  # noqa: E501
-        'shippo_manifest_id': 'shippoManifestId',  # noqa: E501
-        'ship_date': 'shipDate',  # noqa: E501
         'warnings': 'warnings',  # noqa: E501
+        'ship_date': 'shipDate',  # noqa: E501
+        'shippo_manifest_id': 'shippoManifestId',  # noqa: E501
         'document_url': 'documentUrl',  # noqa: E501
     }
 
@@ -112,7 +112,7 @@ class ListOrderScanFormsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, user_id, status, carrier, order_ids, shippo_manifest_id, ship_date, warnings, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, user_id, status, carrier, order_ids, warnings, ship_date, shippo_manifest_id, *args, **kwargs):  # noqa: E501
         """ListOrderScanFormsItem - a model defined in OpenAPI
 
         Args:
@@ -122,9 +122,9 @@ class ListOrderScanFormsItem(ModelNormal):
             status (str):
             carrier (str):
             order_ids ([str]):
-            shippo_manifest_id (str):
-            ship_date (str):
             warnings ([str]):
+            ship_date (str):
+            shippo_manifest_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -191,9 +191,9 @@ class ListOrderScanFormsItem(ModelNormal):
         self.status = status
         self.carrier = carrier
         self.order_ids = order_ids
-        self.shippo_manifest_id = shippo_manifest_id
-        self.ship_date = ship_date
         self.warnings = warnings
+        self.ship_date = ship_date
+        self.shippo_manifest_id = shippo_manifest_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -214,7 +214,7 @@ class ListOrderScanFormsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, user_id, status, carrier, order_ids, shippo_manifest_id, ship_date, warnings, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, user_id, status, carrier, order_ids, warnings, ship_date, shippo_manifest_id, *args, **kwargs):  # noqa: E501
         """ListOrderScanFormsItem - a model defined in OpenAPI
 
         Args:
@@ -224,9 +224,9 @@ class ListOrderScanFormsItem(ModelNormal):
             status (str):
             carrier (str):
             order_ids ([str]):
-            shippo_manifest_id (str):
-            ship_date (str):
             warnings ([str]):
+            ship_date (str):
+            shippo_manifest_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -291,9 +291,9 @@ class ListOrderScanFormsItem(ModelNormal):
         self.status = status
         self.carrier = carrier
         self.order_ids = order_ids
-        self.shippo_manifest_id = shippo_manifest_id
-        self.ship_date = ship_date
         self.warnings = warnings
+        self.ship_date = ship_date
+        self.shippo_manifest_id = shippo_manifest_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

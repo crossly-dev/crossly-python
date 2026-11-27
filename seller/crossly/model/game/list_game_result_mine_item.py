@@ -61,6 +61,7 @@ class ListGameResultMineItem(ModelNormal):
             'HUNT': "hunt",
             'SPEED_TRADE': "speed_trade",
             'BREAK_HOST': "break_host",
+            'PACK_BREAK': "pack_break",
         },
     }
 

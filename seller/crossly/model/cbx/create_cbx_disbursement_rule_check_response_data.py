@@ -56,13 +56,13 @@ class CreateCbxDisbursementRuleCheckResponseData(ModelNormal):
 
     allowed_values = {
         ('outcome',): {
-            'FIRED': "fired",
             'COVERAGE': "coverage",
-            'NO_PRICE': "no_price",
-            'BELOW_THRESHOLD': "below_threshold",
             'CADENCE': "cadence",
-            'NO_RECIPIENTS': "no_recipients",
+            'NO_PRICE': "no_price",
             'INACTIVE': "inactive",
+            'FIRED': "fired",
+            'BELOW_THRESHOLD': "below_threshold",
+            'NO_RECIPIENTS': "no_recipients",
         },
     }
 

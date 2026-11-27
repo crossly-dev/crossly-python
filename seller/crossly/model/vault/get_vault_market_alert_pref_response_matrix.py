@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.vault.get_vault_market_alert_pref_response_matrix_price import GetVaultMarketAlertPrefResponseMatrixPrice
-    globals()['GetVaultMarketAlertPrefResponseMatrixPrice'] = GetVaultMarketAlertPrefResponseMatrixPrice
+    from crossly.model.vault.get_vault_market_alert_pref_response_matrix_account import GetVaultMarketAlertPrefResponseMatrixAccount
+    globals()['GetVaultMarketAlertPrefResponseMatrixAccount'] = GetVaultMarketAlertPrefResponseMatrixAccount
 
 
 class GetVaultMarketAlertPrefResponseMatrix(ModelNormal):
@@ -80,17 +80,23 @@ class GetVaultMarketAlertPrefResponseMatrix(ModelNormal):
         """
         lazy_import()
         return {
-            'price': (GetVaultMarketAlertPrefResponseMatrixPrice,),  # noqa: E501
-            'auction': (GetVaultMarketAlertPrefResponseMatrixPrice,),  # noqa: E501
-            'fill': (GetVaultMarketAlertPrefResponseMatrixPrice,),  # noqa: E501
-            'account': (GetVaultMarketAlertPrefResponseMatrixPrice,),  # noqa: E501
-            'margin_call': (GetVaultMarketAlertPrefResponseMatrixPrice,),  # noqa: E501
-            'adl': (GetVaultMarketAlertPrefResponseMatrixPrice,),  # noqa: E501
-            'p2p_loan': (GetVaultMarketAlertPrefResponseMatrixPrice,),  # noqa: E501
-            'market_open': (GetVaultMarketAlertPrefResponseMatrixPrice,),  # noqa: E501
-            'receipt_token': (GetVaultMarketAlertPrefResponseMatrixPrice,),  # noqa: E501
-            'set_goal': (GetVaultMarketAlertPrefResponseMatrixPrice,),  # noqa: E501
-            'follow': (GetVaultMarketAlertPrefResponseMatrixPrice,),  # noqa: E501
+            'account': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
+            'price': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
+            'fill': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
+            'auction': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
+            'prediction': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
+            'option_expiry': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
+            'margin_call': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
+            'adl': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
+            'p2p_loan': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
+            'market_open': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
+            'receipt_token': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
+            'set_goal': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
+            'follow': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
+            'share_offering': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
+            'share_vote': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
+            'option_settlement': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
+            'prediction_odds': (GetVaultMarketAlertPrefResponseMatrixAccount,),  # noqa: E501
         }
 
     @cached_property
@@ -99,10 +105,12 @@ class GetVaultMarketAlertPrefResponseMatrix(ModelNormal):
 
 
     attribute_map = {
-        'price': 'price',  # noqa: E501
-        'auction': 'auction',  # noqa: E501
-        'fill': 'fill',  # noqa: E501
         'account': 'account',  # noqa: E501
+        'price': 'price',  # noqa: E501
+        'fill': 'fill',  # noqa: E501
+        'auction': 'auction',  # noqa: E501
+        'prediction': 'prediction',  # noqa: E501
+        'option_expiry': 'option_expiry',  # noqa: E501
         'margin_call': 'margin_call',  # noqa: E501
         'adl': 'adl',  # noqa: E501
         'p2p_loan': 'p2p_loan',  # noqa: E501
@@ -110,6 +118,10 @@ class GetVaultMarketAlertPrefResponseMatrix(ModelNormal):
         'receipt_token': 'receipt_token',  # noqa: E501
         'set_goal': 'set_goal',  # noqa: E501
         'follow': 'follow',  # noqa: E501
+        'share_offering': 'share_offering',  # noqa: E501
+        'share_vote': 'share_vote',  # noqa: E501
+        'option_settlement': 'option_settlement',  # noqa: E501
+        'prediction_odds': 'prediction_odds',  # noqa: E501
     }
 
     read_only_vars = {
@@ -119,21 +131,27 @@ class GetVaultMarketAlertPrefResponseMatrix(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, price, auction, fill, account, margin_call, adl, p2p_loan, market_open, receipt_token, set_goal, follow, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, account, price, fill, auction, prediction, option_expiry, margin_call, adl, p2p_loan, market_open, receipt_token, set_goal, follow, share_offering, share_vote, option_settlement, prediction_odds, *args, **kwargs):  # noqa: E501
         """GetVaultMarketAlertPrefResponseMatrix - a model defined in OpenAPI
 
         Args:
-            price (GetVaultMarketAlertPrefResponseMatrixPrice):
-            auction (GetVaultMarketAlertPrefResponseMatrixPrice):
-            fill (GetVaultMarketAlertPrefResponseMatrixPrice):
-            account (GetVaultMarketAlertPrefResponseMatrixPrice):
-            margin_call (GetVaultMarketAlertPrefResponseMatrixPrice):
-            adl (GetVaultMarketAlertPrefResponseMatrixPrice):
-            p2p_loan (GetVaultMarketAlertPrefResponseMatrixPrice):
-            market_open (GetVaultMarketAlertPrefResponseMatrixPrice):
-            receipt_token (GetVaultMarketAlertPrefResponseMatrixPrice):
-            set_goal (GetVaultMarketAlertPrefResponseMatrixPrice):
-            follow (GetVaultMarketAlertPrefResponseMatrixPrice):
+            account (GetVaultMarketAlertPrefResponseMatrixAccount):
+            price (GetVaultMarketAlertPrefResponseMatrixAccount):
+            fill (GetVaultMarketAlertPrefResponseMatrixAccount):
+            auction (GetVaultMarketAlertPrefResponseMatrixAccount):
+            prediction (GetVaultMarketAlertPrefResponseMatrixAccount):
+            option_expiry (GetVaultMarketAlertPrefResponseMatrixAccount):
+            margin_call (GetVaultMarketAlertPrefResponseMatrixAccount):
+            adl (GetVaultMarketAlertPrefResponseMatrixAccount):
+            p2p_loan (GetVaultMarketAlertPrefResponseMatrixAccount):
+            market_open (GetVaultMarketAlertPrefResponseMatrixAccount):
+            receipt_token (GetVaultMarketAlertPrefResponseMatrixAccount):
+            set_goal (GetVaultMarketAlertPrefResponseMatrixAccount):
+            follow (GetVaultMarketAlertPrefResponseMatrixAccount):
+            share_offering (GetVaultMarketAlertPrefResponseMatrixAccount):
+            share_vote (GetVaultMarketAlertPrefResponseMatrixAccount):
+            option_settlement (GetVaultMarketAlertPrefResponseMatrixAccount):
+            prediction_odds (GetVaultMarketAlertPrefResponseMatrixAccount):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -193,10 +211,12 @@ class GetVaultMarketAlertPrefResponseMatrix(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.price = price
-        self.auction = auction
-        self.fill = fill
         self.account = account
+        self.price = price
+        self.fill = fill
+        self.auction = auction
+        self.prediction = prediction
+        self.option_expiry = option_expiry
         self.margin_call = margin_call
         self.adl = adl
         self.p2p_loan = p2p_loan
@@ -204,6 +224,10 @@ class GetVaultMarketAlertPrefResponseMatrix(ModelNormal):
         self.receipt_token = receipt_token
         self.set_goal = set_goal
         self.follow = follow
+        self.share_offering = share_offering
+        self.share_vote = share_vote
+        self.option_settlement = option_settlement
+        self.prediction_odds = prediction_odds
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -224,21 +248,27 @@ class GetVaultMarketAlertPrefResponseMatrix(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, price, auction, fill, account, margin_call, adl, p2p_loan, market_open, receipt_token, set_goal, follow, *args, **kwargs):  # noqa: E501
+    def __init__(self, account, price, fill, auction, prediction, option_expiry, margin_call, adl, p2p_loan, market_open, receipt_token, set_goal, follow, share_offering, share_vote, option_settlement, prediction_odds, *args, **kwargs):  # noqa: E501
         """GetVaultMarketAlertPrefResponseMatrix - a model defined in OpenAPI
 
         Args:
-            price (GetVaultMarketAlertPrefResponseMatrixPrice):
-            auction (GetVaultMarketAlertPrefResponseMatrixPrice):
-            fill (GetVaultMarketAlertPrefResponseMatrixPrice):
-            account (GetVaultMarketAlertPrefResponseMatrixPrice):
-            margin_call (GetVaultMarketAlertPrefResponseMatrixPrice):
-            adl (GetVaultMarketAlertPrefResponseMatrixPrice):
-            p2p_loan (GetVaultMarketAlertPrefResponseMatrixPrice):
-            market_open (GetVaultMarketAlertPrefResponseMatrixPrice):
-            receipt_token (GetVaultMarketAlertPrefResponseMatrixPrice):
-            set_goal (GetVaultMarketAlertPrefResponseMatrixPrice):
-            follow (GetVaultMarketAlertPrefResponseMatrixPrice):
+            account (GetVaultMarketAlertPrefResponseMatrixAccount):
+            price (GetVaultMarketAlertPrefResponseMatrixAccount):
+            fill (GetVaultMarketAlertPrefResponseMatrixAccount):
+            auction (GetVaultMarketAlertPrefResponseMatrixAccount):
+            prediction (GetVaultMarketAlertPrefResponseMatrixAccount):
+            option_expiry (GetVaultMarketAlertPrefResponseMatrixAccount):
+            margin_call (GetVaultMarketAlertPrefResponseMatrixAccount):
+            adl (GetVaultMarketAlertPrefResponseMatrixAccount):
+            p2p_loan (GetVaultMarketAlertPrefResponseMatrixAccount):
+            market_open (GetVaultMarketAlertPrefResponseMatrixAccount):
+            receipt_token (GetVaultMarketAlertPrefResponseMatrixAccount):
+            set_goal (GetVaultMarketAlertPrefResponseMatrixAccount):
+            follow (GetVaultMarketAlertPrefResponseMatrixAccount):
+            share_offering (GetVaultMarketAlertPrefResponseMatrixAccount):
+            share_vote (GetVaultMarketAlertPrefResponseMatrixAccount):
+            option_settlement (GetVaultMarketAlertPrefResponseMatrixAccount):
+            prediction_odds (GetVaultMarketAlertPrefResponseMatrixAccount):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -296,10 +326,12 @@ class GetVaultMarketAlertPrefResponseMatrix(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.price = price
-        self.auction = auction
-        self.fill = fill
         self.account = account
+        self.price = price
+        self.fill = fill
+        self.auction = auction
+        self.prediction = prediction
+        self.option_expiry = option_expiry
         self.margin_call = margin_call
         self.adl = adl
         self.p2p_loan = p2p_loan
@@ -307,6 +339,10 @@ class GetVaultMarketAlertPrefResponseMatrix(ModelNormal):
         self.receipt_token = receipt_token
         self.set_goal = set_goal
         self.follow = follow
+        self.share_offering = share_offering
+        self.share_vote = share_vote
+        self.option_settlement = option_settlement
+        self.prediction_odds = prediction_odds
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

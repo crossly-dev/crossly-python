@@ -77,8 +77,8 @@ class UpdateBuyerWishlistResponseData(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
-            'created_at': (str,),  # noqa: E501
             'is_public': (bool,),  # noqa: E501
+            'created_at': (str,),  # noqa: E501
             'share_url': (str, none_type,),  # noqa: E501
             'share_token': (str, none_type,),  # noqa: E501
         }
@@ -91,8 +91,8 @@ class UpdateBuyerWishlistResponseData(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'name': 'name',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
         'is_public': 'isPublic',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
         'share_url': 'shareUrl',  # noqa: E501
         'share_token': 'shareToken',  # noqa: E501
     }
@@ -104,14 +104,14 @@ class UpdateBuyerWishlistResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, created_at, is_public, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, name, is_public, created_at, *args, **kwargs):  # noqa: E501
         """UpdateBuyerWishlistResponseData - a model defined in OpenAPI
 
         Args:
             id (str):
             name (str):
-            created_at (str):
             is_public (bool):
+            created_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -175,8 +175,8 @@ class UpdateBuyerWishlistResponseData(ModelNormal):
 
         self.id = id
         self.name = name
-        self.created_at = created_at
         self.is_public = is_public
+        self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -197,14 +197,14 @@ class UpdateBuyerWishlistResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, created_at, is_public, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, name, is_public, created_at, *args, **kwargs):  # noqa: E501
         """UpdateBuyerWishlistResponseData - a model defined in OpenAPI
 
         Args:
             id (str):
             name (str):
-            created_at (str):
             is_public (bool):
+            created_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -266,8 +266,8 @@ class UpdateBuyerWishlistResponseData(ModelNormal):
 
         self.id = id
         self.name = name
-        self.created_at = created_at
         self.is_public = is_public
+        self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

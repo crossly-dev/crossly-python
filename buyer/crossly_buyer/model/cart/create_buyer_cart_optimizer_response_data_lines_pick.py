@@ -75,9 +75,9 @@ class CreateBuyerCartOptimizerResponseDataLinesPick(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'slug': (str,),  # noqa: E501
             'title': (str,),  # noqa: E501
             'seller_user_id': (str,),  # noqa: E501
-            'slug': (str,),  # noqa: E501
             'unit_cents': (float,),  # noqa: E501
             'ship_cents': (float,),  # noqa: E501
             'seller_name': (str, none_type,),  # noqa: E501
@@ -89,9 +89,9 @@ class CreateBuyerCartOptimizerResponseDataLinesPick(ModelNormal):
 
 
     attribute_map = {
+        'slug': 'slug',  # noqa: E501
         'title': 'title',  # noqa: E501
         'seller_user_id': 'sellerUserId',  # noqa: E501
-        'slug': 'slug',  # noqa: E501
         'unit_cents': 'unitCents',  # noqa: E501
         'ship_cents': 'shipCents',  # noqa: E501
         'seller_name': 'sellerName',  # noqa: E501
@@ -104,13 +104,13 @@ class CreateBuyerCartOptimizerResponseDataLinesPick(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, title, seller_user_id, slug, unit_cents, ship_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, slug, title, seller_user_id, unit_cents, ship_cents, *args, **kwargs):  # noqa: E501
         """CreateBuyerCartOptimizerResponseDataLinesPick - a model defined in OpenAPI
 
         Args:
+            slug (str):
             title (str):
             seller_user_id (str):
-            slug (str):
             unit_cents (float):
             ship_cents (float):
 
@@ -173,9 +173,9 @@ class CreateBuyerCartOptimizerResponseDataLinesPick(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.slug = slug
         self.title = title
         self.seller_user_id = seller_user_id
-        self.slug = slug
         self.unit_cents = unit_cents
         self.ship_cents = ship_cents
         for var_name, var_value in kwargs.items():
@@ -198,13 +198,13 @@ class CreateBuyerCartOptimizerResponseDataLinesPick(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, title, seller_user_id, slug, unit_cents, ship_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, slug, title, seller_user_id, unit_cents, ship_cents, *args, **kwargs):  # noqa: E501
         """CreateBuyerCartOptimizerResponseDataLinesPick - a model defined in OpenAPI
 
         Args:
+            slug (str):
             title (str):
             seller_user_id (str):
-            slug (str):
             unit_cents (float):
             ship_cents (float):
 
@@ -265,9 +265,9 @@ class CreateBuyerCartOptimizerResponseDataLinesPick(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.slug = slug
         self.title = title
         self.seller_user_id = seller_user_id
-        self.slug = slug
         self.unit_cents = unit_cents
         self.ship_cents = ship_cents
         for var_name, var_value in kwargs.items():

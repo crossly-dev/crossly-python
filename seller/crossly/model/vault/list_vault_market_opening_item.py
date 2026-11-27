@@ -30,13 +30,13 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.vault.list_vault_market_feed_item_mark import ListVaultMarketFeedItemMark
     from crossly.model.vault.list_vault_market_opening_item_early_access import ListVaultMarketOpeningItemEarlyAccess
     from crossly.model.vault.list_vault_market_opening_item_key import ListVaultMarketOpeningItemKey
+    from crossly.model.vault.list_vault_market_opening_item_mark import ListVaultMarketOpeningItemMark
     from crossly.model.vault.list_vault_market_opening_item_me import ListVaultMarketOpeningItemMe
-    globals()['ListVaultMarketFeedItemMark'] = ListVaultMarketFeedItemMark
     globals()['ListVaultMarketOpeningItemEarlyAccess'] = ListVaultMarketOpeningItemEarlyAccess
     globals()['ListVaultMarketOpeningItemKey'] = ListVaultMarketOpeningItemKey
+    globals()['ListVaultMarketOpeningItemMark'] = ListVaultMarketOpeningItemMark
     globals()['ListVaultMarketOpeningItemMe'] = ListVaultMarketOpeningItemMe
 
 
@@ -101,7 +101,7 @@ class ListVaultMarketOpeningItem(ModelNormal):
             'units_on_shelf': (float,),  # noqa: E501
             'dealers_quoting': (float,),  # noqa: E501
             'waitlist': (float,),  # noqa: E501
-            'mark': (ListVaultMarketFeedItemMark,),  # noqa: E501
+            'mark': (ListVaultMarketOpeningItemMark,),  # noqa: E501
             'market_href': (str,),  # noqa: E501
             'blurb': (str, none_type,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
@@ -156,7 +156,7 @@ class ListVaultMarketOpeningItem(ModelNormal):
             units_on_shelf (float):
             dealers_quoting (float):
             waitlist (float):
-            mark (ListVaultMarketFeedItemMark):
+            mark (ListVaultMarketOpeningItemMark):
             market_href (str):
 
         Keyword Args:
@@ -266,7 +266,7 @@ class ListVaultMarketOpeningItem(ModelNormal):
             units_on_shelf (float):
             dealers_quoting (float):
             waitlist (float):
-            mark (ListVaultMarketFeedItemMark):
+            mark (ListVaultMarketOpeningItemMark):
             market_href (str):
 
         Keyword Args:

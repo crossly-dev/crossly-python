@@ -80,11 +80,11 @@ class CreateBuyerCartOptimizerResponseData(ModelNormal):
         """
         lazy_import()
         return {
+            'lines': ([CreateBuyerCartOptimizerResponseDataLines],),  # noqa: E501
+            'items_cents': (float,),  # noqa: E501
             'shipping_cents': (float,),  # noqa: E501
             'total_cents': (float,),  # noqa: E501
-            'lines': ([CreateBuyerCartOptimizerResponseDataLines],),  # noqa: E501
             'sellers': (float,),  # noqa: E501
-            'items_cents': (float,),  # noqa: E501
             'unmatched': ([str],),  # noqa: E501
         }
 
@@ -94,11 +94,11 @@ class CreateBuyerCartOptimizerResponseData(ModelNormal):
 
 
     attribute_map = {
+        'lines': 'lines',  # noqa: E501
+        'items_cents': 'itemsCents',  # noqa: E501
         'shipping_cents': 'shippingCents',  # noqa: E501
         'total_cents': 'totalCents',  # noqa: E501
-        'lines': 'lines',  # noqa: E501
         'sellers': 'sellers',  # noqa: E501
-        'items_cents': 'itemsCents',  # noqa: E501
         'unmatched': 'unmatched',  # noqa: E501
     }
 
@@ -109,15 +109,15 @@ class CreateBuyerCartOptimizerResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, shipping_cents, total_cents, lines, sellers, items_cents, unmatched, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, lines, items_cents, shipping_cents, total_cents, sellers, unmatched, *args, **kwargs):  # noqa: E501
         """CreateBuyerCartOptimizerResponseData - a model defined in OpenAPI
 
         Args:
+            lines ([CreateBuyerCartOptimizerResponseDataLines]):
+            items_cents (float):
             shipping_cents (float):
             total_cents (float):
-            lines ([CreateBuyerCartOptimizerResponseDataLines]):
             sellers (float):
-            items_cents (float):
             unmatched ([str]):
 
         Keyword Args:
@@ -178,11 +178,11 @@ class CreateBuyerCartOptimizerResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.lines = lines
+        self.items_cents = items_cents
         self.shipping_cents = shipping_cents
         self.total_cents = total_cents
-        self.lines = lines
         self.sellers = sellers
-        self.items_cents = items_cents
         self.unmatched = unmatched
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -204,15 +204,15 @@ class CreateBuyerCartOptimizerResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, shipping_cents, total_cents, lines, sellers, items_cents, unmatched, *args, **kwargs):  # noqa: E501
+    def __init__(self, lines, items_cents, shipping_cents, total_cents, sellers, unmatched, *args, **kwargs):  # noqa: E501
         """CreateBuyerCartOptimizerResponseData - a model defined in OpenAPI
 
         Args:
+            lines ([CreateBuyerCartOptimizerResponseDataLines]):
+            items_cents (float):
             shipping_cents (float):
             total_cents (float):
-            lines ([CreateBuyerCartOptimizerResponseDataLines]):
             sellers (float):
-            items_cents (float):
             unmatched ([str]):
 
         Keyword Args:
@@ -271,11 +271,11 @@ class CreateBuyerCartOptimizerResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.lines = lines
+        self.items_cents = items_cents
         self.shipping_cents = shipping_cents
         self.total_cents = total_cents
-        self.lines = lines
         self.sellers = sellers
-        self.items_cents = items_cents
         self.unmatched = unmatched
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

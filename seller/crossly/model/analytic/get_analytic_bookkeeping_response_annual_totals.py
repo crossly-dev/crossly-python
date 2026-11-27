@@ -75,10 +75,14 @@ class GetAnalyticBookkeepingResponseAnnualTotals(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'gross_sales': (float,),  # noqa: E501
+            'refunds': (float,),  # noqa: E501
             'revenue': (float,),  # noqa: E501
             'cogs': (float,),  # noqa: E501
             'platform_fees': (float,),  # noqa: E501
             'shipping_costs': (float,),  # noqa: E501
+            'mileage': (float,),  # noqa: E501
+            'other_expenses': (float,),  # noqa: E501
             'net_profit': (float,),  # noqa: E501
         }
 
@@ -88,10 +92,14 @@ class GetAnalyticBookkeepingResponseAnnualTotals(ModelNormal):
 
 
     attribute_map = {
+        'gross_sales': 'grossSales',  # noqa: E501
+        'refunds': 'refunds',  # noqa: E501
         'revenue': 'revenue',  # noqa: E501
         'cogs': 'cogs',  # noqa: E501
         'platform_fees': 'platformFees',  # noqa: E501
         'shipping_costs': 'shippingCosts',  # noqa: E501
+        'mileage': 'mileage',  # noqa: E501
+        'other_expenses': 'otherExpenses',  # noqa: E501
         'net_profit': 'netProfit',  # noqa: E501
     }
 
@@ -102,14 +110,18 @@ class GetAnalyticBookkeepingResponseAnnualTotals(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, revenue, cogs, platform_fees, shipping_costs, net_profit, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, gross_sales, refunds, revenue, cogs, platform_fees, shipping_costs, mileage, other_expenses, net_profit, *args, **kwargs):  # noqa: E501
         """GetAnalyticBookkeepingResponseAnnualTotals - a model defined in OpenAPI
 
         Args:
+            gross_sales (float):
+            refunds (float):
             revenue (float):
             cogs (float):
             platform_fees (float):
             shipping_costs (float):
+            mileage (float):
+            other_expenses (float):
             net_profit (float):
 
         Keyword Args:
@@ -170,10 +182,14 @@ class GetAnalyticBookkeepingResponseAnnualTotals(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.gross_sales = gross_sales
+        self.refunds = refunds
         self.revenue = revenue
         self.cogs = cogs
         self.platform_fees = platform_fees
         self.shipping_costs = shipping_costs
+        self.mileage = mileage
+        self.other_expenses = other_expenses
         self.net_profit = net_profit
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -195,14 +211,18 @@ class GetAnalyticBookkeepingResponseAnnualTotals(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, revenue, cogs, platform_fees, shipping_costs, net_profit, *args, **kwargs):  # noqa: E501
+    def __init__(self, gross_sales, refunds, revenue, cogs, platform_fees, shipping_costs, mileage, other_expenses, net_profit, *args, **kwargs):  # noqa: E501
         """GetAnalyticBookkeepingResponseAnnualTotals - a model defined in OpenAPI
 
         Args:
+            gross_sales (float):
+            refunds (float):
             revenue (float):
             cogs (float):
             platform_fees (float):
             shipping_costs (float):
+            mileage (float):
+            other_expenses (float):
             net_profit (float):
 
         Keyword Args:
@@ -261,10 +281,14 @@ class GetAnalyticBookkeepingResponseAnnualTotals(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.gross_sales = gross_sales
+        self.refunds = refunds
         self.revenue = revenue
         self.cogs = cogs
         self.platform_fees = platform_fees
         self.shipping_costs = shipping_costs
+        self.mileage = mileage
+        self.other_expenses = other_expenses
         self.net_profit = net_profit
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

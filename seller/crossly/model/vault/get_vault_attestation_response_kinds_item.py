@@ -52,11 +52,11 @@ class GetVaultAttestationResponseKindsItem(ModelSimple):
 
     allowed_values = {
         ('value',): {
+            'OTHER': "other",
             'PHYSICAL_COUNT': "physical_count",
             'INSURANCE_CERTIFICATE': "insurance_certificate",
             'SOC1_TYPE2': "soc1_type2",
             'SOC2': "soc2",
-            'OTHER': "other",
         },
     }
 
@@ -108,10 +108,10 @@ class GetVaultAttestationResponseKindsItem(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str):, must be one of ["physical_count", "insurance_certificate", "soc1_type2", "soc2", "other", ]  # noqa: E501
+            args[0] (str):, must be one of ["other", "physical_count", "insurance_certificate", "soc1_type2", "soc2", ]  # noqa: E501
 
         Keyword Args:
-            value (str):, must be one of ["physical_count", "insurance_certificate", "soc1_type2", "soc2", "other", ]  # noqa: E501
+            value (str):, must be one of ["other", "physical_count", "insurance_certificate", "soc1_type2", "soc2", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -198,10 +198,10 @@ class GetVaultAttestationResponseKindsItem(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str):, must be one of ["physical_count", "insurance_certificate", "soc1_type2", "soc2", "other", ]  # noqa: E501
+            args[0] (str):, must be one of ["other", "physical_count", "insurance_certificate", "soc1_type2", "soc2", ]  # noqa: E501
 
         Keyword Args:
-            value (str):, must be one of ["physical_count", "insurance_certificate", "soc1_type2", "soc2", "other", ]  # noqa: E501
+            value (str):, must be one of ["other", "physical_count", "insurance_certificate", "soc1_type2", "soc2", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.

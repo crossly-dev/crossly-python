@@ -94,6 +94,8 @@ class GetCustomerResponse(ModelNormal):
             'contact': (GetCustomerResponseContact,),  # noqa: E501
             'profiles': ([GetCustomerResponseProfiles],),  # noqa: E501
             'stats': (GetCustomerResponseStats,),  # noqa: E501
+            'notes': (str,),  # noqa: E501
+            'notes_updated_at': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -110,6 +112,8 @@ class GetCustomerResponse(ModelNormal):
         'contact': 'contact',  # noqa: E501
         'profiles': 'profiles',  # noqa: E501
         'stats': 'stats',  # noqa: E501
+        'notes': 'notes',  # noqa: E501
+        'notes_updated_at': 'notesUpdatedAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -119,7 +123,7 @@ class GetCustomerResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, normalized_handle, platforms, total_orders, total_spent, orders, contact, profiles, stats, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, normalized_handle, platforms, total_orders, total_spent, orders, contact, profiles, stats, notes, *args, **kwargs):  # noqa: E501
         """GetCustomerResponse - a model defined in OpenAPI
 
         Args:
@@ -131,6 +135,7 @@ class GetCustomerResponse(ModelNormal):
             contact (GetCustomerResponseContact):
             profiles ([GetCustomerResponseProfiles]):
             stats (GetCustomerResponseStats):
+            notes (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -163,6 +168,7 @@ class GetCustomerResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            notes_updated_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -198,6 +204,7 @@ class GetCustomerResponse(ModelNormal):
         self.contact = contact
         self.profiles = profiles
         self.stats = stats
+        self.notes = notes
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -218,7 +225,7 @@ class GetCustomerResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, normalized_handle, platforms, total_orders, total_spent, orders, contact, profiles, stats, *args, **kwargs):  # noqa: E501
+    def __init__(self, normalized_handle, platforms, total_orders, total_spent, orders, contact, profiles, stats, notes, *args, **kwargs):  # noqa: E501
         """GetCustomerResponse - a model defined in OpenAPI
 
         Args:
@@ -230,6 +237,7 @@ class GetCustomerResponse(ModelNormal):
             contact (GetCustomerResponseContact):
             profiles ([GetCustomerResponseProfiles]):
             stats (GetCustomerResponseStats):
+            notes (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -262,6 +270,7 @@ class GetCustomerResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            notes_updated_at (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -295,6 +304,7 @@ class GetCustomerResponse(ModelNormal):
         self.contact = contact
         self.profiles = profiles
         self.stats = stats
+        self.notes = notes
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

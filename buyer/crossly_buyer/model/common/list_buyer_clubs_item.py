@@ -82,8 +82,8 @@ class ListBuyerClubsItem(ModelNormal):
         """
         lazy_import()
         return {
-            'name': (str,),  # noqa: E501
             'seller_user_id': (str,),  # noqa: E501
+            'name': (str,),  # noqa: E501
             'tiers': ([CreateBuyerSellerClubJoinResponseDataTiers],),  # noqa: E501
             'seller_name': (str,),  # noqa: E501
             'description': (str, none_type,),  # noqa: E501
@@ -97,8 +97,8 @@ class ListBuyerClubsItem(ModelNormal):
 
 
     attribute_map = {
-        'name': 'name',  # noqa: E501
         'seller_user_id': 'sellerUserId',  # noqa: E501
+        'name': 'name',  # noqa: E501
         'tiers': 'tiers',  # noqa: E501
         'seller_name': 'sellerName',  # noqa: E501
         'description': 'description',  # noqa: E501
@@ -113,12 +113,12 @@ class ListBuyerClubsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, name, seller_user_id, tiers, seller_name, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, seller_user_id, name, tiers, seller_name, *args, **kwargs):  # noqa: E501
         """ListBuyerClubsItem - a model defined in OpenAPI
 
         Args:
-            name (str):
             seller_user_id (str):
+            name (str):
             tiers ([CreateBuyerSellerClubJoinResponseDataTiers]):
             seller_name (str):
 
@@ -183,8 +183,8 @@ class ListBuyerClubsItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.name = name
         self.seller_user_id = seller_user_id
+        self.name = name
         self.tiers = tiers
         self.seller_name = seller_name
         for var_name, var_value in kwargs.items():
@@ -207,12 +207,12 @@ class ListBuyerClubsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, name, seller_user_id, tiers, seller_name, *args, **kwargs):  # noqa: E501
+    def __init__(self, seller_user_id, name, tiers, seller_name, *args, **kwargs):  # noqa: E501
         """ListBuyerClubsItem - a model defined in OpenAPI
 
         Args:
-            name (str):
             seller_user_id (str):
+            name (str):
             tiers ([CreateBuyerSellerClubJoinResponseDataTiers]):
             seller_name (str):
 
@@ -275,8 +275,8 @@ class ListBuyerClubsItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.name = name
         self.seller_user_id = seller_user_id
+        self.name = name
         self.tiers = tiers
         self.seller_name = seller_name
         for var_name, var_value in kwargs.items():

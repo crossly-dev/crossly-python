@@ -56,9 +56,9 @@ class GetWorldArcadeResponseDataScores(ModelNormal):
 
     allowed_values = {
         ('kind',): {
+            'RECORD': "record",
             'TOP': "top",
             'LEADERBOARD': "leaderboard",
-            'RECORD': "record",
         },
     }
 

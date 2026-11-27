@@ -31,11 +31,11 @@ from crossly.exceptions import ApiAttributeError
 
 def lazy_import():
     from crossly.model.world.create_world_game_package_check_response_data_fits import CreateWorldGamePackageCheckResponseDataFits
-    from crossly.model.world.create_world_game_package_check_response_data_issues import CreateWorldGamePackageCheckResponseDataIssues
     from crossly.model.world.create_world_game_package_check_response_data_manifest import CreateWorldGamePackageCheckResponseDataManifest
+    from crossly.model.common.path_message import PathMessage
     globals()['CreateWorldGamePackageCheckResponseDataFits'] = CreateWorldGamePackageCheckResponseDataFits
-    globals()['CreateWorldGamePackageCheckResponseDataIssues'] = CreateWorldGamePackageCheckResponseDataIssues
     globals()['CreateWorldGamePackageCheckResponseDataManifest'] = CreateWorldGamePackageCheckResponseDataManifest
+    globals()['PathMessage'] = PathMessage
 
 
 class CreateWorldGamePackageCheckResponseData(ModelNormal):
@@ -85,7 +85,7 @@ class CreateWorldGamePackageCheckResponseData(ModelNormal):
         lazy_import()
         return {
             'ok': (bool,),  # noqa: E501
-            'issues': ([CreateWorldGamePackageCheckResponseDataIssues],),  # noqa: E501
+            'issues': ([PathMessage],),  # noqa: E501
             'fits': (CreateWorldGamePackageCheckResponseDataFits,),  # noqa: E501
             'total_bytes': (float,),  # noqa: E501
             'manifest': (CreateWorldGamePackageCheckResponseDataManifest,),  # noqa: E501
@@ -116,7 +116,7 @@ class CreateWorldGamePackageCheckResponseData(ModelNormal):
 
         Args:
             ok (bool):
-            issues ([CreateWorldGamePackageCheckResponseDataIssues]):
+            issues ([PathMessage]):
             fits (CreateWorldGamePackageCheckResponseDataFits):
             total_bytes (float):
 
@@ -208,7 +208,7 @@ class CreateWorldGamePackageCheckResponseData(ModelNormal):
 
         Args:
             ok (bool):
-            issues ([CreateWorldGamePackageCheckResponseDataIssues]):
+            issues ([PathMessage]):
             fits (CreateWorldGamePackageCheckResponseDataFits):
             total_bytes (float):
 

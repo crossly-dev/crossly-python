@@ -56,8 +56,8 @@ class GetOrderEvidenceResponseDataSealAssessment(ModelNormal):
 
     allowed_values = {
         ('verdict',): {
-            'OPENED': "opened",
             'UNKNOWN': "unknown",
+            'OPENED': "opened",
             'INTACT': "intact",
             'SUSPECT': "suspect",
         },

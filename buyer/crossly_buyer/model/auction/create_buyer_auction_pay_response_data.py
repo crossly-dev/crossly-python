@@ -77,8 +77,8 @@ class CreateBuyerAuctionPayResponseData(ModelNormal):
         return {
             'paid': (bool,),  # noqa: E501
             'client_secret': (str, none_type,),  # noqa: E501
-            'amount_cents': (float, none_type,),  # noqa: E501
             'payment_intent_id': (str, none_type,),  # noqa: E501
+            'amount_cents': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -89,8 +89,8 @@ class CreateBuyerAuctionPayResponseData(ModelNormal):
     attribute_map = {
         'paid': 'paid',  # noqa: E501
         'client_secret': 'clientSecret',  # noqa: E501
-        'amount_cents': 'amountCents',  # noqa: E501
         'payment_intent_id': 'paymentIntentId',  # noqa: E501
+        'amount_cents': 'amountCents',  # noqa: E501
     }
 
     read_only_vars = {
@@ -138,8 +138,8 @@ class CreateBuyerAuctionPayResponseData(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             client_secret (str, none_type): Stripe PaymentIntent client secret — confirm it with Stripe on the buyer's device.. [optional]  # noqa: E501
-            amount_cents (float, none_type): [optional]  # noqa: E501
             payment_intent_id (str, none_type): [optional]  # noqa: E501
+            amount_cents (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -226,8 +226,8 @@ class CreateBuyerAuctionPayResponseData(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             client_secret (str, none_type): Stripe PaymentIntent client secret — confirm it with Stripe on the buyer's device.. [optional]  # noqa: E501
-            amount_cents (float, none_type): [optional]  # noqa: E501
             payment_intent_id (str, none_type): [optional]  # noqa: E501
+            amount_cents (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

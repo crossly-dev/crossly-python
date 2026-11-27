@@ -75,9 +75,9 @@ class GetBuyerListingSubscribeOfferResponseData(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'price_cents': (float,),  # noqa: E501
             'discount_bps': (float,),  # noqa: E501
             'intervals': ([float],),  # noqa: E501
+            'price_cents': (float,),  # noqa: E501
             'subscribe_price_cents': (float,),  # noqa: E501
         }
 
@@ -87,9 +87,9 @@ class GetBuyerListingSubscribeOfferResponseData(ModelNormal):
 
 
     attribute_map = {
-        'price_cents': 'priceCents',  # noqa: E501
         'discount_bps': 'discountBps',  # noqa: E501
         'intervals': 'intervals',  # noqa: E501
+        'price_cents': 'priceCents',  # noqa: E501
         'subscribe_price_cents': 'subscribePriceCents',  # noqa: E501
     }
 
@@ -100,13 +100,13 @@ class GetBuyerListingSubscribeOfferResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, price_cents, discount_bps, intervals, subscribe_price_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, discount_bps, intervals, price_cents, subscribe_price_cents, *args, **kwargs):  # noqa: E501
         """GetBuyerListingSubscribeOfferResponseData - a model defined in OpenAPI
 
         Args:
-            price_cents (float):
             discount_bps (float):
             intervals ([float]):
+            price_cents (float):
             subscribe_price_cents (float):
 
         Keyword Args:
@@ -167,9 +167,9 @@ class GetBuyerListingSubscribeOfferResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.price_cents = price_cents
         self.discount_bps = discount_bps
         self.intervals = intervals
+        self.price_cents = price_cents
         self.subscribe_price_cents = subscribe_price_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -191,13 +191,13 @@ class GetBuyerListingSubscribeOfferResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, price_cents, discount_bps, intervals, subscribe_price_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, discount_bps, intervals, price_cents, subscribe_price_cents, *args, **kwargs):  # noqa: E501
         """GetBuyerListingSubscribeOfferResponseData - a model defined in OpenAPI
 
         Args:
-            price_cents (float):
             discount_bps (float):
             intervals ([float]):
+            price_cents (float):
             subscribe_price_cents (float):
 
         Keyword Args:
@@ -256,9 +256,9 @@ class GetBuyerListingSubscribeOfferResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.price_cents = price_cents
         self.discount_bps = discount_bps
         self.intervals = intervals
+        self.price_cents = price_cents
         self.subscribe_price_cents = subscribe_price_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

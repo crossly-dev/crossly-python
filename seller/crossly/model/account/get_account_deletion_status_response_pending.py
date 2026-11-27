@@ -62,7 +62,7 @@ class GetAccountDeletionStatusResponsePending(ModelNormal):
 
     additional_properties_type = None
 
-    _nullable = False
+    _nullable = True
 
     @cached_property
     def openapi_types():
@@ -78,6 +78,10 @@ class GetAccountDeletionStatusResponsePending(ModelNormal):
             'id': (str,),  # noqa: E501
             'requested_at': (datetime,),  # noqa: E501
             'scheduled_for': (datetime,),  # noqa: E501
+            'listing_count': (float,),  # noqa: E501
+            'inventory_count': (float,),  # noqa: E501
+            'paused_at': (datetime, none_type,),  # noqa: E501
+            'pause_reason': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -89,6 +93,10 @@ class GetAccountDeletionStatusResponsePending(ModelNormal):
         'id': 'id',  # noqa: E501
         'requested_at': 'requestedAt',  # noqa: E501
         'scheduled_for': 'scheduledFor',  # noqa: E501
+        'listing_count': 'listingCount',  # noqa: E501
+        'inventory_count': 'inventoryCount',  # noqa: E501
+        'paused_at': 'pausedAt',  # noqa: E501
+        'pause_reason': 'pauseReason',  # noqa: E501
     }
 
     read_only_vars = {
@@ -98,13 +106,15 @@ class GetAccountDeletionStatusResponsePending(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, requested_at, scheduled_for, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, requested_at, scheduled_for, listing_count, inventory_count, *args, **kwargs):  # noqa: E501
         """GetAccountDeletionStatusResponsePending - a model defined in OpenAPI
 
         Args:
             id (str):
             requested_at (datetime):
             scheduled_for (datetime):
+            listing_count (float): What the cascade will take.
+            inventory_count (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -137,6 +147,8 @@ class GetAccountDeletionStatusResponsePending(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            paused_at (datetime, none_type): Set when the account was found in use: it waits for a re-confirmation.. [optional]  # noqa: E501
+            pause_reason (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -167,6 +179,8 @@ class GetAccountDeletionStatusResponsePending(ModelNormal):
         self.id = id
         self.requested_at = requested_at
         self.scheduled_for = scheduled_for
+        self.listing_count = listing_count
+        self.inventory_count = inventory_count
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -187,13 +201,15 @@ class GetAccountDeletionStatusResponsePending(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, requested_at, scheduled_for, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, requested_at, scheduled_for, listing_count, inventory_count, *args, **kwargs):  # noqa: E501
         """GetAccountDeletionStatusResponsePending - a model defined in OpenAPI
 
         Args:
             id (str):
             requested_at (datetime):
             scheduled_for (datetime):
+            listing_count (float): What the cascade will take.
+            inventory_count (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -226,6 +242,8 @@ class GetAccountDeletionStatusResponsePending(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            paused_at (datetime, none_type): Set when the account was found in use: it waits for a re-confirmation.. [optional]  # noqa: E501
+            pause_reason (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -254,6 +272,8 @@ class GetAccountDeletionStatusResponsePending(ModelNormal):
         self.id = id
         self.requested_at = requested_at
         self.scheduled_for = scheduled_for
+        self.listing_count = listing_count
+        self.inventory_count = inventory_count
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

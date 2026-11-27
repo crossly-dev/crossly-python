@@ -77,8 +77,8 @@ class GetBuyerCreatorResponseDataCreator(ModelNormal):
         return {
             'handle': (str,),  # noqa: E501
             'display_name': (str, none_type,),  # noqa: E501
-            'avatar_url': (str, none_type,),  # noqa: E501
             'bio': (str, none_type,),  # noqa: E501
+            'avatar_url': (str, none_type,),  # noqa: E501
             'code': (str, none_type,),  # noqa: E501
         }
 
@@ -90,8 +90,8 @@ class GetBuyerCreatorResponseDataCreator(ModelNormal):
     attribute_map = {
         'handle': 'handle',  # noqa: E501
         'display_name': 'displayName',  # noqa: E501
-        'avatar_url': 'avatarUrl',  # noqa: E501
         'bio': 'bio',  # noqa: E501
+        'avatar_url': 'avatarUrl',  # noqa: E501
         'code': 'code',  # noqa: E501
     }
 
@@ -140,8 +140,8 @@ class GetBuyerCreatorResponseDataCreator(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             display_name (str, none_type): [optional]  # noqa: E501
-            avatar_url (str, none_type): [optional]  # noqa: E501
             bio (str, none_type): [optional]  # noqa: E501
+            avatar_url (str, none_type): [optional]  # noqa: E501
             code (str, none_type): [optional]  # noqa: E501
         """
 
@@ -229,8 +229,8 @@ class GetBuyerCreatorResponseDataCreator(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             display_name (str, none_type): [optional]  # noqa: E501
-            avatar_url (str, none_type): [optional]  # noqa: E501
             bio (str, none_type): [optional]  # noqa: E501
+            avatar_url (str, none_type): [optional]  # noqa: E501
             code (str, none_type): [optional]  # noqa: E501
         """
 

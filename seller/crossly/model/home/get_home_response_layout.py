@@ -65,6 +65,17 @@ class GetHomeResponseLayout(ModelNormal):
             'DISPLAY': "display",
             'PROP': "prop",
         },
+        ('tint',): {
+            'None': None,
+            'OAT': "oat",
+            'SAGE': "sage",
+            'FOREST': "forest",
+            'NAVY': "navy",
+            'CLAY': "clay",
+            'MUSTARD': "mustard",
+            'BLUSH': "blush",
+            'CHARCOAL': "charcoal",
+        },
     }
 
     validations = {
@@ -97,6 +108,7 @@ class GetHomeResponseLayout(ModelNormal):
             'ref': (GetHomeResponseLayoutRef,),  # noqa: E501
             'slot': (float, none_type,),  # noqa: E501
             'set': (str, none_type,),  # noqa: E501
+            'tint': (str, none_type,),  # noqa: E501
             'item': (GetHomeResponseLayoutItem,),  # noqa: E501
         }
 
@@ -113,6 +125,7 @@ class GetHomeResponseLayout(ModelNormal):
         'ref': 'ref',  # noqa: E501
         'slot': 'slot',  # noqa: E501
         'set': 'set',  # noqa: E501
+        'tint': 'tint',  # noqa: E501
         'item': 'item',  # noqa: E501
     }
 
@@ -166,6 +179,7 @@ class GetHomeResponseLayout(ModelNormal):
             ref (GetHomeResponseLayoutRef): [optional]  # noqa: E501
             slot (float, none_type): Shelf displays: which slot on the shelf.. [optional]  # noqa: E501
             set (str, none_type): A set wall: which set it shows, \"category/brand/model\" (HOME_SET_KEY). Absent: the owner's most complete.. [optional]  # noqa: E501
+            tint (str, none_type): A furniture piece's colour (HOME_TINTS key): its fabric and finish take it. Absent: as made.. [optional]  # noqa: E501
             item (GetHomeResponseLayoutItem): [optional]  # noqa: E501
         """
 
@@ -261,6 +275,7 @@ class GetHomeResponseLayout(ModelNormal):
             ref (GetHomeResponseLayoutRef): [optional]  # noqa: E501
             slot (float, none_type): Shelf displays: which slot on the shelf.. [optional]  # noqa: E501
             set (str, none_type): A set wall: which set it shows, \"category/brand/model\" (HOME_SET_KEY). Absent: the owner's most complete.. [optional]  # noqa: E501
+            tint (str, none_type): A furniture piece's colour (HOME_TINTS key): its fabric and finish take it. Absent: as made.. [optional]  # noqa: E501
             item (GetHomeResponseLayoutItem): [optional]  # noqa: E501
         """
 

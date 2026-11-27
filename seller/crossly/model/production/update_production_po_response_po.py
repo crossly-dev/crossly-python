@@ -83,8 +83,8 @@ class UpdateProductionPoResponsePo(ModelNormal):
             'candidate_id': (str,),  # noqa: E501
             'sample_rounds': (float,),  # noqa: E501
             'notes': (str, none_type,),  # noqa: E501
-            'tracking_code': (str, none_type,),  # noqa: E501
             'supplier_name': (str, none_type,),  # noqa: E501
+            'tracking_code': (str, none_type,),  # noqa: E501
             'supplier_contact': (str, none_type,),  # noqa: E501
             'freight_mode': (str, none_type,),  # noqa: E501
             'estimate_landed_cents': (float, none_type,),  # noqa: E501
@@ -114,8 +114,8 @@ class UpdateProductionPoResponsePo(ModelNormal):
         'candidate_id': 'candidateId',  # noqa: E501
         'sample_rounds': 'sampleRounds',  # noqa: E501
         'notes': 'notes',  # noqa: E501
-        'tracking_code': 'trackingCode',  # noqa: E501
         'supplier_name': 'supplierName',  # noqa: E501
+        'tracking_code': 'trackingCode',  # noqa: E501
         'supplier_contact': 'supplierContact',  # noqa: E501
         'freight_mode': 'freightMode',  # noqa: E501
         'estimate_landed_cents': 'estimateLandedCents',  # noqa: E501
@@ -182,8 +182,8 @@ class UpdateProductionPoResponsePo(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             notes (str, none_type): [optional]  # noqa: E501
-            tracking_code (str, none_type): [optional]  # noqa: E501
             supplier_name (str, none_type): [optional]  # noqa: E501
+            tracking_code (str, none_type): [optional]  # noqa: E501
             supplier_contact (str, none_type): [optional]  # noqa: E501
             freight_mode (str, none_type): [optional]  # noqa: E501
             estimate_landed_cents (float, none_type): [optional]  # noqa: E501
@@ -295,8 +295,8 @@ class UpdateProductionPoResponsePo(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             notes (str, none_type): [optional]  # noqa: E501
-            tracking_code (str, none_type): [optional]  # noqa: E501
             supplier_name (str, none_type): [optional]  # noqa: E501
+            tracking_code (str, none_type): [optional]  # noqa: E501
             supplier_contact (str, none_type): [optional]  # noqa: E501
             freight_mode (str, none_type): [optional]  # noqa: E501
             estimate_landed_cents (float, none_type): [optional]  # noqa: E501

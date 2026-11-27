@@ -77,9 +77,9 @@ class GetBuyerTogetherResponseDataMessages(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
-            'created_at': (str,),  # noqa: E501
-            'body': (str,),  # noqa: E501
             'me': (bool,),  # noqa: E501
+            'body': (str,),  # noqa: E501
+            'created_at': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -90,9 +90,9 @@ class GetBuyerTogetherResponseDataMessages(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'name': 'name',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
-        'body': 'body',  # noqa: E501
         'me': 'me',  # noqa: E501
+        'body': 'body',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -102,15 +102,15 @@ class GetBuyerTogetherResponseDataMessages(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, created_at, body, me, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, name, me, body, created_at, *args, **kwargs):  # noqa: E501
         """GetBuyerTogetherResponseDataMessages - a model defined in OpenAPI
 
         Args:
             id (str):
             name (str):
-            created_at (str):
-            body (str):
             me (bool):
+            body (str):
+            created_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -172,9 +172,9 @@ class GetBuyerTogetherResponseDataMessages(ModelNormal):
 
         self.id = id
         self.name = name
-        self.created_at = created_at
-        self.body = body
         self.me = me
+        self.body = body
+        self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -195,15 +195,15 @@ class GetBuyerTogetherResponseDataMessages(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, created_at, body, me, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, name, me, body, created_at, *args, **kwargs):  # noqa: E501
         """GetBuyerTogetherResponseDataMessages - a model defined in OpenAPI
 
         Args:
             id (str):
             name (str):
-            created_at (str):
-            body (str):
             me (bool):
+            body (str):
+            created_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -263,9 +263,9 @@ class GetBuyerTogetherResponseDataMessages(ModelNormal):
 
         self.id = id
         self.name = name
-        self.created_at = created_at
-        self.body = body
         self.me = me
+        self.body = body
+        self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

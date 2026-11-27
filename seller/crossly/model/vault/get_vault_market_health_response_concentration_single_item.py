@@ -56,8 +56,8 @@ class GetVaultMarketHealthResponseConcentrationSingleItem(ModelNormal):
 
     allowed_values = {
         ('band',): {
-            'SPREAD': "spread",
             'MODERATE': "moderate",
+            'SPREAD': "spread",
             'EMPTY': "empty",
             'CONCENTRATED': "concentrated",
         },

@@ -21,10 +21,12 @@ from crossly.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from crossly.model.common.create_webhook_response import CreateWebhookResponse
-from crossly.model.common.create_webhook_test_response import CreateWebhookTestResponse
+from crossly.model.webhook.create_webhook_delivery_redeliver_response import CreateWebhookDeliveryRedeliverResponse
+from crossly.model.webhook.create_webhook_response import CreateWebhookResponse
+from crossly.model.webhook.create_webhook_test_response import CreateWebhookTestResponse
 from crossly.model.common.error import Error
-from crossly.model.common.list_webhooks_response import ListWebhooksResponse
+from crossly.model.webhook.list_webhook_deliveries_response import ListWebhookDeliveriesResponse
+from crossly.model.webhook.list_webhooks_response import ListWebhooksResponse
 from crossly.model.common.ok_response import OkResponse
 
 
@@ -71,6 +73,63 @@ class WebhooksApi(object):
                 'attribute_map': {
                 },
                 'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.create_webhook_delivery_redeliver_endpoint = _Endpoint(
+            settings={
+                'response_type': (CreateWebhookDeliveryRedeliverResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/webhooks/{id}/deliveries/{deliveryId}/redeliver',
+                'operation_id': 'create_webhook_delivery_redeliver',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'delivery_id',
+                ],
+                'required': [
+                    'id',
+                    'delivery_id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'delivery_id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'delivery_id': 'deliveryId',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'delivery_id': 'path',
                 },
                 'collection_format_map': {
                 }
@@ -230,6 +289,80 @@ class WebhooksApi(object):
             },
             api_client=api_client
         )
+        self.list_webhook_deliveries_endpoint = _Endpoint(
+            settings={
+                'response_type': (ListWebhookDeliveriesResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/webhooks/{id}/deliveries',
+                'operation_id': 'list_webhook_deliveries',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'status',
+                    'limit',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                    'status',
+                ],
+                'validation': [
+                    'limit',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('limit',): {
+
+                        'inclusive_maximum': 100,
+                        'inclusive_minimum': 1,
+                    },
+                },
+                'allowed_values': {
+                    ('status',): {
+
+                        "PENDING": "pending",
+                        "SUCCEEDED": "succeeded",
+                        "FAILED": "failed"
+                    },
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'status':
+                        (str,),
+                    'limit':
+                        (int,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'status': 'status',
+                    'limit': 'limit',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'status': 'query',
+                    'limit': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.list_webhooks_endpoint = _Endpoint(
             settings={
                 'response_type': (ListWebhooksResponse,),
@@ -347,12 +480,93 @@ class WebhooksApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.create_webhook_endpoint.call_with_http_info(**kwargs)
 
+    def create_webhook_delivery_redeliver(
+        self,
+        id,
+        delivery_id,
+        **kwargs
+    ):
+        """Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_webhook_delivery_redeliver(id, delivery_id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str):
+            delivery_id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CreateWebhookDeliveryRedeliverResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        kwargs['delivery_id'] = \
+            delivery_id
+        return self.create_webhook_delivery_redeliver_endpoint.call_with_http_info(**kwargs)
+
     def create_webhook_test(
         self,
         id,
         **kwargs
     ):
-        """Fire a synthetic test.ping delivery to one webhook.  # noqa: E501
+        """Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\"event\":\"order.created\"}, payload marked test: true).  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -573,6 +787,85 @@ class WebhooksApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.get_webhook_stream_endpoint.call_with_http_info(**kwargs)
+
+    def list_webhook_deliveries(
+        self,
+        id,
+        **kwargs
+    ):
+        """List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_webhook_deliveries(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str):
+
+        Keyword Args:
+            status (str): [optional]
+            limit (int): [optional] if omitted the server will use the default value of 25
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ListWebhookDeliveriesResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.list_webhook_deliveries_endpoint.call_with_http_info(**kwargs)
 
     def list_webhooks(
         self,

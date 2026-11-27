@@ -79,9 +79,9 @@ class ListBuyerFollowingSellersItem(ModelNormal):
             'followed_at': (str,),  # noqa: E501
             'active_listings': (float,),  # noqa: E501
             'new_listings': (float,),  # noqa: E501
+            'username': (str, none_type,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
             'avatar_url': (str, none_type,),  # noqa: E501
-            'username': (str, none_type,),  # noqa: E501
             'last_seen_at': (str, none_type,),  # noqa: E501
         }
 
@@ -95,9 +95,9 @@ class ListBuyerFollowingSellersItem(ModelNormal):
         'followed_at': 'followedAt',  # noqa: E501
         'active_listings': 'activeListings',  # noqa: E501
         'new_listings': 'newListings',  # noqa: E501
+        'username': 'username',  # noqa: E501
         'name': 'name',  # noqa: E501
         'avatar_url': 'avatarUrl',  # noqa: E501
-        'username': 'username',  # noqa: E501
         'last_seen_at': 'lastSeenAt',  # noqa: E501
     }
 
@@ -148,9 +148,9 @@ class ListBuyerFollowingSellersItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            username (str, none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
             avatar_url (str, none_type): [optional]  # noqa: E501
-            username (str, none_type): [optional]  # noqa: E501
             last_seen_at (str, none_type): [optional]  # noqa: E501
         """
 
@@ -243,9 +243,9 @@ class ListBuyerFollowingSellersItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            username (str, none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
             avatar_url (str, none_type): [optional]  # noqa: E501
-            username (str, none_type): [optional]  # noqa: E501
             last_seen_at (str, none_type): [optional]  # noqa: E501
         """
 

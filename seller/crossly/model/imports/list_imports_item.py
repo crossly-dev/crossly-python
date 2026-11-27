@@ -83,8 +83,8 @@ class ListImportsItem(ModelNormal):
             'id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'user_id': (str,),  # noqa: E501
-            'status': (str,),  # noqa: E501
             'platform': (str,),  # noqa: E501
+            'status': (str,),  # noqa: E501
             'import_mode': (str,),  # noqa: E501
             'include_inactive': (bool,),  # noqa: E501
             'merge_into_existing_listing': (bool,),  # noqa: E501
@@ -96,9 +96,9 @@ class ListImportsItem(ModelNormal):
             'list_on_crossly': (bool,),  # noqa: E501
             'last_error': (str, none_type,),  # noqa: E501
             'started_at': (datetime, none_type,),  # noqa: E501
-            'batch_id': (str, none_type,),  # noqa: E501
             'finished_at': (datetime, none_type,),  # noqa: E501
             'filters': (ListImportsItemFilters,),  # noqa: E501
+            'batch_id': (str, none_type,),  # noqa: E501
             'crossly_listed_at': (datetime, none_type,),  # noqa: E501
         }
 
@@ -111,8 +111,8 @@ class ListImportsItem(ModelNormal):
         'id': 'id',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'user_id': 'userId',  # noqa: E501
-        'status': 'status',  # noqa: E501
         'platform': 'platform',  # noqa: E501
+        'status': 'status',  # noqa: E501
         'import_mode': 'importMode',  # noqa: E501
         'include_inactive': 'includeInactive',  # noqa: E501
         'merge_into_existing_listing': 'mergeIntoExistingListing',  # noqa: E501
@@ -124,9 +124,9 @@ class ListImportsItem(ModelNormal):
         'list_on_crossly': 'listOnCrossly',  # noqa: E501
         'last_error': 'lastError',  # noqa: E501
         'started_at': 'startedAt',  # noqa: E501
-        'batch_id': 'batchId',  # noqa: E501
         'finished_at': 'finishedAt',  # noqa: E501
         'filters': 'filters',  # noqa: E501
+        'batch_id': 'batchId',  # noqa: E501
         'crossly_listed_at': 'crosslyListedAt',  # noqa: E501
     }
 
@@ -137,15 +137,15 @@ class ListImportsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, user_id, status, platform, import_mode, include_inactive, merge_into_existing_listing, merge_into_existing_inventory, total_count, imported_count, skipped_count, error_count, list_on_crossly, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, user_id, platform, status, import_mode, include_inactive, merge_into_existing_listing, merge_into_existing_inventory, total_count, imported_count, skipped_count, error_count, list_on_crossly, *args, **kwargs):  # noqa: E501
         """ListImportsItem - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (datetime):
             user_id (str):
-            status (str):
             platform (str):
+            status (str):
             import_mode (str):
             include_inactive (bool):
             merge_into_existing_listing (bool):
@@ -189,9 +189,9 @@ class ListImportsItem(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             last_error (str, none_type): [optional]  # noqa: E501
             started_at (datetime, none_type): [optional]  # noqa: E501
-            batch_id (str, none_type): [optional]  # noqa: E501
             finished_at (datetime, none_type): [optional]  # noqa: E501
             filters (ListImportsItemFilters): [optional]  # noqa: E501
+            batch_id (str, none_type): [optional]  # noqa: E501
             crossly_listed_at (datetime, none_type): [optional]  # noqa: E501
         """
 
@@ -223,8 +223,8 @@ class ListImportsItem(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.user_id = user_id
-        self.status = status
         self.platform = platform
+        self.status = status
         self.import_mode = import_mode
         self.include_inactive = include_inactive
         self.merge_into_existing_listing = merge_into_existing_listing
@@ -254,15 +254,15 @@ class ListImportsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, user_id, status, platform, import_mode, include_inactive, merge_into_existing_listing, merge_into_existing_inventory, total_count, imported_count, skipped_count, error_count, list_on_crossly, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, user_id, platform, status, import_mode, include_inactive, merge_into_existing_listing, merge_into_existing_inventory, total_count, imported_count, skipped_count, error_count, list_on_crossly, *args, **kwargs):  # noqa: E501
         """ListImportsItem - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (datetime):
             user_id (str):
-            status (str):
             platform (str):
+            status (str):
             import_mode (str):
             include_inactive (bool):
             merge_into_existing_listing (bool):
@@ -306,9 +306,9 @@ class ListImportsItem(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             last_error (str, none_type): [optional]  # noqa: E501
             started_at (datetime, none_type): [optional]  # noqa: E501
-            batch_id (str, none_type): [optional]  # noqa: E501
             finished_at (datetime, none_type): [optional]  # noqa: E501
             filters (ListImportsItemFilters): [optional]  # noqa: E501
+            batch_id (str, none_type): [optional]  # noqa: E501
             crossly_listed_at (datetime, none_type): [optional]  # noqa: E501
         """
 
@@ -338,8 +338,8 @@ class ListImportsItem(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.user_id = user_id
-        self.status = status
         self.platform = platform
+        self.status = status
         self.import_mode = import_mode
         self.include_inactive = include_inactive
         self.merge_into_existing_listing = merge_into_existing_listing

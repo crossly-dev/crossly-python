@@ -76,14 +76,16 @@ class ListAutomationRunsItem(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'created_at': (datetime,),  # noqa: E501
             'user_id': (str,),  # noqa: E501
             'status': (str,),  # noqa: E501
             'action_type': (str,),  # noqa: E501
-            'error_message': (str, none_type,),  # noqa: E501
-            'duration_ms': (float, none_type,),  # noqa: E501
+            'summary': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'created_at': (datetime,),  # noqa: E501
             'rule_id': (str, none_type,),  # noqa: E501
             'chain_id': (str, none_type,),  # noqa: E501
+            'error_message': (str, none_type,),  # noqa: E501
+            'duration_ms': (float, none_type,),  # noqa: E501
+            'workflow_run_id': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -93,14 +95,16 @@ class ListAutomationRunsItem(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
         'user_id': 'userId',  # noqa: E501
         'status': 'status',  # noqa: E501
         'action_type': 'actionType',  # noqa: E501
-        'error_message': 'errorMessage',  # noqa: E501
-        'duration_ms': 'durationMs',  # noqa: E501
+        'summary': 'summary',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
         'rule_id': 'ruleId',  # noqa: E501
         'chain_id': 'chainId',  # noqa: E501
+        'error_message': 'errorMessage',  # noqa: E501
+        'duration_ms': 'durationMs',  # noqa: E501
+        'workflow_run_id': 'workflowRunId',  # noqa: E501
     }
 
     read_only_vars = {
@@ -110,15 +114,16 @@ class ListAutomationRunsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, user_id, status, action_type, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, user_id, status, action_type, summary, created_at, *args, **kwargs):  # noqa: E501
         """ListAutomationRunsItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (datetime):
             user_id (str):
             status (str):
             action_type (str):
+            summary ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
+            created_at (datetime):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -151,10 +156,11 @@ class ListAutomationRunsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            error_message (str, none_type): [optional]  # noqa: E501
-            duration_ms (float, none_type): [optional]  # noqa: E501
             rule_id (str, none_type): [optional]  # noqa: E501
             chain_id (str, none_type): [optional]  # noqa: E501
+            error_message (str, none_type): [optional]  # noqa: E501
+            duration_ms (float, none_type): [optional]  # noqa: E501
+            workflow_run_id (str, none_type): Set for runs of the converted workflow.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -183,10 +189,11 @@ class ListAutomationRunsItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
         self.user_id = user_id
         self.status = status
         self.action_type = action_type
+        self.summary = summary
+        self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -207,15 +214,16 @@ class ListAutomationRunsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, user_id, status, action_type, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, user_id, status, action_type, summary, created_at, *args, **kwargs):  # noqa: E501
         """ListAutomationRunsItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            created_at (datetime):
             user_id (str):
             status (str):
             action_type (str):
+            summary ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
+            created_at (datetime):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -248,10 +256,11 @@ class ListAutomationRunsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            error_message (str, none_type): [optional]  # noqa: E501
-            duration_ms (float, none_type): [optional]  # noqa: E501
             rule_id (str, none_type): [optional]  # noqa: E501
             chain_id (str, none_type): [optional]  # noqa: E501
+            error_message (str, none_type): [optional]  # noqa: E501
+            duration_ms (float, none_type): [optional]  # noqa: E501
+            workflow_run_id (str, none_type): Set for runs of the converted workflow.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -278,10 +287,11 @@ class ListAutomationRunsItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.created_at = created_at
         self.user_id = user_id
         self.status = status
         self.action_type = action_type
+        self.summary = summary
+        self.created_at = created_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -60,9 +60,10 @@ class GetSpatialEmployeeConfigResponseDataConfig(ModelNormal):
 
     allowed_values = {
         ('brain_kind',): {
-            'IDLE': "idle",
             'RULES': "rules",
+            'IDLE': "idle",
             'AGENT': "agent",
+            'BYOK': "byok",
         },
     }
 

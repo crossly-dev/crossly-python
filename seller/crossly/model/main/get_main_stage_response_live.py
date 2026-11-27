@@ -60,8 +60,8 @@ class GetMainStageResponseLive(ModelNormal):
 
     allowed_values = {
         ('kind',): {
-            'CREATOR_MEETUP': "creator_meetup",
             'BRAND_LAUNCH': "brand_launch",
+            'CREATOR_MEETUP': "creator_meetup",
             'FESTIVAL': "festival",
             'TALK': "talk",
             'LIVE_SALE': "live_sale",

@@ -56,12 +56,12 @@ class GetWeb3BrowseResponseChains(ModelNormal):
 
     allowed_values = {
         ('key',): {
-            'SOLANA': "solana",
             'ETHEREUM': "ethereum",
             'BASE': "base",
             'POLYGON': "polygon",
             'ARBITRUM': "arbitrum",
             'OPTIMISM': "optimism",
+            'SOLANA': "solana",
         },
     }
 

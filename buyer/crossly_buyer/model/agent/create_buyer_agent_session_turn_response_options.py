@@ -94,6 +94,8 @@ class CreateBuyerAgentSessionTurnResponseOptions(ModelNormal):
             'size': (str, none_type,),  # noqa: E501
             'seller_display_name': (str, none_type,),  # noqa: E501
             'price_check': (CreateBuyerAgentSessionActResponseQuotePriceCheck,),  # noqa: E501
+            'model': (str, none_type,),  # noqa: E501
+            'shop_slug': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -116,6 +118,8 @@ class CreateBuyerAgentSessionTurnResponseOptions(ModelNormal):
         'size': 'size',  # noqa: E501
         'seller_display_name': 'sellerDisplayName',  # noqa: E501
         'price_check': 'priceCheck',  # noqa: E501
+        'model': 'model',  # noqa: E501
+        'shop_slug': 'shopSlug',  # noqa: E501
     }
 
     read_only_vars = {
@@ -175,6 +179,8 @@ class CreateBuyerAgentSessionTurnResponseOptions(ModelNormal):
             size (str, none_type): [optional]  # noqa: E501
             seller_display_name (str, none_type): [optional]  # noqa: E501
             price_check (CreateBuyerAgentSessionActResponseQuotePriceCheck): [optional]  # noqa: E501
+            model (str, none_type): The world object it stands as, and the seller's public shop room (world-picks.ts).. [optional]  # noqa: E501
+            shop_slug (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -278,6 +284,8 @@ class CreateBuyerAgentSessionTurnResponseOptions(ModelNormal):
             size (str, none_type): [optional]  # noqa: E501
             seller_display_name (str, none_type): [optional]  # noqa: E501
             price_check (CreateBuyerAgentSessionActResponseQuotePriceCheck): [optional]  # noqa: E501
+            model (str, none_type): The world object it stands as, and the seller's public shop room (world-picks.ts).. [optional]  # noqa: E501
+            shop_slug (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

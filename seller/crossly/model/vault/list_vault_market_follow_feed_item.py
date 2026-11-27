@@ -30,10 +30,12 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.vault.list_vault_market_feed_item_mark import ListVaultMarketFeedItemMark
+    from crossly.model.vault.list_vault_market_follow_feed_item_by import ListVaultMarketFollowFeedItemBy
     from crossly.model.vault.list_vault_market_follow_feed_item_exhibition import ListVaultMarketFollowFeedItemExhibition
-    globals()['ListVaultMarketFeedItemMark'] = ListVaultMarketFeedItemMark
+    from crossly.model.vault.list_vault_market_opening_item_mark import ListVaultMarketOpeningItemMark
+    globals()['ListVaultMarketFollowFeedItemBy'] = ListVaultMarketFollowFeedItemBy
     globals()['ListVaultMarketFollowFeedItemExhibition'] = ListVaultMarketFollowFeedItemExhibition
+    globals()['ListVaultMarketOpeningItemMark'] = ListVaultMarketOpeningItemMark
 
 
 class ListVaultMarketFollowFeedItem(ModelNormal):
@@ -62,8 +64,8 @@ class ListVaultMarketFollowFeedItem(ModelNormal):
 
     allowed_values = {
         ('kind',): {
-            'DEPOSIT': "deposit",
             'SALE': "sale",
+            'DEPOSIT': "deposit",
             'BUY': "buy",
             'HALL_LOAN': "hall_loan",
         },
@@ -92,8 +94,9 @@ class ListVaultMarketFollowFeedItem(ModelNormal):
             'kind': (str,),  # noqa: E501
             'verb': (str,),  # noqa: E501
             'at': (str,),  # noqa: E501
+            'by': (ListVaultMarketFollowFeedItemBy,),  # noqa: E501
             'book_key': (str,),  # noqa: E501
-            'mark': (ListVaultMarketFeedItemMark,),  # noqa: E501
+            'mark': (ListVaultMarketOpeningItemMark,),  # noqa: E501
             'buy_href': (str,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
             'label': (str, none_type,),  # noqa: E501
@@ -111,6 +114,7 @@ class ListVaultMarketFollowFeedItem(ModelNormal):
         'kind': 'kind',  # noqa: E501
         'verb': 'verb',  # noqa: E501
         'at': 'at',  # noqa: E501
+        'by': 'by',  # noqa: E501
         'book_key': 'bookKey',  # noqa: E501
         'mark': 'mark',  # noqa: E501
         'buy_href': 'buyHref',  # noqa: E501
@@ -127,7 +131,7 @@ class ListVaultMarketFollowFeedItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, kind, verb, at, book_key, mark, buy_href, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, kind, verb, at, by, book_key, mark, buy_href, *args, **kwargs):  # noqa: E501
         """ListVaultMarketFollowFeedItem - a model defined in OpenAPI
 
         Args:
@@ -135,8 +139,9 @@ class ListVaultMarketFollowFeedItem(ModelNormal):
             kind (str):
             verb (str):
             at (str):
+            by (ListVaultMarketFollowFeedItemBy):
             book_key (str):
-            mark (ListVaultMarketFeedItemMark):
+            mark (ListVaultMarketOpeningItemMark):
             buy_href (str):
 
         Keyword Args:
@@ -205,6 +210,7 @@ class ListVaultMarketFollowFeedItem(ModelNormal):
         self.kind = kind
         self.verb = verb
         self.at = at
+        self.by = by
         self.book_key = book_key
         self.mark = mark
         self.buy_href = buy_href
@@ -228,7 +234,7 @@ class ListVaultMarketFollowFeedItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, kind, verb, at, book_key, mark, buy_href, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, kind, verb, at, by, book_key, mark, buy_href, *args, **kwargs):  # noqa: E501
         """ListVaultMarketFollowFeedItem - a model defined in OpenAPI
 
         Args:
@@ -236,8 +242,9 @@ class ListVaultMarketFollowFeedItem(ModelNormal):
             kind (str):
             verb (str):
             at (str):
+            by (ListVaultMarketFollowFeedItemBy):
             book_key (str):
-            mark (ListVaultMarketFeedItemMark):
+            mark (ListVaultMarketOpeningItemMark):
             buy_href (str):
 
         Keyword Args:
@@ -304,6 +311,7 @@ class ListVaultMarketFollowFeedItem(ModelNormal):
         self.kind = kind
         self.verb = verb
         self.at = at
+        self.by = by
         self.book_key = book_key
         self.mark = mark
         self.buy_href = buy_href

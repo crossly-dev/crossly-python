@@ -60,8 +60,8 @@ class ListJobAppraisalsItem(ModelNormal):
 
     allowed_values = {
         ('rail',): {
-            'BUCKS': "bucks",
             'CBX': "cbx",
+            'BUCKS': "bucks",
         },
     }
 

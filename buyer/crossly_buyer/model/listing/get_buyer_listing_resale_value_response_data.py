@@ -78,10 +78,10 @@ class GetBuyerListingResaleValueResponseData(ModelNormal):
             'brand': (str,),  # noqa: E501
             'category': (str,),  # noqa: E501
             'median_cents': (float,),  # noqa: E501
-            'buyback_days': (float,),  # noqa: E501
             'comps': (float,),  # noqa: E501
-            'buyback_cents': (float, none_type,),  # noqa: E501
+            'buyback_days': (float,),  # noqa: E501
             'keeps_pct': (float, none_type,),  # noqa: E501
+            'buyback_cents': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -93,10 +93,10 @@ class GetBuyerListingResaleValueResponseData(ModelNormal):
         'brand': 'brand',  # noqa: E501
         'category': 'category',  # noqa: E501
         'median_cents': 'medianCents',  # noqa: E501
-        'buyback_days': 'buybackDays',  # noqa: E501
         'comps': 'comps',  # noqa: E501
-        'buyback_cents': 'buybackCents',  # noqa: E501
+        'buyback_days': 'buybackDays',  # noqa: E501
         'keeps_pct': 'keepsPct',  # noqa: E501
+        'buyback_cents': 'buybackCents',  # noqa: E501
     }
 
     read_only_vars = {
@@ -106,15 +106,15 @@ class GetBuyerListingResaleValueResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, brand, category, median_cents, buyback_days, comps, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, brand, category, median_cents, comps, buyback_days, *args, **kwargs):  # noqa: E501
         """GetBuyerListingResaleValueResponseData - a model defined in OpenAPI
 
         Args:
             brand (str):
             category (str):
             median_cents (float):
-            buyback_days (float):
             comps (float):
+            buyback_days (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -147,8 +147,8 @@ class GetBuyerListingResaleValueResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            buyback_cents (float, none_type): [optional]  # noqa: E501
             keeps_pct (float, none_type): [optional]  # noqa: E501
+            buyback_cents (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -179,8 +179,8 @@ class GetBuyerListingResaleValueResponseData(ModelNormal):
         self.brand = brand
         self.category = category
         self.median_cents = median_cents
-        self.buyback_days = buyback_days
         self.comps = comps
+        self.buyback_days = buyback_days
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -201,15 +201,15 @@ class GetBuyerListingResaleValueResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, brand, category, median_cents, buyback_days, comps, *args, **kwargs):  # noqa: E501
+    def __init__(self, brand, category, median_cents, comps, buyback_days, *args, **kwargs):  # noqa: E501
         """GetBuyerListingResaleValueResponseData - a model defined in OpenAPI
 
         Args:
             brand (str):
             category (str):
             median_cents (float):
-            buyback_days (float):
             comps (float):
+            buyback_days (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -242,8 +242,8 @@ class GetBuyerListingResaleValueResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            buyback_cents (float, none_type): [optional]  # noqa: E501
             keeps_pct (float, none_type): [optional]  # noqa: E501
+            buyback_cents (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -272,8 +272,8 @@ class GetBuyerListingResaleValueResponseData(ModelNormal):
         self.brand = brand
         self.category = category
         self.median_cents = median_cents
-        self.buyback_days = buyback_days
         self.comps = comps
+        self.buyback_days = buyback_days
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

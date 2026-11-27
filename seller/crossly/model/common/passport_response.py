@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.common.list_passports_item import ListPassportsItem
-    globals()['ListPassportsItem'] = ListPassportsItem
+    from crossly.model.common.passport_response_data import PassportResponseData
+    globals()['PassportResponseData'] = PassportResponseData
 
 
 class PassportResponse(ModelNormal):
@@ -80,7 +80,7 @@ class PassportResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'data': (ListPassportsItem,),  # noqa: E501
+            'data': (PassportResponseData,),  # noqa: E501
         }
 
     @cached_property
@@ -103,7 +103,7 @@ class PassportResponse(ModelNormal):
         """PassportResponse - a model defined in OpenAPI
 
         Args:
-            data (ListPassportsItem):
+            data (PassportResponseData):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -188,7 +188,7 @@ class PassportResponse(ModelNormal):
         """PassportResponse - a model defined in OpenAPI
 
         Args:
-            data (ListPassportsItem):
+            data (PassportResponseData):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

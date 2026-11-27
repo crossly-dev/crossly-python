@@ -21,10 +21,12 @@ from crossly.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
+from crossly.model.common.create_geo_location_check_response import CreateGeoLocationCheckResponse
+from crossly.model.policy.create_policy_preset_response import CreatePolicyPresetResponse
+from crossly.model.policy.delete_policy_preset_response import DeletePolicyPresetResponse
 from crossly.model.common.error import Error
-from crossly.model.policy.list_policy_presets_item import ListPolicyPresetsItem
+from crossly.model.policy.get_policy_response import GetPolicyResponse
 from crossly.model.policy.list_policy_presets_response import ListPolicyPresetsResponse
-from crossly.model.common.ok_response import OkResponse
 
 
 class PolicyPresetsApi(object):
@@ -38,9 +40,53 @@ class PolicyPresetsApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
+        self.create_geo_location_check_endpoint = _Endpoint(
+            settings={
+                'response_type': (CreateGeoLocationCheckResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/geo/location-check',
+                'operation_id': 'create_geo_location_check',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.create_policy_preset_endpoint = _Endpoint(
             settings={
-                'response_type': (ListPolicyPresetsItem,),
+                'response_type': (CreatePolicyPresetResponse,),
                 'auth': [
                     'PersonalAccessToken'
                 ],
@@ -84,7 +130,7 @@ class PolicyPresetsApi(object):
         )
         self.delete_policy_preset_endpoint = _Endpoint(
             settings={
-                'response_type': (OkResponse,),
+                'response_type': (DeletePolicyPresetResponse,),
                 'auth': [
                     'PersonalAccessToken'
                 ],
@@ -121,6 +167,50 @@ class PolicyPresetsApi(object):
                 },
                 'location_map': {
                     'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_policy_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetPolicyResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/policies',
+                'operation_id': 'get_policy',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
                 },
                 'collection_format_map': {
                 }
@@ -191,7 +281,7 @@ class PolicyPresetsApi(object):
         )
         self.update_policy_preset_endpoint = _Endpoint(
             settings={
-                'response_type': (ListPolicyPresetsItem,),
+                'response_type': (CreatePolicyPresetResponse,),
                 'auth': [
                     'PersonalAccessToken'
                 ],
@@ -241,6 +331,79 @@ class PolicyPresetsApi(object):
             api_client=api_client
         )
 
+    def create_geo_location_check(
+        self,
+        **kwargs
+    ):
+        """Check whether a shipping policy ships to an address.  # noqa: E501
+
+        Pass an unsaved `policy` draft or a `presetId` (neither = your default shipping policy), an `address`, and optionally `consolidateVia` (a ship-together hub). Returns `ships`, and when it does not: `reason`, `stage` (buyer | hub), `message` and the deciding `rule`. `partial` means a fuller address (state, ZIP) could change the answer. A draft that is not a valid shipping policy is a 422; a presetId that is not yours is a 404.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_geo_location_check(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CreateGeoLocationCheckResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.create_geo_location_check_endpoint.call_with_http_info(**kwargs)
+
     def create_policy_preset(
         self,
         **kwargs
@@ -283,7 +446,7 @@ class PolicyPresetsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            ListPolicyPresetsItem
+            CreatePolicyPresetResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -318,7 +481,7 @@ class PolicyPresetsApi(object):
         id,
         **kwargs
     ):
-        """Delete a policy preset.  # noqa: E501
+        """Delete a policy preset. Listings that used it switch to the default preset of its kind.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -358,7 +521,7 @@ class PolicyPresetsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            OkResponse
+            DeletePolicyPresetResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -390,11 +553,84 @@ class PolicyPresetsApi(object):
             id
         return self.delete_policy_preset_endpoint.call_with_http_info(**kwargs)
 
+    def get_policy(
+        self,
+        **kwargs
+    ):
+        """The seller's shipping / return / payment policy presets by kind, with each kind's default.  # noqa: E501
+
+        Pass a preset `id` as `policies.shippingPresetId` / `returnPresetId` / `paymentPresetId` on POST or PATCH /v1/listings (null = the marketplace's own default). A kind you omit uses `defaultPresetId`.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_policy(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetPolicyResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.get_policy_endpoint.call_with_http_info(**kwargs)
+
     def list_policy_presets(
         self,
         **kwargs
     ):
-        """List the seller's return / shipping / payment policy presets.  # noqa: E501
+        """List the seller's return / shipping / payment policy presets. meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -508,7 +744,7 @@ class PolicyPresetsApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            ListPolicyPresetsItem
+            CreatePolicyPresetResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """

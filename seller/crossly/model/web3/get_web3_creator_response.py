@@ -30,15 +30,15 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.web3.get_web3_creator_response_daily import GetWeb3CreatorResponseDaily
+    from crossly.model.creator.get_creator_collection_response_data_dashboard_daily import GetCreatorCollectionResponseDataDashboardDaily
+    from crossly.model.creator.get_creator_collection_response_data_dashboard_mint import GetCreatorCollectionResponseDataDashboardMint
+    from crossly.model.creator.get_creator_collection_response_data_dashboard_recent import GetCreatorCollectionResponseDataDashboardRecent
     from crossly.model.web3.get_web3_creator_response_holders import GetWeb3CreatorResponseHolders
-    from crossly.model.web3.get_web3_creator_response_mint import GetWeb3CreatorResponseMint
-    from crossly.model.web3.get_web3_creator_response_recent import GetWeb3CreatorResponseRecent
     from crossly.model.web3.get_web3_creator_response_sales import GetWeb3CreatorResponseSales
-    globals()['GetWeb3CreatorResponseDaily'] = GetWeb3CreatorResponseDaily
+    globals()['GetCreatorCollectionResponseDataDashboardDaily'] = GetCreatorCollectionResponseDataDashboardDaily
+    globals()['GetCreatorCollectionResponseDataDashboardMint'] = GetCreatorCollectionResponseDataDashboardMint
+    globals()['GetCreatorCollectionResponseDataDashboardRecent'] = GetCreatorCollectionResponseDataDashboardRecent
     globals()['GetWeb3CreatorResponseHolders'] = GetWeb3CreatorResponseHolders
-    globals()['GetWeb3CreatorResponseMint'] = GetWeb3CreatorResponseMint
-    globals()['GetWeb3CreatorResponseRecent'] = GetWeb3CreatorResponseRecent
     globals()['GetWeb3CreatorResponseSales'] = GetWeb3CreatorResponseSales
 
 
@@ -93,12 +93,12 @@ class GetWeb3CreatorResponse(ModelNormal):
             'currency': (str,),  # noqa: E501
             'royalty_estimate_wei': (str,),  # noqa: E501
             'sales': (GetWeb3CreatorResponseSales,),  # noqa: E501
-            'daily': ([GetWeb3CreatorResponseDaily],),  # noqa: E501
-            'recent': ([GetWeb3CreatorResponseRecent],),  # noqa: E501
+            'daily': ([GetCreatorCollectionResponseDataDashboardDaily],),  # noqa: E501
+            'recent': ([GetCreatorCollectionResponseDataDashboardRecent],),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
             'royalty_bps': (float, none_type,),  # noqa: E501
             'holders': (GetWeb3CreatorResponseHolders,),  # noqa: E501
-            'mint': (GetWeb3CreatorResponseMint,),  # noqa: E501
+            'mint': (GetCreatorCollectionResponseDataDashboardMint,),  # noqa: E501
         }
 
     @cached_property
@@ -136,8 +136,8 @@ class GetWeb3CreatorResponse(ModelNormal):
             currency (str):
             royalty_estimate_wei (str):
             sales (GetWeb3CreatorResponseSales):
-            daily ([GetWeb3CreatorResponseDaily]):
-            recent ([GetWeb3CreatorResponseRecent]):
+            daily ([GetCreatorCollectionResponseDataDashboardDaily]):
+            recent ([GetCreatorCollectionResponseDataDashboardRecent]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -173,7 +173,7 @@ class GetWeb3CreatorResponse(ModelNormal):
             name (str, none_type): [optional]  # noqa: E501
             royalty_bps (float, none_type): [optional]  # noqa: E501
             holders (GetWeb3CreatorResponseHolders): [optional]  # noqa: E501
-            mint (GetWeb3CreatorResponseMint): [optional]  # noqa: E501
+            mint (GetCreatorCollectionResponseDataDashboardMint): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -237,8 +237,8 @@ class GetWeb3CreatorResponse(ModelNormal):
             currency (str):
             royalty_estimate_wei (str):
             sales (GetWeb3CreatorResponseSales):
-            daily ([GetWeb3CreatorResponseDaily]):
-            recent ([GetWeb3CreatorResponseRecent]):
+            daily ([GetCreatorCollectionResponseDataDashboardDaily]):
+            recent ([GetCreatorCollectionResponseDataDashboardRecent]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -274,7 +274,7 @@ class GetWeb3CreatorResponse(ModelNormal):
             name (str, none_type): [optional]  # noqa: E501
             royalty_bps (float, none_type): [optional]  # noqa: E501
             holders (GetWeb3CreatorResponseHolders): [optional]  # noqa: E501
-            mint (GetWeb3CreatorResponseMint): [optional]  # noqa: E501
+            mint (GetCreatorCollectionResponseDataDashboardMint): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

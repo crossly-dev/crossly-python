@@ -81,9 +81,11 @@ class ListMeTemplatesItem(ModelNormal):
             'updated_at': (datetime,),  # noqa: E501
             'user_id': (str,),  # noqa: E501
             'is_default': (bool,),  # noqa: E501
-            'scope': (str,),  # noqa: E501
             'sort_order': (float,),  # noqa: E501
+            'scope': (str,),  # noqa: E501
             'brand': (str, none_type,),  # noqa: E501
+            'description': (str, none_type,),  # noqa: E501
+            'notes': (str, none_type,),  # noqa: E501
             'condition': (str, none_type,),  # noqa: E501
             'size': (str, none_type,),  # noqa: E501
             'material': (str, none_type,),  # noqa: E501
@@ -95,14 +97,12 @@ class ListMeTemplatesItem(ModelNormal):
             'size_system': (str, none_type,),  # noqa: E501
             'color': (str, none_type,),  # noqa: E501
             'tags': ([str], none_type,),  # noqa: E501
-            'notes': (str, none_type,),  # noqa: E501
             'weight_oz': (float, none_type,),  # noqa: E501
-            'description': (str, none_type,),  # noqa: E501
             'title': (str, none_type,),  # noqa: E501
-            'share_token': (str, none_type,),  # noqa: E501
             'description_variants': ([str], none_type,),  # noqa: E501
             'title_variants': ([str], none_type,),  # noqa: E501
             'default_for_category': (str, none_type,),  # noqa: E501
+            'share_token': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -117,9 +117,11 @@ class ListMeTemplatesItem(ModelNormal):
         'updated_at': 'updatedAt',  # noqa: E501
         'user_id': 'userId',  # noqa: E501
         'is_default': 'isDefault',  # noqa: E501
-        'scope': 'scope',  # noqa: E501
         'sort_order': 'sortOrder',  # noqa: E501
+        'scope': 'scope',  # noqa: E501
         'brand': 'brand',  # noqa: E501
+        'description': 'description',  # noqa: E501
+        'notes': 'notes',  # noqa: E501
         'condition': 'condition',  # noqa: E501
         'size': 'size',  # noqa: E501
         'material': 'material',  # noqa: E501
@@ -131,14 +133,12 @@ class ListMeTemplatesItem(ModelNormal):
         'size_system': 'sizeSystem',  # noqa: E501
         'color': 'color',  # noqa: E501
         'tags': 'tags',  # noqa: E501
-        'notes': 'notes',  # noqa: E501
         'weight_oz': 'weightOz',  # noqa: E501
-        'description': 'description',  # noqa: E501
         'title': 'title',  # noqa: E501
-        'share_token': 'shareToken',  # noqa: E501
         'description_variants': 'descriptionVariants',  # noqa: E501
         'title_variants': 'titleVariants',  # noqa: E501
         'default_for_category': 'defaultForCategory',  # noqa: E501
+        'share_token': 'shareToken',  # noqa: E501
     }
 
     read_only_vars = {
@@ -148,7 +148,7 @@ class ListMeTemplatesItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, created_at, updated_at, user_id, is_default, scope, sort_order, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, name, created_at, updated_at, user_id, is_default, sort_order, scope, *args, **kwargs):  # noqa: E501
         """ListMeTemplatesItem - a model defined in OpenAPI
 
         Args:
@@ -158,8 +158,8 @@ class ListMeTemplatesItem(ModelNormal):
             updated_at (datetime):
             user_id (str):
             is_default (bool):
-            scope (str):
             sort_order (float):
+            scope (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -193,6 +193,8 @@ class ListMeTemplatesItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             brand (str, none_type): [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
+            notes (str, none_type): [optional]  # noqa: E501
             condition (str, none_type): [optional]  # noqa: E501
             size (str, none_type): [optional]  # noqa: E501
             material (str, none_type): [optional]  # noqa: E501
@@ -204,14 +206,12 @@ class ListMeTemplatesItem(ModelNormal):
             size_system (str, none_type): [optional]  # noqa: E501
             color (str, none_type): [optional]  # noqa: E501
             tags ([str], none_type): [optional]  # noqa: E501
-            notes (str, none_type): [optional]  # noqa: E501
             weight_oz (float, none_type): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
             title (str, none_type): [optional]  # noqa: E501
-            share_token (str, none_type): [optional]  # noqa: E501
             description_variants ([str], none_type): [optional]  # noqa: E501
             title_variants ([str], none_type): [optional]  # noqa: E501
             default_for_category (str, none_type): [optional]  # noqa: E501
+            share_token (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -245,8 +245,8 @@ class ListMeTemplatesItem(ModelNormal):
         self.updated_at = updated_at
         self.user_id = user_id
         self.is_default = is_default
-        self.scope = scope
         self.sort_order = sort_order
+        self.scope = scope
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -267,7 +267,7 @@ class ListMeTemplatesItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, created_at, updated_at, user_id, is_default, scope, sort_order, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, name, created_at, updated_at, user_id, is_default, sort_order, scope, *args, **kwargs):  # noqa: E501
         """ListMeTemplatesItem - a model defined in OpenAPI
 
         Args:
@@ -277,8 +277,8 @@ class ListMeTemplatesItem(ModelNormal):
             updated_at (datetime):
             user_id (str):
             is_default (bool):
-            scope (str):
             sort_order (float):
+            scope (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -312,6 +312,8 @@ class ListMeTemplatesItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             brand (str, none_type): [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
+            notes (str, none_type): [optional]  # noqa: E501
             condition (str, none_type): [optional]  # noqa: E501
             size (str, none_type): [optional]  # noqa: E501
             material (str, none_type): [optional]  # noqa: E501
@@ -323,14 +325,12 @@ class ListMeTemplatesItem(ModelNormal):
             size_system (str, none_type): [optional]  # noqa: E501
             color (str, none_type): [optional]  # noqa: E501
             tags ([str], none_type): [optional]  # noqa: E501
-            notes (str, none_type): [optional]  # noqa: E501
             weight_oz (float, none_type): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
             title (str, none_type): [optional]  # noqa: E501
-            share_token (str, none_type): [optional]  # noqa: E501
             description_variants ([str], none_type): [optional]  # noqa: E501
             title_variants ([str], none_type): [optional]  # noqa: E501
             default_for_category (str, none_type): [optional]  # noqa: E501
+            share_token (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -362,8 +362,8 @@ class ListMeTemplatesItem(ModelNormal):
         self.updated_at = updated_at
         self.user_id = user_id
         self.is_default = is_default
-        self.scope = scope
         self.sort_order = sort_order
+        self.scope = scope
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

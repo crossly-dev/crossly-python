@@ -88,6 +88,8 @@ class GetAnalyticBookkeepingResponse(ModelNormal):
             'monthly_pl': ([GetAnalyticBookkeepingResponseMonthlyPL],),  # noqa: E501
             'annual_totals': (GetAnalyticBookkeepingResponseAnnualTotals,),  # noqa: E501
             'platform_breakdown': ([GetAnalyticBookkeepingResponsePlatformBreakdown],),  # noqa: E501
+            'pending_details_count': (float,),  # noqa: E501
+            'tz': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -100,6 +102,8 @@ class GetAnalyticBookkeepingResponse(ModelNormal):
         'monthly_pl': 'monthlyPL',  # noqa: E501
         'annual_totals': 'annualTotals',  # noqa: E501
         'platform_breakdown': 'platformBreakdown',  # noqa: E501
+        'pending_details_count': 'pendingDetailsCount',  # noqa: E501
+        'tz': 'tz',  # noqa: E501
     }
 
     read_only_vars = {
@@ -109,7 +113,7 @@ class GetAnalyticBookkeepingResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, year, monthly_pl, annual_totals, platform_breakdown, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, year, monthly_pl, annual_totals, platform_breakdown, pending_details_count, tz, *args, **kwargs):  # noqa: E501
         """GetAnalyticBookkeepingResponse - a model defined in OpenAPI
 
         Args:
@@ -117,6 +121,8 @@ class GetAnalyticBookkeepingResponse(ModelNormal):
             monthly_pl ([GetAnalyticBookkeepingResponseMonthlyPL]):
             annual_totals (GetAnalyticBookkeepingResponseAnnualTotals):
             platform_breakdown ([GetAnalyticBookkeepingResponsePlatformBreakdown]):
+            pending_details_count (float): Sales of the year whose price and buyer are not known yet: in no line above. \"N sales pending details\".
+            tz (str): The books timezone the year was cut in.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -180,6 +186,8 @@ class GetAnalyticBookkeepingResponse(ModelNormal):
         self.monthly_pl = monthly_pl
         self.annual_totals = annual_totals
         self.platform_breakdown = platform_breakdown
+        self.pending_details_count = pending_details_count
+        self.tz = tz
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -200,7 +208,7 @@ class GetAnalyticBookkeepingResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, year, monthly_pl, annual_totals, platform_breakdown, *args, **kwargs):  # noqa: E501
+    def __init__(self, year, monthly_pl, annual_totals, platform_breakdown, pending_details_count, tz, *args, **kwargs):  # noqa: E501
         """GetAnalyticBookkeepingResponse - a model defined in OpenAPI
 
         Args:
@@ -208,6 +216,8 @@ class GetAnalyticBookkeepingResponse(ModelNormal):
             monthly_pl ([GetAnalyticBookkeepingResponseMonthlyPL]):
             annual_totals (GetAnalyticBookkeepingResponseAnnualTotals):
             platform_breakdown ([GetAnalyticBookkeepingResponsePlatformBreakdown]):
+            pending_details_count (float): Sales of the year whose price and buyer are not known yet: in no line above. \"N sales pending details\".
+            tz (str): The books timezone the year was cut in.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -269,6 +279,8 @@ class GetAnalyticBookkeepingResponse(ModelNormal):
         self.monthly_pl = monthly_pl
         self.annual_totals = annual_totals
         self.platform_breakdown = platform_breakdown
+        self.pending_details_count = pending_details_count
+        self.tz = tz
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

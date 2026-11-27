@@ -56,9 +56,9 @@ class UpdateSpatialSceneShopLayoutResponseDataShell(ModelNormal):
 
     allowed_values = {
         ('size',): {
+            'AUTO': "auto",
             'STANDARD': "standard",
             'LARGE': "large",
-            'AUTO': "auto",
             'COMPACT': "compact",
             'FLAGSHIP': "flagship",
         },

@@ -72,11 +72,12 @@ class CreateProductionDesignSpecResponsePrefsSpec(ModelNormal):
             'SLIDES': "slides",
             'FIGURE_RESIN': "figure_resin",
             'FIGURE_VINYL': "figure_vinyl",
+            'TRADING_CARDS': "trading_cards",
         },
         ('material_tier',): {
             'STANDARD': "standard",
-            'LUXURY': "luxury",
             'PREMIUM': "premium",
+            'LUXURY': "luxury",
         },
         ('complexity',): {
             'SIMPLE': "simple",

@@ -64,8 +64,8 @@ class GetWeb3ProfileResponse(ModelNormal):
 
     allowed_values = {
         ('family',): {
-            'EVM': "evm",
             'SOLANA': "solana",
+            'EVM': "evm",
         },
     }
 

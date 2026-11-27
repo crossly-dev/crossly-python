@@ -32,9 +32,11 @@ from crossly.exceptions import ApiAttributeError
 def lazy_import():
     from crossly.model.web3.get_web3_launch_tool_response_allowlist import GetWeb3LaunchToolResponseAllowlist
     from crossly.model.web3.get_web3_launch_tool_response_art import GetWeb3LaunchToolResponseArt
+    from crossly.model.web3.get_web3_launch_tool_response_royalties import GetWeb3LaunchToolResponseRoyalties
     from crossly.model.web3.get_web3_launch_tool_response_supply import GetWeb3LaunchToolResponseSupply
     globals()['GetWeb3LaunchToolResponseAllowlist'] = GetWeb3LaunchToolResponseAllowlist
     globals()['GetWeb3LaunchToolResponseArt'] = GetWeb3LaunchToolResponseArt
+    globals()['GetWeb3LaunchToolResponseRoyalties'] = GetWeb3LaunchToolResponseRoyalties
     globals()['GetWeb3LaunchToolResponseSupply'] = GetWeb3LaunchToolResponseSupply
 
 
@@ -84,6 +86,7 @@ class GetWeb3LaunchToolResponse(ModelNormal):
         """
         lazy_import()
         return {
+            'royalties': (GetWeb3LaunchToolResponseRoyalties,),  # noqa: E501
             'allowlist': (GetWeb3LaunchToolResponseAllowlist,),  # noqa: E501
             'art': (GetWeb3LaunchToolResponseArt,),  # noqa: E501
             'supply': (GetWeb3LaunchToolResponseSupply,),  # noqa: E501
@@ -95,6 +98,7 @@ class GetWeb3LaunchToolResponse(ModelNormal):
 
 
     attribute_map = {
+        'royalties': 'royalties',  # noqa: E501
         'allowlist': 'allowlist',  # noqa: E501
         'art': 'art',  # noqa: E501
         'supply': 'supply',  # noqa: E501
@@ -107,10 +111,11 @@ class GetWeb3LaunchToolResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, allowlist, art, supply, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, royalties, allowlist, art, supply, *args, **kwargs):  # noqa: E501
         """GetWeb3LaunchToolResponse - a model defined in OpenAPI
 
         Args:
+            royalties (GetWeb3LaunchToolResponseRoyalties):
             allowlist (GetWeb3LaunchToolResponseAllowlist):
             art (GetWeb3LaunchToolResponseArt):
             supply (GetWeb3LaunchToolResponseSupply):
@@ -173,6 +178,7 @@ class GetWeb3LaunchToolResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.royalties = royalties
         self.allowlist = allowlist
         self.art = art
         self.supply = supply
@@ -196,10 +202,11 @@ class GetWeb3LaunchToolResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, allowlist, art, supply, *args, **kwargs):  # noqa: E501
+    def __init__(self, royalties, allowlist, art, supply, *args, **kwargs):  # noqa: E501
         """GetWeb3LaunchToolResponse - a model defined in OpenAPI
 
         Args:
+            royalties (GetWeb3LaunchToolResponseRoyalties):
             allowlist (GetWeb3LaunchToolResponseAllowlist):
             art (GetWeb3LaunchToolResponseArt):
             supply (GetWeb3LaunchToolResponseSupply):
@@ -260,6 +267,7 @@ class GetWeb3LaunchToolResponse(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.royalties = royalties
         self.allowlist = allowlist
         self.art = art
         self.supply = supply

@@ -56,8 +56,8 @@ class GetSpatialPartyResponsePartyMembers(ModelNormal):
 
     allowed_values = {
         ('role',): {
-            'MEMBER': "member",
             'LEADER': "leader",
+            'MEMBER': "member",
         },
     }
 

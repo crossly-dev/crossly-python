@@ -59,6 +59,11 @@ class GetAnalyticTimeseryResponse(ModelNormal):
     """
 
     allowed_values = {
+        ('granularity',): {
+            'DAY': "day",
+            'WEEK': "week",
+            'MONTH': "month",
+        },
     }
 
     validations = {
@@ -81,6 +86,7 @@ class GetAnalyticTimeseryResponse(ModelNormal):
         lazy_import()
         return {
             'days': (float,),  # noqa: E501
+            'granularity': (str,),  # noqa: E501
             'series': ([GetAnalyticTimeseryResponseSeries],),  # noqa: E501
         }
 
@@ -91,6 +97,7 @@ class GetAnalyticTimeseryResponse(ModelNormal):
 
     attribute_map = {
         'days': 'days',  # noqa: E501
+        'granularity': 'granularity',  # noqa: E501
         'series': 'series',  # noqa: E501
     }
 
@@ -101,11 +108,12 @@ class GetAnalyticTimeseryResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, days, series, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, days, granularity, series, *args, **kwargs):  # noqa: E501
         """GetAnalyticTimeseryResponse - a model defined in OpenAPI
 
         Args:
             days (float):
+            granularity (str):
             series ([GetAnalyticTimeseryResponseSeries]):
 
         Keyword Args:
@@ -167,6 +175,7 @@ class GetAnalyticTimeseryResponse(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.days = days
+        self.granularity = granularity
         self.series = series
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -188,11 +197,12 @@ class GetAnalyticTimeseryResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, days, series, *args, **kwargs):  # noqa: E501
+    def __init__(self, days, granularity, series, *args, **kwargs):  # noqa: E501
         """GetAnalyticTimeseryResponse - a model defined in OpenAPI
 
         Args:
             days (float):
+            granularity (str):
             series ([GetAnalyticTimeseryResponseSeries]):
 
         Keyword Args:
@@ -252,6 +262,7 @@ class GetAnalyticTimeseryResponse(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.days = days
+        self.granularity = granularity
         self.series = series
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

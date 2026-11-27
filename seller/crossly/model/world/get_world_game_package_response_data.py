@@ -87,8 +87,10 @@ class GetWorldGamePackageResponseData(ModelNormal):
             'name': (str,),  # noqa: E501
             'design_id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
+            'updated_at': (datetime,),  # noqa: E501
             'versions': ([GetWorldGamePackageResponseDataVersions],),  # noqa: E501
             'stats': (GetWorldGamePackageResponseDataStats,),  # noqa: E501
+            'unpublished_at': (datetime, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -102,8 +104,10 @@ class GetWorldGamePackageResponseData(ModelNormal):
         'name': 'name',  # noqa: E501
         'design_id': 'designId',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
+        'updated_at': 'updatedAt',  # noqa: E501
         'versions': 'versions',  # noqa: E501
         'stats': 'stats',  # noqa: E501
+        'unpublished_at': 'unpublishedAt',  # noqa: E501
     }
 
     read_only_vars = {
@@ -113,7 +117,7 @@ class GetWorldGamePackageResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, slug, name, design_id, created_at, versions, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, slug, name, design_id, created_at, updated_at, versions, *args, **kwargs):  # noqa: E501
         """GetWorldGamePackageResponseData - a model defined in OpenAPI
 
         Args:
@@ -122,6 +126,7 @@ class GetWorldGamePackageResponseData(ModelNormal):
             name (str):
             design_id (str):
             created_at (datetime):
+            updated_at (datetime):
             versions ([GetWorldGamePackageResponseDataVersions]):
 
         Keyword Args:
@@ -156,6 +161,7 @@ class GetWorldGamePackageResponseData(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             stats (GetWorldGamePackageResponseDataStats): [optional]  # noqa: E501
+            unpublished_at (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -188,6 +194,7 @@ class GetWorldGamePackageResponseData(ModelNormal):
         self.name = name
         self.design_id = design_id
         self.created_at = created_at
+        self.updated_at = updated_at
         self.versions = versions
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -209,7 +216,7 @@ class GetWorldGamePackageResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, slug, name, design_id, created_at, versions, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, slug, name, design_id, created_at, updated_at, versions, *args, **kwargs):  # noqa: E501
         """GetWorldGamePackageResponseData - a model defined in OpenAPI
 
         Args:
@@ -218,6 +225,7 @@ class GetWorldGamePackageResponseData(ModelNormal):
             name (str):
             design_id (str):
             created_at (datetime):
+            updated_at (datetime):
             versions ([GetWorldGamePackageResponseDataVersions]):
 
         Keyword Args:
@@ -252,6 +260,7 @@ class GetWorldGamePackageResponseData(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             stats (GetWorldGamePackageResponseDataStats): [optional]  # noqa: E501
+            unpublished_at (datetime, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -282,6 +291,7 @@ class GetWorldGamePackageResponseData(ModelNormal):
         self.name = name
         self.design_id = design_id
         self.created_at = created_at
+        self.updated_at = updated_at
         self.versions = versions
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

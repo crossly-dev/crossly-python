@@ -53,22 +53,22 @@ class GetSpatialSpaceResponseDataSpacesFacetsItem(ModelSimple):
     allowed_values = {
         ('value',): {
             'brand': "brand",
+            'label': "label",
+            'status': "status",
+            'age': "age",
             'condition': "condition",
             'size': "size",
-            'status': "status",
-            'label': "label",
             'title': "title",
             'valueOption': "value",
+            'set': "set",
+            'team': "team",
             'year': "year",
             'grade': "grade",
             'game': "game",
-            'set': "set",
             'franchise': "franchise",
-            'team': "team",
             'era': "era",
             'genre': "genre",
             'colour': "colour",
-            'age': "age",
             'exhibitor': "exhibitor",
         },
     }
@@ -121,10 +121,10 @@ class GetSpatialSpaceResponseDataSpacesFacetsItem(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str):, must be one of ["brand", "condition", "size", "status", "label", "title", "value", "year", "grade", "game", "set", "franchise", "team", "era", "genre", "colour", "age", "exhibitor", ]  # noqa: E501
+            args[0] (str):, must be one of ["brand", "label", "status", "age", "condition", "size", "title", "value", "set", "team", "year", "grade", "game", "franchise", "era", "genre", "colour", "exhibitor", ]  # noqa: E501
 
         Keyword Args:
-            value (str):, must be one of ["brand", "condition", "size", "status", "label", "title", "value", "year", "grade", "game", "set", "franchise", "team", "era", "genre", "colour", "age", "exhibitor", ]  # noqa: E501
+            value (str):, must be one of ["brand", "label", "status", "age", "condition", "size", "title", "value", "set", "team", "year", "grade", "game", "franchise", "era", "genre", "colour", "exhibitor", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.
@@ -211,10 +211,10 @@ class GetSpatialSpaceResponseDataSpacesFacetsItem(ModelSimple):
         Note that value can be passed either in args or in kwargs, but not in both.
 
         Args:
-            args[0] (str):, must be one of ["brand", "condition", "size", "status", "label", "title", "value", "year", "grade", "game", "set", "franchise", "team", "era", "genre", "colour", "age", "exhibitor", ]  # noqa: E501
+            args[0] (str):, must be one of ["brand", "label", "status", "age", "condition", "size", "title", "value", "set", "team", "year", "grade", "game", "franchise", "era", "genre", "colour", "exhibitor", ]  # noqa: E501
 
         Keyword Args:
-            value (str):, must be one of ["brand", "condition", "size", "status", "label", "title", "value", "year", "grade", "game", "set", "franchise", "team", "era", "genre", "colour", "age", "exhibitor", ]  # noqa: E501
+            value (str):, must be one of ["brand", "label", "status", "age", "condition", "size", "title", "value", "set", "team", "year", "grade", "game", "franchise", "era", "genre", "colour", "exhibitor", ]  # noqa: E501
             _check_type (bool): if True, values for parameters in openapi_types
                                 will be type checked and a TypeError will be
                                 raised if the wrong type is input.

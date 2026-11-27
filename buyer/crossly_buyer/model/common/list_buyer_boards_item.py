@@ -76,11 +76,11 @@ class ListBuyerBoardsItem(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'updated_at': (str,),  # noqa: E501
-            'is_public': (bool,),  # noqa: E501
-            'item_count': (float,),  # noqa: E501
             'title': (str,),  # noqa: E501
+            'is_public': (bool,),  # noqa: E501
             'share_token': (str,),  # noqa: E501
+            'item_count': (float,),  # noqa: E501
+            'updated_at': (str,),  # noqa: E501
             'cover_url': (str, none_type,),  # noqa: E501
         }
 
@@ -91,11 +91,11 @@ class ListBuyerBoardsItem(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'updated_at': 'updatedAt',  # noqa: E501
-        'is_public': 'isPublic',  # noqa: E501
-        'item_count': 'itemCount',  # noqa: E501
         'title': 'title',  # noqa: E501
+        'is_public': 'isPublic',  # noqa: E501
         'share_token': 'shareToken',  # noqa: E501
+        'item_count': 'itemCount',  # noqa: E501
+        'updated_at': 'updatedAt',  # noqa: E501
         'cover_url': 'coverUrl',  # noqa: E501
     }
 
@@ -106,16 +106,16 @@ class ListBuyerBoardsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, updated_at, is_public, item_count, title, share_token, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, title, is_public, share_token, item_count, updated_at, *args, **kwargs):  # noqa: E501
         """ListBuyerBoardsItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            updated_at (str):
-            is_public (bool):
-            item_count (float):
             title (str):
+            is_public (bool):
             share_token (str):
+            item_count (float):
+            updated_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -177,11 +177,11 @@ class ListBuyerBoardsItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.updated_at = updated_at
-        self.is_public = is_public
-        self.item_count = item_count
         self.title = title
+        self.is_public = is_public
         self.share_token = share_token
+        self.item_count = item_count
+        self.updated_at = updated_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -202,16 +202,16 @@ class ListBuyerBoardsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, updated_at, is_public, item_count, title, share_token, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, title, is_public, share_token, item_count, updated_at, *args, **kwargs):  # noqa: E501
         """ListBuyerBoardsItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            updated_at (str):
-            is_public (bool):
-            item_count (float):
             title (str):
+            is_public (bool):
             share_token (str):
+            item_count (float):
+            updated_at (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -271,11 +271,11 @@ class ListBuyerBoardsItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.updated_at = updated_at
-        self.is_public = is_public
-        self.item_count = item_count
         self.title = title
+        self.is_public = is_public
         self.share_token = share_token
+        self.item_count = item_count
+        self.updated_at = updated_at
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

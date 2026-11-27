@@ -56,8 +56,8 @@ class CreateWeb3SolanaOfferConfirmResponse(ModelNormal):
 
     allowed_values = {
         ('status',): {
-            'FILLED': "filled",
             'CANCELLED': "cancelled",
+            'FILLED': "filled",
         },
     }
 

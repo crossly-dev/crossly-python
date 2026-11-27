@@ -57,8 +57,8 @@ class CreateVaultMarketEntityKybResponse(ModelNormal):
     allowed_values = {
         ('kyb_status',): {
             'PENDING': "pending",
-            'APPROVED': "approved",
             'REJECTED': "rejected",
+            'APPROVED': "approved",
             'RESTRICTED': "restricted",
         },
     }

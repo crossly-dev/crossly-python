@@ -85,13 +85,13 @@ class GetBuyerTogetherResponseData(ModelNormal):
         lazy_import()
         return {
             'id': (str,),  # noqa: E501
-            'name': (str,),  # noqa: E501
-            'ends_at': (str,),  # noqa: E501
             'code': (str,),  # noqa: E501
+            'name': (str,),  # noqa: E501
+            'is_host': (bool,),  # noqa: E501
+            'ends_at': (str,),  # noqa: E501
             'members': ([GetBuyerTogetherResponseDataMembers],),  # noqa: E501
             'items': ([GetBuyerTogetherResponseDataItems],),  # noqa: E501
             'messages': ([GetBuyerTogetherResponseDataMessages],),  # noqa: E501
-            'is_host': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -101,13 +101,13 @@ class GetBuyerTogetherResponseData(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'name': 'name',  # noqa: E501
-        'ends_at': 'endsAt',  # noqa: E501
         'code': 'code',  # noqa: E501
+        'name': 'name',  # noqa: E501
+        'is_host': 'isHost',  # noqa: E501
+        'ends_at': 'endsAt',  # noqa: E501
         'members': 'members',  # noqa: E501
         'items': 'items',  # noqa: E501
         'messages': 'messages',  # noqa: E501
-        'is_host': 'isHost',  # noqa: E501
     }
 
     read_only_vars = {
@@ -117,18 +117,18 @@ class GetBuyerTogetherResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, ends_at, code, members, items, messages, is_host, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, code, name, is_host, ends_at, members, items, messages, *args, **kwargs):  # noqa: E501
         """GetBuyerTogetherResponseData - a model defined in OpenAPI
 
         Args:
             id (str):
-            name (str):
-            ends_at (str):
             code (str):
+            name (str):
+            is_host (bool):
+            ends_at (str):
             members ([GetBuyerTogetherResponseDataMembers]):
             items ([GetBuyerTogetherResponseDataItems]):
             messages ([GetBuyerTogetherResponseDataMessages]):
-            is_host (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -189,13 +189,13 @@ class GetBuyerTogetherResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.name = name
-        self.ends_at = ends_at
         self.code = code
+        self.name = name
+        self.is_host = is_host
+        self.ends_at = ends_at
         self.members = members
         self.items = items
         self.messages = messages
-        self.is_host = is_host
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -216,18 +216,18 @@ class GetBuyerTogetherResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, ends_at, code, members, items, messages, is_host, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, code, name, is_host, ends_at, members, items, messages, *args, **kwargs):  # noqa: E501
         """GetBuyerTogetherResponseData - a model defined in OpenAPI
 
         Args:
             id (str):
-            name (str):
-            ends_at (str):
             code (str):
+            name (str):
+            is_host (bool):
+            ends_at (str):
             members ([GetBuyerTogetherResponseDataMembers]):
             items ([GetBuyerTogetherResponseDataItems]):
             messages ([GetBuyerTogetherResponseDataMessages]):
-            is_host (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -286,13 +286,13 @@ class GetBuyerTogetherResponseData(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.name = name
-        self.ends_at = ends_at
         self.code = code
+        self.name = name
+        self.is_host = is_host
+        self.ends_at = ends_at
         self.members = members
         self.items = items
         self.messages = messages
-        self.is_host = is_host
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

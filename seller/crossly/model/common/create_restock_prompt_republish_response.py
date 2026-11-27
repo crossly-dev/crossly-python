@@ -79,7 +79,7 @@ class CreateRestockPromptRepublishResponse(ModelNormal):
             'platforms': ([str],),  # noqa: E501
             'remaining_platforms': ([str],),  # noqa: E501
             'job_ids': ([str],),  # noqa: E501
-            'bulk_job_id': (str,),  # noqa: E501
+            'bulk_job_id': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -102,7 +102,7 @@ class CreateRestockPromptRepublishResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, message, platforms, remaining_platforms, job_ids, bulk_job_id, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, message, platforms, remaining_platforms, job_ids, *args, **kwargs):  # noqa: E501
         """CreateRestockPromptRepublishResponse - a model defined in OpenAPI
 
         Args:
@@ -110,7 +110,6 @@ class CreateRestockPromptRepublishResponse(ModelNormal):
             platforms ([str]):
             remaining_platforms ([str]):
             job_ids ([str]):
-            bulk_job_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -143,6 +142,7 @@ class CreateRestockPromptRepublishResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            bulk_job_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -174,7 +174,6 @@ class CreateRestockPromptRepublishResponse(ModelNormal):
         self.platforms = platforms
         self.remaining_platforms = remaining_platforms
         self.job_ids = job_ids
-        self.bulk_job_id = bulk_job_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -195,7 +194,7 @@ class CreateRestockPromptRepublishResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, message, platforms, remaining_platforms, job_ids, bulk_job_id, *args, **kwargs):  # noqa: E501
+    def __init__(self, message, platforms, remaining_platforms, job_ids, *args, **kwargs):  # noqa: E501
         """CreateRestockPromptRepublishResponse - a model defined in OpenAPI
 
         Args:
@@ -203,7 +202,6 @@ class CreateRestockPromptRepublishResponse(ModelNormal):
             platforms ([str]):
             remaining_platforms ([str]):
             job_ids ([str]):
-            bulk_job_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -236,6 +234,7 @@ class CreateRestockPromptRepublishResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            bulk_job_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -265,7 +264,6 @@ class CreateRestockPromptRepublishResponse(ModelNormal):
         self.platforms = platforms
         self.remaining_platforms = remaining_platforms
         self.job_ids = job_ids
-        self.bulk_job_id = bulk_job_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

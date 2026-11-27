@@ -80,6 +80,8 @@ class GetAnalyticBookkeepingResponsePlatformBreakdown(ModelNormal):
             'count': (float,),  # noqa: E501
             'platform_fees': (float,),  # noqa: E501
             'net_profit': (float,),  # noqa: E501
+            'refunds': (float,),  # noqa: E501
+            'tax_collected': (float,),  # noqa: E501
         }
 
     @cached_property
@@ -93,6 +95,8 @@ class GetAnalyticBookkeepingResponsePlatformBreakdown(ModelNormal):
         'count': 'count',  # noqa: E501
         'platform_fees': 'platformFees',  # noqa: E501
         'net_profit': 'netProfit',  # noqa: E501
+        'refunds': 'refunds',  # noqa: E501
+        'tax_collected': 'taxCollected',  # noqa: E501
     }
 
     read_only_vars = {
@@ -102,7 +106,7 @@ class GetAnalyticBookkeepingResponsePlatformBreakdown(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, platform, revenue, count, platform_fees, net_profit, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, platform, revenue, count, platform_fees, net_profit, refunds, tax_collected, *args, **kwargs):  # noqa: E501
         """GetAnalyticBookkeepingResponsePlatformBreakdown - a model defined in OpenAPI
 
         Args:
@@ -111,6 +115,8 @@ class GetAnalyticBookkeepingResponsePlatformBreakdown(ModelNormal):
             count (float):
             platform_fees (float):
             net_profit (float):
+            refunds (float):
+            tax_collected (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -175,6 +181,8 @@ class GetAnalyticBookkeepingResponsePlatformBreakdown(ModelNormal):
         self.count = count
         self.platform_fees = platform_fees
         self.net_profit = net_profit
+        self.refunds = refunds
+        self.tax_collected = tax_collected
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -195,7 +203,7 @@ class GetAnalyticBookkeepingResponsePlatformBreakdown(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, platform, revenue, count, platform_fees, net_profit, *args, **kwargs):  # noqa: E501
+    def __init__(self, platform, revenue, count, platform_fees, net_profit, refunds, tax_collected, *args, **kwargs):  # noqa: E501
         """GetAnalyticBookkeepingResponsePlatformBreakdown - a model defined in OpenAPI
 
         Args:
@@ -204,6 +212,8 @@ class GetAnalyticBookkeepingResponsePlatformBreakdown(ModelNormal):
             count (float):
             platform_fees (float):
             net_profit (float):
+            refunds (float):
+            tax_collected (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -266,6 +276,8 @@ class GetAnalyticBookkeepingResponsePlatformBreakdown(ModelNormal):
         self.count = count
         self.platform_fees = platform_fees
         self.net_profit = net_profit
+        self.refunds = refunds
+        self.tax_collected = tax_collected
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

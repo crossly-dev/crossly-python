@@ -100,7 +100,7 @@ class CreateOrderWhatnotPackageQuoteResponse(ModelNormal):
         """CreateOrderWhatnotPackageQuoteResponse - a model defined in OpenAPI
 
         Args:
-            cost_cents (float):
+            cost_cents (float): Cents the platform charges for the change; 0 = free.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -133,7 +133,7 @@ class CreateOrderWhatnotPackageQuoteResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            error (str, none_type): [optional]  # noqa: E501
+            error (str, none_type): The platform's refusal of this package, when it gives one.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -186,7 +186,7 @@ class CreateOrderWhatnotPackageQuoteResponse(ModelNormal):
         """CreateOrderWhatnotPackageQuoteResponse - a model defined in OpenAPI
 
         Args:
-            cost_cents (float):
+            cost_cents (float): Cents the platform charges for the change; 0 = free.
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -219,7 +219,7 @@ class CreateOrderWhatnotPackageQuoteResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            error (str, none_type): [optional]  # noqa: E501
+            error (str, none_type): The platform's refusal of this package, when it gives one.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

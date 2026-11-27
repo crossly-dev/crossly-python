@@ -57,8 +57,8 @@ class CreateCbxRedemptionQuoteResponseData(ModelNormal):
     allowed_values = {
         ('service_kind',): {
             'GRADING': "grading",
-            'AUTHENTICATION': "authentication",
             'SUBSCRIPTION': "subscription",
+            'AUTHENTICATION': "authentication",
         },
     }
 

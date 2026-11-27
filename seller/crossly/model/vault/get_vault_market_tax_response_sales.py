@@ -74,8 +74,8 @@ class GetVaultMarketTaxResponseSales(ModelNormal):
         },
         ('term',): {
             'None': None,
-            'LONG': "long",
             'SHORT': "short",
+            'LONG': "long",
         },
     }
 

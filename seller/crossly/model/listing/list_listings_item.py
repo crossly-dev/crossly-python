@@ -30,8 +30,10 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.grading.list_grading_submissions_item_grading import ListGradingSubmissionsItemGrading
-    globals()['ListGradingSubmissionsItemGrading'] = ListGradingSubmissionsItemGrading
+    from crossly.model.bulk.create_bulk_batch_item_response_grading import CreateBulkBatchItemResponseGrading
+    from crossly.model.listing.list_listings_item_pricing import ListListingsItemPricing
+    globals()['CreateBulkBatchItemResponseGrading'] = CreateBulkBatchItemResponseGrading
+    globals()['ListListingsItemPricing'] = ListListingsItemPricing
 
 
 class ListListingsItem(ModelNormal):
@@ -88,17 +90,18 @@ class ListListingsItem(ModelNormal):
         return {
             'ai_media': (bool,),  # noqa: E501
             'ai_media_detected': (bool,),  # noqa: E501
+            'pricing': (ListListingsItemPricing,),  # noqa: E501
             'id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (datetime,),  # noqa: E501
             'user_id': (str,),  # noqa: E501
+            'status': (str,),  # noqa: E501
+            'source': (str,),  # noqa: E501
             'quantity': (float,),  # noqa: E501
             'quantity_available': (float,),  # noqa: E501
             'color': ([str],),  # noqa: E501
             'tags': ([str],),  # noqa: E501
             'floor_is_net': (bool,),  # noqa: E501
-            'status': (str,),  # noqa: E501
-            'source': (str,),  # noqa: E501
             'ai_media_urls': ([str],),  # noqa: E501
             'ai_media_declared': (bool,),  # noqa: E501
             'ai_media_detected_urls': ([str],),  # noqa: E501
@@ -108,8 +111,11 @@ class ListListingsItem(ModelNormal):
             'automation_blocked_rule_ids': ([str],),  # noqa: E501
             'automation_assigned_chain_ids': ([str],),  # noqa: E501
             'automation_blocked_chain_ids': ([str],),  # noqa: E501
+            'workflow_blocked_ids': ([str],),  # noqa: E501
+            'workflow_assigned_ids': ([str],),  # noqa: E501
             'brand': (str, none_type,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
+            'description': (str, none_type,),  # noqa: E501
             'sku': (str, none_type,),  # noqa: E501
             'condition': (str, none_type,),  # noqa: E501
             'size': (str, none_type,),  # noqa: E501
@@ -123,14 +129,13 @@ class ListListingsItem(ModelNormal):
             'images': ([str], none_type,),  # noqa: E501
             'video_url': (str, none_type,),  # noqa: E501
             'grade_key': (str, none_type,),  # noqa: E501
-            'grading': (ListGradingSubmissionsItemGrading,),  # noqa: E501
+            'grading': (CreateBulkBatchItemResponseGrading,),  # noqa: E501
             'price_floor_cents': (float, none_type,),  # noqa: E501
             'weight_lb': (str, none_type,),  # noqa: E501
             'weight_oz': (str, none_type,),  # noqa: E501
             'dimension_lin': (str, none_type,),  # noqa: E501
             'dimension_win': (str, none_type,),  # noqa: E501
             'dimension_hin': (str, none_type,),  # noqa: E501
-            'description': (str, none_type,),  # noqa: E501
             'title': (str, none_type,),  # noqa: E501
             'description_html': (str, none_type,),  # noqa: E501
             'price': (str, none_type,),  # noqa: E501
@@ -146,6 +151,9 @@ class ListListingsItem(ModelNormal):
             'ebay_attributes_enriched_at': (datetime, none_type,),  # noqa: E501
             'duplicate_of_listing_id': (str, none_type,),  # noqa: E501
             'client_draft_id': (str, none_type,),  # noqa: E501
+            'attributed_oauth_app_id': (str, none_type,),  # noqa: E501
+            'attributed_grant_id': (str, none_type,),  # noqa: E501
+            'quota_bucket': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -156,17 +164,18 @@ class ListListingsItem(ModelNormal):
     attribute_map = {
         'ai_media': 'aiMedia',  # noqa: E501
         'ai_media_detected': 'aiMediaDetected',  # noqa: E501
+        'pricing': 'pricing',  # noqa: E501
         'id': 'id',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
         'user_id': 'userId',  # noqa: E501
+        'status': 'status',  # noqa: E501
+        'source': 'source',  # noqa: E501
         'quantity': 'quantity',  # noqa: E501
         'quantity_available': 'quantityAvailable',  # noqa: E501
         'color': 'color',  # noqa: E501
         'tags': 'tags',  # noqa: E501
         'floor_is_net': 'floorIsNet',  # noqa: E501
-        'status': 'status',  # noqa: E501
-        'source': 'source',  # noqa: E501
         'ai_media_urls': 'aiMediaUrls',  # noqa: E501
         'ai_media_declared': 'aiMediaDeclared',  # noqa: E501
         'ai_media_detected_urls': 'aiMediaDetectedUrls',  # noqa: E501
@@ -176,8 +185,11 @@ class ListListingsItem(ModelNormal):
         'automation_blocked_rule_ids': 'automationBlockedRuleIds',  # noqa: E501
         'automation_assigned_chain_ids': 'automationAssignedChainIds',  # noqa: E501
         'automation_blocked_chain_ids': 'automationBlockedChainIds',  # noqa: E501
+        'workflow_blocked_ids': 'workflowBlockedIds',  # noqa: E501
+        'workflow_assigned_ids': 'workflowAssignedIds',  # noqa: E501
         'brand': 'brand',  # noqa: E501
         'name': 'name',  # noqa: E501
+        'description': 'description',  # noqa: E501
         'sku': 'sku',  # noqa: E501
         'condition': 'condition',  # noqa: E501
         'size': 'size',  # noqa: E501
@@ -198,7 +210,6 @@ class ListListingsItem(ModelNormal):
         'dimension_lin': 'dimensionLIn',  # noqa: E501
         'dimension_win': 'dimensionWIn',  # noqa: E501
         'dimension_hin': 'dimensionHIn',  # noqa: E501
-        'description': 'description',  # noqa: E501
         'title': 'title',  # noqa: E501
         'description_html': 'descriptionHtml',  # noqa: E501
         'price': 'price',  # noqa: E501
@@ -214,6 +225,9 @@ class ListListingsItem(ModelNormal):
         'ebay_attributes_enriched_at': 'ebayAttributesEnrichedAt',  # noqa: E501
         'duplicate_of_listing_id': 'duplicateOfListingId',  # noqa: E501
         'client_draft_id': 'clientDraftId',  # noqa: E501
+        'attributed_oauth_app_id': 'attributedOauthAppId',  # noqa: E501
+        'attributed_grant_id': 'attributedGrantId',  # noqa: E501
+        'quota_bucket': 'quotaBucket',  # noqa: E501
     }
 
     read_only_vars = {
@@ -223,23 +237,24 @@ class ListListingsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, ai_media, ai_media_detected, id, created_at, updated_at, user_id, quantity, quantity_available, color, tags, floor_is_net, status, source, ai_media_urls, ai_media_declared, ai_media_detected_urls, is_digital, is_bundle, automation_assigned_rule_ids, automation_blocked_rule_ids, automation_assigned_chain_ids, automation_blocked_chain_ids, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, ai_media, ai_media_detected, pricing, id, created_at, updated_at, user_id, status, source, quantity, quantity_available, color, tags, floor_is_net, ai_media_urls, ai_media_declared, ai_media_detected_urls, is_digital, is_bundle, automation_assigned_rule_ids, automation_blocked_rule_ids, automation_assigned_chain_ids, automation_blocked_chain_ids, workflow_blocked_ids, workflow_assigned_ids, *args, **kwargs):  # noqa: E501
         """ListListingsItem - a model defined in OpenAPI
 
         Args:
             ai_media (bool):
             ai_media_detected (bool):
+            pricing (ListListingsItemPricing):
             id (str):
             created_at (datetime):
             updated_at (datetime):
             user_id (str):
+            status (str):
+            source (str):
             quantity (float):
             quantity_available (float):
             color ([str]):
             tags ([str]):
             floor_is_net (bool):
-            status (str):
-            source (str):
             ai_media_urls ([str]):
             ai_media_declared (bool):
             ai_media_detected_urls ([str]):
@@ -249,6 +264,8 @@ class ListListingsItem(ModelNormal):
             automation_blocked_rule_ids ([str]):
             automation_assigned_chain_ids ([str]):
             automation_blocked_chain_ids ([str]):
+            workflow_blocked_ids ([str]):
+            workflow_assigned_ids ([str]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -283,6 +300,7 @@ class ListListingsItem(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             brand (str, none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
             sku (str, none_type): [optional]  # noqa: E501
             condition (str, none_type): [optional]  # noqa: E501
             size (str, none_type): [optional]  # noqa: E501
@@ -296,14 +314,13 @@ class ListListingsItem(ModelNormal):
             images ([str], none_type): [optional]  # noqa: E501
             video_url (str, none_type): [optional]  # noqa: E501
             grade_key (str, none_type): [optional]  # noqa: E501
-            grading (ListGradingSubmissionsItemGrading): [optional]  # noqa: E501
+            grading (CreateBulkBatchItemResponseGrading): [optional]  # noqa: E501
             price_floor_cents (float, none_type): [optional]  # noqa: E501
             weight_lb (str, none_type): [optional]  # noqa: E501
             weight_oz (str, none_type): [optional]  # noqa: E501
             dimension_lin (str, none_type): [optional]  # noqa: E501
             dimension_win (str, none_type): [optional]  # noqa: E501
             dimension_hin (str, none_type): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
             title (str, none_type): [optional]  # noqa: E501
             description_html (str, none_type): [optional]  # noqa: E501
             price (str, none_type): [optional]  # noqa: E501
@@ -319,6 +336,9 @@ class ListListingsItem(ModelNormal):
             ebay_attributes_enriched_at (datetime, none_type): [optional]  # noqa: E501
             duplicate_of_listing_id (str, none_type): [optional]  # noqa: E501
             client_draft_id (str, none_type): [optional]  # noqa: E501
+            attributed_oauth_app_id (str, none_type): [optional]  # noqa: E501
+            attributed_grant_id (str, none_type): [optional]  # noqa: E501
+            quota_bucket (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -348,17 +368,18 @@ class ListListingsItem(ModelNormal):
 
         self.ai_media = ai_media
         self.ai_media_detected = ai_media_detected
+        self.pricing = pricing
         self.id = id
         self.created_at = created_at
         self.updated_at = updated_at
         self.user_id = user_id
+        self.status = status
+        self.source = source
         self.quantity = quantity
         self.quantity_available = quantity_available
         self.color = color
         self.tags = tags
         self.floor_is_net = floor_is_net
-        self.status = status
-        self.source = source
         self.ai_media_urls = ai_media_urls
         self.ai_media_declared = ai_media_declared
         self.ai_media_detected_urls = ai_media_detected_urls
@@ -368,6 +389,8 @@ class ListListingsItem(ModelNormal):
         self.automation_blocked_rule_ids = automation_blocked_rule_ids
         self.automation_assigned_chain_ids = automation_assigned_chain_ids
         self.automation_blocked_chain_ids = automation_blocked_chain_ids
+        self.workflow_blocked_ids = workflow_blocked_ids
+        self.workflow_assigned_ids = workflow_assigned_ids
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -388,23 +411,24 @@ class ListListingsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, ai_media, ai_media_detected, id, created_at, updated_at, user_id, quantity, quantity_available, color, tags, floor_is_net, status, source, ai_media_urls, ai_media_declared, ai_media_detected_urls, is_digital, is_bundle, automation_assigned_rule_ids, automation_blocked_rule_ids, automation_assigned_chain_ids, automation_blocked_chain_ids, *args, **kwargs):  # noqa: E501
+    def __init__(self, ai_media, ai_media_detected, pricing, id, created_at, updated_at, user_id, status, source, quantity, quantity_available, color, tags, floor_is_net, ai_media_urls, ai_media_declared, ai_media_detected_urls, is_digital, is_bundle, automation_assigned_rule_ids, automation_blocked_rule_ids, automation_assigned_chain_ids, automation_blocked_chain_ids, workflow_blocked_ids, workflow_assigned_ids, *args, **kwargs):  # noqa: E501
         """ListListingsItem - a model defined in OpenAPI
 
         Args:
             ai_media (bool):
             ai_media_detected (bool):
+            pricing (ListListingsItemPricing):
             id (str):
             created_at (datetime):
             updated_at (datetime):
             user_id (str):
+            status (str):
+            source (str):
             quantity (float):
             quantity_available (float):
             color ([str]):
             tags ([str]):
             floor_is_net (bool):
-            status (str):
-            source (str):
             ai_media_urls ([str]):
             ai_media_declared (bool):
             ai_media_detected_urls ([str]):
@@ -414,6 +438,8 @@ class ListListingsItem(ModelNormal):
             automation_blocked_rule_ids ([str]):
             automation_assigned_chain_ids ([str]):
             automation_blocked_chain_ids ([str]):
+            workflow_blocked_ids ([str]):
+            workflow_assigned_ids ([str]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -448,6 +474,7 @@ class ListListingsItem(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             brand (str, none_type): [optional]  # noqa: E501
             name (str, none_type): [optional]  # noqa: E501
+            description (str, none_type): [optional]  # noqa: E501
             sku (str, none_type): [optional]  # noqa: E501
             condition (str, none_type): [optional]  # noqa: E501
             size (str, none_type): [optional]  # noqa: E501
@@ -461,14 +488,13 @@ class ListListingsItem(ModelNormal):
             images ([str], none_type): [optional]  # noqa: E501
             video_url (str, none_type): [optional]  # noqa: E501
             grade_key (str, none_type): [optional]  # noqa: E501
-            grading (ListGradingSubmissionsItemGrading): [optional]  # noqa: E501
+            grading (CreateBulkBatchItemResponseGrading): [optional]  # noqa: E501
             price_floor_cents (float, none_type): [optional]  # noqa: E501
             weight_lb (str, none_type): [optional]  # noqa: E501
             weight_oz (str, none_type): [optional]  # noqa: E501
             dimension_lin (str, none_type): [optional]  # noqa: E501
             dimension_win (str, none_type): [optional]  # noqa: E501
             dimension_hin (str, none_type): [optional]  # noqa: E501
-            description (str, none_type): [optional]  # noqa: E501
             title (str, none_type): [optional]  # noqa: E501
             description_html (str, none_type): [optional]  # noqa: E501
             price (str, none_type): [optional]  # noqa: E501
@@ -484,6 +510,9 @@ class ListListingsItem(ModelNormal):
             ebay_attributes_enriched_at (datetime, none_type): [optional]  # noqa: E501
             duplicate_of_listing_id (str, none_type): [optional]  # noqa: E501
             client_draft_id (str, none_type): [optional]  # noqa: E501
+            attributed_oauth_app_id (str, none_type): [optional]  # noqa: E501
+            attributed_grant_id (str, none_type): [optional]  # noqa: E501
+            quota_bucket (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -511,17 +540,18 @@ class ListListingsItem(ModelNormal):
 
         self.ai_media = ai_media
         self.ai_media_detected = ai_media_detected
+        self.pricing = pricing
         self.id = id
         self.created_at = created_at
         self.updated_at = updated_at
         self.user_id = user_id
+        self.status = status
+        self.source = source
         self.quantity = quantity
         self.quantity_available = quantity_available
         self.color = color
         self.tags = tags
         self.floor_is_net = floor_is_net
-        self.status = status
-        self.source = source
         self.ai_media_urls = ai_media_urls
         self.ai_media_declared = ai_media_declared
         self.ai_media_detected_urls = ai_media_detected_urls
@@ -531,6 +561,8 @@ class ListListingsItem(ModelNormal):
         self.automation_blocked_rule_ids = automation_blocked_rule_ids
         self.automation_assigned_chain_ids = automation_assigned_chain_ids
         self.automation_blocked_chain_ids = automation_blocked_chain_ids
+        self.workflow_blocked_ids = workflow_blocked_ids
+        self.workflow_assigned_ids = workflow_assigned_ids
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

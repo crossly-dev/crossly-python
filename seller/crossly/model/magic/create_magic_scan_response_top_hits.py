@@ -59,6 +59,11 @@ class CreateMagicScanResponseTopHits(ModelNormal):
             'ACTIVE': "active",
             'SOLD': "sold",
         },
+        ('format',): {
+            'None': None,
+            'AUCTION': "auction",
+            'FIXED_PRICE': "fixed_price",
+        },
     }
 
     validations = {
@@ -87,6 +92,13 @@ class CreateMagicScanResponseTopHits(ModelNormal):
             'image_url': (str, none_type,),  # noqa: E501
             'listing_url': (str, none_type,),  # noqa: E501
             'visual_sim': (float, none_type,),  # noqa: E501
+            'agreement': (float, none_type,),  # noqa: E501
+            'carries_identifier': (bool, none_type,),  # noqa: E501
+            'price_outlier': (bool, none_type,),  # noqa: E501
+            'condition': (str, none_type,),  # noqa: E501
+            'brand': (str, none_type,),  # noqa: E501
+            'shipping_cents': (float, none_type,),  # noqa: E501
+            'format': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -103,6 +115,13 @@ class CreateMagicScanResponseTopHits(ModelNormal):
         'image_url': 'imageUrl',  # noqa: E501
         'listing_url': 'listingUrl',  # noqa: E501
         'visual_sim': 'visualSim',  # noqa: E501
+        'agreement': 'agreement',  # noqa: E501
+        'carries_identifier': 'carriesIdentifier',  # noqa: E501
+        'price_outlier': 'priceOutlier',  # noqa: E501
+        'condition': 'condition',  # noqa: E501
+        'brand': 'brand',  # noqa: E501
+        'shipping_cents': 'shippingCents',  # noqa: E501
+        'format': 'format',  # noqa: E501
     }
 
     read_only_vars = {
@@ -119,7 +138,7 @@ class CreateMagicScanResponseTopHits(ModelNormal):
             platform (str):
             title (str):
             price_cents (float):
-            origin (str): Origin marker for the UI badge.
+            origin (str): Origin marker for the UI badge. Every eBay hit is an image-search hit ('ebay-image'); 'ebay-text' is kept in the union only for rows cached before that was fixed.
             state (str): 'active' = currently for sale; 'sold' = historical comp. UI renders distinct badges so the seller can see both at a glance.
 
         Keyword Args:
@@ -155,7 +174,14 @@ class CreateMagicScanResponseTopHits(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             image_url (str, none_type): [optional]  # noqa: E501
             listing_url (str, none_type): [optional]  # noqa: E501
-            visual_sim (float, none_type): CLIP cosine [0,1]; populated after the visual-rank pass.. [optional]  # noqa: E501
+            visual_sim (float, none_type): CLIP cosine [0,1]; populated after the visual-rank pass. ABSENT = unscored (no image, CLIP down) — never filled in with a made-up value.. [optional]  # noqa: E501
+            agreement (float, none_type): Title agreement with the match reference after the hard gates (rank.ts).. [optional]  # noqa: E501
+            carries_identifier (bool, none_type): True when the comp states the photo's own identifier (GTIN / style code).. [optional]  # noqa: E501
+            price_outlier (bool, none_type): Price outlier within its condition / grade bucket: shown, but not used for pricing.. [optional]  # noqa: E501
+            condition (str, none_type): Condition text the platform reported, for the pricing buckets.. [optional]  # noqa: E501
+            brand (str, none_type): Brand the platform reported, for the brand gate at verdict time.. [optional]  # noqa: E501
+            shipping_cents (float, none_type): Shipping in cents (0 = free), where the platform reports it (ExternalSoldComp.shippingCents).. [optional]  # noqa: E501
+            format (str, none_type): Auction vs fixed price, where the platform says; an active auction's price is a bid (compPriceIsBid).. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -215,7 +241,7 @@ class CreateMagicScanResponseTopHits(ModelNormal):
             platform (str):
             title (str):
             price_cents (float):
-            origin (str): Origin marker for the UI badge.
+            origin (str): Origin marker for the UI badge. Every eBay hit is an image-search hit ('ebay-image'); 'ebay-text' is kept in the union only for rows cached before that was fixed.
             state (str): 'active' = currently for sale; 'sold' = historical comp. UI renders distinct badges so the seller can see both at a glance.
 
         Keyword Args:
@@ -251,7 +277,14 @@ class CreateMagicScanResponseTopHits(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             image_url (str, none_type): [optional]  # noqa: E501
             listing_url (str, none_type): [optional]  # noqa: E501
-            visual_sim (float, none_type): CLIP cosine [0,1]; populated after the visual-rank pass.. [optional]  # noqa: E501
+            visual_sim (float, none_type): CLIP cosine [0,1]; populated after the visual-rank pass. ABSENT = unscored (no image, CLIP down) — never filled in with a made-up value.. [optional]  # noqa: E501
+            agreement (float, none_type): Title agreement with the match reference after the hard gates (rank.ts).. [optional]  # noqa: E501
+            carries_identifier (bool, none_type): True when the comp states the photo's own identifier (GTIN / style code).. [optional]  # noqa: E501
+            price_outlier (bool, none_type): Price outlier within its condition / grade bucket: shown, but not used for pricing.. [optional]  # noqa: E501
+            condition (str, none_type): Condition text the platform reported, for the pricing buckets.. [optional]  # noqa: E501
+            brand (str, none_type): Brand the platform reported, for the brand gate at verdict time.. [optional]  # noqa: E501
+            shipping_cents (float, none_type): Shipping in cents (0 = free), where the platform reports it (ExternalSoldComp.shippingCents).. [optional]  # noqa: E501
+            format (str, none_type): Auction vs fixed price, where the platform says; an active auction's price is a bid (compPriceIsBid).. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

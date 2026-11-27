@@ -57,8 +57,8 @@ class GetVaultMarketTaxResponsePositions(ModelNormal):
     allowed_values = {
         ('term',): {
             'None': None,
-            'LONG': "long",
             'SHORT': "short",
+            'LONG': "long",
         },
     }
 

@@ -56,9 +56,9 @@ class CreateCbxSubjectSpendPlanResponseDataLegs(ModelNormal):
 
     allowed_values = {
         ('source',): {
-            'GRANTED': "granted",
             'EARNED': "earned",
             'CONNECTED': "connected",
+            'GRANTED': "granted",
         },
     }
 

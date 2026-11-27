@@ -30,8 +30,10 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.vault.list_vault_market_feed_item_mark import ListVaultMarketFeedItemMark
-    globals()['ListVaultMarketFeedItemMark'] = ListVaultMarketFeedItemMark
+    from crossly.model.vault.list_vault_market_feed_item_by import ListVaultMarketFeedItemBy
+    from crossly.model.vault.list_vault_market_opening_item_mark import ListVaultMarketOpeningItemMark
+    globals()['ListVaultMarketFeedItemBy'] = ListVaultMarketFeedItemBy
+    globals()['ListVaultMarketOpeningItemMark'] = ListVaultMarketOpeningItemMark
 
 
 class ListVaultMarketFeedItem(ModelNormal):
@@ -82,8 +84,9 @@ class ListVaultMarketFeedItem(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'at': (str,),  # noqa: E501
+            'by': (ListVaultMarketFeedItemBy,),  # noqa: E501
             'book_key': (str,),  # noqa: E501
-            'mark': (ListVaultMarketFeedItemMark,),  # noqa: E501
+            'mark': (ListVaultMarketOpeningItemMark,),  # noqa: E501
             'buy_href': (str,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
             'label': (str, none_type,),  # noqa: E501
@@ -98,6 +101,7 @@ class ListVaultMarketFeedItem(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'at': 'at',  # noqa: E501
+        'by': 'by',  # noqa: E501
         'book_key': 'bookKey',  # noqa: E501
         'mark': 'mark',  # noqa: E501
         'buy_href': 'buyHref',  # noqa: E501
@@ -113,14 +117,15 @@ class ListVaultMarketFeedItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, at, book_key, mark, buy_href, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, at, by, book_key, mark, buy_href, *args, **kwargs):  # noqa: E501
         """ListVaultMarketFeedItem - a model defined in OpenAPI
 
         Args:
             id (str):
             at (str):
+            by (ListVaultMarketFeedItemBy):
             book_key (str):
-            mark (ListVaultMarketFeedItemMark):
+            mark (ListVaultMarketOpeningItemMark):
             buy_href (str):
 
         Keyword Args:
@@ -186,6 +191,7 @@ class ListVaultMarketFeedItem(ModelNormal):
 
         self.id = id
         self.at = at
+        self.by = by
         self.book_key = book_key
         self.mark = mark
         self.buy_href = buy_href
@@ -209,14 +215,15 @@ class ListVaultMarketFeedItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, at, book_key, mark, buy_href, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, at, by, book_key, mark, buy_href, *args, **kwargs):  # noqa: E501
         """ListVaultMarketFeedItem - a model defined in OpenAPI
 
         Args:
             id (str):
             at (str):
+            by (ListVaultMarketFeedItemBy):
             book_key (str):
-            mark (ListVaultMarketFeedItemMark):
+            mark (ListVaultMarketOpeningItemMark):
             buy_href (str):
 
         Keyword Args:
@@ -280,6 +287,7 @@ class ListVaultMarketFeedItem(ModelNormal):
 
         self.id = id
         self.at = at
+        self.by = by
         self.book_key = book_key
         self.mark = mark
         self.buy_href = buy_href

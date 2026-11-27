@@ -57,9 +57,9 @@ class CreateBuyerLockonConfirmResponseHudFacts(ModelNormal):
     allowed_values = {
         ('tone',): {
             'None': None,
-            'GOOD': "good",
-            'WARN': "warn",
             'NEUTRAL': "neutral",
+            'WARN': "warn",
+            'GOOD': "good",
         },
     }
 

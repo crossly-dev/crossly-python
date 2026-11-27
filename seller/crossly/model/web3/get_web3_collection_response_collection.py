@@ -75,19 +75,19 @@ class GetWeb3CollectionResponseCollection(ModelNormal):
                 and the value is attribute type.
         """
         return {
+            'verified': (bool,),  # noqa: E501
             'refreshed_at': (datetime,),  # noqa: E501
             'chain': (str,),  # noqa: E501
             'contract': (str,),  # noqa: E501
             'first_seen_at': (datetime,),  # noqa: E501
-            'verified': (bool,),  # noqa: E501
             'collectors': (float,),  # noqa: E501
             'symbol': (str, none_type,),  # noqa: E501
             'name': (str, none_type,),  # noqa: E501
             'description': (str, none_type,),  # noqa: E501
             'category': (str, none_type,),  # noqa: E501
             'slug': (str, none_type,),  # noqa: E501
-            'hidden_at': (datetime, none_type,),  # noqa: E501
             'image_url': (str, none_type,),  # noqa: E501
+            'hidden_at': (datetime, none_type,),  # noqa: E501
             'external_url': (str, none_type,),  # noqa: E501
             'token_type': (str, none_type,),  # noqa: E501
             'total_supply': (str, none_type,),  # noqa: E501
@@ -113,19 +113,19 @@ class GetWeb3CollectionResponseCollection(ModelNormal):
 
 
     attribute_map = {
+        'verified': 'verified',  # noqa: E501
         'refreshed_at': 'refreshedAt',  # noqa: E501
         'chain': 'chain',  # noqa: E501
         'contract': 'contract',  # noqa: E501
         'first_seen_at': 'firstSeenAt',  # noqa: E501
-        'verified': 'verified',  # noqa: E501
         'collectors': 'collectors',  # noqa: E501
         'symbol': 'symbol',  # noqa: E501
         'name': 'name',  # noqa: E501
         'description': 'description',  # noqa: E501
         'category': 'category',  # noqa: E501
         'slug': 'slug',  # noqa: E501
-        'hidden_at': 'hiddenAt',  # noqa: E501
         'image_url': 'imageUrl',  # noqa: E501
+        'hidden_at': 'hiddenAt',  # noqa: E501
         'external_url': 'externalUrl',  # noqa: E501
         'token_type': 'tokenType',  # noqa: E501
         'total_supply': 'totalSupply',  # noqa: E501
@@ -152,15 +152,15 @@ class GetWeb3CollectionResponseCollection(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, refreshed_at, chain, contract, first_seen_at, verified, collectors, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, verified, refreshed_at, chain, contract, first_seen_at, collectors, *args, **kwargs):  # noqa: E501
         """GetWeb3CollectionResponseCollection - a model defined in OpenAPI
 
         Args:
+            verified (bool):
             refreshed_at (datetime):
             chain (str):
             contract (str):
             first_seen_at (datetime):
-            verified (bool):
             collectors (float):
 
         Keyword Args:
@@ -199,8 +199,8 @@ class GetWeb3CollectionResponseCollection(ModelNormal):
             description (str, none_type): [optional]  # noqa: E501
             category (str, none_type): [optional]  # noqa: E501
             slug (str, none_type): [optional]  # noqa: E501
-            hidden_at (datetime, none_type): [optional]  # noqa: E501
             image_url (str, none_type): [optional]  # noqa: E501
+            hidden_at (datetime, none_type): [optional]  # noqa: E501
             external_url (str, none_type): [optional]  # noqa: E501
             token_type (str, none_type): [optional]  # noqa: E501
             total_supply (str, none_type): [optional]  # noqa: E501
@@ -245,11 +245,11 @@ class GetWeb3CollectionResponseCollection(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.verified = verified
         self.refreshed_at = refreshed_at
         self.chain = chain
         self.contract = contract
         self.first_seen_at = first_seen_at
-        self.verified = verified
         self.collectors = collectors
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -271,15 +271,15 @@ class GetWeb3CollectionResponseCollection(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, refreshed_at, chain, contract, first_seen_at, verified, collectors, *args, **kwargs):  # noqa: E501
+    def __init__(self, verified, refreshed_at, chain, contract, first_seen_at, collectors, *args, **kwargs):  # noqa: E501
         """GetWeb3CollectionResponseCollection - a model defined in OpenAPI
 
         Args:
+            verified (bool):
             refreshed_at (datetime):
             chain (str):
             contract (str):
             first_seen_at (datetime):
-            verified (bool):
             collectors (float):
 
         Keyword Args:
@@ -318,8 +318,8 @@ class GetWeb3CollectionResponseCollection(ModelNormal):
             description (str, none_type): [optional]  # noqa: E501
             category (str, none_type): [optional]  # noqa: E501
             slug (str, none_type): [optional]  # noqa: E501
-            hidden_at (datetime, none_type): [optional]  # noqa: E501
             image_url (str, none_type): [optional]  # noqa: E501
+            hidden_at (datetime, none_type): [optional]  # noqa: E501
             external_url (str, none_type): [optional]  # noqa: E501
             token_type (str, none_type): [optional]  # noqa: E501
             total_supply (str, none_type): [optional]  # noqa: E501
@@ -362,11 +362,11 @@ class GetWeb3CollectionResponseCollection(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.verified = verified
         self.refreshed_at = refreshed_at
         self.chain = chain
         self.contract = contract
         self.first_seen_at = first_seen_at
-        self.verified = verified
         self.collectors = collectors
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

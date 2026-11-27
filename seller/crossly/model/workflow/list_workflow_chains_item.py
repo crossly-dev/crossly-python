@@ -80,13 +80,15 @@ class ListWorkflowChainsItem(ModelNormal):
         """
         lazy_import()
         return {
-            'steps': ([GetWorkflowChainResponseSteps],),  # noqa: E501
             'id': (str,),  # noqa: E501
-            'name': (str,),  # noqa: E501
-            'created_at': (datetime,),  # noqa: E501
             'user_id': (str,),  # noqa: E501
-            'is_active': (bool,),  # noqa: E501
+            'name': (str,),  # noqa: E501
             'trigger_id': (str,),  # noqa: E501
+            'trigger_config': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'is_active': (bool,),  # noqa: E501
+            'created_at': (datetime,),  # noqa: E501
+            'workflow_id': (str,),  # noqa: E501
+            'steps': ([GetWorkflowChainResponseSteps],),  # noqa: E501
         }
 
     @cached_property
@@ -95,13 +97,15 @@ class ListWorkflowChainsItem(ModelNormal):
 
 
     attribute_map = {
-        'steps': 'steps',  # noqa: E501
         'id': 'id',  # noqa: E501
-        'name': 'name',  # noqa: E501
-        'created_at': 'createdAt',  # noqa: E501
         'user_id': 'userId',  # noqa: E501
-        'is_active': 'isActive',  # noqa: E501
+        'name': 'name',  # noqa: E501
         'trigger_id': 'triggerId',  # noqa: E501
+        'trigger_config': 'triggerConfig',  # noqa: E501
+        'is_active': 'isActive',  # noqa: E501
+        'created_at': 'createdAt',  # noqa: E501
+        'workflow_id': 'workflowId',  # noqa: E501
+        'steps': 'steps',  # noqa: E501
     }
 
     read_only_vars = {
@@ -111,17 +115,19 @@ class ListWorkflowChainsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, steps, id, name, created_at, user_id, is_active, trigger_id, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, user_id, name, trigger_id, trigger_config, is_active, created_at, workflow_id, steps, *args, **kwargs):  # noqa: E501
         """ListWorkflowChainsItem - a model defined in OpenAPI
 
         Args:
-            steps ([GetWorkflowChainResponseSteps]):
             id (str):
-            name (str):
-            created_at (datetime):
             user_id (str):
-            is_active (bool):
+            name (str):
             trigger_id (str):
+            trigger_config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
+            is_active (bool):
+            created_at (datetime):
+            workflow_id (str):
+            steps ([GetWorkflowChainResponseSteps]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -181,13 +187,15 @@ class ListWorkflowChainsItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.steps = steps
         self.id = id
-        self.name = name
-        self.created_at = created_at
         self.user_id = user_id
-        self.is_active = is_active
+        self.name = name
         self.trigger_id = trigger_id
+        self.trigger_config = trigger_config
+        self.is_active = is_active
+        self.created_at = created_at
+        self.workflow_id = workflow_id
+        self.steps = steps
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -208,17 +216,19 @@ class ListWorkflowChainsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, steps, id, name, created_at, user_id, is_active, trigger_id, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, user_id, name, trigger_id, trigger_config, is_active, created_at, workflow_id, steps, *args, **kwargs):  # noqa: E501
         """ListWorkflowChainsItem - a model defined in OpenAPI
 
         Args:
-            steps ([GetWorkflowChainResponseSteps]):
             id (str):
-            name (str):
-            created_at (datetime):
             user_id (str):
-            is_active (bool):
+            name (str):
             trigger_id (str):
+            trigger_config ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}):
+            is_active (bool):
+            created_at (datetime):
+            workflow_id (str):
+            steps ([GetWorkflowChainResponseSteps]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -276,13 +286,15 @@ class ListWorkflowChainsItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.steps = steps
         self.id = id
-        self.name = name
-        self.created_at = created_at
         self.user_id = user_id
-        self.is_active = is_active
+        self.name = name
         self.trigger_id = trigger_id
+        self.trigger_config = trigger_config
+        self.is_active = is_active
+        self.created_at = created_at
+        self.workflow_id = workflow_id
+        self.steps = steps
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

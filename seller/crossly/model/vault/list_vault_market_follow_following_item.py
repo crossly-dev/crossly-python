@@ -30,7 +30,9 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from crossly.model.vault.list_vault_market_follow_following_item_person import ListVaultMarketFollowFollowingItemPerson
     from crossly.model.vault.list_vault_market_follow_following_item_shares import ListVaultMarketFollowFollowingItemShares
+    globals()['ListVaultMarketFollowFollowingItemPerson'] = ListVaultMarketFollowFollowingItemPerson
     globals()['ListVaultMarketFollowFollowingItemShares'] = ListVaultMarketFollowFollowingItemShares
 
 
@@ -80,6 +82,7 @@ class ListVaultMarketFollowFollowingItem(ModelNormal):
         """
         lazy_import()
         return {
+            'person': (ListVaultMarketFollowFollowingItemPerson,),  # noqa: E501
             'shares': (ListVaultMarketFollowFollowingItemShares,),  # noqa: E501
             'copy_watching': (bool,),  # noqa: E501
             'since': (str, none_type,),  # noqa: E501
@@ -91,6 +94,7 @@ class ListVaultMarketFollowFollowingItem(ModelNormal):
 
 
     attribute_map = {
+        'person': 'person',  # noqa: E501
         'shares': 'shares',  # noqa: E501
         'copy_watching': 'copyWatching',  # noqa: E501
         'since': 'since',  # noqa: E501
@@ -103,10 +107,11 @@ class ListVaultMarketFollowFollowingItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, shares, copy_watching, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, person, shares, copy_watching, *args, **kwargs):  # noqa: E501
         """ListVaultMarketFollowFollowingItem - a model defined in OpenAPI
 
         Args:
+            person (ListVaultMarketFollowFollowingItemPerson):
             shares (ListVaultMarketFollowFollowingItemShares):
             copy_watching (bool):
 
@@ -169,6 +174,7 @@ class ListVaultMarketFollowFollowingItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.person = person
         self.shares = shares
         self.copy_watching = copy_watching
         for var_name, var_value in kwargs.items():
@@ -191,10 +197,11 @@ class ListVaultMarketFollowFollowingItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, shares, copy_watching, *args, **kwargs):  # noqa: E501
+    def __init__(self, person, shares, copy_watching, *args, **kwargs):  # noqa: E501
         """ListVaultMarketFollowFollowingItem - a model defined in OpenAPI
 
         Args:
+            person (ListVaultMarketFollowFollowingItemPerson):
             shares (ListVaultMarketFollowFollowingItemShares):
             copy_watching (bool):
 
@@ -255,6 +262,7 @@ class ListVaultMarketFollowFollowingItem(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.person = person
         self.shares = shares
         self.copy_watching = copy_watching
         for var_name, var_value in kwargs.items():

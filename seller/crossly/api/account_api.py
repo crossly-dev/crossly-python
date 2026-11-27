@@ -21,12 +21,17 @@ from crossly.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
+from crossly.model.account.create_account_cancel_deletion_response import CreateAccountCancelDeletionResponse
+from crossly.model.account.create_account_identity_verification_start_request import CreateAccountIdentityVerificationStartRequest
 from crossly.model.account.create_account_logout_all_response import CreateAccountLogoutAllResponse
+from crossly.model.account.create_account_reconfirm_deletion_response import CreateAccountReconfirmDeletionResponse
 from crossly.model.account.create_account_request_deletion_response import CreateAccountRequestDeletionResponse
+from crossly.model.world.create_world_mature_verify_response import CreateWorldMatureVerifyResponse
 from crossly.model.common.delete_auth_session_response import DeleteAuthSessionResponse
-from crossly.model.drop.delete_drop_response import DeleteDropResponse
 from crossly.model.common.error import Error
+from crossly.model.account.get_account_closure_checklist_response import GetAccountClosureChecklistResponse
 from crossly.model.account.get_account_deletion_status_response import GetAccountDeletionStatusResponse
+from crossly.model.account.get_account_identity_verification_response import GetAccountIdentityVerificationResponse
 from crossly.model.me.get_me_response import GetMeResponse
 from crossly.model.common.get_membership_response import GetMembershipResponse
 from crossly.model.common.list_auth_sessions_response import ListAuthSessionsResponse
@@ -48,7 +53,7 @@ class AccountApi(object):
         self.api_client = api_client
         self.create_account_cancel_deletion_endpoint = _Endpoint(
             settings={
-                'response_type': (DeleteDropResponse,),
+                'response_type': (CreateAccountCancelDeletionResponse,),
                 'auth': [
                     'PersonalAccessToken'
                 ],
@@ -90,6 +95,58 @@ class AccountApi(object):
             },
             api_client=api_client
         )
+        self.create_account_identity_verification_start_endpoint = _Endpoint(
+            settings={
+                'response_type': (CreateWorldMatureVerifyResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/account/identity-verification/start',
+                'operation_id': 'create_account_identity_verification_start',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'create_account_identity_verification_start_request',
+                ],
+                'required': [
+                    'create_account_identity_verification_start_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'create_account_identity_verification_start_request':
+                        (CreateAccountIdentityVerificationStartRequest,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'create_account_identity_verification_start_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
         self.create_account_logout_all_endpoint = _Endpoint(
             settings={
                 'response_type': (CreateAccountLogoutAllResponse,),
@@ -98,6 +155,50 @@ class AccountApi(object):
                 ],
                 'endpoint_path': '/v1/account/logout-all',
                 'operation_id': 'create_account_logout_all',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.create_account_reconfirm_deletion_endpoint = _Endpoint(
+            settings={
+                'response_type': (CreateAccountReconfirmDeletionResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/account/reconfirm-deletion',
+                'operation_id': 'create_account_reconfirm_deletion',
                 'http_method': 'POST',
                 'servers': None,
             },
@@ -245,10 +346,15 @@ class AccountApi(object):
                 'enum': [
                 ],
                 'validation': [
+                    'session_id',
                 ]
             },
             root_map={
                 'validations': {
+                    ('session_id',): {
+                        'max_length': 64,
+                        'min_length': 1,
+                    },
                 },
                 'allowed_values': {
                 },
@@ -324,6 +430,50 @@ class AccountApi(object):
             },
             api_client=api_client
         )
+        self.get_account_closure_checklist_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetAccountClosureChecklistResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/account/closure-checklist',
+                'operation_id': 'get_account_closure_checklist',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.get_account_deletion_status_endpoint = _Endpoint(
             settings={
                 'response_type': (GetAccountDeletionStatusResponse,),
@@ -332,6 +482,50 @@ class AccountApi(object):
                 ],
                 'endpoint_path': '/v1/account/deletion-status',
                 'operation_id': 'get_account_deletion_status',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_account_identity_verification_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetAccountIdentityVerificationResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/account/identity-verification',
+                'operation_id': 'get_account_identity_verification',
                 'http_method': 'GET',
                 'servers': None,
             },
@@ -587,7 +781,7 @@ class AccountApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            DeleteDropResponse
+            CreateAccountCancelDeletionResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -616,6 +810,84 @@ class AccountApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.create_account_cancel_deletion_endpoint.call_with_http_info(**kwargs)
+
+    def create_account_identity_verification_start(
+        self,
+        create_account_identity_verification_start_request,
+        **kwargs
+    ):
+        """Start the identity check (photo ID + selfie). Returns a Stripe-hosted URL the person completes.  # noqa: E501
+
+        alreadyVerified:true when there is nothing to do. Nothing is verified until a person completes the link.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_account_identity_verification_start(create_account_identity_verification_start_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            create_account_identity_verification_start_request (CreateAccountIdentityVerificationStartRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CreateWorldMatureVerifyResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['create_account_identity_verification_start_request'] = \
+            create_account_identity_verification_start_request
+        return self.create_account_identity_verification_start_endpoint.call_with_http_info(**kwargs)
 
     def create_account_logout_all(
         self,
@@ -689,11 +961,83 @@ class AccountApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.create_account_logout_all_endpoint.call_with_http_info(**kwargs)
 
+    def create_account_reconfirm_deletion(
+        self,
+        **kwargs
+    ):
+        """Confirm again a deletion paused because the account was in use.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_account_reconfirm_deletion(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CreateAccountReconfirmDeletionResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.create_account_reconfirm_deletion_endpoint.call_with_http_info(**kwargs)
+
     def create_account_request_deletion(
         self,
         **kwargs
     ):
-        """Schedule account deletion after a grace period.  # noqa: E501
+        """Schedule account deletion after a grace period. Requires confirmEmail.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -987,6 +1331,78 @@ class AccountApi(object):
             grant_id
         return self.delete_connected_app_endpoint.call_with_http_info(**kwargs)
 
+    def get_account_closure_checklist(
+        self,
+        **kwargs
+    ):
+        """What closing the account will and will not do, before you request it.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_account_closure_checklist(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetAccountClosureChecklistResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.get_account_closure_checklist_endpoint.call_with_http_info(**kwargs)
+
     def get_account_deletion_status(
         self,
         **kwargs
@@ -1058,6 +1474,79 @@ class AccountApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.get_account_deletion_status_endpoint.call_with_http_info(**kwargs)
+
+    def get_account_identity_verification(
+        self,
+        **kwargs
+    ):
+        """Your identity verification: one status for the whole account, read by every feature that needs ID.  # noqa: E501
+
+        status is unverified, requires_input, processing, verified or canceled. requires_input with a lastError { code, reason } is a failed try the person can redo on the same link (start returns it); processing is being reviewed; neither is a decline, only canceled is. attempts counts the failed tries. ageVerified passes the age-restricted checkout gate. message is the next step in words (null once verified).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_account_identity_verification(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetAccountIdentityVerificationResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.get_account_identity_verification_endpoint.call_with_http_info(**kwargs)
 
     def get_me(
         self,

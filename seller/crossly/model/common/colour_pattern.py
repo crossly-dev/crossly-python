@@ -56,22 +56,22 @@ class ColourPattern(ModelNormal):
 
     allowed_values = {
         ('colour',): {
+            'YELLOW': "yellow",
+            'BLUE': "blue",
+            'GREEN': "green",
+            'PINK': "pink",
+            'PURPLE': "purple",
+            'CHARCOAL': "charcoal",
             'RED': "red",
             'ORANGE': "orange",
-            'YELLOW': "yellow",
-            'GREEN': "green",
             'TEAL': "teal",
-            'BLUE': "blue",
-            'PURPLE': "purple",
-            'PINK': "pink",
             'CREAM': "cream",
-            'CHARCOAL': "charcoal",
         },
         ('pattern',): {
-            'SOLID': "solid",
-            'STRIPE': "stripe",
-            'SCALLOP': "scallop",
             'CHECK': "check",
+            'STRIPE': "stripe",
+            'SOLID': "solid",
+            'SCALLOP': "scallop",
         },
     }
 

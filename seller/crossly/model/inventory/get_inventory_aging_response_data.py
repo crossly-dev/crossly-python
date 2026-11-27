@@ -30,10 +30,10 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from crossly.model.analytic.get_analytic_inventory_response_data_worst import GetAnalyticInventoryResponseDataWorst
     from crossly.model.inventory.get_inventory_aging_response_data_buckets import GetInventoryAgingResponseDataBuckets
-    from crossly.model.inventory.get_inventory_aging_response_data_worst import GetInventoryAgingResponseDataWorst
+    globals()['GetAnalyticInventoryResponseDataWorst'] = GetAnalyticInventoryResponseDataWorst
     globals()['GetInventoryAgingResponseDataBuckets'] = GetInventoryAgingResponseDataBuckets
-    globals()['GetInventoryAgingResponseDataWorst'] = GetInventoryAgingResponseDataWorst
 
 
 class GetInventoryAgingResponseData(ModelNormal):
@@ -61,6 +61,11 @@ class GetInventoryAgingResponseData(ModelNormal):
     """
 
     allowed_values = {
+        ('size_by',): {
+            'valueOption': "value",
+            'cost': "cost",
+            'units': "units",
+        },
     }
 
     validations = {
@@ -83,10 +88,18 @@ class GetInventoryAgingResponseData(ModelNormal):
         lazy_import()
         return {
             'buckets': ([GetInventoryAgingResponseDataBuckets],),  # noqa: E501
-            'worst': ([GetInventoryAgingResponseDataWorst],),  # noqa: E501
+            'worst': ([GetAnalyticInventoryResponseDataWorst],),  # noqa: E501
             'stuck_capital_cents': (float,),  # noqa: E501
+            'attention_cost_cents': (float,),  # noqa: E501
+            'over90_cost_cents': (float,),  # noqa: E501
+            'over90_listed_value_cents': (float,),  # noqa: E501
             'total_items': (float,),  # noqa: E501
             'total_units': (float,),  # noqa: E501
+            'cost_known_items': (float,),  # noqa: E501
+            'cost_unknown_items': (float,),  # noqa: E501
+            'listed_value_cents': (float,),  # noqa: E501
+            'size_by': (str,),  # noqa: E501
+            'market_value_cents': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -98,8 +111,16 @@ class GetInventoryAgingResponseData(ModelNormal):
         'buckets': 'buckets',  # noqa: E501
         'worst': 'worst',  # noqa: E501
         'stuck_capital_cents': 'stuckCapitalCents',  # noqa: E501
+        'attention_cost_cents': 'attentionCostCents',  # noqa: E501
+        'over90_cost_cents': 'over90CostCents',  # noqa: E501
+        'over90_listed_value_cents': 'over90ListedValueCents',  # noqa: E501
         'total_items': 'totalItems',  # noqa: E501
         'total_units': 'totalUnits',  # noqa: E501
+        'cost_known_items': 'costKnownItems',  # noqa: E501
+        'cost_unknown_items': 'costUnknownItems',  # noqa: E501
+        'listed_value_cents': 'listedValueCents',  # noqa: E501
+        'size_by': 'sizeBy',  # noqa: E501
+        'market_value_cents': 'marketValueCents',  # noqa: E501
     }
 
     read_only_vars = {
@@ -109,15 +130,22 @@ class GetInventoryAgingResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, buckets, worst, stuck_capital_cents, total_items, total_units, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, buckets, worst, stuck_capital_cents, attention_cost_cents, over90_cost_cents, over90_listed_value_cents, total_items, total_units, cost_known_items, cost_unknown_items, listed_value_cents, size_by, *args, **kwargs):  # noqa: E501
         """GetInventoryAgingResponseData - a model defined in OpenAPI
 
         Args:
             buckets ([GetInventoryAgingResponseDataBuckets]):
-            worst ([GetInventoryAgingResponseDataWorst]):
-            stuck_capital_cents (float):
+            worst ([GetAnalyticInventoryResponseDataWorst]):
+            stuck_capital_cents (float): Cost of stock 30+ days listed or unlisted (30-90 + 90+ + unlisted): the same number as attentionCostCents. Not \"older than three months\"; that is over90CostCents.
+            attention_cost_cents (float):
+            over90_cost_cents (float):
+            over90_listed_value_cents (float):
             total_items (float):
             total_units (float):
+            cost_known_items (float):
+            cost_unknown_items (float):
+            listed_value_cents (float):
+            size_by (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -150,6 +178,7 @@ class GetInventoryAgingResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            market_value_cents (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -180,8 +209,15 @@ class GetInventoryAgingResponseData(ModelNormal):
         self.buckets = buckets
         self.worst = worst
         self.stuck_capital_cents = stuck_capital_cents
+        self.attention_cost_cents = attention_cost_cents
+        self.over90_cost_cents = over90_cost_cents
+        self.over90_listed_value_cents = over90_listed_value_cents
         self.total_items = total_items
         self.total_units = total_units
+        self.cost_known_items = cost_known_items
+        self.cost_unknown_items = cost_unknown_items
+        self.listed_value_cents = listed_value_cents
+        self.size_by = size_by
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -202,15 +238,22 @@ class GetInventoryAgingResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, buckets, worst, stuck_capital_cents, total_items, total_units, *args, **kwargs):  # noqa: E501
+    def __init__(self, buckets, worst, stuck_capital_cents, attention_cost_cents, over90_cost_cents, over90_listed_value_cents, total_items, total_units, cost_known_items, cost_unknown_items, listed_value_cents, size_by, *args, **kwargs):  # noqa: E501
         """GetInventoryAgingResponseData - a model defined in OpenAPI
 
         Args:
             buckets ([GetInventoryAgingResponseDataBuckets]):
-            worst ([GetInventoryAgingResponseDataWorst]):
-            stuck_capital_cents (float):
+            worst ([GetAnalyticInventoryResponseDataWorst]):
+            stuck_capital_cents (float): Cost of stock 30+ days listed or unlisted (30-90 + 90+ + unlisted): the same number as attentionCostCents. Not \"older than three months\"; that is over90CostCents.
+            attention_cost_cents (float):
+            over90_cost_cents (float):
+            over90_listed_value_cents (float):
             total_items (float):
             total_units (float):
+            cost_known_items (float):
+            cost_unknown_items (float):
+            listed_value_cents (float):
+            size_by (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -243,6 +286,7 @@ class GetInventoryAgingResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            market_value_cents (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -271,8 +315,15 @@ class GetInventoryAgingResponseData(ModelNormal):
         self.buckets = buckets
         self.worst = worst
         self.stuck_capital_cents = stuck_capital_cents
+        self.attention_cost_cents = attention_cost_cents
+        self.over90_cost_cents = over90_cost_cents
+        self.over90_listed_value_cents = over90_listed_value_cents
         self.total_items = total_items
         self.total_units = total_units
+        self.cost_known_items = cost_known_items
+        self.cost_unknown_items = cost_unknown_items
+        self.listed_value_cents = listed_value_cents
+        self.size_by = size_by
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

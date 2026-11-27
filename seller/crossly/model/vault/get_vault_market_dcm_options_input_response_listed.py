@@ -61,8 +61,8 @@ class GetVaultMarketDcmOptionsInputResponseListed(ModelNormal):
     allowed_values = {
         ('option_type',): {
             'None': None,
-            'CALL': "call",
             'PUT': "put",
+            'CALL': "call",
         },
     }
 

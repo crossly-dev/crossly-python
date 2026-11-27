@@ -62,14 +62,14 @@ class CreateVaultMarketPaperMissionMarkCheckResponse(ModelNormal):
 
     allowed_values = {
         ('answer',): {
+            'C': "C",
             'A': "A",
             'B': "B",
-            'C': "C",
         },
         ('quality',): {
+            'C': "C",
             'A': "A",
             'B': "B",
-            'C': "C",
         },
     }
 

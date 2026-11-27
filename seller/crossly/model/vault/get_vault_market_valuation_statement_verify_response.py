@@ -62,13 +62,13 @@ class GetVaultMarketValuationStatementVerifyResponse(ModelNormal):
 
     allowed_values = {
         ('purpose',): {
-            'INSURANCE': "insurance",
             'APPRAISAL': "appraisal",
+            'INSURANCE': "insurance",
         },
         ('verdict',): {
-            'VALID': "valid",
-            'ALTERED': "altered",
             'MISMATCH': "mismatch",
+            'ALTERED': "altered",
+            'VALID': "valid",
         },
     }
 

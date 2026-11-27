@@ -62,13 +62,13 @@ class ListMarketBullionItem(ModelNormal):
             'PALLADIUM': "palladium",
         },
         ('form',): {
-            'ROUND': "round",
             'BULLION_COIN': "bullion_coin",
             'BAR': "bar",
+            'ROUND': "round",
         },
         ('size',): {
-            'QUARTER': "quarter",
             'FRACTIONAL': "fractional",
+            'QUARTER': "quarter",
             'HALF': "half",
             'ONE': "one",
             'TWO-FIVE': "two-five",

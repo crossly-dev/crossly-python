@@ -77,9 +77,9 @@ class ListBuyerPacksItemTiers(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'name': (str,),  # noqa: E501
-            'available': (float,),  # noqa: E501
             'weight': (float,),  # noqa: E501
             'odds_pct': (float,),  # noqa: E501
+            'available': (float,),  # noqa: E501
             'avg_value_cents': (float,),  # noqa: E501
             'min_value_cents': (float, none_type,),  # noqa: E501
             'max_value_cents': (float, none_type,),  # noqa: E501
@@ -93,9 +93,9 @@ class ListBuyerPacksItemTiers(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'name': 'name',  # noqa: E501
-        'available': 'available',  # noqa: E501
         'weight': 'weight',  # noqa: E501
         'odds_pct': 'oddsPct',  # noqa: E501
+        'available': 'available',  # noqa: E501
         'avg_value_cents': 'avgValueCents',  # noqa: E501
         'min_value_cents': 'minValueCents',  # noqa: E501
         'max_value_cents': 'maxValueCents',  # noqa: E501
@@ -108,15 +108,15 @@ class ListBuyerPacksItemTiers(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, name, available, weight, odds_pct, avg_value_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, name, weight, odds_pct, available, avg_value_cents, *args, **kwargs):  # noqa: E501
         """ListBuyerPacksItemTiers - a model defined in OpenAPI
 
         Args:
             id (str):
             name (str):
-            available (float):
             weight (float):
             odds_pct (float):
+            available (float):
             avg_value_cents (float):
 
         Keyword Args:
@@ -181,9 +181,9 @@ class ListBuyerPacksItemTiers(ModelNormal):
 
         self.id = id
         self.name = name
-        self.available = available
         self.weight = weight
         self.odds_pct = odds_pct
+        self.available = available
         self.avg_value_cents = avg_value_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -205,15 +205,15 @@ class ListBuyerPacksItemTiers(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, name, available, weight, odds_pct, avg_value_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, name, weight, odds_pct, available, avg_value_cents, *args, **kwargs):  # noqa: E501
         """ListBuyerPacksItemTiers - a model defined in OpenAPI
 
         Args:
             id (str):
             name (str):
-            available (float):
             weight (float):
             odds_pct (float):
+            available (float):
             avg_value_cents (float):
 
         Keyword Args:
@@ -276,9 +276,9 @@ class ListBuyerPacksItemTiers(ModelNormal):
 
         self.id = id
         self.name = name
-        self.available = available
         self.weight = weight
         self.odds_pct = odds_pct
+        self.available = available
         self.avg_value_cents = avg_value_cents
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

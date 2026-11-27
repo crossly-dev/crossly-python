@@ -30,12 +30,14 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.inventory.get_inventory_response_platform_listings_digital_file import GetInventoryResponsePlatformListingsDigitalFile
+    from crossly.model.inventory.get_inventory_response_platform_listings_bundle_promo import GetInventoryResponsePlatformListingsBundlePromo
     from crossly.model.inventory.get_inventory_response_platform_listings_measurements import GetInventoryResponsePlatformListingsMeasurements
     from crossly.model.inventory.get_inventory_response_platform_listings_personalization import GetInventoryResponsePlatformListingsPersonalization
-    globals()['GetInventoryResponsePlatformListingsDigitalFile'] = GetInventoryResponsePlatformListingsDigitalFile
+    from crossly.model.listing.get_listing_response_platform_listings_unmatched_sale import GetListingResponsePlatformListingsUnmatchedSale
+    globals()['GetInventoryResponsePlatformListingsBundlePromo'] = GetInventoryResponsePlatformListingsBundlePromo
     globals()['GetInventoryResponsePlatformListingsMeasurements'] = GetInventoryResponsePlatformListingsMeasurements
     globals()['GetInventoryResponsePlatformListingsPersonalization'] = GetInventoryResponsePlatformListingsPersonalization
+    globals()['GetListingResponsePlatformListingsUnmatchedSale'] = GetListingResponsePlatformListingsUnmatchedSale
 
 
 class GetListingResponsePlatformListings(ModelNormal):
@@ -63,6 +65,25 @@ class GetListingResponsePlatformListings(ModelNormal):
     """
 
     allowed_values = {
+        ('origin',): {
+            'UNKNOWN': "unknown",
+            'PUBLISHED': "published",
+            'IMPORTED': "imported",
+            'EXTERNAL_STUB': "external_stub",
+            'APP_LINKED': "app_linked",
+        },
+        ('views_semantics',): {
+            'None': None,
+            'LIFETIME': "lifetime",
+            'ROLLING7D': "rolling7d",
+            'ROLLING30D': "rolling30d",
+            'CLICKS': "clicks",
+        },
+        ('delist_state',): {
+            'None': None,
+            'PENDING': "pending",
+            'FAILED': "failed",
+        },
     }
 
     validations = {
@@ -86,15 +107,16 @@ class GetListingResponsePlatformListings(ModelNormal):
         return {
             'id': (str,),  # noqa: E501
             'user_id': (str,),  # noqa: E501
-            'quantity': (float,),  # noqa: E501
-            'status': (str,),  # noqa: E501
             'platform': (str,),  # noqa: E501
-            'listing_id': (str,),  # noqa: E501
             'account_slot': (float,),  # noqa: E501
-            'platform_listing_id': (str,),  # noqa: E501
-            'stock_location': (str,),  # noqa: E501
+            'status': (str,),  # noqa: E501
+            'origin': (str,),  # noqa: E501
             'views': (float,),  # noqa: E501
             'favorites': (float,),  # noqa: E501
+            'quantity': (float,),  # noqa: E501
+            'listing_id': (str,),  # noqa: E501
+            'platform_listing_id': (str,),  # noqa: E501
+            'stock_location': (str,),  # noqa: E501
             'comments_count': (float,),  # noqa: E501
             'is_draft': (bool,),  # noqa: E501
             'is_dutch_auction': (bool,),  # noqa: E501
@@ -108,7 +130,6 @@ class GetListingResponsePlatformListings(ModelNormal):
             'handling_time_days': (float,),  # noqa: E501
             'verification_failed': (bool,),  # noqa: E501
             'details_pending': (bool,),  # noqa: E501
-            'error_message': (str, none_type,),  # noqa: E501
             'marketplace_id': (str, none_type,),  # noqa: E501
             'inventory_item_id': (str, none_type,),  # noqa: E501
             'currency': (str, none_type,),  # noqa: E501
@@ -119,10 +140,21 @@ class GetListingResponsePlatformListings(ModelNormal):
             'shared_at': (datetime, none_type,),  # noqa: E501
             'delist_reason': (str, none_type,),  # noqa: E501
             'last_checked_at': (datetime, none_type,),  # noqa: E501
+            'impressions': (float, none_type,),  # noqa: E501
+            'ctr_bps': (float, none_type,),  # noqa: E501
+            'views_semantics': (str, none_type,),  # noqa: E501
             'last_stats_synced_at': (datetime, none_type,),  # noqa: E501
+            'error_message': (str, none_type,),  # noqa: E501
+            'delist_requested_at': (datetime, none_type,),  # noqa: E501
+            'delist_requested_reason': (str, none_type,),  # noqa: E501
+            'delist_failed_at': (datetime, none_type,),  # noqa: E501
+            'delist_error': (str, none_type,),  # noqa: E501
+            'delist_error_code': (str, none_type,),  # noqa: E501
             'listed_price': (str, none_type,),  # noqa: E501
             'crossly_price_usd_cents': (float, none_type,),  # noqa: E501
             'crossly_price_fx_as_of': (str, none_type,),  # noqa: E501
+            'bundle_promo': (GetInventoryResponsePlatformListingsBundlePromo,),  # noqa: E501
+            'storefront_id': (str, none_type,),  # noqa: E501
             'hashtags': ([str], none_type,),  # noqa: E501
             'scheduled_publish_at': (datetime, none_type,),  # noqa: E501
             'dutch_start_cents': (float, none_type,),  # noqa: E501
@@ -138,7 +170,6 @@ class GetListingResponsePlatformListings(ModelNormal):
             'best_offer_auto_decline_cents': (float, none_type,),  # noqa: E501
             'aesthetic_tags': ([str], none_type,),  # noqa: E501
             'personalization': (GetInventoryResponsePlatformListingsPersonalization,),  # noqa: E501
-            'digital_file': (GetInventoryResponsePlatformListingsDigitalFile,),  # noqa: E501
             'try_days': (float, none_type,),  # noqa: E501
             'try_fee_cents': (float, none_type,),  # noqa: E501
             'subscribe_discount_bps': (float, none_type,),  # noqa: E501
@@ -170,6 +201,8 @@ class GetListingResponsePlatformListings(ModelNormal):
             'last_drift_checked_at': (datetime, none_type,),  # noqa: E501
             'web3_order_id': (str, none_type,),  # noqa: E501
             'published_overrides': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type,),  # noqa: E501
+            'delist_state': (str, none_type,),  # noqa: E501
+            'unmatched_sale': (GetListingResponsePlatformListingsUnmatchedSale,),  # noqa: E501
         }
 
     @cached_property
@@ -180,15 +213,16 @@ class GetListingResponsePlatformListings(ModelNormal):
     attribute_map = {
         'id': 'id',  # noqa: E501
         'user_id': 'userId',  # noqa: E501
-        'quantity': 'quantity',  # noqa: E501
-        'status': 'status',  # noqa: E501
         'platform': 'platform',  # noqa: E501
-        'listing_id': 'listingId',  # noqa: E501
         'account_slot': 'accountSlot',  # noqa: E501
-        'platform_listing_id': 'platformListingId',  # noqa: E501
-        'stock_location': 'stockLocation',  # noqa: E501
+        'status': 'status',  # noqa: E501
+        'origin': 'origin',  # noqa: E501
         'views': 'views',  # noqa: E501
         'favorites': 'favorites',  # noqa: E501
+        'quantity': 'quantity',  # noqa: E501
+        'listing_id': 'listingId',  # noqa: E501
+        'platform_listing_id': 'platformListingId',  # noqa: E501
+        'stock_location': 'stockLocation',  # noqa: E501
         'comments_count': 'commentsCount',  # noqa: E501
         'is_draft': 'isDraft',  # noqa: E501
         'is_dutch_auction': 'isDutchAuction',  # noqa: E501
@@ -202,7 +236,6 @@ class GetListingResponsePlatformListings(ModelNormal):
         'handling_time_days': 'handlingTimeDays',  # noqa: E501
         'verification_failed': 'verificationFailed',  # noqa: E501
         'details_pending': 'detailsPending',  # noqa: E501
-        'error_message': 'errorMessage',  # noqa: E501
         'marketplace_id': 'marketplaceId',  # noqa: E501
         'inventory_item_id': 'inventoryItemId',  # noqa: E501
         'currency': 'currency',  # noqa: E501
@@ -213,10 +246,21 @@ class GetListingResponsePlatformListings(ModelNormal):
         'shared_at': 'sharedAt',  # noqa: E501
         'delist_reason': 'delistReason',  # noqa: E501
         'last_checked_at': 'lastCheckedAt',  # noqa: E501
+        'impressions': 'impressions',  # noqa: E501
+        'ctr_bps': 'ctrBps',  # noqa: E501
+        'views_semantics': 'viewsSemantics',  # noqa: E501
         'last_stats_synced_at': 'lastStatsSyncedAt',  # noqa: E501
+        'error_message': 'errorMessage',  # noqa: E501
+        'delist_requested_at': 'delistRequestedAt',  # noqa: E501
+        'delist_requested_reason': 'delistRequestedReason',  # noqa: E501
+        'delist_failed_at': 'delistFailedAt',  # noqa: E501
+        'delist_error': 'delistError',  # noqa: E501
+        'delist_error_code': 'delistErrorCode',  # noqa: E501
         'listed_price': 'listedPrice',  # noqa: E501
         'crossly_price_usd_cents': 'crosslyPriceUsdCents',  # noqa: E501
         'crossly_price_fx_as_of': 'crosslyPriceFxAsOf',  # noqa: E501
+        'bundle_promo': 'bundlePromo',  # noqa: E501
+        'storefront_id': 'storefrontId',  # noqa: E501
         'hashtags': 'hashtags',  # noqa: E501
         'scheduled_publish_at': 'scheduledPublishAt',  # noqa: E501
         'dutch_start_cents': 'dutchStartCents',  # noqa: E501
@@ -232,7 +276,6 @@ class GetListingResponsePlatformListings(ModelNormal):
         'best_offer_auto_decline_cents': 'bestOfferAutoDeclineCents',  # noqa: E501
         'aesthetic_tags': 'aestheticTags',  # noqa: E501
         'personalization': 'personalization',  # noqa: E501
-        'digital_file': 'digitalFile',  # noqa: E501
         'try_days': 'tryDays',  # noqa: E501
         'try_fee_cents': 'tryFeeCents',  # noqa: E501
         'subscribe_discount_bps': 'subscribeDiscountBps',  # noqa: E501
@@ -264,6 +307,8 @@ class GetListingResponsePlatformListings(ModelNormal):
         'last_drift_checked_at': 'lastDriftCheckedAt',  # noqa: E501
         'web3_order_id': 'web3OrderId',  # noqa: E501
         'published_overrides': 'publishedOverrides',  # noqa: E501
+        'delist_state': 'delistState',  # noqa: E501
+        'unmatched_sale': 'unmatchedSale',  # noqa: E501
     }
 
     read_only_vars = {
@@ -273,21 +318,22 @@ class GetListingResponsePlatformListings(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, user_id, quantity, status, platform, listing_id, account_slot, platform_listing_id, stock_location, views, favorites, comments_count, is_draft, is_dutch_auction, is_pre_order, best_offer_enabled, allows_local_pickup, authentication_required, has_variants, min_order_quantity, is_gtc, handling_time_days, verification_failed, details_pending, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, user_id, platform, account_slot, status, origin, views, favorites, quantity, listing_id, platform_listing_id, stock_location, comments_count, is_draft, is_dutch_auction, is_pre_order, best_offer_enabled, allows_local_pickup, authentication_required, has_variants, min_order_quantity, is_gtc, handling_time_days, verification_failed, details_pending, *args, **kwargs):  # noqa: E501
         """GetListingResponsePlatformListings - a model defined in OpenAPI
 
         Args:
             id (str):
             user_id (str):
-            quantity (float):
-            status (str):
             platform (str):
-            listing_id (str):
             account_slot (float):
-            platform_listing_id (str):
-            stock_location (str):
+            status (str):
+            origin (str):
             views (float):
             favorites (float):
+            quantity (float):
+            listing_id (str):
+            platform_listing_id (str):
+            stock_location (str):
             comments_count (float):
             is_draft (bool):
             is_dutch_auction (bool):
@@ -333,7 +379,6 @@ class GetListingResponsePlatformListings(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            error_message (str, none_type): [optional]  # noqa: E501
             marketplace_id (str, none_type): [optional]  # noqa: E501
             inventory_item_id (str, none_type): [optional]  # noqa: E501
             currency (str, none_type): [optional]  # noqa: E501
@@ -344,10 +389,21 @@ class GetListingResponsePlatformListings(ModelNormal):
             shared_at (datetime, none_type): [optional]  # noqa: E501
             delist_reason (str, none_type): [optional]  # noqa: E501
             last_checked_at (datetime, none_type): [optional]  # noqa: E501
+            impressions (float, none_type): [optional]  # noqa: E501
+            ctr_bps (float, none_type): [optional]  # noqa: E501
+            views_semantics (str, none_type): [optional]  # noqa: E501
             last_stats_synced_at (datetime, none_type): [optional]  # noqa: E501
+            error_message (str, none_type): [optional]  # noqa: E501
+            delist_requested_at (datetime, none_type): [optional]  # noqa: E501
+            delist_requested_reason (str, none_type): [optional]  # noqa: E501
+            delist_failed_at (datetime, none_type): [optional]  # noqa: E501
+            delist_error (str, none_type): [optional]  # noqa: E501
+            delist_error_code (str, none_type): [optional]  # noqa: E501
             listed_price (str, none_type): [optional]  # noqa: E501
             crossly_price_usd_cents (float, none_type): [optional]  # noqa: E501
             crossly_price_fx_as_of (str, none_type): [optional]  # noqa: E501
+            bundle_promo (GetInventoryResponsePlatformListingsBundlePromo): [optional]  # noqa: E501
+            storefront_id (str, none_type): [optional]  # noqa: E501
             hashtags ([str], none_type): [optional]  # noqa: E501
             scheduled_publish_at (datetime, none_type): [optional]  # noqa: E501
             dutch_start_cents (float, none_type): [optional]  # noqa: E501
@@ -363,7 +419,6 @@ class GetListingResponsePlatformListings(ModelNormal):
             best_offer_auto_decline_cents (float, none_type): [optional]  # noqa: E501
             aesthetic_tags ([str], none_type): [optional]  # noqa: E501
             personalization (GetInventoryResponsePlatformListingsPersonalization): [optional]  # noqa: E501
-            digital_file (GetInventoryResponsePlatformListingsDigitalFile): [optional]  # noqa: E501
             try_days (float, none_type): [optional]  # noqa: E501
             try_fee_cents (float, none_type): [optional]  # noqa: E501
             subscribe_discount_bps (float, none_type): [optional]  # noqa: E501
@@ -395,6 +450,8 @@ class GetListingResponsePlatformListings(ModelNormal):
             last_drift_checked_at (datetime, none_type): [optional]  # noqa: E501
             web3_order_id (str, none_type): [optional]  # noqa: E501
             published_overrides ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
+            delist_state (str, none_type): [optional]  # noqa: E501
+            unmatched_sale (GetListingResponsePlatformListingsUnmatchedSale): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -424,15 +481,16 @@ class GetListingResponsePlatformListings(ModelNormal):
 
         self.id = id
         self.user_id = user_id
-        self.quantity = quantity
-        self.status = status
         self.platform = platform
-        self.listing_id = listing_id
         self.account_slot = account_slot
-        self.platform_listing_id = platform_listing_id
-        self.stock_location = stock_location
+        self.status = status
+        self.origin = origin
         self.views = views
         self.favorites = favorites
+        self.quantity = quantity
+        self.listing_id = listing_id
+        self.platform_listing_id = platform_listing_id
+        self.stock_location = stock_location
         self.comments_count = comments_count
         self.is_draft = is_draft
         self.is_dutch_auction = is_dutch_auction
@@ -466,21 +524,22 @@ class GetListingResponsePlatformListings(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, user_id, quantity, status, platform, listing_id, account_slot, platform_listing_id, stock_location, views, favorites, comments_count, is_draft, is_dutch_auction, is_pre_order, best_offer_enabled, allows_local_pickup, authentication_required, has_variants, min_order_quantity, is_gtc, handling_time_days, verification_failed, details_pending, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, user_id, platform, account_slot, status, origin, views, favorites, quantity, listing_id, platform_listing_id, stock_location, comments_count, is_draft, is_dutch_auction, is_pre_order, best_offer_enabled, allows_local_pickup, authentication_required, has_variants, min_order_quantity, is_gtc, handling_time_days, verification_failed, details_pending, *args, **kwargs):  # noqa: E501
         """GetListingResponsePlatformListings - a model defined in OpenAPI
 
         Args:
             id (str):
             user_id (str):
-            quantity (float):
-            status (str):
             platform (str):
-            listing_id (str):
             account_slot (float):
-            platform_listing_id (str):
-            stock_location (str):
+            status (str):
+            origin (str):
             views (float):
             favorites (float):
+            quantity (float):
+            listing_id (str):
+            platform_listing_id (str):
+            stock_location (str):
             comments_count (float):
             is_draft (bool):
             is_dutch_auction (bool):
@@ -526,7 +585,6 @@ class GetListingResponsePlatformListings(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            error_message (str, none_type): [optional]  # noqa: E501
             marketplace_id (str, none_type): [optional]  # noqa: E501
             inventory_item_id (str, none_type): [optional]  # noqa: E501
             currency (str, none_type): [optional]  # noqa: E501
@@ -537,10 +595,21 @@ class GetListingResponsePlatformListings(ModelNormal):
             shared_at (datetime, none_type): [optional]  # noqa: E501
             delist_reason (str, none_type): [optional]  # noqa: E501
             last_checked_at (datetime, none_type): [optional]  # noqa: E501
+            impressions (float, none_type): [optional]  # noqa: E501
+            ctr_bps (float, none_type): [optional]  # noqa: E501
+            views_semantics (str, none_type): [optional]  # noqa: E501
             last_stats_synced_at (datetime, none_type): [optional]  # noqa: E501
+            error_message (str, none_type): [optional]  # noqa: E501
+            delist_requested_at (datetime, none_type): [optional]  # noqa: E501
+            delist_requested_reason (str, none_type): [optional]  # noqa: E501
+            delist_failed_at (datetime, none_type): [optional]  # noqa: E501
+            delist_error (str, none_type): [optional]  # noqa: E501
+            delist_error_code (str, none_type): [optional]  # noqa: E501
             listed_price (str, none_type): [optional]  # noqa: E501
             crossly_price_usd_cents (float, none_type): [optional]  # noqa: E501
             crossly_price_fx_as_of (str, none_type): [optional]  # noqa: E501
+            bundle_promo (GetInventoryResponsePlatformListingsBundlePromo): [optional]  # noqa: E501
+            storefront_id (str, none_type): [optional]  # noqa: E501
             hashtags ([str], none_type): [optional]  # noqa: E501
             scheduled_publish_at (datetime, none_type): [optional]  # noqa: E501
             dutch_start_cents (float, none_type): [optional]  # noqa: E501
@@ -556,7 +625,6 @@ class GetListingResponsePlatformListings(ModelNormal):
             best_offer_auto_decline_cents (float, none_type): [optional]  # noqa: E501
             aesthetic_tags ([str], none_type): [optional]  # noqa: E501
             personalization (GetInventoryResponsePlatformListingsPersonalization): [optional]  # noqa: E501
-            digital_file (GetInventoryResponsePlatformListingsDigitalFile): [optional]  # noqa: E501
             try_days (float, none_type): [optional]  # noqa: E501
             try_fee_cents (float, none_type): [optional]  # noqa: E501
             subscribe_discount_bps (float, none_type): [optional]  # noqa: E501
@@ -588,6 +656,8 @@ class GetListingResponsePlatformListings(ModelNormal):
             last_drift_checked_at (datetime, none_type): [optional]  # noqa: E501
             web3_order_id (str, none_type): [optional]  # noqa: E501
             published_overrides ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}, none_type): [optional]  # noqa: E501
+            delist_state (str, none_type): [optional]  # noqa: E501
+            unmatched_sale (GetListingResponsePlatformListingsUnmatchedSale): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -615,15 +685,16 @@ class GetListingResponsePlatformListings(ModelNormal):
 
         self.id = id
         self.user_id = user_id
-        self.quantity = quantity
-        self.status = status
         self.platform = platform
-        self.listing_id = listing_id
         self.account_slot = account_slot
-        self.platform_listing_id = platform_listing_id
-        self.stock_location = stock_location
+        self.status = status
+        self.origin = origin
         self.views = views
         self.favorites = favorites
+        self.quantity = quantity
+        self.listing_id = listing_id
+        self.platform_listing_id = platform_listing_id
+        self.stock_location = stock_location
         self.comments_count = comments_count
         self.is_draft = is_draft
         self.is_dutch_auction = is_dutch_auction

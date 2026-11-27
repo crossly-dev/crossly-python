@@ -56,10 +56,10 @@ class ListWorldProvenanceItem(ModelNormal):
 
     allowed_values = {
         ('kind',): {
-            'AUCTION': "auction",
             'WINDOW': "window",
-            'AGENT': "agent",
+            'AUCTION': "auction",
             'ROOM': "room",
+            'AGENT': "agent",
             'STALL': "stall",
             'WORN': "worn",
             'DROP': "drop",

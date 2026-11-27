@@ -63,9 +63,9 @@ class ListBuyerVaultMarketIndexesItem(ModelNormal):
             'CUSTOM': "custom",
             'BRAND': "brand",
             'CATEGORY': "category",
+            'SEGMENT': "segment",
             'CURATED': "curated",
             'COMPOSITE': "composite",
-            'SEGMENT': "segment",
         },
         ('weighting',): {
             'MARK': "mark",

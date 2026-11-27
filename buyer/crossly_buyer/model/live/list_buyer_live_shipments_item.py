@@ -81,15 +81,15 @@ class ListBuyerLiveShipmentsItem(ModelNormal):
         lazy_import()
         return {
             'id': (str,),  # noqa: E501
-            'status': (str,),  # noqa: E501
-            'orders': ([ListBuyerLiveShipmentsItemOrders],),  # noqa: E501
             'stream_id': (str,),  # noqa: E501
-            'refunded_postage_cents': (float,),  # noqa: E501
             'stream_title': (str,),  # noqa: E501
-            'carrier': (str, none_type,),  # noqa: E501
-            'tracking_number': (str, none_type,),  # noqa: E501
-            'label_url': (str, none_type,),  # noqa: E501
+            'status': (str,),  # noqa: E501
+            'refunded_postage_cents': (float,),  # noqa: E501
+            'orders': ([ListBuyerLiveShipmentsItemOrders],),  # noqa: E501
             'buyer_name': (str, none_type,),  # noqa: E501
+            'tracking_number': (str, none_type,),  # noqa: E501
+            'carrier': (str, none_type,),  # noqa: E501
+            'label_url': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -99,15 +99,15 @@ class ListBuyerLiveShipmentsItem(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'status': 'status',  # noqa: E501
-        'orders': 'orders',  # noqa: E501
         'stream_id': 'streamId',  # noqa: E501
-        'refunded_postage_cents': 'refundedPostageCents',  # noqa: E501
         'stream_title': 'streamTitle',  # noqa: E501
-        'carrier': 'carrier',  # noqa: E501
-        'tracking_number': 'trackingNumber',  # noqa: E501
-        'label_url': 'labelUrl',  # noqa: E501
+        'status': 'status',  # noqa: E501
+        'refunded_postage_cents': 'refundedPostageCents',  # noqa: E501
+        'orders': 'orders',  # noqa: E501
         'buyer_name': 'buyerName',  # noqa: E501
+        'tracking_number': 'trackingNumber',  # noqa: E501
+        'carrier': 'carrier',  # noqa: E501
+        'label_url': 'labelUrl',  # noqa: E501
     }
 
     read_only_vars = {
@@ -117,16 +117,16 @@ class ListBuyerLiveShipmentsItem(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, status, orders, stream_id, refunded_postage_cents, stream_title, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, stream_id, stream_title, status, refunded_postage_cents, orders, *args, **kwargs):  # noqa: E501
         """ListBuyerLiveShipmentsItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            status (str):
-            orders ([ListBuyerLiveShipmentsItemOrders]):
             stream_id (str):
-            refunded_postage_cents (float):
             stream_title (str):
+            status (str):
+            refunded_postage_cents (float):
+            orders ([ListBuyerLiveShipmentsItemOrders]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -159,10 +159,10 @@ class ListBuyerLiveShipmentsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            carrier (str, none_type): [optional]  # noqa: E501
-            tracking_number (str, none_type): [optional]  # noqa: E501
-            label_url (str, none_type): [optional]  # noqa: E501
             buyer_name (str, none_type): [optional]  # noqa: E501
+            tracking_number (str, none_type): [optional]  # noqa: E501
+            carrier (str, none_type): [optional]  # noqa: E501
+            label_url (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -191,11 +191,11 @@ class ListBuyerLiveShipmentsItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.status = status
-        self.orders = orders
         self.stream_id = stream_id
-        self.refunded_postage_cents = refunded_postage_cents
         self.stream_title = stream_title
+        self.status = status
+        self.refunded_postage_cents = refunded_postage_cents
+        self.orders = orders
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -216,16 +216,16 @@ class ListBuyerLiveShipmentsItem(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, status, orders, stream_id, refunded_postage_cents, stream_title, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, stream_id, stream_title, status, refunded_postage_cents, orders, *args, **kwargs):  # noqa: E501
         """ListBuyerLiveShipmentsItem - a model defined in OpenAPI
 
         Args:
             id (str):
-            status (str):
-            orders ([ListBuyerLiveShipmentsItemOrders]):
             stream_id (str):
-            refunded_postage_cents (float):
             stream_title (str):
+            status (str):
+            refunded_postage_cents (float):
+            orders ([ListBuyerLiveShipmentsItemOrders]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -258,10 +258,10 @@ class ListBuyerLiveShipmentsItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            carrier (str, none_type): [optional]  # noqa: E501
-            tracking_number (str, none_type): [optional]  # noqa: E501
-            label_url (str, none_type): [optional]  # noqa: E501
             buyer_name (str, none_type): [optional]  # noqa: E501
+            tracking_number (str, none_type): [optional]  # noqa: E501
+            carrier (str, none_type): [optional]  # noqa: E501
+            label_url (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -288,11 +288,11 @@ class ListBuyerLiveShipmentsItem(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.status = status
-        self.orders = orders
         self.stream_id = stream_id
-        self.refunded_postage_cents = refunded_postage_cents
         self.stream_title = stream_title
+        self.status = status
+        self.refunded_postage_cents = refunded_postage_cents
+        self.orders = orders
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

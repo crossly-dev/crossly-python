@@ -80,8 +80,8 @@ class ListInventoryActivityItem(ModelNormal):
             'user_id': (str,),  # noqa: E501
             'type': (str,),  # noqa: E501
             'platform': (str, none_type,),  # noqa: E501
-            'order_id': (str, none_type,),  # noqa: E501
             'inventory_item_id': (str, none_type,),  # noqa: E501
+            'order_id': (str, none_type,),  # noqa: E501
             'delta': (float, none_type,),  # noqa: E501
             'quantity_before': (float, none_type,),  # noqa: E501
             'quantity_after': (float, none_type,),  # noqa: E501
@@ -99,8 +99,8 @@ class ListInventoryActivityItem(ModelNormal):
         'user_id': 'userId',  # noqa: E501
         'type': 'type',  # noqa: E501
         'platform': 'platform',  # noqa: E501
-        'order_id': 'orderId',  # noqa: E501
         'inventory_item_id': 'inventoryItemId',  # noqa: E501
+        'order_id': 'orderId',  # noqa: E501
         'delta': 'delta',  # noqa: E501
         'quantity_before': 'quantityBefore',  # noqa: E501
         'quantity_after': 'quantityAfter',  # noqa: E501
@@ -155,8 +155,8 @@ class ListInventoryActivityItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             platform (str, none_type): [optional]  # noqa: E501
-            order_id (str, none_type): [optional]  # noqa: E501
             inventory_item_id (str, none_type): [optional]  # noqa: E501
+            order_id (str, none_type): [optional]  # noqa: E501
             delta (float, none_type): [optional]  # noqa: E501
             quantity_before (float, none_type): [optional]  # noqa: E501
             quantity_after (float, none_type): [optional]  # noqa: E501
@@ -253,8 +253,8 @@ class ListInventoryActivityItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             platform (str, none_type): [optional]  # noqa: E501
-            order_id (str, none_type): [optional]  # noqa: E501
             inventory_item_id (str, none_type): [optional]  # noqa: E501
+            order_id (str, none_type): [optional]  # noqa: E501
             delta (float, none_type): [optional]  # noqa: E501
             quantity_before (float, none_type): [optional]  # noqa: E501
             quantity_after (float, none_type): [optional]  # noqa: E501

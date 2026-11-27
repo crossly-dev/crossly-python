@@ -30,12 +30,14 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.analytic.get_analytic_dashboard_response_sell_through import GetAnalyticDashboardResponseSellThrough
+    from crossly.model.analytic.get_analytic_dashboard_response_sell_through_cohort import GetAnalyticDashboardResponseSellThroughCohort
     from crossly.model.inventory.get_inventory_sell_through_response_data_comparison import GetInventorySellThroughResponseDataComparison
-    from crossly.model.inventory.get_inventory_sell_through_response_data_window import GetInventorySellThroughResponseDataWindow
-    globals()['GetAnalyticDashboardResponseSellThrough'] = GetAnalyticDashboardResponseSellThrough
+    from crossly.model.inventory.get_inventory_sell_through_response_data_current import GetInventorySellThroughResponseDataCurrent
+    from crossly.model.common.start_end import StartEnd
+    globals()['GetAnalyticDashboardResponseSellThroughCohort'] = GetAnalyticDashboardResponseSellThroughCohort
     globals()['GetInventorySellThroughResponseDataComparison'] = GetInventorySellThroughResponseDataComparison
-    globals()['GetInventorySellThroughResponseDataWindow'] = GetInventorySellThroughResponseDataWindow
+    globals()['GetInventorySellThroughResponseDataCurrent'] = GetInventorySellThroughResponseDataCurrent
+    globals()['StartEnd'] = StartEnd
 
 
 class GetInventorySellThroughResponseData(ModelNormal):
@@ -84,10 +86,11 @@ class GetInventorySellThroughResponseData(ModelNormal):
         """
         lazy_import()
         return {
-            'current': (GetAnalyticDashboardResponseSellThrough,),  # noqa: E501
-            'previous': (GetAnalyticDashboardResponseSellThrough,),  # noqa: E501
+            'current': (GetInventorySellThroughResponseDataCurrent,),  # noqa: E501
+            'previous': (GetInventorySellThroughResponseDataCurrent,),  # noqa: E501
             'comparison': (GetInventorySellThroughResponseDataComparison,),  # noqa: E501
-            'window': (GetInventorySellThroughResponseDataWindow,),  # noqa: E501
+            'window': (StartEnd,),  # noqa: E501
+            'cohort': (GetAnalyticDashboardResponseSellThroughCohort,),  # noqa: E501
         }
 
     @cached_property
@@ -100,6 +103,7 @@ class GetInventorySellThroughResponseData(ModelNormal):
         'previous': 'previous',  # noqa: E501
         'comparison': 'comparison',  # noqa: E501
         'window': 'window',  # noqa: E501
+        'cohort': 'cohort',  # noqa: E501
     }
 
     read_only_vars = {
@@ -109,14 +113,15 @@ class GetInventorySellThroughResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, current, previous, comparison, window, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, current, previous, comparison, window, cohort, *args, **kwargs):  # noqa: E501
         """GetInventorySellThroughResponseData - a model defined in OpenAPI
 
         Args:
-            current (GetAnalyticDashboardResponseSellThrough):
-            previous (GetAnalyticDashboardResponseSellThrough):
+            current (GetInventorySellThroughResponseDataCurrent):
+            previous (GetInventorySellThroughResponseDataCurrent):
             comparison (GetInventorySellThroughResponseDataComparison):
-            window (GetInventorySellThroughResponseDataWindow):
+            window (StartEnd):
+            cohort (GetAnalyticDashboardResponseSellThroughCohort):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -180,6 +185,7 @@ class GetInventorySellThroughResponseData(ModelNormal):
         self.previous = previous
         self.comparison = comparison
         self.window = window
+        self.cohort = cohort
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -200,14 +206,15 @@ class GetInventorySellThroughResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, current, previous, comparison, window, *args, **kwargs):  # noqa: E501
+    def __init__(self, current, previous, comparison, window, cohort, *args, **kwargs):  # noqa: E501
         """GetInventorySellThroughResponseData - a model defined in OpenAPI
 
         Args:
-            current (GetAnalyticDashboardResponseSellThrough):
-            previous (GetAnalyticDashboardResponseSellThrough):
+            current (GetInventorySellThroughResponseDataCurrent):
+            previous (GetInventorySellThroughResponseDataCurrent):
             comparison (GetInventorySellThroughResponseDataComparison):
-            window (GetInventorySellThroughResponseDataWindow):
+            window (StartEnd):
+            cohort (GetAnalyticDashboardResponseSellThroughCohort):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -269,6 +276,7 @@ class GetInventorySellThroughResponseData(ModelNormal):
         self.previous = previous
         self.comparison = comparison
         self.window = window
+        self.cohort = cohort
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -23,11 +23,18 @@ from crossly.model_utils import (  # noqa: F401
 )
 from crossly.model.payout.create_payout_connect_onboard_request import CreatePayoutConnectOnboardRequest
 from crossly.model.payout.create_payout_connect_onboard_response import CreatePayoutConnectOnboardResponse
+from crossly.model.payout.create_payout_identity_link_response import CreatePayoutIdentityLinkResponse
+from crossly.model.payout.create_payout_payout_request import CreatePayoutPayoutRequest
+from crossly.model.payout.create_payout_payout_response import CreatePayoutPayoutResponse
 from crossly.model.common.error import Error
 from crossly.model.payout.get_payout_connect_response import GetPayoutConnectResponse
 from crossly.model.payout.get_payout_estimate_response import GetPayoutEstimateResponse
 from crossly.model.payout.get_payout_gross_for_net_response import GetPayoutGrossForNetResponse
+from crossly.model.payout.get_payout_identity_response import GetPayoutIdentityResponse
+from crossly.model.payout.get_payout_wallet_response import GetPayoutWalletResponse
 from crossly.model.payout.list_payout_compare_response import ListPayoutCompareResponse
+from crossly.model.payout.update_payout_schedule_request import UpdatePayoutScheduleRequest
+from crossly.model.payout.update_payout_schedule_response import UpdatePayoutScheduleResponse
 
 
 class PayoutApi(object):
@@ -79,6 +86,110 @@ class PayoutApi(object):
                 },
                 'location_map': {
                     'create_payout_connect_onboard_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.create_payout_identity_link_endpoint = _Endpoint(
+            settings={
+                'response_type': (CreatePayoutIdentityLinkResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/payouts/identity/link',
+                'operation_id': 'create_payout_identity_link',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'create_payout_connect_onboard_request',
+                ],
+                'required': [
+                    'create_payout_connect_onboard_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'create_payout_connect_onboard_request':
+                        (CreatePayoutConnectOnboardRequest,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'create_payout_connect_onboard_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
+            },
+            api_client=api_client
+        )
+        self.create_payout_payout_endpoint = _Endpoint(
+            settings={
+                'response_type': (CreatePayoutPayoutResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/payout/payouts',
+                'operation_id': 'create_payout_payout',
+                'http_method': 'POST',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'create_payout_payout_request',
+                ],
+                'required': [
+                    'create_payout_payout_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'create_payout_payout_request':
+                        (CreatePayoutPayoutRequest,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'create_payout_payout_request': 'body',
                 },
                 'collection_format_map': {
                 }
@@ -225,6 +336,105 @@ class PayoutApi(object):
             },
             api_client=api_client
         )
+        self.get_payout_identity_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetPayoutIdentityResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/payouts/identity',
+                'operation_id': 'get_payout_identity',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'fresh',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'fresh',
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                    ('fresh',): {
+
+                        "0": "0",
+                        "1": "1"
+                    },
+                },
+                'openapi_types': {
+                    'fresh':
+                        (str,),
+                },
+                'attribute_map': {
+                    'fresh': 'fresh',
+                },
+                'location_map': {
+                    'fresh': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.get_payout_wallet_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetPayoutWalletResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/payout/wallet',
+                'operation_id': 'get_payout_wallet',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.list_payout_compare_endpoint = _Endpoint(
             settings={
                 'response_type': (ListPayoutCompareResponse,),
@@ -266,6 +476,58 @@ class PayoutApi(object):
                     'application/json'
                 ],
                 'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.update_payout_schedule_endpoint = _Endpoint(
+            settings={
+                'response_type': (UpdatePayoutScheduleResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/payout/schedule',
+                'operation_id': 'update_payout_schedule',
+                'http_method': 'PUT',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'update_payout_schedule_request',
+                ],
+                'required': [
+                    'update_payout_schedule_request',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                ]
+            },
+            root_map={
+                'validations': {
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'update_payout_schedule_request':
+                        (UpdatePayoutScheduleRequest,),
+                },
+                'attribute_map': {
+                },
+                'location_map': {
+                    'update_payout_schedule_request': 'body',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [
+                    'application/json'
+                ]
             },
             api_client=api_client
         )
@@ -347,6 +609,162 @@ class PayoutApi(object):
         kwargs['create_payout_connect_onboard_request'] = \
             create_payout_connect_onboard_request
         return self.create_payout_connect_onboard_endpoint.call_with_http_info(**kwargs)
+
+    def create_payout_identity_link(
+        self,
+        create_payout_connect_onboard_request,
+        **kwargs
+    ):
+        """Continue with Stripe: a one-time Stripe-hosted link that collects what Stripe needs.  # noqa: E501
+
+        Creates the payout account first when there is none (country: ISO alpha-2, default the ship-from country). type is account_onboarding (Stripe shows only what is outstanding) or account_update. The link expires in minutes; ask for a new one rather than storing it. Nothing changes until a person completes it.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_payout_identity_link(create_payout_connect_onboard_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            create_payout_connect_onboard_request (CreatePayoutConnectOnboardRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CreatePayoutIdentityLinkResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['create_payout_connect_onboard_request'] = \
+            create_payout_connect_onboard_request
+        return self.create_payout_identity_link_endpoint.call_with_http_info(**kwargs)
+
+    def create_payout_payout(
+        self,
+        create_payout_payout_request,
+        **kwargs
+    ):
+        """Pay out now: instant (fee, minutes, to an eligible card/bank) or standard (free, manual schedule only).  # noqa: E501
+
+        amountCents defaults to everything eligible. Pass idempotencyKey so a retry is the same payout. Returns { payout, feeCents }. 409 when the account cannot be paid or instant is unavailable.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_payout_payout(create_payout_payout_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            create_payout_payout_request (CreatePayoutPayoutRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            CreatePayoutPayoutResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['create_payout_payout_request'] = \
+            create_payout_payout_request
+        return self.create_payout_payout_endpoint.call_with_http_info(**kwargs)
 
     def get_payout_connect(
         self,
@@ -565,6 +983,153 @@ class PayoutApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.get_payout_gross_for_net_endpoint.call_with_http_info(**kwargs)
 
+    def get_payout_identity(
+        self,
+        **kwargs
+    ):
+        """Stripe's verification of your payout account: status and what Stripe still needs, in plain words.  # noqa: E501
+
+        status is not_started, pending (Stripe is checking), action_required (dueNow lists what to add), verified (payouts on) or restricted (disabledReasonText says why). dueNow / dueLater / inReview are Stripe's requirement keys as plain-words lines ({ keys, label }); errors carry Stripe's reason. Cached up to 60 s; fresh=1 re-reads Stripe. Payouts are gated on payoutsEnabled only.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_payout_identity(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            fresh (str): [optional]
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetPayoutIdentityResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.get_payout_identity_endpoint.call_with_http_info(**kwargs)
+
+    def get_payout_wallet(
+        self,
+        **kwargs
+    ):
+        """Your payout wallet: balances, schedule, next payout, instant-payout quote, methods, payouts, transactions.  # noqa: E501
+
+        connected:false (with defaultCountry) before onboarding. balance has availableCents, pendingCents and instantAvailableCents in the account currency. instant.available says whether an instant payout can be made now, with feeCents/netCents for the full instant-available amount and reason when not.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_payout_wallet(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetPayoutWalletResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.get_payout_wallet_endpoint.call_with_http_info(**kwargs)
+
     def list_payout_compare(
         self,
         **kwargs
@@ -636,4 +1201,81 @@ class PayoutApi(object):
             '_content_type')
         kwargs['_host_index'] = kwargs.get('_host_index')
         return self.list_payout_compare_endpoint.call_with_http_info(**kwargs)
+
+    def update_payout_schedule(
+        self,
+        update_payout_schedule_request,
+        **kwargs
+    ):
+        """Change the automatic payout schedule.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_payout_schedule(update_payout_schedule_request, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            update_payout_schedule_request (UpdatePayoutScheduleRequest):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            UpdatePayoutScheduleResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['update_payout_schedule_request'] = \
+            update_payout_schedule_request
+        return self.update_payout_schedule_endpoint.call_with_http_info(**kwargs)
 

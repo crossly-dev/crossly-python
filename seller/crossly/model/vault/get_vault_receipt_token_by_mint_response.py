@@ -59,9 +59,9 @@ class GetVaultReceiptTokenByMintResponse(ModelNormal):
             'PENDING': "pending",
             'LIVE': "live",
             'EXPIRED': "expired",
+            'CONFLICT': "conflict",
             'FROZEN': "frozen",
             'BURNED': "burned",
-            'CONFLICT': "conflict",
         },
     }
 

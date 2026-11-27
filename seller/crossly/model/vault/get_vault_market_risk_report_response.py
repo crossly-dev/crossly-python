@@ -33,6 +33,7 @@ def lazy_import():
     from crossly.model.vault.create_vault_market_portfolio_margin_enroll_response_one_of_account import CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount
     from crossly.model.vault.get_vault_market_nav_response_totals import GetVaultMarketNavResponseTotals
     from crossly.model.vault.get_vault_market_risk_report_response_concentration import GetVaultMarketRiskReportResponseConcentration
+    from crossly.model.vault.get_vault_market_risk_report_response_counterparty import GetVaultMarketRiskReportResponseCounterparty
     from crossly.model.vault.get_vault_market_risk_report_response_lvar import GetVaultMarketRiskReportResponseLvar
     from crossly.model.vault.get_vault_market_risk_report_response_partner_dcm import GetVaultMarketRiskReportResponsePartnerDcm
     from crossly.model.vault.get_vault_market_risk_report_response_stress import GetVaultMarketRiskReportResponseStress
@@ -40,6 +41,7 @@ def lazy_import():
     globals()['CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount'] = CreateVaultMarketPortfolioMarginEnrollResponseOneOfAccount
     globals()['GetVaultMarketNavResponseTotals'] = GetVaultMarketNavResponseTotals
     globals()['GetVaultMarketRiskReportResponseConcentration'] = GetVaultMarketRiskReportResponseConcentration
+    globals()['GetVaultMarketRiskReportResponseCounterparty'] = GetVaultMarketRiskReportResponseCounterparty
     globals()['GetVaultMarketRiskReportResponseLvar'] = GetVaultMarketRiskReportResponseLvar
     globals()['GetVaultMarketRiskReportResponsePartnerDcm'] = GetVaultMarketRiskReportResponsePartnerDcm
     globals()['GetVaultMarketRiskReportResponseStress'] = GetVaultMarketRiskReportResponseStress
@@ -99,6 +101,7 @@ class GetVaultMarketRiskReportResponse(ModelNormal):
             'lvar': (GetVaultMarketRiskReportResponseLvar,),  # noqa: E501
             'stress': (GetVaultMarketRiskReportResponseStress,),  # noqa: E501
             'concentration': (GetVaultMarketRiskReportResponseConcentration,),  # noqa: E501
+            'counterparty': (GetVaultMarketRiskReportResponseCounterparty,),  # noqa: E501
             'partner_dcm': (GetVaultMarketRiskReportResponsePartnerDcm,),  # noqa: E501
         }
 
@@ -115,6 +118,7 @@ class GetVaultMarketRiskReportResponse(ModelNormal):
         'lvar': 'lvar',  # noqa: E501
         'stress': 'stress',  # noqa: E501
         'concentration': 'concentration',  # noqa: E501
+        'counterparty': 'counterparty',  # noqa: E501
         'partner_dcm': 'partnerDcm',  # noqa: E501
     }
 
@@ -125,7 +129,7 @@ class GetVaultMarketRiskReportResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, account, as_of, nav, var, lvar, stress, concentration, partner_dcm, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, account, as_of, nav, var, lvar, stress, concentration, counterparty, partner_dcm, *args, **kwargs):  # noqa: E501
         """GetVaultMarketRiskReportResponse - a model defined in OpenAPI
 
         Args:
@@ -136,6 +140,7 @@ class GetVaultMarketRiskReportResponse(ModelNormal):
             lvar (GetVaultMarketRiskReportResponseLvar):
             stress (GetVaultMarketRiskReportResponseStress):
             concentration (GetVaultMarketRiskReportResponseConcentration):
+            counterparty (GetVaultMarketRiskReportResponseCounterparty):
             partner_dcm (GetVaultMarketRiskReportResponsePartnerDcm):
 
         Keyword Args:
@@ -203,6 +208,7 @@ class GetVaultMarketRiskReportResponse(ModelNormal):
         self.lvar = lvar
         self.stress = stress
         self.concentration = concentration
+        self.counterparty = counterparty
         self.partner_dcm = partner_dcm
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -224,7 +230,7 @@ class GetVaultMarketRiskReportResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, account, as_of, nav, var, lvar, stress, concentration, partner_dcm, *args, **kwargs):  # noqa: E501
+    def __init__(self, account, as_of, nav, var, lvar, stress, concentration, counterparty, partner_dcm, *args, **kwargs):  # noqa: E501
         """GetVaultMarketRiskReportResponse - a model defined in OpenAPI
 
         Args:
@@ -235,6 +241,7 @@ class GetVaultMarketRiskReportResponse(ModelNormal):
             lvar (GetVaultMarketRiskReportResponseLvar):
             stress (GetVaultMarketRiskReportResponseStress):
             concentration (GetVaultMarketRiskReportResponseConcentration):
+            counterparty (GetVaultMarketRiskReportResponseCounterparty):
             partner_dcm (GetVaultMarketRiskReportResponsePartnerDcm):
 
         Keyword Args:
@@ -300,6 +307,7 @@ class GetVaultMarketRiskReportResponse(ModelNormal):
         self.lvar = lvar
         self.stress = stress
         self.concentration = concentration
+        self.counterparty = counterparty
         self.partner_dcm = partner_dcm
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

@@ -80,9 +80,9 @@ class GetBuyerMarketPurchaseOptionResponseData(ModelNormal):
         """
         lazy_import()
         return {
+            'vault_stock': (bool,),  # noqa: E501
             'fast_ship_cents': (float,),  # noqa: E501
             'grading_runs': ([GetBuyerMarketPurchaseOptionResponseDataGradingRuns],),  # noqa: E501
-            'vault_stock': (bool,),  # noqa: E501
         }
 
     @cached_property
@@ -91,9 +91,9 @@ class GetBuyerMarketPurchaseOptionResponseData(ModelNormal):
 
 
     attribute_map = {
+        'vault_stock': 'vaultStock',  # noqa: E501
         'fast_ship_cents': 'fastShipCents',  # noqa: E501
         'grading_runs': 'gradingRuns',  # noqa: E501
-        'vault_stock': 'vaultStock',  # noqa: E501
     }
 
     read_only_vars = {
@@ -103,13 +103,13 @@ class GetBuyerMarketPurchaseOptionResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, fast_ship_cents, grading_runs, vault_stock, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, vault_stock, fast_ship_cents, grading_runs, *args, **kwargs):  # noqa: E501
         """GetBuyerMarketPurchaseOptionResponseData - a model defined in OpenAPI
 
         Args:
+            vault_stock (bool):
             fast_ship_cents (float):
             grading_runs ([GetBuyerMarketPurchaseOptionResponseDataGradingRuns]):
-            vault_stock (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -169,9 +169,9 @@ class GetBuyerMarketPurchaseOptionResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.vault_stock = vault_stock
         self.fast_ship_cents = fast_ship_cents
         self.grading_runs = grading_runs
-        self.vault_stock = vault_stock
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -192,13 +192,13 @@ class GetBuyerMarketPurchaseOptionResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, fast_ship_cents, grading_runs, vault_stock, *args, **kwargs):  # noqa: E501
+    def __init__(self, vault_stock, fast_ship_cents, grading_runs, *args, **kwargs):  # noqa: E501
         """GetBuyerMarketPurchaseOptionResponseData - a model defined in OpenAPI
 
         Args:
+            vault_stock (bool):
             fast_ship_cents (float):
             grading_runs ([GetBuyerMarketPurchaseOptionResponseDataGradingRuns]):
-            vault_stock (bool):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -256,9 +256,9 @@ class GetBuyerMarketPurchaseOptionResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
+        self.vault_stock = vault_stock
         self.fast_ship_cents = fast_ship_cents
         self.grading_runs = grading_runs
-        self.vault_stock = vault_stock
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

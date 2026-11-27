@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.common.name_slug import NameSlug
-    globals()['NameSlug'] = NameSlug
+    from crossly.model.common.name_slug2 import NameSlug2
+    globals()['NameSlug2'] = NameSlug2
 
 
 class ListWorldFriendsItem(ModelNormal):
@@ -82,7 +82,7 @@ class ListWorldFriendsItem(ModelNormal):
         return {
             'user_id': (str,),  # noqa: E501
             'display_name': (str, none_type,),  # noqa: E501
-            'room': (NameSlug,),  # noqa: E501
+            'room': (NameSlug2,),  # noqa: E501
             'home_slug': (str, none_type,),  # noqa: E501
         }
 
@@ -143,7 +143,7 @@ class ListWorldFriendsItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             display_name (str, none_type): [optional]  # noqa: E501
-            room (NameSlug): [optional]  # noqa: E501
+            room (NameSlug2): [optional]  # noqa: E501
             home_slug (str, none_type): [optional]  # noqa: E501
         """
 
@@ -231,7 +231,7 @@ class ListWorldFriendsItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             display_name (str, none_type): [optional]  # noqa: E501
-            room (NameSlug): [optional]  # noqa: E501
+            room (NameSlug2): [optional]  # noqa: E501
             home_slug (str, none_type): [optional]  # noqa: E501
         """
 

@@ -75,9 +75,9 @@ class GetAutomationRuleExportByIdResponseMetadata(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'tags': ([str], none_type,),  # noqa: E501
-            'source_url': (str, none_type,),  # noqa: E501
             'author': (str, none_type,),  # noqa: E501
+            'source_url': (str, none_type,),  # noqa: E501
+            'tags': ([str], none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -86,9 +86,9 @@ class GetAutomationRuleExportByIdResponseMetadata(ModelNormal):
 
 
     attribute_map = {
-        'tags': 'tags',  # noqa: E501
-        'source_url': 'sourceUrl',  # noqa: E501
         'author': 'author',  # noqa: E501
+        'source_url': 'sourceUrl',  # noqa: E501
+        'tags': 'tags',  # noqa: E501
     }
 
     read_only_vars = {
@@ -132,9 +132,9 @@ class GetAutomationRuleExportByIdResponseMetadata(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            tags ([str], none_type): [optional]  # noqa: E501
-            source_url (str, none_type): [optional]  # noqa: E501
             author (str, none_type): [optional]  # noqa: E501
+            source_url (str, none_type): [optional]  # noqa: E501
+            tags ([str], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -216,9 +216,9 @@ class GetAutomationRuleExportByIdResponseMetadata(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            tags ([str], none_type): [optional]  # noqa: E501
-            source_url (str, none_type): [optional]  # noqa: E501
             author (str, none_type): [optional]  # noqa: E501
+            source_url (str, none_type): [optional]  # noqa: E501
+            tags ([str], none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

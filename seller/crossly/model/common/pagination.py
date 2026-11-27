@@ -91,6 +91,7 @@ class Pagination(ModelNormal):
             'limit': (int,),  # noqa: E501
             'total': (int,),  # noqa: E501
             'total_pages': (int,),  # noqa: E501
+            'pages': (int,),  # noqa: E501
         }
 
     @cached_property
@@ -103,6 +104,7 @@ class Pagination(ModelNormal):
         'limit': 'limit',  # noqa: E501
         'total': 'total',  # noqa: E501
         'total_pages': 'totalPages',  # noqa: E501
+        'pages': 'pages',  # noqa: E501
     }
 
     read_only_vars = {
@@ -152,6 +154,7 @@ class Pagination(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             total (int): Total matching rows, when the endpoint counts them.. [optional]  # noqa: E501
             total_pages (int): Derived from total and limit.. [optional]  # noqa: E501
+            pages (int): Deprecated alias of `totalPages`, sent only by GET /v1/inventory (its original name). Read `totalPages`.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -241,6 +244,7 @@ class Pagination(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             total (int): Total matching rows, when the endpoint counts them.. [optional]  # noqa: E501
             total_pages (int): Derived from total and limit.. [optional]  # noqa: E501
+            pages (int): Deprecated alias of `totalPages`, sent only by GET /v1/inventory (its original name). Read `totalPages`.. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

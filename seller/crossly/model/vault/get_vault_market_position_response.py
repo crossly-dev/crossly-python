@@ -30,10 +30,12 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from crossly.model.vault.get_vault_market_position_response_auctions_item import GetVaultMarketPositionResponseAuctionsItem
     from crossly.model.vault.get_vault_market_position_response_instructions import GetVaultMarketPositionResponseInstructions
     from crossly.model.vault.get_vault_market_position_response_legs import GetVaultMarketPositionResponseLegs
     from crossly.model.vault.get_vault_market_position_response_loans import GetVaultMarketPositionResponseLoans
     from crossly.model.vault.get_vault_market_position_response_splits import GetVaultMarketPositionResponseSplits
+    globals()['GetVaultMarketPositionResponseAuctionsItem'] = GetVaultMarketPositionResponseAuctionsItem
     globals()['GetVaultMarketPositionResponseInstructions'] = GetVaultMarketPositionResponseInstructions
     globals()['GetVaultMarketPositionResponseLegs'] = GetVaultMarketPositionResponseLegs
     globals()['GetVaultMarketPositionResponseLoans'] = GetVaultMarketPositionResponseLoans
@@ -66,8 +68,8 @@ class GetVaultMarketPositionResponse(ModelNormal):
 
     allowed_values = {
         ('kind',): {
-            'LONG': "long",
             'SHORT': "short",
+            'LONG': "long",
         },
     }
 
@@ -91,7 +93,7 @@ class GetVaultMarketPositionResponse(ModelNormal):
         lazy_import()
         return {
             'loans': ([GetVaultMarketPositionResponseLoans],),  # noqa: E501
-            'auctions': ([bool, date, datetime, dict, float, int, list, str, none_type],),  # noqa: E501
+            'auctions': ([GetVaultMarketPositionResponseAuctionsItem],),  # noqa: E501
             'instructions': ([GetVaultMarketPositionResponseInstructions],),  # noqa: E501
             'legs': ([GetVaultMarketPositionResponseLegs],),  # noqa: E501
             'splits': ([GetVaultMarketPositionResponseSplits],),  # noqa: E501
@@ -190,7 +192,7 @@ class GetVaultMarketPositionResponse(ModelNormal):
 
         Args:
             loans ([GetVaultMarketPositionResponseLoans]):
-            auctions ([bool, date, datetime, dict, float, int, list, str, none_type]):
+            auctions ([GetVaultMarketPositionResponseAuctionsItem]):
             instructions ([GetVaultMarketPositionResponseInstructions]):
             legs ([GetVaultMarketPositionResponseLegs]):
             splits ([GetVaultMarketPositionResponseSplits]):
@@ -339,7 +341,7 @@ class GetVaultMarketPositionResponse(ModelNormal):
 
         Args:
             loans ([GetVaultMarketPositionResponseLoans]):
-            auctions ([bool, date, datetime, dict, float, int, list, str, none_type]):
+            auctions ([GetVaultMarketPositionResponseAuctionsItem]):
             instructions ([GetVaultMarketPositionResponseInstructions]):
             legs ([GetVaultMarketPositionResponseLegs]):
             splits ([GetVaultMarketPositionResponseSplits]):

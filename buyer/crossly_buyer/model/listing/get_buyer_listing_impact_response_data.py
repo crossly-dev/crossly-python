@@ -75,9 +75,9 @@ class GetBuyerListingImpactResponseData(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'source': (str,),  # noqa: E501
-            'label': (str,),  # noqa: E501
             'key': (str,),  # noqa: E501
+            'label': (str,),  # noqa: E501
+            'source': (str,),  # noqa: E501
             'co2_kg': (float, none_type,),  # noqa: E501
             'water_l': (float, none_type,),  # noqa: E501
         }
@@ -88,9 +88,9 @@ class GetBuyerListingImpactResponseData(ModelNormal):
 
 
     attribute_map = {
-        'source': 'source',  # noqa: E501
-        'label': 'label',  # noqa: E501
         'key': 'key',  # noqa: E501
+        'label': 'label',  # noqa: E501
+        'source': 'source',  # noqa: E501
         'co2_kg': 'co2Kg',  # noqa: E501
         'water_l': 'waterL',  # noqa: E501
     }
@@ -102,13 +102,13 @@ class GetBuyerListingImpactResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, source, label, key, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, key, label, source, *args, **kwargs):  # noqa: E501
         """GetBuyerListingImpactResponseData - a model defined in OpenAPI
 
         Args:
-            source (str):
-            label (str):
             key (str):
+            label (str):
+            source (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -170,9 +170,9 @@ class GetBuyerListingImpactResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.source = source
-        self.label = label
         self.key = key
+        self.label = label
+        self.source = source
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -193,13 +193,13 @@ class GetBuyerListingImpactResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, source, label, key, *args, **kwargs):  # noqa: E501
+    def __init__(self, key, label, source, *args, **kwargs):  # noqa: E501
         """GetBuyerListingImpactResponseData - a model defined in OpenAPI
 
         Args:
-            source (str):
-            label (str):
             key (str):
+            label (str):
+            source (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -259,9 +259,9 @@ class GetBuyerListingImpactResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.source = source
-        self.label = label
         self.key = key
+        self.label = label
+        self.source = source
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

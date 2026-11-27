@@ -30,10 +30,12 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
+    from crossly.model.vault.get_vault_market_grading_signal_response_cta import GetVaultMarketGradingSignalResponseCta
+    from crossly.model.vault.get_vault_market_grading_signal_response_graded import GetVaultMarketGradingSignalResponseGraded
     from crossly.model.vault.get_vault_market_grading_signal_response_graders import GetVaultMarketGradingSignalResponseGraders
-    from crossly.model.vault.get_vault_market_key_stat_response import GetVaultMarketKeyStatResponse
+    globals()['GetVaultMarketGradingSignalResponseCta'] = GetVaultMarketGradingSignalResponseCta
+    globals()['GetVaultMarketGradingSignalResponseGraded'] = GetVaultMarketGradingSignalResponseGraded
     globals()['GetVaultMarketGradingSignalResponseGraders'] = GetVaultMarketGradingSignalResponseGraders
-    globals()['GetVaultMarketKeyStatResponse'] = GetVaultMarketKeyStatResponse
 
 
 class GetVaultMarketGradingSignalResponse(ModelNormal):
@@ -63,13 +65,13 @@ class GetVaultMarketGradingSignalResponse(ModelNormal):
     allowed_values = {
         ('raw_mark_quality',): {
             'NONE': "none",
+            'C': "C",
             'A': "A",
             'B': "B",
-            'C': "C",
         },
         ('raw_tier',): {
-            'STANDARD': "standard",
             'CLOSED': "closed",
+            'STANDARD': "standard",
             'DEEP': "deep",
             'THIN': "thin",
         },
@@ -96,13 +98,14 @@ class GetVaultMarketGradingSignalResponse(ModelNormal):
         return {
             'book_key': (str,),  # noqa: E501
             'raw_mark_quality': (str,),  # noqa: E501
-            'graded': ([GetVaultMarketKeyStatResponse],),  # noqa: E501
+            'graded': ([GetVaultMarketGradingSignalResponseGraded],),  # noqa: E501
             'graders': ([GetVaultMarketGradingSignalResponseGraders],),  # noqa: E501
             'worth_it': (bool,),  # noqa: E501
             'raw_tier': (str,),  # noqa: E501
             'my_units': ([str],),  # noqa: E501
             'my_raw_units': (float,),  # noqa: E501
             'raw_mark_cents': (float, none_type,),  # noqa: E501
+            'cta': (GetVaultMarketGradingSignalResponseCta,),  # noqa: E501
         }
 
     @cached_property
@@ -120,6 +123,7 @@ class GetVaultMarketGradingSignalResponse(ModelNormal):
         'my_units': 'myUnits',  # noqa: E501
         'my_raw_units': 'myRawUnits',  # noqa: E501
         'raw_mark_cents': 'rawMarkCents',  # noqa: E501
+        'cta': 'cta',  # noqa: E501
     }
 
     read_only_vars = {
@@ -135,7 +139,7 @@ class GetVaultMarketGradingSignalResponse(ModelNormal):
         Args:
             book_key (str):
             raw_mark_quality (str):
-            graded ([GetVaultMarketKeyStatResponse]):
+            graded ([GetVaultMarketGradingSignalResponseGraded]):
             graders ([GetVaultMarketGradingSignalResponseGraders]):
             worth_it (bool):
             raw_tier (str):
@@ -174,6 +178,7 @@ class GetVaultMarketGradingSignalResponse(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             raw_mark_cents (float, none_type): [optional]  # noqa: E501
+            cta (GetVaultMarketGradingSignalResponseCta): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -235,7 +240,7 @@ class GetVaultMarketGradingSignalResponse(ModelNormal):
         Args:
             book_key (str):
             raw_mark_quality (str):
-            graded ([GetVaultMarketKeyStatResponse]):
+            graded ([GetVaultMarketGradingSignalResponseGraded]):
             graders ([GetVaultMarketGradingSignalResponseGraders]):
             worth_it (bool):
             raw_tier (str):
@@ -274,6 +279,7 @@ class GetVaultMarketGradingSignalResponse(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             raw_mark_cents (float, none_type): [optional]  # noqa: E501
+            cta (GetVaultMarketGradingSignalResponseCta): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

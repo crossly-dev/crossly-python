@@ -58,9 +58,9 @@ class GetWeb3CollectorResponseMarks(ModelNormal):
         ('source',): {
             'CROSSLY': "crossly",
             'CARD': "card",
-            'TENSOR': "tensor",
-            'MAGIC_EDEN': "magic_eden",
             'RARIBLE': "rarible",
+            'MAGIC_EDEN': "magic_eden",
+            'TENSOR': "tensor",
         },
     }
 

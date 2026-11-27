@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.inbox.list_inbox_item import ListInboxItem
-    globals()['ListInboxItem'] = ListInboxItem
+    from crossly.model.inbox.update_inbox_conversation_response_conversation import UpdateInboxConversationResponseConversation
+    globals()['UpdateInboxConversationResponseConversation'] = UpdateInboxConversationResponseConversation
 
 
 class UpdateInboxConversationResponse(ModelNormal):
@@ -80,7 +80,7 @@ class UpdateInboxConversationResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'conversation': (ListInboxItem,),  # noqa: E501
+            'conversation': (UpdateInboxConversationResponseConversation,),  # noqa: E501
         }
 
     @cached_property
@@ -103,7 +103,7 @@ class UpdateInboxConversationResponse(ModelNormal):
         """UpdateInboxConversationResponse - a model defined in OpenAPI
 
         Args:
-            conversation (ListInboxItem):
+            conversation (UpdateInboxConversationResponseConversation):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -188,7 +188,7 @@ class UpdateInboxConversationResponse(ModelNormal):
         """UpdateInboxConversationResponse - a model defined in OpenAPI
 
         Args:
-            conversation (ListInboxItem):
+            conversation (UpdateInboxConversationResponseConversation):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types

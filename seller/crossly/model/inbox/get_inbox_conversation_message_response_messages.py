@@ -55,6 +55,14 @@ class GetInboxConversationMessageResponseMessages(ModelNormal):
     """
 
     allowed_values = {
+        ('offer_status',): {
+            'None': None,
+            'PENDING': "pending",
+            'ACCEPTED': "accepted",
+            'DECLINED': "declined",
+            'EXPIRED': "expired",
+            'VOIDED': "voided",
+        },
     }
 
     validations = {
@@ -88,6 +96,8 @@ class GetInboxConversationMessageResponseMessages(ModelNormal):
             'ai_scam_score': (float, none_type,),  # noqa: E501
             'ai_suggested_reply': (str, none_type,),  # noqa: E501
             'ai_triaged_at': (datetime, none_type,),  # noqa: E501
+            'offer_amount': (str, none_type,),  # noqa: E501
+            'offer_status': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -109,6 +119,8 @@ class GetInboxConversationMessageResponseMessages(ModelNormal):
         'ai_scam_score': 'aiScamScore',  # noqa: E501
         'ai_suggested_reply': 'aiSuggestedReply',  # noqa: E501
         'ai_triaged_at': 'aiTriagedAt',  # noqa: E501
+        'offer_amount': 'offerAmount',  # noqa: E501
+        'offer_status': 'offerStatus',  # noqa: E501
     }
 
     read_only_vars = {
@@ -167,6 +179,8 @@ class GetInboxConversationMessageResponseMessages(ModelNormal):
             ai_scam_score (float, none_type): [optional]  # noqa: E501
             ai_suggested_reply (str, none_type): [optional]  # noqa: E501
             ai_triaged_at (datetime, none_type): [optional]  # noqa: E501
+            offer_amount (str, none_type): [optional]  # noqa: E501
+            offer_status (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -267,6 +281,8 @@ class GetInboxConversationMessageResponseMessages(ModelNormal):
             ai_scam_score (float, none_type): [optional]  # noqa: E501
             ai_suggested_reply (str, none_type): [optional]  # noqa: E501
             ai_triaged_at (datetime, none_type): [optional]  # noqa: E501
+            offer_amount (str, none_type): [optional]  # noqa: E501
+            offer_status (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

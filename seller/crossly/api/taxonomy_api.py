@@ -22,10 +22,14 @@ from crossly.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from crossly.model.common.error import Error
+from crossly.model.category.get_category_by_id_response import GetCategoryByIdResponse
 from crossly.model.taxonomy.get_taxonomy_category_aspect_response import GetTaxonomyCategoryAspectResponse
 from crossly.model.taxonomy.get_taxonomy_category_children_response import GetTaxonomyCategoryChildrenResponse
 from crossly.model.taxonomy.get_taxonomy_category_response import GetTaxonomyCategoryResponse
 from crossly.model.taxonomy.get_taxonomy_required_field_response import GetTaxonomyRequiredFieldResponse
+from crossly.model.category.list_category_aspects_response import ListCategoryAspectsResponse
+from crossly.model.category.list_category_search_response import ListCategorySearchResponse
+from crossly.model.taxonomy.list_taxonomy_ebay_charities_response import ListTaxonomyEbayCharitiesResponse
 from crossly.model.taxonomy.list_taxonomy_suggest_response import ListTaxonomySuggestResponse
 
 
@@ -40,6 +44,62 @@ class TaxonomyApi(object):
         if api_client is None:
             api_client = ApiClient()
         self.api_client = api_client
+        self.get_category_by_id_endpoint = _Endpoint(
+            settings={
+                'response_type': (GetCategoryByIdResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/categories/{id}',
+                'operation_id': 'get_category_by_id',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'id',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('id',): {
+                        'max_length': 200,
+                        'min_length': 1,
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                },
+                'location_map': {
+                    'id': 'path',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.get_taxonomy_category_endpoint = _Endpoint(
             settings={
                 'response_type': (GetTaxonomyCategoryResponse,),
@@ -266,6 +326,221 @@ class TaxonomyApi(object):
             },
             api_client=api_client
         )
+        self.list_category_aspects_endpoint = _Endpoint(
+            settings={
+                'response_type': (ListCategoryAspectsResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/categories/{id}/aspects',
+                'operation_id': 'list_category_aspects',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'id',
+                    'values_limit',
+                ],
+                'required': [
+                    'id',
+                ],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'id',
+                    'values_limit',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('id',): {
+                        'max_length': 200,
+                        'min_length': 1,
+                    },
+                    ('values_limit',): {
+
+                        'inclusive_maximum': 500,
+                        'inclusive_minimum': 0,
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'id':
+                        (str,),
+                    'values_limit':
+                        (int,),
+                },
+                'attribute_map': {
+                    'id': 'id',
+                    'values_limit': 'valuesLimit',
+                },
+                'location_map': {
+                    'id': 'path',
+                    'values_limit': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.list_category_search_endpoint = _Endpoint(
+            settings={
+                'response_type': (ListCategorySearchResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/categories/search',
+                'operation_id': 'list_category_search',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'q',
+                    'path',
+                    'limit',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                ],
+                'validation': [
+                    'q',
+                    'path',
+                    'limit',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('q',): {
+                        'max_length': 120,
+                    },
+                    ('path',): {
+                        'max_length': 400,
+                    },
+                    ('limit',): {
+
+                        'inclusive_maximum': 100,
+                        'inclusive_minimum': 1,
+                    },
+                },
+                'allowed_values': {
+                },
+                'openapi_types': {
+                    'q':
+                        (str,),
+                    'path':
+                        (str,),
+                    'limit':
+                        (int,),
+                },
+                'attribute_map': {
+                    'q': 'q',
+                    'path': 'path',
+                    'limit': 'limit',
+                },
+                'location_map': {
+                    'q': 'query',
+                    'path': 'query',
+                    'limit': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
+        self.list_taxonomy_ebay_charities_endpoint = _Endpoint(
+            settings={
+                'response_type': (ListTaxonomyEbayCharitiesResponse,),
+                'auth': [
+                    'PersonalAccessToken'
+                ],
+                'endpoint_path': '/v1/taxonomy/ebay/charities',
+                'operation_id': 'list_taxonomy_ebay_charities',
+                'http_method': 'GET',
+                'servers': None,
+            },
+            params_map={
+                'all': [
+                    'q',
+                    'limit',
+                    'marketplace',
+                ],
+                'required': [],
+                'nullable': [
+                ],
+                'enum': [
+                    'marketplace',
+                ],
+                'validation': [
+                    'q',
+                    'limit',
+                ]
+            },
+            root_map={
+                'validations': {
+                    ('q',): {
+                        'max_length': 120,
+                    },
+                    ('limit',): {
+
+                        'inclusive_maximum': 50,
+                        'inclusive_minimum': 1,
+                    },
+                },
+                'allowed_values': {
+                    ('marketplace',): {
+
+                        "US": "EBAY_US",
+                        "GB": "EBAY_GB"
+                    },
+                },
+                'openapi_types': {
+                    'q':
+                        (str,),
+                    'limit':
+                        (int,),
+                    'marketplace':
+                        (str,),
+                },
+                'attribute_map': {
+                    'q': 'q',
+                    'limit': 'limit',
+                    'marketplace': 'marketplace',
+                },
+                'location_map': {
+                    'q': 'query',
+                    'limit': 'query',
+                    'marketplace': 'query',
+                },
+                'collection_format_map': {
+                }
+            },
+            headers_map={
+                'accept': [
+                    'application/json'
+                ],
+                'content_type': [],
+            },
+            api_client=api_client
+        )
         self.list_taxonomy_suggest_endpoint = _Endpoint(
             settings={
                 'response_type': (ListTaxonomySuggestResponse,),
@@ -322,6 +597,83 @@ class TaxonomyApi(object):
             },
             api_client=api_client
         )
+
+    def get_category_by_id(
+        self,
+        id,
+        **kwargs
+    ):
+        """One canonical category and the category it maps to on each marketplace.  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.get_category_by_id(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str):
+
+        Keyword Args:
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            GetCategoryByIdResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.get_category_by_id_endpoint.call_with_http_info(**kwargs)
 
     def get_taxonomy_category(
         self,
@@ -640,6 +992,237 @@ class TaxonomyApi(object):
         kwargs['platform'] = \
             platform
         return self.get_taxonomy_required_field_endpoint.call_with_http_info(**kwargs)
+
+    def list_category_aspects(
+        self,
+        id,
+        **kwargs
+    ):
+        """Item specifics for a canonical category: required/optional, known values, per-marketplace names.  # noqa: E501
+
+        Required-ness and cardinality come from the eBay category the concept maps to. `freeText` = any text is accepted; otherwise `values` are the known values (up to `valuesLimit`). `marketplaces` gives the attribute name each marketplace uses for the aspect. Send them as `itemSpecifics` on POST /v1/listings.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_category_aspects(id, async_req=True)
+        >>> result = thread.get()
+
+        Args:
+            id (str):
+
+        Keyword Args:
+            values_limit (int): [optional] if omitted the server will use the default value of 50
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ListCategoryAspectsResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        kwargs['id'] = \
+            id
+        return self.list_category_aspects_endpoint.call_with_http_info(**kwargs)
+
+    def list_category_search(
+        self,
+        **kwargs
+    ):
+        """Search or browse Crossly's canonical categories (the ids listings take as categoryId).  # noqa: E501
+
+        `q` matches the category name and path. `path` (e.g. \"Clothing & Shoes > Men\") limits to one branch. Without `q`, `meta.branches` lists the next level under `path` (the root when omitted) so a client can walk the tree down to a leaf.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_category_search(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            q (str): [optional]
+            path (str): [optional]
+            limit (int): [optional] if omitted the server will use the default value of 25
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ListCategorySearchResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.list_category_search_endpoint.call_with_http_info(**kwargs)
+
+    def list_taxonomy_ebay_charities(
+        self,
+        **kwargs
+    ):
+        """Search eBay for Charity organisations (the charityId an eBay listing donates to).  # noqa: E501
+
+        Send the chosen `charityOrgId` as `overrides.ebay.charityId` with `overrides.ebay.donationPercentage` (10-100 in steps of 5) on a listing to donate that share of the eBay sale. `q` needs at least 2 characters.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_taxonomy_ebay_charities(async_req=True)
+        >>> result = thread.get()
+
+
+        Keyword Args:
+            q (str): [optional]
+            limit (int): [optional] if omitted the server will use the default value of 20
+            marketplace (str): [optional] if omitted the server will use the default value of "EBAY_US"
+            _return_http_data_only (bool): response data without head status
+                code and headers. Default is True.
+            _preload_content (bool): if False, the urllib3.HTTPResponse object
+                will be returned without reading/decoding response data.
+                Default is True.
+            _request_timeout (int/float/tuple): timeout setting for this request. If
+                one number provided, it will be total request timeout. It can also
+                be a pair (tuple) of (connection, read) timeouts.
+                Default is None.
+            _check_input_type (bool): specifies if type checking
+                should be done one the data sent to the server.
+                Default is True.
+            _check_return_type (bool): specifies if type checking
+                should be done one the data received from the server.
+                Default is True.
+            _spec_property_naming (bool): True if the variable names in the input data
+                are serialized names, as specified in the OpenAPI document.
+                False if the variable names in the input data
+                are pythonic names, e.g. snake case (default)
+            _content_type (str/None): force body content-type.
+                Default is None and content-type will be predicted by allowed
+                content-types and body.
+            _host_index (int/None): specifies the index of the server
+                that we want to use.
+                Default is read from the configuration.
+            async_req (bool): execute request asynchronously
+
+        Returns:
+            ListTaxonomyEbayCharitiesResponse
+                If the method is called asynchronously, returns the request
+                thread.
+        """
+        kwargs['async_req'] = kwargs.get(
+            'async_req', False
+        )
+        kwargs['_return_http_data_only'] = kwargs.get(
+            '_return_http_data_only', True
+        )
+        kwargs['_preload_content'] = kwargs.get(
+            '_preload_content', True
+        )
+        kwargs['_request_timeout'] = kwargs.get(
+            '_request_timeout', None
+        )
+        kwargs['_check_input_type'] = kwargs.get(
+            '_check_input_type', True
+        )
+        kwargs['_check_return_type'] = kwargs.get(
+            '_check_return_type', True
+        )
+        kwargs['_spec_property_naming'] = kwargs.get(
+            '_spec_property_naming', False
+        )
+        kwargs['_content_type'] = kwargs.get(
+            '_content_type')
+        kwargs['_host_index'] = kwargs.get('_host_index')
+        return self.list_taxonomy_ebay_charities_endpoint.call_with_http_info(**kwargs)
 
     def list_taxonomy_suggest(
         self,

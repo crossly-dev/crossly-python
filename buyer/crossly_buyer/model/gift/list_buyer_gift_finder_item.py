@@ -78,8 +78,8 @@ class ListBuyerGiftFinderItem(ModelNormal):
             'slug': (str,),  # noqa: E501
             'price_cents': (float,),  # noqa: E501
             'title': (str, none_type,),  # noqa: E501
-            'sale_price_cents': (float, none_type,),  # noqa: E501
             'thumbnail': (str, none_type,),  # noqa: E501
+            'sale_price_cents': (float, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -91,8 +91,8 @@ class ListBuyerGiftFinderItem(ModelNormal):
         'slug': 'slug',  # noqa: E501
         'price_cents': 'priceCents',  # noqa: E501
         'title': 'title',  # noqa: E501
-        'sale_price_cents': 'salePriceCents',  # noqa: E501
         'thumbnail': 'thumbnail',  # noqa: E501
+        'sale_price_cents': 'salePriceCents',  # noqa: E501
     }
 
     read_only_vars = {
@@ -141,8 +141,8 @@ class ListBuyerGiftFinderItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             title (str, none_type): [optional]  # noqa: E501
-            sale_price_cents (float, none_type): [optional]  # noqa: E501
             thumbnail (str, none_type): [optional]  # noqa: E501
+            sale_price_cents (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -231,8 +231,8 @@ class ListBuyerGiftFinderItem(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             title (str, none_type): [optional]  # noqa: E501
-            sale_price_cents (float, none_type): [optional]  # noqa: E501
             thumbnail (str, none_type): [optional]  # noqa: E501
+            sale_price_cents (float, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

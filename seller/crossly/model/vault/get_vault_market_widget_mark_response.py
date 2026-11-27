@@ -31,9 +31,9 @@ from crossly.exceptions import ApiAttributeError
 
 def lazy_import():
     from crossly.model.vault.get_vault_market_widget_mark_response_points import GetVaultMarketWidgetMarkResponsePoints
-    from crossly.model.vault.list_vault_market_feed_item_mark import ListVaultMarketFeedItemMark
+    from crossly.model.vault.list_vault_market_opening_item_mark import ListVaultMarketOpeningItemMark
     globals()['GetVaultMarketWidgetMarkResponsePoints'] = GetVaultMarketWidgetMarkResponsePoints
-    globals()['ListVaultMarketFeedItemMark'] = ListVaultMarketFeedItemMark
+    globals()['ListVaultMarketOpeningItemMark'] = ListVaultMarketOpeningItemMark
 
 
 class GetVaultMarketWidgetMarkResponse(ModelNormal):
@@ -84,7 +84,7 @@ class GetVaultMarketWidgetMarkResponse(ModelNormal):
         return {
             'book_key': (str,),  # noqa: E501
             'condition': (str,),  # noqa: E501
-            'mark': (ListVaultMarketFeedItemMark,),  # noqa: E501
+            'mark': (ListVaultMarketOpeningItemMark,),  # noqa: E501
             'trades30d': (float,),  # noqa: E501
             'insufficient': (bool,),  # noqa: E501
             'points': ([GetVaultMarketWidgetMarkResponsePoints],),  # noqa: E501
@@ -127,7 +127,7 @@ class GetVaultMarketWidgetMarkResponse(ModelNormal):
         Args:
             book_key (str):
             condition (str):
-            mark (ListVaultMarketFeedItemMark):
+            mark (ListVaultMarketOpeningItemMark):
             trades30d (float):
             insufficient (bool):
             points ([GetVaultMarketWidgetMarkResponsePoints]):
@@ -228,7 +228,7 @@ class GetVaultMarketWidgetMarkResponse(ModelNormal):
         Args:
             book_key (str):
             condition (str):
-            mark (ListVaultMarketFeedItemMark):
+            mark (ListVaultMarketOpeningItemMark):
             trades30d (float):
             insufficient (bool):
             points ([GetVaultMarketWidgetMarkResponsePoints]):

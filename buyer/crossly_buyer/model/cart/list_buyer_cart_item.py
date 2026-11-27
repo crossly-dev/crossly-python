@@ -80,6 +80,7 @@ class ListBuyerCartItem(ModelNormal):
             'platform_listing_id': (str,),  # noqa: E501
             'quantity': (float,),  # noqa: E501
             'unit_price_cents': (float,),  # noqa: E501
+            'listing_variant_id': (str, none_type,),  # noqa: E501
             'slug': (str, none_type,),  # noqa: E501
             'title': (str, none_type,),  # noqa: E501
             'listing_status': (str, none_type,),  # noqa: E501
@@ -96,6 +97,7 @@ class ListBuyerCartItem(ModelNormal):
         'platform_listing_id': 'platformListingId',  # noqa: E501
         'quantity': 'quantity',  # noqa: E501
         'unit_price_cents': 'unitPriceCents',  # noqa: E501
+        'listing_variant_id': 'listingVariantId',  # noqa: E501
         'slug': 'slug',  # noqa: E501
         'title': 'title',  # noqa: E501
         'listing_status': 'listingStatus',  # noqa: E501
@@ -149,6 +151,7 @@ class ListBuyerCartItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            listing_variant_id (str, none_type): [optional]  # noqa: E501
             slug (str, none_type): [optional]  # noqa: E501
             title (str, none_type): [optional]  # noqa: E501
             listing_status (str, none_type): [optional]  # noqa: E501
@@ -245,6 +248,7 @@ class ListBuyerCartItem(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            listing_variant_id (str, none_type): [optional]  # noqa: E501
             slug (str, none_type): [optional]  # noqa: E501
             title (str, none_type): [optional]  # noqa: E501
             listing_status (str, none_type): [optional]  # noqa: E501

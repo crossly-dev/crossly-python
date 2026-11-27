@@ -1489,7 +1489,7 @@ import time
 import crossly
 from crossly.api import production_api
 from crossly.model.common.error import Error
-from crossly.model.common.get_shop_listing_provenance_response import GetShopListingProvenanceResponse
+from crossly.model.shop.get_shop_listing_provenance_response import GetShopListingProvenanceResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://crossly.net/api
 # See configuration.py for a list of all supported configuration parameters.

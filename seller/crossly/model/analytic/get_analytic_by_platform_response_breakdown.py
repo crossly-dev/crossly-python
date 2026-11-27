@@ -80,6 +80,11 @@ class GetAnalyticByPlatformResponseBreakdown(ModelNormal):
             'revenue': (float,),  # noqa: E501
             'fees': (float,),  # noqa: E501
             'net_profit': (float,),  # noqa: E501
+            'pending_details_count': (float,),  # noqa: E501
+            'net_sales_cents': (float,),  # noqa: E501
+            'fees_cents': (float,),  # noqa: E501
+            'net_profit_cents': (float,),  # noqa: E501
+            'share': (float,),  # noqa: E501
         }
 
     @cached_property
@@ -93,6 +98,11 @@ class GetAnalyticByPlatformResponseBreakdown(ModelNormal):
         'revenue': 'revenue',  # noqa: E501
         'fees': 'fees',  # noqa: E501
         'net_profit': 'netProfit',  # noqa: E501
+        'pending_details_count': 'pendingDetailsCount',  # noqa: E501
+        'net_sales_cents': 'netSalesCents',  # noqa: E501
+        'fees_cents': 'feesCents',  # noqa: E501
+        'net_profit_cents': 'netProfitCents',  # noqa: E501
+        'share': 'share',  # noqa: E501
     }
 
     read_only_vars = {
@@ -102,7 +112,7 @@ class GetAnalyticByPlatformResponseBreakdown(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, platform, sales, revenue, fees, net_profit, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, platform, sales, revenue, fees, net_profit, pending_details_count, net_sales_cents, fees_cents, net_profit_cents, share, *args, **kwargs):  # noqa: E501
         """GetAnalyticByPlatformResponseBreakdown - a model defined in OpenAPI
 
         Args:
@@ -111,6 +121,11 @@ class GetAnalyticByPlatformResponseBreakdown(ModelNormal):
             revenue (float):
             fees (float):
             net_profit (float):
+            pending_details_count (float):
+            net_sales_cents (float):
+            fees_cents (float):
+            net_profit_cents (float):
+            share (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -175,6 +190,11 @@ class GetAnalyticByPlatformResponseBreakdown(ModelNormal):
         self.revenue = revenue
         self.fees = fees
         self.net_profit = net_profit
+        self.pending_details_count = pending_details_count
+        self.net_sales_cents = net_sales_cents
+        self.fees_cents = fees_cents
+        self.net_profit_cents = net_profit_cents
+        self.share = share
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -195,7 +215,7 @@ class GetAnalyticByPlatformResponseBreakdown(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, platform, sales, revenue, fees, net_profit, *args, **kwargs):  # noqa: E501
+    def __init__(self, platform, sales, revenue, fees, net_profit, pending_details_count, net_sales_cents, fees_cents, net_profit_cents, share, *args, **kwargs):  # noqa: E501
         """GetAnalyticByPlatformResponseBreakdown - a model defined in OpenAPI
 
         Args:
@@ -204,6 +224,11 @@ class GetAnalyticByPlatformResponseBreakdown(ModelNormal):
             revenue (float):
             fees (float):
             net_profit (float):
+            pending_details_count (float):
+            net_sales_cents (float):
+            fees_cents (float):
+            net_profit_cents (float):
+            share (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -266,6 +291,11 @@ class GetAnalyticByPlatformResponseBreakdown(ModelNormal):
         self.revenue = revenue
         self.fees = fees
         self.net_profit = net_profit
+        self.pending_details_count = pending_details_count
+        self.net_sales_cents = net_sales_cents
+        self.fees_cents = fees_cents
+        self.net_profit_cents = net_profit_cents
+        self.share = share
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

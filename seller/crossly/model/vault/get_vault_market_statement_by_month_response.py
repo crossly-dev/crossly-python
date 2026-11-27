@@ -111,6 +111,7 @@ class GetVaultMarketStatementByMonthResponse(ModelNormal):
             'pledges': ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}],),  # noqa: E501
             'activity': ([ListVaultMarketConfirmationsItem],),  # noqa: E501
             'fees': (GetVaultMarketStatementByMonthResponseOneOf1Fees,),  # noqa: E501
+            'cash': (bool, date, datetime, dict, float, int, list, str, none_type,),  # noqa: E501
             'notes': ([str],),  # noqa: E501
         }
 
@@ -136,6 +137,7 @@ class GetVaultMarketStatementByMonthResponse(ModelNormal):
         'pledges': 'pledges',  # noqa: E501
         'activity': 'activity',  # noqa: E501
         'fees': 'fees',  # noqa: E501
+        'cash': 'cash',  # noqa: E501
         'notes': 'notes',  # noqa: E501
     }
 
@@ -198,6 +200,7 @@ class GetVaultMarketStatementByMonthResponse(ModelNormal):
             pledges ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]): [optional]  # noqa: E501
             activity ([ListVaultMarketConfirmationsItem]): [optional]  # noqa: E501
             fees (GetVaultMarketStatementByMonthResponseOneOf1Fees): [optional]  # noqa: E501
+            cash (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
             notes ([str]): [optional]  # noqa: E501
         """
 
@@ -301,6 +304,7 @@ class GetVaultMarketStatementByMonthResponse(ModelNormal):
             pledges ([{str: (bool, date, datetime, dict, float, int, list, str, none_type)}]): [optional]  # noqa: E501
             activity ([ListVaultMarketConfirmationsItem]): [optional]  # noqa: E501
             fees (GetVaultMarketStatementByMonthResponseOneOf1Fees): [optional]  # noqa: E501
+            cash (bool, date, datetime, dict, float, int, list, str, none_type): [optional]  # noqa: E501
             notes ([str]): [optional]  # noqa: E501
         """
 

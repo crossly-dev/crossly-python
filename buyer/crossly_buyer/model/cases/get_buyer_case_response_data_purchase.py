@@ -76,8 +76,8 @@ class GetBuyerCaseResponseDataPurchase(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'status': (str,),  # noqa: E501
             'buyer_paid_cents': (float,),  # noqa: E501
+            'status': (str,),  # noqa: E501
             'refund_status': (str, none_type,),  # noqa: E501
             'refund_amount_cents': (float, none_type,),  # noqa: E501
         }
@@ -89,8 +89,8 @@ class GetBuyerCaseResponseDataPurchase(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'status': 'status',  # noqa: E501
         'buyer_paid_cents': 'buyerPaidCents',  # noqa: E501
+        'status': 'status',  # noqa: E501
         'refund_status': 'refundStatus',  # noqa: E501
         'refund_amount_cents': 'refundAmountCents',  # noqa: E501
     }
@@ -102,13 +102,13 @@ class GetBuyerCaseResponseDataPurchase(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, status, buyer_paid_cents, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, buyer_paid_cents, status, *args, **kwargs):  # noqa: E501
         """GetBuyerCaseResponseDataPurchase - a model defined in OpenAPI
 
         Args:
             id (str):
-            status (str):
             buyer_paid_cents (float):
+            status (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -171,8 +171,8 @@ class GetBuyerCaseResponseDataPurchase(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.status = status
         self.buyer_paid_cents = buyer_paid_cents
+        self.status = status
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -193,13 +193,13 @@ class GetBuyerCaseResponseDataPurchase(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, status, buyer_paid_cents, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, buyer_paid_cents, status, *args, **kwargs):  # noqa: E501
         """GetBuyerCaseResponseDataPurchase - a model defined in OpenAPI
 
         Args:
             id (str):
-            status (str):
             buyer_paid_cents (float):
+            status (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -260,8 +260,8 @@ class GetBuyerCaseResponseDataPurchase(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.status = status
         self.buyer_paid_cents = buyer_paid_cents
+        self.status = status
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

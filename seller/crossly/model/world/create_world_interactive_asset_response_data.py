@@ -56,8 +56,8 @@ class CreateWorldInteractiveAssetResponseData(ModelNormal):
 
     allowed_values = {
         ('kind',): {
-            'PNG': "png",
             'GLB': "glb",
+            'PNG': "png",
             'WAV': "wav",
         },
     }

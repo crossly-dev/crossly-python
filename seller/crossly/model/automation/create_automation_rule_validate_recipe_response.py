@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.automation.create_automation_rule_validate_recipe_response_details import CreateAutomationRuleValidateRecipeResponseDetails
-    globals()['CreateAutomationRuleValidateRecipeResponseDetails'] = CreateAutomationRuleValidateRecipeResponseDetails
+    from crossly.model.automation.create_automation_rule_validate_recipe_response_results import CreateAutomationRuleValidateRecipeResponseResults
+    globals()['CreateAutomationRuleValidateRecipeResponseResults'] = CreateAutomationRuleValidateRecipeResponseResults
 
 
 class CreateAutomationRuleValidateRecipeResponse(ModelNormal):
@@ -81,8 +81,8 @@ class CreateAutomationRuleValidateRecipeResponse(ModelNormal):
         lazy_import()
         return {
             'valid': (bool,),  # noqa: E501
-            'error': (str,),  # noqa: E501
-            'details': (CreateAutomationRuleValidateRecipeResponseDetails,),  # noqa: E501
+            'count': (float,),  # noqa: E501
+            'results': ([CreateAutomationRuleValidateRecipeResponseResults],),  # noqa: E501
         }
 
     @cached_property
@@ -92,8 +92,8 @@ class CreateAutomationRuleValidateRecipeResponse(ModelNormal):
 
     attribute_map = {
         'valid': 'valid',  # noqa: E501
-        'error': 'error',  # noqa: E501
-        'details': 'details',  # noqa: E501
+        'count': 'count',  # noqa: E501
+        'results': 'results',  # noqa: E501
     }
 
     read_only_vars = {
@@ -103,13 +103,13 @@ class CreateAutomationRuleValidateRecipeResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, valid, error, details, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, valid, count, results, *args, **kwargs):  # noqa: E501
         """CreateAutomationRuleValidateRecipeResponse - a model defined in OpenAPI
 
         Args:
             valid (bool):
-            error (str):
-            details (CreateAutomationRuleValidateRecipeResponseDetails):
+            count (float):
+            results ([CreateAutomationRuleValidateRecipeResponseResults]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -170,8 +170,8 @@ class CreateAutomationRuleValidateRecipeResponse(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.valid = valid
-        self.error = error
-        self.details = details
+        self.count = count
+        self.results = results
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -192,13 +192,13 @@ class CreateAutomationRuleValidateRecipeResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, valid, error, details, *args, **kwargs):  # noqa: E501
+    def __init__(self, valid, count, results, *args, **kwargs):  # noqa: E501
         """CreateAutomationRuleValidateRecipeResponse - a model defined in OpenAPI
 
         Args:
             valid (bool):
-            error (str):
-            details (CreateAutomationRuleValidateRecipeResponseDetails):
+            count (float):
+            results ([CreateAutomationRuleValidateRecipeResponseResults]):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -257,8 +257,8 @@ class CreateAutomationRuleValidateRecipeResponse(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.valid = valid
-        self.error = error
-        self.details = details
+        self.count = count
+        self.results = results
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

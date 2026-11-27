@@ -57,8 +57,8 @@ class GetVaultMarketGradingSignalResponseGraders(ModelNormal):
     allowed_values = {
         ('via',): {
             'None': None,
-            'RUN': "run",
             'SINGLE': "single",
+            'RUN': "run",
         },
     }
 

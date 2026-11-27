@@ -61,8 +61,8 @@ class GetVaultMarketMarketModelResponseLuld(ModelNormal):
     allowed_values = {
         ('phase',): {
             'LIMIT': "limit",
-            'NORMAL': "normal",
             'PAUSED': "paused",
+            'NORMAL': "normal",
         },
     }
 

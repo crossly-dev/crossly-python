@@ -86,17 +86,17 @@ class CreateProductionCandidateAcceptResponseCandidate(ModelNormal):
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (datetime,),  # noqa: E501
             'status': (str,),  # noqa: E501
+            'cosmetic_id': (str,),  # noqa: E501
             'merchant_id': (str,),  # noqa: E501
             'creator_subject_id': (str,),  # noqa: E501
-            'cosmetic_id': (str,),  # noqa: E501
             'designer_royalty_bps': (float,),  # noqa: E501
             'funding_at_eligible_cents': (float,),  # noqa: E501
             'distinct_holders_at_eligible': (float,),  # noqa: E501
             'holder_priority': (bool,),  # noqa: E501
             'retail_price_cents': (float, none_type,),  # noqa: E501
-            'creator_user_id': (str, none_type,),  # noqa: E501
-            'completed_at': (datetime, none_type,),  # noqa: E501
             'accepted_at': (datetime, none_type,),  # noqa: E501
+            'completed_at': (datetime, none_type,),  # noqa: E501
+            'creator_user_id': (str, none_type,),  # noqa: E501
             'edition_size': (float, none_type,),  # noqa: E501
             'unit_cost_cents': (float, none_type,),  # noqa: E501
             'run_cost_cents': (float, none_type,),  # noqa: E501
@@ -118,17 +118,17 @@ class CreateProductionCandidateAcceptResponseCandidate(ModelNormal):
         'created_at': 'createdAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
         'status': 'status',  # noqa: E501
+        'cosmetic_id': 'cosmeticId',  # noqa: E501
         'merchant_id': 'merchantId',  # noqa: E501
         'creator_subject_id': 'creatorSubjectId',  # noqa: E501
-        'cosmetic_id': 'cosmeticId',  # noqa: E501
         'designer_royalty_bps': 'designerRoyaltyBps',  # noqa: E501
         'funding_at_eligible_cents': 'fundingAtEligibleCents',  # noqa: E501
         'distinct_holders_at_eligible': 'distinctHoldersAtEligible',  # noqa: E501
         'holder_priority': 'holderPriority',  # noqa: E501
         'retail_price_cents': 'retailPriceCents',  # noqa: E501
-        'creator_user_id': 'creatorUserId',  # noqa: E501
-        'completed_at': 'completedAt',  # noqa: E501
         'accepted_at': 'acceptedAt',  # noqa: E501
+        'completed_at': 'completedAt',  # noqa: E501
+        'creator_user_id': 'creatorUserId',  # noqa: E501
         'edition_size': 'editionSize',  # noqa: E501
         'unit_cost_cents': 'unitCostCents',  # noqa: E501
         'run_cost_cents': 'runCostCents',  # noqa: E501
@@ -147,7 +147,7 @@ class CreateProductionCandidateAcceptResponseCandidate(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, updated_at, status, merchant_id, creator_subject_id, cosmetic_id, designer_royalty_bps, funding_at_eligible_cents, distinct_holders_at_eligible, holder_priority, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, updated_at, status, cosmetic_id, merchant_id, creator_subject_id, designer_royalty_bps, funding_at_eligible_cents, distinct_holders_at_eligible, holder_priority, *args, **kwargs):  # noqa: E501
         """CreateProductionCandidateAcceptResponseCandidate - a model defined in OpenAPI
 
         Args:
@@ -155,9 +155,9 @@ class CreateProductionCandidateAcceptResponseCandidate(ModelNormal):
             created_at (datetime):
             updated_at (datetime):
             status (str):
+            cosmetic_id (str):
             merchant_id (str):
             creator_subject_id (str):
-            cosmetic_id (str):
             designer_royalty_bps (float):
             funding_at_eligible_cents (float):
             distinct_holders_at_eligible (float):
@@ -195,9 +195,9 @@ class CreateProductionCandidateAcceptResponseCandidate(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             retail_price_cents (float, none_type): [optional]  # noqa: E501
-            creator_user_id (str, none_type): [optional]  # noqa: E501
-            completed_at (datetime, none_type): [optional]  # noqa: E501
             accepted_at (datetime, none_type): [optional]  # noqa: E501
+            completed_at (datetime, none_type): [optional]  # noqa: E501
+            creator_user_id (str, none_type): [optional]  # noqa: E501
             edition_size (float, none_type): [optional]  # noqa: E501
             unit_cost_cents (float, none_type): [optional]  # noqa: E501
             run_cost_cents (float, none_type): [optional]  # noqa: E501
@@ -238,9 +238,9 @@ class CreateProductionCandidateAcceptResponseCandidate(ModelNormal):
         self.created_at = created_at
         self.updated_at = updated_at
         self.status = status
+        self.cosmetic_id = cosmetic_id
         self.merchant_id = merchant_id
         self.creator_subject_id = creator_subject_id
-        self.cosmetic_id = cosmetic_id
         self.designer_royalty_bps = designer_royalty_bps
         self.funding_at_eligible_cents = funding_at_eligible_cents
         self.distinct_holders_at_eligible = distinct_holders_at_eligible
@@ -265,7 +265,7 @@ class CreateProductionCandidateAcceptResponseCandidate(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, updated_at, status, merchant_id, creator_subject_id, cosmetic_id, designer_royalty_bps, funding_at_eligible_cents, distinct_holders_at_eligible, holder_priority, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, updated_at, status, cosmetic_id, merchant_id, creator_subject_id, designer_royalty_bps, funding_at_eligible_cents, distinct_holders_at_eligible, holder_priority, *args, **kwargs):  # noqa: E501
         """CreateProductionCandidateAcceptResponseCandidate - a model defined in OpenAPI
 
         Args:
@@ -273,9 +273,9 @@ class CreateProductionCandidateAcceptResponseCandidate(ModelNormal):
             created_at (datetime):
             updated_at (datetime):
             status (str):
+            cosmetic_id (str):
             merchant_id (str):
             creator_subject_id (str):
-            cosmetic_id (str):
             designer_royalty_bps (float):
             funding_at_eligible_cents (float):
             distinct_holders_at_eligible (float):
@@ -313,9 +313,9 @@ class CreateProductionCandidateAcceptResponseCandidate(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             retail_price_cents (float, none_type): [optional]  # noqa: E501
-            creator_user_id (str, none_type): [optional]  # noqa: E501
-            completed_at (datetime, none_type): [optional]  # noqa: E501
             accepted_at (datetime, none_type): [optional]  # noqa: E501
+            completed_at (datetime, none_type): [optional]  # noqa: E501
+            creator_user_id (str, none_type): [optional]  # noqa: E501
             edition_size (float, none_type): [optional]  # noqa: E501
             unit_cost_cents (float, none_type): [optional]  # noqa: E501
             run_cost_cents (float, none_type): [optional]  # noqa: E501
@@ -354,9 +354,9 @@ class CreateProductionCandidateAcceptResponseCandidate(ModelNormal):
         self.created_at = created_at
         self.updated_at = updated_at
         self.status = status
+        self.cosmetic_id = cosmetic_id
         self.merchant_id = merchant_id
         self.creator_subject_id = creator_subject_id
-        self.cosmetic_id = cosmetic_id
         self.designer_royalty_bps = designer_royalty_bps
         self.funding_at_eligible_cents = funding_at_eligible_cents
         self.distinct_holders_at_eligible = distinct_holders_at_eligible

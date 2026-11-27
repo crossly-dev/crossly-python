@@ -80,9 +80,9 @@ class GetBuyerPackFairnessResponseData(ModelNormal):
         """
         lazy_import()
         return {
-            'nonce': (float,),  # noqa: E501
             'server_seed_hash': (str,),  # noqa: E501
             'client_seed': (str,),  # noqa: E501
+            'nonce': (float,),  # noqa: E501
             'revealed': ([GetBuyerPackFairnessResponseDataRevealed],),  # noqa: E501
         }
 
@@ -92,9 +92,9 @@ class GetBuyerPackFairnessResponseData(ModelNormal):
 
 
     attribute_map = {
-        'nonce': 'nonce',  # noqa: E501
         'server_seed_hash': 'serverSeedHash',  # noqa: E501
         'client_seed': 'clientSeed',  # noqa: E501
+        'nonce': 'nonce',  # noqa: E501
         'revealed': 'revealed',  # noqa: E501
     }
 
@@ -105,13 +105,13 @@ class GetBuyerPackFairnessResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, nonce, server_seed_hash, client_seed, revealed, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, server_seed_hash, client_seed, nonce, revealed, *args, **kwargs):  # noqa: E501
         """GetBuyerPackFairnessResponseData - a model defined in OpenAPI
 
         Args:
-            nonce (float):
             server_seed_hash (str):
             client_seed (str):
+            nonce (float):
             revealed ([GetBuyerPackFairnessResponseDataRevealed]):
 
         Keyword Args:
@@ -172,9 +172,9 @@ class GetBuyerPackFairnessResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.nonce = nonce
         self.server_seed_hash = server_seed_hash
         self.client_seed = client_seed
+        self.nonce = nonce
         self.revealed = revealed
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -196,13 +196,13 @@ class GetBuyerPackFairnessResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, nonce, server_seed_hash, client_seed, revealed, *args, **kwargs):  # noqa: E501
+    def __init__(self, server_seed_hash, client_seed, nonce, revealed, *args, **kwargs):  # noqa: E501
         """GetBuyerPackFairnessResponseData - a model defined in OpenAPI
 
         Args:
-            nonce (float):
             server_seed_hash (str):
             client_seed (str):
+            nonce (float):
             revealed ([GetBuyerPackFairnessResponseDataRevealed]):
 
         Keyword Args:
@@ -261,9 +261,9 @@ class GetBuyerPackFairnessResponseData(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.nonce = nonce
         self.server_seed_hash = server_seed_hash
         self.client_seed = client_seed
+        self.nonce = nonce
         self.revealed = revealed
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

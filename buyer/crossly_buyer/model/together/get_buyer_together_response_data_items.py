@@ -76,9 +76,9 @@ class GetBuyerTogetherResponseDataItems(ModelNormal):
         """
         return {
             'id': (str,),  # noqa: E501
-            'available': (bool,),  # noqa: E501
             'slug': (str,),  # noqa: E501
             'price_cents': (float,),  # noqa: E501
+            'available': (bool,),  # noqa: E501
             'added_by': (str,),  # noqa: E501
             'up': (float,),  # noqa: E501
             'down': (float,),  # noqa: E501
@@ -94,9 +94,9 @@ class GetBuyerTogetherResponseDataItems(ModelNormal):
 
     attribute_map = {
         'id': 'id',  # noqa: E501
-        'available': 'available',  # noqa: E501
         'slug': 'slug',  # noqa: E501
         'price_cents': 'priceCents',  # noqa: E501
+        'available': 'available',  # noqa: E501
         'added_by': 'addedBy',  # noqa: E501
         'up': 'up',  # noqa: E501
         'down': 'down',  # noqa: E501
@@ -112,14 +112,14 @@ class GetBuyerTogetherResponseDataItems(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, available, slug, price_cents, added_by, up, down, my_vote, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, slug, price_cents, available, added_by, up, down, my_vote, *args, **kwargs):  # noqa: E501
         """GetBuyerTogetherResponseDataItems - a model defined in OpenAPI
 
         Args:
             id (str):
-            available (bool):
             slug (str):
             price_cents (float):
+            available (bool):
             added_by (str):
             up (float):
             down (float):
@@ -186,9 +186,9 @@ class GetBuyerTogetherResponseDataItems(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.available = available
         self.slug = slug
         self.price_cents = price_cents
+        self.available = available
         self.added_by = added_by
         self.up = up
         self.down = down
@@ -213,14 +213,14 @@ class GetBuyerTogetherResponseDataItems(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, available, slug, price_cents, added_by, up, down, my_vote, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, slug, price_cents, available, added_by, up, down, my_vote, *args, **kwargs):  # noqa: E501
         """GetBuyerTogetherResponseDataItems - a model defined in OpenAPI
 
         Args:
             id (str):
-            available (bool):
             slug (str):
             price_cents (float):
+            available (bool):
             added_by (str):
             up (float):
             down (float):
@@ -285,9 +285,9 @@ class GetBuyerTogetherResponseDataItems(ModelNormal):
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
         self.id = id
-        self.available = available
         self.slug = slug
         self.price_cents = price_cents
+        self.available = available
         self.added_by = added_by
         self.up = up
         self.down = down

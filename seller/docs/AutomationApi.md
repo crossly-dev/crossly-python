@@ -27,6 +27,8 @@ Method | HTTP request | Description
 
 Create an automation rule.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 
 * Bearer Authentication (PersonalAccessToken):
@@ -104,6 +106,8 @@ This endpoint does not need any parameter.
 > CreateAutomationRuleImportResponse create_automation_rule_import()
 
 Import one or more rules from recipe JSON (single or bundle).
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 
@@ -188,6 +192,8 @@ Name | Type | Description  | Notes
 
 Fire an automation rule immediately.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 
 * Bearer Authentication (PersonalAccessToken):
@@ -266,9 +272,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 # **create_automation_rule_toggle**
-> UpdateAutomationRuleResponse create_automation_rule_toggle(id)
+> GetAutomationRuleResponse create_automation_rule_toggle(id)
 
 Flip an automation rule between active and inactive.
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 
@@ -278,8 +286,8 @@ Flip an automation rule between active and inactive.
 import time
 import crossly
 from crossly.api import automation_api
-from crossly.model.automation.update_automation_rule_response import UpdateAutomationRuleResponse
 from crossly.model.common.error import Error
+from crossly.model.automation.get_automation_rule_response import GetAutomationRuleResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://crossly.net/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -321,7 +329,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**UpdateAutomationRuleResponse**
+**GetAutomationRuleResponse**
 
 ### Authorization
 
@@ -351,6 +359,8 @@ Name | Type | Description  | Notes
 > CreateAutomationRuleValidateRecipeResponse create_automation_rule_validate_recipe()
 
 Dry-run validate one or more recipes against the live catalog.
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 
@@ -594,6 +604,8 @@ Name | Type | Description  | Notes
 
 Delete an automation rule.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 
 * Bearer Authentication (PersonalAccessToken):
@@ -754,6 +766,8 @@ This endpoint does not need any parameter.
 
 Get a single automation rule.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 
 * Bearer Authentication (PersonalAccessToken):
@@ -836,6 +850,8 @@ Name | Type | Description  | Notes
 
 Export the user's full rule library as a portable recipe bundle.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 
 * Bearer Authentication (PersonalAccessToken):
@@ -913,6 +929,8 @@ This endpoint does not need any parameter.
 > GetAutomationRuleExportByIdResponse get_automation_rule_export_by_id(id)
 
 Export a single automation rule as a portable recipe.
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 
@@ -996,6 +1014,8 @@ Name | Type | Description  | Notes
 
 List automation rules.
 
+Deprecated: automation rules are workflows now. Use /v1/workflows.
+
 ### Example
 
 * Bearer Authentication (PersonalAccessToken):
@@ -1073,6 +1093,8 @@ This endpoint does not need any parameter.
 > ListAutomationRunsResponse list_automation_runs()
 
 Per-fire history for automation rules and workflow chain runs.
+
+Deprecated: use /v1/workflow-runs.
 
 ### Example
 
@@ -1235,9 +1257,11 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 # **update_automation_rule**
-> UpdateAutomationRuleResponse update_automation_rule(id)
+> GetAutomationRuleResponse update_automation_rule(id)
 
 Update an automation rule (full replace).
+
+Deprecated: automation rules are workflows now. Use /v1/workflows.
 
 ### Example
 
@@ -1247,8 +1271,8 @@ Update an automation rule (full replace).
 import time
 import crossly
 from crossly.api import automation_api
-from crossly.model.automation.update_automation_rule_response import UpdateAutomationRuleResponse
 from crossly.model.common.error import Error
+from crossly.model.automation.get_automation_rule_response import GetAutomationRuleResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://crossly.net/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -1290,7 +1314,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**UpdateAutomationRuleResponse**
+**GetAutomationRuleResponse**
 
 ### Authorization
 

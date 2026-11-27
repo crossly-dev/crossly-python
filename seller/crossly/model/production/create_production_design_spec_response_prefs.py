@@ -85,9 +85,9 @@ class CreateProductionDesignSpecResponsePrefs(ModelNormal):
             'id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'updated_at': (datetime,),  # noqa: E501
+            'cosmetic_id': (str,),  # noqa: E501
             'merchant_id': (str,),  # noqa: E501
             'creator_subject_id': (str,),  # noqa: E501
-            'cosmetic_id': (str,),  # noqa: E501
             'physical_opt_out': (bool,),  # noqa: E501
             'spec': (CreateProductionDesignSpecResponsePrefsSpec,),  # noqa: E501
             'brief': (CreateProductionDesignSpecResponsePrefsBrief,),  # noqa: E501
@@ -103,9 +103,9 @@ class CreateProductionDesignSpecResponsePrefs(ModelNormal):
         'id': 'id',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'updated_at': 'updatedAt',  # noqa: E501
+        'cosmetic_id': 'cosmeticId',  # noqa: E501
         'merchant_id': 'merchantId',  # noqa: E501
         'creator_subject_id': 'creatorSubjectId',  # noqa: E501
-        'cosmetic_id': 'cosmeticId',  # noqa: E501
         'physical_opt_out': 'physicalOptOut',  # noqa: E501
         'spec': 'spec',  # noqa: E501
         'brief': 'brief',  # noqa: E501
@@ -119,16 +119,16 @@ class CreateProductionDesignSpecResponsePrefs(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, updated_at, merchant_id, creator_subject_id, cosmetic_id, physical_opt_out, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, updated_at, cosmetic_id, merchant_id, creator_subject_id, physical_opt_out, *args, **kwargs):  # noqa: E501
         """CreateProductionDesignSpecResponsePrefs - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (datetime):
             updated_at (datetime):
+            cosmetic_id (str):
             merchant_id (str):
             creator_subject_id (str):
-            cosmetic_id (str):
             physical_opt_out (bool):
 
         Keyword Args:
@@ -195,9 +195,9 @@ class CreateProductionDesignSpecResponsePrefs(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.updated_at = updated_at
+        self.cosmetic_id = cosmetic_id
         self.merchant_id = merchant_id
         self.creator_subject_id = creator_subject_id
-        self.cosmetic_id = cosmetic_id
         self.physical_opt_out = physical_opt_out
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -219,16 +219,16 @@ class CreateProductionDesignSpecResponsePrefs(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, updated_at, merchant_id, creator_subject_id, cosmetic_id, physical_opt_out, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, updated_at, cosmetic_id, merchant_id, creator_subject_id, physical_opt_out, *args, **kwargs):  # noqa: E501
         """CreateProductionDesignSpecResponsePrefs - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (datetime):
             updated_at (datetime):
+            cosmetic_id (str):
             merchant_id (str):
             creator_subject_id (str):
-            cosmetic_id (str):
             physical_opt_out (bool):
 
         Keyword Args:
@@ -293,9 +293,9 @@ class CreateProductionDesignSpecResponsePrefs(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.updated_at = updated_at
+        self.cosmetic_id = cosmetic_id
         self.merchant_id = merchant_id
         self.creator_subject_id = creator_subject_id
-        self.cosmetic_id = cosmetic_id
         self.physical_opt_out = physical_opt_out
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

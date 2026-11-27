@@ -77,7 +77,9 @@ class CreateOrderMessageResponse(ModelNormal):
         return {
             'order_id': (str,),  # noqa: E501
             'sent': (bool,),  # noqa: E501
-            'platform_conversation_id': (str,),  # noqa: E501
+            'relayed': (bool, none_type,),  # noqa: E501
+            'command_id': (str, none_type,),  # noqa: E501
+            'platform_conversation_id': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -88,6 +90,8 @@ class CreateOrderMessageResponse(ModelNormal):
     attribute_map = {
         'order_id': 'orderId',  # noqa: E501
         'sent': 'sent',  # noqa: E501
+        'relayed': 'relayed',  # noqa: E501
+        'command_id': 'commandId',  # noqa: E501
         'platform_conversation_id': 'platformConversationId',  # noqa: E501
     }
 
@@ -98,13 +102,12 @@ class CreateOrderMessageResponse(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, order_id, sent, platform_conversation_id, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, order_id, sent, *args, **kwargs):  # noqa: E501
         """CreateOrderMessageResponse - a model defined in OpenAPI
 
         Args:
             order_id (str):
             sent (bool):
-            platform_conversation_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -137,6 +140,9 @@ class CreateOrderMessageResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            relayed (bool, none_type): True when the managing app was asked to send it (action authority).. [optional]  # noqa: E501
+            command_id (str, none_type): The managing-app command id, on a relay.. [optional]  # noqa: E501
+            platform_conversation_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -166,7 +172,6 @@ class CreateOrderMessageResponse(ModelNormal):
 
         self.order_id = order_id
         self.sent = sent
-        self.platform_conversation_id = platform_conversation_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -187,13 +192,12 @@ class CreateOrderMessageResponse(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, order_id, sent, platform_conversation_id, *args, **kwargs):  # noqa: E501
+    def __init__(self, order_id, sent, *args, **kwargs):  # noqa: E501
         """CreateOrderMessageResponse - a model defined in OpenAPI
 
         Args:
             order_id (str):
             sent (bool):
-            platform_conversation_id (str):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -226,6 +230,9 @@ class CreateOrderMessageResponse(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            relayed (bool, none_type): True when the managing app was asked to send it (action authority).. [optional]  # noqa: E501
+            command_id (str, none_type): The managing-app command id, on a relay.. [optional]  # noqa: E501
+            platform_conversation_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -253,7 +260,6 @@ class CreateOrderMessageResponse(ModelNormal):
 
         self.order_id = order_id
         self.sent = sent
-        self.platform_conversation_id = platform_conversation_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

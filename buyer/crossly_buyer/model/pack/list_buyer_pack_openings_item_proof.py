@@ -80,14 +80,14 @@ class ListBuyerPackOpeningsItemProof(ModelNormal):
         """
         lazy_import()
         return {
-            'nonce': (float,),  # noqa: E501
             'server_seed_hash': (str,),  # noqa: E501
             'client_seed': (str,),  # noqa: E501
-            'tier_id': (str, none_type,),  # noqa: E501
+            'nonce': (float,),  # noqa: E501
             'server_seed': (str, none_type,),  # noqa: E501
-            'pool_item_id': (str, none_type,),  # noqa: E501
             'tier_item_ids': ([str], none_type,),  # noqa: E501
             'tier_weights': ([ListBuyerPackOpeningsItemProofTierWeights], none_type,),  # noqa: E501
+            'tier_id': (str, none_type,),  # noqa: E501
+            'pool_item_id': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -96,14 +96,14 @@ class ListBuyerPackOpeningsItemProof(ModelNormal):
 
 
     attribute_map = {
-        'nonce': 'nonce',  # noqa: E501
         'server_seed_hash': 'serverSeedHash',  # noqa: E501
         'client_seed': 'clientSeed',  # noqa: E501
-        'tier_id': 'tierId',  # noqa: E501
+        'nonce': 'nonce',  # noqa: E501
         'server_seed': 'serverSeed',  # noqa: E501
-        'pool_item_id': 'poolItemId',  # noqa: E501
         'tier_item_ids': 'tierItemIds',  # noqa: E501
         'tier_weights': 'tierWeights',  # noqa: E501
+        'tier_id': 'tierId',  # noqa: E501
+        'pool_item_id': 'poolItemId',  # noqa: E501
     }
 
     read_only_vars = {
@@ -113,13 +113,13 @@ class ListBuyerPackOpeningsItemProof(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, nonce, server_seed_hash, client_seed, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, server_seed_hash, client_seed, nonce, *args, **kwargs):  # noqa: E501
         """ListBuyerPackOpeningsItemProof - a model defined in OpenAPI
 
         Args:
-            nonce (float):
             server_seed_hash (str):
             client_seed (str):
+            nonce (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -152,11 +152,11 @@ class ListBuyerPackOpeningsItemProof(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            tier_id (str, none_type): [optional]  # noqa: E501
             server_seed (str, none_type): [optional]  # noqa: E501
-            pool_item_id (str, none_type): [optional]  # noqa: E501
             tier_item_ids ([str], none_type): [optional]  # noqa: E501
             tier_weights ([ListBuyerPackOpeningsItemProofTierWeights], none_type): [optional]  # noqa: E501
+            tier_id (str, none_type): [optional]  # noqa: E501
+            pool_item_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -184,9 +184,9 @@ class ListBuyerPackOpeningsItemProof(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.nonce = nonce
         self.server_seed_hash = server_seed_hash
         self.client_seed = client_seed
+        self.nonce = nonce
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \
@@ -207,13 +207,13 @@ class ListBuyerPackOpeningsItemProof(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, nonce, server_seed_hash, client_seed, *args, **kwargs):  # noqa: E501
+    def __init__(self, server_seed_hash, client_seed, nonce, *args, **kwargs):  # noqa: E501
         """ListBuyerPackOpeningsItemProof - a model defined in OpenAPI
 
         Args:
-            nonce (float):
             server_seed_hash (str):
             client_seed (str):
+            nonce (float):
 
         Keyword Args:
             _check_type (bool): if True, values for parameters in openapi_types
@@ -246,11 +246,11 @@ class ListBuyerPackOpeningsItemProof(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            tier_id (str, none_type): [optional]  # noqa: E501
             server_seed (str, none_type): [optional]  # noqa: E501
-            pool_item_id (str, none_type): [optional]  # noqa: E501
             tier_item_ids ([str], none_type): [optional]  # noqa: E501
             tier_weights ([ListBuyerPackOpeningsItemProofTierWeights], none_type): [optional]  # noqa: E501
+            tier_id (str, none_type): [optional]  # noqa: E501
+            pool_item_id (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -276,9 +276,9 @@ class ListBuyerPackOpeningsItemProof(ModelNormal):
         self._configuration = _configuration
         self._visited_composed_classes = _visited_composed_classes + (self.__class__,)
 
-        self.nonce = nonce
         self.server_seed_hash = server_seed_hash
         self.client_seed = client_seed
+        self.nonce = nonce
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
                         self._configuration is not None and \

@@ -35,7 +35,6 @@ from crossly.model.automation.list_automation_rules_response import ListAutomati
 from crossly.model.automation.list_automation_runs_response import ListAutomationRunsResponse
 from crossly.model.common.list_reprice_events_response import ListRepriceEventsResponse
 from crossly.model.common.ok_response import OkResponse
-from crossly.model.automation.update_automation_rule_response import UpdateAutomationRuleResponse
 
 
 class AutomationApi(object):
@@ -195,7 +194,7 @@ class AutomationApi(object):
         )
         self.create_automation_rule_toggle_endpoint = _Endpoint(
             settings={
-                'response_type': (UpdateAutomationRuleResponse,),
+                'response_type': (GetAutomationRuleResponse,),
                 'auth': [
                     'PersonalAccessToken'
                 ],
@@ -786,7 +785,7 @@ class AutomationApi(object):
         )
         self.update_automation_rule_endpoint = _Endpoint(
             settings={
-                'response_type': (UpdateAutomationRuleResponse,),
+                'response_type': (GetAutomationRuleResponse,),
                 'auth': [
                     'PersonalAccessToken'
                 ],
@@ -842,6 +841,7 @@ class AutomationApi(object):
     ):
         """Create an automation rule.  # noqa: E501
 
+        Deprecated: automation rules are workflows now. Use /v1/workflows.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -914,6 +914,7 @@ class AutomationApi(object):
     ):
         """Import one or more rules from recipe JSON (single or bundle).  # noqa: E501
 
+        Deprecated: automation rules are workflows now. Use /v1/workflows.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -988,6 +989,7 @@ class AutomationApi(object):
     ):
         """Fire an automation rule immediately.  # noqa: E501
 
+        Deprecated: automation rules are workflows now. Use /v1/workflows.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1065,6 +1067,7 @@ class AutomationApi(object):
     ):
         """Flip an automation rule between active and inactive.  # noqa: E501
 
+        Deprecated: automation rules are workflows now. Use /v1/workflows.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1103,7 +1106,7 @@ class AutomationApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            UpdateAutomationRuleResponse
+            GetAutomationRuleResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """
@@ -1141,6 +1144,7 @@ class AutomationApi(object):
     ):
         """Dry-run validate one or more recipes against the live catalog.  # noqa: E501
 
+        Deprecated: automation rules are workflows now. Use /v1/workflows.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1368,6 +1372,7 @@ class AutomationApi(object):
     ):
         """Delete an automation rule.  # noqa: E501
 
+        Deprecated: automation rules are workflows now. Use /v1/workflows.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1517,6 +1522,7 @@ class AutomationApi(object):
     ):
         """Get a single automation rule.  # noqa: E501
 
+        Deprecated: automation rules are workflows now. Use /v1/workflows.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1593,6 +1599,7 @@ class AutomationApi(object):
     ):
         """Export the user's full rule library as a portable recipe bundle.  # noqa: E501
 
+        Deprecated: automation rules are workflows now. Use /v1/workflows.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1666,6 +1673,7 @@ class AutomationApi(object):
     ):
         """Export a single automation rule as a portable recipe.  # noqa: E501
 
+        Deprecated: automation rules are workflows now. Use /v1/workflows.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1742,6 +1750,7 @@ class AutomationApi(object):
     ):
         """List automation rules.  # noqa: E501
 
+        Deprecated: automation rules are workflows now. Use /v1/workflows.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1814,6 +1823,7 @@ class AutomationApi(object):
     ):
         """Per-fire history for automation rules and workflow chain runs.  # noqa: E501
 
+        Deprecated: use /v1/workflow-runs.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -1962,6 +1972,7 @@ class AutomationApi(object):
     ):
         """Update an automation rule (full replace).  # noqa: E501
 
+        Deprecated: automation rules are workflows now. Use /v1/workflows.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -2000,7 +2011,7 @@ class AutomationApi(object):
             async_req (bool): execute request asynchronously
 
         Returns:
-            UpdateAutomationRuleResponse
+            GetAutomationRuleResponse
                 If the method is called asynchronously, returns the request
                 thread.
         """

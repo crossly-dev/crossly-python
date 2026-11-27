@@ -78,9 +78,10 @@ class CreateSpatialPropertyDeedListResponseData(ModelNormal):
             'id': (str,),  # noqa: E501
             'created_at': (datetime,),  # noqa: E501
             'status': (str,),  # noqa: E501
-            'seller_user_id': (str,),  # noqa: E501
             'price_cents': (float,),  # noqa: E501
+            'seller_user_id': (str,),  # noqa: E501
             'deed_id': (str,),  # noqa: E501
+            'storefront_id': (str, none_type,),  # noqa: E501
             'buyer_user_id': (str, none_type,),  # noqa: E501
             'closed_at': (datetime, none_type,),  # noqa: E501
         }
@@ -94,9 +95,10 @@ class CreateSpatialPropertyDeedListResponseData(ModelNormal):
         'id': 'id',  # noqa: E501
         'created_at': 'createdAt',  # noqa: E501
         'status': 'status',  # noqa: E501
-        'seller_user_id': 'sellerUserId',  # noqa: E501
         'price_cents': 'priceCents',  # noqa: E501
+        'seller_user_id': 'sellerUserId',  # noqa: E501
         'deed_id': 'deedId',  # noqa: E501
+        'storefront_id': 'storefrontId',  # noqa: E501
         'buyer_user_id': 'buyerUserId',  # noqa: E501
         'closed_at': 'closedAt',  # noqa: E501
     }
@@ -108,15 +110,15 @@ class CreateSpatialPropertyDeedListResponseData(ModelNormal):
 
     @classmethod
     @convert_js_args_to_python_args
-    def _from_openapi_data(cls, id, created_at, status, seller_user_id, price_cents, deed_id, *args, **kwargs):  # noqa: E501
+    def _from_openapi_data(cls, id, created_at, status, price_cents, seller_user_id, deed_id, *args, **kwargs):  # noqa: E501
         """CreateSpatialPropertyDeedListResponseData - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (datetime):
             status (str):
-            seller_user_id (str):
             price_cents (float):
+            seller_user_id (str):
             deed_id (str):
 
         Keyword Args:
@@ -150,6 +152,7 @@ class CreateSpatialPropertyDeedListResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            storefront_id (str, none_type): [optional]  # noqa: E501
             buyer_user_id (str, none_type): [optional]  # noqa: E501
             closed_at (datetime, none_type): [optional]  # noqa: E501
         """
@@ -182,8 +185,8 @@ class CreateSpatialPropertyDeedListResponseData(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.status = status
-        self.seller_user_id = seller_user_id
         self.price_cents = price_cents
+        self.seller_user_id = seller_user_id
         self.deed_id = deed_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \
@@ -205,15 +208,15 @@ class CreateSpatialPropertyDeedListResponseData(ModelNormal):
     ])
 
     @convert_js_args_to_python_args
-    def __init__(self, id, created_at, status, seller_user_id, price_cents, deed_id, *args, **kwargs):  # noqa: E501
+    def __init__(self, id, created_at, status, price_cents, seller_user_id, deed_id, *args, **kwargs):  # noqa: E501
         """CreateSpatialPropertyDeedListResponseData - a model defined in OpenAPI
 
         Args:
             id (str):
             created_at (datetime):
             status (str):
-            seller_user_id (str):
             price_cents (float):
+            seller_user_id (str):
             deed_id (str):
 
         Keyword Args:
@@ -247,6 +250,7 @@ class CreateSpatialPropertyDeedListResponseData(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
+            storefront_id (str, none_type): [optional]  # noqa: E501
             buyer_user_id (str, none_type): [optional]  # noqa: E501
             closed_at (datetime, none_type): [optional]  # noqa: E501
         """
@@ -277,8 +281,8 @@ class CreateSpatialPropertyDeedListResponseData(ModelNormal):
         self.id = id
         self.created_at = created_at
         self.status = status
-        self.seller_user_id = seller_user_id
         self.price_cents = price_cents
+        self.seller_user_id = seller_user_id
         self.deed_id = deed_id
         for var_name, var_value in kwargs.items():
             if var_name not in self.attribute_map and \

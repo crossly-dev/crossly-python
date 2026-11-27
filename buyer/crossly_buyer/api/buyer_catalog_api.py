@@ -632,6 +632,7 @@ class BuyerCatalogApi(object):
                 'all': [
                     'slug',
                     'zip',
+                    'state',
                     'country',
                     'quantity',
                 ],
@@ -643,12 +644,16 @@ class BuyerCatalogApi(object):
                 'enum': [
                 ],
                 'validation': [
+                    'state',
                     'country',
                     'quantity',
                 ]
             },
             root_map={
                 'validations': {
+                    ('state',): {
+                        'max_length': 60,
+                    },
                     ('country',): {
                         'max_length': 2,
                         'min_length': 2,
@@ -666,6 +671,8 @@ class BuyerCatalogApi(object):
                         (str,),
                     'zip':
                         (str,),
+                    'state':
+                        (str,),
                     'country':
                         (str,),
                     'quantity':
@@ -674,12 +681,14 @@ class BuyerCatalogApi(object):
                 'attribute_map': {
                     'slug': 'slug',
                     'zip': 'zip',
+                    'state': 'state',
                     'country': 'country',
                     'quantity': 'quantity',
                 },
                 'location_map': {
                     'slug': 'path',
                     'zip': 'query',
+                    'state': 'query',
                     'country': 'query',
                     'quantity': 'query',
                 },
@@ -2095,7 +2104,7 @@ class BuyerCatalogApi(object):
     ):
         """Shipping services and prices to a destination.  # noqa: E501
 
-        Lists every shipping service the seller offers to `country` (default: the seller’s own country) with its price for `quantity` units and its delivery window in business days (handling included). `zip` is required for a domestic quote. `shipsToCountry: false` means the seller does not ship there. Pass a service `id` as `shippingServiceId` to POST /api/v1/buyer/checkout, or in `shippingServiceBySeller` to POST /api/v1/buyer/cart/quote.  # noqa: E501
+        Lists every shipping service the seller offers to `country` (default: the seller’s own country) with its price for `quantity` units and its delivery window in business days (handling included). `zip` is required for a domestic quote; `state` is optional. `shipsToCountry: false` means the seller does not ship there (`noShipMessage` says why); `partial: true` means a ZIP or postcode could change the answer. Pass a service `id` as `shippingServiceId` to POST /api/v1/buyer/checkout, or in `shippingServiceBySeller` to POST /api/v1/buyer/cart/quote. A seller on \"buyer pays: calculated\" prices each allowed carrier service from the live label rate for this parcel plus their handling fee (rates cached 15 minutes): those services carry `carrier` and `carrierService`, and `calculatedAtCheckout: true` means a ZIP is needed first.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
@@ -2107,6 +2116,7 @@ class BuyerCatalogApi(object):
 
         Keyword Args:
             zip (str): [optional]
+            state (str): [optional]
             country (str): [optional]
             quantity (int): [optional]
             _return_http_data_only (bool): response data without head status

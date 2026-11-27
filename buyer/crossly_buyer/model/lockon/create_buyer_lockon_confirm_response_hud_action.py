@@ -57,10 +57,10 @@ class CreateBuyerLockonConfirmResponseHudAction(ModelNormal):
     allowed_values = {
         ('kind',): {
             'NONE': "none",
-            'CONFIRM': "confirm",
             'SAVE': "save",
             'BUY_CROSSLY': "buy_crossly",
             'BUY_OFFSITE': "buy_offsite",
+            'CONFIRM': "confirm",
         },
     }
 

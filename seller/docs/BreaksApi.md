@@ -92,7 +92,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 # **create_break_cancel**
-> CreateBreakCancelResponse create_break_cancel(id)
+> UpdateGroupBuyResponse create_break_cancel(id)
 
 Cancel a break before any spot is paid for; after that, refund those orders instead (409).
 
@@ -104,8 +104,8 @@ Cancel a break before any spot is paid for; after that, refund those orders inst
 import time
 import crossly
 from crossly.api import breaks_api
+from crossly.model.group.update_group_buy_response import UpdateGroupBuyResponse
 from crossly.model.common.error import Error
-from crossly.model.breaks.create_break_cancel_response import CreateBreakCancelResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://crossly.net/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateBreakCancelResponse**
+**UpdateGroupBuyResponse**
 
 ### Authorization
 
@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 # **create_break_opened**
-> CreateBreakCancelResponse create_break_opened(id)
+> UpdateGroupBuyResponse create_break_opened(id)
 
 Mark the product opened on stream.
 
@@ -268,8 +268,8 @@ Mark the product opened on stream.
 import time
 import crossly
 from crossly.api import breaks_api
+from crossly.model.group.update_group_buy_response import UpdateGroupBuyResponse
 from crossly.model.common.error import Error
-from crossly.model.breaks.create_break_cancel_response import CreateBreakCancelResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://crossly.net/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -311,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateBreakCancelResponse**
+**UpdateGroupBuyResponse**
 
 ### Authorization
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 # **create_break_spot_hit**
-> CreateBreakCancelResponse create_break_spot_hit(id, spot_id)
+> UpdateGroupBuyResponse create_break_spot_hit(id, spot_id)
 
 Record what a spot pulled.
 
@@ -350,8 +350,8 @@ Record what a spot pulled.
 import time
 import crossly
 from crossly.api import breaks_api
+from crossly.model.group.update_group_buy_response import UpdateGroupBuyResponse
 from crossly.model.common.error import Error
-from crossly.model.breaks.create_break_cancel_response import CreateBreakCancelResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://crossly.net/api
 # See configuration.py for a list of all supported configuration parameters.
@@ -395,7 +395,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateBreakCancelResponse**
+**UpdateGroupBuyResponse**
 
 ### Authorization
 

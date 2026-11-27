@@ -31,9 +31,9 @@ from crossly.exceptions import ApiAttributeError
 
 def lazy_import():
     from crossly.model.vault.get_vault_market_index_feed_settlement_response_series import GetVaultMarketIndexFeedSettlementResponseSeries
-    from crossly.model.common.slug_name import SlugName
+    from crossly.model.common.name_slug import NameSlug
     globals()['GetVaultMarketIndexFeedSettlementResponseSeries'] = GetVaultMarketIndexFeedSettlementResponseSeries
-    globals()['SlugName'] = SlugName
+    globals()['NameSlug'] = NameSlug
 
 
 class GetVaultMarketIndexFeedSettlementResponse(ModelNormal):
@@ -82,7 +82,7 @@ class GetVaultMarketIndexFeedSettlementResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'index': (SlugName,),  # noqa: E501
+            'index': (NameSlug,),  # noqa: E501
             'method': (str,),  # noqa: E501
             'series': ([GetVaultMarketIndexFeedSettlementResponseSeries],),  # noqa: E501
         }
@@ -109,7 +109,7 @@ class GetVaultMarketIndexFeedSettlementResponse(ModelNormal):
         """GetVaultMarketIndexFeedSettlementResponse - a model defined in OpenAPI
 
         Args:
-            index (SlugName):
+            index (NameSlug):
             method (str):
             series ([GetVaultMarketIndexFeedSettlementResponseSeries]):
 
@@ -198,7 +198,7 @@ class GetVaultMarketIndexFeedSettlementResponse(ModelNormal):
         """GetVaultMarketIndexFeedSettlementResponse - a model defined in OpenAPI
 
         Args:
-            index (SlugName):
+            index (NameSlug):
             method (str):
             series ([GetVaultMarketIndexFeedSettlementResponseSeries]):
 

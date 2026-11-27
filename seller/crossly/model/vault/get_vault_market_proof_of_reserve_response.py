@@ -30,12 +30,12 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.vault.get_vault_market_proof_of_reserve_by_day_response import GetVaultMarketProofOfReserveByDayResponse
     from crossly.model.vault.get_vault_market_proof_of_reserve_response_anchoring import GetVaultMarketProofOfReserveResponseAnchoring
+    from crossly.model.vault.get_vault_market_proof_of_reserve_response_history import GetVaultMarketProofOfReserveResponseHistory
     from crossly.model.vault.get_vault_market_proof_of_reserve_response_latest import GetVaultMarketProofOfReserveResponseLatest
     from crossly.model.vault.get_vault_market_proof_of_reserve_response_method import GetVaultMarketProofOfReserveResponseMethod
-    globals()['GetVaultMarketProofOfReserveByDayResponse'] = GetVaultMarketProofOfReserveByDayResponse
     globals()['GetVaultMarketProofOfReserveResponseAnchoring'] = GetVaultMarketProofOfReserveResponseAnchoring
+    globals()['GetVaultMarketProofOfReserveResponseHistory'] = GetVaultMarketProofOfReserveResponseHistory
     globals()['GetVaultMarketProofOfReserveResponseLatest'] = GetVaultMarketProofOfReserveResponseLatest
     globals()['GetVaultMarketProofOfReserveResponseMethod'] = GetVaultMarketProofOfReserveResponseMethod
 
@@ -86,7 +86,7 @@ class GetVaultMarketProofOfReserveResponse(ModelNormal):
         """
         lazy_import()
         return {
-            'history': ([GetVaultMarketProofOfReserveByDayResponse],),  # noqa: E501
+            'history': ([GetVaultMarketProofOfReserveResponseHistory],),  # noqa: E501
             'anchoring': (GetVaultMarketProofOfReserveResponseAnchoring,),  # noqa: E501
             'method': (GetVaultMarketProofOfReserveResponseMethod,),  # noqa: E501
             'latest': (GetVaultMarketProofOfReserveResponseLatest,),  # noqa: E501
@@ -115,7 +115,7 @@ class GetVaultMarketProofOfReserveResponse(ModelNormal):
         """GetVaultMarketProofOfReserveResponse - a model defined in OpenAPI
 
         Args:
-            history ([GetVaultMarketProofOfReserveByDayResponse]):
+            history ([GetVaultMarketProofOfReserveResponseHistory]):
             anchoring (GetVaultMarketProofOfReserveResponseAnchoring):
             method (GetVaultMarketProofOfReserveResponseMethod):
 
@@ -205,7 +205,7 @@ class GetVaultMarketProofOfReserveResponse(ModelNormal):
         """GetVaultMarketProofOfReserveResponse - a model defined in OpenAPI
 
         Args:
-            history ([GetVaultMarketProofOfReserveByDayResponse]):
+            history ([GetVaultMarketProofOfReserveResponseHistory]):
             anchoring (GetVaultMarketProofOfReserveResponseAnchoring):
             method (GetVaultMarketProofOfReserveResponseMethod):
 

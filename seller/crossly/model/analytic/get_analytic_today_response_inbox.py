@@ -104,8 +104,8 @@ class GetAnalyticTodayResponseInbox(ModelNormal):
         """GetAnalyticTodayResponseInbox - a model defined in OpenAPI
 
         Args:
-            unread (float): Conversations not yet opened (hidden threads excluded).
-            awaiting_reply (float): Open threads whose newest message is the buyer's.
+            unread (float): Unread conversations + unopened offers — the Unread tab's rows (services/inbox/attention.ts).
+            awaiting_reply (float): Threads and offers waiting on the seller — the Needs reply tab's rows.
             answered (float): Questions answered in the window (the median's sample).
 
         Keyword Args:
@@ -194,8 +194,8 @@ class GetAnalyticTodayResponseInbox(ModelNormal):
         """GetAnalyticTodayResponseInbox - a model defined in OpenAPI
 
         Args:
-            unread (float): Conversations not yet opened (hidden threads excluded).
-            awaiting_reply (float): Open threads whose newest message is the buyer's.
+            unread (float): Unread conversations + unopened offers — the Unread tab's rows (services/inbox/attention.ts).
+            awaiting_reply (float): Threads and offers waiting on the seller — the Needs reply tab's rows.
             answered (float): Questions answered in the window (the median's sample).
 
         Keyword Args:

@@ -30,8 +30,8 @@ from crossly.exceptions import ApiAttributeError
 
 
 def lazy_import():
-    from crossly.model.common.slug_name import SlugName
-    globals()['SlugName'] = SlugName
+    from crossly.model.common.name_slug import NameSlug
+    globals()['NameSlug'] = NameSlug
 
 
 class GetVaultMarketCorrelationResponse(ModelNormal):
@@ -85,7 +85,7 @@ class GetVaultMarketCorrelationResponse(ModelNormal):
             'weeks': (float,),  # noqa: E501
             'min_pair_weeks': (float,),  # noqa: E501
             'insufficient': (bool,),  # noqa: E501
-            'indexes': ([SlugName],),  # noqa: E501
+            'indexes': ([NameSlug],),  # noqa: E501
             'rho': ([[float, none_type]],),  # noqa: E501
             'n': ([[float]],),  # noqa: E501
             'as_of': (str,),  # noqa: E501
@@ -126,7 +126,7 @@ class GetVaultMarketCorrelationResponse(ModelNormal):
             weeks (float):
             min_pair_weeks (float):
             insufficient (bool):
-            indexes ([SlugName]):
+            indexes ([NameSlug]):
             rho ([[float, none_type]]):
             n ([[float]]):
             as_of (str):
@@ -228,7 +228,7 @@ class GetVaultMarketCorrelationResponse(ModelNormal):
             weeks (float):
             min_pair_weeks (float):
             insufficient (bool):
-            indexes ([SlugName]):
+            indexes ([NameSlug]):
             rho ([[float, none_type]]):
             n ([[float]]):
             as_of (str):
