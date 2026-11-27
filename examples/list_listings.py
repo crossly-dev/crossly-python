@@ -1,22 +1,17 @@
-"""Print every listing in your Crossly store, page by page.
+"""Print every listing in your Crossly store, following pagination.
 
     pip install crossly
     CROSSLY_TOKEN=crossly_pat_... python list_listings.py
 """
 import os
+import sys
 
-import crossly
-from crossly.api import listings_api
+from crossly.client import Crossly, CrosslyError
 
-config = crossly.Configuration(access_token=os.environ["CROSSLY_TOKEN"])
-
-with crossly.ApiClient(config) as client:
-    api = listings_api.ListingsApi(client)
-    page = 1
-    while True:
-        result = api.list_listings(page=page, limit=100)
-        for item in result.data:
+with Crossly(os.environ["CROSSLY_TOKEN"]) as crossly:
+    try:
+        for item in crossly.iter_items(crossly.listings.list_listings):
             print(f"{item.id}  {item.status:<10}  {item.title}")
-        if len(result.data) < 100:
-            break
-        page += 1
+    except CrosslyError as e:
+        # code and correlation_id are what support needs.
+        sys.exit(f"failed: {e.status} {e.code} {e.message} (correlationId {e.correlation_id})")

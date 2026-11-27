@@ -27,18 +27,21 @@ Crossly account. A 401 from a call that looks right usually means the other clie
 
 ```python
 import os
-import crossly
-from crossly.api import listings_api
+from crossly.client import Crossly
 
-config = crossly.Configuration(access_token=os.environ["CROSSLY_TOKEN"])  # crossly_pat_…
-with crossly.ApiClient(config) as client:
-    page = listings_api.ListingsApi(client).list_listings(page=1, limit=25)
-    for item in page.data:
-        print(item.id, item.title, item.status)
+crossly = Crossly(os.environ["CROSSLY_TOKEN"])  # crossly_pat_…
+page = crossly.listings.list_listings(page=1, limit=25)
+for item in page.data:
+    print(item.id, item.title, item.status)
 ```
 
+`crossly.listings` is the generated `crossly.api.listings_api.ListingsApi` (every `crossly.api.<area>_api` works the
+same way: `crossly.orders`, `crossly.inventory`, …) bound to one configured client. The plain generated client is
+still there underneath: `crossly.Configuration(access_token=…)`, `crossly.ApiClient(config)`,
+`listings_api.ListingsApi(client)`.
+
 List calls return `{ data, pagination }` and page with `page` and `limit`. Money fields named `…_cents` are
-integer cents. A failed call raises `crossly.ApiException` with `.status` and `.body`, the API's `{ "error": { "code", "message" } }` plus a `correlationId` support can trace.
+integer cents. A failed call raises `crossly.client.CrosslyError`, a `crossly.ApiException` (`AuthenticationError`, `PermissionDeniedError`, `NotFoundError`, `RateLimitError`, `ServerError` for 401/403/404/429/5xx), with `.status`, `.code`, `.message`, `.details`, `.retry_after` and the `.correlation_id` support can trace.
 
 ## Webhooks
 
@@ -58,6 +61,48 @@ except WebhookVerificationError:
 
 Verify the raw bytes, not a re-serialised body. `webhooks/` holds the same verifier on its own, with the shared
 test vectors every language's port is checked against on each build.
+
+## Retries, timeouts, pagination
+
+`Crossly(token, base_url=None, timeout=30.0, max_retries=3, backoff=0.5, max_backoff=30.0, retry_writes=False,
+user_agent=None)`. Backoff is exponential with jitter; a `Retry-After` header wins. 429 is retried on every method;
+5xx and network errors on GET, HEAD, OPTIONS, PUT and DELETE, and on POST and PATCH only with `retry_writes=True`
+(only some endpoints deduplicate on the key). Every POST, PUT, PATCH and DELETE carries an `Idempotency-Key`, the
+same on each retry of that call. The User-Agent is `crossly-python/<version>`.
+
+```python
+for listing in crossly.iter_items(crossly.listings.list_listings, status="active"):
+    print(listing.id)
+
+for page in crossly.iter_pages(crossly.orders.list_orders, limit=100):
+    print(len(page.data))
+```
+
+`iter_items` / `iter_pages` follow `page` until `pagination.total_pages` (or the first short page).
+
+## Flask, Django, FastAPI
+
+`crossly.frameworks` verifies the signature over the raw bytes and hands the view the verified event (400 with the
+reason when it does not verify). No framework is a dependency; the secret defaults to `CROSSLY_WEBHOOK_SECRET`.
+
+```python
+from crossly.frameworks import flask_webhook, django_webhook, fastapi_webhook, CrosslyWebhookMiddleware
+
+@app.post("/webhooks/crossly")                     # Flask
+@flask_webhook()
+def crossly_webhook(event):
+    return "", 204
+
+@django_webhook()                                   # Django (CSRF-exempt, POST only)
+def crossly_webhook(request, event):
+    return HttpResponse(status=204)
+
+@app.post("/webhooks/crossly", status_code=204)    # FastAPI
+async def crossly_webhook(event=Depends(fastapi_webhook())):
+    ...
+
+app.add_middleware(CrosslyWebhookMiddleware, path="/webhooks/crossly")  # any ASGI app: request.state.crossly_event
+```
 
 ## Where things are
 

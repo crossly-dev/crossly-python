@@ -1,11 +1,10 @@
-# Build, test and package on every push and pull request.
+# Build, test and package on every push (any branch) and pull request.
 #
 # Managed by tools/sdk-repo/seed.mjs in the Crossly monorepo: edits here are overwritten on the next seed.
 name: ci
 
 on:
   push:
-    branches: [main]
   pull_request:
   workflow_dispatch:
 
@@ -30,7 +29,7 @@ jobs:
         run: bash codegen/ci/check.sh python buyer
       - name: webhook conformance vectors
         working-directory: codegen/integrations/webhooks/python
-        run: python check_vectors.py
+        run: python check_vectors.py && python -m pip install -q flask django fastapi httpx && python ../../extras/python/selftest.py
       - name: package
         run: |
           python -m pip install -q build

@@ -1,13 +1,29 @@
 {
   "lang": "python",
-  "vendorWebhooks": [
+  "vendor": [
     {
-      "from": "crossly_webhooks.py",
+      "from": "webhooks/python/crossly_webhooks.py",
       "to": "seller/crossly/webhooks.py"
     },
     {
-      "from": "crossly_webhooks.py",
+      "from": "webhooks/python/crossly_webhooks.py",
       "to": "buyer/crossly_buyer/webhooks.py"
+    },
+    {
+      "from": "extras/python/client.py",
+      "to": "seller/crossly/client.py"
+    },
+    {
+      "from": "extras/python/client.py",
+      "to": "buyer/crossly_buyer/client.py"
+    },
+    {
+      "from": "extras/python/frameworks.py",
+      "to": "seller/crossly/frameworks.py"
+    },
+    {
+      "from": "extras/python/frameworks.py",
+      "to": "buyer/crossly_buyer/frameworks.py"
     }
   ]
 }

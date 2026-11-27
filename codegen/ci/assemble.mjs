@@ -6,9 +6,9 @@
  *
  * codegen/sdks/<lang>/{seller,buyer,webhooks} REPLACE the repo's seller/, buyer/ and webhooks/ (replaced, not
  * merged: a file for a route that no longer exists is a method that 404s). Then each entry of codegen/repo.json's
- * `vendorWebhooks` copies the hand-written verifier INTO an installable package, so `pip install crossly` (etc.)
- * can verify a webhook without copying files from this repo, and the copy is checked byte-identical to the
- * conformance-tested source. Last, the forbidden-pattern scan: generated code is still code, and a spec that ever
+ * `vendor` copies a hand-written file INTO an installable package (the webhook verifier, client ergonomics,
+ * framework middleware), so `pip install crossly` (etc.) has them without copying files from this repo; each copy
+ * is checked byte-identical to its source. Last, the forbidden-pattern scan: generated code is still code, and a spec that ever
  * carried a token would bake it into every client at once. Exit 1 on a hit.
  */
 import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync } from 'node:fs';
@@ -33,21 +33,22 @@ for (const part of ['seller', 'buyer', 'webhooks']) {
   if (existsSync(join(out, part))) cpSync(join(out, part), join(REPO, part), { recursive: true });
 }
 
-const source = join(CODEGEN, 'integrations', 'webhooks', repo.lang);
-for (const v of repo.vendorWebhooks ?? []) {
-  const from = join(source, v.from);
+// `from` is relative to codegen/integrations/: webhooks/<lang>/… (the conformance-tested verifier) or
+// extras/<lang>/… (hand-written client ergonomics and framework middleware, kept out of the wiped dirs).
+for (const v of repo.vendor ?? []) {
+  const from = join(CODEGEN, 'integrations', v.from);
   const to = join(REPO, v.to);
   if (!existsSync(dirname(to))) {
-    console.error(`vendorWebhooks: ${dirname(v.to)} does not exist in the generated client (did the package name change?)`);
+    console.error(`vendor: ${dirname(v.to)} does not exist in the generated client (did the package name change?)`);
     process.exit(1);
   }
   mkdirSync(dirname(to), { recursive: true });
   cpSync(from, to);
   if (!readFileSync(from).equals(readFileSync(to))) {
-    console.error(`vendorWebhooks: ${v.to} is not identical to ${v.from}`);
+    console.error(`vendor: ${v.to} is not identical to ${v.from}`);
     process.exit(1);
   }
-  console.log(`webhook verifier -> ${v.to}`);
+  console.log(`vendored ${v.from} -> ${v.to}`);
 }
 
 const walk = (d) =>

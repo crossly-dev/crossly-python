@@ -9,6 +9,9 @@
 set -euo pipefail
 lang="$1"
 dir="$2"
+# A language may replace this whole check with its own script (tools/sdk-repo/files/codegen/ci/check-<lang>.sh).
+own="$(dirname "$0")/check-$lang.sh"
+if [ -f "$own" ]; then exec bash "$own" "$dir"; fi
 cd "$dir"
 echo "::group::check $lang in $dir"
 case "$lang" in
